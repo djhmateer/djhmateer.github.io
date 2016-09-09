@@ -7,8 +7,8 @@ published: false
 ---
 So, thoughts on this blog made with [Jekyll][jekyll] 
 
-... which is shown in the screenshot below:
-![My helpful screenshot]({{ site.url }}/assets/VSCodeScreenShot.png)
+... which is shown in the screenshot below2:
+![My helpful screenshot](/assets/VSCodeScreenShot.png)
 
 Build is: [Build]
 
