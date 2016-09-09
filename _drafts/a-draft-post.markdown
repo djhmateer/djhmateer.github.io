@@ -1,9 +1,7 @@
 ---
 layout: post
-title:  "Test"
-date:   2016-09-09 06:24:16 +0100
+title:  "A Draft Post"
 categories: jekyll
-published: true 
 ---
 So, thoughts on this blog made with hyperlinklink: [Jekyll][jekyll] 
 

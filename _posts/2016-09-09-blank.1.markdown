@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jekyll Thoughts2"
+title:  "Blank page"
 date:   2016-09-09 06:24:16 +0100
 categories: jekyll 
 ---
@@ -8,7 +8,5 @@ So, thoughts on this blog made with [Jekyll][jekyll]
 
 
 
-Build is: [Build]
 
-[build]: https://github.com/djhmateer/djhmateer.github.io/commit/{{ site.github.build_revision }}
 [jekyll]: http://jekyllrb.com
