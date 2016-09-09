@@ -4,7 +4,7 @@ title:  "Jekyll Thoughts2"
 date:   2016-09-09 06:24:16 +0100
 categories: jekyll 
 ---
-So, thoughts on this blog made with [Jekyll][jekyll] 5
+So, thoughts on this blog made with [Jekyll][jekyll] 6
 
 
 Build is:
