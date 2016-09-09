@@ -23,7 +23,7 @@ twitter_username: dave_mateer
 github_username:  djhmateer
 
 #lowercase separated by hyphens
-permalink: /articles/:title
+#permalink: /articles/:title
 
 # Build settings
 markdown: kramdown
