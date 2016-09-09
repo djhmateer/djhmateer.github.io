@@ -7,7 +7,7 @@ published: true
 ---
 So, thoughts on this blog made with [Jekyll][jekyll] 
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Screenshot](/assets/VSCodeScreenShot.png)
 
 Build is: [Build]
 
