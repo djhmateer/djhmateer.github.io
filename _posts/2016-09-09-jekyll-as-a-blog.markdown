@@ -6,6 +6,9 @@ categories: jekyll
 ---
 So, thoughts on this blog made with [Jekyll][jekyll] 
 
+Build is:
+{% site.github.build_revision %}
+
 {% for repository in site.github.public_repositories %}
   * [{{ repository.name }}]({{ repository.html_url }})
 {% endfor %}
