@@ -7,13 +7,6 @@ categories: jekyll
 So, thoughts on this blog made with [Jekyll][jekyll] 3
 
 
-Build is:
-// {% site.github.build_revision %}
-
-// {% for repository in site.github.public_repositories %}
-//   * [{{ repository.name }}]({{ repository.html_url }})
-// {% endfor %}
-
 
 [jekyll]: http://jekyllrb.com
 [jekyll-docs]: http://jekyllrb.com/docs/home
