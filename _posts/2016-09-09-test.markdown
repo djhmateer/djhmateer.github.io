@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Jekyll Thoughts2"
+title:  "Test"
 date:   2016-09-09 06:24:16 +0100
-categories: jekyll 
+categories: jekyll
+published: false 
 ---
 So, thoughts on this blog made with [Jekyll][jekyll] 
 
