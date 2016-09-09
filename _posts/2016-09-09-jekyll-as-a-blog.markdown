@@ -4,15 +4,10 @@ title:  "Jekyll Thoughts2"
 date:   2016-09-09 06:24:16 +0100
 categories: jekyll 
 ---
-So, thoughts on this blog made with [Jekyll][jekyll] 4
+So, thoughts on this blog made with [Jekyll][jekyll] 5
 
 
 Build is:
-// {% site.github.build_revision %}
-
-// {% for repository in site.github.public_repositories %}
-//   * [{{ repository.name }}]({{ repository.html_url }})
-// {% endfor %}
 
 
 [jekyll]: http://jekyllrb.com
