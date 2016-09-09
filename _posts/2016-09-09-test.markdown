@@ -39,7 +39,8 @@ class Program
 }
 {% endhighlight %}
 
-{{ site.time }}
+Date to String
+{{ site.time | date_to_long_string }}
 
 
 
