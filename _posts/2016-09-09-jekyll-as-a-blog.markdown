@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jekyll Thoughts"
+title:  "Jekyll Thoughts2"
 date:   2016-09-09 06:24:16 +0100
 categories: jekyll 
 ---
