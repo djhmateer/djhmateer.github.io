@@ -7,7 +7,7 @@ categories: jekyll
 So, thoughts on this blog made with [Jekyll][jekyll] 8
 
 Build is:
-{{ site.github.build_revision }}
+https://github.com/djhmateer/djhmateer.github.io/commit/{{ site.github.build_revision }}
 
 
 
