@@ -7,8 +7,7 @@ published: false
 ---
 So, thoughts on this blog made with [Jekyll][jekyll] 
 
-... which is shown in the screenshot below2:
-![My helpful screenshot](/assets/VSCodeScreenShot.png)
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 Build is: [Build]
 
