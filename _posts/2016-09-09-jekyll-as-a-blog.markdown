@@ -6,8 +6,8 @@ categories: jekyll
 ---
 So, thoughts on this blog made with [Jekyll][jekyll] 8
 
-
 Build is:
+{{ site.github.build_revision }}
 
 
 
