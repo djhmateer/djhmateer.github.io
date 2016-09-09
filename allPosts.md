@@ -1,10 +1,12 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: All Posts
+permalink: /allPosts/
 ---
 
-Dave Mateer
+All posts page
+
+
 
 Public repos are on 
 {% include icon-github.html username="djhmateer" %} 

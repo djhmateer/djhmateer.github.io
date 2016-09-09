@@ -39,6 +39,8 @@ class Program
 }
 {% endhighlight %}
 
+{{ site.time }}
+
 
 
 Build is: [Build]
