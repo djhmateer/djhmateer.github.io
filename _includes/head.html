@@ -9,8 +9,6 @@
   {% assign custom_url = site.url | append: site.baseurl %}
   {% assign full_base_url = site.github.url | default: custom_url %}
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: full_base_url }}">
-  <!--<link rel="stylesheet" href="https://djhmateer.github.io/css/main.css">-->
-   <!--<link rel="stylesheet" href="{{site.url}}/css/main.css">-->
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: full_base_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | prepend: full_base_url }}">
