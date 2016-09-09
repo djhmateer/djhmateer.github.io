@@ -17,7 +17,7 @@ title: News from London
 email: davemateer@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
  A daily journal by Edward Hyde
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: https://djhmateer.github.io # the base hostname & protocol for your site
 twitter_username: dave_mateer
 github_username:  djhmateer
