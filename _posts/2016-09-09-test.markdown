@@ -5,7 +5,7 @@ date:   2016-09-09 06:24:16 +0100
 categories: jekyll
 published: true 
 ---
-So, thoughts on this blog made with hyperlink: [Jekyll][jekyll] 
+2So, thoughts on this blog made with hyperlink: [Jekyll][jekyll] 
 
 Image:
 ![Screenshot](/assets/VSCodeScreenShot.png)
