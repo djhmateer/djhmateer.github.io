@@ -2,7 +2,7 @@
 layout: post
 title:  "Test"
 date:   2016-09-09 06:24:16 +0100
-categories: jekyll
+categories: update
 published: true 
 ---
 2So, thoughts on this blog made with hyperlink: [Jekyll][jekyll] 
