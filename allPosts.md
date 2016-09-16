@@ -7,5 +7,9 @@ permalink: /allPosts/
 All posts page
 
 
-Public repos are on 
+    {% for post in site.posts %}
+
+        - {{ post.date | date: "%b %-d, %Y" }}<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a> {{ post.excerpt }}
+    {% endfor %}
+
 {% include icon-github.html username="djhmateer" %} 
