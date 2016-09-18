@@ -9,7 +9,9 @@ All posts page
 
     {% for post in site.posts %}
 
-        - {{ post.date | date: "%b %-d, %Y" }}<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a> {{ post.excerpt }}
+        {{ post.date | date: "%b %-d, %Y" }}
+        {{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}
+         {{ post.excerpt }}
     {% endfor %}
 
 {% include icon-github.html username="djhmateer" %} 
