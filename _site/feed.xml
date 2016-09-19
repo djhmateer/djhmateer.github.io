@@ -6,19 +6,32 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 19 Sep 2016 12:10:57 +0100</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 12:10:57 +0100</lastBuildDate>
+    <pubDate>Mon, 19 Sep 2016 14:28:19 +0100</pubDate>
+    <lastBuildDate>Mon, 19 Sep 2016 14:28:19 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Test</title>
-        <description>&lt;p&gt;2So, thoughts on this blog made with hyperlink: &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
+        <title>Publishing a blog with Jekyll</title>
+        <description>&lt;p&gt;I started blogging about 8 years ago &lt;a href=&quot;http://www.programgood.net&quot;&gt;programgood.net&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Image:
-&lt;img src=&quot;/assets/VSCodeScreenShot.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Smaller Image2
-&lt;img src=&quot;/assets/VSCode500.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I’m an ASP.NET / MSSQL guy, and have written business applications for rather a long time.&lt;/p&gt;
+
+&lt;p&gt;This blog is powered by &lt;a href=&quot;http://jekyllrb.com&quot;&gt;jekyllrb.com&lt;/a&gt;  which uses Ruby to generate static html, which is then hosted on GitHub Pages.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-a-static-site&quot;&gt;Why a static site?&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Simple&lt;/li&gt;
+  &lt;li&gt;Free hosting (Github pages, Azure free websites, S3.. whatever)&lt;/li&gt;
+  &lt;li&gt;Fine grain control over html&lt;/li&gt;
+  &lt;li&gt;Blazingly fast&lt;/li&gt;
+  &lt;li&gt;Easiy Source Controllable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Untitled.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Visual Studio Code editing this post!&lt;/p&gt;
 
 &lt;p&gt;… you can &lt;a href=&quot;/assets/test pdf.pdf&quot;&gt;get the PDF&lt;/a&gt; directly.&lt;/p&gt;
 
@@ -65,123 +78,11 @@
 
 </description>
         <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/update/2016/09/09/test.html</link>
-        <guid isPermaLink="true">/update/2016/09/09/test.html</guid>
+        <link>/update/2016/09/09/publishing-a-blog-with-jekyll.html</link>
+        <guid isPermaLink="true">/update/2016/09/09/publishing-a-blog-with-jekyll.html</guid>
         
         
         <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Blank page</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/blank.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/blank.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Blank page</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/blank.7.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/blank.7.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Blank page</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/blank.6.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/blank.6.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Blank page</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/blank.5.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/blank.5.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Blank page</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/blank.4.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/blank.4.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Blank page</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/blank.3.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/blank.3.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Blank page</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/blank.2.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/blank.2.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Blank page</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/blank.1.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/blank.1.html</guid>
-        
-        
-        <category>jekyll</category>
         
       </item>
     

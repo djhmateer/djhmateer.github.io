@@ -99,7 +99,8 @@ a {
     }
 
     &:hover {
-        color: $text-color;
+        // color: $text-color;
+        color: #5ba4e5;
         text-decoration: underline;
     }
 }
