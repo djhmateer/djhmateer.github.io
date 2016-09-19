@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Publishing a blog with Jekyll"
-date:   2016-09-09 06:24:16 +0100
+date:   2016-09-09 16:33:16 +0100
 categories: update
 published: true 
 ---
