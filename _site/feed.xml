@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 19 Sep 2016 15:14:35 +0100</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 15:14:35 +0100</lastBuildDate>
+    <pubDate>Mon, 19 Sep 2016 16:23:21 +0100</pubDate>
+    <lastBuildDate>Mon, 19 Sep 2016 16:23:21 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -78,7 +78,7 @@
 
 &lt;p&gt;I’m an ASP.NET / MSSQL guy, and have written business applications for rather a long time.&lt;/p&gt;
 
-&lt;p&gt;This blog is powered by [jekyllrb.com][jekyll]  which uses Ruby to generate static html, and hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This blog is powered by &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyllrb.com&lt;/a&gt;  which uses Ruby to generate static html, and hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;why-a-static-site&quot;&gt;Why a static site?&lt;/h3&gt;
 &lt;ul&gt;
@@ -91,14 +91,60 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/Untitled.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Visual Studio Code editing this post!&lt;/p&gt;
+&lt;p&gt;Visual Studio Code editing this post&lt;/p&gt;
 
 &lt;h3 id=&quot;how-to-get-started&quot;&gt;How to get started&lt;/h3&gt;
-&lt;p&gt;You are looking at it :-)  Here is my workflow to publish a post:&lt;/p&gt;
+&lt;p&gt;These instructions are what I found worked on Windows10 as of 19th Sept 2016.  I use 3 machines regularly at work and home, so found a way.&lt;/p&gt;
+
+&lt;p&gt;Official notes &lt;a href=&quot;https://jekyllrb.com/docs/windows/#installation&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Windows key, Windows Powershell, run as administrator&lt;/li&gt;
+  &lt;li&gt;Install &lt;a href=&quot;https://chocolatey.org/install&quot;&gt;chocolatey.org&lt;/a&gt; using:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;iwr &lt;/span&gt;https://chocolatey.org/install.ps1 -UseBasicParsing | &lt;span class=&quot;nb&quot;&gt;iex&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;reopen powershell as administrator&lt;/li&gt;
+  &lt;li&gt;Install Ruby using:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;choco install ruby -y&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;reopen shell as administrator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;gem install jekyll&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;open poshgit shell (my normal shell installed automatically with &lt;a href=&quot;https://desktop.github.com/&quot;&gt;GitHub Desktop&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;cd c:\dev\web&lt;/li&gt;
+  &lt;li&gt;jekyll new testsite&lt;/li&gt;
+  &lt;li&gt;cd testsite&lt;/li&gt;
+  &lt;li&gt;gem install bundle&lt;/li&gt;
+  &lt;li&gt;bundle&lt;/li&gt;
+  &lt;li&gt;jekyll serve&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/Posh1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Development server running which automatically regenerates the site when I save a file in VSCode.&lt;/p&gt;
+&lt;p&gt;Jekyll site is running!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/DemoSiteNoCss.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Oh no - what has happened to the style??&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/FixConfig.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Comment out with a # the url line.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/DemoSite.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Much nicer!!!&lt;/p&gt;
+
+&lt;h2 id=&quot;publish-to-github-pages&quot;&gt;Publish to GitHub Pages&lt;/h2&gt;
 
 &lt;p&gt;.\p.ps1  which is a shortcut to:&lt;/p&gt;
 
@@ -107,6 +153,13 @@
 git commit -m  &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;
 git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;p&gt;End result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Untitled2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I found it can take up to a minute to appear live, the trick being to watch for this message in Settings, GitHub pages:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/GitHub.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
         <link>/update/2016/09/09/publishing-a-blog-with-jekyll.html</link>

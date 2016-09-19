@@ -86,7 +86,7 @@
 
 <p>I’m an ASP.NET / MSSQL guy, and have written business applications for rather a long time.</p>
 
-<p>This blog is powered by [jekyllrb.com][jekyll]  which uses Ruby to generate static html, and hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>
+<p>This blog is powered by <a href="https://jekyllrb.com/">jekyllrb.com</a>  which uses Ruby to generate static html, and hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>
 
 <h3 id="why-a-static-site">Why a static site?</h3>
 <ul>
@@ -99,14 +99,60 @@
 
 <p><img src="/assets/Untitled.png" alt="Screenshot" /></p>
 
-<p>Visual Studio Code editing this post!</p>
+<p>Visual Studio Code editing this post</p>
 
 <h3 id="how-to-get-started">How to get started</h3>
-<p>You are looking at it :-)  Here is my workflow to publish a post:</p>
+<p>These instructions are what I found worked on Windows10 as of 19th Sept 2016.  I use 3 machines regularly at work and home, so found a way.</p>
+
+<p>Official notes <a href="https://jekyllrb.com/docs/windows/#installation">here</a></p>
+
+<ul>
+  <li>Windows key, Windows Powershell, run as administrator</li>
+  <li>Install <a href="https://chocolatey.org/install">chocolatey.org</a> using:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nb">iwr </span>https://chocolatey.org/install.ps1 -UseBasicParsing | <span class="nb">iex</span></code></pre></figure>
+
+<ul>
+  <li>reopen powershell as administrator</li>
+  <li>Install Ruby using:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">choco install ruby -y</code></pre></figure>
+
+<ul>
+  <li>reopen shell as administrator</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">gem install jekyll</code></pre></figure>
+
+<ul>
+  <li>open poshgit shell (my normal shell installed automatically with <a href="https://desktop.github.com/">GitHub Desktop</a>)</li>
+  <li>cd c:\dev\web</li>
+  <li>jekyll new testsite</li>
+  <li>cd testsite</li>
+  <li>gem install bundle</li>
+  <li>bundle</li>
+  <li>jekyll serve</li>
+</ul>
 
 <p><img src="/assets/Posh1.png" alt="Screenshot" /></p>
 
-<p>Development server running which automatically regenerates the site when I save a file in VSCode.</p>
+<p>Jekyll site is running!</p>
+
+<p><img src="/assets/DemoSiteNoCss.png" alt="Screenshot" /></p>
+
+<p>Oh no - what has happened to the style??</p>
+
+<p><img src="/assets/FixConfig.png" alt="Screenshot" /></p>
+
+<p>Comment out with a # the url line.</p>
+
+<p><img src="/assets/DemoSite.png" alt="Screenshot" /></p>
+
+<p>Much nicer!!!</p>
+
+<h2 id="publish-to-github-pages">Publish to GitHub Pages</h2>
 
 <p>.\p.ps1  which is a shortcut to:</p>
 
@@ -115,6 +161,13 @@
 git commit -m  <span class="nv">$message</span>
 git push</code></pre></figure>
 
+<p>End result:</p>
+
+<p><img src="/assets/Untitled2.png" alt="Screenshot" /></p>
+
+<p>I found it can take up to a minute to appear live, the trick being to watch for this message in Settings, GitHub pages:</p>
+
+<p><img src="/assets/GitHub.png" alt="Screenshot" /></p>
 
   </div>
 
@@ -165,7 +218,7 @@ git push</code></pre></figure>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <!--<p>rev: 2016-09-19 15:14:35 +0100</p>-->
+        <!--<p>rev: 2016-09-19 16:23:21 +0100</p>-->
       </div>
     </div>
 
