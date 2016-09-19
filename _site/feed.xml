@@ -6,46 +6,40 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 19 Sep 2016 15:02:28 +0100</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 15:02:28 +0100</lastBuildDate>
+    <pubDate>Mon, 19 Sep 2016 15:14:35 +0100</pubDate>
+    <lastBuildDate>Mon, 19 Sep 2016 15:14:35 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Publishing a blog with Jekyll</title>
-        <description>&lt;p&gt;I started blogging about 8 years ago &lt;a href=&quot;http://www.programgood.net&quot;&gt;programgood.net&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
+        <title>A Draft Post</title>
+        <description>&lt;p&gt;So, thoughts on this blog made with hyperlinklink: &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Image:
+&lt;img src=&quot;/assets/VSCodeScreenShot.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;I’m an ASP.NET / MSSQL guy, and have written business applications for rather a long time.&lt;/p&gt;
+&lt;p&gt;Smaller Image2
+&lt;img src=&quot;/assets/VSCode500.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;This blog is powered by &lt;a href=&quot;http://jekyllrb.com&quot;&gt;jekyllrb.com&lt;/a&gt;  which uses Ruby to generate static html, and hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;… you can &lt;a href=&quot;/assets/test pdf.pdf&quot;&gt;get the PDF&lt;/a&gt; directly.&lt;/p&gt;
 
-&lt;h3 id=&quot;why-a-static-site&quot;&gt;Why a static site?&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Simple&lt;/li&gt;
-  &lt;li&gt;Free hosting&lt;/li&gt;
-  &lt;li&gt;Fine grain control over html&lt;/li&gt;
-  &lt;li&gt;Blazingly fast&lt;/li&gt;
-  &lt;li&gt;Easily Source Controllable&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; This is a now a paragraph&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/Untitled.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;This is Ruby code:&lt;/p&gt;
 
-&lt;p&gt;Visual Studio Code editing this post!&lt;/p&gt;
-
-&lt;h3 id=&quot;end-result&quot;&gt;End Result&lt;/h3&gt;
-&lt;p&gt;You are looking at it :-)  Here is my workflow to publish a post:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/Posh1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Development server running which automatically regenerates the site when I save a file in VSCode.&lt;/p&gt;
-
-&lt;p&gt;.\p.ps1  which is a shortcut to:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;git add . -A
-&lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Auto commit at &quot;&lt;/span&gt; + &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Get-Date&lt;/span&gt; -Format g&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-git commit -m  &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;
-git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@widget&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Widget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;respond_to&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# show.html.erb&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@widget&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;This is C#:&lt;/p&gt;
 
@@ -64,10 +58,54 @@ git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Date to String
-19 September 2016&lt;/p&gt;
-
 &lt;p&gt;Build is: &lt;a href=&quot;https://github.com/djhmateer/djhmateer.github.io/commit/&quot;&gt;Build&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 09 Sep 2016 14:56:19 +0100</pubDate>
+        <link>/jekyll/2016/09/09/a-draft-post.html</link>
+        <guid isPermaLink="true">/jekyll/2016/09/09/a-draft-post.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Publishing a blog with Jekyll</title>
+        <description>&lt;p&gt;I started blogging about 8 years ago &lt;a href=&quot;http://www.programgood.net&quot;&gt;programgood.net&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I’m an ASP.NET / MSSQL guy, and have written business applications for rather a long time.&lt;/p&gt;
+
+&lt;p&gt;This blog is powered by [jekyllrb.com][jekyll]  which uses Ruby to generate static html, and hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;why-a-static-site&quot;&gt;Why a static site?&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Simple&lt;/li&gt;
+  &lt;li&gt;Free hosting&lt;/li&gt;
+  &lt;li&gt;Fine grain control over html&lt;/li&gt;
+  &lt;li&gt;Blazingly fast&lt;/li&gt;
+  &lt;li&gt;Easily Source Controllable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Untitled.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Visual Studio Code editing this post!&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-get-started&quot;&gt;How to get started&lt;/h3&gt;
+&lt;p&gt;You are looking at it :-)  Here is my workflow to publish a post:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Posh1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Development server running which automatically regenerates the site when I save a file in VSCode.&lt;/p&gt;
+
+&lt;p&gt;.\p.ps1  which is a shortcut to:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;git add . -A
+&lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Auto commit at &quot;&lt;/span&gt; + &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Get-Date&lt;/span&gt; -Format g&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+git commit -m  &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;
+git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>

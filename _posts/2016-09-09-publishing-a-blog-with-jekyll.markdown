@@ -26,7 +26,7 @@ This blog is powered by [jekyllrb.com][jekyll]  which uses Ruby to generate stat
 
 Visual Studio Code editing this post!
 
-### End Result
+### How to get started
 You are looking at it :-)  Here is my workflow to publish a post:
 
 ![Screenshot](/assets/Posh1.png)
@@ -41,22 +41,3 @@ $message = "Auto commit at " + (Get-Date -Format g)
 git commit -m  $message
 git push
 {% endhighlight %}
-
-This is C#:
-{% highlight csharp linenos %}
-class Program
-{
-    static void Main(string[] args)
-    {
-        //Do stuff
-    }
-}
-{% endhighlight %}
-
-Date to String
-{{ site.time | date_to_long_string }}
-
-Build is: [Build]
-
-[build]: https://github.com/djhmateer/djhmateer.github.io/commit/{{ site.github.build_revision }}
-[jekyll]: http://jekyllrb.com
