@@ -86,15 +86,15 @@
 
 <p>I’m an ASP.NET / MSSQL guy, and have written business applications for rather a long time.</p>
 
-<p>This blog is powered by <a href="http://jekyllrb.com">jekyllrb.com</a>  which uses Ruby to generate static html, which is then hosted on GitHub Pages.</p>
+<p>This blog is powered by <a href="http://jekyllrb.com">jekyllrb.com</a>  which uses Ruby to generate static html, and hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>
 
 <h3 id="why-a-static-site">Why a static site?</h3>
 <ul>
   <li>Simple</li>
-  <li>Free hosting (Github pages, Azure free websites, S3.. whatever)</li>
+  <li>Free hosting</li>
   <li>Fine grain control over html</li>
   <li>Blazingly fast</li>
-  <li>Easiy Source Controllable</li>
+  <li>Easily Source Controllable</li>
 </ul>
 
 <p><img src="/assets/Untitled.png" alt="Screenshot" /></p>
@@ -105,22 +105,12 @@
 
 <p><strong>Bold</strong> This is a now a paragraph</p>
 
-<p>This is Ruby code:</p>
+<p>Publish:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">show</span>
-  <span class="vi">@widget</span> <span class="o">=</span> <span class="no">Widget</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
-  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># show.html.erb</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@widget</span> <span class="p">}</span>
-  <span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">git add . -A
+<span class="nv">$message</span> <span class="o">=</span> <span class="s2">"Auto commit at "</span> + <span class="o">(</span><span class="nb">Get-Date</span> -Format g<span class="o">)</span>
+git commit -m  <span class="nv">$message</span>
+git push</code></pre></figure>
 
 <p>This is C#:</p>
 
@@ -194,7 +184,7 @@
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-09-19 14:28:19 +0100</p>
+        <p>rev: 2016-09-19 14:55:04 +0100</p>
       </div>
     </div>
 

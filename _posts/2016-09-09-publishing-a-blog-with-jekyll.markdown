@@ -11,15 +11,15 @@ I'd now like to try a more 'walkthrough' style blog, taking inspiration from [ha
 
 I'm an ASP.NET / MSSQL guy, and have written business applications for rather a long time.
 
-This blog is powered by [jekyllrb.com][jekyll]  which uses Ruby to generate static html, which is then hosted on GitHub Pages.
+This blog is powered by [jekyllrb.com][jekyll]  which uses Ruby to generate static html, and hosted on [GitHub Pages](https://pages.github.com/)
 
 ### Why a static site?
 <ul>
   <li>Simple</li>
-  <li>Free hosting (Github pages, Azure free websites, S3.. whatever)</li>
+  <li>Free hosting</li>
   <li>Fine grain control over html</li>
   <li>Blazingly fast</li>
-  <li>Easiy Source Controllable</li>
+  <li>Easily Source Controllable</li>
 </ul> 
 
 ![Screenshot](/assets/Untitled.png)
@@ -31,15 +31,12 @@ Visual Studio Code editing this post!
 
 **Bold** This is a now a paragraph
 
-This is Ruby code:
-{% highlight ruby linenos %}
-def show
-  @widget = Widget(params[:id])
-  respond_to do |format|
-    format.html # show.html.erb
-    format.json { render json: @widget }
-  end
-end
+Publish:
+{% highlight powershell %}
+git add . -A
+$message = "Auto commit at " + (Get-Date -Format g)
+git commit -m  $message
+git push
 {% endhighlight %}
 
 This is C#:
