@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 19 Sep 2016 14:56:07 +0100</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 14:56:07 +0100</lastBuildDate>
+    <pubDate>Mon, 19 Sep 2016 15:02:28 +0100</pubDate>
+    <lastBuildDate>Mon, 19 Sep 2016 15:02:28 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -34,8 +34,13 @@
 &lt;p&gt;Visual Studio Code editing this post!&lt;/p&gt;
 
 &lt;h3 id=&quot;end-result&quot;&gt;End Result&lt;/h3&gt;
+&lt;p&gt;You are looking at it :-)  Here is my workflow to publish a post:&lt;/p&gt;
 
-&lt;p&gt;Publish:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/Posh1.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Development server running which automatically regenerates the site when I save a file in VSCode.&lt;/p&gt;
+
+&lt;p&gt;.\p.ps1  which is a shortcut to:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;git add . -A
 &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Auto commit at &quot;&lt;/span&gt; + &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Get-Date&lt;/span&gt; -Format g&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;

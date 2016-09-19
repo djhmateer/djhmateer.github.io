@@ -27,8 +27,14 @@ This blog is powered by [jekyllrb.com][jekyll]  which uses Ruby to generate stat
 Visual Studio Code editing this post!
 
 ### End Result
+You are looking at it :-)  Here is my workflow to publish a post:
 
-Publish:
+![Screenshot](/assets/Posh1.png)
+
+Development server running which automatically regenerates the site when I save a file in VSCode.
+
+.\p.ps1  which is a shortcut to:
+
 {% highlight powershell %}
 git add . -A
 $message = "Auto commit at " + (Get-Date -Format g)
