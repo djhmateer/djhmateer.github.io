@@ -29,6 +29,6 @@ github_username:  djhmateer
 markdown: kramdown
 #theme: minima
 
-#exclude: [
-#  "*.ps1","Gemfile", "Gemfile.lock", "*.sln"
-#]
+exclude: [
+ "*.ps1","Gemfile", "Gemfile.lock", "*.sln"
+]
