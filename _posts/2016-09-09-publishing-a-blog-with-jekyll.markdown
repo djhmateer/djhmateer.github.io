@@ -56,7 +56,7 @@ gem install jekyll
 
 Jekyll site is running!
 
-![Screenshot](/assets/DemoSiteNoCss.png)
+<img src="/assets/DemoSiteNoCss.png" width="400" />
 
 Oh no - what has happened to the style??
 
@@ -64,7 +64,7 @@ Oh no - what has happened to the style??
 
 Comment out with a # the url line.
 
-![Screenshot](/assets/DemoSite.png)
+<img src="/assets/DemoSite.png" width="400" />
 
 Much nicer!!!
 
@@ -81,9 +81,6 @@ git push
 
 End result:
 
-![Screenshot](/assets/Untitled2.png)
-
 I found it can take up to a minute to appear live, the trick being to watch for this message in Settings, GitHub pages:
  
-
 ![Screenshot](/assets/GitHub.png)

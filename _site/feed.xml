@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 19 Sep 2016 16:33:46 +0100</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 16:33:46 +0100</lastBuildDate>
+    <pubDate>Mon, 19 Sep 2016 16:45:37 +0100</pubDate>
+    <lastBuildDate>Mon, 19 Sep 2016 16:45:37 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -72,7 +72,7 @@
 
 &lt;p&gt;Jekyll site is running!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/DemoSiteNoCss.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/DemoSiteNoCss.png&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Oh no - what has happened to the style??&lt;/p&gt;
 
@@ -80,7 +80,7 @@
 
 &lt;p&gt;Comment out with a # the url line.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/DemoSite.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/DemoSite.png&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Much nicer!!!&lt;/p&gt;
 
@@ -94,8 +94,6 @@ git commit -m  &lt;span class=&quot;nv&quot;&gt;$message&lt;/span&gt;
 git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;End result:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/Untitled2.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I found it can take up to a minute to appear live, the trick being to watch for this message in Settings, GitHub pages:&lt;/p&gt;
 
