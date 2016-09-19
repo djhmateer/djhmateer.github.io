@@ -84,3 +84,5 @@ End result:
 I found it can take up to a minute to appear live, the trick being to watch for this message in Settings, GitHub pages:
  
 ![Screenshot](/assets/GitHub.png)
+
+While doing this tutorial 19th Sept 2016 at 16:49 it seems [GitHub Status](https://status.github.com/) are experiencing problems, and the site isn't updating *typical*
