@@ -26,10 +26,7 @@ This blog is powered by [jekyllrb.com][jekyll]  which uses Ruby to generate stat
 
 Visual Studio Code editing this post!
 
-
-... you can [get the PDF]({{ site.url }}/assets/test pdf.pdf) directly.
-
-**Bold** This is a now a paragraph
+### End Result
 
 Publish:
 {% highlight powershell %}

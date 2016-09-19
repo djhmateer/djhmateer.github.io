@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 19 Sep 2016 14:55:04 +0100</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 14:55:04 +0100</lastBuildDate>
+    <pubDate>Mon, 19 Sep 2016 14:56:07 +0100</pubDate>
+    <lastBuildDate>Mon, 19 Sep 2016 14:56:07 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -33,9 +33,7 @@
 
 &lt;p&gt;Visual Studio Code editing this post!&lt;/p&gt;
 
-&lt;p&gt;… you can &lt;a href=&quot;/assets/test pdf.pdf&quot;&gt;get the PDF&lt;/a&gt; directly.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; This is a now a paragraph&lt;/p&gt;
+&lt;h3 id=&quot;end-result&quot;&gt;End Result&lt;/h3&gt;
 
 &lt;p&gt;Publish:&lt;/p&gt;
 
