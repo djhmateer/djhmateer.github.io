@@ -6,9 +6,26 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 19 Sep 2016 16:51:13 +0100</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 16:51:13 +0100</lastBuildDate>
+    <pubDate>Tue, 20 Sep 2016 10:47:05 +0100</pubDate>
+    <lastBuildDate>Tue, 20 Sep 2016 10:47:05 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Microservices</title>
+        <description>&lt;p&gt;A good flowchart:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.stavros.io/files/images/microservices-cargo-cult/flowchart.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-microservices&quot;&gt;What are Microservices?&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 20 Sep 2016 10:47:04 +0100</pubDate>
+        <link>/microservices/2016/09/20/microservices.html</link>
+        <guid isPermaLink="true">/microservices/2016/09/20/microservices.html</guid>
+        
+        
+        <category>microservices</category>
+        
+      </item>
     
       <item>
         <title>Publishing a blog with Jekyll</title>
