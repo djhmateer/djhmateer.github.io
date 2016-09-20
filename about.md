@@ -3,10 +3,9 @@ layout: page
 title: About
 permalink: /about/
 ---
-
-
-Dave lives near Brighton in England and by day he works on large financial internal systems. Dave gets up at 0500 most days to work on side projects because he loves to code :-)
+Dave lives near Brighton in England and by day he works on large financial internal systems in ASP.NET and MSSQL. Dave gets up at 0500 most days to work on side projects because he loves to code :-)
  He then plays with his ~~5 month old~~ 2 year old daughter and 3 month old son, usually listening to ABBA. Then mountain bikes to work dreaming of music and code…
+
 
 ## May 2015, London
 

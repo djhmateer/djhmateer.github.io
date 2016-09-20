@@ -5,11 +5,6 @@ date:   2016-09-09 16:33:16 +0100
 categories: update
 published: true 
 ---
-I started blogging about 8 years ago [programgood.net](http://www.programgood.net)  It turned into a very good ideas repository, not a blog.  *That's fine.*  
-
-I'd now like to try a more 'walkthrough' style blog, taking inspiration from [hanselman.com](http://www.hanselman.com) and [ScottGu](http://weblogs.asp.net/scottgu/introducing-asp-net-5) 
-
-I'm an ASP.NET / MSSQL guy, and have been writing business applications for a long time.
 
 This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and is hosted on [GitHub Pages](https://pages.github.com/)
 

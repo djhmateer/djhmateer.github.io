@@ -8,13 +8,17 @@
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
-            {% if site.author %}
+            <!--{% if site.author %}
               {{ site.author | escape }}
             {% else %}
-              <!--{{ site.title | escape }}-->
-            {% endif %}
+              {{ site.title | escape }}
+            {% endif %}-->
+            <img src="/assets/DaveMateer.jpg" />
             </li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            <li>            
+            Dave Mateer is a .NET developer working for <a href="www.qnrl.com">qnrl.com</a>, conferece speaker, Dad, rock climber, (fairly average) musician, ex oil rig worker, ex Outdoor Instructor and bad joke teller
+            </li>
+        
         </ul>
       </div>
 
@@ -31,6 +35,8 @@
             {% include icon-twitter.html username=site.twitter_username %}
           </li>
           {% endif %}
+
+            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
         </ul>
       </div>
 
