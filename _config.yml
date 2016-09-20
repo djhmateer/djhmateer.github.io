@@ -29,6 +29,8 @@ github_username:  djhmateer
 markdown: kramdown
 #theme: minima
 
+timezone: Europe/London
+
 exclude: [
  "*.ps1","Gemfile", "Gemfile.lock", "*.sln"
 ]
