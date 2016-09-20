@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Sep 2016 12:31:31 +0100</pubDate>
-    <lastBuildDate>Tue, 20 Sep 2016 12:31:31 +0100</lastBuildDate>
+    <pubDate>Tue, 20 Sep 2016 14:35:23 +0100</pubDate>
+    <lastBuildDate>Tue, 20 Sep 2016 14:35:23 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -35,7 +35,7 @@
 
 &lt;p&gt;I’m an ASP.NET / MSSQL guy, and have been writing business applications for a long time.&lt;/p&gt;
 
-&lt;p&gt;This blog is powered by &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyllrb.com&lt;/a&gt;  which uses Ruby to generate static html, and hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This blog is powered by &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyllrb.com&lt;/a&gt;  which uses Ruby to generate static html, and is hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;why-a-static-site&quot;&gt;Why a static site?&lt;/h3&gt;
 &lt;ul&gt;

@@ -11,7 +11,7 @@ I'd now like to try a more 'walkthrough' style blog, taking inspiration from [ha
 
 I'm an ASP.NET / MSSQL guy, and have been writing business applications for a long time.
 
-This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and hosted on [GitHub Pages](https://pages.github.com/)
+This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and is hosted on [GitHub Pages](https://pages.github.com/)
 
 ### Why a static site?
 * Simple
