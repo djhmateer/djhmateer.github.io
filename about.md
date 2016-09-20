@@ -4,8 +4,9 @@ title: About
 permalink: /about/
 ---
 
-Dave Mateer
 
+Dave lives near Brighton in England and by day he works on large financial internal systems. Dave gets up at 0500 most days to work on side projects because he loves to code :-)
+ He then plays with his ~~5 month old~~ 2 year old daughter and 3 month old son, usually listening to ABBA. Then mountain bikes to work dreaming of music and code…
 
 ## May 2015, London
 
@@ -40,6 +41,7 @@ Learn about OAuth2 - its seems complicated from the outside… I'll show you how
 Use MVC5 simply and close to the metal with Dapper as a high performance ORM.
 
 This is going to be a pragmatic (source on Github), entertaining, musically inspiring, fast paced talk… Enjoy!
+
 
 
 
