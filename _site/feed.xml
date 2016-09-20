@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Sep 2016 16:15:58 +0100</pubDate>
-    <lastBuildDate>Tue, 20 Sep 2016 16:15:58 +0100</lastBuildDate>
+    <pubDate>Tue, 20 Sep 2016 16:41:30 +0100</pubDate>
+    <lastBuildDate>Tue, 20 Sep 2016 16:41:30 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -234,6 +234,18 @@ git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/GitHub.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;While doing this tutorial 19th Sept 2016 at 16:49 it seems &lt;a href=&quot;https://status.github.com/&quot;&gt;GitHub Status&lt;/a&gt; are experiencing problems, and the site isn’t updating &lt;em&gt;typical&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;put-the-revision-date-on-each-page&quot;&gt;Put the revision date on each page&lt;/h2&gt;
+&lt;p&gt;I do this on production web apps.  It is the rev date in the footer, showing when the site was ‘built’.  Have a look at the bottom of &lt;a href=&quot;http://stackoverflow.com&quot;&gt;Stackoverflow&lt;/a&gt;.   It’s an easy check to make sure the deployment pipeline is working.&lt;/p&gt;
+
+&lt;p&gt;Put in your timezone line in _config.yml eg&lt;/p&gt;
+
+&lt;p&gt;timezone: Europe/London&lt;/p&gt;
+
+&lt;p&gt;Then in your footer put&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jekyll&quot; data-lang=&quot;jekyll&quot;&gt;rev:  {{site.time | date: &quot;%Y-%m-%d %H:%M:%S&quot;}} GMT&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 </description>
         <pubDate>Fri, 09 Sep 2016 16:33:16 +0100</pubDate>
         <link>/update/2016/09/09/publishing-a-blog-with-jekyll.html</link>
