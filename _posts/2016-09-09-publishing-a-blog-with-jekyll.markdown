@@ -9,6 +9,8 @@ published: true
 This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and is hosted on [GitHub Pages](https://pages.github.com/)
 
 ### Why a static site?
+Firstly a static site is just html pages.  No server side processing.  No database.  Just html, css and javascript files being served up.  This means any webserver will work just fine eg IIS, Apache, NGINX etc..
+
 * Simple
 * Free hosting
 * Fine grain control over html

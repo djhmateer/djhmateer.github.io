@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 21 Sep 2016 05:52:44 +0100</pubDate>
-    <lastBuildDate>Wed, 21 Sep 2016 05:52:44 +0100</lastBuildDate>
+    <pubDate>Wed, 21 Sep 2016 06:15:56 +0100</pubDate>
+    <lastBuildDate>Wed, 21 Sep 2016 06:15:56 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -155,6 +155,8 @@
         <description>&lt;p&gt;This blog is powered by &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyllrb.com&lt;/a&gt;  which uses Ruby to generate static html, and is hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;why-a-static-site&quot;&gt;Why a static site?&lt;/h3&gt;
+&lt;p&gt;Firstly a static site is just html pages.  No server side processing.  No database.  Just html, css and javascript files being served up.  This means any webserver will work just fine eg IIS, Apache, NGINX etc..&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Simple&lt;/li&gt;
   &lt;li&gt;Free hosting&lt;/li&gt;
