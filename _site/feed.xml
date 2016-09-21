@@ -6,72 +6,9 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Sep 2016 16:41:30 +0100</pubDate>
-    <lastBuildDate>Tue, 20 Sep 2016 16:41:30 +0100</lastBuildDate>
+    <pubDate>Wed, 21 Sep 2016 05:52:44 +0100</pubDate>
+    <lastBuildDate>Wed, 21 Sep 2016 05:52:44 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
-    
-      <item>
-        <title>Style Guide for Blog and Inspiration</title>
-        <description>&lt;p&gt;I started blogging about 8 years ago with &lt;a href=&quot;http://www.programgood.net&quot;&gt;programgood.net&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Like all research projects, I start with &lt;a href=&quot;https://www.onenote.com/&quot;&gt;OneNote&lt;/a&gt;, so I can share notes across all devices (2 at home, 1 at work and iPhone)&lt;/p&gt;
-
-&lt;h2 id=&quot;why-blog&quot;&gt;Why Blog?&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Help others&lt;/li&gt;
-  &lt;li&gt;Build my brand as a developer so I can earn money to feed my family&lt;/li&gt;
-  &lt;li&gt;Carrot to ‘finish’ writing projects&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
-&lt;p&gt;What is in it for the reader?&lt;/p&gt;
-
-&lt;h2 id=&quot;who-are-the-target-audience&quot;&gt;Who are the target audience?&lt;/h2&gt;
-
-&lt;p&gt;Jeff Bezos - write the press release first.&lt;/p&gt;
-
-&lt;p&gt;“davemateer.com blog is where to go, to find in-depth tutorial articles on high performance business applications which are maintainable”&lt;/p&gt;
-
-&lt;p&gt;“Dave Mateer is a professional software developer who can make &lt;em&gt;simple&lt;/em&gt; &lt;em&gt;performant&lt;/em&gt; and &lt;em&gt;maintainable&lt;/em&gt; code”&lt;/p&gt;
-
-&lt;h2 id=&quot;how-to-reach-audience&quot;&gt;How to reach audience&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Talk at conferences&lt;/li&gt;
-  &lt;li&gt;Answer questions on SO and link to articles&lt;/li&gt;
-  &lt;li&gt;Do code reviews are link to articles&lt;/li&gt;
-  &lt;li&gt;Pluralsight make videos&lt;/li&gt;
-  &lt;li&gt;Youtube&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 20 Sep 2016 16:01:33 +0100</pubDate>
-        <link>/jekyll/2016/09/20/style-guide.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/20/style-guide.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Why Blog?</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;Help others&lt;/li&gt;
-  &lt;li&gt;Build my brand as a developer so I can earn money to feed my family&lt;/li&gt;
-  &lt;li&gt;Carrot to finish research projects and write them up&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 20 Sep 2016 15:51:43 +0100</pubDate>
-        <link>/blog/2016/09/20/why-blog.html</link>
-        <guid isPermaLink="true">/blog/2016/09/20/why-blog.html</guid>
-        
-        
-        <category>blog</category>
-        
-      </item>
     
       <item>
         <title>A Draft Post</title>
@@ -124,9 +61,72 @@
 &lt;p&gt;Build is: &lt;a href=&quot;https://github.com/djhmateer/djhmateer.github.io/commit/&quot;&gt;Build&lt;/a&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>Tue, 20 Sep 2016 15:41:47 +0100</pubDate>
-        <link>/jekyll/2016/09/20/z_a-draft-post.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/20/z_a-draft-post.html</guid>
+        <pubDate>Wed, 21 Sep 2016 05:40:58 +0100</pubDate>
+        <link>/jekyll/2016/09/21/z_a-draft-post.html</link>
+        <guid isPermaLink="true">/jekyll/2016/09/21/z_a-draft-post.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Why Blog?</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;Help others&lt;/li&gt;
+  &lt;li&gt;Build my brand as a developer so I can earn money to feed my family&lt;/li&gt;
+  &lt;li&gt;Carrot to finish research projects and write them up&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 21 Sep 2016 05:40:58 +0100</pubDate>
+        <link>/blog/2016/09/21/why-blog.html</link>
+        <guid isPermaLink="true">/blog/2016/09/21/why-blog.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Style Guide for Blog and Inspiration</title>
+        <description>&lt;p&gt;I started blogging about 8 years ago with &lt;a href=&quot;http://www.programgood.net&quot;&gt;programgood.net&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Like all research projects, I start with &lt;a href=&quot;https://www.onenote.com/&quot;&gt;OneNote&lt;/a&gt;, so I can share notes across all devices (2 at home, 1 at work and iPhone)&lt;/p&gt;
+
+&lt;h2 id=&quot;why-blog&quot;&gt;Why Blog?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Help others&lt;/li&gt;
+  &lt;li&gt;Build my brand as a developer so I can earn money to feed my family&lt;/li&gt;
+  &lt;li&gt;Carrot to ‘finish’ writing projects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
+&lt;p&gt;What is in it for the reader?&lt;/p&gt;
+
+&lt;h2 id=&quot;who-are-the-target-audience&quot;&gt;Who are the target audience?&lt;/h2&gt;
+
+&lt;p&gt;Jeff Bezos - write the press release first.&lt;/p&gt;
+
+&lt;p&gt;“davemateer.com blog is where to go, to find in-depth tutorial articles on high performance business applications which are maintainable”&lt;/p&gt;
+
+&lt;p&gt;“Dave Mateer is a professional software developer who can make &lt;em&gt;simple&lt;/em&gt; &lt;em&gt;performant&lt;/em&gt; and &lt;em&gt;maintainable&lt;/em&gt; code”&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-reach-audience&quot;&gt;How to reach audience&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Talk at conferences&lt;/li&gt;
+  &lt;li&gt;Answer questions on SO and link to articles&lt;/li&gt;
+  &lt;li&gt;Do code reviews are link to articles&lt;/li&gt;
+  &lt;li&gt;Pluralsight make videos&lt;/li&gt;
+  &lt;li&gt;Youtube&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 21 Sep 2016 05:40:58 +0100</pubDate>
+        <link>/jekyll/2016/09/21/style-guide.html</link>
+        <guid isPermaLink="true">/jekyll/2016/09/21/style-guide.html</guid>
         
         
         <category>jekyll</category>
@@ -141,9 +141,9 @@
 
 &lt;h2 id=&quot;what-are-microservices&quot;&gt;What are Microservices?&lt;/h2&gt;
 </description>
-        <pubDate>Tue, 20 Sep 2016 10:47:04 +0100</pubDate>
-        <link>/microservices/2016/09/20/microservices.html</link>
-        <guid isPermaLink="true">/microservices/2016/09/20/microservices.html</guid>
+        <pubDate>Wed, 21 Sep 2016 05:40:58 +0100</pubDate>
+        <link>/microservices/2016/09/21/microservices.html</link>
+        <guid isPermaLink="true">/microservices/2016/09/21/microservices.html</guid>
         
         
         <category>microservices</category>
