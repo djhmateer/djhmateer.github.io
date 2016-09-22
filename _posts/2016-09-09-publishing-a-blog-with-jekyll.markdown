@@ -27,6 +27,11 @@ These instructions are what I found worked on Windows10 as of 19th Sept 2016.  I
 
 Official notes [here](https://jekyllrb.com/docs/windows/#installation)
 
+* Set Powershell Execution
+{% highlight powershell %}
+Set-ExecutionPolicy RemoteSigned
+{% endhighlight %}
+
 * Windows key, Windows Powershell, run as administrator
 * Install <a href="https://chocolatey.org/install">chocolatey.org</a> using: 
 {% highlight powershell %}
