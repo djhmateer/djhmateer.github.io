@@ -37,12 +37,12 @@ Set-ExecutionPolicy RemoteSigned
 {% highlight powershell %}
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 {% endhighlight %}
-* reopen powershell as administrator
+* Reopen Powershell as administrator
 * Install Ruby using:
 {% highlight powershell %}
 choco install ruby -y
 {% endhighlight %}
-* reopen shell as administrator
+* Reopen Powershell as administrator
 {% highlight powershell %}
 gem install jekyll
 {% endhighlight %}
