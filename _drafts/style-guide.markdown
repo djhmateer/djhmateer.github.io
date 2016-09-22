@@ -4,7 +4,7 @@ title:  "Style Guide for Blog and Inspiration"
 categories: jekyll
 ---
 I started blogging about 8 years ago with [programgood.net](http://www.programgood.net)  It turned into a very good ideas repository, not a blog.  *That's fine.*  
-
+ 
 I'd now like to try a more 'walkthrough' style blog, taking inspiration from [hanselman.com](http://www.hanselman.com) and [ScottGu](http://weblogs.asp.net/scottgu/introducing-asp-net-5) 
 
 Like all research projects, I start with [OneNote](https://www.onenote.com/), so I can share notes across all devices (2 at home, 1 at work and iPhone)
