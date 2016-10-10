@@ -96,7 +96,7 @@ Put in your timezone line in _config.yml eg
 
 timezone: Europe/London
 
-Then in your footer put 
+Then in your footer put:
 
 {% highlight jekyll %}
 {% raw  %}
