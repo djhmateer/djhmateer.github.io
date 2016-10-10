@@ -7,7 +7,7 @@ Dave lives near Brighton in England and by day he works on large financial inter
  He then plays with his ~~5 month old~~ 2 year old daughter and 3 month old son, usually listening to ABBA. Then mountain bikes to work dreaming of music and code…
 
 
-## May 2015, London
+## May 2016, London
 
 [![Screenshot](/assets/SkillsMatters2.png)](https://skillsmatter.com/skillscasts/8181-lscc-talks-may)
 
@@ -22,7 +22,7 @@ David will take you through a practical guide on how to do this with your codeba
 He will start at the beginning then get more detailed covering: formatting, commenting, zombie code, naming, refactoring tools, method lengths, commands/queries, complexity, conditional logic, composition/inheritance, duplication and responsibility.
 
 
-### April 2014, London:
+### April 2015, London:
 
 [![Screenshot](/assets/SkillsMatters1.png)](https://skillsmatter.com/skillscasts/6350-30m-plus-songs-explore-your-favorite-music-with-spotifys-json-web-api-mvc5-dapper-and-oauth2)
 
