@@ -3,9 +3,10 @@ layout: page
 title: All Posts
 permalink: /allPosts/
 ---
-
-All posts page
-
-
-Public repos are on 
-{% include icon-github.html username="djhmateer" %} 
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a> {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+    </li>
+  {% endfor %}
+</ul>

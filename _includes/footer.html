@@ -8,13 +8,17 @@
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
-            {% if site.author %}
+            <!--{% if site.author %}
               {{ site.author | escape }}
             {% else %}
-              <!--{{ site.title | escape }}-->
-            {% endif %}
+              {{ site.title | escape }}
+            {% endif %}-->
+            <img src="/assets/DaveMateer.jpg" />
             </li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            <li>            
+            Dave Mateer is a senior developer for <a href="www.qnrl.com">qnrl.com</a>, conferece speaker, dad, rock climber, (average) guitar player, ex oil rig worker, ex outdoor instructor, bad joke teller and lover of technology
+            </li>
+        
         </ul>
       </div>
 
@@ -31,12 +35,14 @@
             {% include icon-twitter.html username=site.twitter_username %}
           </li>
           {% endif %}
+
+            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
         </ul>
       </div>
 
       <div class="footer-col footer-col-3">
         <p>{{ site.description | escape }}</p>
-        <p>rev: {{ site.time }}</p>
+        <p>rev: {{ site.time | date: "%Y-%m-%d %H:%M:%S" }} GMT</p>
       </div>
     </div>
 
