@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>A Haskell Reading Group</title>
-  <meta name="description" content="Sounds nerdy!">
+  <title>Blog with Jekyll and host for Free</title>
+  <meta name="description" content="">
 
   
   
@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
-  <link rel="canonical" href="/blog/2016/10/17/why-blog.html">
+  <link rel="canonical" href="/jekyll/2016/09/09/Blog-with-Jekyll-and-host-for-free.html">
   <link rel="alternate" type="application/rss+xml" title="Dave Mateer&#39;s Blog" href="/feed.xml">
   
   
@@ -67,21 +67,118 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">A Haskell Reading Group</h1>
-    <p class="post-meta"><time datetime="2016-10-17T15:08:01+01:00" itemprop="datePublished">Oct 17, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Blog with Jekyll and host for Free</h1>
+    <p class="post-meta"><time datetime="2016-09-09T16:33:16+01:00" itemprop="datePublished">Sep 9, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Sounds nerdy!</p>
+    <p><img src="/assets/Cows_500.jpg" alt="Cows" /></p>
 
-<h2 id="what-is-haskell">What is Haskell?</h2>
-<p>asdf</p>
+<p>Excellent for developers who know Git, even if you don’t know Ruby like me :-)</p>
 
-<h2 id="why-learn-haskell">Why Learn Haskell?</h2>
-<p>asdf</p>
+<p>This blog is powered by <a href="https://jekyllrb.com/">jekyllrb.com</a>  which uses Ruby to generate static html, and is hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>
 
-<h2 id="project-euler">Project Euler</h2>
-<p>What is in my toolbelt at the moment?</p>
+<h3 id="why-a-static-site">Why a static site?</h3>
+<p>Firstly a static site is just html pages.  No server side processing.  No database.  Just html, css and javascript files being served up.  This means any webserver will work just fine eg IIS, Apache, NGINX etc..</p>
+
+<ul>
+  <li>Simple</li>
+  <li>Free hosting</li>
+  <li>Fine grain control over html</li>
+  <li>Blazingly fast</li>
+  <li>Easily Source Controllable</li>
+</ul>
+
+<p><img src="/assets/Untitled.png" alt="Screenshot" /></p>
+
+<p>Visual Studio Code editing this post</p>
+
+<h3 id="how-to-get-started">How to get started</h3>
+<p>These instructions are what I found worked on Windows10 as of 19th Sept 2016.  I use 3 machines regularly at work and home, so found a way.</p>
+
+<p>Official notes <a href="https://jekyllrb.com/docs/windows/#installation">here</a></p>
+
+<ul>
+  <li>Windows key, Windows Powershell, run as administrator</li>
+  <li>Set Powershell Execution</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy </span>RemoteSigned</code></pre></figure>
+
+<ul>
+  <li>Install <a href="https://chocolatey.org/install">chocolatey.org</a> using:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nb">iwr </span>https://chocolatey.org/install.ps1 -UseBasicParsing | <span class="nb">iex</span></code></pre></figure>
+
+<ul>
+  <li>Reopen Powershell as administrator</li>
+  <li>Install Ruby using:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">choco install ruby -y</code></pre></figure>
+
+<ul>
+  <li>Reopen Powershell as administrator</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">gem install jekyll</code></pre></figure>
+
+<ul>
+  <li>open poshgit shell (my normal shell installed automatically with <a href="https://desktop.github.com/">GitHub Desktop</a>)</li>
+  <li>cd c:\dev\web</li>
+  <li>jekyll new testsite</li>
+  <li>cd testsite</li>
+  <li>gem install bundle</li>
+  <li>bundle</li>
+  <li>I had to follow this when got an SSL error: http://stackoverflow.com/a/27641786/26086</li>
+  <li>jekyll serve</li>
+</ul>
+
+<p><img src="/assets/Posh1.png" alt="Screenshot" /></p>
+
+<p>Jekyll site is running!</p>
+
+<p><img src="/assets/DemoSiteNoCss.png" width="400" /></p>
+
+<p>Oh no - what has happened to the style??</p>
+
+<p><img src="/assets/FixConfig.png" alt="Screenshot" /></p>
+
+<p>Comment out with a # the url line.</p>
+
+<p><img src="/assets/DemoSite.png" width="400" /></p>
+
+<p>Much nicer!!!</p>
+
+<h2 id="publish-to-github-pages">Publish to GitHub Pages</h2>
+
+<p>.\p.ps1  which is a shortcut to:</p>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">git add . -A
+<span class="nv">$message</span> <span class="o">=</span> <span class="s2">"Auto commit at "</span> + <span class="o">(</span><span class="nb">Get-Date</span> -Format g<span class="o">)</span>
+git commit -m  <span class="nv">$message</span>
+git push</code></pre></figure>
+
+<p>End result:</p>
+
+<p>I found it can take up to a minute to appear live, the trick being to watch for this message in Settings, GitHub pages:</p>
+
+<p><img src="/assets/GitHub.png" alt="Screenshot" /></p>
+
+<p>While doing this tutorial 19th Sept 2016 at 16:49 it seems <a href="https://status.github.com/">GitHub Status</a> are experiencing problems, and the site isn’t updating <em>typical</em></p>
+
+<h2 id="put-the-revision-date-on-each-page">Put the revision date on each page</h2>
+<p>I do this on production web apps.  It is the rev date in the footer, showing when the site was ‘built’.  Have a look at the bottom of <a href="http://stackoverflow.com">Stackoverflow</a>.   It’s an easy check to make sure the deployment pipeline is working.</p>
+
+<p>Put in your timezone line in _config.yml eg</p>
+
+<p>timezone: Europe/London</p>
+
+<p>Then in your footer put:</p>
+
+<figure class="highlight"><pre><code class="language-jekyll" data-lang="jekyll">rev:  {{site.time | date: "%Y-%m-%d %H:%M:%S"}} GMT</code></pre></figure>
+
 
   </div>
 
@@ -138,7 +235,7 @@
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-17 15:10:03 GMT</p>
+        <p>rev: 2016-10-17 16:50:02 GMT</p>
       </div>
     </div>
 
