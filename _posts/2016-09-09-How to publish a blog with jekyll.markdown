@@ -1,10 +1,12 @@
 ---
 layout: post
-title:  "Publishing a blog with Jekyll"
+title:  "How to Publish a Blog with Jekyll"
 date:   2016-09-09 16:33:16 +0100
 categories: update
 published: true 
 ---
+### Summary
+Excellent for developers who know Git, even if you don't know Ruby like me :-)
 
 This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and is hosted on [GitHub Pages](https://pages.github.com/)
 
@@ -52,6 +54,7 @@ gem install jekyll
 * cd testsite
 * gem install bundle
 * bundle
+* I had to follow this when got an SSL error: http://stackoverflow.com/a/27641786/26086
 * jekyll serve
 
 ![Screenshot](/assets/Posh1.png)
