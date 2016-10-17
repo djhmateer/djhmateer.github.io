@@ -5,7 +5,8 @@ date:   2016-09-09 16:33:16 +0100
 categories: update
 published: true 
 ---
-### Summary
+![Cows](/assets/Cows_500.jpg)
+
 Excellent for developers who know Git, even if you don't know Ruby like me :-)
 
 This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and is hosted on [GitHub Pages](https://pages.github.com/)

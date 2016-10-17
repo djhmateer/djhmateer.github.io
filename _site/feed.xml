@@ -6,13 +6,15 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 17 Oct 2016 13:57:58 +0100</pubDate>
-    <lastBuildDate>Mon, 17 Oct 2016 13:57:58 +0100</lastBuildDate>
+    <pubDate>Mon, 17 Oct 2016 14:32:23 +0100</pubDate>
+    <lastBuildDate>Mon, 17 Oct 2016 14:32:23 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>Why Blog?</title>
-        <description>&lt;p&gt;I started blogging about 8 years ago with &lt;a href=&quot;http://www.programgood.net&quot;&gt;programgood.net&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/3Guys_500.jpg&quot; alt=&quot;On the way to Machu Picchu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I started blogging 8 years ago with &lt;a href=&quot;http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx&quot;&gt;Programgood - First Post&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
 
@@ -20,13 +22,19 @@
 
 &lt;h2 id=&quot;why-blog&quot;&gt;Why Blog?&lt;/h2&gt;
 &lt;ul&gt;
+  &lt;li&gt;Helps you learn (by the act of writing down logically)&lt;/li&gt;
   &lt;li&gt;Help others&lt;/li&gt;
   &lt;li&gt;Build brand as a developer so you can earn good money&lt;/li&gt;
   &lt;li&gt;Carrot to ‘finish’ writing projects&lt;/li&gt;
+  &lt;li&gt;Sharpen communication through written word&lt;/li&gt;
+  &lt;li&gt;Makes you Happy! (when others read what you write and care!)&lt;/li&gt;
+  &lt;li&gt;Tell stories&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
 &lt;p&gt;What is in it for your reader?&lt;/p&gt;
+
+&lt;p&gt;What are you passionate about?  It really doesn’t matter how much of an ‘expert’ you are at a subject.  If you care enough to write on a subject, then damn, &lt;b&gt;get on it&lt;/b&gt;, and write it.  More than likely, others will care about the same.&lt;/p&gt;
 
 &lt;h2 id=&quot;who-are-your-fabulous-target-audience&quot;&gt;Who are your (fabulous) target audience?&lt;/h2&gt;
 
@@ -46,6 +54,9 @@
   &lt;li&gt;Youtube&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Blogging is good - go for it!&lt;/p&gt;
+
 </description>
         <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
         <link>/jekyll/2016/10/17/Why-Blog.html</link>
@@ -58,7 +69,8 @@
     
       <item>
         <title>Blog with Jekyll and host for Free</title>
-        <description>&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/Cows_500.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;Excellent for developers who know Git, even if you don’t know Ruby like me :-)&lt;/p&gt;
 
 &lt;p&gt;This blog is powered by &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyllrb.com&lt;/a&gt;  which uses Ruby to generate static html, and is hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;&lt;/p&gt;
