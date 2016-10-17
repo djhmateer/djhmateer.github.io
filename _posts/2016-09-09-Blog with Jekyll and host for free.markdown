@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to Publish a Blog with Jekyll?"
+title:  "Blog with Jekyll and host for Free"
 date:   2016-09-09 16:33:16 +0100
 categories: update
 published: true 

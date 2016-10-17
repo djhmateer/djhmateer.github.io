@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 17 Oct 2016 12:27:41 +0100</pubDate>
-    <lastBuildDate>Mon, 17 Oct 2016 12:27:41 +0100</lastBuildDate>
+    <pubDate>Mon, 17 Oct 2016 13:57:58 +0100</pubDate>
+    <lastBuildDate>Mon, 17 Oct 2016 13:57:58 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -28,7 +28,7 @@
 &lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
 &lt;p&gt;What is in it for your reader?&lt;/p&gt;
 
-&lt;h2 id=&quot;who-are-the-target-audience&quot;&gt;Who are the target audience?&lt;/h2&gt;
+&lt;h2 id=&quot;who-are-your-fabulous-target-audience&quot;&gt;Who are your (fabulous) target audience?&lt;/h2&gt;
 
 &lt;p&gt;Jeff Bezos - write the press release first.&lt;/p&gt;
 
@@ -57,7 +57,7 @@
       </item>
     
       <item>
-        <title>How to Publish a Blog with Jekyll?</title>
+        <title>Blog with Jekyll and host for Free</title>
         <description>&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
 &lt;p&gt;Excellent for developers who know Git, even if you don’t know Ruby like me :-)&lt;/p&gt;
 
@@ -166,8 +166,8 @@ git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Fri, 09 Sep 2016 16:33:16 +0100</pubDate>
-        <link>/update/2016/09/09/How-to-publish-a-blog-with-jekyll.html</link>
-        <guid isPermaLink="true">/update/2016/09/09/How-to-publish-a-blog-with-jekyll.html</guid>
+        <link>/update/2016/09/09/Blog-with-Jekyll-and-host-for-free.html</link>
+        <guid isPermaLink="true">/update/2016/09/09/Blog-with-Jekyll-and-host-for-free.html</guid>
         
         
         <category>update</category>
