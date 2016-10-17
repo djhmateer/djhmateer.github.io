@@ -6,9 +6,31 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 17 Oct 2016 14:32:23 +0100</pubDate>
-    <lastBuildDate>Mon, 17 Oct 2016 14:32:23 +0100</lastBuildDate>
+    <pubDate>Mon, 17 Oct 2016 15:10:03 +0100</pubDate>
+    <lastBuildDate>Mon, 17 Oct 2016 15:10:03 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>A Haskell Reading Group</title>
+        <description>&lt;p&gt;Sounds nerdy!&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-haskell&quot;&gt;What is Haskell?&lt;/h2&gt;
+&lt;p&gt;asdf&lt;/p&gt;
+
+&lt;h2 id=&quot;why-learn-haskell&quot;&gt;Why Learn Haskell?&lt;/h2&gt;
+&lt;p&gt;asdf&lt;/p&gt;
+
+&lt;h2 id=&quot;project-euler&quot;&gt;Project Euler&lt;/h2&gt;
+&lt;p&gt;What is in my toolbelt at the moment?&lt;/p&gt;
+</description>
+        <pubDate>Mon, 17 Oct 2016 15:08:01 +0100</pubDate>
+        <link>/blog/2016/10/17/why-blog.html</link>
+        <guid isPermaLink="true">/blog/2016/10/17/why-blog.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Why Blog?</title>

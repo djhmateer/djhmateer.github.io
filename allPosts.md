@@ -2,6 +2,7 @@
 layout: page
 title: All Posts
 permalink: /allPosts/
+published: false
 ---
 <ul>
   {% for post in site.posts %}
