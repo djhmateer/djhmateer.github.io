@@ -5,5 +5,5 @@ categories: blog
 ---
 
 * Help others 
-* Build my brand as a developer so I can earn money to feed my family
+* Build brand as a developer so can earn money 
 * Carrot to finish research projects and write them up

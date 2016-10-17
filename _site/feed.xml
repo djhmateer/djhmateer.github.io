@@ -6,12 +6,12 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 17 Oct 2016 11:52:36 +0100</pubDate>
-    <lastBuildDate>Mon, 17 Oct 2016 11:52:36 +0100</lastBuildDate>
+    <pubDate>Mon, 17 Oct 2016 12:27:41 +0100</pubDate>
+    <lastBuildDate>Mon, 17 Oct 2016 12:27:41 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Style Guide for Blog and Inspiration</title>
+        <title>Why Blog?</title>
         <description>&lt;p&gt;I started blogging about 8 years ago with &lt;a href=&quot;http://www.programgood.net&quot;&gt;programgood.net&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
@@ -21,12 +21,12 @@
 &lt;h2 id=&quot;why-blog&quot;&gt;Why Blog?&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Help others&lt;/li&gt;
-  &lt;li&gt;Build my brand as a developer so I can earn money to feed my family&lt;/li&gt;
+  &lt;li&gt;Build brand as a developer so you can earn good money&lt;/li&gt;
   &lt;li&gt;Carrot to ‘finish’ writing projects&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
-&lt;p&gt;What is in it for the reader?&lt;/p&gt;
+&lt;p&gt;What is in it for your reader?&lt;/p&gt;
 
 &lt;h2 id=&quot;who-are-the-target-audience&quot;&gt;Who are the target audience?&lt;/h2&gt;
 
@@ -36,7 +36,7 @@
 
 &lt;p&gt;“Dave Mateer is a professional software developer who can make &lt;em&gt;simple&lt;/em&gt; &lt;em&gt;performant&lt;/em&gt; and &lt;em&gt;maintainable&lt;/em&gt; code”&lt;/p&gt;
 
-&lt;h2 id=&quot;how-to-reach-audience&quot;&gt;How to reach audience&lt;/h2&gt;
+&lt;h2 id=&quot;how-to-reach-your-awesome-audience&quot;&gt;How to reach your (awesome) audience?&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Talk at conferences&lt;/li&gt;
@@ -47,9 +47,9 @@
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Thu, 22 Sep 2016 11:14:29 +0100</pubDate>
-        <link>/jekyll/2016/09/22/style-guide.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/22/style-guide.html</guid>
+        <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
+        <link>/jekyll/2016/10/17/Why-Blog.html</link>
+        <guid isPermaLink="true">/jekyll/2016/10/17/Why-Blog.html</guid>
         
         
         <category>jekyll</category>
@@ -57,101 +57,7 @@
       </item>
     
       <item>
-        <title>A Draft Post</title>
-        <description>&lt;p&gt;So, thoughts on this blog made with hyperlinklink: &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Image:
-&lt;img src=&quot;/assets/VSCodeScreenShot.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Smaller Image2
-&lt;img src=&quot;/assets/VSCode500.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;… you can &lt;a href=&quot;/assets/test pdf.pdf&quot;&gt;get the PDF&lt;/a&gt; directly.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; This is a now a paragraph&lt;/p&gt;
-
-&lt;p&gt;This is Ruby code:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;
-  &lt;span class=&quot;vi&quot;&gt;@widget&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Widget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;respond_to&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# show.html.erb&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@widget&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;This is C#:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Program&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;//Do stuff
-&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Build is: &lt;a href=&quot;https://github.com/djhmateer/djhmateer.github.io/commit/&quot;&gt;Build&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 22 Sep 2016 11:12:57 +0100</pubDate>
-        <link>/jekyll/2016/09/22/z_a-draft-post.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/22/z_a-draft-post.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Why Blog?</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;Help others&lt;/li&gt;
-  &lt;li&gt;Build my brand as a developer so I can earn money to feed my family&lt;/li&gt;
-  &lt;li&gt;Carrot to finish research projects and write them up&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 22 Sep 2016 11:12:57 +0100</pubDate>
-        <link>/blog/2016/09/22/why-blog.html</link>
-        <guid isPermaLink="true">/blog/2016/09/22/why-blog.html</guid>
-        
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title>Microservices</title>
-        <description>&lt;p&gt;A good flowchart:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://www.stavros.io/files/images/microservices-cargo-cult/flowchart.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;what-are-microservices&quot;&gt;What are Microservices?&lt;/h2&gt;
-</description>
-        <pubDate>Thu, 22 Sep 2016 11:12:57 +0100</pubDate>
-        <link>/microservices/2016/09/22/microservices.html</link>
-        <guid isPermaLink="true">/microservices/2016/09/22/microservices.html</guid>
-        
-        
-        <category>microservices</category>
-        
-      </item>
-    
-      <item>
-        <title>How to Publish a Blog with Jekyll</title>
+        <title>How to Publish a Blog with Jekyll?</title>
         <description>&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
 &lt;p&gt;Excellent for developers who know Git, even if you don’t know Ruby like me :-)&lt;/p&gt;
 
@@ -265,69 +171,6 @@ git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         
         
         <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Test</title>
-        <description>&lt;p&gt;2So, thoughts on this blog made with hyperlink: &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Image:
-&lt;img src=&quot;/assets/VSCodeScreenShot.png&quot; alt=&quot;Screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Smaller Image2
-&lt;img src=&quot;/assets/VSCode500.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;… you can &lt;a href=&quot;/assets/test pdf.pdf&quot;&gt;get the PDF&lt;/a&gt; directly.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; This is a now a paragraph&lt;/p&gt;
-
-&lt;p&gt;This is Ruby code:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;
-  &lt;span class=&quot;vi&quot;&gt;@widget&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Widget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;respond_to&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# show.html.erb&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@widget&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;This is C#:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Program&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;//Do stuff
-&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Date to String
-17 October 2016&lt;/p&gt;
-
-&lt;p&gt;Build is: &lt;a href=&quot;https://github.com/djhmateer/djhmateer.github.io/commit/&quot;&gt;Build&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Sep 2016 06:24:16 +0100</pubDate>
-        <link>/blogs/2016/09/09/test.html</link>
-        <guid isPermaLink="true">/blogs/2016/09/09/test.html</guid>
-        
-        
-        <category>blogs</category>
         
       </item>
     
