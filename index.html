@@ -6,16 +6,17 @@ layout: default
 
   <h1 class="page-heading">Hi</h1>
 
-<p>This site is *not* live yet. Proceed with caution :-)</p>
+<p>I'm a developer, dad, speaker, climber, guitar player and explorer of tech.  Here are some articles that I hope will help/inspire you.</p>
 
 
 <ul>
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
+      <a href="{{ post.url }}">{{ post.title }} </a>
     </li>
   {% endfor %}
 </ul>
 
+<!--({{post.date | date: '%d %B %Y'}})-->
 
 </div>
