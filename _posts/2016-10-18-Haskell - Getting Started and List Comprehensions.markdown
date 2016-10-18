@@ -49,6 +49,9 @@ c = doubleMe 8.3
 ![Cows](/assets/Hask_2.jpg)
 <p>Loading hello.hs and calling functions</p>
 
+* Ctrl D - exit from GHCI in Powershell
+* Ctrl L - cls
+
 
 ## Euler 1
 [Project Euler](https://projecteuler.net/archives) is where I start when learning a new language to flex my new 'toolbelt'..
