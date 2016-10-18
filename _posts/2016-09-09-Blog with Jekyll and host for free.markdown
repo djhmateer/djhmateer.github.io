@@ -114,5 +114,36 @@ So you can type .\s  and get local version running on [http://127.0.0.1:4000/](h
 jekyll serve --drafts
 {% endhighlight %}
 
+## Peer review your blog posts
+I create hidden live links on my site for review and use
+
+{% highlight jekyll %}
+{% raw  %}
+{% for post in site.posts %}
+{% if post.menu != 'review' %}
+<li>
+    <a href="{{ post.url }}">{{ post.title }} </a>
+</li>
+{% endif %}
+{% endfor %} 
+{% endraw %}
+{% endhighlight %}
+
+then my post to be reviewed is in _posts with a menu property of review
+
+{% highlight jekyll %}
+{% raw  %}
+---
+layout: post
+title:  "Test Review"
+menu: review
+categories: jekyll
+published: true
+---
+test
+{% endraw %}
+{% endhighlight %}
+
+
 
 

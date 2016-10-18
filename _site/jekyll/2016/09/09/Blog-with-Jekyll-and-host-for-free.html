@@ -45,7 +45,13 @@
       <div class="trigger">
         
           
+          
           <a class="page-link" href="/about/">About</a>
+          
+          
+        
+          
+          
           
         
           
@@ -184,6 +190,28 @@ git push</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-powershell" data-lang="powershell">jekyll serve --drafts</code></pre></figure>
 
+<h2 id="peer-review-your-blog-posts">Peer review your blog posts</h2>
+<p>I create hidden live links on my site for review and use</p>
+
+<figure class="highlight"><pre><code class="language-jekyll" data-lang="jekyll">{% for post in site.posts %}
+{% if post.menu != 'review' %}
+&lt;li&gt;
+    &lt;a href="{{ post.url }}"&gt;{{ post.title }} &lt;/a&gt;
+&lt;/li&gt;
+{% endif %}
+{% endfor %} </code></pre></figure>
+
+<p>then my post to be reviewed is in _posts with a menu property of review</p>
+
+<figure class="highlight"><pre><code class="language-jekyll" data-lang="jekyll">---
+layout: post
+title:  "Test Review"
+menu: review
+categories: jekyll
+published: true
+---
+test</code></pre></figure>
+
 
   </div>
 
@@ -240,7 +268,7 @@ git push</code></pre></figure>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-18 10:44:01 GMT</p>
+        <p>rev: 2016-10-18 10:52:46 GMT</p>
       </div>
     </div>
 

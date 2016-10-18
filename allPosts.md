@@ -1,8 +1,10 @@
 ---
 layout: page
 title: All Posts
+menu: review
 permalink: /allPosts/
-published: false
+published: true
+
 ---
 <ul>
   {% for post in site.posts %}

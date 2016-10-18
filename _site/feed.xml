@@ -6,19 +6,14 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Oct 2016 10:44:01 +0100</pubDate>
-    <lastBuildDate>Tue, 18 Oct 2016 10:44:01 +0100</lastBuildDate>
+    <pubDate>Tue, 18 Oct 2016 10:52:46 +0100</pubDate>
+    <lastBuildDate>Tue, 18 Oct 2016 10:52:46 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Test Draft</title>
+        <title>Test Review</title>
         <description>&lt;p&gt;test&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Help others&lt;/li&gt;
-  &lt;li&gt;Build brand as a developer so can earn money&lt;/li&gt;
-  &lt;li&gt;Carrot to finish research projects and write them up&lt;/li&gt;
-&lt;/ul&gt;
 </description>
         <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
         <link>/jekyll/2016/10/17/test-draft.html</link>
@@ -349,6 +344,28 @@ git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;So you can type .\s  and get local version running on &lt;a href=&quot;http://127.0.0.1:4000/&quot;&gt;http://127.0.0.1:4000/&lt;/a&gt;&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;jekyll serve --drafts&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;peer-review-your-blog-posts&quot;&gt;Peer review your blog posts&lt;/h2&gt;
+&lt;p&gt;I create hidden live links on my site for review and use&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jekyll&quot; data-lang=&quot;jekyll&quot;&gt;{% for post in site.posts %}
+{% if post.menu != 'review' %}
+&amp;lt;li&amp;gt;
+    &amp;lt;a href=&quot;{{ post.url }}&quot;&amp;gt;{{ post.title }} &amp;lt;/a&amp;gt;
+&amp;lt;/li&amp;gt;
+{% endif %}
+{% endfor %} &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;then my post to be reviewed is in _posts with a menu property of review&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jekyll&quot; data-lang=&quot;jekyll&quot;&gt;---
+layout: post
+title:  &quot;Test Review&quot;
+menu: review
+categories: jekyll
+published: true
+---
+test&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Fri, 09 Sep 2016 16:33:16 +0100</pubDate>
