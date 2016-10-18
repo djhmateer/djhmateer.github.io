@@ -2,7 +2,7 @@
 layout: post
 title:  "test"
 menu: draft
-categories: test
+categories: jekyll
 ---
 
 * Help others 
