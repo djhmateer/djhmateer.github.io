@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
-  <link rel="canonical" href="/haskell/2016/10/17/Haskell-Getting-Started-and-List-Comprehensions.html">
+  <link rel="canonical" href="/haskell/2016/10/18/Haskell-Getting-Started-and-List-Comprehensions.html">
   <link rel="alternate" type="application/rss+xml" title="Dave Mateer&#39;s Blog" href="/feed.xml">
   
   
@@ -74,7 +74,7 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Haskell - List Comprehensions</h1>
-    <p class="post-meta"><time datetime="2016-10-17T00:00:00+01:00" itemprop="datePublished">Oct 17, 2016</time></p>
+    <p class="post-meta"><time datetime="2016-10-18T00:00:00+01:00" itemprop="datePublished">Oct 18, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -113,19 +113,33 @@
 <span class="n">string2</span> <span class="o">=</span> <span class="s">"world"</span>
 <span class="n">greeting</span> <span class="o">=</span> <span class="n">string1</span> <span class="o">++</span> <span class="n">string2</span>
 
-<span class="c1">-- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">49</span> <span class="o">*</span> <span class="mi">100</span>
-
 <span class="n">doubleMe</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
 
 <span class="c1">-- 6</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">doubleMe</span> <span class="mi">3</span>
 
 <span class="c1">-- 16.6  as + works on ints and floating-point numbers</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">doubleMe</span> <span class="mf">8.3</span></code></pre></figure>
+<span class="n">c</span> <span class="o">=</span> <span class="n">doubleMe</span> <span class="mf">8.3</span>
+
+<span class="c1">-- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">49</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1">-- 10/3 gives 1 as a remainder</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">mod</span> <span class="mi">10</span> <span class="mi">3</span>
+<span class="c1">-- backtick infix style gives 1 as a remainder</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">`</span><span class="n">mod</span><span class="p">`</span> <span class="mi">3</span>
+
+<span class="c1">-- Cons operator</span>
+<span class="c1">-- [3,5,7,11]</span>
+<span class="n">favNums</span> <span class="o">=</span> <span class="mi">3</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="mi">7</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="kt">[]</span></code></pre></figure>
 
 <p><img src="/assets/Hask_2.jpg" alt="Cows" /></p>
 <p>Loading hello.hs and calling functions</p>
+
+<ul>
+  <li>Ctrl D - exit from GHCI in Powershell</li>
+  <li>Ctrl L - cls</li>
+</ul>
 
 <h2 id="euler-1">Euler 1</h2>
 <p><a href="https://projecteuler.net/archives">Project Euler</a> is where I start when learning a new language to flex my new ‘toolbelt’..</p>
@@ -139,7 +153,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="n">b</span> <span class="o">=</span> <span class="n">tail</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- List comprehension (output function is before the pipe)</span>
-<span class="c1">-- x 'such that' </span>
+<span class="c1">-- x 'such that', x goes to [1..999]</span>
 <span class="c1">-- filtering (weeding out lists by predicates)</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">sum</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">999</span><span class="p">],</span> <span class="n">x</span> <span class="p">`</span><span class="n">mod</span><span class="p">`</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="p">`</span><span class="n">mod</span><span class="p">`</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span></code></pre></figure>
 
@@ -147,7 +161,24 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <p>running the function h to get the answer.  Reloading  changes :r  in file euler.hs</p>
 
 <h2 id="euler-2">Euler 2</h2>
-<p>Come back to this.. recursion and zipWith concepts</p>
+
+<figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- Each new term in the Fibonacci sequence is generated by adding the previous two terms.</span>
+<span class="c1">-- By starting with 1 and 2, the first 10 terms will be:</span>
+<span class="c1">-- 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...</span>
+<span class="c1">-- By considering the terms in the Fibonacci sequence whose values do not exceed four million, </span>
+<span class="c1">-- find the sum of the even-valued terms.</span>
+
+<span class="c1">-- [7,9,11,13,15]</span>
+<span class="n">sumOfLists</span> <span class="o">=</span> <span class="n">zipWith</span> <span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1">-- zipWith adds 2 lists together</span>
+<span class="n">fibs</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">zipWith</span> <span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="n">fibs</span> <span class="p">(</span><span class="n">tail</span> <span class="n">fibs</span><span class="p">)</span>
+
+<span class="c1">-- [1,1,2,3,5,8,13,21,34,55,89,144,233,377]</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">takeWhile</span> <span class="p">(</span><span class="o">&lt;</span> <span class="mi">4000000</span><span class="p">)</span> <span class="n">fibs</span>
+
+<span class="c1">--4613732</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">sum</span> <span class="p">[</span> <span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="n">takeWhile</span> <span class="p">(</span><span class="o">&lt;</span> <span class="mi">4000000</span><span class="p">)</span> <span class="n">fibs</span><span class="p">,</span> <span class="n">even</span> <span class="n">x</span><span class="p">]</span></code></pre></figure>
 
 <h2 id="euler-3">Euler 3</h2>
 <p>The prime factors of 13195 are 5, 7, 13 and 29.
@@ -247,12 +278,14 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="c1">-- [(6,8,10),(8,6,10)]</span>
 <span class="n">r</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="o">|</span> <span class="n">a</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">b</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">c</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">a</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">^</span><span class="mi">2</span> <span class="o">==</span> <span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">==</span><span class="mi">24</span><span class="p">]</span></code></pre></figure>
 
-<h2 id="summary-of-toolbelt-so-far">Summary of toolbelt so far</h2>
+<h2 id="summary-so-far">Summary so far</h2>
 <p>Have been able to solve most of the first 9 Euler problems with just list comprehensions.</p>
 
 <figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- List comprehension (output function is before the pipe)</span>
 <span class="c1">-- filtering (weeding out lists by predicates)</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">odd</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+<p>There are a ton of interesting functions in the language!</p>
 
 
   </div>
@@ -310,7 +343,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-18 11:56:26 GMT</p>
+        <p>rev: 2016-10-18 14:12:42 GMT</p>
       </div>
     </div>
 

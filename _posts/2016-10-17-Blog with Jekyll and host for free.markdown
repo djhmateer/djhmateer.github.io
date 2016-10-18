@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Blog with Jekyll and host for Free"
-date:   2016-09-09 16:33:16 +0100
+date:   2016-10-17
 categories: jekyll
 published: true 
 ---

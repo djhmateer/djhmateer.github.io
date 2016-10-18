@@ -6,81 +6,9 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Oct 2016 11:56:26 +0100</pubDate>
-    <lastBuildDate>Tue, 18 Oct 2016 11:56:26 +0100</lastBuildDate>
+    <pubDate>Tue, 18 Oct 2016 14:12:42 +0100</pubDate>
+    <lastBuildDate>Tue, 18 Oct 2016 14:12:42 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
-    
-      <item>
-        <title>Test Review</title>
-        <description>&lt;p&gt;test&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
-        <link>/jekyll/2016/10/17/test-draft.html</link>
-        <guid isPermaLink="true">/jekyll/2016/10/17/test-draft.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Why Blog?</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/3Guys_500.jpg&quot; alt=&quot;On the way to Machu Picchu&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I started blogging 8 years ago with &lt;a href=&quot;http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx&quot;&gt;Programgood - First Post&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Like all research projects, I start with &lt;a href=&quot;https://www.onenote.com/&quot;&gt;OneNote&lt;/a&gt;, so I can share notes across all devices (2 at home, 1 at work and iPhone)&lt;/p&gt;
-
-&lt;h2 id=&quot;why-blog&quot;&gt;Why Blog?&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Helps you learn (by the act of writing down logically)&lt;/li&gt;
-  &lt;li&gt;Help others&lt;/li&gt;
-  &lt;li&gt;Build brand as a developer so you can earn good money&lt;/li&gt;
-  &lt;li&gt;Carrot to ‘finish’ writing projects&lt;/li&gt;
-  &lt;li&gt;Sharpen communication through written word&lt;/li&gt;
-  &lt;li&gt;Makes you Happy! (when others read what you write and care!)&lt;/li&gt;
-  &lt;li&gt;Tell stories&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
-&lt;p&gt;What is in it for your reader?&lt;/p&gt;
-
-&lt;p&gt;What are you passionate about?  It really doesn’t matter how much of an ‘expert’ you are at a subject.  If you care enough to write on a subject, then damn, &lt;b&gt;get on it&lt;/b&gt;, and write it.  More than likely, others will care about the same.&lt;/p&gt;
-
-&lt;h2 id=&quot;who-are-your-fabulous-target-audience&quot;&gt;Who are your (fabulous) target audience?&lt;/h2&gt;
-
-&lt;p&gt;Jeff Bezos - write the press release first.&lt;/p&gt;
-
-&lt;p&gt;“davemateer.com blog is where to go, to find in-depth tutorial articles on high performance business applications which are maintainable”&lt;/p&gt;
-
-&lt;p&gt;“Dave Mateer is a professional software developer who can make &lt;em&gt;simple&lt;/em&gt; &lt;em&gt;performant&lt;/em&gt; and &lt;em&gt;maintainable&lt;/em&gt; code”&lt;/p&gt;
-
-&lt;h2 id=&quot;how-to-reach-your-awesome-audience&quot;&gt;How to reach your (awesome) audience?&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Talk at conferences&lt;/li&gt;
-  &lt;li&gt;Answer questions on SO and link to articles&lt;/li&gt;
-  &lt;li&gt;Do code reviews are link to articles&lt;/li&gt;
-  &lt;li&gt;Pluralsight make videos&lt;/li&gt;
-  &lt;li&gt;Youtube&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Blogging is good - go for it!&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
-        <link>/jekyll/2016/10/17/Why-Blog.html</link>
-        <guid isPermaLink="true">/jekyll/2016/10/17/Why-Blog.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
     
       <item>
         <title>Haskell - List Comprehensions</title>
@@ -119,19 +47,33 @@
 &lt;span class=&quot;n&quot;&gt;string2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;world&quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string2&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;-- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-
 &lt;span class=&quot;n&quot;&gt;doubleMe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;-- 6&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doubleMe&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;-- 16.6  as + works on ints and floating-point numbers&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doubleMe&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;8.3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doubleMe&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;8.3&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- 10/3 gives 1 as a remainder&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- backtick infix style gives 1 as a remainder&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- Cons operator&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- [3,5,7,11]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;favNums&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;[]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/Hask_2.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Loading hello.hs and calling functions&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ctrl D - exit from GHCI in Powershell&lt;/li&gt;
+  &lt;li&gt;Ctrl L - cls&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;euler-1&quot;&gt;Euler 1&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://projecteuler.net/archives&quot;&gt;Project Euler&lt;/a&gt; is where I start when learning a new language to flex my new ‘toolbelt’..&lt;/p&gt;
@@ -145,7 +87,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span class=&quot;c1&quot;&gt;-- List comprehension (output function is before the pipe)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- x 'such that' &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- x 'such that', x goes to [1..999]&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;-- filtering (weeding out lists by predicates)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -153,7 +95,24 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 &lt;p&gt;running the function h to get the answer.  Reloading  changes :r  in file euler.hs&lt;/p&gt;
 
 &lt;h2 id=&quot;euler-2&quot;&gt;Euler 2&lt;/h2&gt;
-&lt;p&gt;Come back to this.. recursion and zipWith concepts&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span class=&quot;c1&quot;&gt;-- Each new term in the Fibonacci sequence is generated by adding the previous two terms.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- By starting with 1 and 2, the first 10 terms will be:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- By considering the terms in the Fibonacci sequence whose values do not exceed four million, &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- find the sum of the even-valued terms.&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- [7,9,11,13,15]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sumOfLists&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipWith&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- zipWith adds 2 lists together&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fibs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zipWith&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fibs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fibs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- [1,1,2,3,5,8,13,21,34,55,89,144,233,377]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;takeWhile&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fibs&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;--4613732&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;takeWhile&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fibs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;even&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;euler-3&quot;&gt;Euler 3&lt;/h2&gt;
 &lt;p&gt;The prime factors of 13195 are 5, 7, 13 and 29.
@@ -253,17 +212,19 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;-- [(6,8,10),(8,6,10)]&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;summary-of-toolbelt-so-far&quot;&gt;Summary of toolbelt so far&lt;/h2&gt;
+&lt;h2 id=&quot;summary-so-far&quot;&gt;Summary so far&lt;/h2&gt;
 &lt;p&gt;Have been able to solve most of the first 9 Euler problems with just list comprehensions.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span class=&quot;c1&quot;&gt;-- List comprehension (output function is before the pipe)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;-- filtering (weeding out lists by predicates)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;odd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;p&gt;There are a ton of interesting functions in the language!&lt;/p&gt;
+
 </description>
-        <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
-        <link>/haskell/2016/10/17/Haskell-Getting-Started-and-List-Comprehensions.html</link>
-        <guid isPermaLink="true">/haskell/2016/10/17/Haskell-Getting-Started-and-List-Comprehensions.html</guid>
+        <pubDate>Tue, 18 Oct 2016 00:00:00 +0100</pubDate>
+        <link>/haskell/2016/10/18/Haskell-Getting-Started-and-List-Comprehensions.html</link>
+        <guid isPermaLink="true">/haskell/2016/10/18/Haskell-Getting-Started-and-List-Comprehensions.html</guid>
         
         
         <category>Haskell</category>
@@ -407,9 +368,67 @@ published: true
 test&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
-        <pubDate>Fri, 09 Sep 2016 16:33:16 +0100</pubDate>
-        <link>/jekyll/2016/09/09/Blog-with-Jekyll-and-host-for-free.html</link>
-        <guid isPermaLink="true">/jekyll/2016/09/09/Blog-with-Jekyll-and-host-for-free.html</guid>
+        <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
+        <link>/jekyll/2016/10/17/Blog-with-Jekyll-and-host-for-free.html</link>
+        <guid isPermaLink="true">/jekyll/2016/10/17/Blog-with-Jekyll-and-host-for-free.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Why Blog?</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/3Guys_500.jpg&quot; alt=&quot;On the way to Machu Picchu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I started blogging 8 years ago with &lt;a href=&quot;http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx&quot;&gt;Programgood - First Post&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Like all research projects, I start with &lt;a href=&quot;https://www.onenote.com/&quot;&gt;OneNote&lt;/a&gt;, so I can share notes across all devices (2 at home, 1 at work and iPhone)&lt;/p&gt;
+
+&lt;h2 id=&quot;why-blog&quot;&gt;Why Blog?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Helps you learn (by the act of writing down logically)&lt;/li&gt;
+  &lt;li&gt;Help others&lt;/li&gt;
+  &lt;li&gt;Build brand as a developer so you can earn good money&lt;/li&gt;
+  &lt;li&gt;Carrot to ‘finish’ writing projects&lt;/li&gt;
+  &lt;li&gt;Sharpen communication through written word&lt;/li&gt;
+  &lt;li&gt;Makes you Happy! (when others read what you write and care!)&lt;/li&gt;
+  &lt;li&gt;Tell stories&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
+&lt;p&gt;What is in it for your reader?&lt;/p&gt;
+
+&lt;p&gt;What are you passionate about?  It really doesn’t matter how much of an ‘expert’ you are at a subject.  If you care enough to write on a subject, then damn, &lt;b&gt;get on it&lt;/b&gt;, and write it.  More than likely, others will care about the same.&lt;/p&gt;
+
+&lt;h2 id=&quot;who-are-your-fabulous-target-audience&quot;&gt;Who are your (fabulous) target audience?&lt;/h2&gt;
+
+&lt;p&gt;Jeff Bezos - write the press release first.&lt;/p&gt;
+
+&lt;p&gt;“davemateer.com blog is where to go, to find in-depth tutorial articles on high performance business applications which are maintainable”&lt;/p&gt;
+
+&lt;p&gt;“Dave Mateer is a professional software developer who can make &lt;em&gt;simple&lt;/em&gt; &lt;em&gt;performant&lt;/em&gt; and &lt;em&gt;maintainable&lt;/em&gt; code”&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-reach-your-awesome-audience&quot;&gt;How to reach your (awesome) audience?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Talk at conferences&lt;/li&gt;
+  &lt;li&gt;Answer questions on SO and link to articles&lt;/li&gt;
+  &lt;li&gt;Do code reviews are link to articles&lt;/li&gt;
+  &lt;li&gt;Pluralsight make videos&lt;/li&gt;
+  &lt;li&gt;Youtube&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Blogging is good - go for it!&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 16 Oct 2016 00:00:00 +0100</pubDate>
+        <link>/jekyll/2016/10/16/Why-Blog.html</link>
+        <guid isPermaLink="true">/jekyll/2016/10/16/Why-Blog.html</guid>
         
         
         <category>jekyll</category>
