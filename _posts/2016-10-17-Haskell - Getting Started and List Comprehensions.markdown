@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Haskell Reading Group"
+title:  "Haskell - List Comprehensions"
 categories: Haskell
 ---
 ![Cows](/assets/Mia_350.jpg)
@@ -32,7 +32,18 @@ categories: Haskell
 string1 = "hello"
 string2 = "world"
 greeting = string1 ++ string2
+
+-- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)
+a = 49 * 100
+
 doubleMe x = x + x
+
+-- 6
+b = doubleMe 3
+
+-- 16.6  as + works on ints and floating-point numbers
+c = doubleMe 8.3
+
 {% endhighlight %}
 
 ![Cows](/assets/Hask_2.jpg)
@@ -54,6 +65,7 @@ b = tail [1,2,3]
 
 {% highlight haskell %}
 -- List comprehension (output function is before the pipe)
+-- x 'such that' 
 -- filtering (weeding out lists by predicates)
 h = sum [x | x <- [1..999], x `mod` 3 == 0 || x `mod` 5 == 0]
 {% endhighlight %}
@@ -136,6 +148,35 @@ isPalindrome num = show num == reverse (show num)
 
 -- 906609
 t' = maximum [x*y | x <- [100..999], y <- [100..999], isPalindrome (x*y)]
+{% endhighlight %}
+
+## _ and Tuples
+{% highlight haskell %}
+-- implementing own version of length (of a list)
+-- _ means we don't care what we draw from the list.
+-- replace every element of a list with 1, then sum
+length' xs = sum [1 | _ <- xs] 
+
+-- 4
+o = length' [1,2,3,4]
+
+-- Tuple can contain several types
+-- returns first component of the Tuple
+-- 8
+p = fst (8,11) 
+-- "Wow"
+q = fst ("Wow", False)
+
+-- Which right triangle that has integers for all sides and all sides equal to or 
+-- smaller than 10 has a perimeter of 24?
+-- a^2 + b^2 = c^2
+-- eg 3,4,5 triangle.. perimeter = 12
+-- 9 + 16 = 25
+
+-- generate numbers for all sides returning a Tuple
+-- [(6,8,10),(8,6,10)]
+r = [(a,b,c) | a <- [1..10], b <- [1..10], c <- [1..10], a^2 + b^2 == c^2, a+b+c==24]
+
 {% endhighlight %}
 
 ## Summary of toolbelt so far

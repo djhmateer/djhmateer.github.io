@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Oct 2016 10:52:46 +0100</pubDate>
-    <lastBuildDate>Tue, 18 Oct 2016 10:52:46 +0100</lastBuildDate>
+    <pubDate>Tue, 18 Oct 2016 11:51:25 +0100</pubDate>
+    <lastBuildDate>Tue, 18 Oct 2016 11:51:25 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -25,7 +25,65 @@
       </item>
     
       <item>
-        <title>Haskell Reading Group</title>
+        <title>Why Blog?</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/3Guys_500.jpg&quot; alt=&quot;On the way to Machu Picchu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I started blogging 8 years ago with &lt;a href=&quot;http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx&quot;&gt;Programgood - First Post&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Like all research projects, I start with &lt;a href=&quot;https://www.onenote.com/&quot;&gt;OneNote&lt;/a&gt;, so I can share notes across all devices (2 at home, 1 at work and iPhone)&lt;/p&gt;
+
+&lt;h2 id=&quot;why-blog&quot;&gt;Why Blog?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Helps you learn (by the act of writing down logically)&lt;/li&gt;
+  &lt;li&gt;Help others&lt;/li&gt;
+  &lt;li&gt;Build brand as a developer so you can earn good money&lt;/li&gt;
+  &lt;li&gt;Carrot to ‘finish’ writing projects&lt;/li&gt;
+  &lt;li&gt;Sharpen communication through written word&lt;/li&gt;
+  &lt;li&gt;Makes you Happy! (when others read what you write and care!)&lt;/li&gt;
+  &lt;li&gt;Tell stories&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
+&lt;p&gt;What is in it for your reader?&lt;/p&gt;
+
+&lt;p&gt;What are you passionate about?  It really doesn’t matter how much of an ‘expert’ you are at a subject.  If you care enough to write on a subject, then damn, &lt;b&gt;get on it&lt;/b&gt;, and write it.  More than likely, others will care about the same.&lt;/p&gt;
+
+&lt;h2 id=&quot;who-are-your-fabulous-target-audience&quot;&gt;Who are your (fabulous) target audience?&lt;/h2&gt;
+
+&lt;p&gt;Jeff Bezos - write the press release first.&lt;/p&gt;
+
+&lt;p&gt;“davemateer.com blog is where to go, to find in-depth tutorial articles on high performance business applications which are maintainable”&lt;/p&gt;
+
+&lt;p&gt;“Dave Mateer is a professional software developer who can make &lt;em&gt;simple&lt;/em&gt; &lt;em&gt;performant&lt;/em&gt; and &lt;em&gt;maintainable&lt;/em&gt; code”&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-reach-your-awesome-audience&quot;&gt;How to reach your (awesome) audience?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Talk at conferences&lt;/li&gt;
+  &lt;li&gt;Answer questions on SO and link to articles&lt;/li&gt;
+  &lt;li&gt;Do code reviews are link to articles&lt;/li&gt;
+  &lt;li&gt;Pluralsight make videos&lt;/li&gt;
+  &lt;li&gt;Youtube&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Blogging is good - go for it!&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
+        <link>/jekyll/2016/10/17/Why-Blog.html</link>
+        <guid isPermaLink="true">/jekyll/2016/10/17/Why-Blog.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Haskell - List Comprehensions</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/Mia_350.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;....Because trying something new is fun!&lt;/p&gt;
 
@@ -60,7 +118,17 @@
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span class=&quot;n&quot;&gt;string1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;string2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;world&quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string2&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;doubleMe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;doubleMe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- 6&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doubleMe&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- 16.6  as + works on ints and floating-point numbers&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doubleMe&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;8.3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/Hask_2.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Loading hello.hs and calling functions&lt;/p&gt;
@@ -77,6 +145,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span class=&quot;c1&quot;&gt;-- List comprehension (output function is before the pipe)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- x 'such that' &lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;-- filtering (weeding out lists by predicates)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -157,6 +226,33 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;-- 906609&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;t'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maximum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isPalindrome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;h2 id=&quot;and-tuples&quot;&gt;_ and Tuples&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span class=&quot;c1&quot;&gt;-- implementing own version of length (of a list)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- _ means we don't care what we draw from the list.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- replace every element of a list with 1, then sum&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;length'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
+
+&lt;span class=&quot;c1&quot;&gt;-- 4&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- Tuple can contain several types&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- returns first component of the Tuple&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- 8&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;c1&quot;&gt;-- &quot;Wow&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Wow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- Which right triangle that has integers for all sides and all sides equal to or &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- smaller than 10 has a perimeter of 24?&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- a^2 + b^2 = c^2&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- eg 3,4,5 triangle.. perimeter = 12&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- 9 + 16 = 25&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- generate numbers for all sides returning a Tuple&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- [(6,8,10),(8,6,10)]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 &lt;h2 id=&quot;summary-of-toolbelt-so-far&quot;&gt;Summary of toolbelt so far&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span class=&quot;c1&quot;&gt;-- List comprehension (output function is before the pipe)&lt;/span&gt;
@@ -165,69 +261,11 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 
 </description>
         <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
-        <link>/haskell/2016/10/17/haskell-reading-group.html</link>
-        <guid isPermaLink="true">/haskell/2016/10/17/haskell-reading-group.html</guid>
+        <link>/haskell/2016/10/17/Haskell-Getting-Started-and-List-Comprehensions.html</link>
+        <guid isPermaLink="true">/haskell/2016/10/17/Haskell-Getting-Started-and-List-Comprehensions.html</guid>
         
         
         <category>Haskell</category>
-        
-      </item>
-    
-      <item>
-        <title>Why Blog?</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/3Guys_500.jpg&quot; alt=&quot;On the way to Machu Picchu&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I started blogging 8 years ago with &lt;a href=&quot;http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx&quot;&gt;Programgood - First Post&lt;/a&gt;  It turned into a very good ideas repository, not a blog.  &lt;em&gt;That’s fine.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I’d now like to try a more ‘walkthrough’ style blog, taking inspiration from &lt;a href=&quot;http://www.hanselman.com&quot;&gt;hanselman.com&lt;/a&gt; and &lt;a href=&quot;http://weblogs.asp.net/scottgu/introducing-asp-net-5&quot;&gt;ScottGu&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Like all research projects, I start with &lt;a href=&quot;https://www.onenote.com/&quot;&gt;OneNote&lt;/a&gt;, so I can share notes across all devices (2 at home, 1 at work and iPhone)&lt;/p&gt;
-
-&lt;h2 id=&quot;why-blog&quot;&gt;Why Blog?&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Helps you learn (by the act of writing down logically)&lt;/li&gt;
-  &lt;li&gt;Help others&lt;/li&gt;
-  &lt;li&gt;Build brand as a developer so you can earn good money&lt;/li&gt;
-  &lt;li&gt;Carrot to ‘finish’ writing projects&lt;/li&gt;
-  &lt;li&gt;Sharpen communication through written word&lt;/li&gt;
-  &lt;li&gt;Makes you Happy! (when others read what you write and care!)&lt;/li&gt;
-  &lt;li&gt;Tell stories&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;titles&quot;&gt;Titles&lt;/h2&gt;
-&lt;p&gt;What is in it for your reader?&lt;/p&gt;
-
-&lt;p&gt;What are you passionate about?  It really doesn’t matter how much of an ‘expert’ you are at a subject.  If you care enough to write on a subject, then damn, &lt;b&gt;get on it&lt;/b&gt;, and write it.  More than likely, others will care about the same.&lt;/p&gt;
-
-&lt;h2 id=&quot;who-are-your-fabulous-target-audience&quot;&gt;Who are your (fabulous) target audience?&lt;/h2&gt;
-
-&lt;p&gt;Jeff Bezos - write the press release first.&lt;/p&gt;
-
-&lt;p&gt;“davemateer.com blog is where to go, to find in-depth tutorial articles on high performance business applications which are maintainable”&lt;/p&gt;
-
-&lt;p&gt;“Dave Mateer is a professional software developer who can make &lt;em&gt;simple&lt;/em&gt; &lt;em&gt;performant&lt;/em&gt; and &lt;em&gt;maintainable&lt;/em&gt; code”&lt;/p&gt;
-
-&lt;h2 id=&quot;how-to-reach-your-awesome-audience&quot;&gt;How to reach your (awesome) audience?&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Talk at conferences&lt;/li&gt;
-  &lt;li&gt;Answer questions on SO and link to articles&lt;/li&gt;
-  &lt;li&gt;Do code reviews are link to articles&lt;/li&gt;
-  &lt;li&gt;Pluralsight make videos&lt;/li&gt;
-  &lt;li&gt;Youtube&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Blogging is good - go for it!&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
-        <link>/jekyll/2016/10/17/Why-Blog.html</link>
-        <guid isPermaLink="true">/jekyll/2016/10/17/Why-Blog.html</guid>
-        
-        
-        <category>jekyll</category>
         
       </item>
     

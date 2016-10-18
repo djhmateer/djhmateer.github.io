@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Haskell Reading Group</title>
+  <title>Haskell - List Comprehensions</title>
   <meta name="description" content="....Because trying something new is fun!">
 
   
@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
-  <link rel="canonical" href="/haskell/2016/10/17/haskell-reading-group.html">
+  <link rel="canonical" href="/haskell/2016/10/17/Haskell-Getting-Started-and-List-Comprehensions.html">
   <link rel="alternate" type="application/rss+xml" title="Dave Mateer&#39;s Blog" href="/feed.xml">
   
   
@@ -73,7 +73,7 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Haskell Reading Group</h1>
+    <h1 class="post-title" itemprop="name headline">Haskell - List Comprehensions</h1>
     <p class="post-meta"><time datetime="2016-10-17T00:00:00+01:00" itemprop="datePublished">Oct 17, 2016</time></p>
   </header>
 
@@ -112,7 +112,17 @@
 <figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="n">string1</span> <span class="o">=</span> <span class="s">"hello"</span>
 <span class="n">string2</span> <span class="o">=</span> <span class="s">"world"</span>
 <span class="n">greeting</span> <span class="o">=</span> <span class="n">string1</span> <span class="o">++</span> <span class="n">string2</span>
-<span class="n">doubleMe</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span></code></pre></figure>
+
+<span class="c1">-- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">49</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">doubleMe</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+
+<span class="c1">-- 6</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">doubleMe</span> <span class="mi">3</span>
+
+<span class="c1">-- 16.6  as + works on ints and floating-point numbers</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">doubleMe</span> <span class="mf">8.3</span></code></pre></figure>
 
 <p><img src="/assets/Hask_2.jpg" alt="Cows" /></p>
 <p>Loading hello.hs and calling functions</p>
@@ -129,6 +139,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="n">b</span> <span class="o">=</span> <span class="n">tail</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- List comprehension (output function is before the pipe)</span>
+<span class="c1">-- x 'such that' </span>
 <span class="c1">-- filtering (weeding out lists by predicates)</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">sum</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">999</span><span class="p">],</span> <span class="n">x</span> <span class="p">`</span><span class="n">mod</span><span class="p">`</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="p">`</span><span class="n">mod</span><span class="p">`</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span></code></pre></figure>
 
@@ -209,6 +220,33 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="c1">-- 906609</span>
 <span class="n">t'</span> <span class="o">=</span> <span class="n">maximum</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">100</span><span class="o">..</span><span class="mi">999</span><span class="p">],</span> <span class="n">y</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">100</span><span class="o">..</span><span class="mi">999</span><span class="p">],</span> <span class="n">isPalindrome</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)]</span></code></pre></figure>
 
+<h2 id="and-tuples">_ and Tuples</h2>
+
+<figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- implementing own version of length (of a list)</span>
+<span class="c1">-- _ means we don't care what we draw from the list.</span>
+<span class="c1">-- replace every element of a list with 1, then sum</span>
+<span class="n">length'</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">sum</span> <span class="p">[</span><span class="mi">1</span> <span class="o">|</span> <span class="kr">_</span> <span class="o">&lt;-</span> <span class="n">xs</span><span class="p">]</span> 
+
+<span class="c1">-- 4</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">length'</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="c1">-- Tuple can contain several types</span>
+<span class="c1">-- returns first component of the Tuple</span>
+<span class="c1">-- 8</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">fst</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span> 
+<span class="c1">-- "Wow"</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">fst</span> <span class="p">(</span><span class="s">"Wow"</span><span class="p">,</span> <span class="kt">False</span><span class="p">)</span>
+
+<span class="c1">-- Which right triangle that has integers for all sides and all sides equal to or </span>
+<span class="c1">-- smaller than 10 has a perimeter of 24?</span>
+<span class="c1">-- a^2 + b^2 = c^2</span>
+<span class="c1">-- eg 3,4,5 triangle.. perimeter = 12</span>
+<span class="c1">-- 9 + 16 = 25</span>
+
+<span class="c1">-- generate numbers for all sides returning a Tuple</span>
+<span class="c1">-- [(6,8,10),(8,6,10)]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="o">|</span> <span class="n">a</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">b</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">c</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">a</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">^</span><span class="mi">2</span> <span class="o">==</span> <span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">==</span><span class="mi">24</span><span class="p">]</span></code></pre></figure>
+
 <h2 id="summary-of-toolbelt-so-far">Summary of toolbelt so far</h2>
 
 <figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- List comprehension (output function is before the pipe)</span>
@@ -271,7 +309,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-18 10:52:46 GMT</p>
+        <p>rev: 2016-10-18 11:51:25 GMT</p>
       </div>
     </div>
 
