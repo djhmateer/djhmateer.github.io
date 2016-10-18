@@ -33,9 +33,6 @@ string1 = "hello"
 string2 = "world"
 greeting = string1 ++ string2
 
--- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)
-a = 49 * 100
-
 doubleMe x = x + x
 
 -- 6
@@ -43,6 +40,18 @@ b = doubleMe 3
 
 -- 16.6  as + works on ints and floating-point numbers
 c = doubleMe 8.3
+
+-- * is an infix function which takes 2 numbers and multiplies (as opposed to a prefix)
+a = 49 * 100
+
+-- 10/3 gives 1 as a remainder
+s = mod 10 3
+-- backtick infix style gives 1 as a remainder
+t = 10 `mod` 3
+
+-- Cons operator
+-- [3,5,7,11]
+favNums = 3:5:7:11:[]
 
 {% endhighlight %}
 
@@ -182,7 +191,7 @@ r = [(a,b,c) | a <- [1..10], b <- [1..10], c <- [1..10], a^2 + b^2 == c^2, a+b+c
 
 {% endhighlight %}
 
-## Summary of toolbelt so far
+## Summary so far
 Have been able to solve most of the first 9 Euler problems with just list comprehensions. 
 
 {% highlight haskell %}
@@ -190,6 +199,8 @@ Have been able to solve most of the first 9 Euler problems with just list compre
 -- filtering (weeding out lists by predicates)
 a = [x*2 | x <- [1..10], odd x, x > 3]
 {% endhighlight %}
+
+<p>There are a ton of functions in the language!</p> 
 
 
 
