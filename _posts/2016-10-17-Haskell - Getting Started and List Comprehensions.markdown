@@ -180,6 +180,8 @@ r = [(a,b,c) | a <- [1..10], b <- [1..10], c <- [1..10], a^2 + b^2 == c^2, a+b+c
 {% endhighlight %}
 
 ## Summary of toolbelt so far
+Have been able to solve most of the first 9 Euler problems with just list comprehensions. 
+
 {% highlight haskell %}
 -- List comprehension (output function is before the pipe)
 -- filtering (weeding out lists by predicates)
