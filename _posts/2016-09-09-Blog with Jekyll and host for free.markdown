@@ -108,6 +108,11 @@ rev:  {{site.time | date: "%Y-%m-%d %H:%M:%S"}} GMT
 {% endraw %}
 {% endhighlight %}
 
+## Make Shortcut serve
+So you can type .\s  and get local version running on [http://127.0.0.1:4000/](http://127.0.0.1:4000/)
+{% highlight powershell %}
+jekyll serve --drafts
+{% endhighlight %}
 
 
 

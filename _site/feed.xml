@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Oct 2016 05:15:18 +0100</pubDate>
-    <lastBuildDate>Tue, 18 Oct 2016 05:15:18 +0100</lastBuildDate>
+    <pubDate>Tue, 18 Oct 2016 05:18:45 +0100</pubDate>
+    <lastBuildDate>Tue, 18 Oct 2016 05:18:45 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -297,6 +297,11 @@ git push&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;Then in your footer put:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jekyll&quot; data-lang=&quot;jekyll&quot;&gt;rev:  {{site.time | date: &quot;%Y-%m-%d %H:%M:%S&quot;}} GMT&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;make-shortcut-serve&quot;&gt;Make Shortcut serve&lt;/h2&gt;
+&lt;p&gt;So you can type .\s  and get local version running on &lt;a href=&quot;http://127.0.0.1:4000/&quot;&gt;http://127.0.0.1:4000/&lt;/a&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;jekyll serve --drafts&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Fri, 09 Sep 2016 16:33:16 +0100</pubDate>
