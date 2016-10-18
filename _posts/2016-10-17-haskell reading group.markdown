@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A Haskell Reading Group"
+title:  "Haskell Reading Group"
 categories: Haskell
 ---
 ![Cows](/assets/Mia_350.jpg)
@@ -74,22 +74,41 @@ Come back to this.. recursion and zipWith concepts
 -- What is the largest prime factor of the number 600851475143 ?
 
 -- number is prime if only divisible by 1 and itself
+-- http://stackoverflow.com/a/5811176/26086
+-- eg if checking isPrime 12
+-- 3 * 4 are factors
+-- 2 * 6 are factors..
+-- one of the factors has to be less than the sqrt
+-- and if there is a factor, then it isn't a prime
 -- only need check up to the sqrt of number to see if it can be divided with remainder of 0
--- isPrime num = [x | x <- [3..floor (sqrt (fromIntegral (num)))], num `mod` x == 0, odd x] == []
 
--- x 35 = 6
+-- getting the square root as an int
+-- x 35 = 5
 -- x 144 = 12
-x num = ceiling (sqrt (fromIntegral (num)))
+x num = floor (sqrt (fromIntegral num))
+
 -- If result set is empty isPrime = True
-isPrime num = [x | x <- [2..ceiling (sqrt (fromIntegral (num)))], num `mod` x == 0] == []
+isPrime num = [x | x <- [2..floor (sqrt (fromIntegral num))], num `mod` x == 0] == []
 
--- only need to check factors up to sqrt, as we know prime can't be bigger than this
-facs q =  [x | x <- [3..floor (sqrt (fromIntegral (q)))], q `mod` x  == 0, isPrime x, odd x ]
-
--- [5, 7, 13, 29]
+-- The factors of a number 
+facs num =  [x | x <- [3..num], num `mod` x  == 0]
+-- [5,7,13,29,35,65,91,145,203,377,455,1015,1885,2639,13195]
 q = facs 13195
+
+-- Prime factors
+facs' num =  [x | x <- [3..num], num `mod` x  == 0, isPrime x]
+-- [5,7,13,29]
+q' = facs' 13195
+
+-- Problem is that it doesn't stop after giving the correct answer
+-- as its checking all the way up to 600851475143 to see if its a factor
 -- [71,839,1471,6857]
-r = facs 600851475143
+r = facs' 600851475143
+
+-- only need to check up to sqrt of 600851475143 to see if its a factor
+-- and prime
+facs'' num =  [x | x <- [3..floor(sqrt (fromIntegral num))], num `mod` x  == 0, isPrime x]
+s = facs'' 600851475143
 {% endhighlight %}
 
 ## Euler 4
