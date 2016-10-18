@@ -105,8 +105,7 @@ q' = facs' 13195
 -- [71,839,1471,6857]
 r = facs' 600851475143
 
--- only need to check up to sqrt of 600851475143 to see if its a factor
--- and prime
+-- only need to check up to sqrt of 600851475143 to see if it's a factor and a prime
 facs'' num =  [x | x <- [3..floor(sqrt (fromIntegral num))], num `mod` x  == 0, isPrime x]
 s = facs'' 600851475143
 {% endhighlight %}
@@ -137,6 +136,13 @@ isPalindrome num = show num == reverse (show num)
 
 -- 906609
 t' = maximum [x*y | x <- [100..999], y <- [100..999], isPalindrome (x*y)]
+{% endhighlight %}
+
+## Summary of toolbelt so far
+{% highlight haskell %}
+-- List comprehension (output function is before the pipe)
+-- filtering (weeding out lists by predicates)
+a = [x*2 | x <- [1..10], odd x, x > 3]
 {% endhighlight %}
 
 
