@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Test Draft"
+menu: draft
 categories: jekyll
 published: true
 ---
