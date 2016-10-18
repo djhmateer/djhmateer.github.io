@@ -55,7 +55,7 @@ gem install jekyll
 * cd testsite
 * gem install bundle
 * bundle
-* I had to follow this when got an SSL error: http://stackoverflow.com/a/27641786/26086
+* I had to follow this when got an SSL error when bundle was out of date and needed upgrading: [Stackoverflow](http://stackoverflow.com/a/27641786/26086)
 * jekyll serve
 
 ![Screenshot](/assets/Posh1.png)
