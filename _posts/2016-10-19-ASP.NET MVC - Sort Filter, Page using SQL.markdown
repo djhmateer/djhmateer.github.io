@@ -1,8 +1,43 @@
 ---
 layout: post
-title:  "ASP.NET MVC - Sort, Filter, Page using SQL!"
+title:  "Best practices for Sort, Filter, Page using with MSSQL and ASP.NET MVC"
 categories: jekyll
 published: true
 ---
-SQL
+## Summary
+Make SQL do the heavy lifting of: Sorting, Filtering, Paging.  
+
+## Background
+I've been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I've noticed is that my applications are much simpler and more performant if I <b>leave data manipulation to... the database!</b>
+
+I currently work in large enterprises, and have found that many people I work with, are more comfortable with SQL than general purpose coding languages.  They like it if they can see how the app works looking into which Stored Procs are called.
+
+## Example App
+ // Show the ASP.NET MVC app
+
+ // Show DAL / Service layer
+
+ // order, filter, Page
+ // use get requests so can bookmark
+
+ // use javascript to simplify URLs
+
+## Measuring speed with MiniProfiler
+// demo
+
+## Simple Query Optimisation 
+// right click apply index
+
+## Validation of Data 
+// always use Parameters
+// Dapper great for type translation
+
+## Have to use SP's?
+// no big deal
+
+## Source control your DB
+// even if the enterprise doesn't... easy
+
+
+
 
