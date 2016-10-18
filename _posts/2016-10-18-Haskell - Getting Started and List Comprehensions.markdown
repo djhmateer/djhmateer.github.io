@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Haskell - List Comprehensions"
+title:  "Learn you a Haskell for Fun and Profit"
 categories: Haskell
 ---
 ![Cows](/assets/Mia_350.jpg)
