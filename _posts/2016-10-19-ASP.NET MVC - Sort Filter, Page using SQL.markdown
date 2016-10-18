@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Best practices for Sort, Filter, Page using with MSSQL and ASP.NET MVC"
+title:  "Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC"
 categories: jekyll
 published: true
 ---
@@ -15,7 +15,9 @@ I currently work in large enterprises, and have found that many people I work wi
 ## Example App
  // Show the ASP.NET MVC app
 
- // Show DAL / Service layer
+ // Show DAL / Service layer - repository pattern
+
+ // static method to call the db inside a using
 
  // order, filter, Page
  // use get requests so can bookmark
