@@ -11,9 +11,11 @@ layout: default
 
 <ul>
   {% for post in site.posts %}
+   {% if page.menu != 'draft' %}
     <li>
       <a href="{{ post.url }}">{{ post.title }} </a>
     </li>
+    {% endif %}
   {% endfor %}
 </ul>
 </div>

@@ -6,9 +6,26 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Oct 2016 06:54:45 +0100</pubDate>
-    <lastBuildDate>Tue, 18 Oct 2016 06:54:45 +0100</lastBuildDate>
+    <pubDate>Tue, 18 Oct 2016 10:29:45 +0100</pubDate>
+    <lastBuildDate>Tue, 18 Oct 2016 10:29:45 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>test</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;Help others&lt;/li&gt;
+  &lt;li&gt;Build brand as a developer so can earn money&lt;/li&gt;
+  &lt;li&gt;Carrot to finish research projects and write them up&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 18 Oct 2016 10:29:39 +0100</pubDate>
+        <link>/test/2016/10/18/why-blog.html</link>
+        <guid isPermaLink="true">/test/2016/10/18/why-blog.html</guid>
+        
+        
+        <category>test</category>
+        
+      </item>
     
       <item>
         <title>Haskell Reading Group</title>
