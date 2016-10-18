@@ -77,7 +77,7 @@ b = tail [1,2,3]
 
 {% highlight haskell %}
 -- List comprehension (output function is before the pipe)
--- x 'such that' 
+-- x 'such that', x goes to [1..999]
 -- filtering (weeding out lists by predicates)
 h = sum [x | x <- [1..999], x `mod` 3 == 0 || x `mod` 5 == 0]
 {% endhighlight %}
