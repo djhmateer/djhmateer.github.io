@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "test"
-menu: draft
+title:  "Test Draft"
 categories: jekyll
+published: true
 ---
+test
 
 * Help others 
 * Build brand as a developer so can earn money 

@@ -6,21 +6,23 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Oct 2016 10:31:04 +0100</pubDate>
-    <lastBuildDate>Tue, 18 Oct 2016 10:31:04 +0100</lastBuildDate>
+    <pubDate>Tue, 18 Oct 2016 10:39:20 +0100</pubDate>
+    <lastBuildDate>Tue, 18 Oct 2016 10:39:20 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>test</title>
-        <description>&lt;ul&gt;
+        <title>Test Draft</title>
+        <description>&lt;p&gt;test&lt;/p&gt;
+
+&lt;ul&gt;
   &lt;li&gt;Help others&lt;/li&gt;
   &lt;li&gt;Build brand as a developer so can earn money&lt;/li&gt;
   &lt;li&gt;Carrot to finish research projects and write them up&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Tue, 18 Oct 2016 10:31:04 +0100</pubDate>
-        <link>/jekyll/2016/10/18/why-blog.html</link>
-        <guid isPermaLink="true">/jekyll/2016/10/18/why-blog.html</guid>
+        <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
+        <link>/jekyll/2016/10/17/test-draft.html</link>
+        <guid isPermaLink="true">/jekyll/2016/10/17/test-draft.html</guid>
         
         
         <category>jekyll</category>
