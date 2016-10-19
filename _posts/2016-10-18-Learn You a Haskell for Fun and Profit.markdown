@@ -248,7 +248,7 @@ ac = length ab
 a = [x | x <- [1..10], odd x, x > 3]
 {% endhighlight %}
 
-[Exercise link to GitHub](https://github.com/noelmarkham/learn-you-a-haskell-exercises/blob/master/2-starting-out.hs)
+[Noel Markham's exercises link](https://github.com/noelmarkham/learn-you-a-haskell-exercises/blob/master/2-starting-out.hs)
 
 {% highlight haskell %}
 
@@ -367,7 +367,7 @@ as = fact2 4
 fibs a b =
     --if a > 89
         -- base case of the recursion.. stop at max (eg 89)..return empty list
-      --  then [] 
+        --  then [] 
         -- cons operator add a to start of list
         --else a : fibs b (a+b) 
         a : fibs b (a+b)
@@ -379,6 +379,12 @@ fibs' n = (fibs 1 2)!!n
 
 -- nice way to test fibs', by throwing a range at it
 av = [fibs' x | x <- [1..30]]
+
+-- lazy
+fibs'' = 1 : 1 : [x + y | (x,y) <- zip fibs'' (tail fibs'')]
+
+-- zipWith adds 2 lists together
+fibs3 = 1 : 1 : zipWith (+) fibs3 (tail fibs3)
 
 {% endhighlight %}
 
