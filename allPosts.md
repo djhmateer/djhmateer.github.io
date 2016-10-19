@@ -14,4 +14,5 @@ published: true
   {% endfor %}
 </ul>
 
-// {{  post.excerpt | remove: '<p>' | remove: '</p>' }}
+<!-- asdf
+{{  post.excerpt | remove: '<p>' | remove: '</p>' }} -->
