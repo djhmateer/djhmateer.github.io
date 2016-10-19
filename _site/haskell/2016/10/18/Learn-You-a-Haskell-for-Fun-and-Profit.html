@@ -278,7 +278,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="c1">-- [(6,8,10),(8,6,10)]</span>
 <span class="n">r</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="o">|</span> <span class="n">a</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">b</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">c</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">a</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">^</span><span class="mi">2</span> <span class="o">==</span> <span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="o">==</span><span class="mi">24</span><span class="p">]</span></code></pre></figure>
 
-<h2 id="summary-so-far">Summary so far</h2>
+<h2 id="summary-of-book-so-far">Summary of Book so far</h2>
 <p>Have been able to solve most of the first 9 Euler problems with just list comprehensions.</p>
 
 <figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- List comprehension (output function is before the pipe)</span>
@@ -286,6 +286,167 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">odd</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span></code></pre></figure>
 
 <p>There are a ton of interesting functions in the language!</p>
+
+<h1 id="brightonfunctionalreadinggroup">BrightonFunctionalReadingGroup</h1>
+<p><a href="http://www.meetup.com/Functional-Brighton/events/234298563/">Meetup</a></p>
+<p>Highlights from this meeting were</p>
+
+<ul>
+  <li>no let needed in REPL now</li>
+  <li>brackets around (+) mean passing + as an argument (actually an infix function to add 2 numbers)</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- zipWith f [a,b,c] [x,y,z]</span>
+<span class="c1">-- [7,9,11,13,15]</span>
+<span class="n">sumOfLists</span> <span class="o">=</span> <span class="n">zipWith</span> <span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span></code></pre></figure>
+
+<ul>
+  <li>’ is for single characters, “ is for strings (list of chars!)</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="n">aa</span> <span class="o">=</span> <span class="sc">'x'</span>
+<span class="n">ab</span> <span class="o">=</span> <span class="s">"this is a string"</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">length</span> <span class="n">ab</span></code></pre></figure>
+
+<ul>
+  <li>such that, is drawn from</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- x such that, x is drawn from 1 to 10</span>
+<span class="c1">-- filter by odd x's and x&gt;3 </span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">odd</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+<p><a href="https://github.com/noelmarkham/learn-you-a-haskell-exercises/blob/master/2-starting-out.hs">Exercise link to GitHub</a></p>
+
+<figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- Question 1</span>
+<span class="c1">-- last element in a list</span>
+<span class="c1">-- 4</span>
+<span class="n">ad</span> <span class="o">=</span> <span class="n">last</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="c1">-- returns everything except the last element</span>
+<span class="c1">-- [1,2,3]</span>
+<span class="n">ae</span> <span class="o">=</span> <span class="n">init</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="c1">-- Find the penultimate element in list l</span>
+<span class="n">penultimate</span> <span class="n">l</span> <span class="o">=</span> <span class="n">last</span> <span class="p">(</span><span class="n">init</span> <span class="n">l</span><span class="p">)</span>
+
+
+<span class="c1">-- Question 2</span>
+<span class="c1">-- determine if list l is a palindrome</span>
+<span class="c1">-- palindrome is the same forward as reversed</span>
+
+<span class="c1">-- l is a list of characters (a string)</span>
+<span class="n">isPalindrome</span> <span class="n">l</span> <span class="o">=</span> <span class="n">l</span> <span class="o">==</span> <span class="n">reverse</span> <span class="n">l</span>
+<span class="c1">-- True</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">isPalindrome</span> <span class="s">"abba"</span>
+
+
+<span class="c1">-- Question 3</span>
+<span class="c1">--  Duplicate the elements in list xs, for example "duplicate [1,2,3]" </span>
+<span class="c1">--  would give the list [1,1,2,2,3,3]</span>
+<span class="c1">--  Hint: The "concat [l]" function flattens a list of lists into a single list. </span>
+<span class="c1">--  (You can see the function definition by typing ":t concat" into the interpreter. </span>
+<span class="c1">--  Perhaps try this with other variables and functions)</span>
+<span class="c1">--  For example: concat [[1,2,3],[3,4,5]] returns [1,2,3,3,4,5]</span>
+
+<span class="c1">-- concat the list of lists into a single list</span>
+<span class="c1">-- [1,1,2,2,3,3]</span>
+<span class="n">ag</span> <span class="o">=</span> <span class="n">concat</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="c1">-- returns a list of lists</span>
+<span class="c1">-- [[1,1],[2,2],[3,3]]</span>
+<span class="n">ai</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">]</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="n">duplicate</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">concat</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">]</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="n">xs</span><span class="p">]</span>
+
+<span class="c1">--[1,1,2,2,3,3]</span>
+<span class="n">ah</span> <span class="o">=</span> <span class="n">duplicate</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+
+
+<span class="c1">-- Question 4</span>
+<span class="c1">-- Imitate the functionality of zip</span>
+<span class="c1">-- The function "min x y" returns the lower of values x and y</span>
+<span class="c1">-- For example "ziplike [1,2,3] ['a', 'b', 'c', 'd']" returns [(1,'a'), (2, 'b'), (3, 'c')]</span>
+<span class="c1">-- ziplike xs ys = undefined</span>
+
+<span class="c1">-- use min to get the number of elements</span>
+<span class="c1">--ab = min ((length [1,2,3]) length(['a', 'b', 'c', 'd']))</span>
+
+<span class="c1">-- returns a list of Tuples with the last 'd' missed off as nothing to match</span>
+<span class="c1">-- [(1,'a'),(2,'b'),(3,'c')]</span>
+<span class="n">aj</span> <span class="o">=</span> <span class="n">zip</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="sc">'a'</span><span class="p">,</span> <span class="sc">'b'</span><span class="p">,</span> <span class="sc">'c'</span><span class="p">,</span> <span class="sc">'d'</span><span class="p">]</span>
+
+<span class="c1">-- find min length of both lists</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="sc">'a'</span><span class="p">,</span> <span class="sc">'b'</span><span class="p">,</span> <span class="sc">'c'</span><span class="p">,</span> <span class="sc">'d'</span><span class="p">]</span>
+<span class="c1">-- 2 (3-1)</span>
+<span class="n">ak</span> <span class="o">=</span> <span class="n">min</span> <span class="p">(</span><span class="n">length</span> <span class="n">xs</span><span class="p">)</span> <span class="p">(</span><span class="n">length</span> <span class="n">ys</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c1">-- x's at element i, y's at element i, such that i is drawn from 0 to the min length of both lists </span>
+<span class="n">ziplike</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="p">[(</span><span class="n">xs</span><span class="o">!!</span><span class="n">i</span><span class="p">,</span> <span class="n">ys</span><span class="o">!!</span><span class="n">i</span><span class="p">)</span> <span class="o">|</span> <span class="n">i</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="p">(</span><span class="n">min</span> <span class="p">(</span><span class="n">length</span> <span class="n">xs</span><span class="p">)</span> <span class="p">(</span><span class="n">length</span> <span class="n">ys</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]]</span>
+
+
+
+<span class="c1">-- DG 1 - Factorials</span>
+<span class="c1">-- the product of an integer and all the integers below it; e.g. factorial four ( 4! ) is equal to 24.</span>
+
+<span class="c1">-- 4*3*2*1 = 24</span>
+
+<span class="c1">-- recursion</span>
+<span class="n">fac</span> <span class="n">n</span> <span class="o">=</span>
+    <span class="kr">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span>
+        <span class="c1">-- base case of the recursion.. stop at 1</span>
+        <span class="kr">then</span> <span class="mi">1</span>
+        <span class="kr">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fac</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">an</span> <span class="o">=</span> <span class="n">fac</span> <span class="mi">4</span>
+
+<span class="c1">-- simplicity</span>
+<span class="n">fac'</span> <span class="n">n</span> <span class="o">=</span> <span class="n">product</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="n">n</span><span class="p">]</span>
+
+<span class="n">ao</span> <span class="o">=</span> <span class="n">fac'</span> <span class="mi">4</span>
+
+<span class="c1">-- works</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">product</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">aq</span> <span class="o">=</span> <span class="n">product</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="o">..</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1">-- pattern match?</span>
+<span class="c1">-- same logic as recursion</span>
+<span class="n">fact</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">fact</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ar</span> <span class="o">=</span> <span class="n">fact</span> <span class="mi">4</span>
+
+<span class="c1">-- fold right (higher order fn.. coming to that in the book, so leave for now)</span>
+<span class="n">fact2</span> <span class="n">n</span> <span class="o">=</span> <span class="n">foldr</span> <span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="mi">1</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="n">n</span><span class="p">]</span>
+<span class="n">as</span> <span class="o">=</span> <span class="n">fact2</span> <span class="mi">4</span>
+
+
+<span class="c1">-- DG 2 - Fibonacci</span>
+<span class="c1">-- Each new term in the Fibonacci sequence is generated by adding the previous two terms. </span>
+<span class="c1">-- By starting with 1 and 2, the first 10 terms will be:</span>
+<span class="c1">-- 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...</span>
+
+<span class="c1">-- write a function to get first 10 fibs</span>
+
+<span class="c1">--[1, 2, 3, 5, 8, 13, 21, 34, 55, 89]</span>
+<span class="c1">--at = fibs 10</span>
+
+<span class="c1">-- keep generating fibs.  No base case for recursion</span>
+<span class="n">fibs</span> <span class="n">a</span> <span class="n">b</span> <span class="o">=</span>
+    <span class="c1">--if a &gt; 89</span>
+        <span class="c1">-- base case of the recursion.. stop at max (eg 89)..return empty list</span>
+      <span class="c1">--  then [] </span>
+        <span class="c1">-- cons operator add a to start of list</span>
+        <span class="c1">--else a : fibs b (a+b) </span>
+        <span class="n">a</span> <span class="o">:</span> <span class="n">fibs</span> <span class="n">b</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1">-- finding the 10,000th fib</span>
+<span class="n">at</span> <span class="o">=</span> <span class="n">last</span> <span class="p">(</span><span class="n">take</span> <span class="mi">10000</span> <span class="p">(</span><span class="n">fibs</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">au</span> <span class="o">=</span> <span class="p">(</span><span class="n">fibs</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span><span class="o">!!</span><span class="mi">10000</span>
+<span class="n">fibs'</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">fibs</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span><span class="o">!!</span><span class="n">n</span>
+
+<span class="c1">-- nice way to test fibs', by throwing a range at it</span>
+<span class="n">av</span> <span class="o">=</span> <span class="p">[</span><span class="n">fibs'</span> <span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">30</span><span class="p">]]</span></code></pre></figure>
+
+<p><a href="http://www.willamette.edu/~fruehr/haskell/evolution.html">Evolution of a Haskell coder</a></p>
 
 
   </div>
@@ -343,7 +504,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-19 07:00:35 GMT</p>
+        <p>rev: 2016-10-19 12:08:52 GMT</p>
       </div>
     </div>
 
