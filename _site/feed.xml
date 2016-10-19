@@ -6,12 +6,60 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Oct 2016 14:12:42 +0100</pubDate>
-    <lastBuildDate>Tue, 18 Oct 2016 14:12:42 +0100</lastBuildDate>
+    <pubDate>Wed, 19 Oct 2016 06:52:09 +0100</pubDate>
+    <lastBuildDate>Wed, 19 Oct 2016 06:52:09 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Haskell - List Comprehensions</title>
+        <title>Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC</title>
+        <description>&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Make SQL do the heavy lifting of: Sorting, Filtering, Paging.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;I’ve been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I’ve noticed is that my applications are much simpler and more performant if I &lt;b&gt;leave data manipulation to… the database!&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;I currently work in large enterprises, and have found that many people I work with, are more comfortable with SQL than general purpose coding languages.  They like it if they can see how the app works looking into which Stored Procs are called.&lt;/p&gt;
+
+&lt;h2 id=&quot;example-app&quot;&gt;Example App&lt;/h2&gt;
+&lt;p&gt;// Show the ASP.NET MVC app&lt;/p&gt;
+
+&lt;p&gt;// Show DAL / Service layer - repository pattern&lt;/p&gt;
+
+&lt;p&gt;// static method to call the db inside a using&lt;/p&gt;
+
+&lt;p&gt;// order, filter, Page
+ // use get requests so can bookmark&lt;/p&gt;
+
+&lt;p&gt;// use javascript to simplify URLs&lt;/p&gt;
+
+&lt;h2 id=&quot;measuring-speed-with-miniprofiler&quot;&gt;Measuring speed with MiniProfiler&lt;/h2&gt;
+&lt;p&gt;// demo&lt;/p&gt;
+
+&lt;h2 id=&quot;simple-query-optimisation&quot;&gt;Simple Query Optimisation&lt;/h2&gt;
+&lt;p&gt;// right click apply index&lt;/p&gt;
+
+&lt;h2 id=&quot;validation-of-data&quot;&gt;Validation of Data&lt;/h2&gt;
+&lt;p&gt;// always use Parameters
+// Dapper great for type translation&lt;/p&gt;
+
+&lt;h2 id=&quot;have-to-use-sps&quot;&gt;Have to use SP’s?&lt;/h2&gt;
+&lt;p&gt;// no big deal&lt;/p&gt;
+
+&lt;h2 id=&quot;source-control-your-db&quot;&gt;Source control your DB&lt;/h2&gt;
+&lt;p&gt;// even if the enterprise doesn’t… easy&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 19 Oct 2016 00:00:00 +0100</pubDate>
+        <link>/jekyll/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL.html</link>
+        <guid isPermaLink="true">/jekyll/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Learn you a Haskell for Fun and Profit</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/Mia_350.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;....Because trying something new is fun!&lt;/p&gt;
 
@@ -223,8 +271,8 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 18 Oct 2016 00:00:00 +0100</pubDate>
-        <link>/haskell/2016/10/18/Haskell-Getting-Started-and-List-Comprehensions.html</link>
-        <guid isPermaLink="true">/haskell/2016/10/18/Haskell-Getting-Started-and-List-Comprehensions.html</guid>
+        <link>/haskell/2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit.html</link>
+        <guid isPermaLink="true">/haskell/2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit.html</guid>
         
         
         <category>Haskell</category>

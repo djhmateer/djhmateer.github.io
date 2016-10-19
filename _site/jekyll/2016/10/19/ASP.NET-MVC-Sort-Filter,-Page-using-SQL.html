@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Dave Mateer&#39;s Blog</title>
-  <meta name="description" content="In depth articles on software production">
+  <title>Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC</title>
+  <meta name="description" content="Summary Make SQL do the heavy lifting of: Sorting, Filtering, Paging.">
 
   
   
@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/jekyll/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL.html">
   <link rel="alternate" type="application/rss+xml" title="Dave Mateer&#39;s Blog" href="/feed.xml">
   
   
@@ -70,41 +70,55 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Hi</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC</h1>
+    <p class="post-meta"><time datetime="2016-10-19T00:00:00+01:00" itemprop="datePublished">Oct 19, 2016</time></p>
+  </header>
 
-<p>I'm a developer, dad, speaker, climber, guitar player and explorer of tech.  Here are some articles that I hope will help/inspire you.</p>
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="summary">Summary</h2>
+<p>Make SQL do the heavy lifting of: Sorting, Filtering, Paging.</p>
+
+<h2 id="background">Background</h2>
+<p>I’ve been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I’ve noticed is that my applications are much simpler and more performant if I <b>leave data manipulation to… the database!</b></p>
+
+<p>I currently work in large enterprises, and have found that many people I work with, are more comfortable with SQL than general purpose coding languages.  They like it if they can see how the app works looking into which Stored Procs are called.</p>
+
+<h2 id="example-app">Example App</h2>
+<p>// Show the ASP.NET MVC app</p>
+
+<p>// Show DAL / Service layer - repository pattern</p>
+
+<p>// static method to call the db inside a using</p>
+
+<p>// order, filter, Page
+ // use get requests so can bookmark</p>
+
+<p>// use javascript to simplify URLs</p>
+
+<h2 id="measuring-speed-with-miniprofiler">Measuring speed with MiniProfiler</h2>
+<p>// demo</p>
+
+<h2 id="simple-query-optimisation">Simple Query Optimisation</h2>
+<p>// right click apply index</p>
+
+<h2 id="validation-of-data">Validation of Data</h2>
+<p>// always use Parameters
+// Dapper great for type translation</p>
+
+<h2 id="have-to-use-sps">Have to use SP’s?</h2>
+<p>// no big deal</p>
+
+<h2 id="source-control-your-db">Source control your DB</h2>
+<p>// even if the enterprise doesn’t… easy</p>
 
 
-<ul>
+  </div>
+
   
-    
-    <li>
-      <a href="/jekyll/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL.html">Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC </a>
-    </li>
-    
-  
-    
-    <li>
-      <a href="/haskell/2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit.html">Learn you a Haskell for Fun and Profit </a>
-    </li>
-    
-  
-    
-    <li>
-      <a href="/jekyll/2016/10/17/Blog-with-Jekyll-and-host-for-free.html">Blog with Jekyll and host for Free </a>
-    </li>
-    
-  
-    
-    <li>
-      <a href="/jekyll/2016/10/16/Why-Blog.html">Why Blog? </a>
-    </li>
-    
-  
-</ul>
-</div>
+</article>
 
       </div>
     </main>
