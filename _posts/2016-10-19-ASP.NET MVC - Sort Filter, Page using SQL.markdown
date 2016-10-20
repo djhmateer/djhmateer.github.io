@@ -7,6 +7,7 @@ published: true
 ---
 ## Summary
 Make SQL do the heavy lifting of: Sorting, Filtering, Paging.  
+Keep data access as simple as possible in your apps 
 
 ## Background
 I've been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I've noticed is that my applications are much simpler and more performant if I <b>leave data manipulation to... the database!</b>
@@ -17,6 +18,40 @@ I currently work in large enterprises, and have found that many people I work wi
  // Show the ASP.NET MVC app
 
  // Show DAL / Service layer - repository pattern
+
+ // Database 
+ 
+## SQL Conventions
+CREATE TABLE [dbo].[Author] (
+    [AuthorID]    INT            IDENTITY (1, 1) NOT NULL,
+    [FirstName]   NVARCHAR (255) NOT NULL,
+    [LastName]    NVARCHAR (255) NOT NULL,
+    [DateOfBirth] DATE           NULL,
+    PRIMARY KEY CLUSTERED ([AuthorID] ASC)
+);
+
+Singular table names 
+http://stackoverflow.com/a/809018/26086 and http://stackoverflow.com/a/5841297/26086 
+Master detail link tables are nicer eg BookCategory, CustomerAddress
+
+Identity for the PK (not Guids)
+
+AuthorID for ID Column 
+
+## Repository Conventions
+asdf
+
+## Controller Conventions
+RESTful resources seem to be mostly plural: https://developer.spotify.com/web-api/endpoint-reference/ 
+
+/Authors/
+/Authors/Details/1
+/Authors/Edit/1
+/Authors/Delete/1
+/Authors/Create
+
+
+
 
  // static method to call the db inside a using
 
