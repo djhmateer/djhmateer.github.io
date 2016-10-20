@@ -22,6 +22,7 @@ I currently work in large enterprises, and have found that many people I work wi
  // Database 
  
 ## SQL Conventions
+{% highlight sql %}
 CREATE TABLE [dbo].[Author] (
     [AuthorID]    INT            IDENTITY (1, 1) NOT NULL,
     [FirstName]   NVARCHAR (255) NOT NULL,
@@ -29,27 +30,73 @@ CREATE TABLE [dbo].[Author] (
     [DateOfBirth] DATE           NULL,
     PRIMARY KEY CLUSTERED ([AuthorID] ASC)
 );
+{% endhighlight %}
 
-Singular table names 
-http://stackoverflow.com/a/809018/26086 and http://stackoverflow.com/a/5841297/26086 
-Master detail link tables are nicer eg BookCategory, CustomerAddress
-
-Identity for the PK (not Guids)
-
-AuthorID for ID Column 
+* Identity Ints for the PK (not GUIDS)
+* AuthorID for ID Column (not ID) 
+* Singular table names preferred see [here](http://stackoverflow.com/a/809018/26086) and [here](http://stackoverflow.com/a/5841297/26086)
+ so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having > 1 Address.
 
 ## Repository Conventions
-asdf
+The overall concept is to let [Dapper](https://github.com/StackExchange/dapper-dot-net) do the mapping of what is returned from the SQL to a List of Authors.
+
+{% highlight csharp %}
+public static class Util
+{
+    public static IDbConnection GetOpenConnection()
+    {
+        var connection = new SqlConnection(
+            ConfigurationManager.ConnectionStrings["ThinkBooksConnectionString"].ConnectionString);
+        connection.Open();
+        return connection;
+    }
+}
+
+public class AuthorsRepository
+{
+    public List<Author> GetAuthors()
+    {
+        using (var db = Util.GetOpenConnection())
+        {
+            return db.Query<Author>("SELECT * FROM Author ORDER BY LastName").ToList();
+        }
+    }
+}
+{% endhighlight %}
+
+## Model Conventions
+![Cows](/assets/VSThinkBooks.jpg)
+<p>Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)</p>
+
 
 ## Controller Conventions
-RESTful resources seem to be mostly plural: https://developer.spotify.com/web-api/endpoint-reference/ 
+RESTful resources seem to be mostly plural eg [Spotify API](https://developer.spotify.com/web-api/endpoint-reference/) so I will use:
 
+{% highlight html %}
 /Authors/
 /Authors/Details/1
 /Authors/Edit/1
 /Authors/Delete/1
 /Authors/Create
+{% endhighlight %}
+<p>The URL structure we will be using</p>
 
+![Cows](/assets/VSThinkBook2.jpg)
+<p>Use VS templates to scaffold views (once you have created your Author.cs model)</p>
+
+## Sorting
+Lets enable bi-directional sorting on the FirstName Column
+
+
+
+
+
+## Sort Direction
+asdf
+
+
+
+## Use a SPROC
 
 
 

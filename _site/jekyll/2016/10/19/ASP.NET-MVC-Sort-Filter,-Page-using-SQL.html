@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC</title>
-  <meta name="description" content="Summary Make SQL do the heavy lifting of: Sorting, Filtering, Paging.">
+  <meta name="description" content="Summary Make SQL do the heavy lifting of: Sorting, Filtering, Paging. Keep data access as simple as possible in your apps">
 
   
   
@@ -79,7 +79,8 @@
 
   <div class="post-content" itemprop="articleBody">
     <h2 id="summary">Summary</h2>
-<p>Make SQL do the heavy lifting of: Sorting, Filtering, Paging.</p>
+<p>Make SQL do the heavy lifting of: Sorting, Filtering, Paging.<br />
+Keep data access as simple as possible in your apps</p>
 
 <h2 id="background">Background</h2>
 <p>I’ve been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I’ve noticed is that my applications are much simpler and more performant if I <b>leave data manipulation to… the database!</b></p>
@@ -90,6 +91,76 @@
 <p>// Show the ASP.NET MVC app</p>
 
 <p>// Show DAL / Service layer - repository pattern</p>
+
+<p>// Database</p>
+
+<h2 id="sql-conventions">SQL Conventions</h2>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">Author</span><span class="p">]</span> <span class="p">(</span>
+    <span class="p">[</span><span class="n">AuthorID</span><span class="p">]</span>    <span class="n">INT</span>            <span class="k">IDENTITY</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">FirstName</span><span class="p">]</span>   <span class="n">NVARCHAR</span> <span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">LastName</span><span class="p">]</span>    <span class="n">NVARCHAR</span> <span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">DateOfBirth</span><span class="p">]</span> <span class="n">DATE</span>           <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">CLUSTERED</span> <span class="p">([</span><span class="n">AuthorID</span><span class="p">]</span> <span class="k">ASC</span><span class="p">)</span>
+<span class="p">);</span></code></pre></figure>
+
+<ul>
+  <li>Identity Ints for the PK (not GUIDS)</li>
+  <li>AuthorID for ID Column (not ID)</li>
+  <li>Singular table names preferred see <a href="http://stackoverflow.com/a/809018/26086">here</a> and <a href="http://stackoverflow.com/a/5841297/26086">here</a>
+ so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having &gt; 1 Address.</li>
+</ul>
+
+<h2 id="repository-conventions">Repository Conventions</h2>
+<p>The overall concept is to let <a href="https://github.com/StackExchange/dapper-dot-net">Dapper</a> do the mapping of what is returned from the SQL to a List of Authors.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Util</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IDbConnection</span> <span class="nf">GetOpenConnection</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">connection</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlConnection</span><span class="p">(</span>
+            <span class="n">ConfigurationManager</span><span class="p">.</span><span class="n">ConnectionStrings</span><span class="p">[</span><span class="s">"ThinkBooksConnectionString"</span><span class="p">].</span><span class="n">ConnectionString</span><span class="p">);</span>
+        <span class="n">connection</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">connection</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">AuthorsRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Author</span><span class="p">&gt;</span> <span class="nf">GetAuthors</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="n">Util</span><span class="p">.</span><span class="nf">GetOpenConnection</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">db</span><span class="p">.</span><span class="n">Query</span><span class="p">&lt;</span><span class="n">Author</span><span class="p">&gt;(</span><span class="s">"SELECT * FROM Author ORDER BY LastName"</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="model-conventions">Model Conventions</h2>
+<p><img src="/assets/VSThinkBooks.jpg" alt="Cows" /></p>
+<p>Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)</p>
+
+<h2 id="controller-conventions">Controller Conventions</h2>
+<p>RESTful resources seem to be mostly plural eg <a href="https://developer.spotify.com/web-api/endpoint-reference/">Spotify API</a> so I will use:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">/Authors/
+/Authors/Details/1
+/Authors/Edit/1
+/Authors/Delete/1
+/Authors/Create</code></pre></figure>
+
+<p>The URL structure we will be using</p>
+
+<p><img src="/assets/VSThinkBook2.jpg" alt="Cows" /></p>
+<p>Use VS templates to scaffold views (once you have created your Author.cs model)</p>
+
+<h2 id="sorting">Sorting</h2>
+<p>Lets enable bi-directional sorting on the FirstName Column</p>
+
+<h2 id="sort-direction">Sort Direction</h2>
+<p>asdf</p>
+
+<h2 id="use-a-sproc">Use a SPROC</h2>
 
 <p>// static method to call the db inside a using</p>
 
@@ -170,7 +241,7 @@
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-19 12:08:52 GMT</p>
+        <p>rev: 2016-10-20 15:14:22 GMT</p>
       </div>
     </div>
 

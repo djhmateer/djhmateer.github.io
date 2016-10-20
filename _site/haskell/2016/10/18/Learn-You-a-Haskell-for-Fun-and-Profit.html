@@ -316,7 +316,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="c1">-- filter by odd x's and x&gt;3 </span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">],</span> <span class="n">odd</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span></code></pre></figure>
 
-<p><a href="https://github.com/noelmarkham/learn-you-a-haskell-exercises/blob/master/2-starting-out.hs">Exercise link to GitHub</a></p>
+<p><a href="https://github.com/noelmarkham/learn-you-a-haskell-exercises/blob/master/2-starting-out.hs">Noel Markham’s exercises link</a></p>
 
 <figure class="highlight"><pre><code class="language-haskell" data-lang="haskell"><span class="c1">-- Question 1</span>
 <span class="c1">-- last element in a list</span>
@@ -433,7 +433,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="n">fibs</span> <span class="n">a</span> <span class="n">b</span> <span class="o">=</span>
     <span class="c1">--if a &gt; 89</span>
         <span class="c1">-- base case of the recursion.. stop at max (eg 89)..return empty list</span>
-      <span class="c1">--  then [] </span>
+        <span class="c1">--  then [] </span>
         <span class="c1">-- cons operator add a to start of list</span>
         <span class="c1">--else a : fibs b (a+b) </span>
         <span class="n">a</span> <span class="o">:</span> <span class="n">fibs</span> <span class="n">b</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
@@ -444,7 +444,13 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
 <span class="n">fibs'</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">fibs</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span><span class="o">!!</span><span class="n">n</span>
 
 <span class="c1">-- nice way to test fibs', by throwing a range at it</span>
-<span class="n">av</span> <span class="o">=</span> <span class="p">[</span><span class="n">fibs'</span> <span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">30</span><span class="p">]]</span></code></pre></figure>
+<span class="n">av</span> <span class="o">=</span> <span class="p">[</span><span class="n">fibs'</span> <span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">30</span><span class="p">]]</span>
+
+<span class="c1">-- lazy</span>
+<span class="n">fibs''</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span> <span class="o">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">|</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">zip</span> <span class="n">fibs''</span> <span class="p">(</span><span class="n">tail</span> <span class="n">fibs''</span><span class="p">)]</span>
+
+<span class="c1">-- zipWith adds 2 lists together</span>
+<span class="n">fibs3</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">zipWith</span> <span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="n">fibs3</span> <span class="p">(</span><span class="n">tail</span> <span class="n">fibs3</span><span class="p">)</span></code></pre></figure>
 
 <p><a href="http://www.willamette.edu/~fruehr/haskell/evolution.html">Evolution of a Haskell coder</a></p>
 
@@ -504,7 +510,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.</p>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-19 12:08:52 GMT</p>
+        <p>rev: 2016-10-20 15:14:22 GMT</p>
       </div>
     </div>
 
