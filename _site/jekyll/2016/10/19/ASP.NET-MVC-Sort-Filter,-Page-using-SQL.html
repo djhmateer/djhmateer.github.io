@@ -155,12 +155,41 @@ Keep data access as simple as possible in your apps</p>
 <p>Use VS templates to scaffold views (once you have created your Author.cs model)</p>
 
 <h2 id="sorting">Sorting</h2>
-<p>Lets enable bi-directional sorting on the FirstName Column</p>
+<p><img src="/assets/ThinkBookSort.jpg" alt="Cows" /></p>
+<p>Asc sorting on the FirstName Column</p>
 
-<h2 id="sort-direction">Sort Direction</h2>
+<p><img src="/assets/ThinkBookSort2.jpg" alt="Cows" /></p>
+<p>Desc sorting on the FirstName Column</p>
+
+<h2 id="sproc">SPROC</h2>
+<p><a href="http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/">StackOverflows 2016 view</a> search the page for ‘Stored procs’ and look at the comments at the bottom too.</p>
+
+<p>TL;DR - “Stored procs are a layer of abstraction they don’t need, and keeping SQL in code means much more easily source controlled”</p>
+
+<p>So I always try and get SQL in code now, unless the Enterprise demands SP’s (they usually do)</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Author</span><span class="p">&gt;</span> <span class="nf">GetAuthors</span><span class="p">(</span><span class="kt">string</span> <span class="n">sortColumnAndDirection</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="n">Util</span><span class="p">.</span><span class="nf">GetOpenConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">p</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DynamicParameters</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">sortDirection</span> <span class="p">=</span> <span class="s">"ASC"</span><span class="p">;</span>
+        <span class="kt">var</span> <span class="n">sortColumn</span> <span class="p">=</span> <span class="n">sortColumnAndDirection</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sortColumnAndDirection</span><span class="p">.</span><span class="nf">EndsWith</span><span class="p">(</span><span class="s">"_desc"</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">sortDirection</span> <span class="p">=</span> <span class="s">"DESC"</span><span class="p">;</span>
+            <span class="n">sortColumn</span> <span class="p">=</span> <span class="n">sortColumn</span><span class="p">.</span><span class="nf">Substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">sortColumnAndDirection</span><span class="p">.</span><span class="n">Length</span> <span class="p">-</span> <span class="m">5</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">p</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"@SortColumn"</span><span class="p">,</span> <span class="n">sortColumn</span><span class="p">);</span>
+        <span class="n">p</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"@SortDirection"</span><span class="p">,</span> <span class="n">sortDirection</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">db</span><span class="p">.</span><span class="n">Query</span><span class="p">&lt;</span><span class="n">Author</span><span class="p">&gt;(</span><span class="s">"GetAuthors"</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">commandType</span><span class="p">:</span> <span class="n">CommandType</span><span class="p">.</span><span class="n">StoredProcedure</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="inline-sql-in-c">Inline SQL in C</h2>
+
+<h2 id="filtering">Filtering</h2>
 <p>asdf</p>
-
-<h2 id="use-a-sproc">Use a SPROC</h2>
 
 <p>// static method to call the db inside a using</p>
 
@@ -241,7 +270,7 @@ Keep data access as simple as possible in your apps</p>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-20 15:14:22 GMT</p>
+        <p>rev: 2016-10-21 14:07:12 GMT</p>
       </div>
     </div>
 
