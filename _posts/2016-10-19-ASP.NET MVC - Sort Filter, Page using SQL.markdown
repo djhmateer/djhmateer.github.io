@@ -22,6 +22,7 @@ I currently work in large enterprises, and have found that many people I work wi
  // Database 
  
 ## SQL Conventions
+**Singular**
 {% highlight sql %}
 CREATE TABLE [dbo].[Author] (
     [AuthorID]    INT            IDENTITY (1, 1) NOT NULL,
@@ -38,6 +39,8 @@ CREATE TABLE [dbo].[Author] (
  so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having > 1 Address.
 
 ## Repository Conventions
+**Plural**
+
 The overall concept is to let [Dapper](https://github.com/StackExchange/dapper-dot-net) do the mapping of what is returned from the SQL to a List of Authors.
 
 {% highlight csharp %}
@@ -65,11 +68,15 @@ public class AuthorsRepository
 {% endhighlight %}
 
 ## Model Conventions
+**Singular**
+
 ![Cows](/assets/VSThinkBooks.jpg)
 <p>Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)</p>
 
 
 ## Controller Conventions
+**Plural**
+
 RESTful resources seem to be mostly plural eg [Spotify API](https://developer.spotify.com/web-api/endpoint-reference/) so I will use:
 
 {% highlight html %}

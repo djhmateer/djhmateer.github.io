@@ -95,6 +95,7 @@ Keep data access as simple as possible in your apps</p>
 <p>// Database</p>
 
 <h2 id="sql-conventions">SQL Conventions</h2>
+<p><strong>Singular</strong></p>
 
 <figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">Author</span><span class="p">]</span> <span class="p">(</span>
     <span class="p">[</span><span class="n">AuthorID</span><span class="p">]</span>    <span class="n">INT</span>            <span class="k">IDENTITY</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -112,6 +113,8 @@ Keep data access as simple as possible in your apps</p>
 </ul>
 
 <h2 id="repository-conventions">Repository Conventions</h2>
+<p><strong>Plural</strong></p>
+
 <p>The overall concept is to let <a href="https://github.com/StackExchange/dapper-dot-net">Dapper</a> do the mapping of what is returned from the SQL to a List of Authors.</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Util</span>
@@ -137,10 +140,14 @@ Keep data access as simple as possible in your apps</p>
 <span class="p">}</span></code></pre></figure>
 
 <h2 id="model-conventions">Model Conventions</h2>
+<p><strong>Singular</strong></p>
+
 <p><img src="/assets/VSThinkBooks.jpg" alt="Cows" /></p>
 <p>Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)</p>
 
 <h2 id="controller-conventions">Controller Conventions</h2>
+<p><strong>Plural</strong></p>
+
 <p>RESTful resources seem to be mostly plural eg <a href="https://developer.spotify.com/web-api/endpoint-reference/">Spotify API</a> so I will use:</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html">/Authors/
@@ -270,7 +277,7 @@ Keep data access as simple as possible in your apps</p>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-21 14:07:12 GMT</p>
+        <p>rev: 2016-10-24 10:34:49 GMT</p>
       </div>
     </div>
 

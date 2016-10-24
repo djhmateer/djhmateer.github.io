@@ -11,7 +11,7 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font: 400 14px/1.5 "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 400 14px/1.4 "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #111;
   background-color: #fdfdfd;
   -webkit-text-size-adjust: 100%;
@@ -92,7 +92,7 @@ blockquote {
  */
 pre,
 code {
-  font-size: 15px;
+  font-size: 12px;
   border: 1px solid #e8e8e8;
   border-radius: 3px;
   background-color: #eef; }
@@ -112,16 +112,16 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: -webkit-calc(900px - (15px * 2));
-  max-width: calc(900px - (15px * 2));
+  max-width: -webkit-calc(700px - (15px * 2));
+  max-width: calc(700px - (15px * 2));
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px; }
   @media screen and (max-width: 800px) {
     .wrapper {
-      max-width: -webkit-calc(900px - (15px));
-      max-width: calc(900px - (15px));
+      max-width: -webkit-calc(700px - (15px));
+      max-width: calc(700px - (15px));
       padding-right: 7.5px;
       padding-left: 7.5px; } }
 
@@ -168,7 +168,7 @@ pre {
     display: none; }
   .site-nav .page-link {
     color: #111;
-    line-height: 1.5; }
+    line-height: 1.4; }
     .site-nav .page-link:not(:last-child) {
       margin-right: 20px; }
   @media screen and (max-width: 600px) {
@@ -285,7 +285,7 @@ pre {
   margin-bottom: 15px; }
 
 .post-title {
-  font-size: 42px;
+  font-size: 32px;
   letter-spacing: -1px;
   line-height: 1; }
   @media screen and (max-width: 800px) {
@@ -295,12 +295,12 @@ pre {
 .post-content {
   margin-bottom: 15px; }
   .post-content h2 {
-    font-size: 32px; }
+    font-size: 30px; }
     @media screen and (max-width: 800px) {
       .post-content h2 {
         font-size: 28px; } }
   .post-content h3 {
-    font-size: 26px; }
+    font-size: 24px; }
     @media screen and (max-width: 800px) {
       .post-content h3 {
         font-size: 22px; } }

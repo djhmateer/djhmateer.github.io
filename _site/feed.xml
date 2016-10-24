@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 21 Oct 2016 14:07:12 +0100</pubDate>
-    <lastBuildDate>Fri, 21 Oct 2016 14:07:12 +0100</lastBuildDate>
+    <pubDate>Mon, 24 Oct 2016 10:34:49 +0100</pubDate>
+    <lastBuildDate>Mon, 24 Oct 2016 10:34:49 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -29,6 +29,7 @@ Keep data access as simple as possible in your apps&lt;/p&gt;
 &lt;p&gt;// Database&lt;/p&gt;
 
 &lt;h2 id=&quot;sql-conventions&quot;&gt;SQL Conventions&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Singular&lt;/strong&gt;&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;IDENTITY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -46,6 +47,8 @@ Keep data access as simple as possible in your apps&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;repository-conventions&quot;&gt;Repository Conventions&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Plural&lt;/strong&gt;&lt;/p&gt;
+
 &lt;p&gt;The overall concept is to let &lt;a href=&quot;https://github.com/StackExchange/dapper-dot-net&quot;&gt;Dapper&lt;/a&gt; do the mapping of what is returned from the SQL to a List of Authors.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Util&lt;/span&gt;
@@ -71,10 +74,14 @@ Keep data access as simple as possible in your apps&lt;/p&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;model-conventions&quot;&gt;Model Conventions&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Singular&lt;/strong&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;/assets/VSThinkBooks.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)&lt;/p&gt;
 
 &lt;h2 id=&quot;controller-conventions&quot;&gt;Controller Conventions&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Plural&lt;/strong&gt;&lt;/p&gt;
+
 &lt;p&gt;RESTful resources seem to be mostly plural eg &lt;a href=&quot;https://developer.spotify.com/web-api/endpoint-reference/&quot;&gt;Spotify API&lt;/a&gt; so I will use:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;/Authors/
