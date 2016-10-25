@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC</title>
-  <meta name="description" content="Summary Make SQL do the heavy lifting of: Sorting, Filtering, Paging. Keep data access as simple as possible in your apps">
+  <meta name="description" content="Summary Make SQL do the heavy lifting of: Sorting, Filtering, Paging. Keep data access as simple as possible">
 
   
   
@@ -79,23 +79,23 @@
 
   <div class="post-content" itemprop="articleBody">
     <h2 id="summary">Summary</h2>
-<p>Make SQL do the heavy lifting of: Sorting, Filtering, Paging.<br />
-Keep data access as simple as possible in your apps</p>
+<ul>
+  <li>Make SQL do the heavy lifting of: Sorting, Filtering, Paging.</li>
+  <li>Keep data access as simple as possible</li>
+</ul>
 
 <h2 id="background">Background</h2>
-<p>I’ve been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I’ve noticed is that my applications are much simpler and more performant if I <b>leave data manipulation to… the database!</b></p>
-
-<p>I currently work in large enterprises, and have found that many people I work with, are more comfortable with SQL than general purpose coding languages.  They like it if they can see how the app works looking into which Stored Procs are called.</p>
+<p>I’ve been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I’ve noticed is that my applications are much simpler and more performant if I <strong>leave data manipulation to the database</strong></p>
 
 <h2 id="example-app">Example App</h2>
-<p>// Show the ASP.NET MVC app</p>
+<ul>
+  <li>ASP.NET MVC app</li>
+  <li>Service layer (DAL) - repository pattern</li>
+  <li>MSSQL</li>
+</ul>
 
-<p>// Show DAL / Service layer - repository pattern</p>
-
-<p>// Database</p>
-
-<h2 id="sql-conventions">SQL Conventions</h2>
-<p><strong>Singular</strong></p>
+<h2 id="conventions">Conventions</h2>
+<p><strong>Singular Table Names</strong></p>
 
 <figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">Author</span><span class="p">]</span> <span class="p">(</span>
     <span class="p">[</span><span class="n">AuthorID</span><span class="p">]</span>    <span class="n">INT</span>            <span class="k">IDENTITY</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -112,23 +112,9 @@ Keep data access as simple as possible in your apps</p>
  so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having &gt; 1 Address.</li>
 </ul>
 
-<h2 id="repository-conventions">Repository Conventions</h2>
-<p><strong>Plural</strong></p>
+<p><strong>Plural Repository Names</strong></p>
 
-<p>The overall concept is to let <a href="https://github.com/StackExchange/dapper-dot-net">Dapper</a> do the mapping of what is returned from the SQL to a List of Authors.</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Util</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="n">IDbConnection</span> <span class="nf">GetOpenConnection</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">connection</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlConnection</span><span class="p">(</span>
-            <span class="n">ConfigurationManager</span><span class="p">.</span><span class="n">ConnectionStrings</span><span class="p">[</span><span class="s">"ThinkBooksConnectionString"</span><span class="p">].</span><span class="n">ConnectionString</span><span class="p">);</span>
-        <span class="n">connection</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
-        <span class="k">return</span> <span class="n">connection</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">public</span> <span class="k">class</span> <span class="nc">AuthorsRepository</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">AuthorsRepository</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Author</span><span class="p">&gt;</span> <span class="nf">GetAuthors</span><span class="p">()</span>
     <span class="p">{</span>
@@ -139,16 +125,16 @@ Keep data access as simple as possible in your apps</p>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="model-conventions">Model Conventions</h2>
-<p><strong>Singular</strong></p>
+<p><a href="https://github.com/StackExchange/dapper-dot-net">Dapper</a> maps what is returned from SQL to a List of Authors.</p>
+
+<p><strong>Singular Model Names</strong></p>
 
 <p><img src="/assets/VSThinkBooks.jpg" alt="Cows" /></p>
 <p>Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)</p>
 
-<h2 id="controller-conventions">Controller Conventions</h2>
-<p><strong>Plural</strong></p>
+<p><strong>Plural Controllers</strong></p>
 
-<p>RESTful resources seem to be mostly plural eg <a href="https://developer.spotify.com/web-api/endpoint-reference/">Spotify API</a> so I will use:</p>
+<p>RESTful resources are mostly plural eg <a href="https://developer.spotify.com/web-api/endpoint-reference/">Spotify API</a> so I will use:</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html">/Authors/
 /Authors/Details/1
@@ -156,24 +142,44 @@ Keep data access as simple as possible in your apps</p>
 /Authors/Delete/1
 /Authors/Create</code></pre></figure>
 
-<p>The URL structure we will be using</p>
+<h2 id="use-full-blown-sql">Use Full Blown SQL</h2>
+<p>Don’t use localdb.  Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.  Also full SQL runs faster.</p>
 
-<p><img src="/assets/VSThinkBook2.jpg" alt="Cows" /></p>
-<p>Use VS templates to scaffold views (once you have created your Author.cs model)</p>
+<h2 id="filtering">Filtering</h2>
+<p>strategy
+WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)</p>
 
-<h2 id="sorting">Sorting</h2>
-<p><img src="/assets/ThinkBookSort.jpg" alt="Cows" /></p>
-<p>Asc sorting on the FirstName Column</p>
+<h2 id="ordering">Ordering</h2>
+<p>CASE strategy works, but it doesn’t use indexes</p>
 
-<p><img src="/assets/ThinkBookSort2.jpg" alt="Cows" /></p>
-<p>Desc sorting on the FirstName Column</p>
+<p>Dynamic SQL is fine (need to be careful about SQL injection)</p>
+
+<p>sp_executesql works well if you have to use SP’s.</p>
+
+<h2 id="count">Count</h2>
+<p>Counts are expensive.</p>
+
+<p>If you are counting the whole table, use this technique:</p>
+
+<p>If you are counting over multiple tables and are having daily jobs running running.  Do the processing and put total main query count into a helper table.</p>
+
+<h2 id="paging">Paging</h2>
+<p>SQL2005 - CTE’s works</p>
+
+<p>SQL2012 - ORDER BY OFFSET FETCH seem to perform better.  And make cleaner SQL</p>
+
+<h2 id="joins">Joins</h2>
+<p>We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.</p>
+
+<h2 id="crud-on-simple-helper-tables">CRUD on simple helper Tables</h2>
+<p>asdf</p>
 
 <h2 id="sproc">SPROC</h2>
 <p><a href="http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/">StackOverflows 2016 view</a> search the page for ‘Stored procs’ and look at the comments at the bottom too.</p>
 
-<p>TL;DR - “Stored procs are a layer of abstraction they don’t need, and keeping SQL in code means much more easily source controlled”</p>
+<p>TL;DR - “Stored procs are a <strong>layer of abstraction they don’t need</strong>, and keeping SQL in code means much more easily source controlled”</p>
 
-<p>So I always try and get SQL in code now, unless the Enterprise demands SP’s (they usually do)</p>
+<p>So I always try and get SQL in code now, unless the Enterprise demands SP’s (they usually do - in which case sp_executesql can really help)</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Author</span><span class="p">&gt;</span> <span class="nf">GetAuthors</span><span class="p">(</span><span class="kt">string</span> <span class="n">sortColumnAndDirection</span><span class="p">)</span>
 <span class="p">{</span>
@@ -193,30 +199,21 @@ Keep data access as simple as possible in your apps</p>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="inline-sql-in-c">Inline SQL in C</h2>
+<h2 id="inline-sql">Inline SQL</h2>
+<p>Pretty much no different than an optinised sproc.</p>
 
-<h2 id="filtering">Filtering</h2>
-<p>asdf</p>
-
-<p>// static method to call the db inside a using</p>
-
-<p>// order, filter, Page
- // use get requests so can bookmark</p>
-
-<p>// use javascript to simplify URLs</p>
+<h2 id="filtering-1">Filtering</h2>
+<p>// use get requests so can bookmark</p>
 
 <h2 id="measuring-speed-with-miniprofiler">Measuring speed with MiniProfiler</h2>
-<p>// demo</p>
+<p>see screenshots</p>
 
-<h2 id="simple-query-optimisation">Simple Query Optimisation</h2>
-<p>// right click apply index</p>
+<h2 id="query-optimisation">Query Optimisation</h2>
+<p>Observation and trialling indexes</p>
 
 <h2 id="validation-of-data">Validation of Data</h2>
 <p>// always use Parameters
 // Dapper great for type translation</p>
-
-<h2 id="have-to-use-sps">Have to use SP’s?</h2>
-<p>// no big deal</p>
 
 <h2 id="source-control-your-db">Source control your DB</h2>
 <p>// even if the enterprise doesn’t… easy</p>
@@ -277,7 +274,7 @@ Keep data access as simple as possible in your apps</p>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-24 10:34:49 GMT</p>
+        <p>rev: 2016-10-25 16:04:02 GMT</p>
       </div>
     </div>
 

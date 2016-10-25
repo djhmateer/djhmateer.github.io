@@ -6,30 +6,30 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 24 Oct 2016 10:34:49 +0100</pubDate>
-    <lastBuildDate>Mon, 24 Oct 2016 10:34:49 +0100</lastBuildDate>
+    <pubDate>Tue, 25 Oct 2016 16:04:02 +0100</pubDate>
+    <lastBuildDate>Tue, 25 Oct 2016 16:04:02 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC</title>
         <description>&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
-&lt;p&gt;Make SQL do the heavy lifting of: Sorting, Filtering, Paging.&lt;br /&gt;
-Keep data access as simple as possible in your apps&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Make SQL do the heavy lifting of: Sorting, Filtering, Paging.&lt;/li&gt;
+  &lt;li&gt;Keep data access as simple as possible&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;I’ve been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I’ve noticed is that my applications are much simpler and more performant if I &lt;b&gt;leave data manipulation to… the database!&lt;/b&gt;&lt;/p&gt;
-
-&lt;p&gt;I currently work in large enterprises, and have found that many people I work with, are more comfortable with SQL than general purpose coding languages.  They like it if they can see how the app works looking into which Stored Procs are called.&lt;/p&gt;
+&lt;p&gt;I’ve been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I’ve noticed is that my applications are much simpler and more performant if I &lt;strong&gt;leave data manipulation to the database&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;example-app&quot;&gt;Example App&lt;/h2&gt;
-&lt;p&gt;// Show the ASP.NET MVC app&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ASP.NET MVC app&lt;/li&gt;
+  &lt;li&gt;Service layer (DAL) - repository pattern&lt;/li&gt;
+  &lt;li&gt;MSSQL&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;// Show DAL / Service layer - repository pattern&lt;/p&gt;
-
-&lt;p&gt;// Database&lt;/p&gt;
-
-&lt;h2 id=&quot;sql-conventions&quot;&gt;SQL Conventions&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Singular&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;conventions&quot;&gt;Conventions&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Singular Table Names&lt;/strong&gt;&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;IDENTITY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -46,23 +46,9 @@ Keep data access as simple as possible in your apps&lt;/p&gt;
  so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having &amp;gt; 1 Address.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;repository-conventions&quot;&gt;Repository Conventions&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Plural&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Plural Repository Names&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;The overall concept is to let &lt;a href=&quot;https://github.com/StackExchange/dapper-dot-net&quot;&gt;Dapper&lt;/a&gt; do the mapping of what is returned from the SQL to a List of Authors.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Util&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IDbConnection&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetOpenConnection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SqlConnection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;ConfigurationManager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConnectionStrings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ThinkBooksConnectionString&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConnectionString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AuthorsRepository&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AuthorsRepository&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetAuthors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -73,16 +59,16 @@ Keep data access as simple as possible in your apps&lt;/p&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;model-conventions&quot;&gt;Model Conventions&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Singular&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/StackExchange/dapper-dot-net&quot;&gt;Dapper&lt;/a&gt; maps what is returned from SQL to a List of Authors.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Singular Model Names&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/VSThinkBooks.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)&lt;/p&gt;
 
-&lt;h2 id=&quot;controller-conventions&quot;&gt;Controller Conventions&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Plural&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Plural Controllers&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;RESTful resources seem to be mostly plural eg &lt;a href=&quot;https://developer.spotify.com/web-api/endpoint-reference/&quot;&gt;Spotify API&lt;/a&gt; so I will use:&lt;/p&gt;
+&lt;p&gt;RESTful resources are mostly plural eg &lt;a href=&quot;https://developer.spotify.com/web-api/endpoint-reference/&quot;&gt;Spotify API&lt;/a&gt; so I will use:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;/Authors/
 /Authors/Details/1
@@ -90,24 +76,44 @@ Keep data access as simple as possible in your apps&lt;/p&gt;
 /Authors/Delete/1
 /Authors/Create&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The URL structure we will be using&lt;/p&gt;
+&lt;h2 id=&quot;use-full-blown-sql&quot;&gt;Use Full Blown SQL&lt;/h2&gt;
+&lt;p&gt;Don’t use localdb.  Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.  Also full SQL runs faster.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/VSThinkBook2.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;Use VS templates to scaffold views (once you have created your Author.cs model)&lt;/p&gt;
+&lt;h2 id=&quot;filtering&quot;&gt;Filtering&lt;/h2&gt;
+&lt;p&gt;strategy
+WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)&lt;/p&gt;
 
-&lt;h2 id=&quot;sorting&quot;&gt;Sorting&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/ThinkBookSort.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;Asc sorting on the FirstName Column&lt;/p&gt;
+&lt;h2 id=&quot;ordering&quot;&gt;Ordering&lt;/h2&gt;
+&lt;p&gt;CASE strategy works, but it doesn’t use indexes&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/ThinkBookSort2.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;Desc sorting on the FirstName Column&lt;/p&gt;
+&lt;p&gt;Dynamic SQL is fine (need to be careful about SQL injection)&lt;/p&gt;
+
+&lt;p&gt;sp_executesql works well if you have to use SP’s.&lt;/p&gt;
+
+&lt;h2 id=&quot;count&quot;&gt;Count&lt;/h2&gt;
+&lt;p&gt;Counts are expensive.&lt;/p&gt;
+
+&lt;p&gt;If you are counting the whole table, use this technique:&lt;/p&gt;
+
+&lt;p&gt;If you are counting over multiple tables and are having daily jobs running running.  Do the processing and put total main query count into a helper table.&lt;/p&gt;
+
+&lt;h2 id=&quot;paging&quot;&gt;Paging&lt;/h2&gt;
+&lt;p&gt;SQL2005 - CTE’s works&lt;/p&gt;
+
+&lt;p&gt;SQL2012 - ORDER BY OFFSET FETCH seem to perform better.  And make cleaner SQL&lt;/p&gt;
+
+&lt;h2 id=&quot;joins&quot;&gt;Joins&lt;/h2&gt;
+&lt;p&gt;We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.&lt;/p&gt;
+
+&lt;h2 id=&quot;crud-on-simple-helper-tables&quot;&gt;CRUD on simple helper Tables&lt;/h2&gt;
+&lt;p&gt;asdf&lt;/p&gt;
 
 &lt;h2 id=&quot;sproc&quot;&gt;SPROC&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;StackOverflows 2016 view&lt;/a&gt; search the page for ‘Stored procs’ and look at the comments at the bottom too.&lt;/p&gt;
 
-&lt;p&gt;TL;DR - “Stored procs are a layer of abstraction they don’t need, and keeping SQL in code means much more easily source controlled”&lt;/p&gt;
+&lt;p&gt;TL;DR - “Stored procs are a &lt;strong&gt;layer of abstraction they don’t need&lt;/strong&gt;, and keeping SQL in code means much more easily source controlled”&lt;/p&gt;
 
-&lt;p&gt;So I always try and get SQL in code now, unless the Enterprise demands SP’s (they usually do)&lt;/p&gt;
+&lt;p&gt;So I always try and get SQL in code now, unless the Enterprise demands SP’s (they usually do - in which case sp_executesql can really help)&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetAuthors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortColumnAndDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -127,30 +133,21 @@ Keep data access as simple as possible in your apps&lt;/p&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;inline-sql-in-c&quot;&gt;Inline SQL in C&lt;/h2&gt;
+&lt;h2 id=&quot;inline-sql&quot;&gt;Inline SQL&lt;/h2&gt;
+&lt;p&gt;Pretty much no different than an optinised sproc.&lt;/p&gt;
 
-&lt;h2 id=&quot;filtering&quot;&gt;Filtering&lt;/h2&gt;
-&lt;p&gt;asdf&lt;/p&gt;
-
-&lt;p&gt;// static method to call the db inside a using&lt;/p&gt;
-
-&lt;p&gt;// order, filter, Page
- // use get requests so can bookmark&lt;/p&gt;
-
-&lt;p&gt;// use javascript to simplify URLs&lt;/p&gt;
+&lt;h2 id=&quot;filtering-1&quot;&gt;Filtering&lt;/h2&gt;
+&lt;p&gt;// use get requests so can bookmark&lt;/p&gt;
 
 &lt;h2 id=&quot;measuring-speed-with-miniprofiler&quot;&gt;Measuring speed with MiniProfiler&lt;/h2&gt;
-&lt;p&gt;// demo&lt;/p&gt;
+&lt;p&gt;see screenshots&lt;/p&gt;
 
-&lt;h2 id=&quot;simple-query-optimisation&quot;&gt;Simple Query Optimisation&lt;/h2&gt;
-&lt;p&gt;// right click apply index&lt;/p&gt;
+&lt;h2 id=&quot;query-optimisation&quot;&gt;Query Optimisation&lt;/h2&gt;
+&lt;p&gt;Observation and trialling indexes&lt;/p&gt;
 
 &lt;h2 id=&quot;validation-of-data&quot;&gt;Validation of Data&lt;/h2&gt;
 &lt;p&gt;// always use Parameters
 // Dapper great for type translation&lt;/p&gt;
-
-&lt;h2 id=&quot;have-to-use-sps&quot;&gt;Have to use SP’s?&lt;/h2&gt;
-&lt;p&gt;// no big deal&lt;/p&gt;
 
 &lt;h2 id=&quot;source-control-your-db&quot;&gt;Source control your DB&lt;/h2&gt;
 &lt;p&gt;// even if the enterprise doesn’t… easy&lt;/p&gt;

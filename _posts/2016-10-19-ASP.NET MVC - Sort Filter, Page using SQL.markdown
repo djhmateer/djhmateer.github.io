@@ -6,23 +6,20 @@ categories: jekyll
 published: true
 ---
 ## Summary
-Make SQL do the heavy lifting of: Sorting, Filtering, Paging.  
-Keep data access as simple as possible in your apps 
+* Make SQL do the heavy lifting of: Sorting, Filtering, Paging.  
+* Keep data access as simple as possible 
 
 ## Background
-I've been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I've noticed is that my applications are much simpler and more performant if I <b>leave data manipulation to... the database!</b>
+I've been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I've noticed is that my applications are much simpler and more performant if I **leave data manipulation to the database**
 
-I currently work in large enterprises, and have found that many people I work with, are more comfortable with SQL than general purpose coding languages.  They like it if they can see how the app works looking into which Stored Procs are called.
 
 ## Example App
- // Show the ASP.NET MVC app
-
- // Show DAL / Service layer - repository pattern
-
- // Database 
+* ASP.NET MVC app
+* Service layer (DAL) - repository pattern
+* MSSQL 
  
-## SQL Conventions
-**Singular**
+## Conventions
+**Singular Table Names**
 {% highlight sql %}
 CREATE TABLE [dbo].[Author] (
     [AuthorID]    INT            IDENTITY (1, 1) NOT NULL,
@@ -38,23 +35,8 @@ CREATE TABLE [dbo].[Author] (
 * Singular table names preferred see [here](http://stackoverflow.com/a/809018/26086) and [here](http://stackoverflow.com/a/5841297/26086)
  so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having > 1 Address.
 
-## Repository Conventions
-**Plural**
-
-The overall concept is to let [Dapper](https://github.com/StackExchange/dapper-dot-net) do the mapping of what is returned from the SQL to a List of Authors.
-
+**Plural Repository Names**
 {% highlight csharp %}
-public static class Util
-{
-    public static IDbConnection GetOpenConnection()
-    {
-        var connection = new SqlConnection(
-            ConfigurationManager.ConnectionStrings["ThinkBooksConnectionString"].ConnectionString);
-        connection.Open();
-        return connection;
-    }
-}
-
 public class AuthorsRepository
 {
     public List<Author> GetAuthors()
@@ -66,18 +48,16 @@ public class AuthorsRepository
     }
 }
 {% endhighlight %}
+[Dapper](https://github.com/StackExchange/dapper-dot-net) maps what is returned from SQL to a List of Authors.
 
-## Model Conventions
-**Singular**
+**Singular Model Names**
 
 ![Cows](/assets/VSThinkBooks.jpg)
 <p>Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)</p>
 
+**Plural Controllers**
 
-## Controller Conventions
-**Plural**
-
-RESTful resources seem to be mostly plural eg [Spotify API](https://developer.spotify.com/web-api/endpoint-reference/) so I will use:
+RESTful resources are mostly plural eg [Spotify API](https://developer.spotify.com/web-api/endpoint-reference/) so I will use:
 
 {% highlight html %}
 /Authors/
@@ -86,25 +66,47 @@ RESTful resources seem to be mostly plural eg [Spotify API](https://developer.sp
 /Authors/Delete/1
 /Authors/Create
 {% endhighlight %}
-<p>The URL structure we will be using</p>
 
-![Cows](/assets/VSThinkBook2.jpg)
-<p>Use VS templates to scaffold views (once you have created your Author.cs model)</p>
+## Use Full Blown SQL
+Don't use localdb.  Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.  Also full SQL runs faster.
 
-## Sorting
-![Cows](/assets/ThinkBookSort.jpg)
-<p>Asc sorting on the FirstName Column</p>
+## Filtering
+strategy
+WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)
 
-![Cows](/assets/ThinkBookSort2.jpg)
-<p>Desc sorting on the FirstName Column</p>
+## Ordering
+CASE strategy works, but it doesn't use indexes
+
+Dynamic SQL is fine (need to be careful about SQL injection)
+
+sp_executesql works well if you have to use SP's.
+
+## Count
+Counts are expensive.  
+
+If you are counting the whole table, use this technique:
+
+If you are counting over multiple tables and are having daily jobs running running.  Do the processing and put total main query count into a helper table.
+
+## Paging
+SQL2005 - CTE's works
+
+SQL2012 - ORDER BY OFFSET FETCH seem to perform better.  And make cleaner SQL
+
+## Joins
+We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.
+
+## CRUD on simple helper Tables
+asdf
+
 
 
 ## SPROC 
 [StackOverflows 2016 view](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/) search the page for 'Stored procs' and look at the comments at the bottom too.
 
-TL;DR - "Stored procs are a layer of abstraction they don't need, and keeping SQL in code means much more easily source controlled"
+TL;DR - "Stored procs are a **layer of abstraction they don't need**, and keeping SQL in code means much more easily source controlled"
 
-So I always try and get SQL in code now, unless the Enterprise demands SP's (they usually do)
+So I always try and get SQL in code now, unless the Enterprise demands SP's (they usually do - in which case sp_executesql can really help)
 
 {% highlight csharp %}
 public List<Author> GetAuthors(string sortColumnAndDirection)
@@ -126,31 +128,24 @@ public List<Author> GetAuthors(string sortColumnAndDirection)
 }
 {% endhighlight %}
 
-## Inline SQL in C#
+## Inline SQL
+Pretty much no different than an optinised sproc.
 
 
 ## Filtering
-asdf
-
- // static method to call the db inside a using
-
- // order, filter, Page
- // use get requests so can bookmark
-
- // use javascript to simplify URLs
+// use get requests so can bookmark
 
 ## Measuring speed with MiniProfiler
-// demo
+see screenshots
 
-## Simple Query Optimisation 
-// right click apply index
+## Query Optimisation 
+Observation and trialling indexes
+
 
 ## Validation of Data 
 // always use Parameters
 // Dapper great for type translation
 
-## Have to use SP's?
-// no big deal
 
 ## Source control your DB
 // even if the enterprise doesn't... easy
