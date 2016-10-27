@@ -99,8 +99,6 @@ We will be using JOINs in most of our big queries, so lets tackle making these o
 ## CRUD on simple helper Tables
 asdf
 
-
-
 ## SPROC 
 [StackOverflows 2016 view](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/) search the page for 'Stored procs' and look at the comments at the bottom too.
 
