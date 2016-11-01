@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Making applications faster with MiniProfiler</title>
-  <meta name="description" content="Background Good performance is an essential part of any business application. MiniProfiler is one of the tools we use to measure this.">
+  <title>Making applications faster using MiniProfiler</title>
+  <meta name="description" content="Background Performance is an essential part of any business application. MiniProfiler is one of the tools we use to measure this.">
 
   
   
@@ -73,27 +73,29 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Making applications faster with MiniProfiler</h1>
+    <h1 class="post-title" itemprop="name headline">Making applications faster using MiniProfiler</h1>
     <p class="post-meta"><time datetime="2016-11-01T00:00:00+01:00" itemprop="datePublished">Nov 1, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <h2 id="background">Background</h2>
-<p>Good performance is an <strong>essential part of any business application</strong>.  MiniProfiler is one of the tools we use to measure this.</p>
+<p>Performance is an <strong>essential part of any business application</strong>. MiniProfiler is one of the tools we use to measure this.</p>
+
+<p>What is good performance? There is a lot of <a href="http://stackoverflow.com/a/164290/26086">research</a>. Users will tell you what the problems are.</p>
 
 <h2 id="what-is-miniprofiler">What is MiniProfiler?</h2>
 <ul>
-  <li>MiniProfiler shows how long database queries take (commonly the bottleneck)</li>
+  <li><a href="http://miniprofiler.com/">MiniProfiler</a> shows how long database queries take (commonly the bottleneck)</li>
   <li>Used on Web applications eg ASP.NET MVC / Webforms applications</li>
   <li>Can be used in Development and Production</li>
 </ul>
 
 <p><img src="/assets/MiniProfiler_1.jpg" alt="Cows" /></p>
 
-<p>Miniprofiler <strong>overlays query times</strong> on any webpage.  Here is a page showing 2 SQL queries which took 25.9ms to run.</p>
+<p>Miniprofiler <strong>overlays query times</strong> on any webpage. Here is a page showing 2 SQL queries which took 25.9ms to run.</p>
 
 <h2 id="improving-query-times">Improving Query Times</h2>
-<p>By far our biggest use of MiniProfiler is tuning SQL queries.  Here is an example of a home page query which took 160ms to run a search.</p>
+<p>By far our biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.</p>
 
 <figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Author</span> 
 <span class="k">WHERE</span> <span class="p">(</span><span class="o">@</span><span class="n">AuthorID</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">OR</span> <span class="n">AuthorID</span> <span class="o">=</span> <span class="o">@</span><span class="n">AuthorID</span><span class="p">)</span>
@@ -104,7 +106,7 @@
 <span class="k">OFFSET</span> <span class="nv">" + offset + @"</span> <span class="k">ROWS</span> 
 <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="nv">" + numberOfResults + "</span> <span class="k">ROWS</span> <span class="k">ONLY</span><span class="nv">";</span></code></pre></figure>
 
-<p>The business didn’t need surname searching to be %surname%, just surname%, so after changing that:</p>
+<p>The business didn’t need lastname searching to be %lastname%, just lastname%, so after changing that:</p>
 
 <figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">AND</span> <span class="p">(</span><span class="o">@</span><span class="n">LastName</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">OR</span> <span class="n">LastName</span> <span class="k">LIKE</span> <span class="n">CONCAT</span><span class="p">(</span><span class="o">@</span><span class="n">LastName</span><span class="p">,</span><span class="s1">'%'</span><span class="p">))</span></code></pre></figure>
 
@@ -127,7 +129,7 @@
 <a href="http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/">StackOverflows 2016 view</a></p>
 
 <p><br />
-Get in touch today and let us help.
+Get in touch and allow us help.
 <br />
 <br />
 <br />
@@ -190,7 +192,7 @@ Get in touch today and let us help.
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-11-01 15:30:08 GMT</p>
+        <p>rev: 2016-11-01 16:14:22 GMT</p>
       </div>
     </div>
 

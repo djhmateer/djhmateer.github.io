@@ -6,28 +6,30 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 01 Nov 2016 15:30:08 +0100</pubDate>
-    <lastBuildDate>Tue, 01 Nov 2016 15:30:08 +0100</lastBuildDate>
+    <pubDate>Tue, 01 Nov 2016 16:14:22 +0100</pubDate>
+    <lastBuildDate>Tue, 01 Nov 2016 16:14:22 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Making applications faster with MiniProfiler</title>
+        <title>Making applications faster using MiniProfiler</title>
         <description>&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;Good performance is an &lt;strong&gt;essential part of any business application&lt;/strong&gt;.  MiniProfiler is one of the tools we use to measure this.&lt;/p&gt;
+&lt;p&gt;Performance is an &lt;strong&gt;essential part of any business application&lt;/strong&gt;. MiniProfiler is one of the tools we use to measure this.&lt;/p&gt;
+
+&lt;p&gt;What is good performance? There is a lot of &lt;a href=&quot;http://stackoverflow.com/a/164290/26086&quot;&gt;research&lt;/a&gt;. Users will tell you what the problems are.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-miniprofiler&quot;&gt;What is MiniProfiler?&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;MiniProfiler shows how long database queries take (commonly the bottleneck)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://miniprofiler.com/&quot;&gt;MiniProfiler&lt;/a&gt; shows how long database queries take (commonly the bottleneck)&lt;/li&gt;
   &lt;li&gt;Used on Web applications eg ASP.NET MVC / Webforms applications&lt;/li&gt;
   &lt;li&gt;Can be used in Development and Production&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_1.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Miniprofiler &lt;strong&gt;overlays query times&lt;/strong&gt; on any webpage.  Here is a page showing 2 SQL queries which took 25.9ms to run.&lt;/p&gt;
+&lt;p&gt;Miniprofiler &lt;strong&gt;overlays query times&lt;/strong&gt; on any webpage. Here is a page showing 2 SQL queries which took 25.9ms to run.&lt;/p&gt;
 
 &lt;h2 id=&quot;improving-query-times&quot;&gt;Improving Query Times&lt;/h2&gt;
-&lt;p&gt;By far our biggest use of MiniProfiler is tuning SQL queries.  Here is an example of a home page query which took 160ms to run a search.&lt;/p&gt;
+&lt;p&gt;By far our biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt; 
 &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -38,7 +40,7 @@
 &lt;span class=&quot;k&quot;&gt;OFFSET&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + offset + @&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROWS&lt;/span&gt; 
 &lt;span class=&quot;k&quot;&gt;FETCH&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NEXT&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + numberOfResults + &quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROWS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ONLY&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The business didn’t need surname searching to be %surname%, just surname%, so after changing that:&lt;/p&gt;
+&lt;p&gt;The business didn’t need lastname searching to be %lastname%, just lastname%, so after changing that:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -61,7 +63,7 @@
 &lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;StackOverflows 2016 view&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
-Get in touch today and let us help.
+Get in touch and allow us help.
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
