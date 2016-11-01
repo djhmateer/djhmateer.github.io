@@ -6,9 +6,77 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 27 Oct 2016 14:39:39 +0100</pubDate>
-    <lastBuildDate>Thu, 27 Oct 2016 14:39:39 +0100</lastBuildDate>
+    <pubDate>Tue, 01 Nov 2016 15:30:08 +0100</pubDate>
+    <lastBuildDate>Tue, 01 Nov 2016 15:30:08 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Making applications faster with MiniProfiler</title>
+        <description>&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;Good performance is an &lt;strong&gt;essential part of any business application&lt;/strong&gt;.  MiniProfiler is one of the tools we use to measure this.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-miniprofiler&quot;&gt;What is MiniProfiler?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;MiniProfiler shows how long database queries take (commonly the bottleneck)&lt;/li&gt;
+  &lt;li&gt;Used on Web applications eg ASP.NET MVC / Webforms applications&lt;/li&gt;
+  &lt;li&gt;Can be used in Development and Production&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_1.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Miniprofiler &lt;strong&gt;overlays query times&lt;/strong&gt; on any webpage.  Here is a page showing 2 SQL queries which took 25.9ms to run.&lt;/p&gt;
+
+&lt;h2 id=&quot;improving-query-times&quot;&gt;Improving Query Times&lt;/h2&gt;
+&lt;p&gt;By far our biggest use of MiniProfiler is tuning SQL queries.  Here is an example of a home page query which took 160ms to run a search.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + sanitizedSortColumn + &quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + sortDirection + @&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;OFFSET&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + offset + @&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROWS&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;FETCH&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NEXT&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + numberOfResults + &quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROWS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ONLY&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The business didn’t need surname searching to be %surname%, just surname%, so after changing that:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We can see the performance improvement immediately:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_2.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;33ms query time now (from 160ms)&lt;/p&gt;
+
+&lt;h2 id=&quot;duplicate-queries&quot;&gt;Duplicate queries&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_3.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Another useful feature is highlighting if there are duplicate queries shown in red with an !&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Being able to quantify performance is essential in diagnosing problems and coming up with solutions.&lt;/p&gt;
+
+&lt;p&gt;Performance should be a &lt;a href=&quot;https://blog.codinghorror.com/performance-is-a-feature/&quot;&gt;Feature&lt;/a&gt; and a technical read on how fast the average StackOverflow page takes to load (23ms)
+&lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;StackOverflows 2016 view&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+Get in touch today and let us help.
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0100</pubDate>
+        <link>/miniprofiler/2016/11/01/MiniProfiler.html</link>
+        <guid isPermaLink="true">/miniprofiler/2016/11/01/MiniProfiler.html</guid>
+        
+        
+        <category>MiniProfiler</category>
+        
+      </item>
     
       <item>
         <title>Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC</title>
@@ -106,7 +174,22 @@ WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)&lt;/p&gt;
 &lt;p&gt;We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.&lt;/p&gt;
 
 &lt;h2 id=&quot;crud-on-simple-helper-tables&quot;&gt;CRUD on simple helper Tables&lt;/h2&gt;
-&lt;p&gt;asdf&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Entity Framework&lt;/strong&gt; - we have used that on many projects.  I now prefer something simpler, and more performant.  Will use EF when we need the features it provides (eg change tracking)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.simple-talk.com/dotnet/net-tools/entity-framework-performance-and-what-you-can-do-about-it/&quot;&gt;EF Performance&lt;/a&gt; useful notes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;simple&lt;/li&gt;
+  &lt;li&gt;performant&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Dapper extensions&lt;/strong&gt;
+Contained in Dapper are (some extensions)[http://blog.falafel.com/implementing-a-generic-repository-with-dapper-extensions/]&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Dapper.Contrib&lt;/li&gt;
+  &lt;li&gt;Dapper.Rainbow&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;sproc&quot;&gt;SPROC&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;StackOverflows 2016 view&lt;/a&gt; search the page for ‘Stored procs’ and look at the comments at the bottom too.&lt;/p&gt;

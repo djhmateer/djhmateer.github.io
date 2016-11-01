@@ -19,7 +19,6 @@ Firstly a static site is just html pages.  No server side processing.  No databa
 * Fine grain control over html
 * Blazingly fast
 * Easily Source Controllable
- 
 
 ![Screenshot](/assets/Untitled.png)
 

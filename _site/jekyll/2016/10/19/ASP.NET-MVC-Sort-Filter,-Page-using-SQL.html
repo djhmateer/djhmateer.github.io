@@ -172,7 +172,22 @@ WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)</p>
 <p>We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.</p>
 
 <h2 id="crud-on-simple-helper-tables">CRUD on simple helper Tables</h2>
-<p>asdf</p>
+<p><strong>Entity Framework</strong> - we have used that on many projects.  I now prefer something simpler, and more performant.  Will use EF when we need the features it provides (eg change tracking)</p>
+
+<p><a href="https://www.simple-talk.com/dotnet/net-tools/entity-framework-performance-and-what-you-can-do-about-it/">EF Performance</a> useful notes</p>
+
+<ul>
+  <li>simple</li>
+  <li>performant</li>
+</ul>
+
+<p><strong>Dapper extensions</strong>
+Contained in Dapper are (some extensions)[http://blog.falafel.com/implementing-a-generic-repository-with-dapper-extensions/]</p>
+
+<ul>
+  <li>Dapper.Contrib</li>
+  <li>Dapper.Rainbow</li>
+</ul>
 
 <h2 id="sproc">SPROC</h2>
 <p><a href="http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/">StackOverflows 2016 view</a> search the page for ‘Stored procs’ and look at the comments at the bottom too.</p>
@@ -274,7 +289,7 @@ WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)</p>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-10-27 14:39:39 GMT</p>
+        <p>rev: 2016-11-01 15:30:08 GMT</p>
       </div>
     </div>
 

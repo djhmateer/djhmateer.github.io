@@ -97,7 +97,18 @@ SQL2012 - ORDER BY OFFSET FETCH seem to perform better.  And make cleaner SQL
 We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.
 
 ## CRUD on simple helper Tables
-asdf
+**Entity Framework** - we have used that on many projects.  I now prefer something simpler, and more performant.  Will use EF when we need the features it provides (eg change tracking)
+
+ [EF Performance](https://www.simple-talk.com/dotnet/net-tools/entity-framework-performance-and-what-you-can-do-about-it/) useful notes
+
+* simple
+* performant
+
+**Dapper extensions**
+Contained in Dapper are (some extensions)[http://blog.falafel.com/implementing-a-generic-repository-with-dapper-extensions/]
+
+* Dapper.Contrib
+* Dapper.Rainbow
 
 ## SPROC 
 [StackOverflows 2016 view](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/) search the page for 'Stored procs' and look at the comments at the bottom too.
