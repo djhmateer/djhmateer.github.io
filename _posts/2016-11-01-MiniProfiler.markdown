@@ -8,7 +8,7 @@ published: true
 ## Background
 Performance is an **essential part of any business application**. MiniProfiler is one of the tools we use to measure this.
 
-What is good performance? There is a lot of [research](http://stackoverflow.com/a/164290/26086). Users will tell you what the problems are. 
+What is good performance? Ask the people who use your system what they think. And there is a lot of [research](http://stackoverflow.com/a/164290/26086)  
 
 ## What is MiniProfiler?
 * [MiniProfiler](http://miniprofiler.com/) shows how long database queries take (commonly the bottleneck)
@@ -56,8 +56,8 @@ Another useful feature is highlighting if there are duplicate queries shown in r
 ## Conclusion
 Being able to quantify performance is essential in diagnosing problems and coming up with solutions.
 
-Performance should be a [Feature](https://blog.codinghorror.com/performance-is-a-feature/) and a technical read on how fast the average StackOverflow page takes to load (23ms)
-[StackOverflows 2016 view](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/)
+Performance should be a [Feature](https://blog.codinghorror.com/performance-is-a-feature/) and a technical read on how fast the average StackOverflow page takes to load (23ms) is 
+[here](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/)
 
 <br />
 Get in touch and allow us help.

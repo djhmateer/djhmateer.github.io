@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 01 Nov 2016 16:14:22 +0100</pubDate>
-    <lastBuildDate>Tue, 01 Nov 2016 16:14:22 +0100</lastBuildDate>
+    <pubDate>Thu, 03 Nov 2016 06:27:51 +0100</pubDate>
+    <lastBuildDate>Thu, 03 Nov 2016 06:27:51 +0100</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -15,7 +15,7 @@
         <description>&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 &lt;p&gt;Performance is an &lt;strong&gt;essential part of any business application&lt;/strong&gt;. MiniProfiler is one of the tools we use to measure this.&lt;/p&gt;
 
-&lt;p&gt;What is good performance? There is a lot of &lt;a href=&quot;http://stackoverflow.com/a/164290/26086&quot;&gt;research&lt;/a&gt;. Users will tell you what the problems are.&lt;/p&gt;
+&lt;p&gt;What is good performance? Ask the people who use your system what they think. And there is a lot of &lt;a href=&quot;http://stackoverflow.com/a/164290/26086&quot;&gt;research&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-miniprofiler&quot;&gt;What is MiniProfiler?&lt;/h2&gt;
 &lt;ul&gt;
@@ -59,8 +59,8 @@
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Being able to quantify performance is essential in diagnosing problems and coming up with solutions.&lt;/p&gt;
 
-&lt;p&gt;Performance should be a &lt;a href=&quot;https://blog.codinghorror.com/performance-is-a-feature/&quot;&gt;Feature&lt;/a&gt; and a technical read on how fast the average StackOverflow page takes to load (23ms)
-&lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;StackOverflows 2016 view&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Performance should be a &lt;a href=&quot;https://blog.codinghorror.com/performance-is-a-feature/&quot;&gt;Feature&lt;/a&gt; and a technical read on how fast the average StackOverflow page takes to load (23ms) is 
+&lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
 Get in touch and allow us help.
