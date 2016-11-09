@@ -6,299 +6,14 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 09 Nov 2016 13:49:00 +0000</pubDate>
-    <lastBuildDate>Wed, 09 Nov 2016 13:49:00 +0000</lastBuildDate>
+    <pubDate>Wed, 09 Nov 2016 15:18:03 +0000</pubDate>
+    <lastBuildDate>Wed, 09 Nov 2016 15:18:03 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
-      <item>
-        <title>Making applications faster using MiniProfiler</title>
-        <description>&lt;p&gt;Performance is an &lt;strong&gt;essential part of any business application&lt;/strong&gt;. MiniProfiler is one of the tools I use to continually measure this. In fact over the last 2 years, &lt;strong&gt;every application&lt;/strong&gt; I have written (and had to work on) has had MiniProfiler in it at some stage.&lt;/p&gt;
-
-&lt;p&gt;What is good performance? Ask the people who use your system.  In my experience users will tell you with &lt;strong&gt;brutal honesty&lt;/strong&gt; what they think :-) There is a lot of &lt;a href=&quot;http://stackoverflow.com/a/164290/26086&quot;&gt;research&lt;/a&gt; too.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-miniprofiler&quot;&gt;What is MiniProfiler?&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Is a lightweight profiler&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://miniprofiler.com/&quot;&gt;MiniProfiler&lt;/a&gt; shows how long database queries take (commonly the bottleneck in my applications)&lt;/li&gt;
-  &lt;li&gt;Can show page render times, AJAX calls, API calls&lt;/li&gt;
-  &lt;li&gt;ASP.NET MVC / Webforms&lt;/li&gt;
-  &lt;li&gt;Development and Production (good security to lock it down)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_1.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Miniprofiler &lt;strong&gt;overlays query times&lt;/strong&gt; on any webpage. Here is a page showing 2 SQL queries which took 25.9ms to run.&lt;/p&gt;
-
-&lt;h2 id=&quot;improving-query-times&quot;&gt;1. Improving Query Times&lt;/h2&gt;
-&lt;p&gt;By far my biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + sanitizedSortColumn + &quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + sortDirection + @&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;OFFSET&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + offset + @&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROWS&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;FETCH&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NEXT&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot; + numberOfResults + &quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROWS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ONLY&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The business didn’t need lastname searching to be %lastname%, just lastname%, so after changing that:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;We can see the performance improvement immediately:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_2.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;33ms query time now (from 160ms)&lt;/p&gt;
-
-&lt;h2 id=&quot;duplicate-queries&quot;&gt;2. Duplicate queries&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_3.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Another useful feature is highlighting if there are duplicate queries shown in red with a !&lt;/p&gt;
-
-&lt;h2 id=&quot;seeing-where-orm-queries-need-to-be-replaced&quot;&gt;3. Seeing where ORM queries need to be replaced&lt;/h2&gt;
-&lt;p&gt;I like Object Relational Mappers (ORMs) as they can save time writing boilerplace &lt;a href=&quot;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&quot;&gt;CRUD&lt;/a&gt; SQL.  &lt;a href=&quot;https://www.asp.net/entity-framework&quot;&gt;Entity Framework&lt;/a&gt; and &lt;a href=&quot;https://github.com/StackExchange/dapper-dot-net/tree/master/Dapper.Contrib&quot;&gt;Dapper.Contrib&lt;/a&gt; are what I have most recently used.&lt;/p&gt;
-
-&lt;p&gt;For high performance screens (typically home screens, summary views of large datasets) it can be writing an abstraction on top of an abstraction.. why optimise LINQ when SQL gives you much more control?&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/StackExchange/dapper-dot-net&quot;&gt;Dapper&lt;/a&gt; is very close to raw ADO, and I generally use that for high performance screens. It gives the safety of a good mapper with performance.&lt;/p&gt;
-
-&lt;p&gt;Here is a screen where using an ORM is &lt;strong&gt;asking for trouble&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_5.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Filtering, Sorting and Paging. Also returning a count of total records.  Difficult to get right in an ORM, and fine in SQL.  Very fast performance (18ms).&lt;/p&gt;
-
-&lt;h2 id=&quot;n1&quot;&gt;4. N+1&lt;/h2&gt;
-&lt;p&gt;If you have 50 Authors on the screen, and each has an AuthorStatusID which is Foreign Key’d to an AuthorStatus table:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_8.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I have 50 Authors on the screen, and MiniProfiler is showing 52 queries, and showing as Duplicate queries.  A huge red flag :-)&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Horrible way of getting the AuthorStatus eg Alive or Dead
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;authorStatusName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SELECT Name from AuthorStatus WHERE AuthorStatusID = @AuthorStatusID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorStatusID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FirstOrDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorStatusName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;authorStatusName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Lets get the datbase to do the hard work:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;
-&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.*,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorStatusName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorStatus&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorStatusID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorStatusID&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@AuthorID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;@AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@FirstName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@FirstName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@LastName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@DateOfBirth&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;@DateOfBirth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; + sanitizedSortColumn + &quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; + sortDirection + @&quot;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;OFFSET&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; + offset + @&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ROWS&lt;/span&gt; 
-        &lt;span class=&quot;n&quot;&gt;FETCH&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NEXT&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; + numberOfResults + &quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ROWS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ONLY&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_9.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;380ms to 9ms - much much faster!  The other 2 times are browserlink javascript calls from visual studio.&lt;/p&gt;
-
-&lt;h2 id=&quot;api-calls&quot;&gt;5. API calls&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_6.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;A project of mine which does many calls to the Spotify API.  On this page there were 6 API calls, and 1 SQL call.  MiniProfiler was very useful in highlighting &lt;strong&gt;which API calls were taking the most time&lt;/strong&gt;  Interestingly I found issues with Azure’s DNS, which meant it was much faster to run on EC2 for a while (was a geolocation lookup issue). Also I found doing API calls in parallel worked well for Spotify (whose response times are fantastic).&lt;/p&gt;
-
-&lt;p&gt;live site &lt;a href=&quot;http://www.davestopmusic.com/Artists/Details/12Chz98pHFMPJEknJQMWvI&quot;&gt;DavesTopMusic&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Being able to quantify performance is essential in diagnosing problems and coming up with solutions.&lt;/p&gt;
-
-&lt;p&gt;Performance should be a &lt;a href=&quot;https://blog.codinghorror.com/performance-is-a-feature/&quot;&gt;Feature&lt;/a&gt; and a technical read on how fast the average StackOverflow page takes to load (23ms) is 
-&lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-Get in touch and allow me to help.
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 01 Nov 2016 00:00:00 +0100</pubDate>
-        <link>/miniprofiler/2016/11/01/MiniProfiler.html</link>
-        <guid isPermaLink="true">/miniprofiler/2016/11/01/MiniProfiler.html</guid>
-        
-        
-        <category>MiniProfiler</category>
-        
-      </item>
     
-      <item>
-        <title>Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC</title>
-        <description>&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Make SQL do the heavy lifting of: Sorting, Filtering, Paging.&lt;/li&gt;
-  &lt;li&gt;Keep data access as simple as possible&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;I’ve been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I’ve noticed is that my applications are much simpler and more performant if I &lt;strong&gt;leave data manipulation to the database&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;example-app&quot;&gt;Example App&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;ASP.NET MVC app&lt;/li&gt;
-  &lt;li&gt;Service layer (DAL) - repository pattern&lt;/li&gt;
-  &lt;li&gt;MSSQL&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conventions&quot;&gt;Conventions&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Singular Table Names&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;IDENTITY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;NVARCHAR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;NVARCHAR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE&lt;/span&gt;           &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CLUSTERED&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ASC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Identity Ints for the PK (not GUIDS)&lt;/li&gt;
-  &lt;li&gt;AuthorID for ID Column (not ID)&lt;/li&gt;
-  &lt;li&gt;Singular table names preferred see &lt;a href=&quot;http://stackoverflow.com/a/809018/26086&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://stackoverflow.com/a/5841297/26086&quot;&gt;here&lt;/a&gt;
- so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having &amp;gt; 1 Address.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Plural Repository Names&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AuthorsRepository&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetAuthors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Util&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetOpenConnection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SELECT * FROM Author ORDER BY LastName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/StackExchange/dapper-dot-net&quot;&gt;Dapper&lt;/a&gt; maps what is returned from SQL to a List of Authors.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Singular Model Names&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/VSThinkBooks.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Plural Controllers&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;RESTful resources are mostly plural eg &lt;a href=&quot;https://developer.spotify.com/web-api/endpoint-reference/&quot;&gt;Spotify API&lt;/a&gt; so I will use:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;/Authors/
-/Authors/Details/1
-/Authors/Edit/1
-/Authors/Delete/1
-/Authors/Create&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;use-full-blown-sql&quot;&gt;Use Full Blown SQL&lt;/h2&gt;
-&lt;p&gt;Don’t use localdb.  Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.  Also full SQL runs faster.&lt;/p&gt;
-
-&lt;h2 id=&quot;filtering&quot;&gt;Filtering&lt;/h2&gt;
-&lt;p&gt;strategy
-WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)&lt;/p&gt;
-
-&lt;h2 id=&quot;ordering&quot;&gt;Ordering&lt;/h2&gt;
-&lt;p&gt;CASE strategy works, but it doesn’t use indexes&lt;/p&gt;
-
-&lt;p&gt;Dynamic SQL is fine (need to be careful about SQL injection)&lt;/p&gt;
-
-&lt;p&gt;sp_executesql works well if you have to use SP’s.&lt;/p&gt;
-
-&lt;h2 id=&quot;count&quot;&gt;Count&lt;/h2&gt;
-&lt;p&gt;Counts are expensive.&lt;/p&gt;
-
-&lt;p&gt;If you are counting the whole table, use this technique:&lt;/p&gt;
-
-&lt;p&gt;If you are counting over multiple tables and are having daily jobs running running.  Do the processing and put total main query count into a helper table.&lt;/p&gt;
-
-&lt;h2 id=&quot;paging&quot;&gt;Paging&lt;/h2&gt;
-&lt;p&gt;SQL2005 - CTE’s works&lt;/p&gt;
-
-&lt;p&gt;SQL2012 - ORDER BY OFFSET FETCH seem to perform better.  And make cleaner SQL&lt;/p&gt;
-
-&lt;h2 id=&quot;joins&quot;&gt;Joins&lt;/h2&gt;
-&lt;p&gt;We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.&lt;/p&gt;
-
-&lt;h2 id=&quot;crud-on-simple-helper-tables&quot;&gt;CRUD on simple helper Tables&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Entity Framework&lt;/strong&gt; - we have used that on many projects.  I now prefer something simpler, and more performant.  Will use EF when we need the features it provides (eg change tracking)&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.simple-talk.com/dotnet/net-tools/entity-framework-performance-and-what-you-can-do-about-it/&quot;&gt;EF Performance&lt;/a&gt; useful notes&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;simple&lt;/li&gt;
-  &lt;li&gt;performant&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Dapper extensions&lt;/strong&gt;
-Contained in Dapper are (some extensions)[http://blog.falafel.com/implementing-a-generic-repository-with-dapper-extensions/]&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Dapper.Contrib&lt;/li&gt;
-  &lt;li&gt;Dapper.Rainbow&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;sproc&quot;&gt;SPROC&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;StackOverflows 2016 view&lt;/a&gt; search the page for ‘Stored procs’ and look at the comments at the bottom too.&lt;/p&gt;
-
-&lt;p&gt;TL;DR - “Stored procs are a &lt;strong&gt;layer of abstraction they don’t need&lt;/strong&gt;, and keeping SQL in code means much more easily source controlled”&lt;/p&gt;
-
-&lt;p&gt;So I always try and get SQL in code now, unless the Enterprise demands SP’s (they usually do - in which case sp_executesql can really help)&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetAuthors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortColumnAndDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Util&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetOpenConnection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DynamicParameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortDirection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ASC&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortColumn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortColumnAndDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sortColumnAndDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;EndsWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_desc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;sortDirection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;DESC&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;sortColumn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortColumnAndDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Length&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@SortColumn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@SortDirection&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GetAuthors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commandType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CommandType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StoredProcedure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;inline-sql&quot;&gt;Inline SQL&lt;/h2&gt;
-&lt;p&gt;Pretty much no different than an optinised sproc.&lt;/p&gt;
-
-&lt;h2 id=&quot;filtering-1&quot;&gt;Filtering&lt;/h2&gt;
-&lt;p&gt;// use get requests so can bookmark&lt;/p&gt;
-
-&lt;h2 id=&quot;measuring-speed-with-miniprofiler&quot;&gt;Measuring speed with MiniProfiler&lt;/h2&gt;
-&lt;p&gt;see screenshots&lt;/p&gt;
-
-&lt;h2 id=&quot;query-optimisation&quot;&gt;Query Optimisation&lt;/h2&gt;
-&lt;p&gt;Observation and trialling indexes&lt;/p&gt;
-
-&lt;h2 id=&quot;validation-of-data&quot;&gt;Validation of Data&lt;/h2&gt;
-&lt;p&gt;// always use Parameters
-// Dapper great for type translation&lt;/p&gt;
-
-&lt;h2 id=&quot;source-control-your-db&quot;&gt;Source control your DB&lt;/h2&gt;
-&lt;p&gt;// even if the enterprise doesn’t… easy&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 19 Oct 2016 00:00:00 +0100</pubDate>
-        <link>/jekyll/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL.html</link>
-        <guid isPermaLink="true">/jekyll/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
+    
+    
+    
     
       <item>
         <title>Learn you a Haskell for Fun and Profit</title>
@@ -688,6 +403,8 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
         
       </item>
     
+    
+    
       <item>
         <title>Blog with Jekyll and host for Free</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/Cows_500.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
@@ -834,6 +551,8 @@ test&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         
       </item>
     
+    
+    
       <item>
         <title>Why Blog?</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/3Guys_500.jpg&quot; alt=&quot;On the way to Machu Picchu&quot; /&gt;&lt;/p&gt;
@@ -891,6 +610,7 @@ test&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         <category>jekyll</category>
         
       </item>
+    
     
   </channel>
 </rss>

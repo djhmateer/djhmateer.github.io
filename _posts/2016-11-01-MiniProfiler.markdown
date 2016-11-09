@@ -84,7 +84,7 @@ foreach (var author in result)
 }
 {% endhighlight %}
 
-Lets get the datbase to do the hard work:
+Lets get the database to do the hard work:
 
 {% highlight csharp %}
 var sql = @"
