@@ -6,21 +6,23 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 09 Nov 2016 11:13:06 +0000</pubDate>
-    <lastBuildDate>Wed, 09 Nov 2016 11:13:06 +0000</lastBuildDate>
+    <pubDate>Wed, 09 Nov 2016 13:49:00 +0000</pubDate>
+    <lastBuildDate>Wed, 09 Nov 2016 13:49:00 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>Making applications faster using MiniProfiler</title>
         <description>&lt;p&gt;Performance is an &lt;strong&gt;essential part of any business application&lt;/strong&gt;. MiniProfiler is one of the tools I use to continually measure this. In fact over the last 2 years, &lt;strong&gt;every application&lt;/strong&gt; I have written (and had to work on) has had MiniProfiler in it at some stage.&lt;/p&gt;
 
-&lt;p&gt;What is good performance? Ask the people who use your system what they think. There is a lot of &lt;a href=&quot;http://stackoverflow.com/a/164290/26086&quot;&gt;research&lt;/a&gt; too.&lt;/p&gt;
+&lt;p&gt;What is good performance? Ask the people who use your system.  In my experience users will tell you with &lt;strong&gt;brutal honesty&lt;/strong&gt; what they think :-) There is a lot of &lt;a href=&quot;http://stackoverflow.com/a/164290/26086&quot;&gt;research&lt;/a&gt; too.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-miniprofiler&quot;&gt;What is MiniProfiler?&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://miniprofiler.com/&quot;&gt;MiniProfiler&lt;/a&gt; shows how long database queries take (commonly the bottleneck)&lt;/li&gt;
-  &lt;li&gt;Used on Web applications eg ASP.NET MVC / Webforms applications&lt;/li&gt;
-  &lt;li&gt;Can be used in Development and Production&lt;/li&gt;
+  &lt;li&gt;Is a lightweight profiler&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://miniprofiler.com/&quot;&gt;MiniProfiler&lt;/a&gt; shows how long database queries take (commonly the bottleneck in my applications)&lt;/li&gt;
+  &lt;li&gt;Can show page render times, AJAX calls, API calls&lt;/li&gt;
+  &lt;li&gt;ASP.NET MVC / Webforms&lt;/li&gt;
+  &lt;li&gt;Development and Production (good security to lock it down)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_1.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
@@ -54,6 +56,58 @@
 &lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_3.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Another useful feature is highlighting if there are duplicate queries shown in red with a !&lt;/p&gt;
+
+&lt;h2 id=&quot;seeing-where-orm-queries-need-to-be-replaced&quot;&gt;3. Seeing where ORM queries need to be replaced&lt;/h2&gt;
+&lt;p&gt;I like Object Relational Mappers (ORMs) as they can save time writing boilerplace &lt;a href=&quot;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&quot;&gt;CRUD&lt;/a&gt; SQL.  &lt;a href=&quot;https://www.asp.net/entity-framework&quot;&gt;Entity Framework&lt;/a&gt; and &lt;a href=&quot;https://github.com/StackExchange/dapper-dot-net/tree/master/Dapper.Contrib&quot;&gt;Dapper.Contrib&lt;/a&gt; are what I have most recently used.&lt;/p&gt;
+
+&lt;p&gt;For high performance screens (typically home screens, summary views of large datasets) it can be writing an abstraction on top of an abstraction.. why optimise LINQ when SQL gives you much more control?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/StackExchange/dapper-dot-net&quot;&gt;Dapper&lt;/a&gt; is very close to raw ADO, and I generally use that for high performance screens. It gives the safety of a good mapper with performance.&lt;/p&gt;
+
+&lt;p&gt;Here is a screen where using an ORM is &lt;strong&gt;asking for trouble&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_5.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Filtering, Sorting and Paging. Also returning a count of total records.  Difficult to get right in an ORM, and fine in SQL.  Very fast performance (18ms).&lt;/p&gt;
+
+&lt;h2 id=&quot;n1&quot;&gt;4. N+1&lt;/h2&gt;
+&lt;p&gt;If you have 50 Authors on the screen, and each has an AuthorStatusID which is Foreign Key’d to an AuthorStatus table:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_8.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I have 50 Authors on the screen, and MiniProfiler is showing 52 queries, and showing as Duplicate queries.  A huge red flag :-)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Horrible way of getting the AuthorStatus eg Alive or Dead
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;authorStatusName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SELECT Name from AuthorStatus WHERE AuthorStatusID = @AuthorStatusID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorStatusID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FirstOrDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorStatusName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;authorStatusName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Lets get the datbase to do the hard work:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.*,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorStatusName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorStatus&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorStatusID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorStatusID&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@AuthorID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;@AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@FirstName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@FirstName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@LastName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CONCAT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@DateOfBirth&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateOfBirth&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;@DateOfBirth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; + sanitizedSortColumn + &quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; + sortDirection + @&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;OFFSET&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; + offset + @&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ROWS&lt;/span&gt; 
+        &lt;span class=&quot;n&quot;&gt;FETCH&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NEXT&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; + numberOfResults + &quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ROWS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ONLY&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_9.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;380ms to 9ms - much much faster!  The other 2 times are browserlink javascript calls from visual studio.&lt;/p&gt;
+
+&lt;h2 id=&quot;api-calls&quot;&gt;5. API calls&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_6.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A project of mine which does many calls to the Spotify API.  On this page there were 6 API calls, and 1 SQL call.  MiniProfiler was very useful in highlighting &lt;strong&gt;which API calls were taking the most time&lt;/strong&gt;  Interestingly I found issues with Azure’s DNS, which meant it was much faster to run on EC2 for a while (was a geolocation lookup issue). Also I found doing API calls in parallel worked well for Spotify (whose response times are fantastic).&lt;/p&gt;
+
+&lt;p&gt;live site &lt;a href=&quot;http://www.davestopmusic.com/Artists/Details/12Chz98pHFMPJEknJQMWvI&quot;&gt;DavesTopMusic&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Being able to quantify performance is essential in diagnosing problems and coming up with solutions.&lt;/p&gt;

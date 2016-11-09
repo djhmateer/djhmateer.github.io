@@ -80,13 +80,15 @@
   <div class="post-content" itemprop="articleBody">
     <p>Performance is an <strong>essential part of any business application</strong>. MiniProfiler is one of the tools I use to continually measure this. In fact over the last 2 years, <strong>every application</strong> I have written (and had to work on) has had MiniProfiler in it at some stage.</p>
 
-<p>What is good performance? Ask the people who use your system what they think. There is a lot of <a href="http://stackoverflow.com/a/164290/26086">research</a> too.</p>
+<p>What is good performance? Ask the people who use your system.  In my experience users will tell you with <strong>brutal honesty</strong> what they think :-) There is a lot of <a href="http://stackoverflow.com/a/164290/26086">research</a> too.</p>
 
 <h2 id="what-is-miniprofiler">What is MiniProfiler?</h2>
 <ul>
-  <li><a href="http://miniprofiler.com/">MiniProfiler</a> shows how long database queries take (commonly the bottleneck)</li>
-  <li>Used on Web applications eg ASP.NET MVC / Webforms applications</li>
-  <li>Can be used in Development and Production</li>
+  <li>Is a lightweight profiler</li>
+  <li><a href="http://miniprofiler.com/">MiniProfiler</a> shows how long database queries take (commonly the bottleneck in my applications)</li>
+  <li>Can show page render times, AJAX calls, API calls</li>
+  <li>ASP.NET MVC / Webforms</li>
+  <li>Development and Production (good security to lock it down)</li>
 </ul>
 
 <p><img src="/assets/MiniProfiler_1.jpg" alt="Cows" /></p>
@@ -120,6 +122,58 @@
 <p><img src="/assets/MiniProfiler_3.jpg" alt="Cows" /></p>
 
 <p>Another useful feature is highlighting if there are duplicate queries shown in red with a !</p>
+
+<h2 id="seeing-where-orm-queries-need-to-be-replaced">3. Seeing where ORM queries need to be replaced</h2>
+<p>I like Object Relational Mappers (ORMs) as they can save time writing boilerplace <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> SQL.  <a href="https://www.asp.net/entity-framework">Entity Framework</a> and <a href="https://github.com/StackExchange/dapper-dot-net/tree/master/Dapper.Contrib">Dapper.Contrib</a> are what I have most recently used.</p>
+
+<p>For high performance screens (typically home screens, summary views of large datasets) it can be writing an abstraction on top of an abstraction.. why optimise LINQ when SQL gives you much more control?</p>
+
+<p><a href="https://github.com/StackExchange/dapper-dot-net">Dapper</a> is very close to raw ADO, and I generally use that for high performance screens. It gives the safety of a good mapper with performance.</p>
+
+<p>Here is a screen where using an ORM is <strong>asking for trouble</strong></p>
+
+<p><img src="/assets/MiniProfiler_5.jpg" alt="Cows" /></p>
+
+<p>Filtering, Sorting and Paging. Also returning a count of total records.  Difficult to get right in an ORM, and fine in SQL.  Very fast performance (18ms).</p>
+
+<h2 id="n1">4. N+1</h2>
+<p>If you have 50 Authors on the screen, and each has an AuthorStatusID which is Foreign Key’d to an AuthorStatus table:</p>
+
+<p><img src="/assets/MiniProfiler_8.jpg" alt="Cows" /></p>
+
+<p>I have 50 Authors on the screen, and MiniProfiler is showing 52 queries, and showing as Duplicate queries.  A huge red flag :-)</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// Horrible way of getting the AuthorStatus eg Alive or Dead
+</span><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">author</span> <span class="k">in</span> <span class="n">result</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">authorStatusName</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Query</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">"SELECT Name from AuthorStatus WHERE AuthorStatusID = @AuthorStatusID"</span><span class="p">,</span>
+        <span class="k">new</span> <span class="p">{</span> <span class="n">author</span><span class="p">.</span><span class="n">AuthorStatusID</span> <span class="p">}).</span><span class="nf">FirstOrDefault</span><span class="p">();</span>
+    <span class="n">author</span><span class="p">.</span><span class="n">AuthorStatusName</span> <span class="p">=</span> <span class="n">authorStatusName</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Lets get the datbase to do the hard work:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="err">@</span><span class="s">"
+</span>        <span class="n">SELECT</span> <span class="n">a</span><span class="p">.*,</span> <span class="n">s</span><span class="p">.</span><span class="n">Name</span> <span class="n">AS</span> <span class="n">AuthorStatusName</span> <span class="n">FROM</span> <span class="n">Author</span> <span class="n">a</span>
+        <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">AuthorStatus</span> <span class="n">s</span> <span class="n">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">AuthorStatusID</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="n">AuthorStatusID</span>
+        <span class="nf">WHERE</span> <span class="p">(</span><span class="n">@AuthorID</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">AuthorID</span> <span class="p">=</span> <span class="n">@AuthorID</span><span class="p">)</span>
+        <span class="nf">AND</span> <span class="p">(</span><span class="n">@FirstName</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">FirstName</span> <span class="n">LIKE</span> <span class="nf">CONCAT</span><span class="p">(</span><span class="n">@FirstName</span><span class="p">,</span><span class="sc">'%'</span><span class="p">))</span>
+        <span class="nf">AND</span> <span class="p">(</span><span class="n">@LastName</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">LastName</span> <span class="n">LIKE</span> <span class="nf">CONCAT</span><span class="p">(</span><span class="n">@LastName</span><span class="p">,</span><span class="sc">'%'</span><span class="p">))</span>
+        <span class="nf">AND</span> <span class="p">(</span><span class="n">@DateOfBirth</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">DateOfBirth</span> <span class="p">=</span> <span class="n">@DateOfBirth</span><span class="p">)</span>
+        <span class="n">ORDER</span> <span class="n">BY</span> <span class="s">" + sanitizedSortColumn + "</span> <span class="s">" + sortDirection + @"</span>
+        <span class="n">OFFSET</span> <span class="s">" + offset + @"</span> <span class="n">ROWS</span> 
+        <span class="n">FETCH</span> <span class="n">NEXT</span> <span class="s">" + numberOfResults + "</span> <span class="n">ROWS</span> <span class="n">ONLY</span><span class="err">"</span><span class="p">;</span></code></pre></figure>
+
+<p><img src="/assets/MiniProfiler_9.jpg" alt="Cows" /></p>
+
+<p>380ms to 9ms - much much faster!  The other 2 times are browserlink javascript calls from visual studio.</p>
+
+<h2 id="api-calls">5. API calls</h2>
+<p><img src="/assets/MiniProfiler_6.jpg" alt="Cows" /></p>
+
+<p>A project of mine which does many calls to the Spotify API.  On this page there were 6 API calls, and 1 SQL call.  MiniProfiler was very useful in highlighting <strong>which API calls were taking the most time</strong>  Interestingly I found issues with Azure’s DNS, which meant it was much faster to run on EC2 for a while (was a geolocation lookup issue). Also I found doing API calls in parallel worked well for Spotify (whose response times are fantastic).</p>
+
+<p>live site <a href="http://www.davestopmusic.com/Artists/Details/12Chz98pHFMPJEknJQMWvI">DavesTopMusic</a></p>
 
 <h2 id="conclusion">Conclusion</h2>
 <p>Being able to quantify performance is essential in diagnosing problems and coming up with solutions.</p>
@@ -191,7 +245,7 @@ Get in touch and allow me to help.
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-11-09 11:13:06 GMT</p>
+        <p>rev: 2016-11-09 13:49:00 GMT</p>
       </div>
     </div>
 
