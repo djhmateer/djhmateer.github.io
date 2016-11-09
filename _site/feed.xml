@@ -6,16 +6,15 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Nov 2016 06:27:51 +0100</pubDate>
-    <lastBuildDate>Thu, 03 Nov 2016 06:27:51 +0100</lastBuildDate>
+    <pubDate>Wed, 09 Nov 2016 11:13:06 +0000</pubDate>
+    <lastBuildDate>Wed, 09 Nov 2016 11:13:06 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>Making applications faster using MiniProfiler</title>
-        <description>&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;Performance is an &lt;strong&gt;essential part of any business application&lt;/strong&gt;. MiniProfiler is one of the tools we use to measure this.&lt;/p&gt;
+        <description>&lt;p&gt;Performance is an &lt;strong&gt;essential part of any business application&lt;/strong&gt;. MiniProfiler is one of the tools I use to continually measure this. In fact over the last 2 years, &lt;strong&gt;every application&lt;/strong&gt; I have written (and had to work on) has had MiniProfiler in it at some stage.&lt;/p&gt;
 
-&lt;p&gt;What is good performance? Ask the people who use your system what they think. And there is a lot of &lt;a href=&quot;http://stackoverflow.com/a/164290/26086&quot;&gt;research&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;What is good performance? Ask the people who use your system what they think. There is a lot of &lt;a href=&quot;http://stackoverflow.com/a/164290/26086&quot;&gt;research&lt;/a&gt; too.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-miniprofiler&quot;&gt;What is MiniProfiler?&lt;/h2&gt;
 &lt;ul&gt;
@@ -28,8 +27,8 @@
 
 &lt;p&gt;Miniprofiler &lt;strong&gt;overlays query times&lt;/strong&gt; on any webpage. Here is a page showing 2 SQL queries which took 25.9ms to run.&lt;/p&gt;
 
-&lt;h2 id=&quot;improving-query-times&quot;&gt;Improving Query Times&lt;/h2&gt;
-&lt;p&gt;By far our biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.&lt;/p&gt;
+&lt;h2 id=&quot;improving-query-times&quot;&gt;1. Improving Query Times&lt;/h2&gt;
+&lt;p&gt;By far my biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Author&lt;/span&gt; 
 &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -50,11 +49,11 @@
 
 &lt;p&gt;33ms query time now (from 160ms)&lt;/p&gt;
 
-&lt;h2 id=&quot;duplicate-queries&quot;&gt;Duplicate queries&lt;/h2&gt;
+&lt;h2 id=&quot;duplicate-queries&quot;&gt;2. Duplicate queries&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/MiniProfiler_3.jpg&quot; alt=&quot;Cows&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Another useful feature is highlighting if there are duplicate queries shown in red with an !&lt;/p&gt;
+&lt;p&gt;Another useful feature is highlighting if there are duplicate queries shown in red with a !&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Being able to quantify performance is essential in diagnosing problems and coming up with solutions.&lt;/p&gt;
@@ -63,7 +62,7 @@
 &lt;a href=&quot;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
-Get in touch and allow us help.
+Get in touch and allow me to help.
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;

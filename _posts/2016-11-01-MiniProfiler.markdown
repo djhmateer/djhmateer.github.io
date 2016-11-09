@@ -5,10 +5,10 @@ menu: review
 categories: MiniProfiler
 published: true
 ---
-## Background
-Performance is an **essential part of any business application**. MiniProfiler is one of the tools we use to measure this.
+Performance is an **essential part of any business application**. MiniProfiler is one of the tools I use to continually measure this. In fact over the last 2 years, **every application** I have written (and had to work on) has had MiniProfiler in it at some stage.
 
-What is good performance? Ask the people who use your system what they think. And there is a lot of [research](http://stackoverflow.com/a/164290/26086)  
+What is good performance? Ask the people who use your system what they think. There is a lot of [research](http://stackoverflow.com/a/164290/26086) too.
+
 
 ## What is MiniProfiler?
 * [MiniProfiler](http://miniprofiler.com/) shows how long database queries take (commonly the bottleneck)
@@ -19,8 +19,8 @@ What is good performance? Ask the people who use your system what they think. An
 
 Miniprofiler **overlays query times** on any webpage. Here is a page showing 2 SQL queries which took 25.9ms to run.
 
-## Improving Query Times
-By far our biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.
+## 1. Improving Query Times
+By far my biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.
 
 {% highlight sql %}
 SELECT * FROM Author 
@@ -46,11 +46,11 @@ We can see the performance improvement immediately:
 33ms query time now (from 160ms)
 
 
-## Duplicate queries
+## 2. Duplicate queries
 
 ![Cows](/assets/MiniProfiler_3.jpg)
 
-Another useful feature is highlighting if there are duplicate queries shown in red with an !
+Another useful feature is highlighting if there are duplicate queries shown in red with a !
 
 
 ## Conclusion
@@ -60,7 +60,7 @@ Performance should be a [Feature](https://blog.codinghorror.com/performance-is-a
 [here](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/)
 
 <br />
-Get in touch and allow us help.
+Get in touch and allow me to help.
 <br />
 <br />
 <br />
