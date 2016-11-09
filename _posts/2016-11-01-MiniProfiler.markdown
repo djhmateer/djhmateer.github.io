@@ -14,7 +14,7 @@ What is good performance? Ask the people who use your system.  In my experience 
 * [MiniProfiler](http://miniprofiler.com/) can show how long database queries take (commonly the bottleneck in my applications)
 * Can show API calls, AJAX Calls, Controller and View render times
 * ASP.NET MVC / Webforms
-* Development and Production (good security to lock it down)
+* Can be used in Development and Production (has good security)
 
 ![Cows](/assets/MiniProfiler_1.jpg)
 
