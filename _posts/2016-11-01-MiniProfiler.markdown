@@ -11,9 +11,8 @@ What is good performance? Ask the people who use your system.  In my experience 
 
 
 ## What is MiniProfiler?
-* Is a lightweight profiler
-* [MiniProfiler](http://miniprofiler.com/) shows how long database queries take (commonly the bottleneck in my applications)
-* Can show page render times, AJAX calls, API calls
+* [MiniProfiler](http://miniprofiler.com/) can show how long database queries take (commonly the bottleneck in my applications)
+* Can show API calls, AJAX Calls, Controller and View render times
 * ASP.NET MVC / Webforms
 * Development and Production (good security to lock it down)
 
