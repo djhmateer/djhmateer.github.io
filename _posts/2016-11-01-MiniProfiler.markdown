@@ -114,9 +114,7 @@ live site [DavesTopMusic](http://www.davestopmusic.com/Artists/Details/12Chz98pH
 ## Conclusion
 Being able to quantify performance is essential in diagnosing problems and coming up with solutions.
 
-Performance should be a [Feature](https://blog.codinghorror.com/performance-is-a-feature/) and a technical read on how fast the average StackOverflow page takes to load (23ms) is 
-[here](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/)
-
+Performance is a [Feature](https://blog.codinghorror.com/performance-is-a-feature/) - implement it :-)
 <br />
 <br />
 <br />
