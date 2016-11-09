@@ -111,7 +111,9 @@ A project of mine which does many calls to the Spotify API.  On this page there 
 live site [DavesTopMusic](http://www.davestopmusic.com/Artists/Details/12Chz98pHFMPJEknJQMWvI)
 
 ## Conclusion
-Being able to quantify performance is essential in diagnosing problems and coming up with solutions.
+Being able to quantify performance is essential in diagnosing performance problems and measuring potential solutions.  
+
+I use [MiniProfiler](http://miniprofiler.com/) for this.
 
 Performance is a [Feature](https://blog.codinghorror.com/performance-is-a-feature/) - implement it :-)
 <br />
