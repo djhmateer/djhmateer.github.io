@@ -118,7 +118,6 @@ Performance should be a [Feature](https://blog.codinghorror.com/performance-is-a
 [here](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/)
 
 <br />
-Get in touch and allow me to help.
 <br />
 <br />
 <br />
