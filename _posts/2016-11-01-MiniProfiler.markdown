@@ -20,6 +20,39 @@ What is good performance? Ask the people who use your system.  In my experience 
 
 Miniprofiler **overlays query times** on any webpage. Here is a page showing 2 SQL queries which took 25.9ms to run.
 
+## How to install MiniProfiler
+Follow the instructions: [here](http://miniprofiler.com/)   Here is my cheat sheet:
+
+* Install the Nuget package MiniProfiler
+* Put css and javascript references at top and bottom in \Views\Shared\_Layout.cshtml
+* Put a call in Global.asax.cs to start and end the profiler
+* Add a line in the root web.config system.webServer handler
+
+## How to do the database profiling bit
+I generally have a Util.cs class in my Service/DAL namspace:
+
+{% highlight csharp %}
+public static IDbConnection GetOpenConnection()
+{
+    var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ThinkBooksConnectionString"].ConnectionString);
+    connection.Open();
+    MiniProfiler.Settings.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
+    return new ProfiledDbConnection(connection, MiniProfiler.Current);
+}
+{% endhighlight %}
+
+then
+
+{% highlight csharp %}
+using (var db = Util.GetOpenConnection())
+{
+    return db.Query<Book>("SELECT TOP 10 * FROM Book").ToList();
+}
+{% endhighlight %}
+
+
+Now let me show you the 5 things that I like about MP
+
 ## 1. Improving Query Times
 By far my biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.
 
