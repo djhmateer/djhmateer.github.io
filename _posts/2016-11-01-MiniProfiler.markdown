@@ -21,7 +21,7 @@ What is good performance? Ask the people who use your system.  In my experience 
 Miniprofiler **overlays query times** on any webpage. Here is a page showing 2 SQL queries which took 25.9ms to run.
 
 ## How to install MiniProfiler
-Follow the instructions: [here](http://miniprofiler.com/)   Here is my cheat sheet:
+Follow the instructions: [here](http://miniprofiler.com/)
 
 * Install the Nuget package MiniProfiler
 * Put css and javascript references at top and bottom in \Views\Shared\_Layout.cshtml
