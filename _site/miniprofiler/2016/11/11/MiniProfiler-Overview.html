@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Making applications faster using MiniProfiler</title>
-  <meta name="description" content="Performance is an essential part of any business application. MiniProfiler is one of the tools I use to continually measure this. In fact over the last 2 yea...">
+  <title>Making Apps perform - MiniProfiler Summary</title>
+  <meta name="description" content="Performance is an essential part of any business application.">
 
   
   
@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
-  <link rel="canonical" href="/miniprofiler/2016/11/01/MiniProfiler.html">
+  <link rel="canonical" href="/miniprofiler/2016/11/11/MiniProfiler-Overview.html">
   <link rel="alternate" type="application/rss+xml" title="Dave Mateer&#39;s Blog" href="/feed.xml">
   
   
@@ -73,14 +73,20 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Making applications faster using MiniProfiler</h1>
-    <p class="post-meta"><time datetime="2016-11-01T00:00:00+01:00" itemprop="datePublished">Nov 1, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Making Apps perform - MiniProfiler Summary</h1>
+    <p class="post-meta"><time datetime="2016-11-11T00:00:00+00:00" itemprop="datePublished">Nov 11, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Performance is an <strong>essential part of any business application</strong>. MiniProfiler is one of the tools I use to continually measure this. In fact over the last 2 years, <strong>every application</strong> I have written (and had to work on) has had MiniProfiler in it at some stage.</p>
+    <p>Performance is an <strong>essential part of any business application</strong>.</p>
 
-<p>What is good performance? Ask the people who use your system.  In my experience users will tell you with <strong>brutal honesty</strong> what they think :-) There is a lot of <a href="http://stackoverflow.com/a/164290/26086">research</a> too.</p>
+<p>Badly perfoming software generally <strong>doesn’t deliver its intended benefits</strong> to an organisation; is <strong>frustrating</strong> which leads to <strong>mistakes</strong> and <strong>costs</strong> more to maintain</p>
+
+<p>Organisations typically spend money on hardware - 10Gbit backbones, massive virtual machine infrastructure, fast SSD’s.  However commonly neglect to tune their applications (thus not needing the expensive hardware).</p>
+
+<p><a href="http://miniprofiler.com/">MiniProfiler</a> is one of the tools I use to continually measure this. In fact over the last 2 years, <strong>every application</strong> I have written (and had to work on) has had MiniProfiler in it at some stage.</p>
+
+<p>What is good performance? Ask the people who use your system.  In my experience users will tell you with <strong>brutal honesty</strong> what they think. There is a lot of <a href="http://stackoverflow.com/a/164290/26086">research</a> too.</p>
 
 <h2 id="what-is-miniprofiler">What is MiniProfiler?</h2>
 <ul>
@@ -94,35 +100,7 @@
 
 <p>Miniprofiler <strong>overlays query times</strong> on any webpage. Here is a page showing 2 SQL queries which took 25.9ms to run.</p>
 
-<h2 id="how-to-install-miniprofiler">How to install MiniProfiler</h2>
-<p>Follow the instructions: <a href="http://miniprofiler.com/">here</a></p>
-
-<ul>
-  <li>Install the Nuget package MiniProfiler</li>
-  <li>Put css and javascript references at top and bottom in \Views\Shared_Layout.cshtml</li>
-  <li>Put a call in Global.asax.cs to start and end the profiler</li>
-  <li>Add a line in the root web.config system.webServer handler</li>
-</ul>
-
-<h2 id="how-to-do-the-database-profiling-bit">How to do the database profiling bit</h2>
-<p>I generally have a Util.cs class in my Service/DAL namspace:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">IDbConnection</span> <span class="nf">GetOpenConnection</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">connection</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlConnection</span><span class="p">(</span><span class="n">ConfigurationManager</span><span class="p">.</span><span class="n">ConnectionStrings</span><span class="p">[</span><span class="s">"ThinkBooksConnectionString"</span><span class="p">].</span><span class="n">ConnectionString</span><span class="p">);</span>
-    <span class="n">connection</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
-    <span class="n">MiniProfiler</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">SqlFormatter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StackExchange</span><span class="p">.</span><span class="n">Profiling</span><span class="p">.</span><span class="n">SqlFormatters</span><span class="p">.</span><span class="nf">SqlServerFormatter</span><span class="p">();</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nf">ProfiledDbConnection</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">MiniProfiler</span><span class="p">.</span><span class="n">Current</span><span class="p">);</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>then</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="n">Util</span><span class="p">.</span><span class="nf">GetOpenConnection</span><span class="p">())</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">db</span><span class="p">.</span><span class="n">Query</span><span class="p">&lt;</span><span class="n">Book</span><span class="p">&gt;(</span><span class="s">"SELECT TOP 10 * FROM Book"</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Now let me show you the 5 things that I like about MP</p>
+<p>Now let me show you the 3 most important features I like about MP</p>
 
 <h2 id="improving-query-times">1. Improving Query Times</h2>
 <p>By far my biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.</p>
@@ -146,66 +124,28 @@
 
 <p>33ms query time now (from 160ms)</p>
 
-<h2 id="duplicate-queries">2. Duplicate queries</h2>
-
-<p><img src="/assets/MiniProfiler_3.jpg" alt="Cows" /></p>
-
-<p>Another useful feature is highlighting if there are duplicate queries shown in red with a !</p>
-
-<h2 id="seeing-where-orm-queries-need-to-be-replaced">3. Seeing where ORM queries need to be replaced</h2>
-<p>I like Object Relational Mappers (ORMs) as they can save time writing boilerplace <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> SQL.  <a href="https://www.asp.net/entity-framework">Entity Framework</a> and <a href="https://github.com/StackExchange/dapper-dot-net/tree/master/Dapper.Contrib">Dapper.Contrib</a> are what I have most recently used.</p>
+<h2 id="seeing-where-orm-queries-need-to-be-replaced">2. Seeing where ORM queries need to be replaced</h2>
+<p>Object Relational Mappers (ORMs) <strong>save developers time</strong> writing boilerplace <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> SQL.  <a href="https://www.asp.net/entity-framework">Entity Framework</a> and <a href="https://github.com/StackExchange/dapper-dot-net/tree/master/Dapper.Contrib">Dapper.Contrib</a> are what I most commonly use.</p>
 
 <p>For high performance screens (typically home screens, summary views of large datasets) it can be writing an abstraction on top of an abstraction.. why optimise LINQ when SQL gives you much more control?</p>
 
+<p>MiniProfiler makes it continually obvious where the problems are, therefore allowing developers to switch to raw SQL in those places.</p>
+
 <p><a href="https://github.com/StackExchange/dapper-dot-net">Dapper</a> is very close to raw ADO, and I generally use that for high performance screens. It gives the safety of a good mapper with performance.</p>
 
-<p>Here is a screen where using an ORM is <strong>asking for trouble</strong></p>
-
-<p><img src="/assets/MiniProfiler_5.jpg" alt="Cows" /></p>
+<p><img src="/assets/MiniProfiler_5.jpg" alt="Cows" />
+Here is a screen where using an ORM would be <strong>asking for trouble</strong></p>
 
 <p>Filtering, Sorting and Paging. Also returning a count of total records.  Difficult to get right in an ORM, and fine in SQL.  Very fast performance (18ms).</p>
 
-<h2 id="n1">4. N+1</h2>
-<p>If you have 50 Authors on the screen, and each has an AuthorStatusID which is Foreign Key’d to an AuthorStatus table:</p>
-
-<p><img src="/assets/MiniProfiler_8.jpg" alt="Cows" /></p>
-
-<p>I have 50 Authors on the screen, and MiniProfiler is showing 52 queries, and showing as Duplicate queries.  A huge red flag :-)</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// Horrible way of getting the AuthorStatus eg Alive or Dead
-</span><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">author</span> <span class="k">in</span> <span class="n">result</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">authorStatusName</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Query</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">"SELECT Name from AuthorStatus WHERE AuthorStatusID = @AuthorStatusID"</span><span class="p">,</span>
-        <span class="k">new</span> <span class="p">{</span> <span class="n">author</span><span class="p">.</span><span class="n">AuthorStatusID</span> <span class="p">}).</span><span class="nf">FirstOrDefault</span><span class="p">();</span>
-    <span class="n">author</span><span class="p">.</span><span class="n">AuthorStatusName</span> <span class="p">=</span> <span class="n">authorStatusName</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Lets get the database to do the hard work:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="err">@</span><span class="s">"
-</span>        <span class="n">SELECT</span> <span class="n">a</span><span class="p">.*,</span> <span class="n">s</span><span class="p">.</span><span class="n">Name</span> <span class="n">AS</span> <span class="n">AuthorStatusName</span> <span class="n">FROM</span> <span class="n">Author</span> <span class="n">a</span>
-        <span class="n">INNER</span> <span class="n">JOIN</span> <span class="n">AuthorStatus</span> <span class="n">s</span> <span class="n">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">AuthorStatusID</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="n">AuthorStatusID</span>
-        <span class="nf">WHERE</span> <span class="p">(</span><span class="n">@AuthorID</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">AuthorID</span> <span class="p">=</span> <span class="n">@AuthorID</span><span class="p">)</span>
-        <span class="nf">AND</span> <span class="p">(</span><span class="n">@FirstName</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">FirstName</span> <span class="n">LIKE</span> <span class="nf">CONCAT</span><span class="p">(</span><span class="n">@FirstName</span><span class="p">,</span><span class="sc">'%'</span><span class="p">))</span>
-        <span class="nf">AND</span> <span class="p">(</span><span class="n">@LastName</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">LastName</span> <span class="n">LIKE</span> <span class="nf">CONCAT</span><span class="p">(</span><span class="n">@LastName</span><span class="p">,</span><span class="sc">'%'</span><span class="p">))</span>
-        <span class="nf">AND</span> <span class="p">(</span><span class="n">@DateOfBirth</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">DateOfBirth</span> <span class="p">=</span> <span class="n">@DateOfBirth</span><span class="p">)</span>
-        <span class="n">ORDER</span> <span class="n">BY</span> <span class="s">" + sanitizedSortColumn + "</span> <span class="s">" + sortDirection + @"</span>
-        <span class="n">OFFSET</span> <span class="s">" + offset + @"</span> <span class="n">ROWS</span> 
-        <span class="n">FETCH</span> <span class="n">NEXT</span> <span class="s">" + numberOfResults + "</span> <span class="n">ROWS</span> <span class="n">ONLY</span><span class="err">"</span><span class="p">;</span></code></pre></figure>
-
-<p><img src="/assets/MiniProfiler_9.jpg" alt="Cows" /></p>
-
-<p>380ms to 9ms - much much faster!  The other 2 times are browserlink javascript calls from visual studio.</p>
-
-<h2 id="api-calls">5. API calls</h2>
+<h2 id="api-calls">3. API calls</h2>
 <p><img src="/assets/MiniProfiler_6.jpg" alt="Cows" /></p>
+
+<p>API (Application Programming Interface) calls eg a lookup to Active Directory, a call to Google Maps,</p>
 
 <p>A project of mine which does many calls to the Spotify API.  On this page there were 6 API calls, and 1 SQL call.  MiniProfiler was very useful in highlighting <strong>which API calls were taking the most time</strong>  Interestingly I found issues with Azure’s DNS, which meant it was much faster to run on EC2 for a while (was a geolocation lookup issue). Also I found doing API calls in parallel worked well for Spotify (whose response times are fantastic).</p>
 
 <p>live site <a href="http://www.davestopmusic.com/Artists/Details/12Chz98pHFMPJEknJQMWvI">DavesTopMusic</a></p>
-
-<h2 id="controller-and-view-profiling">6. Controller and View Profiling</h2>
-<p>A little bit more information can be had on controller and view instrumentation <a href="http://stackoverflow.com/a/31568406/26086">here</a></p>
 
 <h2 id="conclusion">Conclusion</h2>
 <p>Performance is an <strong>essential part of any business application</strong>, and a <a href="https://blog.codinghorror.com/performance-is-a-feature/">Feature</a></p>
