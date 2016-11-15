@@ -7,12 +7,10 @@ published: true
 ---
 Performance is an **essential part of any business application**.
 
-Badly perfoming software generally **doesn't deliver its intended benefits** to an organisation; is **frustrating** which leads to **mistakes** and **costs** more to maintain 
-
-Organisations typically spend money on hardware - 10Gbit backbones, massive virtual machine infrastructure, fast SSD's.  However commonly neglect to tune their applications (thus not needing the expensive hardware).
+Badly perfoming software generally **doesn't deliver its intended benefits** to an organisation, is **frustrating** which leads to **user's mistakes**.  It usually **costs** more to maintain due to it being slow to develop/test/deploy.
 
 
-[MiniProfiler](http://miniprofiler.com/) is one of the tools I use to continually measure this. In fact over the last 2 years, **every application** I have written (and had to work on) has had MiniProfiler in it at some stage.
+[MiniProfiler](http://miniprofiler.com/) is one of the tools I use to continually measure performance. Over the last 2 years, **every application** I have written (and had to work on) has had MiniProfiler in it at some stage.
 
 
 What is good performance? Ask the people who use your system.  In my experience users will tell you with **brutal honesty** what they think. There is a lot of [research](http://stackoverflow.com/a/164290/26086) too.
