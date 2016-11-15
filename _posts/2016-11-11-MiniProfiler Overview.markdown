@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Making Apps perform - MiniProfiler Summary"
+title:  "Making Business Applications perform - MiniProfiler"
 menu: review
 categories: MiniProfiler
 published: true
@@ -31,7 +31,7 @@ Miniprofiler **overlays query times** on any webpage. Here is a page showing 2 S
 Now let me show you the 3 most important features I like about MP
 
 ## 1. Improving Query Times
-By far my biggest use of MiniProfiler is tuning SQL queries. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.
+**By far my biggest use of MiniProfiler is tuning SQL queries**. Here is an example of a home page (always a good place to start looking at where to start optimising) query which took 160ms to run a search.
 
 {% highlight sql %}
 SELECT * FROM Author 
