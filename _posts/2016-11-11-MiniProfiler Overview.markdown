@@ -7,7 +7,7 @@ published: true
 ---
 Performance is an **essential part of any business application**.
 
-Badly perfoming software generally **doesn't deliver its intended benefits** to an organisation, is **frustrating** which leads to **user's mistakes**.  It usually **costs** more to maintain due to it being slow to develop/test/deploy.
+Badly perfoming software generally **doesn't deliver its intended benefits** to an organisation and is **frustrating** which leads to **user's mistakes**.  It usually **costs** more to maintain due to it being slow to develop/test/deploy.
 
 
 [MiniProfiler](http://miniprofiler.com/) is one of the tools I use to continually measure performance. Over the last 2 years, **every application** I have written (and had to work on) has had MiniProfiler in it at some stage.
