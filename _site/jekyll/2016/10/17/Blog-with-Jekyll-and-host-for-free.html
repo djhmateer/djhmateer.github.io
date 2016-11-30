@@ -212,6 +212,26 @@ published: true
 ---
 test</code></pre></figure>
 
+<p>The ‘review’ bits need to be put in the feed.xml too:</p>
+
+<figure class="highlight"><pre><code class="language-jekyll" data-lang="jekyll">{% for post in site.posts limit:100 %}
+{% if post.menu != 'review' %}
+&lt;item&gt;
+    &lt;title&gt;{{ post.title | xml_escape }}&lt;/title&gt;
+    &lt;description&gt;{{ post.content | xml_escape }}&lt;/description&gt;
+    &lt;pubDate&gt;{{ post.date | date_to_rfc822 }}&lt;/pubDate&gt;
+    &lt;link&gt;{{ post.url | prepend: site.baseurl | prepend: site.url }}&lt;/link&gt;
+    &lt;guid isPermaLink="true"&gt;{{ post.url | prepend: site.baseurl | prepend: site.url }}&lt;/guid&gt;
+    {% for tag in post.tags %}
+    &lt;category&gt;{{ tag | xml_escape }}&lt;/category&gt;
+    {% endfor %}
+    {% for cat in post.categories %}
+    &lt;category&gt;{{ cat | xml_escape }}&lt;/category&gt;
+    {% endfor %}
+&lt;/item&gt;
+{% endif %}
+{% endfor %}</code></pre></figure>
+
 
   </div>
 
@@ -268,7 +288,7 @@ test</code></pre></figure>
       <div class="footer-col footer-col-3">
         <p>In depth articles on software production
 </p>
-        <p>rev: 2016-11-15 16:17:00 GMT</p>
+        <p>rev: 2016-11-30 12:10:09 GMT</p>
       </div>
     </div>
 

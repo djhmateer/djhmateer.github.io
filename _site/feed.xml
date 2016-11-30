@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Nov 2016 16:17:00 +0000</pubDate>
-    <lastBuildDate>Tue, 15 Nov 2016 16:17:00 +0000</lastBuildDate>
+    <pubDate>Wed, 30 Nov 2016 12:10:09 +0000</pubDate>
+    <lastBuildDate>Wed, 30 Nov 2016 12:10:09 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
     
@@ -542,6 +542,26 @@ categories: jekyll
 published: true
 ---
 test&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The ‘review’ bits need to be put in the feed.xml too:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jekyll&quot; data-lang=&quot;jekyll&quot;&gt;{% for post in site.posts limit:100 %}
+{% if post.menu != 'review' %}
+&amp;lt;item&amp;gt;
+    &amp;lt;title&amp;gt;{{ post.title | xml_escape }}&amp;lt;/title&amp;gt;
+    &amp;lt;description&amp;gt;{{ post.content | xml_escape }}&amp;lt;/description&amp;gt;
+    &amp;lt;pubDate&amp;gt;{{ post.date | date_to_rfc822 }}&amp;lt;/pubDate&amp;gt;
+    &amp;lt;link&amp;gt;{{ post.url | prepend: site.baseurl | prepend: site.url }}&amp;lt;/link&amp;gt;
+    &amp;lt;guid isPermaLink=&quot;true&quot;&amp;gt;{{ post.url | prepend: site.baseurl | prepend: site.url }}&amp;lt;/guid&amp;gt;
+    {% for tag in post.tags %}
+    &amp;lt;category&amp;gt;{{ tag | xml_escape }}&amp;lt;/category&amp;gt;
+    {% endfor %}
+    {% for cat in post.categories %}
+    &amp;lt;category&amp;gt;{{ cat | xml_escape }}&amp;lt;/category&amp;gt;
+    {% endfor %}
+&amp;lt;/item&amp;gt;
+{% endif %}
+{% endfor %}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Mon, 17 Oct 2016 00:00:00 +0100</pubDate>
