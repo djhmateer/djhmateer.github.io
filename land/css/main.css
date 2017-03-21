@@ -13,6 +13,12 @@ h2 {
   font-size: 25px;
 }
 
+p {
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
