@@ -5,7 +5,9 @@ date:   2017-06-19
 categories: jekyll
 published: true 
 ---
-![Cows](/assets/Cows_500.jpg)
+![Interview](/assets/interview_500.jpg)
+
+<iframe src="https://channel9.msdn.com/Events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 ping. Excellent for developers who know Git, even if you don't know Ruby like me :-)
 
