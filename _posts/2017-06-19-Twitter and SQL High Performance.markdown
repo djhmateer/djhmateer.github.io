@@ -7,9 +7,13 @@ published: true
 ---
 ![Interview](/assets/interview_500.jpg)
 
-<iframe src="https://channel9.msdn.com/Events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+[Channel 9](https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL)
 
-ping. Excellent for developers who know Git, even if you don't know Ruby like me :-)
+[Facebook MVP UK and IE](https://www.facebook.com/mvpsukandie/videos/1048731421924361/)
+
+
+
+
 
 This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and is hosted on [GitHub Pages](https://pages.github.com/)
 
