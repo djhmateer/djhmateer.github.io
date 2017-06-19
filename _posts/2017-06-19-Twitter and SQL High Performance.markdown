@@ -8,8 +8,8 @@ published: true
 ![Interview](/assets/interview2_500.jpg)
 
 ### DDD12
-A big thanks to everyone who came along to my talk at [DDD12]. It was great to have a lot of questions and discussion after the talk.
- (http://www.developerdeveloperdeveloper.com/Schedule)
+A big thanks to everyone who came along to my talk at [DDD12 (http://www.developerdeveloperdeveloper.com/Schedule). It was great to have a lot of questions and discussion after the talk.
+
 
 ### Sample Code
 [VerySimpleTwitterClient](https://github.com/djhmateer/VerySimpleTwitterClient)
