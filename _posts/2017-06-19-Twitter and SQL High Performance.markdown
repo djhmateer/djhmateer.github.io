@@ -5,11 +5,11 @@ date:   2017-06-19
 categories: jekyll
 published: true 
 ---
-![Interview](/assets/interview_500.jpg)
+![Interview](/assets/interview2_500.jpg)
 
 [Channel 9](https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL)
 
-[Facebook MVP UK and IE](https://www.facebook.com/mvpsukandie/videos/1048731421924361/)
+[Facebook MVP UK and IE](https://www.facebook.com/mvpsukandie/)
 
 
 
