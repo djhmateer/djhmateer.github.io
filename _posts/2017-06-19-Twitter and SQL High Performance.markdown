@@ -7,17 +7,24 @@ published: true
 ---
 ![Interview](/assets/interview2_500.jpg)
 
+### DDD12
+Big thanks 
+
 [Channel 9](https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL)
 
 [Facebook MVP UK and IE](https://www.facebook.com/mvpsukandie/)
 
+### Sample Code
+[VerySimpleTwitterClient](https://github.com/djhmateer/VerySimpleTwitterClient)
+
+[FullTwitterImporter](https://github.com/djhmateer/TwitterFullImporter)
 
 
 
 
 This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and is hosted on [GitHub Pages](https://pages.github.com/)
 
-### Why a static site?
+
 Firstly a static site is just html pages.  No server side processing.  No database.  Just html, css and javascript files being served up.  This means any webserver will work just fine eg IIS, Apache, NGINX etc..
 
 * Simple
