@@ -10,9 +10,12 @@ published: true
 ### DDD12
 A big thanks to everyone who came along to my talk at [DDD12](http://www.developerdeveloperdeveloper.com/Schedule). It was great to have a lot of questions and discussion after the talk.
 
-
 ### Sample Code
+Here is the code I used in the presentation (without the Twitter keys)
+
 [VerySimpleTwitterClient](https://github.com/djhmateer/VerySimpleTwitterClient)
+
+This next repo is where I do the fast 25,000tweets/second going into SQLServer. This is a good starting point to check out the technologies. Get in touch if you'd like me to write some blog posts / make a video on how to do this.
 
 [FullTwitterImporter](https://github.com/djhmateer/TwitterFullImporter)
 
