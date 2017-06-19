@@ -8,7 +8,8 @@ published: true
 ![Interview](/assets/interview2_500.jpg)
 
 ### DDD12
-Big thanks to everyone who came along to my talk at  [DDD12](http://www.developerdeveloperdeveloper.com/Schedule)
+A big thanks to everyone who came along to my talk at [DDD12]. It was great to have a lot of questions and discussion after the talk.
+ (http://www.developerdeveloperdeveloper.com/Schedule)
 
 ### Sample Code
 [VerySimpleTwitterClient](https://github.com/djhmateer/VerySimpleTwitterClient)
@@ -20,7 +21,7 @@ I did a short interview too:
 
 [Channel 9](https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL)
 
-[Facebook MVP UK and IE](https://www.facebook.com/mvpsukandie/)
+[Facebook MVP UK and IE](https://www.facebook.com/pg/mvpsukandie/videos/)
 
 
 
