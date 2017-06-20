@@ -29,5 +29,7 @@ I did a short interview too:
 ### Write Up
 [Great Write Up](http://blog.craigtp.co.uk/post/DDD-12-In-Review)
 
+![DDD12](/assets/DaveDDD12_500.jpg)
+
 
 
