@@ -26,5 +26,8 @@ I did a short interview too:
 
 [Facebook MVP UK and IE](https://www.facebook.com/pg/mvpsukandie/videos/)
 
+### Write Up
+[Great Write Up](http://blog.craigtp.co.uk/post/DDD-12-In-Review)
+
 
 
