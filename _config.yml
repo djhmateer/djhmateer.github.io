@@ -27,9 +27,9 @@ github_username:  djhmateer
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-tactile
-plugins:
-  - jekyll-feed
+#theme: minima
+
+timezone: Europe/London
 
 exclude: [
  "*.ps1","Gemfile", "Gemfile.lock", "*.sln"
