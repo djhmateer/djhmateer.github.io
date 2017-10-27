@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "A Draft Post"
+categories: jekyll
+---
+So, thoughts on this blog made with hyperlinklink: [Jekyll][jekyll] 
+
+Image:
+![Screenshot](/assets/VSCodeScreenShot.png)
+
+Smaller Image2
+![My helpful screenshot](/assets/VSCode500.png)
+
+... you can [get the PDF]({{ site.url }}/assets/test pdf.pdf) directly.
+
+**Bold** This is a now a paragraph
+
+This is Ruby code:
+{% highlight ruby linenos %}
+def show
+  @widget = Widget(params[:id])
+  respond_to do |format|
+    format.html # show.html.erb
+    format.json { render json: @widget }
+  end
+end
+{% endhighlight %}
+
+This is C#:
+{% highlight csharp linenos %}
+class Program
+{
+    static void Main(string[] args)
+    {
+        //Do stuff
+    }
+}
+{% endhighlight %}
+
+
+
+Build is: [Build]
+
+[build]: https://github.com/djhmateer/djhmateer.github.io/commit/{{ site.github.build_revision }}
+[jekyll]: http://jekyllrb.com

@@ -1,0 +1,164 @@
+---
+layout: post
+title:  "Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC"
+menu: review
+categories: jekyll
+published: true
+---
+## Summary
+* Make SQL do the heavy lifting of: Sorting, Filtering, Paging.  
+* Keep data access as simple as possible 
+
+## Background
+I've been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I've noticed is that my applications are much simpler and more performant if I **leave data manipulation to the database**
+
+
+## Example App
+* ASP.NET MVC app
+* Service layer (DAL) - repository pattern
+* MSSQL 
+ 
+## Conventions
+**Singular Table Names**
+{% highlight sql %}
+CREATE TABLE [dbo].[Author] (
+    [AuthorID]    INT            IDENTITY (1, 1) NOT NULL,
+    [FirstName]   NVARCHAR (255) NOT NULL,
+    [LastName]    NVARCHAR (255) NOT NULL,
+    [DateOfBirth] DATE           NULL,
+    PRIMARY KEY CLUSTERED ([AuthorID] ASC)
+);
+{% endhighlight %}
+
+* Identity Ints for the PK (not GUIDS)
+* AuthorID for ID Column (not ID) 
+* Singular table names preferred see [here](http://stackoverflow.com/a/809018/26086) and [here](http://stackoverflow.com/a/5841297/26086)
+ so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having > 1 Address.
+
+**Plural Repository Names**
+{% highlight csharp %}
+public class AuthorsRepository
+{
+    public List<Author> GetAuthors()
+    {
+        using (var db = Util.GetOpenConnection())
+        {
+            return db.Query<Author>("SELECT * FROM Author ORDER BY LastName").ToList();
+        }
+    }
+}
+{% endhighlight %}
+[Dapper](https://github.com/StackExchange/dapper-dot-net) maps what is returned from SQL to a List of Authors.
+
+**Singular Model Names**
+
+![Cows](/assets/VSThinkBooks.jpg)
+<p>Keep models simple.  Here is current solution of Controllers/Models/Services (Repository and Utility static class)</p>
+
+**Plural Controllers**
+
+RESTful resources are mostly plural eg [Spotify API](https://developer.spotify.com/web-api/endpoint-reference/) so I will use:
+
+{% highlight html %}
+/Authors/
+/Authors/Details/1
+/Authors/Edit/1
+/Authors/Delete/1
+/Authors/Create
+{% endhighlight %}
+
+## Use Full Blown SQL
+Don't use localdb.  Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.  Also full SQL runs faster.
+
+## Filtering
+strategy
+WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)
+
+## Ordering
+CASE strategy works, but it doesn't use indexes
+
+Dynamic SQL is fine (need to be careful about SQL injection)
+
+sp_executesql works well if you have to use SP's.
+
+## Count
+Counts are expensive.  
+
+If you are counting the whole table, use this technique:
+
+If you are counting over multiple tables and are having daily jobs running running.  Do the processing and put total main query count into a helper table.
+
+## Paging
+SQL2005 - CTE's works
+
+SQL2012 - ORDER BY OFFSET FETCH seem to perform better.  And make cleaner SQL
+
+## Joins
+We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.
+
+## CRUD on simple helper Tables
+**Entity Framework** - we have used that on many projects.  I now prefer something simpler, and more performant.  Will use EF when we need the features it provides (eg change tracking)
+
+ [EF Performance](https://www.simple-talk.com/dotnet/net-tools/entity-framework-performance-and-what-you-can-do-about-it/) useful notes
+
+* simple
+* performant
+
+**Dapper extensions**
+Contained in Dapper are (some extensions)[http://blog.falafel.com/implementing-a-generic-repository-with-dapper-extensions/]
+
+* Dapper.Contrib
+* Dapper.Rainbow
+
+## SPROC 
+[StackOverflows 2016 view](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/) search the page for 'Stored procs' and look at the comments at the bottom too.
+
+TL;DR - "Stored procs are a **layer of abstraction they don't need**, and keeping SQL in code means much more easily source controlled"
+
+So I always try and get SQL in code now, unless the Enterprise demands SP's (they usually do - in which case sp_executesql can really help)
+
+{% highlight csharp %}
+public List<Author> GetAuthors(string sortColumnAndDirection)
+{
+    using (var db = Util.GetOpenConnection())
+    {
+        var p = new DynamicParameters();
+        var sortDirection = "ASC";
+        var sortColumn = sortColumnAndDirection;
+        if (sortColumnAndDirection.EndsWith("_desc"))
+        {
+            sortDirection = "DESC";
+            sortColumn = sortColumn.Substring(0, sortColumnAndDirection.Length - 5);
+        }
+        p.Add("@SortColumn", sortColumn);
+        p.Add("@SortDirection", sortDirection);
+        return db.Query<Author>("GetAuthors", p, commandType: CommandType.StoredProcedure).ToList();
+    }
+}
+{% endhighlight %}
+
+## Inline SQL
+Pretty much no different than an optinised sproc.
+
+
+## Filtering
+// use get requests so can bookmark
+
+## Measuring speed with MiniProfiler
+see screenshots
+
+## Query Optimisation 
+Observation and trialling indexes
+
+
+## Validation of Data 
+// always use Parameters
+// Dapper great for type translation
+
+
+## Source control your DB
+// even if the enterprise doesn't... easy
+
+
+
+
