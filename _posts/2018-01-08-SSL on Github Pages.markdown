@@ -8,42 +8,19 @@ published: true
 ![Interview](/assets/interview2_500.jpg)
 
 ### Summary
-Using HTTPS and SSL is a good thing.
+I setup my github pages hosted blog site (this one) to be running HTTPS by using Cloudflare. There is no cost involved.
 
 ### Cloudflare
-
+I this this article [Cloudflare blog](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/). The concept is that cloudflare registers a certificate for you for free.
 
 ### Point DNS to Clourflare
-asdf
+I use [DNSimple](https://dnsimple.com) to register my domain name then pointed the DNS to cloudflare.
 
 ### Mixed content errors
 asdf
 
 ### Enforce HTTPS via Cloudflare
-asdf
-
-
-
-### Sample Code
-Here is the code I used in the presentation (without the Twitter keys)
-
-[VerySimpleTwitterClient](https://github.com/djhmateer/VerySimpleTwitterClient)
-
-This next repo is where I do the fast 25,000tweets/second going into SQLServer. This is a good starting point to check out the technologies. Get in touch if you'd like me to write some blog posts / make a video on how to do this.
-
-[FullTwitterImporter](https://github.com/djhmateer/TwitterFullImporter)
-
-### Interview
-I did a short interview too:
-
-[Channel 9](https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL)
-
-[Facebook MVP UK and IE](https://www.facebook.com/pg/mvpsukandie/videos/)
-
-### Write Up
-[Great Write Up](http://blog.craigtp.co.uk/post/DDD-12-In-Review)
-
-![DDD12](/assets/DaveDDD12_500.jpg)
+I want all http://davemateer.com and http://www.davemateer.com traffic to resolve to https://davemateer.com
 
 
 
