@@ -5,7 +5,7 @@ date:   2018-01-07
 categories: security
 published: true 
 ---
-![Interview](/assets/interview2_500.jpg)
+![Menu](/assets/2018-01-08/menu.png)
 
 ### Summary
 I setup my github pages hosted blog site (this one) to be running HTTPS by using Cloudflare. There is no cost involved.
