@@ -15,8 +15,8 @@ I used this article [Cloudflare blog](https://blog.cloudflare.com/secure-and-fas
 
 ![Cert](/assets/2018-01-08/cert.png)
 
-### Point DNS to Clourflare
-I use [DNSimple](https://dnsimple.com) to register my domain name then pointed its DNS to Cloudflare.
+### Point DNS to Cloudflare
+I use [DNSimple](https://dnsimple.com) to register my domain name then pointed it's DNS to Cloudflare.
 ![DNS](/assets/2018-01-08/dns.png)
 
 ### Enforce HTTPS via Cloudflare
