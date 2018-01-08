@@ -20,7 +20,7 @@ I use [DNSimple](https://dnsimple.com) to register my domain name then pointed i
 ![DNS](/assets/2018-01-08/dns.png)
 
 ### Enforce HTTPS via Cloudflare
-I want all [http://davemateer.com](http://davemateer.com) and http://www.davemateer.com traffic to resolve to https://davemateer.com
+I want all [http://davemateer.com](http://davemateer.com) and [http://www.davemateer.com](http://www.davemateer.com) traffic to resolve to [https://davemateer.com] https://davemateer.com
 Under the Crypto tab on Cloudflare
 ![SSL](/assets/2018-01-08/https.png)
 
