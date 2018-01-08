@@ -25,5 +25,20 @@ Under the Crypto tab on Cloudflare
 ![SSL](/assets/2018-01-08/https.png)
 
 
+### Turn off Injected Javascript (Email Address Obfuscation)
+By default you will get an injected javascript file on all pages to help email addresses be obfuscated called email-decode.min.js. No thank you. In the Scrape Shield menu option.
+![SSL](/assets/2018-01-08/email.png)
+and server side excludes I turned off too.
+
+### Don't use Cloudflare's Cache
+Don't want it at the moment
+![SSL](/assets/2018-01-08/devmode.png)
+
+
+
+
+
+
+
 
 
