@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "SSL and HTTPS on Github Pages"
+title:  "How to setup SSL and HTTPS on Github Pages with Clourflare"
 date:   2018-01-07
 categories: security
 published: true 
@@ -16,7 +16,8 @@ I used some of this article [Cloudflare blog](https://blog.cloudflare.com/secure
 ![Cert](/assets/2018-01-08/cert.png)
 
 ### Point DNS to Clourflare
-I use [DNSimple](https://dnsimple.com) to register my domain name then pointed the DNS to cloudflare.
+I use [DNSimple](https://dnsimple.com) to register my domain name then pointed its DNS to cloudflare.
+![DNS](/assets/2018-01-08/dns.png)
 
 ### Enforce HTTPS via Cloudflare
 I want all http://davemateer.com and http://www.davemateer.com traffic to resolve to https://davemateer.com
