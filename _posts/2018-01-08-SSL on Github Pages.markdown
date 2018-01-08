@@ -13,7 +13,6 @@ I setup my github pages hosted blog site (this one) to be running HTTPS by using
 ### Cloudflare
 I used this article [Cloudflare blog](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/) but didn't setup any rules yet. The concept is that Cloudflare registers a certificate for you for free.
 
-
 ![Cert](/assets/2018-01-08/cert.png)
 
 ### Point DNS to Clourflare
@@ -21,7 +20,7 @@ I use [DNSimple](https://dnsimple.com) to register my domain name then pointed i
 ![DNS](/assets/2018-01-08/dns.png)
 
 ### Enforce HTTPS via Cloudflare
-I want all [http://davemateer.com] and http://www.davemateer.com traffic to resolve to https://davemateer.com
+I want all [http://davemateer.com](http://davemateer.com) and http://www.davemateer.com traffic to resolve to https://davemateer.com
 Under the Crypto tab on Cloudflare
 ![SSL](/assets/2018-01-08/https.png)
 
