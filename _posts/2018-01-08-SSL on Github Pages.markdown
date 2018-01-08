@@ -11,7 +11,9 @@ published: true
 I setup my github pages hosted blog site (this one) to be running HTTPS by using Cloudflare. There is no cost involved.
 
 ### Cloudflare
-I used this article [Cloudflare blog](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/). The concept is that cloudflare registers a certificate for you for free.
+I used some of this article [Cloudflare blog](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/). The concept is that cloudflare registers a certificate for you for free.
+
+![Cert](/assets/2018-01-08/cert.png)
 
 ### Point DNS to Clourflare
 I use [DNSimple](https://dnsimple.com) to register my domain name then pointed the DNS to cloudflare.
