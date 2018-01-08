@@ -2,17 +2,27 @@
 layout: post
 title:  "SSL and HTTPS on Github Pages"
 date:   2018-01-07
-categories: jekyll
+categories: security
 published: true 
 ---
 ![Interview](/assets/interview2_500.jpg)
 
 ### Summary
-Using SSL on a blog site is important as it can give you better SEO
+Using HTTPS and SSL is a good thing.
+
+### Cloudflare
 
 
-### DDD12
-A big thanks to everyone who came along to my talk at [DDD12](http://www.developerdeveloperdeveloper.com/Schedule). It was great to have a lot of questions and discussion after the talk.
+### Point DNS to Clourflare
+asdf
+
+### Mixed content errors
+asdf
+
+### Enforce HTTPS via Cloudflare
+asdf
+
+
 
 ### Sample Code
 Here is the code I used in the presentation (without the Twitter keys)
