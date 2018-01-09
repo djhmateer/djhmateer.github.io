@@ -24,15 +24,16 @@ I want all [http://davemateer.com](http://davemateer.com) and [http://www.davema
 Under the Crypto tab on Cloudflare
 ![SSL](/assets/2018-01-08/https.png)
 
-
 ### Turn off Injected Javascript (Email Address Obfuscation)
 By default you will get an injected javascript file on all pages to help email addresses be obfuscated called email-decode.min.js. No thank you. In the Scrape Shield menu option.
 ![SSL](/assets/2018-01-08/email.png)
 and server side excludes I turned off too.
 
 ### Don't use Cloudflare's Cache
-Don't want it at the moment
+We can disable it for 3 hours like this
 ![SSL](/assets/2018-01-08/devmode.png)
+Or disable it completely using a page rule:
+
 
 
 
