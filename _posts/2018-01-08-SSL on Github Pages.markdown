@@ -32,7 +32,7 @@ and server side excludes I turned off too.
 ### Don't use Cloudflare's Cache
 We can disable it for 3 hours like this
 ![SSL](/assets/2018-01-08/devmode.png)
-Or disable it completely using a page rule:
+Or disable it completely using a page rule:2
 
 
 
