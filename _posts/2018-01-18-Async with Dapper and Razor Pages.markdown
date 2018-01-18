@@ -1,4 +1,4 @@
----
+--
 layout: post
 title:  "Async with Dapper and Razor Pages"
 date:   2018-01-18
@@ -17,19 +17,51 @@ However it will allow greater scalability of the application as the web thread w
 
 ### Simple Example using Dapper 
 {% highlight csharp %}
-public static IDbConnection GetOpenConnection()
-{
-    var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ThinkBooksConnectionString"].ConnectionString);
-    connection.Open();
-    MiniProfiler.Settings.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
-    return new ProfiledDbConnection(connection, MiniProfiler.Current);
+
+ public class IndexModel : PageModel
+ {
+    private readonly Thing _thing;
+
+    public IndexModel(Thing thing) => _thing = thing;
+
+    public string Message;
+    
+    public async Task OnGetAsync()
+    {
+        var result = await _thing.RunQueryWhichThrowsAsync();
+        Message = result;
+    }
+    //public void OnGet()
+    //{
+    //    _thing.RunQueryWhichThrows();
+    //} 
 }
+
+public class Thing
+{
+    public async Task<string> RunQueryWhichThrowsAsync()
+    {
+        using (var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=AllReady;Trusted_Connection=True;MultipleActiveResultSets=true"))
+        {
+            await connection.OpenAsync();
+
+            var sql = "Select Name From Organization";
+            var result = await connection.QueryAsync<string>(sql);
+            return result.FirstOrDefault();
+        }
+    }
+
+    public string RunQueryWhichThrows()
+    {
+        using (var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=AllReady;Trusted_Connection=True;MultipleActiveResultSets=true"))
+        {
+            connection.Open();
+
+            var sql = "Select asd From Organizations";
+            var result = connection.Query<string>(sql).FirstOrDefault();
+            return result;
+        }
+    }
+}
+
 {% endhighlight %}
-
-
-
-
-
-
-
-
