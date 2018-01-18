@@ -16,7 +16,15 @@ Good quesion!
 Mainly about scalability of the application
 
 ### Simple Example using Dapper 
-
+{% highlight csharp %}
+public static IDbConnection GetOpenConnection()
+{
+    var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ThinkBooksConnectionString"].ConnectionString);
+    connection.Open();
+    MiniProfiler.Settings.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
+    return new ProfiledDbConnection(connection, MiniProfiler.Current);
+}
+{% endhighlight %}
 
 
 
