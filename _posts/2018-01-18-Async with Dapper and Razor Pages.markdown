@@ -6,14 +6,14 @@ menu: review
 categories: dapper
 published: true 
 ---
-![Menu](/assets/2018-01-08/menu.png)
 
 ### Summary
 Here is an exmple of using 'Async all the way' using Dapper for data access in an ASP.NET Core 2.0 Razor Pages app.
 
 ### Why Use Async in a Web App
-Good quesion!
-Mainly about scalability of the application
+If you are hitting a single database then this probably wont speed up your app
+
+However it will allow greater scalability of the application as the web thread wont be locked?**need more info**
 
 ### Simple Example using Dapper 
 {% highlight csharp %}
