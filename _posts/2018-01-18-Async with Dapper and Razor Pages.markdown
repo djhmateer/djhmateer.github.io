@@ -1,4 +1,4 @@
---
+---
 layout: post
 title:  "Async with Dapper and Razor Pages"
 date:   2018-01-18
