@@ -25,4 +25,4 @@ asdf
 asdf
 
 ### Cancellation Tokens
-asdf
+I don't forsee users having to manually cancel any of the async jobs, so am ignoring the cancellation tokens.
