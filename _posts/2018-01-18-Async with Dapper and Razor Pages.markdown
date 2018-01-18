@@ -2,8 +2,9 @@
 layout: post
 title:  "Async with Dapper and Razor Pages"
 date:   2018-01-18
+menu: review
 categories: dapper
-published: false 
+published: true 
 ---
 ![Menu](/assets/2018-01-08/menu.png)
 
