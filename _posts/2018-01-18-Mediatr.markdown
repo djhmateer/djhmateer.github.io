@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Mediatr"
+date:   2018-01-18
+menu: review
+categories: mediatr
+published: true 
+---
+
+### Summary
+First thoughts looking at the Mediatr library.
+
+### Why Use Mediatr? 
+In process messaging - a way of easily splitting up the application. Driving towards microservices?
+
+### Simple Example 
+{% highlight csharp %}
+
+{% endhighlight %}
+
+### Using Dapper (Async)
+asdf
+
+### Passing a List<ViewModel>
+asdf
+
+### Cancellation Tokens
+asdf
