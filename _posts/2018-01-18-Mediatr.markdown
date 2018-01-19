@@ -9,6 +9,7 @@ published: true
 
 ### Summary
 First thoughts looking at the Mediatr library.
+[https://www.stevejgordon.co.uk/cqrs-using-mediatr-asp-net-core](https://www.stevejgordon.co.uk/cqrs-using-mediatr-asp-net-core) 
 
 ### Why Use Mediatr? 
 In process messaging - a way of easily splitting up the application. Driving towards microservices?
