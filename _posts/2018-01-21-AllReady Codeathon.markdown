@@ -15,7 +15,7 @@ A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/humanitarian-t
 [Good project background](http://www.htbox.org/blog/introducing-james-chambers)
 
 ### Git Workflow
-What I found ineresting was how to use git well whilst a lot of change in the project:
+What I found interesting was how to use git well whilst a lot of change in the project:
 
 look for an issue in Github Issues and put 'working on it' in the comments section
 
