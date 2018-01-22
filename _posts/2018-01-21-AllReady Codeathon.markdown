@@ -8,13 +8,14 @@ published: true
 ---
 ![Menu](/assets/2018-01-22-AllReady/header.jpg)
 
-[Humanitarian Toolbox](http://www.htbox.org/) is a wonderful cause. [Good conversation](http://www.htbox.org/blog/introducing-james-chambers)
-here.
-
+[Humanitarian Toolbox](http://www.htbox.org/) is a wonderful cause.
+ 
 A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/humanitarian-toolbox-codeathon) for an excellently ran Codeathon. We did 30PR's during the day with 19 people working simultaneously on the same codebase. 
 
+[Good background](http://www.htbox.org/blog/introducing-james-chambers) here.
+
 ### Git Workflow
-What I found most challenging was how to use git well whilst a lot of change in the project:
+What I found ineresting was how to use git well whilst a lot of change in the project:
 
 look for an issue in Github Issues and put 'working on it' in the comments section
 
@@ -57,12 +58,12 @@ https://htbox.slack.com
 
 ### Working on Issue 2239
 [Issue 2239](https://github.com/HTBox/allReady/issues/2239)
-This was 3 small issues:
+There were 3 small issues:
 - The Name field is considered required and should be marked with a red asterisk
 - We should include a message "Fields marked with an * are required" message at the top of the form.
 - The "Name" label should be renamed to "Task Name"
 
-The Name was a simple change on the ViewModel. The second we eventually just put in p tag html in whatever pages needed it. I'd like to talk about the first required.
+The Name was a simple change on the VolunteerTaskViewModel. The second we eventually just put in p tag html in whatever pages needed it. I'd like to talk about the first required.
 
 
 ![Menu](/assets/2018-01-22-AllReady/star.png)
@@ -71,7 +72,7 @@ How did we get these red stars showing on every form in the solution which has a
 ![Menu](/assets/2018-01-22-AllReady/db.png)
 I created a quick db diagram to familiarise myself with concepts. [Domain Language](https://github.com/HTBox/allReady/wiki/Domain-Language) was useful too.
 
-I tried to use a simple 'required' bootstrap concept to put in the *'s. [Ian Thomas](https://github.com/thelem) then came up with the great idea of using Tag Helpers working on a related issue: [here](https://github.com/HTBox/allReady/issues/2233)
+I tried to use a simple 'required' bootstrap concept to put in the *'s. [Ian Thomas](https://github.com/thelem) then came up with the great idea of using Tag Helpers working on a related issue: [here](https://github.com/HTBox/allReady/issues/2233
 
 {% highlight csharp %}
 namespace AllReady.TagHelpers
