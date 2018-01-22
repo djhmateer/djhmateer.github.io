@@ -8,11 +8,14 @@ published: true
 ---
 ![Menu](/assets/2018-01-22-AllReady/header.jpg)
 
-[Humanitarian Toolbox](http://www.htbox.org/) is a wonderful cause.
- 
+[Humanitarian Toolbox](http://www.htbox.org/) is a wonderful cause.  [Good project background](http://www.htbox.org/blog/introducing-james-chambers)
+
+
 A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/humanitarian-toolbox-codeathon) for an excellently ran Codeathon. We did 30 PR's during the day with 19 people working simultaneously on the same codebase. 
 
-[Good project background](http://www.htbox.org/blog/introducing-james-chambers)
+
+What follows is a technical resource of the important parts of the day that I **don't want to forget**. 
+
 
 ### Git Workflow
 What I found interesting was how to use Git with a fast changing code base. Here is my 'flow'
@@ -112,6 +115,6 @@ No * required - applied automatically depending upon DataAnnotation
 
 ## Summary
 - Git(Hub) skills are important and codeathons help you to learn them well!
-- Working with other programmers was great
+- Working with other programmers was interesting 
 - Doing something (no matter how small) is a good feeling
 - I will help with this project more
