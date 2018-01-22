@@ -39,9 +39,7 @@ git push origin 2204 -f  (when ready to push up branch to do a PR)
 Start the PR message with the corresponding issue number eg #2204 Fixed the image in Edit
 
 ### Javascript dependencies
-This is worthy of many blog posts. In summary I had to fight to get the js dependencies installed and was not the only one.
-
-I had to reset my repo a few times just to make sure nothing crazy was happening:
+I had to fight to get the js dependencies installed and had to reset my repo a few times just to make sure nothing crazy was happening:
 
 ```
 git reset --hard head
@@ -50,10 +48,10 @@ git clean -dfx
 
 This was as good as I got
 ![Menu](/assets/2018-01-22-AllReady/js.png)
-which was good enough to simple changes to the UI.
+which was good enough to changes to the UI.
 
 ### Appveyor
-We use appveyor to check every PR (build and run tests). It did take approx 6:30 per build which meant there was always a queue which sloweded some PR's down.
+We use appveyor to check every PR (build and run tests). It did take approx 6:30 per build which meant there was always a queue which slowed some PR's down.
 [Appveyor](https://ci.appveyor.com/project/HTBox/allready/history)
 
 ### Slack
