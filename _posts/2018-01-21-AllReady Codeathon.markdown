@@ -74,7 +74,7 @@ How did we get these red stars showing on every form in the solution which has a
 ![Menu](/assets/2018-01-22-AllReady/db.png)
 I created a quick db diagram to familiarise myself with concepts. [Domain Language](https://github.com/HTBox/allReady/wiki/Domain-Language) was useful too.
 
-I tried to use a simple 'required' bootstrap concept to put in the *'s. [Ian Thomas](https://github.com/thelem) then came up with the great idea of using Tag Helpers working on a related issue: [here](https://github.com/HTBox/allReady/issues/2233
+I tried to use a simple 'required' bootstrap concept to put in the *'s. [Ian Thomas](https://github.com/thelem) then came up with the great idea of using Tag Helpers working on a related issue: [here](https://github.com/HTBox/allReady/issues/2233)
 
 {% highlight csharp %}
 namespace AllReady.TagHelpers
