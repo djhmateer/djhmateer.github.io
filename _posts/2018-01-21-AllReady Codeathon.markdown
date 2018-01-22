@@ -105,4 +105,4 @@ namespace AllReady.TagHelpers
 
 Very nice!
 ![Html](/assets/2018-01-22-AllReady/screen.png)
-No * required - applied automatically depending upon dataannotation.
+No * required - applied automatically depending upon DataAnnotation
