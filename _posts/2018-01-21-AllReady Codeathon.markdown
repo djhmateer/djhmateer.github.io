@@ -42,7 +42,7 @@ git push origin 2204 -f  (when ready to push up branch to do a PR)
 
 Start the PR message with the corresponding issue number eg #2204 Fixed the image in Edit
 
-Gitkraken article [here](https://davemateer.com/git/2018/01/22/Gitkraken.html)
+GitKraken article [here](https://davemateer.com/git/2018/01/22/Gitkraken.html)
 
 ### Javascript dependencies
 I had to fight to get the js dependencies installed and had to reset my repo a few times just to make sure nothing crazy was happening:
