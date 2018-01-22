@@ -16,6 +16,7 @@ A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/humanitarian-t
 
 What follows is a technical resource of the important parts of the day that I **don't want to forget**. 
 
+Thanks to [Dan Clarke](https://twitter.com/dracan) and Ian Thomas for making sure I take good photos with people looking at the camera. 
 
 ### Git Workflow
 What I found interesting was how to use Git with a fast changing code base. Here is my 'flow'
