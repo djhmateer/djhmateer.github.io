@@ -17,8 +17,12 @@ A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/humanitarian-t
 ### Git Workflow
 What I found interesting was how to use Git with a fast changing code base. Here is my 'flow'
 
+I had already forked the project and setup my upstream remote [detailed](https://www.stevejgordon.co.uk/forking-cloning-github)
+
 ```
-// look for an issue in Github Issues 
+git remote add upstream https://github.com/HTBox/allReady.git
+
+// look for an issue in Github Issues eg 2204 
 // add 'working on it' in the comments section
 git checkout -b 2204
 // work on the code and change files
