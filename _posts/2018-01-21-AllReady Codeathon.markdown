@@ -8,6 +8,8 @@ published: true
 ---
 ![Menu](/assets/2018-01-22-AllReady/header.jpg)
 
+[Humanitarian Toolbox](http://www.htbox.org/) is a wondering cause. [Good conversation](http://www.htbox.org/blog/introducing-james-chambers)
+
 A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/) for an excellently ran Codeathon. We did 30PR's during the day with 18 coders working simultaneously. 
 
 ### Git Workflow
@@ -35,8 +37,10 @@ This is worthy of many blog posts. In summary I had to fight to get the js depen
 
 I had to reset my repo a few times, just to make sure nothing crazy was happening:
 
+```
 git reset --hard head
 git clean -dfx
+```
 
 This was as good as I got
 ![Menu](/assets/2018-01-22-AllReady/js.png)
@@ -45,10 +49,10 @@ This was as good as I got
 ### Appveyor
 https://ci.appveyor.com/project/HTBox/allready/history
 
-We use appveyor to check every PR (build and run tests). It did take approx 6:30 per build which meant there was always a queue, and slowed some PR's down.
+We use appveyor to check every PR (build and run tests). It did take approx 6:30 per build which meant there was always a queue which sloweded some PR's down.
 
 ### Slack
-We use slack throughout the day
+We use a private slack channel throughout the day 
 https://htbox.slack.com
 
 
