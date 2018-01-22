@@ -2,7 +2,7 @@
 layout: post
 title:  "AllReady Codeathon"
 date:   2018-01-21
-menu: review
+# menu: review
 categories: allready 
 published: true 
 ---
