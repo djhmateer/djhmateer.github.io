@@ -8,9 +8,10 @@ published: true
 ---
 ![Menu](/assets/2018-01-22-AllReady/header.jpg)
 
-[Humanitarian Toolbox](http://www.htbox.org/) is a wondering cause. [Good conversation](http://www.htbox.org/blog/introducing-james-chambers)
+[Humanitarian Toolbox](http://www.htbox.org/) is a wonderful cause. [Good conversation](http://www.htbox.org/blog/introducing-james-chambers)
+here.
 
-A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/) for an excellently ran Codeathon. We did 30PR's during the day with 18 coders working simultaneously. 
+A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/humanitarian-toolbox-codeathon) for an excellently ran Codeathon. We did 30PR's during the day with 19 people working simultaneously on the same codebase. 
 
 ### Git Workflow
 What I found most challenging was how to use git well whilst a lot of change in the project:
