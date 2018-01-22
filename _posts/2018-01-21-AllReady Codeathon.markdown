@@ -106,13 +106,3 @@ namespace AllReady.TagHelpers
 Very nice!
 ![Html](/assets/2018-01-22-AllReady/screen.png)
 No * required - applied automatically depending upon dataannotation.
-
-
-
-
-
-
-Interesting discussions throughout the day were on:
-- Why use Mediatr
-- Use of async throughout the code
-- Use of Tag Helpers
