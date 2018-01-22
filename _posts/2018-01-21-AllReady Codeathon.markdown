@@ -12,7 +12,7 @@ published: true
  
 A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/humanitarian-toolbox-codeathon) for an excellently ran Codeathon. We did 30PR's during the day with 19 people working simultaneously on the same codebase. 
 
-[Good background](http://www.htbox.org/blog/introducing-james-chambers) here.
+[Good project background](http://www.htbox.org/blog/introducing-james-chambers)
 
 ### Git Workflow
 What I found ineresting was how to use git well whilst a lot of change in the project:
