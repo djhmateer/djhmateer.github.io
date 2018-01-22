@@ -6,6 +6,7 @@ menu: review
 categories: allready 
 published: true 
 ---
+![Menu](/assets/2018-01-22-AllReady/header.jpg)
 
 A massive thanks to [Steve Gordon](https://www.stevejgordon.co.uk/) for an excellently ran Codeathon. We did 30PR's during the day with 18 coders working simultaneously. 
 
