@@ -71,6 +71,38 @@ How did we get these red stars showing on every form in the solution which has a
 ![Menu](/assets/2018-01-22-AllReady/db.png)
 I created a quick db diagram to familiarise myself with concepts. [Domain Language](https://github.com/HTBox/allReady/wiki/Domain-Language) was useful too.
 
+I tried to use a simple 'required' bootstrap concept to put in the *'s. Ian then came up with the great idea of using Tag Helpers:
+
+{% highlight csharp %}
+namespace AllReady.TagHelpers
+{
+    [HtmlTargetElement("label", Attributes=ForAttributeName)]  
+    public class LabelRequiredTagHelper: LabelTagHelper  
+    {  
+        private const string ForAttributeName = "asp-for";  
+   
+        public LabelRequiredTagHelper(IHtmlGenerator generator) : base(generator)  
+        {  
+        }  
+   
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)  
+        {  
+            await base.ProcessAsync(context, output);  
+
+            // Automatically mark required fields with an asterisk, except booleans
+            // because MVC always sets IsRequired to true for booleans.
+            if (For.Metadata.IsRequired && For.Metadata.ModelType.FullName != "System.Boolean")  
+            {  
+                var span = new TagBuilder("span");  
+                span.AddCssClass("required");
+                span.InnerHtml.Append("*");
+                output.Content.AppendHtml(span);  
+            }  
+        }  
+    }  
+}
+{% endhighlight %}
+
 
 
 
