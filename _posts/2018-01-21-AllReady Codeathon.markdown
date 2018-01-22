@@ -15,26 +15,19 @@ What I found most challenging was how to use git well whilst a lot of change in 
 
 look for an issue in Github Issues and put 'working on it' in the comments section
 
-
-{% highlight csharp %}
-
-{% endhighlight %}
-
 ```
 git checkout -b 2204
 // work on the code and change files
-git add filename (or use gitkraken to easily stage a file - being careful to avoid unnecessary whitespace change commits)
+git add filename (use gitkraken to stage a file - avoid unnecessary whitespace changes)
 
 git checkout master
-git stash (this was very useful as had .lockfiles etc for the js dependencies and ancilliary build artifacts)
+git stash (as had gulp compiled site.js, mappingTools.js etc I didn't want to commit)
 git fetch upstream
 git merge upstream/master
 git checkout 2204
 git rebase master
 git push origin 2204 -f  (when ready to push up branch to do a PR)
 ```
-
-
 Start the PR message with the corresponding issue number eg #2204 Fixed the image in Edit
 
 ### Javascript dependencies
@@ -59,26 +52,7 @@ We use slack throughout the day
 https://htbox.slack.com
 
 
-
-
-
-
-
-[https://www.stevejgordon.co.uk/cqrs-using-mediatr-asp-net-core](https://www.stevejgordon.co.uk/cqrs-using-mediatr-asp-net-core) 
-
-### Why Use Mediatr? 
-In process messaging - a way of easily splitting up the application. Driving towards microservices?
-
-### Simple Example 
-{% highlight csharp %}
-
-{% endhighlight %}
-
-### Using Dapper (Async)
-asdf
-
-### Passing a List<ViewModel>
-asdf
-
-### Cancellation Tokens
-I don't forsee users having to manually cancel any of the async jobs, so am ignoring the cancellation tokens.
+Interesting discussions throughout the day were on:
+- Why use Mediatr
+- Use of async throughout the code
+- Use of Tag Helpers
