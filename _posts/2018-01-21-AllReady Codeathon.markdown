@@ -36,7 +36,7 @@ Start the PR message with the corresponding issue number eg #2204 Fixed the imag
 ### Javascript dependencies
 This is worthy of many blog posts. In summary I had to fight to get the js dependencies installed and was not the only one.
 
-I had to reset my repo a few times, just to make sure nothing crazy was happening:
+I had to reset my repo a few times just to make sure nothing crazy was happening:
 
 ```
 git reset --hard head
@@ -45,16 +45,35 @@ git clean -dfx
 
 This was as good as I got
 ![Menu](/assets/2018-01-22-AllReady/js.png)
-
+which was good enough to simple changes to the UI.
 
 ### Appveyor
-https://ci.appveyor.com/project/HTBox/allready/history
-
 We use appveyor to check every PR (build and run tests). It did take approx 6:30 per build which meant there was always a queue which sloweded some PR's down.
+[Appveyor](https://ci.appveyor.com/project/HTBox/allready/history)
 
 ### Slack
 We use a private slack channel throughout the day 
 https://htbox.slack.com
+
+### Working on Issue 2239
+[Issue 2239](https://github.com/HTBox/allReady/issues/2239)
+This was 3 small issues:
+- The Name field is considered required and should be marked with a red asterisk
+- We should include a message "Fields marked with an * are required" message at the top of the form.
+- The "Name" label should be renamed to "Task Name"
+
+The Name was a simple change on the ViewModel. The second we eventually just put in p tag html in whatever pages needed it. I'd like to talk about the first required.
+
+
+![Menu](/assets/2018-01-22-AllReady/star.png)
+How did we get these red stars showing on every form in the solution which has a required DataAnnotation?
+
+![Menu](/assets/2018-01-22-AllReady/db.png)
+I created a quick db diagram to familiarise myself with concepts. [Domain Language](https://github.com/HTBox/allReady/wiki/Domain-Language) was useful too.
+
+
+
+
 
 
 Interesting discussions throughout the day were on:
