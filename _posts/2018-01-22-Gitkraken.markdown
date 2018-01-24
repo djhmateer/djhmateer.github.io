@@ -14,5 +14,3 @@ Whilst at a [codeathon](https://davemateer.com/allready/2018/01/21/AllReady-Code
 For easily staging just the files you want (and ignoring files which maybe should be in .gitignore).
 
 And to discard any whitespace hunks which always seem to creep in.
-2
-
