@@ -13,5 +13,5 @@ Whilst at a [codeathon](https://davemateer.com/allready/2018/01/21/AllReady-Code
 [GitKraken](https://www.gitkraken.com/)
 For easily staging just the files you want (and ignoring files which maybe should be in .gitignore).
 
-And to discard any whitespace hunks which always seem to creep in...4
+And to discard any whitespace hunks which always seem to creep in...5
 
