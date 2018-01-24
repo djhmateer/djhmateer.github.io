@@ -4,7 +4,7 @@ services:
   jekyll: 
     image: jekyll/jekyll
     container_name: davemateer-com
-    command: jekyll serve --watch --force_polling
+    command: jekyll serve --force_polling
     ports:
         - 4000:4000
     volumes:
