@@ -7,6 +7,9 @@ published: true
 ---
 ![Cows](/assets/Cows_500.jpg)
 
+**25th Jan 2018 - please see updated <a href="/jekyl/2018/01/25/Jekyll-and-Docker.html">post</a> on installing Jekyll using Docker**
+
+
 Excellent for developers who know Git, even if you don't know Ruby like me :-)
 
 This blog is powered by [jekyllrb.com](https://jekyllrb.com/)  which uses Ruby to generate static html, and is hosted on [GitHub Pages](https://pages.github.com/)
