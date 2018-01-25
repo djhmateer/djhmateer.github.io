@@ -42,6 +42,25 @@ jekyll new myblog
 
 You now have a brand new Jekyll site in c:\temp\myblog
 
+## How does the Jekyll container interact with c:
+When we start the container we map a volume (the -v below)
+```
+docker run --rm  -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
+```
+So the container is continually reading new posts (watching the _posts folder) then regenerating the static _site
+
+## How I write articles
+
+- open my [shell](http://cmder.net/) in c:\dev\djhmateer.github.io
+- git pull 
+- docker-compose up
+- edit or create new markdown post files in VS Code in the c:\dev\djhmateer.github.io\_posts directory
+- press F5 in my browser pointing to localhost:4000
+- fix mistakes in blog post
+- git commit -am "changes"
+- git push
+
+
 ## Serving the site Locally
 We need to open up port 4000 from docker to serve. So exit out of bash and re run the docker command:
 ```
