@@ -98,7 +98,20 @@ url: "http://localhost:4000"
 
 this is to get around the 0.0.0.0 problem on Windows with the home link created in Jekyll see [here](https://tonyho.net/jekyll-docker-windows-and-0-0-0-0/) for more details.
 
+```
+-- start the system
+docker-compose up
+-- stop the system
+docker-compose down
+```
 ## Going to Production
 This is just as normal. Push your repository to Github pages and it will do all it's own regenning.o
 
 If you get stuck, try looking at the source for this blog [here](https://github.com/djhmateer/djhmateer.github.io)
+
+## Summary
+- Installed Docker
+- Run a single command to get Jekyll working inside a container
+- Created a new blog
+- Got local serving working on localhost:4000
+- Got auto regenning of site working on file save
