@@ -123,7 +123,7 @@ docker-compose up
 -- stop the system
 docker-compose down
 ```
-If you do changes to your **_config.yml** file restart the docker container (ctrl c out, then docker-compose up). The force_polling doesn't pick up _config file changes
+If you do changes to your **_config.yml** file restart the docker container (ctrl c out, then docker-compose up). The force_polling doesn't pick up _config file changes.
 
 
 ## Going to Production
