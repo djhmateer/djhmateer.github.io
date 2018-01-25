@@ -109,6 +109,18 @@ This is just as normal. Push your repository to Github pages and it will do all 
 
 If you get stuck, try looking at the source for this blog [here](https://github.com/djhmateer/djhmateer.github.io)
 
+## Updating Jekyll
+At time of writing the Jekyll/Jekyll image is runing Jekyll 3.6.2. If you delete you gemfile.lock and run bundle update you will get all the dependencies again. If you take off the version numbers it pulled jekyll 3.7.0. 
+```
+-- my Gemfile
+source "https://rubygems.org"
+gem "jekyll", "~> 3.6.2"
+gem "minima", "~> 2.0"
+```
+
+## Caching 
+To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
+
 ## Summary
 - Installed Docker
 - Run a single command to get Jekyll working inside a container
