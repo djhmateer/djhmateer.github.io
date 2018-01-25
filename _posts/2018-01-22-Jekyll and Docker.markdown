@@ -123,6 +123,9 @@ docker-compose up
 -- stop the system
 docker-compose down
 ```
+If you do changes to your **_config.yml** file restart the docker container (ctrl c out, then docker-compose up). The force_polling doesn't pick up _config file changes
+
+
 ## Going to Production
 This is just as normal. Push your repository to Github pages and it will do all it's own regenning.o
 
@@ -136,6 +139,7 @@ source "https://rubygems.org"
 gem "jekyll", "~> 3.6.2"
 gem "minima", "~> 2.0"
 ```
+I've kept my blog at 3.6.2 at the moment
 
 ## Caching 
 To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
