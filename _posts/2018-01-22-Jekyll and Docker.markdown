@@ -65,8 +65,8 @@ The container is continually reading new posts (watching the _posts folder) then
 We need to open up port 4000 from docker. Exit out of bash and re-run the command:
 ```
 docker run --rm  -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
+jekyll serve --force_polling 
 ```
-
 If you see any errors (eg can't bind) it probably means you have the port open somewhere else. For me it is when I've got docker containers leftover I didn't know about. Here is how I fix these errors:
 
 ```
