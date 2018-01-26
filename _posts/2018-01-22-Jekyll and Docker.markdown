@@ -146,8 +146,8 @@ I've kept my blog at 3.6.2 at the moment
 To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
 
 ## Summary
-- Installed Docker
+- Install Docker
 - Run a single command to get Jekyll working inside a container
-- Created a new blog
-- Got local serving working on localhost:4000
-- Got auto regenning of site working on file save
+- Create a new blog
+- View site working on localhost:4000
+- Automatic regeneration of site on file save
