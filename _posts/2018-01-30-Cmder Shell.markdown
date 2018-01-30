@@ -6,20 +6,27 @@ date:   2018-01-30
 categories: cmder
 published: true 
 ---
-
-
 [Cmder](http://cmder.net/) is my shell of choice. [download from github](https://github.com/cmderdev/cmder/releases)
+### Where to Install
+![ps](/assets/2018-01-30/c.png)
+I install in C:\sharedTools\cmder_mini and have this referenced in my Path.
+
+### Aliases
+The Nov 2017 release fixes issue that aliases don't work without the legacy console enabled in Win10.
+
+Update the file C:\sharedTools\cmder_mini\config\user-aliases.cmd
+
+Here are my favourite aliases!
+
+```
+e=explorer .
+p=git add . -A & git commit -m "auto commit" & git push
+c=code .
+cdd = cd c:\dev
+```
 
 ### Set Starup Directory
 ![ps](/assets/2018-01-30/startup.png)
-
-### Aliases
-You need to
-```
--- change to c:\dev directory
-cdd
---
-```
 
 ### Split the Window
 ![ps](/assets/2018-01-30/split.png)
