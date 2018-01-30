@@ -36,3 +36,6 @@ Very nice to split the screen
 ![ps](/assets/2018-01-30/active.png)
 
 Settings (Win Alt P)
+
+### Keyboard shortcuts
+Shift Insert - pastes multi line

@@ -12,6 +12,15 @@ I use these commands all the time in Docker to reset my system.
 ## Update 30th Jan 2018
 From [this](https://stackoverflow.com/a/34616890/26086) article I now use 
 
+Day to day in testing (keep images)
+```
+docker container prune -f 
+docker network prune -f
+docker volume prune -f
+
+```
+and **nuclear** option to delete all images too
+
 ```
 docker container prune -f 
 docker image prune -af
