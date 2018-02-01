@@ -167,6 +167,14 @@ sudo apt-get install docker-ce
 sudo docker run hello-world
 ```
 
+![ps](/assets/2018-02-01/fire.png)
+Open up port 80
+
+## Copy files to UAT
+```
+scp * dave@13.69.10.225:wordpress/.
+```
+
 ## Interesting Links
 http://www.wordpressdocker.com/
 https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl
