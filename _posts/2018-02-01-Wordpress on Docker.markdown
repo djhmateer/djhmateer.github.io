@@ -176,9 +176,9 @@ scp * dave@13.69.10.225:wordpress/.
 ```
 
 ## Interesting Links
-http://www.wordpressdocker.com/
-https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl
-https://www.hyper.sh/pricing.html 
+[http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
+[https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl](https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl)
+[https://www.hyper.sh/pricing.html](https://www.hyper.sh/pricing.html)
 
 
 
