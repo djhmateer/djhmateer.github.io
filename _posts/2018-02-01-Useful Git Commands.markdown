@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Useful Git Commands"
-date:   2018-02-01
+date:   2018-02-01 10:00
 #menu: review
 categories: git
 published: true 
