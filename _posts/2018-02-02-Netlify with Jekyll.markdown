@@ -52,10 +52,11 @@ Then pushed to the new GH [repo](https://github.com/djhmateer/daveellie)
 The rest of the install was fine using DNSimple for DNS, and netlify to get the HTTPS cert from letsencrypt. All traffic is forced to be https.
 
 ## Use Netlify just to host static content
-The default way is to get Netlify to build Jekyll then publish. What if we just want it to host the static content?
+The default way is to get Netlify to build Jekyll then publish. What if we just want it to host the static content, which speeds up the deployment time to live.
 
 ![ps](/assets/2018-02-02/net.png)
 Just remove the build command and that will work. 
 
 ![ps](/assets/2018-02-02/vsc.png)
 Not forgetting to make sure your _site is commited into your repo.
+
