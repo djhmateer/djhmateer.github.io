@@ -6,9 +6,9 @@ date:   2018-02-02 14:30
 categories: netlify
 published: true 
 ---
-I use Jekyll for this website, and for our wedding website [here](https://daveellie.co.uk). I used Github pages for this website, however it isn't easy to have multiple GH pages from GH account, so here is how I did it with Netlify.
+I use Jekyll for this website, and for our [wedding website](https://daveellie.co.uk). I used Github pages for this website, however it isn't easy to have multiple GH pages from a single GH account, so here is how I did it with Netlify.
 
-I chose this as it is near the top of [here](https://jekyllrb.com/docs/deployment-methods/#netlify), and followed the documentation [here](https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/)
+I chose this as it is near the top of [the official deployment docs](https://jekyllrb.com/docs/deployment-methods/#netlify), and followed the [mentioned blog post](https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/)
 
 I used [docker](jekyl/2018/01/25/Jekyll-and-Docker.html) on my local windows machine to create the new Jekyll site:
 
