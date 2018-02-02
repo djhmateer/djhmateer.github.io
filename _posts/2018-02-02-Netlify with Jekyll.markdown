@@ -55,7 +55,7 @@ The rest of the install was fine using DNSimple for DNS, and netlify to get the 
 The default way is to get Netlify to build Jekyll then publish. What if we just want it to host the static content, which speeds up the deployment time to live.
 
 ![ps](/assets/2018-02-02/net.png)
-Just remove the build command and that will work. 
+Remove the build command (jekyll build) and it will serve the static content from _site without doing any building.
 
 ![ps](/assets/2018-02-02/vsc.png)
 Not forgetting to make sure your _site is commited into your repo.
