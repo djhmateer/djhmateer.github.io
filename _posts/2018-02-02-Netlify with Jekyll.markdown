@@ -2,7 +2,7 @@
 layout: post
 title:  "Netlify with Jekyll"
 date:   2018-02-02 14:30
-menu: review
+#menu: review
 categories: netlify
 published: true 
 ---
