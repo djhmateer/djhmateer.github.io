@@ -43,6 +43,12 @@ then a special file for netlify called .ruby-version
 ```
 this is because their default ruby version is 2.1.2 which doesn't play well with the latest version of Jekyll.
 
+I spun up the container
+```
+docker-compose up
+```
+Then pushed to the new GH [repo](https://github.com/djhmateer/daveellie)
+
 The rest of the install was fine using DNSimple for DNS, and netlify to get the HTTPS cert from letsencrypt. All traffic is forced to be https.
 
 ## Use Netlify just to host static content
