@@ -60,3 +60,6 @@ Just remove the build command and that will work.
 ![ps](/assets/2018-02-02/vsc.png)
 Not forgetting to make sure your _site is commited into your repo.
 
+
+![ps](/assets/2018-02-02/screen.png)
+Site live and empty.
