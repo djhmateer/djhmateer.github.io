@@ -26,4 +26,7 @@ git apply
 
 git push origin --delete 2204 (delete remote branch)
 
+git tag -a v1.0.4 -m "adding a tag
+git push --tags
+
 ```
