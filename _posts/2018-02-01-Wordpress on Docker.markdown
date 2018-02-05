@@ -175,6 +175,12 @@ Open up port 80
 scp * dave@13.69.10.225:wordpress/.
 ```
 
+## Use Docker on Azure
+What is available for hosted docker?
+   how about a reliable filesystem?
+What is available for hosted MySQL?
+
+
 ## Interesting Links
 [http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
 [https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl](https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl)
