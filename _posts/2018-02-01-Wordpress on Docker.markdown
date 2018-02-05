@@ -14,7 +14,7 @@ I wanted to explore a legacy Wordpress site:
 - Difficult to upgrade (apparently)
 - Security was a concern (related to above?)
 
-Like any Legacy application it has taken time to gather information. I'm still guessing as to what version of things are running. But I've enough to do a proof of concept migration.
+Like any Legacy application it has taken weeks and weeks to gather information (people involved, usernames, passwords, logins to Azure). I'm still guessing as to what version of things are running. But I've enough to do a proof of concept migration.
 
 I had a number of pieces of advice around the need to tweak Wordpress with Avada to get it to run well (PHP / Wordpress is not my area). A fellow colleague had built a custom Ubuntu16 VM 6 months ago and had got it working, but the migration had never happened. I wanted to get the website running well.
 
