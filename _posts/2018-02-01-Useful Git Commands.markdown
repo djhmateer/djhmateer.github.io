@@ -13,6 +13,8 @@ I use Git every day. Here are my favourite commands, which I frequently forget, 
 git reset --hard head
 git clean -dfx
 
+git push -u origin textChanges
+
 --working on OS projects
 git checkout master
 git fetch upstream
@@ -28,5 +30,4 @@ git push origin --delete 2204 (delete remote branch)
 
 git tag -a v1.0.4 -m "adding a tag
 git push --tags
-
 ```
