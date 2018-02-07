@@ -176,6 +176,7 @@ Open up port 80
 
 ## Copy files to UAT
 ```
+mkdir wordpress (on remote)
 scp * dave@13.69.10.225:wordpress/.
 ```
 
