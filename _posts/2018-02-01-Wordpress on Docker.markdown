@@ -145,6 +145,8 @@ RUN apt-get update \
 ``` 
 commands I ran were
 
+Update: this didn't actually work as the latest version of PHP/wordpress broke my lecagy app (see below)
+
 ```
 docker build -t davemateer/wordpresswithziparchive .
 docker login --username=davemateer 
@@ -170,15 +172,66 @@ sudo docker run hello-world
 ![ps](/assets/2018-02-01/fire.png)
 Open up port 80
 
+[davewordpress demo site](http://davewordpress.westeurope.cloudapp.azure.com/)
+
 ## Copy files to UAT
 ```
 scp * dave@13.69.10.225:wordpress/.
 ```
 
-## Use Docker on Azure
-What is available for hosted docker?
-   how about a reliable filesystem?
-What is available for hosted MySQL?
+## Corrupted MySQL
+`Fatal error: Can't open and lock privilege tables: Incorrect file format 'user'`
+
+Following this link:
+[fatal error](https://stackoverflow.com/questions/28521530/mysql-fatal-error-cant-open-and-lock-privilege-tables-incorrect-file-format) I had a 
+I got MySQL running enough using the --skip-grant-tables to get a dump of the database
+
+## Lost password
+We didn't have a login to WP, so the trick was to reset the password in the db [here](https://codex.wordpress.org/Talk:Resetting_Your_Password)
+
+## Upgrading Issues / Legacy Versions of PHP and Wordpress
+I found the plugin [All in one WP Migration](https://en-gb.wordpress.org/plugins/all-in-one-wp-migration/) useful to dump the entire legacy site which came in around 300MB. This was all plugins, themes and database dump. So everything was overwritten in the new site.
+
+However what I found was that the existing legacy system [13.73.162.214](http://13.73.162.214) (actually this was the demo system that my college built) was running:
+
+- PHP5.5.9-1ubuntu4.22
+- Wordpress 4.7.9 (latest is 4.9.4)
+- MySQL 5.5.59
+- Avada 3.9.3 (latest is 5.x)
+
+Then when I built with the latest wordpress image:
+- PHP7.2-apache
+- Wordpress 4.9.3 (latest is 4.9.4)
+- MySQL 5.7.21
+- Avada 3.9.5 (latest is 5.x)
+
+I got PHP7 errors
+### front end error
+```
+Fatal error: Uncaught Error: [] operator not supported for strings in /var/www/html/wp-content/plugins/LayerSlider/includes/slider_markup_init.php:83
+
+added this into line 82 in slider_markup_init.php
+ /var/www/html/wp-content/plugins/LayerSlider/includes/slider_markup_init.php
+$lsInit = array(); $lsContainer = array(); $lsMarkup = array();
+```
+
+### admin error
+```
+Fatal error: Uncaught Error: [] operator not supported for strings in /var/www/html/wp-content/plugins/revslider/includes/framework/base-admin.class.php:71
+C:\Dev\test\wordpress\wp-content\plugins\revslider\includes\framework\base-admin.class.php
+change line 21
+private static $arrMetaBoxes = array();		//option boxes that will be added to post
+
+```
+I could then get the PHP7 site to work.
+
+
+## Performance Issues
+I noticed that reverting to PHP5.6 made the site a slower. Also this is a sercurity risk problem (not upgrading)
+
+[davewordpress demo site](http://davewordpress.westeurope.cloudapp.azure.com/)
+
+-
 
 
 ## Interesting Links
