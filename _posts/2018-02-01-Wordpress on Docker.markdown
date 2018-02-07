@@ -206,7 +206,7 @@ Then when I built with the latest wordpress image:
 - Avada 3.9.5 (latest is 5.x)
 
 I got PHP7 errors
-### front end error
+### Front end error
 ```
 Fatal error: Uncaught Error: [] operator not supported for strings in /var/www/html/wp-content/plugins/LayerSlider/includes/slider_markup_init.php:83
 
@@ -215,7 +215,7 @@ added this into line 82 in slider_markup_init.php
 $lsInit = array(); $lsContainer = array(); $lsMarkup = array();
 ```
 
-### admin error
+### Admin error
 ```
 Fatal error: Uncaught Error: [] operator not supported for strings in /var/www/html/wp-content/plugins/revslider/includes/framework/base-admin.class.php:71
 C:\Dev\test\wordpress\wp-content\plugins\revslider\includes\framework\base-admin.class.php
