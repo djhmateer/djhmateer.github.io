@@ -157,7 +157,7 @@ docker push davemateer/wordpresswithziparchive
 ## Going to UAT / Production
 I found docker easy to install on Ubuntu 16.04 LTS [here](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04) are good instructions.
 
-I'm using Azure both the DS1_v2 (£37 per month) and the B1 (£7 per month) as trial images
+I'm using Azure both the DS1_v2 (£37 per month) and the B1S (£6.99 per month) as trial images
 
 ```
 sudo apt-get update
@@ -233,6 +233,9 @@ I could then get the PHP7 site to work.
 I noticed that reverting to PHP5.6 made the site a slower. Also this is a sercurity risk problem (not upgrading)
 
 [davewordpress demo site](http://davewordpress.westeurope.cloudapp.azure.com/)
+
+## PHP7.x version
+As the feedback has been that it is very hard to update this site and 'it breaks when I update things' we really need to push to be on the latest bits and to keep on top of updates.
 
 -
 
