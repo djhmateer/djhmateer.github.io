@@ -246,7 +246,6 @@ private static $arrMetaBoxes = array();		//option boxes that will be added to po
 ```
 I could then get the PHP7 site to work.
 
-
 ## Performance Issues
 I noticed that reverting to PHP5.6 made the site a slower. Also this is a sercurity risk problem (not upgrading)
 
@@ -255,8 +254,62 @@ I noticed that reverting to PHP5.6 made the site a slower. Also this is a sercur
 ## PHP7.x version
 As the feedback has been that it is very hard to update this site and 'it breaks when I update things' we really need to push to be on the latest bits and to keep on top of updates.
 
--
+## Using Docker to run PHP5.6 and PHP7.2
+I've used 2 docker instances to help me upgrade the site from PHP5.6 to the latest PHP7.2
 
+This has been invaluable to spin up different versions of the underlying infrastructure to help in figuring out a new environment.
+
+```
+# docker build -t davemateer/wordpresswithziparchive:php7.2 .
+# docker push davemateer/wordpresswithziparchive:php7.2 
+
+# docker build -t davemateer/wordpresswithziparchive:php5.6 .
+# docker push davemateer/wordpresswithziparchive:php5.6
+
+# latest is php7.2
+#FROM wordpress:latest
+FROM wordpress:php5.6
+
+RUN apt-get update \
+    && apt-get install -y zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/* \
+    && docker-php-ext-install zip 
+```
+
+What I ended up doing was creating 2 custom images in hub.docker tagged as PHP5.6 and PHP7.2  Both had the zip library compiled in which helped me locally testing.
+
+Then I worked locally getting the Avada theme upgrading from the existing: PHP5.6 install and Avada 3.9.3
+This was a very indepth process:
+
+## Avada Upgrade
+From Avada 3.9.3 to the latest 5.x
+
+- Buy the theme for $60
+- Get the product 
+
+Go through process of figuring out how to register
+(https://theme-fusion.com/avada-doc/install-update/how-to-update-theme/)[https://theme-fusion.com/avada-doc/install-update/how-to-update-theme/]
+(https://theme-fusion.com/avada-doc/getting-started/register-purchase-avada-version-4-0-3-lower/)[https://theme-fusion.com/avada-doc/getting-started/register-purchase-avada-version-4-0-3-lower/]
+
+then get an API key:
+(https://themeforest.net/user/davemateer2/api_keys/edit)[https://themeforest.net/user/davemateer2/api_keys/edit]
+
+
+## Performance
+On the cheapest VM on Azure £6.99 per month the homepage was loading in:
+
+-PHP5.6
+  -finish 1.1s
+-PHP7
+  -finish 900ms
+
+Upping the VM to a D16s_v3 (16core 64MB RAM)
+
+Running Apache Benchmarks
+ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
+
+
+![ps](/assets/2018-02-08/bigVM.png)
 
 ## Interesting Links
 [http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
