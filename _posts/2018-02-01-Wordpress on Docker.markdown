@@ -310,6 +310,9 @@ ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
 
 
 ![ps](/assets/2018-02-08/bigVM.png)
+Data was coming down line at 100Megabits (line is 130) and memory usage on VM was 2.2GB at peak load.
+
+With a £6.99 VM timed out the load test and didn't come back up again after 5 minutes
 
 ## Interesting Links
 [http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
