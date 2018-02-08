@@ -167,13 +167,29 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-get update
 sudo apt-get install docker-ce
 # sudo docker run hello-world
-sudo apt install docker-compose
+# this should work below but there is a bug in docker compose so get the latest
+# sudo apt install docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+# logout and login again to make sure correct version of docker-compose is running
 ```
 
 ![ps](/assets/2018-02-01/fire.png)
 Open up port 80
 
 [davewordpress demo site](http://davewordpress.westeurope.cloudapp.azure.com/)
+
+## Docker-compose bug
+ERROR: Version in "./docker-compose.yml" is unsupported. You might be seeing this error because you're using the wrong Compose file version. Either specify a version of "2" (or "2.0")
+
+If you see this then follow instructions [here](https://github.com/docker/compose/releases) to get the latest release
+
+```
+curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+# logout and login
+docker-compose --version
+```
 
 ## Copy files to UAT
 ```
