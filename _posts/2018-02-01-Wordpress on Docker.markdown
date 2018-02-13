@@ -16,7 +16,7 @@ I wanted to explore a legacy Wordpress site:
 
 Like any Legacy application it has taken weeks and weeks to gather information (people involved, usernames, passwords, logins to Azure). I'm still guessing as to what version of things are running. But I've enough to do a proof of concept migration.
 
-I had a number of pieces of advice around the need to tweak Wordpress with Avada to get it to run well (PHP / Wordpress is not my area). A fellow colleague had built a custom Ubuntu16 VM 6 months ago and had got it working, but the migration had never happened. I wanted to get the website running well.
+I had a number of pieces of advice around the need to tweak Wordpress with Avada to get it to run well (PHP / Wordpress is not my area). A fellow colleague had built a custom Ubuntu16.04 VM 6 months ago and had got it working, but the migration had never happened. I wanted to get the website running well.
 
 This felt like a good use case for containers as they gave an
 
@@ -308,11 +308,12 @@ Upping the VM to a D16s_v3 (16core 64MB RAM)
 Running Apache Benchmarks
 ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
 
-
 ![ps](/assets/2018-02-08/bigVM.png)
 Data was coming down line at 100Megabits (line is 130) and memory usage on VM was 2.2GB at peak load.
 
 With a £6.99 VM timed out the load test and didn't come back up again after 5 minutes
+
+This was due to memory usage - a workaround is to limit the available memory within Docker.
 
 ## Interesting Links
 [http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
