@@ -30,6 +30,8 @@ git branch -d 2204 (delete local branch)
 git branch -D 2204 (force delete if hasn't been merged)
 git push origin --delete 2204 (delete remote branch)
 
+git branch -u origin/masterDemoMoneyMinded
+
 git tag -a v1.0.4 -m "adding a tag
 git push --tags
 ```
