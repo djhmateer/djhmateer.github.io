@@ -8,27 +8,27 @@ published: true
 ---
 I wanted to explore a legacy Wordpress site:
 
-- Slow to load (5secs before anything happens)
+- Slow to load (5 secs before anything happens)
 - Hosted in Azure on an App Service? pointing to MSSQL
-- Using the Avada theme
+- Using an old Avada theme
 - Difficult to upgrade (apparently)
 - Security was a concern (related to above?)
 
-Like any Legacy application it has taken weeks and weeks to gather information (people involved, usernames, passwords, logins to Azure). I'm still guessing as to what version of things are running. But I've enough to do a proof of concept migration.
+Like any Legacy application it has taken many weeks to gather information (people involved, usernames, passwords, logins to Azure). ~~I'm still guessing as to what version of things are running~~. But I've enough to do a proof of concept migration.
 
 I had a number of pieces of advice around the need to tweak Wordpress with Avada to get it to run well (PHP / Wordpress is not my area). A fellow colleague had built a custom Ubuntu16.04 VM 6 months ago and had got it working, but the migration had never happened. I wanted to get the website running well.
 
 This felt like a good use case for containers as they gave an
 
-- easy development setup environment
-- easy way to test in production for performance
+- Easy development setup environment
+- Easy way to test in production for performance
 
 At the time of writing I've **no idea** if it is a good idea to go into production with Docker.
 
 The first step was to get Wordpress running locally
 
 ## Official Wordpress Image
-[here](https://hub.docker.com/_/wordpress/) it is. Over 10million pulls. It gets very regular updates. [Github](https://github.com/docker-library/wordpress) repo. 
+[Here](https://hub.docker.com/_/wordpress/) it is. Over 10 million pulls. It gets very regular updates. [Github](https://github.com/docker-library/wordpress) repo. 
 
 There is a [quickstart](https://docs.docker.com/compose/wordpress/) tutorial from Docker on how to install wordpress.
 I followed it and it worked well.
@@ -314,6 +314,8 @@ Data was coming down line at 100Megabits (line is 130) and memory usage on VM wa
 With a £6.99 VM timed out the load test and didn't come back up again after 5 minutes
 
 This was due to memory usage - a workaround is to limit the available memory within Docker.
+
+In the next article, I'll show the multitide of ways of running docker in 'production' in Azure, and exploring if its a wise.
 
 ## Interesting Links
 [http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
