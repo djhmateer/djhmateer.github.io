@@ -3,7 +3,7 @@ layout: post
 title:  "Wordpress on Docker"
 date:   2018-02-01 12:22
 menu: review
-categories: git
+categories: docker 
 published: true 
 ---
 I wanted to explore a legacy Wordpress site:
@@ -14,7 +14,7 @@ I wanted to explore a legacy Wordpress site:
 - Difficult to upgrade (apparently)
 - Security was a concern (related to above?)
 
-Like any Legacy application it has taken many weeks to gather information (people involved, usernames, passwords, logins to Azure). ~~I'm still guessing as to what version of things are running~~. But I've enough to do a proof of concept migration.
+Like any Legacy application it has taken many weeks to gather information (people involved, usernames, passwords, logins to Azure). ~~I'm still guessing as to what version of things are running~~. I had just enough to run the application and I used docker to help me explore.
 
 I had a number of pieces of advice around the need to tweak Wordpress with Avada to get it to run well (PHP / Wordpress is not my area). A fellow colleague had built a custom Ubuntu16.04 VM 6 months ago and had got it working, but the migration had never happened. I wanted to get the website running well.
 
