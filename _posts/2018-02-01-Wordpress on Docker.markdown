@@ -25,10 +25,10 @@ This felt like a good use case for containers as they gave an
 
 At the time of writing I've **~~no idea~~** **concerns** if it is a good idea to go into production with Docker. 
 
-The first step was to get Wordpress running locally. I've built a [Summary of What Docker is Good For](/docker/2018/02/14/What-is-docker-good-for.html) page.
+The first step was to get Wordpress running locally. Number 2 in [Summary of What Docker is Good For](/docker/2018/02/14/What-is-docker-good-for.html).
 
 ## Official Wordpress Image
-[Here](https://hub.docker.com/_/wordpress/) it is. Over 10 million pulls. It gets very regular updates. [Github](https://github.com/docker-library/wordpress) repo. 
+[hub.docker.com](https://hub.docker.com/_/wordpress/) has over 10 million pulls. It gets very regular updates. [Github](https://github.com/docker-library/wordpress) source. 
 
 There is a [quickstart](https://docs.docker.com/compose/wordpress/) tutorial from Docker on how to install wordpress.
 I followed it and it worked well.
@@ -38,13 +38,13 @@ I followed it and it worked well.
 ## Customising Wordpress
 To get the Avada theme working well here is a summary 
 
-- I'm using localhost:80 so I can easily scp this file to the UAT server
+- I'm using localhost:80 so I can easily scp this file to the live server
 - Custom uploads.ini (php.ini) for Avada
 - Custom wp-config.php for Avada settings and localhost upload tweak
 - Custom image based off Wordpress with added ziparchive for Avada
 
 ```
--- create docker-compose.yml
+-- docker-compose.yml
 version: '3'
 
 services:
@@ -62,22 +62,25 @@ services:
    wordpress:
      depends_on:
        - db
-    # image: wordpress:latest
-     image: davemateer/wordpresswithziparchive
+     #image: wordpress:latest
+     #image: davemateer/wordpresswithziparchive:php5.6
+     image: davemateer/wordpresswithziparchive:php7.2
      ports:
        - "80:80"
      restart: always
-     #environment:
-     #  WORDPRESS_DB_HOST: db:3306
-     #  WORDPRESS_DB_USER: wordpress
-     #  WORDPRESS_DB_PASSWORD: wordpress
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: wordpress
      volumes: 
        - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini 
        - ./wp-content:/var/www/html/wp-content
        - ./wp-config.php:/var/www/html/wp-config.php
-#volumes:
-#    db_data:
+volumes:
+    db_data:
 ```
+The official wordpress:latest is commented out with my custom image set.. which is defined below:
+
 
 ## Uploads.ini
 This essentially extends php.ini
@@ -108,7 +111,7 @@ define('WP_MAX_MEMORY_LIMIT', '512M');
 define('FS_METHOD', 'direct');
 ```
 ## Install Avada Theme
-[Avada](https://themeforest.net/item/avada-responsive-multipurpose-theme/2833226?ref=ThemeFusion) is a paid for theme with no demo theme that I could see.
+[Avada](https://themeforest.net/item/avada-responsive-multipurpose-theme/2833226?ref=ThemeFusion) is a paid for theme with no demo theme that I could see. At $60 it isn't worth thinking about, so I bought it.
 
 Here is how I installed the theme
 ![ps](/assets/2018-02-01/theme.png)
@@ -121,7 +124,7 @@ After activating Avada there is a useful System Status:
 
 I had quite a few reds:
 
-## Make Custom Wordpress Image based off Official
+## Make Custom Wordpress Image 
 This is purely to install another package in the container that Avada needs (ziparchive to unzip demo files)
 
 When there is an update to the official Wordpress image, I need to update my own image. For example on 1st Feb 2018 there was an update to the official image for [WordpressCLI](http://wp-cli.org/) to 1.5.0.
@@ -132,27 +135,26 @@ ending up with this Dockerfile and directory structure
 
 ![ps](/assets/2018-02-01/dockerfile.png)
 
+This was the Dockerfile I have ended up with:
+
 ```
 # Dockerfile
-# docker build -t davemateer/wordpresswithziparchive .
+# docker login --username=davemateer 
 
+# docker build -t davemateer/wordpresswithziparchive:php7.2 .
+# docker push davemateer/wordpresswithziparchive:php7.2 
+
+# docker build -t davemateer/wordpresswithziparchive:php5.6 .
+# docker push davemateer/wordpresswithziparchive:php5.6
+
+# latest is php7.2
 FROM wordpress:latest
+#FROM wordpress:php5.6
 
 RUN apt-get update \
     && apt-get install -y zlib1g-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install zip 
-``` 
-commands I ran were
-
-Update: this didn't actually work as the latest version of PHP/wordpress broke my lecagy app (see below)
-
-```
-docker build -t davemateer/wordpresswithziparchive .
-docker login --username=davemateer 
--- still learning how best to tag here
-docker tag e3f davemateer/wordpresswithziparchive:firsttry
-docker push davemateer/wordpresswithziparchive
 ```
 ## Going to UAT / Production
 I found docker easy to install on Ubuntu 16.04 LTS [here](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04) are good instructions.
@@ -210,7 +212,7 @@ We didn't have a login to WP, so the trick was to reset the password in the db [
 ## Upgrading Issues / Legacy Versions of PHP and Wordpress
 I found the plugin [All in one WP Migration](https://en-gb.wordpress.org/plugins/all-in-one-wp-migration/) useful to dump the entire legacy site which came in around 300MB. This was all plugins, themes and database dump. So everything was overwritten in the new site.
 
-However what I found was that the existing legacy system [13.73.162.214](http://13.73.162.214) (actually this was the demo system that my college built) was running:
+However what I found was that the existing legacy system [13.73.162.214](http://13.73.162.214) (actually this was the demo system that my colleague built) was running:
 
 - PHP5.5.9-1ubuntu4.22
 - Wordpress 4.7.9 (latest is 4.9.4)
@@ -288,15 +290,18 @@ From Avada 3.9.3 to the latest 5.x
 - Get the product 
 
 Go through process of figuring out how to register
-(https://theme-fusion.com/avada-doc/install-update/how-to-update-theme/)[https://theme-fusion.com/avada-doc/install-update/how-to-update-theme/]
-(https://theme-fusion.com/avada-doc/getting-started/register-purchase-avada-version-4-0-3-lower/)[https://theme-fusion.com/avada-doc/getting-started/register-purchase-avada-version-4-0-3-lower/]
+
+[https://theme-fusion.com/avada-doc/install-update/how-to-update-theme/](https://theme-fusion.com/avada-doc/install-update/how-to-update-theme/)
+
+[https://theme-fusion.com/avada-doc/getting-started/register-purchase-avada-version-4-0-3-lower/](https://theme-fusion.com/avada-doc/getting-started/register-purchase-avada-version-4-0-3-lower/)
 
 then get an API key:
-(https://themeforest.net/user/davemateer2/api_keys/edit)[https://themeforest.net/user/davemateer2/api_keys/edit]
+
+[https://themeforest.net/user/davemateer2/api_keys/edit](https://themeforest.net/user/davemateer2/api_keys/edit)
 
 
 ## Performance
-On the cheapest VM on Azure £6.99 per month the homepage was loading in:
+On the cheapest VM on Azure £6.99 per month the Wordpress default homepage was loading in:
 
 -PHP5.6
   -finish 1.1s
@@ -306,7 +311,10 @@ On the cheapest VM on Azure £6.99 per month the homepage was loading in:
 Upping the VM to a D16s_v3 (16core 64MB RAM)
 
 Running Apache Benchmarks
+
+```
 ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
+```
 
 ![ps](/assets/2018-02-08/bigVM.png)
 Data was coming down line at 100Megabits (line is 130) and memory usage on VM was 2.2GB at peak load.
@@ -315,12 +323,9 @@ With a £6.99 VM timed out the load test and didn't come back up again after 5 m
 
 This was due to memory usage - a workaround is to limit the available memory within Docker.
 
-In the next article, I'll show the multitide of ways of running docker in 'production' in Azure, and exploring if its a wise.
+[In the next article](/wordpress/2018/02/14/Where-to-host-wordpress.html) I'll explore the multitude of ways of running Docker in 'production' in Azure and exploring if it is **wise**!
 
-## Interesting Links
-[http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
-[https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl](https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl)
-[https://www.hyper.sh/pricing.html](https://www.hyper.sh/pricing.html)
+
 
 
 
