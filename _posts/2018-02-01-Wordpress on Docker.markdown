@@ -44,7 +44,7 @@ To get the Avada theme working well here is a summary
 - Custom image based off Wordpress with added ziparchive for Avada
 
 ```
--- docker-compose.yml
+# docker-compose.yml
 version: '3'
 
 services:
@@ -68,10 +68,11 @@ services:
      ports:
        - "80:80"
      restart: always
-     environment:
-       WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: wordpress
+     # We have a custom wp-config.php so don't need to pass these environment vars in
+     #environment:
+     #  WORDPRESS_DB_HOST: db:3306
+     #  WORDPRESS_DB_USER: wordpress
+     #  WORDPRESS_DB_PASSWORD: wordpress
      volumes: 
        - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini 
        - ./wp-content:/var/www/html/wp-content
@@ -80,7 +81,6 @@ volumes:
     db_data:
 ```
 The official wordpress:latest is commented out with my custom image set.. which is defined below:
-
 
 ## Uploads.ini
 This essentially extends php.ini
