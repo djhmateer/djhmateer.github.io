@@ -9,12 +9,12 @@ published: true
 I wanted to explore a legacy Wordpress site:
 
 - Slow to load (5 secs before anything happens)
-- Hosted in Azure on an App Service? pointing to MSSQL
+- Hosted in Azure on a Windows App Service pointing to MSSQL using project [Nami](http://projectnami.org/how-did-we-get-here/)
 - Using an old Avada theme
 - Difficult to upgrade (apparently)
 - Security was a concern (related to above?)
 
-Like any Legacy application it has taken many weeks to gather information (people involved, usernames, passwords, logins to Azure). ~~I'm still guessing as to what version of things are running~~. I had just enough to run the application and I used docker to help me explore.
+Like any Legacy application it has taken many weeks to gather information (people involved, usernames, passwords, logins to Azure). ~~I'm still guessing as to what version of things are running~~. I had just enough to run the application and I used Docker to help me explore.
 
 I had a number of pieces of advice around the need to tweak Wordpress with Avada to get it to run well (PHP / Wordpress is not my area). A fellow colleague had built a custom Ubuntu16.04 VM 6 months ago and had got it working, but the migration had never happened. I wanted to get the website running well.
 
@@ -23,9 +23,9 @@ This felt like a good use case for containers as they gave an
 - Easy development setup environment
 - Easy way to test in production for performance
 
-At the time of writing I've **no idea** if it is a good idea to go into production with Docker.
+At the time of writing I've **~~no idea~~** **concerns** if it is a good idea to go into production with Docker. 
 
-The first step was to get Wordpress running locally
+The first step was to get Wordpress running locally. I've built a [Summary of What Docker is Good For](/docker/2018/02/14/What-is-docker-good-for.html) page.
 
 ## Official Wordpress Image
 [Here](https://hub.docker.com/_/wordpress/) it is. Over 10 million pulls. It gets very regular updates. [Github](https://github.com/docker-library/wordpress) repo. 
