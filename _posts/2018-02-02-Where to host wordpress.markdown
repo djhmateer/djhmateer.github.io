@@ -25,12 +25,13 @@ I will run through the logical steps of getting Wordpress from your dev machine 
 14. Wordpress 'LowTier'  
      - [123-reg](https://www.123-reg.co.uk/web-hosting/wordpress.shtml) from UKP12 per year
 
-
 ## 1. Test Wordpress on local machine using Docker
 Use my local machine to sanity check what is going on with image. I always go with the [nuclear](docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html) option to delete everything to do with docker before I start, so I get fresh images and I know nothing is lying around.
 
+Previous to that I check in with official Wordpress image and maybe [rebuild my own image](/docker/2018/02/01/Wordpress-on-Docker.html#publish-image-to-dockerhub)
+
 ```
-docker container prune -f 
+docker container prune -f
 docker image prune -af
 docker network prune -f
 docker volume prune -f
@@ -55,8 +56,41 @@ Then your site is ready locally.
 
 I've got many issues with broken links, slightly broken import sections etc.. But they are easily contained within Docker, and get easily import and export (with all files source controlled).
 
-## 1.Web App Service on Windows
-ikjh
+## Windows App Service
+![ps](/assets/2018-02-15/2windows.png)
+then
+![ps](/assets/2018-02-15/2win2.png)
+The creation of a normal App Service that can host .NET on Win Server 2016
+
+## Linux App Service
+![ps](/assets/2018-02-15/2windows.png)
+then
+![ps](/assets/2018-02-15/2linux3.png)
+So the Web App Service for linux is really a Web Apps For Containers with a pre built image
+
+## 1.Web App Service on Windows and Linux using PHP
+If you select this Wordpress template, you'll get Windows Server 2016 with PHP7, connected to a hosted MySQL db.
+![ps](/assets/2018-02-15/template.png)
+
+Performance is not good.
+
+## 2.Web App for Containers - Deploy Docker to Azure
+Here we can deploy our own Docker container to Azure. [Official Docs](https://azure.microsoft.com/en-gb/services/app-service/containers/)
+
+![ps](/assets/2018-02-15/2tier.png)
+then
+
+![ps](/assets/2018-02-15/2docker.png)
+
+here is what we get:
+
+![ps](/assets/2018-02-15/2vm.png)
+
+However this just gets the image from hub.docker.com and creates the container. We need another container created - I used docker-compose.yml on my localhost to get MySQL.
+
+[How to run CMSs on Web App for Containers](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/06/running-a-popular-content-management-solution-on-web-app-for-containers/)
+
+
 
 ## Interesting Links
 [http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
