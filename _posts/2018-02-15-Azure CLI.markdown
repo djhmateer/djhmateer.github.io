@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Azure CLI"
+title:  "Cloud Shell"
 date:   2018-02-15 15:54
 #menu: review
 categories: azure 
