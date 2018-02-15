@@ -8,13 +8,12 @@ published: true
 ---
 ![ps](/assets/2018-02-15/azurecli.png)
 
-Click this icon and you'll get an Azure CLI
+Click this icon and you'll get the Cloud Shell where you can use the Azure CLI.
 
 ```
 az account set --subscription "Visual Studio Enterprise"
 az group create --name DaveWordPressQ --location "West Europe"
 az appservice plan create --name myAppServicePlan --resource-group DaveWordPressQ --sku S1 --is-linux
-
 az webapp create --resource-group DaveWordPressQ --plan myAppServicePlan --name DaveWordPressQ  --deployment-container-image-name davemateer/wordpresswithziparchive:php7.2
 ```
 This is creating a resource group and an Azure Web App for Containers instace with a custom Docker image.
@@ -28,5 +27,7 @@ If you want to run locally:
 
 ```
 docker run -it microsoft/azure-cli
+az login
+https://aka.ms/devicelogin
 ```
 
