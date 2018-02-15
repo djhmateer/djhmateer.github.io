@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "Where to host Wordpress?"
+title:  "How to host Wordpress - Docker?"
 date:   2018-02-14 14:23
 menu: review
 categories: wordpress 
 published: true 
 ---
+I will run through the logical steps of getting Wordpress from your dev machine and explore the possible hosting options, and whether they are a good idea.
 
 0. Test it on your local machine with Docker for Linux running
 1. Web app service on Windows with PHP on Windows Server 2016 IIS
@@ -16,9 +17,16 @@ published: true
 
 9. Azure Container Services (Kubernetes)
 
-12. Wordpress tuned cluster eg [wpengine](https://wpengine.com/)
+12. Wordpress 'TopTier' 
+     - [wpengine](https://wpengine.com/) from USD30 per month
+13. Wordpress 'MidTier' 
+     - [2020](http://www.2020media.com/shared-hosting/wordpress-hosting) from UKP10 per month
+     - [bluehost](https://www.bluehost.com/products/wordpress-hosting) from USD20 per month
+14. Wordpress 'LowTier'  
+     - [123-reg](https://www.123-reg.co.uk/web-hosting/wordpress.shtml) from UKP12 per year
 
-## 0.Run Wordpress on local machine using Docker
+
+## 1. Test Wordpress on local machine using Docker
 Use my local machine to sanity check what is going on with image. I always go with the [nuclear](docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html) option to delete everything to do with docker before I start, so I get fresh images and I know nothing is lying around.
 
 ```
