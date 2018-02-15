@@ -8,9 +8,8 @@ published: true
 ---
 I will run through the logical steps of getting Wordpress from your dev machine and explore the possible hosting options, and whether they are a good idea.
 
-0. Test it on your local machine with Docker for Linux running
-1. Web app service on Windows with PHP on Windows Server 2016 IIS
-2. Web app service on Linux (runs Docker - can only run PHP5.6 and 7.0)
+1. Test it on your local machine with Docker for Linux running
+2. What is a Web App (Windows and Linux)
 3. Web App for Containers (Hosted Docker - you give it a Docker image so can run PHP7.2)
 4. Custom Linux VM with Docker installed 
 5. Custom Linux VW with hosted Azure MySQL
@@ -66,16 +65,10 @@ The creation of a normal App Service that can host .NET on Win Server 2016
 ![ps](/assets/2018-02-15/2windows.png)
 then
 ![ps](/assets/2018-02-15/2linux3.png)
-So the Web App Service for linux is really a Web Apps For Containers with a pre built image
-
-## 1.Web App Service on Windows and Linux using PHP
-If you select this Wordpress template, you'll get Windows Server 2016 with PHP7, connected to a hosted MySQL db.
-![ps](/assets/2018-02-15/template.png)
-
-Performance is not good.
+So the Web App Service for Linux is really a **Web Apps For Containers with a pre built image**j
 
 ## 2.Web App for Containers - Deploy Docker to Azure
-Here we can deploy our own Docker container to Azure. [Official Docs](https://azure.microsoft.com/en-gb/services/app-service/containers/)
+Here we can deploy our own Docker images into a container on Azure. [Official Docs](https://azure.microsoft.com/en-gb/services/app-service/containers/)
 
 ![ps](/assets/2018-02-15/2tier.png)
 then
@@ -90,7 +83,16 @@ However this just gets the image from hub.docker.com and creates the container. 
 
 [How to run CMSs on Web App for Containers](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/06/running-a-popular-content-management-solution-on-web-app-for-containers/)
 
+So now we need to create a container with all of our presets baked in (and tuned to Azure). The concept is that the container is immutable and we'll use the **shared** filesystem provided and the hosted MySQL database provided.
 
+
+
+# Appendix
+Web App Service on Windows and Linux using PHP
+If you select this Wordpress template, you'll get Windows Server 2016 with PHP7, connected to a hosted MySQL db.
+![ps](/assets/2018-02-15/template.png)
+
+Performance is not good.
 
 ## Interesting Links
 [http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
