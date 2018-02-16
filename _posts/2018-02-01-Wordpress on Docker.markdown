@@ -179,8 +179,6 @@ chmod +x /usr/local/bin/docker-compose
 ![ps](/assets/2018-02-01/fire.png)
 Open up port 80
 
-[davewordpress demo site](http://davewordpress.westeurope.cloudapp.azure.com/)
-
 ## Docker-compose bug
 ERROR: Version in "./docker-compose.yml" is unsupported. You might be seeing this error because you're using the wrong Compose file version. Either specify a version of "2" (or "2.0")
 
@@ -300,7 +298,6 @@ then get an API key:
 [https://themeforest.net/user/davemateer2/api_keys/edit](https://themeforest.net/user/davemateer2/api_keys/edit)
 
 
-## Performance
 On the cheapest VM on Azure £6.99 per month the Wordpress default homepage was loading in:
 
 -PHP5.6
