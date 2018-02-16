@@ -149,7 +149,7 @@ ab -n 1000 -c 100 http://davewordpresst.azurewebsites.net/
 
 #2 instances - 495s
 #4 instances - 264s
-#10 instances - 182
+#10 instances - 182s
 ```
 
 Summary
@@ -177,23 +177,26 @@ Standard DS1_v2 1cpu 3.5GB - £37.71
 
 ```
 ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
-# 140secs to run
 ```
-then scale it up:
-D16S_V3 16cpu, 64GB - £532
-58secs to run (100MBit line flooded, and Azure load balancers killing any more concurrent connections)
+140secs to run
 
-then down to:
-B1s 1cpu 1GB
- £6.99
+You can scale the VM - however it does take 5 minutes or so. Filesystem is still intact (same disk), therefore as our db_data and wp-data directories are shared to the host, it just all works.
+
+D16S_V3 16cpu, 64GB - £532
+58secs to run (100MBit line flooded)
+
+B1s 1cpu 1GB £6.99
  finish 1.7s
  DOM load: 1s
+load test easy to fail the machine.
 
 Have to be careful with such little RAM - would probably be better using Alpine linux. It was very easy to run out of RAM. Can tell Docker how much to use:
 
 ```
 
 ```
+
+B1mS 1 cpu and 2GB RAM £13 per month
 
 ## 5.Azure Container Services
 Kubernetes
