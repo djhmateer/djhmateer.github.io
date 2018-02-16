@@ -11,7 +11,7 @@ published: true
 
 
 1. Using locally on dev machines to run applications where you don't want to install all dependencies
-  - eg [Jekyll](/jekyl/2018/01/25/Jekyll-and-Docker.html)
+  - eg [Jekyll](/jekyl/2018/01/25/Jekyll-and-Docker.html), [Azure CLI](https://hub.docker.com/r/microsoft/azure-cli/)
 2. Using locally to [Explore an application](/docker/2018/02/01/Wordpress-on-Docker.html) and how it runs under different environments
   - eg Wordpress running under Apache/Nginx/Memcached/PHP5.6/PHP7.2/MySql
 3. Running Docker on a single production box

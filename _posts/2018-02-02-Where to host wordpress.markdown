@@ -55,13 +55,14 @@ Then your site is ready locally.
 
 I've got many issues with broken links, slightly broken import sections etc.. But they are easily contained within Docker, and get easily import and export (with all files source controlled).
 
-## Windows App Service
+## Background
+### Windows App Service
 ![ps](/assets/2018-02-15/2windows.png)
 then
 ![ps](/assets/2018-02-15/2win2.png)
 The creation of a normal App Service that can host .NET on Win Server 2016
 
-## Linux App Service
+### Linux App Service
 ![ps](/assets/2018-02-15/2windows.png)
 then
 ![ps](/assets/2018-02-15/2linux3.png)
@@ -84,6 +85,10 @@ However this just gets the image from hub.docker.com and creates the container. 
 [How to run CMSs on Web App for Containers](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/06/running-a-popular-content-management-solution-on-web-app-for-containers/)
 
 So now we need to create a container with all of our presets baked in (and tuned to Azure). The concept is that the container is immutable and we'll use the **shared** filesystem provided and the hosted MySQL database provided.
+
+Here is the new Dockerfile that builds the image that we need with it pre-ready to go:
+
+
 
 
 
