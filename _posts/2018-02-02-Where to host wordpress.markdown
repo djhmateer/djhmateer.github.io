@@ -161,15 +161,46 @@ Summary
 ## 3.Custom Linux VM with Docker and local MySQL 
 [Detailed install instructions](/docker/2018/02/01/Wordpress-on-Docker.html#going-to-uat--production)
 
-Standard DS1_v2 1cpu 3.5GB - £37.71
+**Standard DS1_v2 1cpu 3.5GB - £37.71**
 ```
 ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
 ```
-177s to run
+177s to run from a fairly clean 100Mbits connection
 
 Was mostly db was taking power 33% CPU
 90% CPU used
 2.4MB used (400MB free)
+
+You can scale the VM - however it does take 5 minutes or so. Filesystem is still intact (same disk), therefore as our db_data and wp-data directories are shared to the host, it just all works.
+
+
+**D16S_V3 16cpu, 64GB - £532**
+58secs to run (100MBit line flooded)
+
+**B1s 1cpu 1GB £6.99**
+ finish 1.7s
+ DOM load: 1s
+load test easy to fail the machine.
+
+Have to be careful with such little RAM - would probably be better using Alpine linux. It was very easy to run out of RAM. Can tell Docker how much to use:
+
+```
+# docker-compose.yml
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - ./db_data:/var/lib/mysql
+     restart: always
+     deploy:
+       resources:
+         limits:
+           memory: 200M
+```
+
+**B1mS 1 cpu and 2GB RAM £13 per month**
+I noticed this machine can take a while to spin up down
+
 
 ## 4.Custom Linux VM with Docker and hosted MySQL
 Standard DS1_v2 1cpu 3.5GB - £37.71
@@ -180,28 +211,10 @@ ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
 ```
 140secs to run
 
-You can scale the VM - however it does take 5 minutes or so. Filesystem is still intact (same disk), therefore as our db_data and wp-data directories are shared to the host, it just all works.
-
-D16S_V3 16cpu, 64GB - £532
-58secs to run (100MBit line flooded)
-
-B1s 1cpu 1GB £6.99
- finish 1.7s
- DOM load: 1s
-load test easy to fail the machine.
-
-Have to be careful with such little RAM - would probably be better using Alpine linux. It was very easy to run out of RAM. Can tell Docker how much to use:
-
-```
-
-```
-
-B1mS 1 cpu and 2GB RAM £13 per month
-
 ## 5.Azure Container Services
 Kubernetes
 
-## Hosted Top Tier
+## Hosted 
 
 
 # Appendix
