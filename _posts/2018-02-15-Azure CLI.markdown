@@ -8,7 +8,7 @@ published: true
 ---
 ![ps](/assets/2018-02-15/azurecli.png)
 
-xClick this icon and you'll get the Cloud Shell where you can use the Azure CLI.
+Click this icon and you'll get the Cloud Shell where you can use the Azure CLI.
 
 ```
 az account set --subscription "Visual Studio Enterprise"
