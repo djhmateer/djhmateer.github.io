@@ -10,7 +10,7 @@ I will run through the logical steps of getting Wordpress from your dev machine 
 
 1. Test it on your local machine with Docker for Linux running
   - What is a Web App (Windows and Linux)
-2. Web App for Containers 
+2. Web App for Containers with hosted MySQL 
 3. Custom Linux VM with Docker and local MySQL (saved to host filesystem) 
 4. Custom Linux VW with hosted Azure MySQL
 
