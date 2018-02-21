@@ -1,0 +1,66 @@
+---
+layout: post
+title:  "Cloud Shell"
+date:   2018-02-21 08:28
+menu: review
+categories: vim 
+published: true 
+---
+I use Vim bindings in VSCode, and I use VSCode Autosave. 
+
+After 4 months of using Vim here are my most used commands.
+
+## Vim commands
+```
+h,j,k,l - j (down), h (left), k (right), l (up) 
+
+i - insert
+o - insert on next line
+a - insert at next character
+
+esc - back to 
+
+$ - end of line
+0 - beginning of line
+
+gg - start of file
+G - end of file
+
+x - delete character
+
+w - next word
+b - previous word
+
+yy - yank line
+p - paste on next line
+P - paste here
+
+dd - delete line (or cut line)
+D - delete to end of line
+dw - delete word
+. - repeat last command (commonly use with dw)
+
+u - undo
+ctrl r - redo
+
+shift R - replace mode
+
+~ - change case of character
+
+/ - search
+n - next in search
+
+```
+
+## GVim
+I'm experimenting with using GVim for it's file browsing capabilities.
+
+```
+" This is a comment in c:\users\dave\_vimrc
+" Word wrap
+set wrap
+" Turn off the beep when you press escape
+set belloff=all
+```
+
+
