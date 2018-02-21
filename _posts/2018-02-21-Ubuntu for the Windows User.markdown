@@ -22,6 +22,8 @@ scp docker-compose.yml uploads.ini wp-config.php dave@xps:wordpress/.
 
 top
 
+pwd
+ls -lat
 ps -ef
 kill -9 1234
 
