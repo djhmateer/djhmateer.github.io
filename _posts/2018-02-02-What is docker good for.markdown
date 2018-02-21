@@ -6,7 +6,6 @@ menu: review
 categories: docker 
 published: true 
 ---
-> The big win so far has been to use Docker to help me generate Jekyll blogs, and secondarily to help me understand a legacy Wordpress system.
 
 
 
@@ -18,8 +17,10 @@ published: true
   - I've used it on Azure to explore performance
   - I am **very** wary of going into production currently 
   - [A number of options biased towards Azure on hosting a PHP App (Wordpress)](/wordpress/2018/02/14/Where-to-host-wordpress.html) 
-  4. Running Docker orchestrated eg Kubernetes
-  - Need to look into this
+  4. Running Docker with an Orchestrator eg Kubernetes (K8s)
+
+> The big win so far has been to use Docker to help me generate Jekyll blogs, and secondarily to help me understand a legacy Wordpress system.
+> If you're going into production Kubernetes and a Scheduler is where you need to be 
 
 ## Useful links
 [www.hanselman.com/blog/WhyShouldICareAboutKubernetesDockerAndContainerOrchestration.aspx](https://www.hanselman.com/blog/WhyShouldICareAboutKubernetesDockerAndContainerOrchestration.aspx)
