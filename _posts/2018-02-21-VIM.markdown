@@ -33,18 +33,23 @@ w - next word
 b - previous word
 
 yy - yank line
-p - paste on next line
-P - paste here
+p - put text after the cursor
+P - put here
+
+rx - replace this character with an x
+shift R - replace mode
+
+ce - change word
+c$
 
 dd - delete line (or cut line)
 D - delete to end of line
-dw - delete word
+de - delete word including last character
 . - repeat last command (commonly use with dw)
 
 u - undo
 ctrl r - redo
 
-shift R - replace mode
 
 ~ - change case of character
 
