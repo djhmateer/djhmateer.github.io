@@ -15,10 +15,11 @@ After 4 months of using Vim here are my most used commands.
 h,j,k,l - j (down), h (left), k (right), l (up) 
 
 i - insert
+A - append to end of line
 o - insert on next line
-a - insert at next character
+a - append (same as insert just goes to next character)
 
-esc - back to 
+esc - Normal modej
 
 $ - end of line
 0 - beginning of line
@@ -26,7 +27,7 @@ $ - end of line
 gg - start of file
 G - end of file
 
-x - delete character
+x - delete character under cursor
 
 w - next word
 b - previous word
@@ -50,6 +51,11 @@ shift R - replace mode
 / - search
 n - next in search
 
+:q! - quit without saving
+:wq - write then quit
+
+:e .  - open up file browser
+
 ```
 
 ## GVim
@@ -64,3 +70,5 @@ set belloff=all
 ```
 
 
+## Vimtutor
+Is an application installed. Essentially a text file that you go through in Vim teaching you about Vim :-) I get to it by typing windows key, Vim Tutor
