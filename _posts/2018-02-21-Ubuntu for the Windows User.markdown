@@ -27,6 +27,10 @@ kill -9 1234
 
 rm -rf *
 
+lsb_release -a
+sudo adduser bob
+
+
 reboot now  
 sudo su
 ```
