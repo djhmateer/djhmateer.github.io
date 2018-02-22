@@ -24,6 +24,7 @@ esc - Normal modej
 
 $ - end of line
 0 - beginning of line
+~ - first non whitespace character of line
 
 gg - start of file
 G - end of file
@@ -34,10 +35,10 @@ w - next word
 b - previous word
 
 yy - yank line
+y$ - yank to EOL
 p - put text after the cursor
 P - put here
 I, Ctrl shift v / middle mouse wheel - paste system clipboard
-
 
 rx - replace this character with an x
 shift R - replace mode
@@ -53,7 +54,7 @@ de - delete word including last character
 u - undo
 ctrl r - redo
 
-
+J - join 2 lines
 ~ - change case of character
 
 / - search
