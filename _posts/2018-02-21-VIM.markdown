@@ -44,7 +44,9 @@ rx - replace this character with an x
 shift R - replace mode
 
 ce - change word
-c$
+c$ - change to end of line
+ci" - change all text inside " " on line 
+f" - find next " on this line 
 
 dd - delete line (or cut line)
 D - delete to end of line
