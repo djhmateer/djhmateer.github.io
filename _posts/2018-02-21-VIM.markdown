@@ -36,6 +36,8 @@ b - previous word
 yy - yank line
 p - put text after the cursor
 P - put here
+I, Ctrl shift v / middle mouse wheel - paste system clipboard
+
 
 rx - replace this character with an x
 shift R - replace mode
