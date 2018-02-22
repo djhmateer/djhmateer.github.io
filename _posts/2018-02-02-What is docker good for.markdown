@@ -16,7 +16,6 @@ published: true
 3. Using 'locally' as a build server for VSTS
 4. Running Docker on a single production box
   - I've used it on Azure to explore performance
-  - I am **very** wary of going into production currently 
   - [A number of options biased towards Azure on hosting a PHP App (Wordpress)](/wordpress/2018/02/14/Where-to-host-wordpress.html) 
 5. Running Docker with an Orchestrator eg Kubernetes (K8s)
   - Azure Container Services (AKS)
