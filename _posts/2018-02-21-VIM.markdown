@@ -15,6 +15,7 @@ After 4 months of using Vim here are my most used commands.
 h,j,k,l - j (down), h (left), k (right), l (up) 
 
 i - insert
+I - insert at the beginning of line
 A - append to end of line
 o - insert on next line
 a - append (same as insert just goes to next character)
