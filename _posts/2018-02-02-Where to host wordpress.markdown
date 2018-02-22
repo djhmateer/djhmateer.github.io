@@ -211,7 +211,7 @@ ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
 ```
 140secs to run
 
-## 5.Azure Container Services
+## 5.Azure Container Services (AKS)
 Kubernetes
 
 ## Hosted 
