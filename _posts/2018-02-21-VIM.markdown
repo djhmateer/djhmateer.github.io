@@ -79,7 +79,8 @@ set wrap
 " Turn off the beep when you press escape
 set belloff=all
 ```
-
+## VSCode
+Sometimes the plugin stops working. [Deleting the extensions directory](https://stackoverflow.com/a/36751445/26086) seems to work
 
 ## Vimtutor
 Is an application installed. Essentially a text file that you go through in Vim teaching you about Vim :-) I get to it by typing windows key, Vim Tutor
