@@ -13,7 +13,7 @@ Here is an exmple of using 'Async all the way' using Dapper for data access in a
 ### Why Use Async in a Web App
 If you are hitting a single database then this probably wont speed up your app
 
-However it will allow greater scalability of the application as the web thread wont be locked?**need more info**
+However it will allow greater scalability of the application as the web thread wont be locked
 
 ### Simple Example using Dapper 
 {% highlight csharp %}
