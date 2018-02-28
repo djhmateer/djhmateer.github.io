@@ -8,6 +8,7 @@ published: true
 ## Summary
 * Make SQL do the heavy lifting of: Sorting, Filtering, Paging.  
 * Keep data access as simple as possible 
+* [Source on Github](https://github.com/djhmateer/thinkbooks)
 
 ## Background
 I've been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I've noticed is that my applications are much simpler and more performant if I **leave data manipulation to the database**
@@ -33,7 +34,7 @@ CREATE TABLE [dbo].[Author] (
 * Identity Ints for the PK (not GUIDS)
 * AuthorID for ID Column (not ID) 
 * Singular table names preferred see [here](http://stackoverflow.com/a/809018/26086) and [here](http://stackoverflow.com/a/5841297/26086)
- so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having > 1 Address.
+ so that Master detail link tables are well named eg AuthorAddress. 
 
 **Plural Repository Names**
 {% highlight csharp %}
@@ -68,11 +69,14 @@ RESTful resources are mostly plural eg [Spotify API](https://developer.spotify.c
 {% endhighlight %}
 
 ## Use Full Blown SQL
-Don't use localdb.  Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.  Also full SQL runs faster.
+If performance is an issue from the start use full SQL on your Dev machine (or whatever version you'll run in Prod) and a way of [loading real data fast](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) using [Fastmember](https://github.com/mgravell/fast-member) is a very good start compared to Datatables.. Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.
 
-## Filtering
-strategy
-WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)
+## No Linq? 
+For the next sections see a [Repository](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Services/AuthorsRepository.cs) of Authors
+
+For this project I found using SQL and Dapper to be perfect. I didn't need linq. Linq may have been much more handy with a smaller dataset, and where performance wasn't critical.
+
+I found that for large datasets using dynamic sql with parameterised varibles to be incredibly performant and flexible. In the code above you'll notice an inline variable sanitizedSortColumn. 
 
 ## Ordering
 CASE strategy works, but it doesn't use indexes
