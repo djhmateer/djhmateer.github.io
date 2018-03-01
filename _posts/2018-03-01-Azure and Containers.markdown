@@ -17,3 +17,4 @@ Simplify the deployment, managment of a Kubernetes cluster
 [Home on Azure](https://azure.microsoft.com/en-us/services/container-service/) - fully managed K8s container orchestration service.
 
 ## 2. Azure Container Instances (Preview)
+Its just an application in a container, running in the cloud
