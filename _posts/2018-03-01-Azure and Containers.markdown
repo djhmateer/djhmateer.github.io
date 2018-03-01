@@ -14,6 +14,8 @@ At the time of writing these were [some of the options](https://azure.microsoft.
 Simplify the deployment, managment of a Kubernetes cluster
 [Intro blog post of 24th Oct 2017](https://azure.microsoft.com/en-gb/blog/introducing-azure-container-service-aks-managed-kubernetes-and-azure-container-registry-geo-replication/)
 
+[Docs](https://docs.microsoft.com/en-gb/azure/aks/intro-kubernetes) from MS
+
 [Home on Azure](https://azure.microsoft.com/en-us/services/container-service/) - fully managed K8s container orchestration service.
 
 ## 2. Azure Container Instances (Preview)

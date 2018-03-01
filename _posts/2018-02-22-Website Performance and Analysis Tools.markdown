@@ -12,4 +12,8 @@ published: true
 
 [testmysite.io](https://testmysite.io) - performance metrics on the site from 6 regions eg TTFB, Full Download of HTML. Results skewed towards Netlify as the hosting is on their servers
 
+[freesitestatus](http://www.freesitestatus.com/en/)  
+
+Azure have an uptime monitor inside Application Insights  
+
 [builtwith.com](https://builtwith.com) - eg is this a wordpress site, what webserver etc..
