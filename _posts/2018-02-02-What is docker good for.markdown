@@ -18,7 +18,7 @@ published: true
   - I've used it on Azure to explore performance
   - [A number of options biased towards Azure on hosting a PHP App (Wordpress)](/wordpress/2018/02/14/Where-to-host-wordpress.html) 
 5. Running Docker with an Orchestrator eg Kubernetes (K8s)
-  - Azure Container Services (AKS)
+  - [Azure Container Services (AKS)](/azure/2018/03/01/Azure-and-Containers.html)
 
 > The big win so far has been to use Docker to help me generate Jekyll blogs, and secondarily to help me understand a legacy Wordpress system.
 
