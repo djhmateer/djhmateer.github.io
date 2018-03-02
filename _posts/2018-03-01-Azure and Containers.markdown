@@ -6,7 +6,7 @@ menu: review
 categories: azure 
 published: true 
 ---
-At the time of writing these were [some of the options](https://azure.microsoft.com/en-gb/services/container-instances/) for containers on Azure
+At the time of writing these were [some of the options](https://azure.microsoft.com/en-gb/services/container-instances/) for containers on Azure. Interestingly both below were only in Preview, whereas the Google Kontainer Engine (K8s) and Amazon EC2 Container Service have been around longer.
 
 ![ps](/assets/2018-03-01/container.png)
 
