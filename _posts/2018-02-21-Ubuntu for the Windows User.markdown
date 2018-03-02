@@ -30,9 +30,11 @@ kill -9 1234
 rm -rf *
 chmod -777 *
 
+cat /proc/version
+uname -a
 lsb_release -a
-sudo adduser bob
 
+sudo adduser bob
 
 reboot now  
 sudo su
