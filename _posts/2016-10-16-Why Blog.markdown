@@ -6,7 +6,7 @@ published: true
 ---
 ![On the way to Machu Picchu](/assets/3Guys_500.jpg)
 
-I started blogging 8 years ago with [Programgood - First Post](http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx)  It turned into a very good ideas repository, not a blog.  *That's fine.*  
+I started blogging 8 years ago with [Programgood - First Post](https://web.archive.org/web/20170324063932/http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx)  It turned into a very good ideas repository, not a blog.  *That's fine.*  
  
 I'd now like to try a more 'walkthrough' style blog, taking inspiration from [hanselman.com](http://www.hanselman.com) and [ScottGu](http://weblogs.asp.net/scottgu/introducing-asp-net-5) 
 
