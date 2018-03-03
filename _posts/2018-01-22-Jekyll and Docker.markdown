@@ -79,7 +79,7 @@ docker rm -f 1 2 3
 Now you should be able to see your site by going to localhost:4000 in your browser
 
 ## Delete all Docker Containers, Images and Networks
-I wrote another [article](jekyl/2018/01/25/Jekyll-and-Docker.html) on this as it is so important.
+I wrote another [article](/docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html) on this as it is so important.
 
 ## Docker-compose.yml
 Lets make it easier to run up docker by using the built in docker-compose cli. Here is the config file **docker-compose.yml** that I use:
