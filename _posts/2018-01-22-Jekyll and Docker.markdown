@@ -19,8 +19,8 @@ Firstly install [Docker CE (Community Edition)](https://www.docker.com/community
 Then run the Jekyll image on Docker from a new test directory
 
 ```
-cd c:/temp
-docker run --rm  -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
+cd c:/temp/myBlog
+docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
 ```
 
 - --rm means ReMove container after it exits (useful for short lived containers or commands)
@@ -36,16 +36,16 @@ If all goes well you should end up with this:
 Now you can run commands:
 
 ```
-jekyll new myblog
+jekyll new .
 ```
 ![new](/assets/2018-01-25-Docker/new.png)
 
-You now have a brand new Jekyll site in c:\temp\myblog
+You now have a brand new Jekyll site in c:\temp\myBlog
 
 ## How does the Jekyll container interact with c:
 When we start the container we map a volume (the -v below)
 ```
-docker run --rm  -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
+docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
 ```
 The container is continually reading new posts (watching the _posts folder) then regenerating the static _site
 
@@ -64,7 +64,7 @@ The container is continually reading new posts (watching the _posts folder) then
 ## Serving the site Locally
 We need to open up port 4000 from docker. Exit out of bash and re-run the command:
 ```
-docker run --rm  -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
+docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
 jekyll serve --force_polling 
 ```
 If you see any errors (eg can't bind) it probably means you have the port open somewhere else. For me it is when I've got docker containers leftover I didn't know about. Here is how I fix these errors:
