@@ -248,7 +248,7 @@ ac = length ab
 a = [x | x <- [1..10], odd x, x > 3]
 {% endhighlight %}
 
-[Noel Markham's exercises link](https://github.com/noelmarkham/learn-you-a-haskell-exercises/blob/master/2-starting-out.hs)
+[Noel Markham's exercises link](https://github.com/noelmarkham/learn-you-a-haskell-exercises)
 
 {% highlight haskell %}
 

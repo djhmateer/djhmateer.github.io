@@ -6,6 +6,10 @@ menu: review
 categories: docker 
 published: true 
 ---
+
+This is part 2 of a series - see [summary](/docker/2018/02/14/What-is-docker-good-for.html)
+
+
 I wanted to explore a legacy Wordpress site:
 
 - Slow to load (5 secs before anything happens)

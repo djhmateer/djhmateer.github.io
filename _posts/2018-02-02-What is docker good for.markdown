@@ -13,13 +13,15 @@ published: true
   - eg [Jekyll](/jekyl/2018/01/25/Jekyll-and-Docker.html), [Azure CLI](https://hub.docker.com/r/microsoft/azure-cli/)
 2. Using locally to [Explore an application](/docker/2018/02/01/Wordpress-on-Docker.html) and how it runs under different environments
   - eg Wordpress running under Apache/Nginx/Memcached/PHP5.6/PHP7.2/MySql
-3. Running Docker on a single production box
+3. Using 'locally' as a build server for VSTS
+4. Running Docker on a single production box
   - I've used it on Azure to explore performance
-  - I am **very** wary of going into production currently 
   - [A number of options biased towards Azure on hosting a PHP App (Wordpress)](/wordpress/2018/02/14/Where-to-host-wordpress.html) 
-  4. Running Docker with an Orchestrator eg Kubernetes (K8s)
+5. Running Docker with an Orchestrator eg Kubernetes (K8s)
+  - [Azure Container Services (AKS)](/azure/2018/03/01/Azure-and-Containers.html)
 
 > The big win so far has been to use Docker to help me generate Jekyll blogs, and secondarily to help me understand a legacy Wordpress system.
+
 > If you're going into production Kubernetes and a Scheduler is where you need to be 
 
 ## Useful links

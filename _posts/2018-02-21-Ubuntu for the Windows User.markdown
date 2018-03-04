@@ -22,18 +22,32 @@ scp docker-compose.yml uploads.ini wp-config.php dave@xps:wordpress/.
 
 top
 
+pwd
+ls -lat
 ps -ef
 kill -9 1234
 
 rm -rf *
+chmod -777 *
 
+cat /proc/version
+uname -a
 lsb_release -a
-sudo adduser bob
 
+sudo adduser bob
 
 reboot now  
 sudo su
 ```
+## Tools
+```
+# A nice verison of top showing all processors
+sudo apt-get install htop
+sudo apt-get install iotop
+sudo iotop
+```
+
+
 ### Installing Docker
 [Installing Docker](/docker/2018/02/01/Wordpress-on-Docker.html#going-to-uat--production)
 

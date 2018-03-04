@@ -15,40 +15,57 @@ After 4 months of using Vim here are my most used commands.
 h,j,k,l - j (down), h (left), k (right), l (up) 
 
 i - insert
+I - insert at the beginning of line
+A - append to end of line
 o - insert on next line
-a - insert at next character
+a - append (same as insert just goes to next character)
 
-esc - back to 
+esc - Normal modej
 
 $ - end of line
 0 - beginning of line
+~ - first non whitespace character of line
 
 gg - start of file
 G - end of file
 
-x - delete character
+x - delete character under cursor
 
 w - next word
 b - previous word
 
 yy - yank line
-p - paste on next line
-P - paste here
+y$ - yank to EOL
+p - put text after the cursor
+P - put here
+I, Ctrl shift v / middle mouse wheel - paste system clipboard
+
+rx - replace this character with an x
+shift R - replace mode
+
+ce - change word
+c$ - change to end of line
+ci" - change all text inside " " on line 
+f" - find next " on this line 
 
 dd - delete line (or cut line)
 D - delete to end of line
-dw - delete word
+de - delete word including last character
 . - repeat last command (commonly use with dw)
 
 u - undo
 ctrl r - redo
 
-shift R - replace mode
-
+J - join 2 lines
 ~ - change case of character
 
 / - search
 n - next in search
+
+:q! - quit without saving
+:wq - write then quit
+
+:e .  - open up file browser
 
 ```
 
@@ -62,5 +79,8 @@ set wrap
 " Turn off the beep when you press escape
 set belloff=all
 ```
+## VSCode
+Sometimes the plugin stops working. [Deleting the extensions directory](https://stackoverflow.com/a/36751445/26086) seems to work
 
-
+## Vimtutor
+Is an application installed. Essentially a text file that you go through in Vim teaching you about Vim :-) I get to it by typing windows key, Vim Tutor

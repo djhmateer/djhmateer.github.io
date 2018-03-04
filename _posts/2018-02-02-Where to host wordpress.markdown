@@ -14,14 +14,14 @@ I will run through the logical steps of getting Wordpress from your dev machine 
 3. Custom Linux VM with Docker and local MySQL (saved to host filesystem) 
 4. Custom Linux VW with hosted Azure MySQL
 
-5. Azure Container Services (Kubernetes)
+5. Azure Containers [Separate blog post](/azure/2018/03/01/Azure-and-Containers.html) 
 
-6. Wordpress 'TopTier' 
+6. Hosted Wordpress 'TopTier' 
      - [wpengine](https://wpengine.com/) from USD30 per month
-7. Wordpress 'MidTier' 
+7. Hosted Wordpress 'MidTier' 
      - [2020](http://www.2020media.com/shared-hosting/wordpress-hosting) from UKP10 per month
      - [bluehost](https://www.bluehost.com/products/wordpress-hosting) from USD20 per month
-8. Wordpress 'LowTier'  
+8. Hosted Wordpress 'LowTier'  
      - [123-reg](https://www.123-reg.co.uk/web-hosting/wordpress.shtml) from UKP12 per year
 
 ## 1. Test Wordpress on local machine using Docker
@@ -211,11 +211,11 @@ ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
 ```
 140secs to run
 
-## 5.Azure Container Services
-Kubernetes
+## 5.Azure 
+[Separate blog post](/azure/2018/03/01/Azure-and-Containers.html) 
 
 ## Hosted 
-
+Todo
 
 # Appendix
 Web App Service on Windows and Linux using PHP

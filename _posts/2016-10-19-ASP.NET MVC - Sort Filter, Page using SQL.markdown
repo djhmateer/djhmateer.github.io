@@ -1,21 +1,25 @@
 ---
 layout: post
 title:  "Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC"
-menu: review
+#menu: review
 categories: jekyll
 published: true
 ---
+
+This post more than any other, is for me to remember how I like to name things, and how to setup a high performance web application with large amounts of data needing queried in MSSQL. The example shows ASP.NET MVC whereas today I'd probably use Razor Pages on ASP.NET Core 2.0.
+
 ## Summary
+* Name things consistently 
 * Make SQL do the heavy lifting of: Sorting, Filtering, Paging.  
-* Keep data access as simple as possible 
+* Keep data access as simple
+* [Source on Github](https://github.com/djhmateer/thinkbooks)
 
 ## Background
 I've been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I've noticed is that my applications are much simpler and more performant if I **leave data manipulation to the database**
 
-
 ## Example App
 * ASP.NET MVC app
-* Service layer (DAL) - repository pattern
+* Service layer (DAL) - Repository pattern
 * MSSQL 
  
 ## Conventions
@@ -33,7 +37,7 @@ CREATE TABLE [dbo].[Author] (
 * Identity Ints for the PK (not GUIDS)
 * AuthorID for ID Column (not ID) 
 * Singular table names preferred see [here](http://stackoverflow.com/a/809018/26086) and [here](http://stackoverflow.com/a/5841297/26086)
- so that Master detail link tables are nicer eg AuthorAddress if we needed to model Authors having > 1 Address.
+ so that Master detail link tables are well named eg AuthorAddress. 
 
 **Plural Repository Names**
 {% highlight csharp %}
@@ -68,97 +72,74 @@ RESTful resources are mostly plural eg [Spotify API](https://developer.spotify.c
 {% endhighlight %}
 
 ## Use Full Blown SQL
-Don't use localdb.  Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.  Also full SQL runs faster.
+If performance is an issue from the start use full SQL on your Dev machine (or whatever version you'll run in Prod) and a way of [loading real data fast](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) using [Fastmember](https://github.com/mgravell/fast-member) is a very good start compared to Datatables.. Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.
 
-## Filtering
-strategy
-WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)
+[MiniProfiler has helped me a lot](/miniprofiler/2016/11/01/MiniProfiler.html) to quantify performance.
+
+## No Linq? 
+For the next sections see a [Repository](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Services/AuthorsRepository.cs) of Authors
+
+For this project I found using SQL and Dapper to be perfect. I didn't need linq. Linq may have been much more handy with a smaller dataset, and where performance wasn't critical.
+
+I found that for large datasets using dynamic sql with parameterised variables to be incredibly performant and flexible. In the code above you'll notice an inline variable sanitizedSortColumn. 
 
 ## Ordering
-CASE strategy works, but it doesn't use indexes
+[CASE strategy works](https://dba.stackexchange.com/a/9115/29091) but it doesn't [use indexes](https://stackoverflow.com/questions/1497181/sql-server-doesnt-use-index-in-stored-procedure). 
 
-Dynamic SQL is fine (need to be careful about SQL injection)
+The solution is to use plain old SQL (with all the usual caveats about SQL injection!)
 
-sp_executesql works well if you have to use SP's.
+I found that if you are constrained in a large organisation, then sp_executesql works well if you 'have to use SP's'!
 
-## Count
-Counts are expensive.  
+## Paging
+SQL2005 - CTE's works  
+SQL2012 and greater - ORDER BY OFFSET FETCH seems to perform better 
 
-If you are counting the whole table, use this technique:
+```
+var sql = @"
+	SELECT a.*, s.Name AS AuthorStatusName FROM Author a
+	INNER JOIN AuthorStatus s ON a.AuthorStatusID = s.AuthorStatusID
+	WHERE (@AuthorID IS NULL OR AuthorID = @AuthorID)
+	AND (@FirstName IS NULL OR FirstName LIKE CONCAT(@FirstName,'%'))
+	AND (@LastName IS NULL OR LastName LIKE CONCAT(@LastName,'%'))
+	AND (@DateOfBirth IS NULL OR DateOfBirth = @DateOfBirth)
+	ORDER BY " + sanitizedSortColumn + " " + sortDirection + @"
+	OFFSET " + offset + @" ROWS 
+	FETCH NEXT " + numberOfResults + " ROWS ONLY";
+```
+
+[Full code](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Services/AuthorsRepository.cs)
+
+
+## Counting
+Counts are expensive. [Some background information](http://www.sqlservercentral.com/blogs/spaghettidba/2015/05/18/counting-the-number-of-rows-in-a-table/) 
+
+I've used the following technique on large tables which gives blazing fast performance
+
+```
+-- If we are are just want to know how many rows are in the entire tables really quickly
+if (authorIDFilter == null && dateOfBirthFilter == null && firstNameFilter.IsNullOrWhiteSpace() && lastNameFilter.IsNullOrWhiteSpace())
+{
+	sqlCount = @"SELECT SUM(p.rows)
+				FROM sys.partitions AS p
+				INNER JOIN sys.tables AS t
+				ON p.[object_id] = t.[object_id]
+				INNER JOIN sys.schemas AS s
+				ON t.[schema_id] = s.[schema_id]
+				WHERE p.index_id IN (0,1) -- heap or clustered index
+				AND t.name = N'Author'
+				AND s.name = N'dbo'";
+}
+else
+{
+	sqlCount = @"SELECT COUNT(*) FROM Author
+				WHERE(@AuthorID IS NULL OR AuthorID = @AuthorID)
+				AND(@firstName IS NULL OR FirstName LIKE CONCAT(@firstName, '%'))
+				AND(@LastName IS NULL OR LastName LIKE CONCAT(@LastName,'%'))
+				AND(@DateOfBirth IS NULL OR DateOfBirth = @DateOfBirth)";
+}
+```
 
 If you are counting over multiple tables and are having daily jobs running running.  Do the processing and put total main query count into a helper table.
 
-## Paging
-SQL2005 - CTE's works
-
-SQL2012 - ORDER BY OFFSET FETCH seem to perform better.  And make cleaner SQL
-
-## Joins
-We will be using JOINs in most of our big queries, so lets tackle making these optimal for ThinkBooks.
-
-## CRUD on simple helper Tables
-**Entity Framework** - we have used that on many projects.  I now prefer something simpler, and more performant.  Will use EF when we need the features it provides (eg change tracking)
-
- [EF Performance](https://www.simple-talk.com/dotnet/net-tools/entity-framework-performance-and-what-you-can-do-about-it/) useful notes
-
-* simple
-* performant
-
-**Dapper extensions**
-Contained in Dapper are (some extensions)[http://blog.falafel.com/implementing-a-generic-repository-with-dapper-extensions/]
-
-* Dapper.Contrib
-* Dapper.Rainbow
-
-## SPROC 
-[StackOverflows 2016 view](http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/) search the page for 'Stored procs' and look at the comments at the bottom too.
-
-TL;DR - "Stored procs are a **layer of abstraction they don't need**, and keeping SQL in code means much more easily source controlled"
-
-So I always try and get SQL in code now, unless the Enterprise demands SP's (they usually do - in which case sp_executesql can really help)
-
-{% highlight csharp %}
-public List<Author> GetAuthors(string sortColumnAndDirection)
-{
-    using (var db = Util.GetOpenConnection())
-    {
-        var p = new DynamicParameters();
-        var sortDirection = "ASC";
-        var sortColumn = sortColumnAndDirection;
-        if (sortColumnAndDirection.EndsWith("_desc"))
-        {
-            sortDirection = "DESC";
-            sortColumn = sortColumn.Substring(0, sortColumnAndDirection.Length - 5);
-        }
-        p.Add("@SortColumn", sortColumn);
-        p.Add("@SortDirection", sortDirection);
-        return db.Query<Author>("GetAuthors", p, commandType: CommandType.StoredProcedure).ToList();
-    }
-}
-{% endhighlight %}
-
-## Inline SQL
-Pretty much no different than an optinised sproc.
-
-
-## Filtering
-// use get requests so can bookmark
-
-## Measuring speed with MiniProfiler
-see screenshots
-
-## Query Optimisation 
-Observation and trialling indexes
-
-
-## Validation of Data 
-// always use Parameters
-// Dapper great for type translation
-
-
-## Source control your DB
-// even if the enterprise doesn't... easy
-
-
-
-
+## How to handle the Front End
+[Keeping filters sticky, Paging, Keeping the URL clean](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Controllers/AuthorsController.cs) and more are more easily explained by looking at this example.
