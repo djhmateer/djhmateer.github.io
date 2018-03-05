@@ -107,7 +107,7 @@ Push your repository to [Github Pages](https://pages.github.com/) and it will do
 If you get stuck, try looking at the source for this [blog](https://github.com/djhmateer/djhmateer.github.io)
 
 ## Multiple Github accounts
-You are only allowed 1 Github pages account per user. [Here](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) is how I have multiple accounts.
+You are only allowed 1 Github Pages account per user. [Here](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) is how I have multiple GitHub accounts on 1 machine.
 
 ## Updating Jekyll
 At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3. 
