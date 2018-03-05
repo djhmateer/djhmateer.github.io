@@ -23,10 +23,13 @@ az group delete -n DaveWordPressQ
 ```
 Delete the whole lot.
 
-If you want to run locally:
-
+If you want to run locally you can download the CLI or 
+[Run in Docker](https://docs.microsoft.com/en-us/cli/azure/run-azure-cli-docker?view=azure-cli-latest)
 ```
-docker run -it microsoft/azure-cli
+# I had issues with strange names in my home directory, so a direct mapping was easier
+docker run -it -v ${HOME}:/root microsoft/azure-cli
+
+docker run -it -c c:/temp:/root microsoft/azure-cli
 az login
 https://aka.ms/devicelogin
 ```
