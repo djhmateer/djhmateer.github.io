@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jekyll and Docker2"
+title:  "Jekyll and Docker"
 date:   2018-01-25
 # menu: review
 categories: jekyl
@@ -42,25 +42,6 @@ jekyll new .
 
 You now have a brand new Jekyll site in c:\temp\myBlog
 
-## How does the Jekyll container interact with c:
-When we start the container we map a volume (the -v below)
-```
-docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
-```
-The container is continually reading new posts (watching the _posts folder) then regenerating the static _site
-
-## How I write articles
-
-- open my [shell](http://cmder.net/) in c:\dev\djhmateer.github.io
-- git pull 
-- docker-compose up
-- edit or create new markdown post files in VS Code in the c:\dev\djhmateer.github.io\_posts directory
-- press F5 in my browser pointing to localhost:4000
-- fix mistakes in blog post
-- git commit -am "changes"
-- git push
-
-
 ## Serving the site Locally
 We need to open up port 4000 from docker. Exit out of bash and re-run the command:
 ```
@@ -75,15 +56,15 @@ docker ps -a
 -- remove container ID's 1, 2, and 3 
 docker rm -f 1 2 3
 ```
-
 Now you should be able to see your site by going to localhost:4000 in your browser
 
-## Delete all Docker Containers, Images and Networks
-I wrote another [article](/docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html) on this as it is so important.
+If it doesn't work try deleting all of Dockers [remnants](/docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html)
 
-## Docker-compose.yml
+## Docker-compose.yml and Livereload
 Lets make it easier to run up docker by using the built in docker-compose cli. Here is the config file **docker-compose.yml** that I use:
 
+Livereload required Jekyll >3.7.
+[If using <3.7 issues with 0.0.0.0 on Windows](https://tonyho.net/jekyll-docker-windows-and-0-0-0-0/)
 ```
 version: '3'
 
@@ -93,21 +74,15 @@ services:
     container_name: davemateer-com
     environment:
         - JEKYLL_ENV=docker
-    command: jekyll serve --config _config.yml,_config.docker.yml --force_polling 
+    # force_polling makes the linux box watch for any changes to files, then it will regenerate
+    # livereload gets the browser to automatically refresh when changes happen to files
+    command: jekyll serve --force_polling --livereload 
     ports:
         - 4000:4000
+        - 35729:35729
     volumes:
         - ./:/srv/jekyll
 ```
-I've added --force_polling so it regenerates on a file save.
-
-It also references a new file called **_config.docker.yml** which contains this line
-
-```
-url: "http://localhost:4000"
-```
-
-this is to get around the 0.0.0.0 problem on Windows with the home link created in Jekyll see [here](https://tonyho.net/jekyll-docker-windows-and-0-0-0-0/) for more details.
 
 ```
 -- start the system
@@ -117,28 +92,30 @@ docker-compose down
 ```
 If you do changes to your **_config.yml** file restart the docker container (ctrl c out, then docker-compose up). The force_polling doesn't pick up _config file changes.
 
+## How I write articles
+- open my [shell](http://cmder.net/) in c:\dev\djhmateer.github.io
+- git pull 
+- docker-compose up
+- edit or create new markdown post files in VS Code in the c:\dev\djhmateer.github.io\_posts directory
+- magically watch as the browser updates (I've got autosave turned on in VSCode) 
+- git commit -am "changes"
+- git push
 
 ## Going to Production
-This is just as normal. Push your repository to Github pages and it will do all it's own regenning.
+Push your repository to [Github Pages](https://pages.github.com/) and it will do all it's own regenning. 
 
-If you get stuck, try looking at the source for this blog [here](https://github.com/djhmateer/djhmateer.github.io)
+If you get stuck, try looking at the source for this [blog](https://github.com/djhmateer/djhmateer.github.io)
+
+If you already have a Github Pages website and want another one, I created a new Github account. 
 
 ## Updating Jekyll
-At time of writing the Jekyll/Jekyll image is runing Jekyll 3.6.2. If you delete your gemfile.lock and run bundle update you will get all the dependencies again. If you take off the version numbers it pulled jekyll 3.7.0 at the time of writing. 
+At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3. 
+
 ```
--- my Gemfile
-source "https://rubygems.org"
-gem "jekyll", "~> 3.6.2"
-gem "minima", "~> 2.0"
+docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
+jekyll bundle update
 ```
-I've kept my blog at 3.6.2 at the moment
+If you delete your gemfile.lock and run jekyll bundle update you will get all the dependencies again (actually I didn't need to delete the lock file sometime). If you take off the version numbers it pulled jekyll 3.7.3 at the time of writing, but I want to make sure its the same as the [docker version](https://github.com/envygeeks/jekyll-docker)
 
 ## Caching 
 To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
-
-## Summary
-- Install Docker
-- Run a single command to get Jekyll working inside a container
-- Create a new blog
-- View site working on localhost:4000
-- Automatic regeneration of site on file save
