@@ -98,15 +98,16 @@ If you do changes to your **_config.yml** file restart the docker container (ctr
 - docker-compose up
 - edit or create new markdown post files in VS Code in the c:\dev\djhmateer.github.io\_posts directory
 - magically watch as the browser updates (I've got autosave turned on in VSCode) 
-- git commit -am "changes"
+- git commit -am "changes" (I'm lazy actually and just type 'p' - [see alias](/cmder/2018/01/30/Cmder-Shell.html))
 - git push
 
 ## Going to Production
-Push your repository to [Github Pages](https://pages.github.com/) and it will do all it's own regenning. 
+Push your repository to [Github Pages](https://pages.github.com/) and it will do all it's own regenning on their server. So you can just edit posts and push them to Github and it will work. However I do really like seeing real time blog posts.  
 
 If you get stuck, try looking at the source for this [blog](https://github.com/djhmateer/djhmateer.github.io)
 
-If you already have a Github Pages website and want another one, I created a new Github account. 
+## Multiple Github accounts
+You are only allowed 1 Github pages account per user. [Here](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) is how I have multiple accounts.
 
 ## Updating Jekyll
 At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3. 
@@ -115,7 +116,7 @@ At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3.
 docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
 jekyll bundle update
 ```
-If you delete your gemfile.lock and run jekyll bundle update you will get all the dependencies again (actually I didn't need to delete the lock file sometime). If you take off the version numbers it pulled jekyll 3.7.3 at the time of writing, but I want to make sure its the same as the [docker version](https://github.com/envygeeks/jekyll-docker)
+If you delete your gemfile.lock and run jekyll bundle update you will get all the dependencies again (actually I didn't need to delete the lock file sometimes). If you take off the version numbers it pulled jekyll 3.7.3 at the time of writing, but I want to make sure its the same as the [docker version](https://github.com/envygeeks/jekyll-docker)
 
 ## Caching 
 To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
