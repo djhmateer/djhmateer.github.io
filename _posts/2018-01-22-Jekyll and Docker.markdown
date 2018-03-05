@@ -107,7 +107,40 @@ Push your repository to [Github Pages](https://pages.github.com/) and it will do
 If you get stuck, try looking at the source for this [blog](https://github.com/djhmateer/djhmateer.github.io)
 
 ## Multiple Github accounts
-You are only allowed 1 Github Pages account per user. [Here](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) is how I have multiple GitHub accounts on 1 machine.
+You are only allowed 1 Github Pages account per user. [Here](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) is how I have multiple GitHub accounts on 1 machine. As an aide memoire this is what I do on my Win 10 machines:  
+
+```
+cd \users\davidma\.ssh
+-- create a new public and private key
+-- save it as id_rsa_ph
+ssh-keygen -t rsa -C "penhemingway@outlook.com"
+
+-- logon to Github and add the .pub ssh key so GH can identify this user
+
+start-ssh-agent
+-- add the new key to our agent (I use ph to denote penhemingway)
+ssh-add id_rsa_ph
+
+-- create a new config file
+edit config
+
+#Default GitHub - /djhmateer (davemateer@gmail.com)
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+#New account - /penhemingway (penhemingway@outlook.com)
+Host github-ph
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_ph
+
+cd /dev/test/penhemingway.github.io
+git remote remove origin
+git remote add origin git@github-ph:penhemingway/penhemingway.github.io.git
+git push --set-upstream origin master
+
+```
 
 ## Updating Jekyll
 At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3. 
