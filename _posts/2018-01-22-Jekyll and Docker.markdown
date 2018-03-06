@@ -149,7 +149,7 @@ At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3.
 docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
 jekyll bundle update
 ```
-If you delete your gemfile.lock and run jekyll bundle update you will get all the dependencies again (actually I didn't need to delete the lock file sometimes). If you take off the version numbers it pulled jekyll 3.7.3 at the time of writing, but I want to make sure its the same as the [docker version](https://github.com/envygeeks/jekyll-docker)
+If you delete your gemfile.lock and run jekyll bundle update you will get all the dependencies again (actually I didn't need to delete the lock file sometimes). It pulled jekyll 3.7.3 at the time of writing, but I make sure its the same as the [docker version](https://github.com/envygeeks/jekyll-docker)
 
 ## Caching 
 To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
