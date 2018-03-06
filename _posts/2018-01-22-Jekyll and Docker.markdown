@@ -8,10 +8,6 @@ published: true
 ---
 ![Menu](/assets/2018-01-25-Docker/screen.png)
 
-Getting ready for alt net which is awesome!!!  
-this is a good thing!
-
-
 I like using [Jekyll](https://jekyllrb.com/) and have had this site on [Github pages](https://pages.github.com/) for a few years. Running Jekyll locally on my Windows machine was tricky to setup (I am not a Rubyist), and after a year I gave up! I just sent all changes straight to live.
 
 It is now very easy to get Jekyll running locally with Docker using the official [Jekyll Image](https://hub.docker.com/r/jekyll/jekyll/)
