@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Cloud Shell"
+title:  "Azure CLI and Cloud Shell"
 date:   2018-02-15 15:54
 #menu: review
 categories: azure 
@@ -10,6 +10,100 @@ published: true
 
 Click this icon and you'll get the Cloud Shell where you can use the Azure CLI.
 
+Or you can [download the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+## Getting Started with the CLI
+I like to work on my local machine with AzureCLI installed locally. Ocassionally I'll use bash on WSL or Docker.
+
+```
+az login
+-- Type code into https://aka.ms/devicelogin
+
+az account set --subscription "Visual Studio Enterprise"
+```
+
+## Deploying a Linux VM
+```
+az group create --name k8sy --location "West Europe"
+az vm create -g k8sy -n node1 --image UbuntuLTS --admin-username dave --admin-password thisisasecretAA11! --size Standard_B1MS 
+```
+[Here are the docs](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az_vm_create) which give all the arguments
+
+## 3 Linux VMs in same vnet
+```
+az group create --name k8sy --location "West Europe"
+az vm create --no-wait -g k8sy -n node1 --image UbuntuLTS --admin-username dave --admin-password thisisasecretAA11! --size Standard_B1MS 
+az vm create --no-wait -g k8sy -n node2 --image UbuntuLTS --admin-username dave --admin-password thisisasecretAA11! --size Standard_B1MS 
+az vm create --no-wait -g k8sy -n node3 --image UbuntuLTS --admin-username dave --admin-password thisisasecretAA11! --size Standard_B1MS 
+```
+![ps](/assets/2018-03-08/3.png)
+
+It takes the initial vnet (node1VNET) and uses that when creating node2 and node3   
+--no-wait means the command wont wait until the task finishes, so we can sping up the vm's in parallel
+
+What this means is I can spin up a brand new environment very quickly!
+
+## Delete
+```
+az group delete -n k8sy
+```
+Very easy to delete the entire resource group too.
+
+
+## Size
+If you specify nothing in the args for UbuntuLTS you'll get the top one
+
+- Standard_DS2_v2 (£75.41) 7GB
+- Standard_B1S  (£6.99) 1GB
+- Standard_B1MS (£13.47) 2GB
+
+## Entities 
+These are the different entities that are needed
+
+- Resource Group  
+  - vnet  
+  - network public-ip  
+  - nsg  
+    - nsg rules 
+  - virtual nic
+  - vm
+
+## Appendix
+Some useful bits of information are below
+## Stopping all vm's in a group
+```
+-- use bash
+az vm deallocate --ids $(az vm list -g k8sy --query "[].id" -o tsv)
+-- if you just stop the vm, will still be charged
+az vm stop --ids $(az vm list -g k8sy --query "[].id" -o tsv)
+```
+It can take a while to deallocate
+
+## Templates
+[Template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)  
+
+## Using the CLI from Docker
+[Run in Docker](https://docs.microsoft.com/en-us/cli/azure/run-azure-cli-docker?view=azure-cli-latest)
+```
+docker run -it -v=%cd%:/root microsoft/azure-cli
+az login
+https://aka.ms/devicelogin
+
+-- to get the subscriptionid
+az account show --out json
+```
+
+It can be annoying with windows/linux line endings.
+```
+-- Open file on Windows inside vim or vscode
+:%s/<Ctrl-V><Ctrl-M>/\r/g
+set ff=unix
+:wq!
+```
+## Using the CLI from WSL
+[Docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+
+### Deploying a Webapp (Windows Server running Docker)
 ```
 az account set --subscription "Visual Studio Enterprise"
 az group create --name DaveWordPressQ --location "West Europe"
@@ -19,18 +113,6 @@ az webapp create --resource-group DaveWordPressQ --plan myAppServicePlan --name 
 This is creating a resource group and an Azure Web App for Containers instance with a custom Docker image.
 
 ```
+-- Delete everything in the resource group
 az group delete -n DaveWordPressQ 
 ```
-Delete the whole lot.
-
-If you want to run locally you can download the CLI or 
-[Run in Docker](https://docs.microsoft.com/en-us/cli/azure/run-azure-cli-docker?view=azure-cli-latest)
-```
-# I had issues with strange names in my home directory, so a direct mapping was easier
-docker run -it -v ${HOME}:/root microsoft/azure-cli
-
-docker run -it -c c:/temp:/root microsoft/azure-cli
-az login
-https://aka.ms/devicelogin
-```
-
