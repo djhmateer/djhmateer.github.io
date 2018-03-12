@@ -15,10 +15,12 @@ published: true
   - eg Wordpress running under Apache/Nginx/Memcached/PHP5.6/PHP7.2/MySql
 3. Using 'locally' as a build server for VSTS
 4. Running Docker on a single production box
-  - I've used it on Azure to explore performance
   - [A number of options biased towards Azure on hosting a PHP App (Wordpress)](/wordpress/2018/02/14/Where-to-host-wordpress.html) 
-5. Running Docker with an Orchestrator eg Kubernetes (K8s)
-  - [Azure Container Services (AKS)](/azure/2018/03/01/Azure-and-Containers.html)
+5. Running Docker with an Orchestrator - Kubernetes (K8s)
+  - [Minikube and useful K8s Commands](/kubernetes/2018/03/12/Kubernetes-Commands.html)
+  - [Google Kubernetes Engine (GKE)]()
+  - [Amazon Container Service (EKS)](https://aws.amazon.com/eks/)
+  - [Azure Container Services (AKS) and Container Instances](/azure/2018/03/01/Azure-and-Containers.html)
 
 > If you're going into production, Kubernetes and a Scheduler is where you need to be 
 

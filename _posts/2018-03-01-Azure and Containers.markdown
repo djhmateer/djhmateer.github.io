@@ -1,21 +1,19 @@
 ---
 layout: post
-title:  "Azure and Conatiners"
+title:  "Azure and Containers"
 date:   2018-03-01 15:35
 menu: review
 categories: azure 
 published: true 
 ---
-At the time of writing these were [some of the options](https://azure.microsoft.com/en-gb/services/container-instances/) for using containers on Azure. Interestingly both below were only in Preview, whereas the Google Kontainer Engine (K8s) and Amazon EC2 Container Service have been around longer.
+At the time of writing these were [some of the options](https://azure.microsoft.com/en-gb/services/container-instances/) for using containers on Azure. Interestingly all managed container services are in preview, with the Google Kubernetes Engine (GKE) being the most supported. Amazon is still in private preview.
 
 ![ps](/assets/2018-03-01/container.png)
-
 
 ## 0. Roll your own K8s Cluster
 [Pluralsight](https://app.pluralsight.com/library/courses/getting-started-kubernetes/table-of-contents) covers this using kubeadm.
 
 I use the [AzureCLI](/azure/2018/02/15/Azure-CLI.html) to automate bringing up the 3 VM's in Azure.
-
 
 ## 1. Azure Container Services (AKS) - (Preview)
 This is managed K8s  

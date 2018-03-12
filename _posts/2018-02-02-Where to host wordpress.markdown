@@ -159,7 +159,7 @@ Summary
 - Slow performance on Windows server running Docker with Azure MySQL database 
 
 ## 3.Custom Linux VM with Docker and local MySQL 
-[Detailed install instructions](/docker/2018/02/01/Wordpress-on-Docker.html#going-to-uat--production)
+[Detailed install instructions (part 2 of this series)](/docker/2018/02/01/Wordpress-on-Docker.html#going-to-uat--production)
 
 **Standard DS1_v2 1cpu 3.5GB - £37.71**
 ```
