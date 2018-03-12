@@ -89,8 +89,50 @@ kubectl apply -f rc.yml
 ```
 
 ## svc.yml
+```
+kubectl expose rc hello-rc --name=hello-svc --target-port=8080 --type=NodePort
+-- find port
+kubectl describe svc hello-svc
+-- find ip address of vm
+minikube dashboard 
+
+kubectl delete svc hello-svc
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-svc
+  labels:
+    app: hello-world
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 30001
+    protocol: TCP
+  selector:
+    app: hello-world
+
+kubectl describe pods | grep app
+kubectl create -f svc.yml
+
+http://192.168.1.101:30001
+```
+
+## deploy.yml
+```
+
+```
 
 
+## Updating and Rollbacks
+K8s must bring value to the business eg
+- Keep it running
+- Make it agile
+- Make it resilient
+
+Making updates for 0 downtime
+--change the deploy.yml updating the docker container's tag (latest or edge in his example)
 
 ## Reset Minikube
 ```
