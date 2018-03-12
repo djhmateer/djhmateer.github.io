@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "GKE - Google Kubernetes Engine"
+date:   2018-03-12 15:22
+menu: review
+categories: GKE
+published: true 
+---
+The goal is to get the simplest possible thing working aka hello world
+
+- Setup a 3 node cluster
+
+- [Download gcloud sdk](https://cloud.google.com/sdk/downloads#interactive) which comes with Python 2.7.9
+
+- connect local kubectl console to GKE cluster

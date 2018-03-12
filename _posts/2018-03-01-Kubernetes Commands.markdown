@@ -18,6 +18,16 @@ minikube dashboard
 
 -- v1.9.0
 kubectl version --client
+-- displays 
+kubectl config current-context  
+
+-- creates a kubeconfig entry for GKE cluster-1.
+gcloud container clusters get-credentials cluster-1 --zone europe-west1-d --project ps-kube-196811
+
+-- switch between contexts
+kubectl config get-contexts
+kubectl config use-context minikube 
+
 kubectl get nodes
 
 kubectl get pods
@@ -25,8 +35,7 @@ kubectl describe pods
 
 kubectl create -f pod.yml
 ```
-The concepts I use are:
-
+## Concepts
 ```
 nodes
 pods
@@ -36,8 +45,9 @@ svc
 deploy
   rs (replica set)
 ```
+
 ## pod.yml
-We never do this in production (would use a repliction controller at minimum)
+We never do this in production (would use a replication controller at minimum)
 
 ```
 -- pod.yml
@@ -89,6 +99,7 @@ kubectl apply -f rc.yml
 ```
 
 ## svc.yml
+Adding a service to add a NodePort which exposes 8080 to the outside world
 ```
 kubectl expose rc hello-rc --name=hello-svc --target-port=8080 --type=NodePort
 -- find port
@@ -120,10 +131,52 @@ http://192.168.1.101:30001
 ```
 
 ## deploy.yml
+Deployments are all about updates and rollbacks
 ```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-deploy
+spec:
+  replicas: 10
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-pod
+        image: nigelpoulton/pluralsight-docker-ci:edge
+        ports:
+        - containerPort: 8080
+
+kubectl delete rc hello-rc
+
+kubectl describe svc hello-svc
+kubectl create -f deploy.yml
+kubectl describe deploy hello-deploy
+
+kubectl get rs
+kubectl describe rs
+
+--update deploy.yml with new image tagged
+kubectl apply -f deploy.yml --record
+
+kubectl rollout status deployment hello-deploy
+kubectl get deploy hello-deploy
+kubectl rollout history deployment hello-deploy
+
+kubectl get rs
+
+ kubectl rollout undo deployment hello-deploy --to-revision=1
 
 ```
-
 
 ## Updating and Rollbacks
 K8s must bring value to the business eg
@@ -133,6 +186,7 @@ K8s must bring value to the business eg
 
 Making updates for 0 downtime
 --change the deploy.yml updating the docker container's tag (latest or edge in his example)
+
 
 ## Reset Minikube
 ```
