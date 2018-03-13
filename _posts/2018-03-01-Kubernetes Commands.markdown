@@ -48,61 +48,9 @@ deploy
   rs (replica set)
 ingress
 ```
-
-## pod.yml
-We never do this in production (would use a replication controller at minimum)
-
-```
--- pod.yml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: hello-pod
-  labels:
-    zone: prod
-    version: v1
-spec:
-  containers:
-  - name: hello-ctr
-    image: nigelpoulton/pluralsight-docker-ci:latest
-    ports:
-    - containerPort: 8080
-
-
-kubectl create -f pod.yml
-kubectl delete pod hello-pod
-```
-
-## rc.yml
-Adding a replication controller to get to a desired state. The bottom part is very similar to above.
-
-```
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: hello-rc
-spec:
-  replicas: 20
-  selector:
-    app: hello-world
-  template:
-    metadata:
-      labels:
-        app: hello-world
-    spec:
-      containers:
-      - name: hello-ctr
-        image: nigelpoulton/pluralsight-docker-ci:latest
-        ports:
-        - containerPort: 8080
-
-kubectl get rc
-kubectl describe rc
-kubectl apply -f rc.yml 
-```
-
 ## svc.yml
-Adding a service to add a NodePort which exposes 8080 to the outside world
+Adding a service to add a NodePort which exposes 8080. If this is in a cloud cluster, then you can open port 30001 to each VM, but the correct way to do it is to use a load balancer. See below using ingress.
+
 ```
 kubectl expose rc hello-rc --name=hello-svc --target-port=8080 --type=NodePort
 -- find port
@@ -183,8 +131,18 @@ kubectl delete deploy hello-deploy
 ```
 
 ## basic-ingress.yml
-
+[Docs](https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer) explaining how we setup this load balancer which then talks to the service.
 ```
+-- basic-ingress.yml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: basic-ingress
+spec:
+  backend:
+    serviceName: web-svc
+    servicePort: 8080
+
 kubectl create -f basic-ingress.yml
 get ingress basic-ingress
 ```
@@ -222,8 +180,63 @@ kubectl -n kube-system get secret
 kubectl -n kube-system describe secret admin-user-xxxx  
 
 kubectl proxy
+```
+
+
+
+## Appendix
+## pod.yml
+We never do this in production (would use a replication controller at minimum)
 
 ```
+-- pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels:
+    zone: prod
+    version: v1
+spec:
+  containers:
+  - name: hello-ctr
+    image: nigelpoulton/pluralsight-docker-ci:latest
+    ports:
+    - containerPort: 8080
+
+
+kubectl create -f pod.yml
+kubectl delete pod hello-pod
+```
+
+## rc.yml
+Adding a replication controller to get to a desired state. The bottom part is very similar to above.
+
+```
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 20
+  selector:
+    app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: nigelpoulton/pluralsight-docker-ci:latest
+        ports:
+        - containerPort: 8080
+
+kubectl get rc
+kubectl describe rc
+kubectl apply -f rc.yml 
+```
+
 
 ## Updating and Rollbacks
 K8s must bring value to the business eg
