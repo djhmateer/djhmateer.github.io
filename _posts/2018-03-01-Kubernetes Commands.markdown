@@ -174,7 +174,7 @@ kubectl rollout history deployment hello-deploy
 
 kubectl get rs
 
- kubectl rollout undo deployment hello-deploy --to-revision=1
+kubectl rollout undo deployment hello-deploy --to-revision=1
 
 ```
 
