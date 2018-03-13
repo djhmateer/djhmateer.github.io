@@ -29,13 +29,15 @@ kubectl config get-contexts
 kubectl config use-context minikube 
 
 kubectl get nodes
-
 kubectl get pods
-kubectl describe pods
-
-kubectl create -f pod.yml
+kubectl cluster-info
 ```
-## Concepts
+## Terms and Concepts
+Ephemeral = lasting for a very short time  
+Ingress = inbound   
+Egress = outbound   
+
+
 ```
 nodes
 pods
@@ -44,6 +46,7 @@ svc
   ep (endpoint)
 deploy
   rs (replica set)
+ingress
 ```
 
 ## pod.yml
@@ -175,6 +178,50 @@ kubectl rollout history deployment hello-deploy
 kubectl get rs
 
 kubectl rollout undo deployment hello-deploy --to-revision=1
+
+kubectl delete deploy hello-deploy
+```
+
+## basic-ingress.yml
+
+```
+kubectl create -f basic-ingress.yml
+get ingress basic-ingress
+```
+
+## Dashboard
+[Docs from K8s](https://github.com/kubernetes/dashboard/wiki/Creating-sample-user) - not easy to setup for the first time 
+```
+-- serviceAccount.yml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kube-system
+
+kubctl create -f serviceAccount.yml
+
+-- serviceRole.yml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kube-system
+
+kubectrl create -f serviceRole.yml
+
+kubectl -n kube-system get secret
+
+kubectl -n kube-system describe secret admin-user-xxxx  
+
+kubectl proxy
 
 ```
 
