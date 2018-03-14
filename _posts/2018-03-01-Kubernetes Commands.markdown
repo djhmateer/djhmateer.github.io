@@ -1,12 +1,16 @@
 ---
 layout: post
-title:  "Kubernetes Commands"
+title:  "Minikube and Kubernetes Commands"
 date:   2018-03-12 13:23
 menu: review
 categories: kubernetes
 published: true 
 ---
-List of useful commands:
+[Pluralsight course by Nidel Poulton](https://app.pluralsight.com/library/courses/getting-started-kubernetes/table-of-contents) on "Getting Started with Kubernetes" has a good section on Minikube. The overall summary for Windows is get the minikube binary and kubectl binary in the path. I use c:\sharedTools.
+
+I found there to be a memory leak so need to turn off dynamic memory in HyperV settings.
+
+[Minikube Home](https://github.com/kubernetes/minikube/issues/1967) issue if it doesn't start. Can also delete the $HOME\.minikube folder
 
 ```
 --v0.25.0

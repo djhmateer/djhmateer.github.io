@@ -10,11 +10,6 @@ At the time of writing these were [some of the options](https://azure.microsoft.
 
 ![ps](/assets/2018-03-01/container.png)
 
-## 0. Roll your own K8s Cluster
-[Pluralsight](https://app.pluralsight.com/library/courses/getting-started-kubernetes/table-of-contents) covers this using kubeadm.
-
-I use the [AzureCLI](/azure/2018/02/15/Azure-CLI.html) to automate bringing up the 3 VM's in Azure.
-
 ## 1. Azure Container Services (AKS) - (Preview)
 This is managed K8s  
 
