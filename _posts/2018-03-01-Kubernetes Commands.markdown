@@ -51,6 +51,9 @@ svc
 deploy
   rs (replica set)
 ingress
+secret
+persistentvolume pv
+persistentvolumeclaim pvc
 ```
 ## svc.yml
 Adding a service to add a NodePort which exposes 8080. If this is in a cloud cluster, then you can open port 30001 to each VM, but the correct way to do it is to use a load balancer. See below using ingress.
