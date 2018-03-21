@@ -22,5 +22,15 @@ Simplify the deployment, managment of a Kubernetes cluster
 
 ## 2. Azure Container Instances (Preview)
 [Docs](https://docs.microsoft.com/en-gb/azure/container-instances/)   
+[Overview](https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-overview)
 
-Its an application in a container, running in the cloud
+It seems like the use case for these currently is to do short lived containers (they offer per second billing).
+
+- no high availability
+- no load balancing
+- no scaling
+- no monitoring
+
+- fast startup
+- public IP
+- persistent storage
