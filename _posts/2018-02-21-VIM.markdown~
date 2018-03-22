@@ -67,34 +67,6 @@ n - next in search
 
 :e .  - open up file browser
 
-https://vim.rtorr.com/
-
-M - move to middle of page
-
-% - move to matching character (default supported pairs: '()', '{}', '[]' - use :h matchpairs in vim for more info)
-
-fx - jump to next occurrence of x
-; - repeat previous f
-
-} - jump to next paragraph
-
-zz - centre cursor on screen
-
-ctrl d - move forward 1/2 screen
-ctrl u - move back 1/2 screen
-
-ea - insert (append) at the end of the word
-
-Multiple Files
-Ctrl ws - split window
-Ctrl ww - switch windows
-Ctrl wq - quit window
-Ctrl wv - split window vertically
-
-:e .
-Ctrl ^ - close out of explorer
-/ - search for a file
-
 ```
 
 ## GVim
