@@ -92,20 +92,28 @@ Ctrl wq - quit window
 Ctrl wv - split window vertically
 
 :e .
-Ctrl ^ - close out of explorer
+Ctrl ^ - close out of explorer (switch buffer)
+qa! - quit all (buffers)
+
 / - search for a file
+
+"*p - paste from system clipboard
 
 ```
 
-## GVim
-I'm experimenting with using GVim for it's file browsing capabilities.
-
+## _vimrc
+This optional config file on a windows machine is in c:\users\dave
 ```
 " This is a comment in c:\users\dave\_vimrc
 " Word wrap
 set wrap
 " Turn off the beep when you press escape
 set belloff=all
+" synatx highlighting
+colo desert
+" syntax on (actually this causes some strange issues)
+" can paste from system clipboard
+set clipboard=unnamed
 ```
 ## VSCode
 Sometimes the plugin stops working. [Deleting the extensions directory](https://stackoverflow.com/a/36751445/26086) seems to work
