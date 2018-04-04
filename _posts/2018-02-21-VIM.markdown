@@ -8,7 +8,7 @@ published: true
 ---
 I use Vim bindings in VSCode, and I use VSCode Autosave. 
 
-After 4 months of using Vim here are my most used commands.
+After 6 months of using Vim here are my most used commands.
 
 ## Vim commands
 ```
@@ -20,7 +20,8 @@ A - append to end of line
 o - insert on next line
 a - append (same as insert just goes to next character)
 
-esc - Normal modej
+esc - Normal mode
+Caps Lock - Normal mode (see below for autohotkey mapping)
 
 $ - end of line
 0 - beginning of line
@@ -36,6 +37,8 @@ b - previous word
 
 yy - yank line
 y$ - yank to EOL
+:%y - select all
+:%d - delete all
 p - put text after the cursor
 P - put here
 I, Ctrl shift v / middle mouse wheel - paste system clipboard
@@ -67,8 +70,6 @@ n - next in search
 
 :e .  - open up file browser
 
-https://vim.rtorr.com/
-
 M - move to middle of page
 
 % - move to matching character (default supported pairs: '()', '{}', '[]' - use :h matchpairs in vim for more info)
@@ -87,11 +88,15 @@ ea - insert (append) at the end of the word
 
 Multiple Files
 Ctrl ws - split window
+:split - split
 Ctrl ww - switch windows
 Ctrl wq - quit window
 Ctrl wv - split window vertically
+:vs - vsplit (split window vertically)
 
 :e .
+:Ex .
+
 Ctrl ^ - close out of explorer (switch buffer)
 qa! - quit all (buffers)
 
@@ -115,6 +120,21 @@ colo desert
 " can paste from system clipboard
 set clipboard=unnamed
 ```
+## Cmder
+I used Cmder as my shell in Windows and really like it. Running Vim inside it was annoying as keyboard binding were confliced - specifically Ctrl W for new split windows. I mapped Ctrl W to Ctrl Shift W in Cmder as [shown](https://www.cs.oberlin.edu/~kuperman/help/vim/windows.html).
+
+Interestinly Ctrl WV doesnt work but :vs works fine. I use Ctrl WW to switch between windows.
+
+
+## AutoHotKey
+As escape is a long way up and left, it is closer to use the caps lock key as the escape key.  
+http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_Windows#AutoHotkey
+---
+- create new file on desktop called caps.ahk
+- Capslock::Esc
+- right click and run the script
+---
+
 ## VSCode
 Sometimes the plugin stops working. [Deleting the extensions directory](https://stackoverflow.com/a/36751445/26086) seems to work
 
