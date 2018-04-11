@@ -10,11 +10,6 @@ At the time of writing these were [some of the options](https://azure.microsoft.
 
 ![ps](/assets/2018-03-01/container.png)
 
-## 0. Roll your own K8s Cluster
-[Pluralsight](https://app.pluralsight.com/library/courses/getting-started-kubernetes/table-of-contents) covers this using kubeadm.
-
-I use the [AzureCLI](/azure/2018/02/15/Azure-CLI.html) to automate bringing up the 3 VM's in Azure.
-
 ## 1. Azure Container Services (AKS) - (Preview)
 This is managed K8s  
 
@@ -27,5 +22,15 @@ Simplify the deployment, managment of a Kubernetes cluster
 
 ## 2. Azure Container Instances (Preview)
 [Docs](https://docs.microsoft.com/en-gb/azure/container-instances/)   
+[Overview](https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-overview)
 
-Its an application in a container, running in the cloud
+It seems like the use case for these currently is to do short lived containers (they offer per second billing).
+
+- no high availability
+- no load balancing
+- no scaling
+- no monitoring
+
+- fast startup
+- public IP
+- persistent storage
