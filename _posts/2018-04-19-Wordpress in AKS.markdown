@@ -8,8 +8,26 @@ published: true
 ---
 Setting up Wordpress well in [Azure Container Services (AKS)](https://azure.microsoft.com/en-gb/services/container-service/) is not easy. 
 
-I'll discuss these parts
+## Background business problem
+We had an issue where an existing Wordpress installation was years out of date, and could not be updated becuase it was running a version of Wordpress called Project Nami. This meant that some plugins wouldn't work, and therefore the entire application was not updated.  
 
+It had become very slow (5s to load the home page).   
+
+## What we considered
+We looked at many options including shared hosting, dedicated hosting, a custom VM, a VM running Docker, and orchestrated Docker (K8s).   
+
+We ran a VM running Docker for many months as a test server - essentially a linux vm with Docker installed using docker-compose to run Wordpress and MySql in different containers.
+
+
+## Why host Wordpress in K8s?
+- Managed Linux machine
+- Easy to deploy to
+- Easy to update - critical for Wordpress
+- Density of application on 1 machine - easy to put multiple apps in the cluster
+
+
+
+## What are we building?
 Azure Container Services (AKS)  
 Azure managed MySQL  
 A single node cluster with an Azure attached disk for persistence  
@@ -17,7 +35,7 @@ Ingress controller
 Nginx reverse proxy (includes enforcing https)  
 Nginx server (enforces www)  
 
-## Setting up the Cluster
+## Setting up the AKS Cluster
 I use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) tool to script all the building in Azure. At the time of writing the version is 2.0.31 and takes a few minutes to install (or longer). [Documentation](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-create)  
 
 
@@ -108,4 +126,7 @@ So now we have a hosted database
 ![ps](/assets/2018-04-19/mysql.png)
 
 I've turned off SSL enforcement and allowed all Azure IP's access to this database here. Things to consider for the future.
+
+
+## Reverse Proxy and Ingress
 
