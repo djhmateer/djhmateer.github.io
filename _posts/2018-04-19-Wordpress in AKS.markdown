@@ -38,7 +38,74 @@ az aks get-versions -l westeurope -o table
 ``` 
 After 20min or so you should have the cluster ready
 
+![ps](/assets/2018-04-19/aks.png)
 
+The aks resource group has been created, and also an automatically created group which contains all the resources
 
+![ps](/assets/2018-04-19/aks2.png)
 
+and the worker (minion) VM is here:
+
+![ps](/assets/2018-04-19/aks3.png)
+## Dashboard
+I find the dashboard useful - mostly to see what is waiting to happen and if the cluster is ready. It's also a great way to look around and see how the different parts of Kubernetes fit together.
+```
+# bring up the dashboard
+az aks browse -n aks -g aks
+
+# get the credentials of the cluster (you may need this if the above command fails)
+az aks get-credentials -n aks -g aks
+```
+
+![ps](/assets/2018-04-19/dash.png)
+
+My work network seems to drop the tunnel after a few minutes.
+![ps](/assets/2018-04-19/port.png)
+
+Making a simple keepalive app to hit the site worked for me:
+
+```
+static void Main()
+{
+  while (true)
+  {
+    var request = (HttpWebRequest)WebRequest.Create("http://127.0.0.1:8001");
+ 
+    using (var response = (HttpWebResponse) request.GetResponse())
+    using (var stream = response.GetResponseStream())
+    using (var reader = new StreamReader(stream))
+       Console.WriteLine(reader.ReadToEnd());
+
+    System.Threading.Thread.Sleep(29000);
+  }
+}
+```
+
+## Hosted MySQL Database
+[Azure Database for MySQL](https://azure.microsoft.com/en-gb/services/mysql/)
+is the Azure hosted MySQL which is now fully supported.  As above it is easily scripted:
+```
+az group create -n amysql -l westeurope
+az mysql server create -l westeurope -g amysql -n bobmysql -u bob -p secretpassword123$ --sku-name B_Gen5_1
+:: in production I use the more powerful GP_Gen5_2 
+
+az mysql db create -g amysql -s bobmysql -n wordpress
+
+az mysql server firewall-rule create --resource-group amysql --server bobmysql --name "AllowAllWindowsAzureIps" --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+
+az mysql server update --resource-group amysql --name bobmysql --ssl-enforcement Disabled
+
+:: creating a secret in k8s to store the password to connect to the db
+kubectl create secret generic mysql-pass --from-literal=password=secretpassword123$
+
+:: useful command to connect to the db from the Azure CLI (web interface)
+mysql --host bobmysql.mysql.database.azure.com --user bob@bobmysql -p
+
+```
+
+So now we have a hosted database
+
+![ps](/assets/2018-04-19/mysql.png)
+
+I've turned off SSL enforcement and allowed all Azure IP's access to this database here. Things to consider for the future.
 
