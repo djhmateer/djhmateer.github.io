@@ -2,10 +2,11 @@
 layout: post
 title:  "Wordpress in AKS"
 date:   2018-04-19 14:06
-menu: review
+#menu: review
 categories: wordpress 
 published: true 
 ---
+dsf
 
 Setting up Wordpress well in AKS is not easy. This is my first exploration into running Kubernetes in production.
 
