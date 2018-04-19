@@ -16,12 +16,15 @@ published: true
 3. Using 'locally' as a build server for VSTS
 4. Running Docker on a single production box
   - [A number of options biased towards Azure on hosting a PHP App (Wordpress)](/wordpress/2018/02/14/Where-to-host-wordpress.html) 
-5. Running Docker with an Orchestrator - Kubernetes (K8s)
+5. Docker with an Orchestrator options - Kubernetes (K8s)
   - [Minikube and useful K8s Commands](/kubernetes/2018/03/12/Kubernetes-Commands.html)
   - [Google Kubernetes Engine (GKE)]()
   - [Amazon Container Service (EKS)](https://aws.amazon.com/eks/)
   - [Azure Container Services (AKS) and Container Instances](/azure/2018/03/01/Azure-and-Containers.html)
   - [Roll your own Kubernetes Cluster](/kubernetes/2018/03/14/Roll-your-own-Kubernetes-Cluster.html)
+
+6. Running Wordpress in AKS
+  - [Wordpress in AKS]()
 
 > If you're going into production, Kubernetes and a Scheduler is where you need to be 
 
