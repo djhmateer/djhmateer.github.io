@@ -9,12 +9,12 @@ published: true
 [Cmder](http://cmder.net/) is my shell of choice. [download from github](https://github.com/cmderdev/cmder/releases)
 ### Where to Install
 ![ps](/assets/2018-01-30/c.png)
-I install in C:\sharedTools\cmder_mini and have this referenced in my Path.
+I install in C:\sharedTools\cmder and have this referenced in my Path. 
 
 ### Aliases
 The Nov 2017 release fixes issue that aliases don't work without the legacy console enabled in Win10.
 
-Update the file C:\sharedTools\cmder_mini\config\user-aliases.cmd
+Update the file C:\sharedTools\cmder\config\user-aliases.cmd
 
 Here are my favourite aliases!
 
@@ -39,3 +39,23 @@ Settings (Win Alt P)
 
 ### Keyboard shortcuts
 Shift Insert - pastes multi line
+
+## Curl
+Such a useful tool: 
+[run curl from windows](https://superuser.com/questions/134685/run-curl-commands-from-windows-console)  
+
+Essentially download from [here](https://curl.haxx.se/download.html#Win32)
+
+![ps](/assets/2018-04-23/curl.png)
+
+```
+:: check for 301 redirect
+curl http://www.qnrl.com -i
+
+:: check for https, and ignore the cert
+curl https://www.qnrl.com -i -k
+
+:: check for redirect to www ignoring the cert
+curl https://qnrl.com
+```
+
