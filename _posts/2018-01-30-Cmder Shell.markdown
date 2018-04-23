@@ -46,7 +46,9 @@ Such a useful tool:
 
 Essentially download from [here](https://curl.haxx.se/download.html#Win32)
 
-![ps](/assets/2018-04-23/curl.png)
+![ps](/assets/2018-04-23/curl.png)  
+
+Then copy curl.exe, libcurl.dll and the .crt file into c:\sharedTools
 
 ```
 :: check for 301 redirect
