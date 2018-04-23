@@ -9,29 +9,23 @@ published: true
 [Cmder](http://cmder.net/) is my shell of choice. [download from github](https://github.com/cmderdev/cmder/releases)
 ### Where to Install
 ![ps](/assets/2018-01-30/c.png)
-I install in C:\sharedTools\cmder and have this referenced in my Path. 
+I install in C:\sharedTools\cmder (note I now use cmder full instead of cmder_mini - but both are fine) 
 
 ### Aliases
 The Nov 2017 release fixes issue that aliases don't work without the legacy console enabled in Win10.
 
 Update the file C:\sharedTools\cmder\config\user-aliases.cmd
 
-Here are my favourite aliases!
+Here are my favourite aliases
 
 ```
 gl=git log --oneline --all --graph --decorate  $*
 ls=ls -lat --show-control-chars -F --color $*
-pwd=cd
-clear=cls
-history=cat "%CMDER_ROOT%\config\.history"
-vi=vim $*
-cmderr=cd /d "%CMDER_ROOT%"
 e=explorer .
 p=git add . -A & git commit -m "auto commit" & git push
 c=code .
 cdd = cd c:\dev
 k=kubectl $*
-
 ```
 
 ### Set Starup Directory
