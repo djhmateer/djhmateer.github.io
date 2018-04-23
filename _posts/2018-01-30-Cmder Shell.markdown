@@ -19,10 +19,19 @@ Update the file C:\sharedTools\cmder\config\user-aliases.cmd
 Here are my favourite aliases!
 
 ```
+gl=git log --oneline --all --graph --decorate  $*
+ls=ls -lat --show-control-chars -F --color $*
+pwd=cd
+clear=cls
+history=cat "%CMDER_ROOT%\config\.history"
+vi=vim $*
+cmderr=cd /d "%CMDER_ROOT%"
 e=explorer .
 p=git add . -A & git commit -m "auto commit" & git push
 c=code .
 cdd = cd c:\dev
+k=kubectl $*
+
 ```
 
 ### Set Starup Directory
