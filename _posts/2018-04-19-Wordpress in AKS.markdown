@@ -26,7 +26,6 @@ We ran a VM running Docker for many months as a test server - essentially a linu
 - Density of application on 1 machine - easy to put multiple apps in the cluster
 
 
-
 ## What are we building?
 Azure Container Services (AKS)  
 Azure managed MySQL  
@@ -43,10 +42,10 @@ I use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-c
 az login
 
 # -n is --name, -l is --location
-az group create -n aks -l westeurope
+az group create -n aksrg -l westeurope
 
 # -n is --name, -g is --resource-group, c is --node-count, -k is --kubernetes-version, -s is --node-vm-size
-az aks create -n aks -g aks -c 1 -k 1.9.6 -s Standard_B1ms
+az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B1ms
 
 # useful command to get the supported versions of k8s
 az aks get-versions -l westeurope -o table
@@ -54,7 +53,8 @@ az aks get-versions -l westeurope -o table
 # the default node-vm-size is Standard_DS1_v2 (3.5GB and 1vcpu for UKP37) which I use in production
 # I use the cheaper burst Standard_B1ms (2GB for UKP13) for testing 
 ``` 
-After 20min or so you should have the cluster ready
+After 20min or so you should have the cluster ready. As of 23rd of March there seems to be an issues with B1ms taking a long time, but the default size takes about 17mins. 
+
 
 ![ps](/assets/2018-04-19/aks.png)
 
@@ -69,10 +69,10 @@ and the worker (minion) VM is here:
 I find the dashboard useful - mostly to see what is waiting to happen and if the cluster is ready. It's also a great way to look around and see how the different parts of Kubernetes fit together.
 ```
 # bring up the dashboard
-az aks browse -n aks -g aks
+az aks browse -n aks -g aksrg
 
 # get the credentials of the cluster (you may need this if the above command fails)
-az aks get-credentials -n aks -g aks
+az aks get-credentials -n aks -g aksrg
 ```
 
 ![ps](/assets/2018-04-19/dash.png)
@@ -121,12 +121,460 @@ mysql --host bobmysql.mysql.database.azure.com --user bob@bobmysql -p
 
 ```
 
+Instead of using kubectl I use k [Cmder aliases](/cmder/2018/01/30/Cmder-Shell.html)  
+
 So now we have a hosted database
 
 ![ps](/assets/2018-04-19/mysql.png)
 
-I've turned off SSL enforcement and allowed all Azure IP's access to this database here. Things to consider for the future.
+I've turned off SSL enforcement and allowed all Azure IP's access to this database. This should be turned on in the future. 
 
 
-## Reverse Proxy and Ingress
+## Reverse Proxy 
+We are going to use Nginx as a reverse proxy to:
 
+- allow multiple websites on this cluster    
+- have a default backend
+- enforce https when calling a website  
+- enforce www (ie https://hoverflylagoons.co.uk will go to https://www.hoverflylagoons.co.uk)  
+
+All code is in [k8ssamples](https://bitbucket.org/davemateer/k8ssamples)  
+```
+# namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress-nginx
+```
+
+Useful to put these following helper parts in their own namespace. Once these are setup they are rarely touched again - we can get on with deploying our own apps.
+
+```
+# default-backend.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: default-http-backend
+  labels:
+    app: default-http-backend
+  namespace: ingress-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: default-http-backend
+  template:
+    metadata:
+      labels:
+        app: default-http-backend
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: default-http-backend
+        # Any image is permissible as long as:
+        # 1. It serves a 404 page at /
+        # 2. It serves 200 on a /healthz endpoint
+        image: gcr.io/google_containers/defaultbackend:1.4
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 10m
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 20Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-http-backend
+  namespace: ingress-nginx
+  labels:
+    app: default-http-backend
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: default-http-backend
+
+```
+So this has created a Service and a Deployment for the default-backend which will catch anything hitting this server which isn't recognised by a host header eg www.hoverflylagoons.co.uk. It also acts as a healthcheck endpoint for K8s to see if this node is alive.
+
+```
+# configmap.yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-configuration
+  namespace: ingress-nginx
+  labels:
+    app: ingress-nginx
+```
+
+```
+# tcp-services-configmap.yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx
+```
+
+```
+# udp-services.configmap.yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: udp-services
+  namespace: ingress-nginx
+```
+
+```
+# without-rbac2.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-ingress-controller
+  namespace: ingress-nginx 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-nginx
+  template:
+    metadata:
+      labels:
+        app: ingress-nginx
+      annotations:
+        prometheus.io/port: '10254'
+        prometheus.io/scrape: 'true' 
+    spec:
+      containers:
+        - name: nginx-ingress-controller
+          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.12.0
+          args:
+            - /nginx-ingress-controller
+            - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
+            - --configmap=$(POD_NAMESPACE)/nginx-configuration
+            - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
+            - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
+            - --annotations-prefix=nginx.ingress.kubernetes.io
+            - --publish-service=$(POD_NAMESPACE)/ingress-nginx
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+          - name: http
+            containerPort: 80
+          - name: https
+            containerPort: 443
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 10254
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 10254
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+```
+[Documentation](https://github.com/kubernetes/ingress-nginx)
+
+
+```
+# azure-service-ingress-nginx.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress-nginx
+  namespace: ingress-nginx
+  labels:
+    app: ingress-nginx
+spec:
+  externalTrafficPolicy: Local
+  type: LoadBalancer
+  selector:
+    app: ingress-nginx
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  - name: https
+    port: 443
+    targetPort: https
+```
+
+To run all these commands together:
+```
+k create -f namespace.yaml  -f default-backend.yaml -f configmap.yaml
+k create -f tcp-services-configmap.yaml  -f udp-services-configmap.yaml
+k create -f rpnginx-svc.yaml -f rpnginx.yaml
+```
+
+This takes some time for Azure to assign an external IP address to the ingress-nginx service. Around 3-5 minutes.
+
+![ps](/assets/2018-04-24/curl.png)
+
+So we now how a default backend working for this cluster!
+
+## Deploy a Test Application
+Lets do the simplest thing possible with a real domain that I own. All source code is in /1singleapp  
+
+```
+# app-ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: www.hoverflylagoons.co.uk
+    http:
+      paths:
+      - backend:
+          serviceName: appsvc1
+          servicePort: 80
+        path: /
+```
+
+The nginx-ingress-controller will pickup this Ingress and apply it.
+
+```
+# app-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: appsvc1
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: app1
+```
+Setting up the service - the Ingress rule for www.hoverflylagoons.co.uk points to this service (appsvc1)
+
+```
+# app-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      containers:
+      - name: app1
+        image: dockersamples/static-site
+        env:
+        - name: AUTHOR
+          value: app1
+        ports:
+        - containerPort: 80
+```
+Run these commands
+
+```
+k create -f app-ingress.yaml
+k create -f app-service.yaml
+k create -f app-deployment.yaml
+
+```
+Then we need to point the domain to this IP address, or even better I like to choose a name like:
+
+![ps](/assets/2018-04-24/dns.png)
+
+Then point my DNS records to this
+
+![ps](/assets/2018-04-24/dnsimple.png)
+
+
+![ps](/assets/2018-04-24/app1.png)
+
+Success it is working!
+
+If we want to update the message, edit app-deployment and change:
+
+```
+value: app1
+value: app1 (hoverflylagoons)
+
+k apply -f app-deployment.yaml
+```
+
+![ps](/assets/2018-04-24/app1b.png)
+
+## Deploy another website
+All source code in /2multiapp
+
+```
+k replace -f app-ingress.yaml
+
+k delete -f app-service.yaml
+k create -f app-service.yaml
+
+k delete -f app-deployment.yaml
+k create -f app-deployment.yaml
+
+
+```
+
+The ingress:
+```
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    #nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+spec:
+  rules:
+  - host: www.hoverflylagoons.co.uk
+    http:
+      paths:
+      - backend:
+          serviceName: appsvc1
+          servicePort: 80
+        path: /
+  - host: www.programgood.net 
+    http:
+      paths:
+      - backend:
+          serviceName: appsvc2
+          servicePort: 80
+        path: /
+```
+
+## Redirect to www
+If we have a request on: http://hoverflylagoons.co.uk we want to redirect to http://www.hoverflylagoons.co.uk. Usually I prefer the reverse and have the root. However as long as there is consistency that is good.  
+
+Usually this would be handled by reverse proxy, however currently that that proxy is handling the redirect to HTTPS (next section) and at time of writing I couldn't fine an elegant workaround, so with the beauty of K8s I created a new nginx container whose sole job is to handle the redirect to www.  
+
+
+Source code is in 3redirect.   
+
+The salient changes to code:  
+
+```
+#app-ingress.yaml
+  rules:
+  - host: www.hoverflylagoons.co.uk
+    http:
+      paths:
+      - backend:
+          serviceName: appsvc1
+          servicePort: 80
+        path: /
+  - host: hoverflylagoons.co.uk
+    http:
+      paths:
+      - backend:
+          serviceName: redirect
+          servicePort: 80
+        path: /
+
+#app-deployment.yaml
+kind: Deployment
+metadata:
+  name: redirect
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redirect
+    spec:
+      containers:
+      - name: redirect
+        image: davemateer/redirectnginx
+        ports:
+        - containerPort: 80
+```
+
+So how to create the nginx container to handle the redirect ie davemateer/redirectnginx?
+
+Dockerfile:
+```
+# Dockerfile
+FROM nginx
+#RUN rm /etc/nginx/conf.d/default.conf
+
+COPY nginx.conf /etc/nginx
+
+```
+
+nginx.conf
+```
+events {
+ worker_connections 1024;
+}
+
+http {
+  server {
+    listen 80;
+    server_name hoverflylagoons.co.uk;
+    return 301 http://www.hoverflylagoons.co.uk$request_uri;
+  }
+
+  server {
+    listen 80;
+    server_name programgood.net;
+    return 301 http://www.programgood.net$request_uri;
+  }
+}
+
+```
+
+Push image and reload k8s:
+
+```
+docker login --username=davemateer 
+
+docker build -t davemateer/redirectnginx .
+docker push davemateer/redirectnginx
+
+k replace -f app-ingress.yaml
+
+k delete -f app-service.yaml
+k create -f app-service.yaml
+
+k delete -f app-deployment.yaml
+k create -f app-deployment.yaml
+
+```
+
+## HTTPS
+All websites should use HTTPS now. The simplest thing for me
