@@ -591,18 +591,178 @@ Once you have these files, installing a certificate is just a matter of combinin
 We are using nginx so need:
 
 - .key - certificate private key
-- .crt - contains only your primary certificate
+- .pem - primary and intermediate certificate bundle
 
 ```
-k create secret tls hoverflylagoons-ssl --key www_hoverflylagoons_co_uk.key --cert www_hoverflylagoons_co_uk.crt
+k create secret tls hoverflylagoons-ssl --key www_hoverflylagoons_co_uk.key --cert www_hoverflylagoons_co_uk.pem
+
+```
+Now we have the secret stored in K8s, lets tell the reverse proxy about the certificate.  The rp handles https (and actually communicates with the pod internally over http - again something to enforce at a later date)
+
+```
+# app-ingress.yaml (partial)
+spec:
+  tls:
+  - hosts:
+    - www.hoverflylagoons.co.uk
+    secretName: hoverflylagoons-ssl
+  rules:
+  - host: www.hoverflylagoons.co.uk
+
+```
+
+![ps](/assets/2018-04-24/cert.png)
+
+The certificate is valid and we have a green padlock. However is the certificate chain complete?
+[Qualsy](https://www.ssllabs.com/ssltest/index.html)
+
+![ps](/assets/2018-04-24/qualys2.png)
+
+Certificate chain is good.
+
+If you've bought the cert and only have a pfx file then: [detail](https://stackoverflow.com/a/16724275/26086)
+
+```
+** pem contains the chain
+openssl pkcs12 -in bob.pfx -out bob.pem -nodes
+** .key is the certificate private key
+openssl pkcs12 -in bob.pfx -nocerts -nodes -out bob.key 
+
+k create secret tls bob-ssl --key www_bob_co_uk.key --cert www_bob_co_uk.pem
+```
+**above is the theory however when I replaced a key with not the whole keychain made as below, it didn't work and just showed the k8s default key:
+
+```
+openssl pkcs12 -in bob.pfx -clcerts -nokeys -out bob.cer
+```
+
+
+### Http and Https redirects
+
+- 1.https://www.hoverflylagoons.co.uk - tls handled by rp. Traffic routed to app1-svc service
+- 2.http://www.hoverflylagoons.co.uk - 308 permanent redirect to https://www.hoverflylagoons.co.uk handled by rp. This is default behaviour on the rp (ingress-nginx) see [docs](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/annotations.md#server-side-https-enforcement-through-redirect)
+```
+# 1 and 2
+curl https://www.hoverflylagoons.co.uk -i
+curl http://www.hoverflylagoons.co.uk -i
+```
+![ps](/assets/2018-04-24/redir.png)  
+nginx 1.13.9 is the rp version - we can verify [here](https://github.com/kubernetes/ingress-nginx/releases). We are using 0.12.0 of the nginx-ingress-controller.
+
+We are using 1.13.12 in the redirect deployment (that redirects non-www traffic to www)
+
+In order to stop having 2 redirects, lets update the nginx.conf to redirect http and https://non-www to https://www
+
+```
+events {
+ worker_connections 1024;
+}
+
+http {
+  server {
+    listen 80;
+    server_name hoverflylagoons.co.uk;
+    return 301 https://www.hoverflylagoons.co.uk$request_uri;
+  }
+
+  server {
+    listen 80;
+    server_name programgood.net;
+    return 301 https://www.programgood.net$request_uri;
+  }
+}
+
+```
+
+And lets update the image with a tag:
+
+```
+docker login --username=davemateer 
+
+docker build -t davemateer/redirectnginx:https .
+docker push davemateer/redirectnginx:https
+
+# 3
+curl https://hoverflylagoons.co.uk -i
+```
+
+![ps](/assets/2018-04-24/curl2.png)  
+
+The rp is answering on https for hoverflylagoons.co.uk and passing traffic to the redirect nginx webserver version 1.13.12 (that we have a custom nginx.conf built on dockerhub for) then passing the 301 back through the rp (1.13.9)
+
+```
+#4
+curl http://hoverflylagoons.co.uk -i
+
+```
+
+![ps](/assets/2018-04-24/curl3.png)  
+
+The rp is answering on http://hoverflylagoons.co.uk and is redirecting to https://hoverflylagoons.co.uk. This will then become #3 above.
+
+## Multiple sites with tls
+```
+k delete -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
+k create -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
+```
+
+Upload a new cert for programgood.net
+
+```
+k create secret tls programgood-ssl --key www_programgood_net.key --cert www_programgood_net.pem
+```
+Then added a new Ingress:
+
+```
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: programgood-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - www.programgood.net
+    - programgood.net
+    secretName: programgood-ssl
+  rules:
+  - host: www.programgood.net 
+    http:
+      paths:
+      - backend:
+          serviceName: app2-svc
+          servicePort: 80
+        path: /
+  - host: programgood.net
+    http:
+      paths:
+      - backend:
+          serviceName: redirect-svc
+          servicePort: 80
+        path: /
+```
+then tested:
+
+```
+# 1 - should display page content
+curl https://www.programgood.net -i
+
+# 2 - should 308 redirect from rp (1.13.9) to https
+curl http://www.programgood.net -i
+
+# 3 - should 301 redirect from redirect (1.13.12) to https www
+curl https://programgood.net -i
+
+# 4 - should 308 redirect from rp (1.13.9) to https
+curl http://programgood.net -i
+
 ```
 
 
 ## Testing
 ```
-# safest way to test a url without a browser's cache possibly interfering
-curl http://www.hoverflylagoons.co.uk -i
-
 # delete chrome's cache (be wary of page cache and DNS cache)
 chrome://settings/?search=clear
 
