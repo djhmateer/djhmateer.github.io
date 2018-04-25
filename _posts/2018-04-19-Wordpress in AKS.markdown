@@ -130,7 +130,7 @@ So now we have a hosted database
 I've turned off SSL enforcement and allowed all Azure IP's access to this database. This should be turned on in the future. 
 
 
-## Reverse Proxy 
+## 0.Reverse Proxy 
 We are going to use Nginx as a reverse proxy to:
 
 - allow multiple websites on this cluster    
@@ -146,8 +146,31 @@ kind: Namespace
 metadata:
   name: ingress-nginx
 ```
-
 Useful to put these following helper parts in their own namespace. Once these are setup they are rarely touched again - we can get on with deploying our own apps.
+
+```
+# configmap.yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-configuration
+  namespace: ingress-nginx
+  labels:
+    app: ingress-nginx
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: udp-services
+  namespace: ingress-nginx
+```
+
 
 ```
 # default-backend.yaml
@@ -210,36 +233,7 @@ spec:
 So this has created a Service and a Deployment for the default-backend which will catch anything hitting this server which isn't recognised by a host header eg www.hoverflylagoons.co.uk. It also acts as a healthcheck endpoint for K8s to see if this node is alive.
 
 ```
-# configmap.yaml
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: nginx-configuration
-  namespace: ingress-nginx
-  labels:
-    app: ingress-nginx
-```
-
-```
-# tcp-services-configmap.yaml
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: tcp-services
-  namespace: ingress-nginx
-```
-
-```
-# udp-services.configmap.yaml
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: udp-services
-  namespace: ingress-nginx
-```
-
-```
-# without-rbac2.yaml
+# ingress-nginx.yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -307,7 +301,7 @@ spec:
 
 
 ```
-# azure-service-ingress-nginx.yaml
+# ingress-nginx-svc.yaml
 kind: Service
 apiVersion: v1
 metadata:
@@ -331,9 +325,9 @@ spec:
 
 To run all these commands together:
 ```
-k create -f namespace.yaml  -f default-backend.yaml -f configmap.yaml
-k create -f tcp-services-configmap.yaml  -f udp-services-configmap.yaml
-k create -f rpnginx-svc.yaml -f rpnginx.yaml
+k create -f namespace.yaml  -f configmap.yaml
+k create -f default-backend.yaml 
+k create -f ingress-nginx.yaml -f ingress-nginx-svc.yaml 
 ```
 
 This takes some time for Azure to assign an external IP address to the ingress-nginx service. Around 3-5 minutes.
@@ -342,7 +336,7 @@ This takes some time for Azure to assign an external IP address to the ingress-n
 
 So we now how a default backend working for this cluster!
 
-## Deploy a Test Application
+## 1.Single App Deploy
 Lets do the simplest thing possible with a real domain that I own. All source code is in /1singleapp  
 
 ```
@@ -436,7 +430,7 @@ k apply -f app-deployment.yaml
 
 ![ps](/assets/2018-04-24/app1b.png)
 
-## Deploy another website
+## 2.Multi Application Deploy
 All source code in /2multiapp
 
 ```
@@ -448,7 +442,11 @@ k create -f app-service.yaml
 k delete -f app-deployment.yaml
 k create -f app-deployment.yaml
 
+# alternatively delete all
+k delete -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
 
+# create all
+k create -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
 ```
 
 The ingress:
@@ -466,19 +464,19 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: appsvc1
+          serviceName: app1-svc
           servicePort: 80
         path: /
   - host: www.programgood.net 
     http:
       paths:
       - backend:
-          serviceName: appsvc2
+          serviceName: app2-svc
           servicePort: 80
         path: /
 ```
 
-## Redirect to www
+## 3.Redirect to www
 If we have a request on: http://hoverflylagoons.co.uk we want to redirect to http://www.hoverflylagoons.co.uk. Usually I prefer the reverse and have the root. However as long as there is consistency that is good.  
 
 Usually this would be handled by reverse proxy, however currently that that proxy is handling the redirect to HTTPS (next section) and at time of writing I couldn't fine an elegant workaround, so with the beauty of K8s I created a new nginx container whose sole job is to handle the redirect to www.  
@@ -495,7 +493,7 @@ The salient changes to code:
     http:
       paths:
       - backend:
-          serviceName: appsvc1
+          serviceName: app1-svc
           servicePort: 80
         path: /
   - host: hoverflylagoons.co.uk
@@ -574,7 +572,42 @@ k create -f app-service.yaml
 k delete -f app-deployment.yaml
 k create -f app-deployment.yaml
 
+# delete and create
+k delete -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
+
+k create -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
+
 ```
 
-## HTTPS
-All websites should use HTTPS now. The simplest thing for me
+## 4.HTTPS Manual Install
+All websites should use HTTPS now. DNSimple who I use, make it easy to reqest a LetsEncrypt cert manually, so I'll show this first, and how to wire it up. Manually installing certs is still normal in my day job. I'll show how to get K8s to auto install certs too.
+
+Source code is in /4httpsmanual  
+
+Taken from dnsimple - "In order to install a certificate, you need 3 elements: the primary certificate, the certificate private key and the intermediate certificates.
+
+Once you have these files, installing a certificate is just a matter of combining these files together and configuring your platform accordingly. Unfortunately, every web server and platform require a slighly different procedure to install a certificate."
+
+We are using nginx so need:
+
+- .key - certificate private key
+- .crt - contains only your primary certificate
+
+```
+k create secret tls hoverflylagoons-ssl --key www_hoverflylagoons_co_uk.key --cert www_hoverflylagoons_co_uk.crt
+```
+
+
+## Testing
+```
+# safest way to test a url without a browser's cache possibly interfering
+curl http://www.hoverflylagoons.co.uk -i
+
+# delete chrome's cache (be wary of page cache and DNS cache)
+chrome://settings/?search=clear
+
+# login to mysql from the azure portal
+mysql --host bobmysql.mysql.database.azure.com --user bob@bobmysql -p
+drop database wordpress;
+
+```
