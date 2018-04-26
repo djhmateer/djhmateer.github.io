@@ -897,6 +897,9 @@ We can install Wordpress and persist page content to MySQL. We can persist media
 - Does the website survive a Node restart? Yes (and the PVC came up fine)
 
 - Patching of worker Nodes - this is done nightly by Azure. [Details](https://docs.microsoft.com/sl-si/azure/aks/faq) 
+```
+az aks upgrade -g aksrg -n aks -k 1.9.6
+```
 
 Disable automatic updates on Wordpress?  
 
