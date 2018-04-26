@@ -53,7 +53,7 @@ az aks get-versions -l westeurope -o table
 # the default node-vm-size is Standard_DS1_v2 (3.5GB and 1vcpu for UKP37) which I use in production
 # I use the cheaper burst Standard_B1ms (2GB for UKP13) for testing 
 ``` 
-After 20min or so you should have the cluster ready. As of 23rd of March there seems to be an issues with B1ms taking a long time, but the default size takes about 17mins. 
+After 20min or so you should have the cluster ready. As of 23rd of March 2018 there seems to be an issues with B1ms taking a long time, but the default size takes about 17mins. 
 
 
 ![ps](/assets/2018-04-19/aks.png)
