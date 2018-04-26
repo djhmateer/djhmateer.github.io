@@ -892,24 +892,25 @@ The next step is to import whatever site into this test site (for performance ch
 ## Summary of where we are
 We can install Wordpress and persist page content to MySQL. We can persist media and plugins to the PersistentVolumeClaim (in this case an Azure attached disk)
 
-Does the website survive a Pod delete (and then k8s recreates)?
-  yes
+- Does the website survive a Pod delete (and then k8s recreates)? Yes
 
-Does the website survive a Node restart?
+- Does the website survive a Node restart? Yes (and the PVC came up fine)
 
-Patching of worker Nodes - this is done nightly by Azure. [Details](https://docs.microsoft.com/sl-si/azure/aks/faq) 
+- Patching of worker Nodes - this is done nightly by Azure. [Details](https://docs.microsoft.com/sl-si/azure/aks/faq) 
 
-Disable automatic updates on Wordpress?
-Get rid of plugins not used
+Disable automatic updates on Wordpress?  
 
-How to just extract the content from the website
+
+Get rid of plugins not used  
+
+How to just extract the content from the website  
 
 
 ## Https Redirect Multiple Wordpress Sites
-memory management
-other resources
-health checking
-readiness probes
+- memory management
+- other resources
+- health checking
+- readiness probes
 
 ## Testing
 ```
