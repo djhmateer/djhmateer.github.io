@@ -633,7 +633,6 @@ k create secret tls bob-ssl --key bob.key --cert bob.pem
 ```
 
 ### Http and Https redirects
-
 - 1.https://www.hoverflylagoons.co.uk - tls handled by rp. Traffic routed to app1-svc service
 - 2.http://www.hoverflylagoons.co.uk - 308 permanent redirect to https://www.hoverflylagoons.co.uk handled by rp. This is default behaviour on the rp (ingress-nginx) see [docs](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/annotations.md#server-side-https-enforcement-through-redirect)
 ```
@@ -695,6 +694,9 @@ curl http://hoverflylagoons.co.uk -i
 
 The rp is answering on http://hoverflylagoons.co.uk and is redirecting to https://hoverflylagoons.co.uk. This will then become #3 above.
 
+A useful trick is to use the hosts file to redirect traffic for a specific site to a new IP address (for testing on a separate cluster). Be wary if you are on a domain joined machine (eg a work one) and want to test your companies website. I found the best way to test was a totally separate machine which wasn't domain joined.
+
+
 ## Multiple sites with tls
 ```
 k delete -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
@@ -754,7 +756,160 @@ curl https://programgood.net -i
 curl http://programgood.net -i
 
 ```
+## Wordpress with Azure Hosted MySQL
+Lets setup a blank install of Wordpress using hosted MySQL on Azure with persistence on an Azure disk (this works fine as we have 1 node)
 
+Wordpress uses the MySQL database to store page content, and uses disk to store media and extra code (plugins)
+
+Useful commands:
+```
+k delete -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml -f app-pvc.yaml 
+k create -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml -f app-pvc.yaml
+
+az mysql db delete -g amysql -s davemysql -n wordpress -y
+az mysql db create -g amysql -s davemysql -n wordpress
+
+mysql --host davemysql.mysql.database.azure.com --user dave@davemysql -p
+```
+
+Lets create the database:
+```
+
+az group create -n amysql -l westeurope
+az mysql server create -l westeurope -g amysql -n davemysql -u dave -p Secret123$$$ --sku-name GP_Gen5_2
+
+az mysql db create -g amysql -s davemysql -n wordpress
+
+az mysql server firewall-rule create --resource-group amysql --server davemysql --name "AllowAllWindowsAzureIps" --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+
+az mysql server update --resource-group amysql --name davemysql --ssl-enforcement Disabled
+
+k create secret generic mysql-pass --from-literal=password=Secret123$$$
+
+```
+In dev/prod I use: B_Gen5_1 or GP_Gen5_2
+
+As before we need an Ingress:
+
+```
+# app-ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hoverfly-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: www.hoverflylagoons.co.uk
+    http:
+      paths:
+      - backend:
+          serviceName: app1-svc
+          servicePort: 80
+        path: /
+---
+# app-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: app1
+```
+
+And now for the Deployment and PersistentVolumeClaim:
+
+```
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: app1
+spec:
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      containers:
+      - image: wordpress
+        name: wordpress
+ 
+        # from the udemy course
+        # uncomment to fix perm issue, see also https://github.com/kubernetes/kubernetes/issues/2630
+        #command: ['bash', '-c', 'chown www-data:www-data /var/www/html/wp-content/uploads && docker-entrypoint.sh apache2-foreground']
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: davemysql.mysql.database.azure.com 
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        - name: WORDPRESS_DB_USER
+          value: dave@davemysql
+        ports:
+        - containerPort: 80
+          name: wordpress
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wp-uploads-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wp-uploads-claim
+  annotations:
+    volume.beta.kubernetes.io/storage-class: managed-premium
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+```
+
+As we are using 1 node only, we can use an attached disk to this node for the persisted volume.
+
+![ps](/assets/2018-04-24/wordpress.png)  
+
+It worked. I had to set the dns name in the Azure portal to something that my dns is pointed to (a CNAME for the www). In this case I've used dave12345.westeurope.cloudapp.azure.com
+
+The next step is to import whatever site into this test site (for performance checking etc). I use [All-in-One WP Migration](https://en-gb.wordpress.org/plugins/all-in-one-wp-migration/) 
+
+## Summary of where we are
+We can install Wordpress and persist page content to MySQL. We can persist media and plugins to the PersistentVolumeClaim (in this case an Azure attached disk)
+
+Does the website survive a Pod delete (and then k8s recreates)?
+  yes
+
+Does the website survive a Node restart?
+
+Patching of worker Nodes - this is done nightly by Azure. [Details](https://docs.microsoft.com/sl-si/azure/aks/faq) 
+
+Disable automatic updates on Wordpress?
+Get rid of plugins not used
+
+How to just extract the content from the website
+
+
+## Https Redirect Multiple Wordpress Sites
+memory management
+other resources
+health checking
+readiness probes
 
 ## Testing
 ```
