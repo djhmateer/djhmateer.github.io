@@ -623,19 +623,14 @@ Certificate chain is good.
 If you've bought the cert and only have a pfx file then: [detail](https://stackoverflow.com/a/16724275/26086)
 
 ```
-** pem contains the chain
-openssl pkcs12 -in bob.pfx -out bob.pem -nodes
 ** .key is the certificate private key
 openssl pkcs12 -in bob.pfx -nocerts -nodes -out bob.key 
 
-k create secret tls bob-ssl --key www_bob_co_uk.key --cert www_bob_co_uk.pem
-```
-**above is the theory however when I replaced a key with not the whole keychain made as below, it didn't work and just showed the k8s default key:
+** .pem contains the primary and intermediate certificate bundle
+openssl pkcs12 -in bob.pfx -out bob.pem -nodes -nokeys
 
+k create secret tls bob-ssl --key bob.key --cert bob.pem
 ```
-openssl pkcs12 -in bob.pfx -clcerts -nokeys -out bob.cer
-```
-
 
 ### Http and Https redirects
 
