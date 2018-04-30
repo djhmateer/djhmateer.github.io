@@ -39,6 +39,8 @@ I use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-c
 
 
 ```
+az account show
+
 az login
 
 # -n is --name, -l is --location
@@ -47,10 +49,9 @@ az group create -n aksrg -l westeurope
 # -n is --name, -g is --resource-group, c is --node-count, -k is --kubernetes-version, -s is --node-vm-size
 az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B1ms
 
-# not working
+# not working and don't think I need the keys.
 az aks create -n aks -g aksrg5 -c 1 -k 1.9.6 -s Standard_B2s --generate-ssh-keys
 
-#1122 start
 az aks create -n aks -g aksrg6 -c 1 -k 1.9.6 -s Standard_D2_v2_Promo --generate-ssh-keys
 
 az vm list-skus --location westeurope -o table
@@ -537,8 +538,6 @@ Dockerfile:
 ```
 # Dockerfile
 FROM nginx
-#RUN rm /etc/nginx/conf.d/default.conf
-
 COPY nginx.conf /etc/nginx
 
 ```
@@ -586,6 +585,47 @@ k delete -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
 
 k create -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
 
+```
+
+## Use Azure Container Registry
+As we are heading towards enterprise deployments, I'd like to keep Dockerfiles private
+
+```
+# ACR
+# docker login davem.azurecr.io -u davem -p TYPEITHERE
+# docker build -t davem.azurecr.io/redirectnginx .
+# docker push davem.azurecr.io/redirectnginx
+FROM nginx
+COPY nginx.conf /etc/nginx
+```
+Now we've got the container on the ACR we need to give K8s permission to read it (as it is private). Lets use a secret:
+
+```
+k create secret docker-registry davemazurecr --docker-server davem.azurecr.io --docker-email david.mateer@qnrl.com --docker-username=davem --docker-password 2ComXXXXXXXX8zgkP
+```
+
+And now the full deployment 
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redirect
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redirect
+    spec:
+      containers:
+      - name: redirect
+        #image: davemateer/redirectnginx
+        image: davem.azurecr.io/redirectnginx
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: davemazurecr
+      
 ```
 
 ## 4.HTTPS Manual Install
