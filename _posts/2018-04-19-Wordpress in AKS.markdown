@@ -410,7 +410,7 @@ Then we need to point the domain to this IP address, or even better I like to ch
 
 ![ps](/assets/2018-04-24/dns.png)
 
-Then point my DNS records to this
+Then point my DNS records to this. Note - you need to click below in the whitespace below the red box to get the javascript to work, then the save button should appear if the name isn't taken!
 
 ![ps](/assets/2018-04-24/dnsimple.png)
 
