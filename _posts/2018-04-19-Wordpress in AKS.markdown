@@ -627,6 +627,7 @@ spec:
       - name: davemazurecr
       
 ```
+For simplicity I've used a single service pricipal (admin). [Here]https://thorsten-hans.com/how-to-use-a-private-azure-container-registry-with-kubernetes-9b86e67b93b6) are some thoughts and links on how to make it more secure.
 
 ## 4.HTTPS Manual Install
 All websites should use HTTPS now. DNSimple who I use, make it easy to reqest a LetsEncrypt cert manually, so I'll show this first, and how to wire it up. Manually installing certs is still normal in my day job. I'll show how to get K8s to auto install certs too.
