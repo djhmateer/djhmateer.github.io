@@ -107,37 +107,8 @@ static void Main()
     System.Threading.Thread.Sleep(29000);
   }
 }
-```
-
-## Hosted MySQL Database
-[Azure Database for MySQL](https://azure.microsoft.com/en-gb/services/mysql/)
-is the Azure hosted MySQL which is now fully supported.  As above it is easily scripted:
-```
-az group create -n amysql -l westeurope
-az mysql server create -l westeurope -g amysql -n bobmysql -u bob -p secretpassword123$ --sku-name B_Gen5_1
-:: in production I use the more powerful GP_Gen5_2 
-
-az mysql db create -g amysql -s bobmysql -n wordpress
-
-az mysql server firewall-rule create --resource-group amysql --server bobmysql --name "AllowAllWindowsAzureIps" --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-
-az mysql server update --resource-group amysql --name bobmysql --ssl-enforcement Disabled
-
-:: creating a secret in k8s to store the password to connect to the db
-kubectl create secret generic mysql-pass --from-literal=password=secretpassword123$
-
-:: useful command to connect to the db from the Azure CLI (web interface)
-mysql --host bobmysql.mysql.database.azure.com --user bob@bobmysql -p
-
-```
 
 Instead of using kubectl I use k [Cmder aliases](/cmder/2018/01/30/Cmder-Shell.html)  
-
-So now we have a hosted database
-
-![ps](/assets/2018-04-19/mysql.png)
-
-I've turned off SSL enforcement and allowed all Azure IP's access to this database. This should be turned on in the future. 
 
 
 ## 0.Reverse Proxy 
@@ -587,8 +558,8 @@ k create -f app-ingress.yaml -f app-service.yaml -f app-deployment.yaml
 
 ```
 
-## Use Azure Container Registry
-As we are heading towards enterprise deployments, I'd like to keep Dockerfiles private
+## Azure Container Registry
+As we are heading towards enterprise deployments and I'd like to keep Dockerfiles private
 
 ```
 # ACR
@@ -629,7 +600,7 @@ spec:
 ```
 For simplicity I've used a single service pricipal (admin). [Here]https://thorsten-hans.com/how-to-use-a-private-azure-container-registry-with-kubernetes-9b86e67b93b6) are some thoughts and links on how to make it more secure.
 
-## 4.HTTPS Manual Install
+## 4.HTTPS Manual Certificate Install
 All websites should use HTTPS now. DNSimple who I use, make it easy to reqest a LetsEncrypt cert manually, so I'll show this first, and how to wire it up. Manually installing certs is still normal in my day job. I'll show how to get K8s to auto install certs too.
 
 Source code is in /4httpsmanual  
@@ -822,8 +793,10 @@ az mysql db create -g amysql -s davemysql -n wordpress
 mysql --host davemysql.mysql.database.azure.com --user dave@davemysql -p
 ```
 
-Lets create the database:
-```
+### MySQL Database
+[Azure Database for MySQL](https://azure.microsoft.com/en-gb/services/mysql/)
+is the Azure hosted MySQL which is now fully supported.  As above it is easily scripted:
+````
 
 az group create -n amysql -l westeurope
 az mysql server create -l westeurope -g amysql -n davemysql -u dave -p Secret123$$$ --sku-name GP_Gen5_2
@@ -839,6 +812,12 @@ k create secret generic mysql-pass --from-literal=password=Secret123$$$
 ```
 In dev/prod I use: B_Gen5_1 or GP_Gen5_2
 
+So now we have a hosted database
+![ps](/assets/2018-04-19/mysql.png)
+
+I've turned off SSL enforcement and allowed all Azure IP's access to this database. This should be turned on in the future. 
+
+### Deployments
 As before we need an Ingress:
 
 ```
