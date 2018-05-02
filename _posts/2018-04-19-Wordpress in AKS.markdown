@@ -107,7 +107,7 @@ static void Main()
     System.Threading.Thread.Sleep(29000);
   }
 }
-
+```
 Instead of using kubectl I use k [Cmder aliases](/cmder/2018/01/30/Cmder-Shell.html)  
 
 
@@ -799,7 +799,7 @@ is the Azure hosted MySQL which is now fully supported.  As above it is easily s
 ````
 
 az group create -n amysql -l westeurope
-az mysql server create -l westeurope -g amysql -n davemysql -u dave -p Secret123$$$ --sku-name GP_Gen5_2
+az mysql server create -l westeurope -g amysql -n davemysql -u dave -p Secret123$$$ --sku-name G_Gen5_1
 
 az mysql db create -g amysql -s davemysql -n wordpress
 
