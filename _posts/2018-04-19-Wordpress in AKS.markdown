@@ -932,6 +932,8 @@ az aks upgrade -g aksrg -n aks -k 1.9.6
 How to install helm:
 [Download the Windows binary](https://github.com/kubernetes/helm/releases) 2.9.0 at time of writing and put it in c:\sharedTools - this directory is in my Path.
 
+
+[patch](https://github.com/kubernetes/helm/issues/2464) one liner do on kubectl installed on WSL after the helm init.  5th May 2018 had to do this to get 1.9.6 working on Azure.
 ```
 
 helm init
