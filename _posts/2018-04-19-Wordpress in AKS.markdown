@@ -47,20 +47,18 @@ az login
 az group create -n aksrg -l westeurope
 
 # -n is --name, -g is --resource-group, c is --node-count, -k is --kubernetes-version, -s is --node-vm-size
-az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B2s
+# az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B2s
+az aks create -n aks -g aksrg -c 1 -k 1.9.6 
 
 az vm list-skus --location westeurope -o table
 
 # useful command to get vm sizes
 az aks get-versions -l westeurope -o table
-
-az
-# the default node-vm-size is Standard_DS1_v2 (3.5GB and 1vcpu for UKP37) which I use in production
 ``` 
 
 ![ps](/assets/2018-04-24/cost.png)
 
-The Azure support team currently recommend using the default Standard_DS1_v2 vm size.
+The Azure support team currently (5th May 2018) recommend using the default Standard_DS1_v2 vm size as the B series still need some more work.
 
 ![ps](/assets/2018-04-19/aks.png)
 
@@ -926,10 +924,43 @@ We can install Wordpress and persist page content to MySQL. We can persist media
 az aks upgrade -g aksrg -n aks -k 1.9.6
 ```
 
-Disable automatic updates on Wordpress?  
+## Helm charts
+[Helm](https://helm.sh/) is a package manager for K8s. Can the [official Wordpress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress) help?
+
+[Quickstart](https://docs.helm.sh/using_helm/#quickstart-guide)
+
+How to install helm:
+[Download the Windows binary](https://github.com/kubernetes/helm/releases) 2.9.0 at time of writing and put it in c:\sharedTools - this directory is in my Path.
+
+```
+
+helm init
+helm repo update
+
+helm install --set serviceType=NodePort --name wordpress stable/wordpress
+
+helm ls
+
+helm delete smiling-penguin
 
 
+```
+
+There is an [Azure version](https://github.com/Azure/helm-charts/tree/master/wordpress) of the chart which uses Open Service Broker for Azure to provision an Azure Database for MySQL.
+
+[Install Service Catalog](https://svc-cat.io/docs/install/)
+
+```
+
+helm install --name wordpress azure/wordpress
+
+```
+
+
+## To Explore
 Get rid of plugins not used  
+
+Disable automatic updates on Wordpress?  
 
 How to just extract the content from the website  
 
