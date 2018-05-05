@@ -47,24 +47,20 @@ az login
 az group create -n aksrg -l westeurope
 
 # -n is --name, -g is --resource-group, c is --node-count, -k is --kubernetes-version, -s is --node-vm-size
-az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B1ms
-
-# not working and don't think I need the keys.
-az aks create -n aks -g aksrg5 -c 1 -k 1.9.6 -s Standard_B2s --generate-ssh-keys
-
-az aks create -n aks -g aksrg6 -c 1 -k 1.9.6 -s Standard_D2_v2_Promo --generate-ssh-keys
+az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B2s
 
 az vm list-skus --location westeurope -o table
 
-# useful command to get the supported versions of k8s
+# useful command to get vm sizes
 az aks get-versions -l westeurope -o table
 
 az
 # the default node-vm-size is Standard_DS1_v2 (3.5GB and 1vcpu for UKP37) which I use in production
-# I use the cheaper burst Standard_B1ms (2GB for UKP13) for testing 
 ``` 
-After 20min or so you should have the cluster ready. As of 23rd of March 2018 there seems to be an issues with B1ms taking a long time, but the default size takes about 17mins. 
 
+![ps](/assets/2018-04-24/cost.png)
+
+The Azure support team currently recommend using the default Standard_DS1_v2 vm size.
 
 ![ps](/assets/2018-04-19/aks.png)
 
