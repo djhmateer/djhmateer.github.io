@@ -937,7 +937,9 @@ How to install helm:
 ```
 
 helm init
-# run patch
+
+# run patch on wsl
+kubectl -n kube-system patch deployment tiller-deploy -p '{"spec": {"template": {"spec": {"automountServiceAccountToken": true}}}}'
 
 helm repo update
 
@@ -955,6 +957,8 @@ helm list
 - [Wordpress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress)
    - Bitnami Wordpress Image
    - [Bitnami MariaDB Image](https://github.com/kubernetes/charts/tree/master/stable/mariadb)
+   - default implementation needed a pod restart to get PVC on Azure
+   - and a 2 core VM
 - [Bitnami Wordpress Image](https://github.com/bitnami/bitnami-docker-wordpress) - 1m+ pulls
    - [minideb image](https://github.com/bitnami/minideb) minimalist debian
    - PHP7.0.30
