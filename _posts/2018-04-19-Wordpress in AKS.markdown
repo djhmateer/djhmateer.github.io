@@ -933,20 +933,35 @@ How to install helm:
 [Download the Windows binary](https://github.com/kubernetes/helm/releases) 2.9.0 at time of writing and put it in c:\sharedTools - this directory is in my Path.
 
 
-[patch](https://github.com/kubernetes/helm/issues/2464) one liner do on kubectl installed on WSL after the helm init.  5th May 2018 had to do this to get 1.9.6 working on Azure.
+[patch](https://github.com/kubernetes/helm/issues/2464) one liner do on kubectl installed on WSL [install helm](https://kubernetes.io/docs/tasks/tools/install-kubectl/) after the helm init.  5th May 2018 had to do this to get 1.9.6 working on Azure.
 ```
 
 helm init
+# run patch
+
 helm repo update
 
+helm install --name wordpress stable/wordpress
 helm install --set serviceType=NodePort --name wordpress stable/wordpress
 
 helm ls
 
 helm delete smiling-penguin
 
-
+helm list
 ```
+
+- [Azure Wordpress Helm Chart](https://github.com/Azure/helm-charts/tree/master/wordpress)
+- [Wordpress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress)
+   - Bitnami Wordpress Image
+   - [Bitnami MariaDB Image](https://github.com/kubernetes/charts/tree/master/stable/mariadb)
+- [Bitnami Wordpress Image](https://github.com/bitnami/bitnami-docker-wordpress) - 1m+ pulls
+   - [minideb image](https://github.com/bitnami/minideb) minimalist debian
+   - PHP7.0.30
+   - Apache2.4.33
+- [Wordpress Image]() - 10m+ pulls
+
+
 
 There is an [Azure version](https://github.com/Azure/helm-charts/tree/master/wordpress) of the chart which uses Open Service Broker for Azure to provision an Azure Database for MySQL.
 
