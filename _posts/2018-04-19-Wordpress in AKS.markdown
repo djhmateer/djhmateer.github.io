@@ -77,7 +77,11 @@ az aks browse -n aks -g aksrg
 
 # get the credentials of the cluster (you may need this if the above command fails)
 az aks get-credentials -n aks -g aksrg
+
+k cluster-info
 ```
+
+If you ever get unauthorised using kubectl, try deleting the folder C:\Users\yourname\.kube
 
 ![ps](/assets/2018-04-19/dash.png)
 
