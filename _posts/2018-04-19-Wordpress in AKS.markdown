@@ -80,7 +80,7 @@ az aks get-credentials -n aks -g aksrg
 
 k cluster-info
 ```
-
+[Install Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)  
 If you ever get unauthorised using kubectl, try deleting the folder C:\Users\yourname\.kube
 
 ![ps](/assets/2018-04-19/dash.png)
@@ -955,7 +955,7 @@ echo Password: $(kubectl get secret --namespace default wordpress-wordpress -o j
 
 helm ls
 
-helm delete smiling-penguin
+helm delete wordpress
 
 helm list
 ```
@@ -964,13 +964,15 @@ helm list
 - [Wordpress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress)
    - Bitnami Wordpress Image
    - [Bitnami MariaDB Image](https://github.com/kubernetes/charts/tree/master/stable/mariadb)
-   - default implementation needed a pod restart to get PVC on Azure
-   - and a 2 core VM
+   - default implementation needed a 2 core VM
 - [Bitnami Wordpress Image](https://github.com/bitnami/bitnami-docker-wordpress) - 1m+ pulls
    - [minideb image](https://github.com/bitnami/minideb) minimalist debian
    - PHP7.0.30 (Wordpress [recommends](https://wordpress.org/about/requirements/) 7.2+)
    - Apache2.4.33
 - [Wordpress Image]() - 10m+ pulls
+
+
+The Bitnami Wordpress Image is interesting as it comes 'pre installed' with a default user, and some common plugins.
 
 
 
@@ -983,6 +985,8 @@ There is an [Azure version](https://github.com/Azure/helm-charts/tree/master/wor
 helm install --name wordpress azure/wordpress
 
 ```
+## Healthchecks
+[Detail](https://www.ianlewis.org/en/using-kubernetes-health-checks)
 
 
 ## To Explore
