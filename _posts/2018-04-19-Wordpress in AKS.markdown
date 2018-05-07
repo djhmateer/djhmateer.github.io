@@ -988,6 +988,8 @@ helm install --name wordpress azure/wordpress
 ## Healthchecks
 [Detail](https://www.ianlewis.org/en/using-kubernetes-health-checks)
 
+Beware that in high load situations health checks can cause the system to fail. I use Apache Benchmarks to simulate high traffic to see what happens, and if that is what is intended.
+
 
 ## To Explore
 Get rid of plugins not used  
