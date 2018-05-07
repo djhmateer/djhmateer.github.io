@@ -946,6 +946,9 @@ helm repo update
 helm install --name wordpress stable/wordpress
 helm install --set serviceType=NodePort --name wordpress stable/wordpress
 
+# random password for username: user
+echo Password: $(kubectl get secret --namespace default wordpress-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
+
 helm ls
 
 helm delete smiling-penguin
@@ -961,7 +964,7 @@ helm list
    - and a 2 core VM
 - [Bitnami Wordpress Image](https://github.com/bitnami/bitnami-docker-wordpress) - 1m+ pulls
    - [minideb image](https://github.com/bitnami/minideb) minimalist debian
-   - PHP7.0.30
+   - PHP7.0.30 (Wordpress [recommends](https://wordpress.org/about/requirements/) 7.2+)
    - Apache2.4.33
 - [Wordpress Image]() - 10m+ pulls
 
