@@ -6,7 +6,7 @@ menu: review
 categories: wordpress 
 published: true 
 ---
-Setting up Wordpress well in [Azure Container Services (AKS)](https://azure.microsoft.com/en-gb/services/container-service/) is not easy. 
+Setting up Wordpress well in [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-gb/services/container-service/) is not easy. 
 
 ## Background business problem
 We had an issue where an existing Wordpress installation was years out of date, and could not be updated becuase it was running a version of Wordpress called Project Nami. This meant that some plugins wouldn't work, and therefore the entire application was not updated.  
@@ -27,7 +27,7 @@ We ran a VM running Docker for many months as a test server - essentially a linu
 
 
 ## What are we building?
-Azure Container Services (AKS)  
+Azure Kubernetes Service (AKS)  
 Azure managed MySQL  
 A single node cluster with an Azure attached disk for persistence  
 Ingress controller  
@@ -810,6 +810,15 @@ k create secret generic mysql-pass --from-literal=password=Secret123$$$
 ```
 In dev/prod I use: B_Gen5_1 or GP_Gen5_2
 
+If you want to create a db.bat file use call to avoid the batch file exiting after each line eg:
+
+```
+call az group create -n amysql -l westeurope
+call az mysql server create -l westeurope -g amysql -n davemysql -u dave -p Secret123$$$ --sku-name B_Gen5_1
+call az mysql db create -g amysql -s davemysql -n wordpress
+
+```
+
 So now we have a hosted database
 ![ps](/assets/2018-04-19/mysql.png)
 
@@ -989,6 +998,106 @@ helm install --name wordpress azure/wordpress
 [Detail](https://www.ianlewis.org/en/using-kubernetes-health-checks)
 
 Beware that in high load situations health checks can cause the system to fail. I use Apache Benchmarks to simulate high traffic to see what happens, and if that is what is intended.
+
+```
+ab -n 1000 -c 100 http://www.hoverflylagoons.co.uk/
+```
+On a low powered database, this will get DB Connection Errors very quickly
+Turning on file caching helps a lot (WP Super Cache).  54-56s to run the above (with requests and limits set as below).  64s when I took off memory and cpu limit. 59 when took off initial resource size. These results are not logical, however data was coming over my 130Mbit line at around 100MBits. 
+
+Increasing the size of the worker VM in this case didn't help.
+
+
+![ps](/assets/2018-04-24/health.png)  
+Under a sustained load, the container can't handle the number of connections (the db is failing) so the probes are failing. After 10minutes the container is restarted. The specific settings are shown below. 
+
+## Requests and Limits
+
+An example of using requests (min) and limits (max) compute power on a deployment.  
+
+Liveness probe: when to restart a container
+Readiness probe: when a container is ready to start accepting traffic
+
+```
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: hoverfly
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hoverfly
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: hoverfly
+    spec:
+      containers:
+      - image: wordpress:4.9.5-apache
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: davemysql.mysql.database.azure.com 
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        - name: WORDPRESS_DB_USER
+          value: dave@davemysql
+        ports:
+        - containerPort: 80
+          name: wordpress
+        # https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: 300m
+          limits:
+            memory: 512Mi
+            cpu: 800m
+        livenessProbe:
+          httpGet:
+            path: /wp-login.php
+            port: 80
+            #port: https
+            #scheme: HTTPS
+          initialDelaySeconds: 120
+          timeoutSeconds: 60 
+          periodSeconds: 120
+          successThreshold: 1
+          failureThreshold: 6
+        readinessProbe:
+          httpGet:
+            path: /wp-login.php
+            port: 80
+              #port: https
+              #scheme: HTTPS 
+          initialDelaySeconds: 30
+          timeoutSeconds: 60 
+          periodSeconds: 120
+          successThreshold: 1
+          failureThreshold: 6
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wp-uploads-claim
+```
+
+## Custom Wordpress image
+The goal here is to have a custom base image to develop and test against. An easy way to do this is use the standard image: 
+      - image: wordpress:4.9.5-apache
+then restore all settings over it when it has come up using: [All in one WP Migration](https://en-gb.wordpress.org/plugins/all-in-one-wp-migration/)
+
+The database should be fine as it is Azure backed
+
+The filesystem should be fine as it is Azure backed.
 
 
 ## To Explore
