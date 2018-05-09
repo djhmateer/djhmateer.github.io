@@ -105,6 +105,13 @@ qa! - quit all (buffers)
 "*p - paste from system clipboard
 
 ```
+## Config
+Showing line numbers
+```
+set number
+set nonumber
+```
+
 
 ## _vimrc
 This optional config file on a windows machine is in c:\users\dave
