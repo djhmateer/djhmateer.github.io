@@ -48,12 +48,12 @@ az group create -n aksrg -l westeurope
 
 # -n is --name, -g is --resource-group, c is --node-count, -k is --kubernetes-version, -s is --node-vm-size
 # az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B2s
-az aks create -n aks -g aksrg -c 1 -k 1.9.6 
+az aks create -n aks -g aksrg -c 1 -k 1.9.6 --generate-ssh-keys
 
-az vm list-skus --location westeurope -o table
 
-# useful command to get vm sizes
+# get aks versions and vm sizes
 az aks get-versions -l westeurope -o table
+az vm list-skus --location westeurope -o table
 ``` 
 
 ![ps](/assets/2018-04-24/cost.png)
