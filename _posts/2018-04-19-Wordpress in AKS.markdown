@@ -80,7 +80,7 @@ az aks get-credentials -n aks -g aksrg
 k cluster-info
 ```
 [Install Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)  
-If you ever get unauthorised using kubectl, try deleting the folder C:\Users\yourname\.kube
+If you ever get unauthorised using kubectl, try deleting the folder C:\Users\yourname\\.kube
 
 ![ps](/assets/2018-04-19/dash.png)
 
