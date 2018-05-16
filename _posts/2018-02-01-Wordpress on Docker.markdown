@@ -7,7 +7,7 @@ categories: docker
 published: true 
 ---
 
-This is part 2 of a series - see [summary](/docker/2018/02/14/What-is-docker-good-for.html)
+This is part 2 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)
 
 
 I wanted to explore a legacy Wordpress site:
@@ -29,7 +29,7 @@ This felt like a good use case for containers as they gave an
 
 At the time of writing I've **~~no idea~~** **concerns** if it is a good idea to go into production with Docker. 
 
-The first step was to get Wordpress running locally. Number 2 in [Summary of What Docker is Good For](/docker/2018/02/14/What-is-docker-good-for.html).
+The first step was to get Wordpress running locally.  
 
 ## Official Wordpress Image
 [hub.docker.com](https://hub.docker.com/_/wordpress/) has over 10 million pulls. It gets very regular updates. [Github](https://github.com/docker-library/wordpress) source. 
@@ -40,6 +40,12 @@ I followed it and it worked well.
 ...until it didn't work well. So below is what I ended up with:
 
 ## Customising Wordpress
+**Update** all below is not necessary (however very instructive). The trick is to mount the whole volume for wordpress:
+
+``` 
+- ./html:/var/www/html
+```
+
 To get the Avada theme working well here is a summary 
 
 - I'm using localhost:80 so I can easily scp this file to the live server
@@ -323,8 +329,6 @@ Data was coming down line at 100Megabits (line is 130) and memory usage on VM wa
 With a £6.99 VM timed out the load test and didn't come back up again after 5 minutes
 
 This was due to memory usage - a workaround is to limit the available memory within Docker.
-
-[In the next article](/wordpress/2018/02/14/Where-to-host-wordpress.html) I'll explore the multitude of ways of running Docker in 'production' in Azure and exploring if it is **wise**!
 
 
 

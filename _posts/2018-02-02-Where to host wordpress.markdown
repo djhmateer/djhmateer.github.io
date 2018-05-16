@@ -6,6 +6,8 @@ menu: review
 categories: wordpress 
 published: true 
 ---
+This is part 3 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)
+
 I will run through the logical steps of getting Wordpress from your dev machine and explore the possible hosting options, and whether they are a good idea.
 
 1. Test it on your local machine with Docker for Linux running

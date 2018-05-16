@@ -8,6 +8,8 @@ published: true
 ---
 ![Menu](/assets/2018-01-25-Docker/screen.png)
 
+This is part 1 of a [series on Docker](/docker/2018/02/14/What-is-docker-good-for.html)  
+
 I like using [Jekyll](https://jekyllrb.com/) and have had this site on [Github pages](https://pages.github.com/) for a few years. Running Jekyll locally on my Windows machine was tricky to setup (I am not a Rubyist), and after a year I gave up! I just sent all changes straight to live.
 
 It is now very easy to get Jekyll running locally with Docker using the official [Jekyll Image](https://hub.docker.com/r/jekyll/jekyll/)
@@ -64,7 +66,6 @@ If it doesn't work try deleting all of Dockers [remnants](/docker/2018/01/26/Doc
 Lets make it easier to run up docker by using the built in docker-compose cli. Here is the config file **docker-compose.yml** that I use:
 
 Livereload required Jekyll >3.7.
-[If using <3.7 issues with 0.0.0.0 on Windows](https://tonyho.net/jekyll-docker-windows-and-0-0-0-0/)
 ```
 version: '3'
 
@@ -96,7 +97,7 @@ If you do changes to your **_config.yml** file restart the docker container (ctr
 - open my [shell](http://cmder.net/) in c:\dev\djhmateer.github.io
 - git pull 
 - docker-compose up
-- edit or create new markdown post files in VS Code in the c:\dev\djhmateer.github.io\_posts directory
+- edit or create new markdown post files in c:\dev\djhmateer.github.io\_posts directory
 - magically watch as the browser updates (I've got autosave turned on in VSCode) 
 - git commit -am "changes" (I'm lazy actually and just type 'p' - [see alias](/cmder/2018/01/30/Cmder-Shell.html))
 - git push

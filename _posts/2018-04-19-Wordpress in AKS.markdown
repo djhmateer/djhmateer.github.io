@@ -6,6 +6,9 @@ menu: review
 categories: wordpress 
 published: true 
 ---
+
+This is part 6 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)   
+
 Setting up Wordpress well in [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-gb/services/container-service/) is not easy. 
 
 ## Background business problem

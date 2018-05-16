@@ -6,6 +6,9 @@ menu: review
 categories: kubernetes
 published: true 
 ---
+
+This is part 4 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)
+
 [Pluralsight course by Nidel Poulton](https://app.pluralsight.com/library/courses/getting-started-kubernetes/table-of-contents) on "Getting Started with Kubernetes" has a good section on Minikube. The overall summary for Windows is get the minikube binary and kubectl binary in the path. I use c:\sharedTools.
 
 I found there to be a memory leak so need to turn off dynamic memory in HyperV settings.
