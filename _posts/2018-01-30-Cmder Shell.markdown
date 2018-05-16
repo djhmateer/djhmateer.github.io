@@ -26,6 +26,7 @@ p=git add . -A & git commit -m "auto commit" & git push
 c=code .
 cdd = cd c:\dev
 k=kubectl $*
+ka=KeepK8sAlive
 ```
 
 ### Set Starup Directory

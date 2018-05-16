@@ -49,7 +49,8 @@ az login
 # -n is --name, -l is --location
 az group create -n aksrg -l westeurope
 
-# -n is --name, -g is --resource-group, c is --node-count, -k is --kubernetes-version, -s is --node-vm-size
+# -n is --name, -g is --resource-group, c is --node-count, -k is --kubernetes-version
+# -s is --node-vm-size, --ssh needed first time only
 # az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B2s --generate-ssh-keys
 az aks create -n aks -g aksrg -c 1 -k 1.9.6 
 
@@ -60,7 +61,7 @@ az vm list-skus --location westeurope -o table
 
 ![ps](/assets/2018-04-24/cost.png)
 
-The Azure support team currently (5th May 2018) recommend using the default Standard_DS1_v2 vm size as the B series still need some more work.
+The Azure support team currently (5th May 2018) recommend using the default Standard_DS1_v2 vm size as the B series still needs some more work. At time of writing eastus didn't have B series.
 
 ![ps](/assets/2018-04-19/aks.png)
 
@@ -107,8 +108,12 @@ static void Main()
     System.Threading.Thread.Sleep(29000);
   }
 }
+
+
+//https://stackoverflow.com/a/44074296/26086
+dotnet publish -c Release -r win10-x64
 ```
-Instead of using kubectl I use k [Cmder aliases](/cmder/2018/01/30/Cmder-Shell.html)  
+I linked the output of publish above to a ka alias, and instead of using kubectl I use k [Cmder aliases](/cmder/2018/01/30/Cmder-Shell.html)  
 
 
 ## 0.Reverse Proxy 
