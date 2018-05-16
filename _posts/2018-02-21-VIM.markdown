@@ -2,13 +2,11 @@
 layout: post
 title:  "Vim"
 date:   2018-02-21 08:28
-menu: review
+#menu: review
 categories: vim 
 published: true 
 ---
-I use Vim bindings in VSCode, and I use VSCode Autosave. 
-
-After 6 months of using Vim here are my most used commands.
+After 8 months of using Vim here are my most used commands. I now find it easier and more enjoyable to edit text in Vim than in any other editor.
 
 ## Vim commands
 ```
@@ -102,8 +100,6 @@ qa! - quit all (buffers)
 
 / - search for a file
 
-"*p - paste from system clipboard
-
 ```
 ## Config
 Showing line numbers
@@ -112,19 +108,15 @@ set number
 set nonumber
 ```
 
-
 ## _vimrc
 This optional config file on a windows machine is in c:\users\dave
 ```
 " This is a comment in c:\users\dave\_vimrc
-" Word wrap
-set wrap
-" Turn off the beep when you press escape
-set belloff=all
-" synatx highlighting
 colo desert
-" syntax on (actually this causes some strange issues)
-" can paste from system clipboard
+syntax on
+
+set belloff=all
+
 set clipboard=unnamed
 ```
 ## Cmder

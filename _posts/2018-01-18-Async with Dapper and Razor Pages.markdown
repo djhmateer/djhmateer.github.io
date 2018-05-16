@@ -2,7 +2,7 @@
 layout: post
 title:  "Async with Dapper and Razor Pages"
 date:   2018-01-18
-menu: review
+#menu: review
 categories: dapper
 published: true 
 ---
@@ -11,9 +11,9 @@ published: true
 Here is an exmple of using 'Async all the way' using Dapper for data access in an ASP.NET Core 2.0 Razor Pages app.
 
 ### Why Use Async in a Web App
-If you are hitting a single database then this probably wont speed up your app
+If you are hitting a single database then this probably won't speed up your app
 
-However it will allow greater scalability of the application as the web thread wont be locked
+However it will allow greater scalability of the application as the web thread won't be locked
 
 ### Simple Example using Dapper 
 {% highlight csharp %}
@@ -28,18 +28,20 @@ However it will allow greater scalability of the application as the web thread w
     
     public async Task OnGetAsync()
     {
-        var result = await _thing.RunQueryWhichThrowsAsync();
+        var result = await _thing.RunQueryAsync();
         Message = result;
     }
-    //public void OnGet()
-    //{
-    //    _thing.RunQueryWhichThrows();
-    //} 
+
+    // Non async way - comment this out as can't have OnGet and OnGetAsync
+    public void OnGet()
+    {
+        _thing.RunQuery();
+    } 
 }
 
 public class Thing
 {
-    public async Task<string> RunQueryWhichThrowsAsync()
+    public async Task<string> RunQueryAsync()
     {
         using (var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=AllReady;Trusted_Connection=True;MultipleActiveResultSets=true"))
         {
@@ -51,7 +53,7 @@ public class Thing
         }
     }
 
-    public string RunQueryWhichThrows()
+    public string RunQuery()
     {
         using (var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=AllReady;Trusted_Connection=True;MultipleActiveResultSets=true"))
         {

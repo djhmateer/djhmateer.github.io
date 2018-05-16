@@ -2,11 +2,11 @@
 layout: post
 title:  "Ubuntu for the Windows User"
 date:   2018-02-21 11:19
-menu: review
+#menu: review
 categories: ubuntu 
 published: true 
 ---
-Here are my most used commands in Linux.  Current distibution is Ubuntu Server 16.04.3 LTS (Xenial Xerus)
+Here are my most used commands in Linux.  Current favoured distibution is Ubuntu Server 16.04.3 LTS (Xenial Xerus).
 
 ```
 # apt-get is the lower level, apt is meant to be more pleasant!

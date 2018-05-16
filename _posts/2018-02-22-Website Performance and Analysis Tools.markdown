@@ -2,18 +2,22 @@
 layout: post
 title:  "Website Performance and Analysis Tools"
 date:   2018-02-22 10:25
-menu: review
+#menu: review
 categories: website 
 published: true 
 ---
-[uptimerobot.com](https://uptimerobot.com) - Free tier. 50 monitors. Sends a request every 5 minutes to a website.
 
-[pingdom.com](https://www.pingdom.com) - Free tier. Gives average response times.
+Here are some of my favourite tools for web perf and analytics:
 
-[testmysite.io](https://testmysite.io) - performance metrics on the site from 6 regions eg TTFB, Full Download of HTML. Results skewed towards Netlify as the hosting is on their servers
+[Uptimerobot.com](https://uptimerobot.com) - Free tier. 50 monitors. Sends a request every 5 minutes to a website.
 
-[freesitestatus](http://www.freesitestatus.com/en/)  
+[Pingdom.com](https://www.pingdom.com) - Free tier. Gives average response times.
 
-Azure have an uptime monitor inside Application Insights  
+Azure have an excellent uptime monitor inside Application Insights  
 
-[builtwith.com](https://builtwith.com) - eg is this a wordpress site, what webserver etc..
+[Builtwith.com](https://builtwith.com) - eg is this a wordpress site, what webserver etc..
+
+[Deadlinkchecker.com](https://www.deadlinkchecker.com) This handles redirects well
+
+
+[Apache benchmarks](/apachebenchmarks/2018/02/01/Apache-Benchmarks.html) load testing from the command line
