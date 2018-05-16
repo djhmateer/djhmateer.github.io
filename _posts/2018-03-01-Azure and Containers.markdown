@@ -13,8 +13,8 @@ At the time of writing these were [some of the options](https://azure.microsoft.
 ![ps](/assets/2018-03-01/container.png)
 
 ## Azure Container Instances (Preview)
-[Docs](https://docs.microsoft.com/en-gb/azure/container-instances/)   
-[Overview](https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-overview)
+[Overview](https://docs.microsoft.com/en-gb/azure/container-instances/)   
+[Docs](https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-overview)
 
 It seems like the use case for these currently is to do short lived containers (they offer per second billing).
 
