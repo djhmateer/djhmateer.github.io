@@ -865,6 +865,7 @@ spec:
 ```
 
 And now for the Deployment and PersistentVolumeClaim:
+Configuration settings for WORDPRESS_DB_HOST etc.. can be found [here](https://hub.docker.com/_/wordpress/)
 
 ```
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
