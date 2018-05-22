@@ -9,8 +9,6 @@ published: true
 
 This is part 6 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)   
 
-Setting up Wordpress well in [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-gb/services/container-service/) is not easy. 
-
 ## Background business problem
 We had an issue where an existing Wordpress installation was years out of date, and could not be updated becuase it was running a version of Wordpress called Project Nami. This meant that some plugins wouldn't work, and therefore the entire application was not updated.  
 
