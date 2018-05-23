@@ -281,7 +281,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 1
 ```
-[Documentation](https://github.com/kubernetes/ingress-nginx)
+I am using the this [version](https://github.com/kubernetes/ingress-nginx) of the Nginx maintained by the Kubernetes community. There is [anohter](https://github.com/nginxinc/kubernetes-ingress/blob/master/docs/nginx-ingress-controllers.md) which is maintained by the nginx community.
 
 
 ```
