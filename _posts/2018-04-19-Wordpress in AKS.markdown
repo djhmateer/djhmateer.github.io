@@ -780,6 +780,18 @@ curl https://programgood.net -i
 curl http://programgood.net -i
 
 ```
+## Cert-Manager for automating LetsEncrypt
+[Cert-Manager](https://github.com/jetstack/cert-manager) and [Docs](https://cert-manager.readthedocs.io/en/latest/)
+
+It needs helm and tiller to run (see below in this article). Current version is 2.9.1
+
+```
+
+
+```
+
+
+
 ## Wordpress with Azure Hosted MySQL
 Lets setup a blank install of Wordpress using hosted MySQL on Azure with persistence on an Azure disk (this works fine as we have 1 node)
 
