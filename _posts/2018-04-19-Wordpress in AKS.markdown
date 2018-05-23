@@ -619,6 +619,7 @@ We are using nginx so need:
 
 ```
 k create secret tls hoverflylagoons-ssl --key www_hoverflylagoons_co_uk.key --cert www_hoverflylagoons_co_uk.pem
+k create secret tls programgood-ssl --key www_programgood_net.key --cert www_programgood_net.pem
 
 ```
 Now we have the secret stored in K8s, lets tell the reverse proxy about the certificate.  The rp handles https (and actually communicates with the pod internally over http - again something to enforce at a later date)
@@ -786,11 +787,17 @@ curl http://programgood.net -i
 It needs helm and tiller to run (see below in this article). Current version is 2.9.1
 
 ```
+helm init
+helm repo update
 
+helm install --name cert-manager --namespace kube-system stable/cert-manager
+:: need to set rbac to false
+helm install --name cert-manager --namespace kube-system stable/cert-manager --set rbac.create=false
 
 ```
+[Issue with rbac](https://github.com/jetstack/cert-manager/issues/256)
 
-
+**coming back to this as best to do redirects and manual cert install first
 
 ## Wordpress with Azure Hosted MySQL
 Lets setup a blank install of Wordpress using hosted MySQL on Azure with persistence on an Azure disk (this works fine as we have 1 node)
@@ -985,6 +992,15 @@ helm ls
 helm delete wordpress
 
 helm list
+
+helm ls --all cert-manager
+
+helm delete cert-manager
+helm del --purge cert-manager
+
+helm install --name testwordpress stable/wordpress
+helm delete testwordpress
+
 ```
 
 - [Azure Wordpress Helm Chart](https://github.com/Azure/helm-charts/tree/master/wordpress)
