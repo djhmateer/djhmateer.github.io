@@ -80,6 +80,9 @@ az aks browse -n aks -g aksrg
 az aks get-credentials -n aks -g aksrg
 
 k cluster-info
+
+# my dashboard is giving a strange error exec.. "Upgrade request required" but going directly works
+k exec -it programgood-123456-vj59d -- /bin/bash
 ```
 [Install Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)  
 If you ever get unauthorised using kubectl, try deleting the folder C:\Users\yourname\\.kube
