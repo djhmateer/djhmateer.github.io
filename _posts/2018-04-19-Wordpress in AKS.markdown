@@ -945,7 +945,7 @@ spec:
 
 ```
 
-As we are using 1 node only, we can use an attached disk to this node for the persisted volume.
+As we are using 1 node only, we can use an attached disk to this node for the persisted volume. However there is a limit to the number of [attached volumes](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general)
 
 ![ps](/assets/2018-04-24/wordpress.png)  
 
@@ -964,6 +964,47 @@ We can install Wordpress and persist page content to MySQL. We can persist media
 ```
 az aks upgrade -g aksrg -n aks -k 1.9.6
 ```
+
+## Persistence
+
+The strategy I have been using so far is to have an attached disk to the VM for each Deployment. There is a [max data disks limit](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general) depending on which VM you have.  
+
+Each Pod/Container does have it's own filesystem, however this is lost on every restart. In Wordpress land some people are using this for the core wordpress files, then only the uplaoded themes and plugins go into external persisted storage.  
+
+The way we are doing it now is very easy, and is generally what Wordpress expects. There are issues with permissions doing the above.  
+
+Ideally the nfs fileshare would work well. However it is too slow to have all the core php files in it.
+
+Source code is in: 8betawordpressHoverflyLagoonsAzureFile
+
+```
+az storage account create --resource-group MC_aksrg_aks_westeurope --name davestorageaccount --location westeurop --sku Standard_LRS
+
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: azurefile
+provisioner: kubernetes.io/azure-file
+parameters:
+  storageAccount: davenfstest2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azurefile
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 5Gi
+```
+[Azure Files documentation](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv)
+
+
+
+
 
 ## Helm charts
 [Helm](https://helm.sh/) is a package manager for K8s. Can the [official Wordpress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress) help?
@@ -1135,15 +1176,6 @@ then restore all settings over it when it has come up using: [All in one WP Migr
 The database should be fine as it is Azure backed
 
 The filesystem should be fine as it is Azure backed.
-
-
-## To Explore
-Get rid of plugins not used  
-
-Disable automatic updates on Wordpress?  
-
-How to just extract the content from the website  
-
 
 ## Https Redirect Multiple Wordpress Sites
 - memory management
