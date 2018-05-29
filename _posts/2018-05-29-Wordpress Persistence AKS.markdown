@@ -1,0 +1,167 @@
+---
+layout: post
+title:  "Wordpress Persistence AKS"
+date:   2018-05-29 12:06
+menu: review
+categories: wordpress 
+published: true 
+---
+
+Here is a background [series](/docker/2018/02/14/What-is-docker-good-for.html) of articles on Wordpress and AKS, and [detailed background](http://unethicalblogger.com/2017/12/01/aks-storage-research.html) on AKS persistence from a Jenkins point of view. 
+
+[Azure Docs](https://docs.microsoft.com/en-us/azure/aks/azure-disks-dynamic-pv)
+
+## Azure Disk for all /var/www/html
+The simplest strategy is to have an attached disk on the node VM for each wordpress deployment. This disk will hold all the source eg /var/www/html, and all user updated content eg wp-content
+
+However there is a [max data disks limit](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general) depending on which VM you have.  
+
+Pros 
+- good performance (attached disks are SSD's)
+- easy to setup
+
+Cons 
+- can only attach the disk to 1 node VM (so not horizontally scalable). ie if the node goes down so does the website.
+- security - it is appealing having all source files baked into the image, so if anything is changed a restart will fix it.
+
+
+Here is a real example:
+
+![ps](/assets/2018-05-29/pvc.png)
+
+```
+# pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hoverflylagoons-uploads-claim
+  annotations:
+    volume.beta.kubernetes.io/storage-class: managed-premium
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+
+# deployment.yaml
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: hoverflylagoons
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hoverflylagoons-dep
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: hoverflylagoons-dep
+    spec:
+      containers:
+      - image: wordpress:4.9.6-apache
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: secretname.mysql.database.azure.com 
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        - name: WORDPRESS_DB_USER
+          value: dave@secretmysql
+        # default name is wordpress
+        - name: WORDPRESS_DB_NAME
+          value: hoverflylagoons
+        ports:
+        - containerPort: 80
+          name: wordpress
+        volumeMounts:
+        - name: hoverflylagoons-wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: hoverflylagoons-wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: hoverflylagoons-uploads-claim
+```
+
+This works well and is performant, and the only limiting factor is the cost and the number of disks you can attach to a VM.
+
+
+## Azure File Storage for wp-content
+This seemed like a smart way to go, and I got so far with this:
+
+```
+az storage account create --resource-group MC_aksrg_aks_westeurope --name davenfstest2 --location westeurope --sku Standard_LRS
+```
+![ps](/assets/2018-05-29/fs.png)
+
+```
+# azurefilestorage.yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: azurefile
+provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000 
+parameters:
+  storageAccount: davenfstest2
+
+# azurefilepvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azurefile
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 5Gi
+```
+
+Whilst testing this it is important to delete the secret in Kubernetes for the fileshare, otherwise you'll get permissions errors!
+
+Also I noticed that pods were not being deleted in a timely manner (due to file share perhaps being deleted before the pod was down?). Here is a good command to force the delete. It may be still on the cluster.
+
+```
+kubectl delete pod PODNAME --grace-period=0 --force
+```
+
+![ps](/assets/2018-05-29/files.png)
+
+All went well with the wordpress installation and the expected files were in the fileshare.
+
+![ps](/assets/2018-05-29/screen2.png)
+However I couldn't get the wordpress user to write to that file share. This is the cryptic error you see when the permissions are not correct.
+
+![ps](/assets/2018-05-29/screen.png)
+Performance on the edit screen was really bad too (this is with no plugins installed apart from defaults)
+
+[GlusterFS](https://www.gluster.org/) using Azure Disks would be the next tactic to try here.
+
+## Azure Disk for wp-content
+This could be a good tactic, however the production website I'm dealing with has a caching plugin enabled (WP Super Cache) which needs access to wp-config.php in the root.So this tactic would give some better security (in that a restart would reset everything back to a base state), but I'd have to deal with plugin issues too.  
+
+[Kubepress](https://github.com/codeablehq/KubePress) implements gluster.   
+
+[Codeable tutorial](https://codeable.io/wordpress-developers-intro-to-docker-part-three-kubernetes/)  
+
+
+
+
+
+
+
