@@ -7,9 +7,41 @@ categories: wordpress
 published: true 
 ---
 
+Wordpress uses persistence in 2 ways:
+
+- Database (MySQL/MariaDB) for the data in the blog/site 
+- Filesystem (wp-content directory off the root of the installation) for storing plugins and themes, which can include executable php code
+
+I'm using Azure's hosted MySQL for the database, however the Filesystem is more complicated.  
+
 Here is a background [series](/docker/2018/02/14/What-is-docker-good-for.html) of articles on Wordpress and AKS, and [detailed background](http://unethicalblogger.com/2017/12/01/aks-storage-research.html) on AKS persistence from a Jenkins point of view. 
 
-[Azure Docs](https://docs.microsoft.com/en-us/azure/aks/azure-disks-dynamic-pv)
+
+## How does AKS handle persistence?
+AKS can use:
+
+- Azure disk
+- Azure file
+
+[Dysk](https://github.com/khenidak/dysk) looks promising but very early stages.
+
+
+Each AKS cluster includes two pre-created storage classes both configured to work with Azure disks.
+
+![ps](/assets/2018-05-29/sc.png)
+
+From [Azure Docs](https://docs.microsoft.com/en-us/azure/aks/azure-disks-dynamic-pv) we should use the managed-premium class if our VM supports it.
+
+
+StorageClass (SC) - 
+
+![ps](/assets/2018-05-29/pv.png)
+PersistentVolume (PV) - representation of storage in the cluster that has been manually provisioned, or dynamically provisioned by Kubernetes using a StorageClass. I never manually create these.
+
+![ps](/assets/2018-05-29/pvc2.png)
+PersistentVolmeClaim (PVC) - a request for storage by a user that can be fulfilled by a PersistentVolume
+
+[From here](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) Dynamic volume provisioning allows storage volumes to be created on-demand. I can define a PVC and it automatically provisions storage
 
 ## Azure Disk for all /var/www/html
 The simplest strategy is to have an attached disk on the node VM for each wordpress deployment. This disk will hold all the source eg /var/www/html, and all user updated content eg wp-content
