@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Wordpress Persistence AKS"
+title:  "Wordpress Persistence in AKS"
 date:   2018-05-29 12:06
 menu: review
 categories: wordpress 
@@ -9,31 +9,45 @@ published: true
 
 Wordpress uses persistence in 2 ways:
 
-- Database (MySQL/MariaDB) for the data in the blog/site 
-- Filesystem (wp-content directory off the root of the installation) for storing plugins and themes, which can include executable php code
+- `Database` (MySQL/MariaDB) for the data in the blog/site 
+- `Filesystem` (wp-content directory off the root of the installation) for storing plugins and themes, which can include executable php code
 
-I'm using Azure's hosted MySQL for the database, however the Filesystem is more complicated.  
+I'm using the [Azure Database for MySQL](https://azure.microsoft.com/en-gb/services/mysql/) the database. [It is possible](https://codex.wordpress.org/Using_Alternative_Databases) but not recommended to use other databases.   
 
-Here is a background [series](/docker/2018/02/14/What-is-docker-good-for.html) of articles on Wordpress and AKS, and [detailed background](http://unethicalblogger.com/2017/12/01/aks-storage-research.html) on AKS persistence from a Jenkins point of view. 
+The filesystem is more complicated.    
 
+Here is a background [series](/docker/2018/02/14/What-is-docker-good-for.html) of articles on Wordpress and AKS, and [Detailed background](http://unethicalblogger.com/2017/12/01/aks-storage-research.html) on AKS persistence from a Jenkins point of view. 
 
 ## How does AKS handle persistence?
 AKS can use:
 
-- Azure disk
-- Azure file
-
-[Dysk](https://github.com/khenidak/dysk) looks promising but very early stages.
-
+- [Azure disk](https://azure.microsoft.com/en-gb/pricing/details/managed-disks/)
+- [Azure files](https://azure.microsoft.com/en-gb/services/storage/files/)
 
 Each AKS cluster includes two pre-created storage classes both configured to work with Azure disks.
 
 ![ps](/assets/2018-05-29/sc.png)
 
-From [Azure Docs](https://docs.microsoft.com/en-us/azure/aks/azure-disks-dynamic-pv) we should use the managed-premium class if our VM supports it.
+From [Azure Docs](https://docs.microsoft.com/en-us/azure/aks/azure-disks-dynamic-pv) we can use the Premium_LRS class as our VM supports it. [We can use the cheaper Stardard_LRS](https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-disk) if we desire from this VM
 
-
-StorageClass (SC) - 
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: charliehoverflylagoons-uploads-claim
+  annotations:
+    #volume.beta.kubernetes.io/storage-class: managed-premium
+    volume.beta.kubernetes.io/storage-class: default 
+  labels:
+    app: hoverflylagoons
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+```
+To change the type of storage (HDD/SSD) change the storage class in the PVC. The performance of the default storage class is similar (after a slower intall) for normal operations. 
 
 ![ps](/assets/2018-05-29/pv.png)
 PersistentVolume (PV) - representation of storage in the cluster that has been manually provisioned, or dynamically provisioned by Kubernetes using a StorageClass. I never manually create these.
@@ -49,7 +63,7 @@ The simplest strategy is to have an attached disk on the node VM for each wordpr
 However there is a [max data disks limit](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general) depending on which VM you have.  
 
 Pros 
-- good performance (attached disks are SSD's)
+- good performance (attached disks can be SSD's)
 - easy to setup
 
 Cons 
@@ -166,7 +180,7 @@ spec:
 
 Whilst testing this it is important to delete the secret in Kubernetes for the fileshare, otherwise you'll get permissions errors!
 
-Also I noticed that pods were not being deleted in a timely manner (due to file share perhaps being deleted before the pod was down?). Here is a good command to force the delete. It may be still on the cluster.
+Also I noticed that pods were not being deleted in a timely manner when I deleted the fileshare manually on the Azure portal. Here is a good command to force the delete, however this may mean the pod is still on the cluster. It is much better to delete from kubernetes, which will dynamically delete the fileshare.
 
 ```
 kubectl delete pod PODNAME --grace-period=0 --force
@@ -179,8 +193,28 @@ All went well with the wordpress installation and the expected files were in the
 ![ps](/assets/2018-05-29/screen2.png)
 However I couldn't get the wordpress user to write to that file share. This is the cryptic error you see when the permissions are not correct.
 
+```
+kubectl exec -it shell-demo -- /bin/bash
+```
+After changing the wp-config.php to include `define('FS_METHOD', 'direct');` the permissions error went away. To get this working well, I'd need to bake this into my Dockerfile image.
+
+However a bigger issue is performance:
+
+Even in front end testing the load times are:
+
+- Azure file 2s
+- Azure disk HDD and SSD 850ms
+
+A workaround could be to use WP Super Cache to generate html. This does work well and front end performance is fine (wwhen the cache is pointing to the container filesystem eg /var/www/wpsupercache
+
+[Care needs to be taken](https://wordpress.stackexchange.com/a/189570/140467) with FS_METHOD.
+
+
 ![ps](/assets/2018-05-29/screen.png)
-Performance on the edit screen was really bad too (this is with no plugins installed apart from defaults)
+Performance on the edit screen was really bad too (this is with no plugins installed apart from defaults). I have measured a difference from 900ms on disk to 17s on file (actually this was for everything loaded from the file share). A more accurate difference is when only wp-content is on the fileshare and the difference is 1s on disk, 2s on fileshare.
+
+[Using Azure Files with Linux](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-linux) is a more detailed explanation. Perhaps there is a more performant way to access files, and to get the permissions correct than I have tried above.
+
 
 [GlusterFS](https://www.gluster.org/) using Azure Disks would be the next tactic to try here.
 
@@ -191,7 +225,8 @@ This could be a good tactic, however the production website I'm dealing with has
 
 [Codeable tutorial](https://codeable.io/wordpress-developers-intro-to-docker-part-three-kubernetes/)  
 
-
+## Appendix
+[Dysk](https://github.com/khenidak/dysk) looks promising but very early stages.
 
 
 
