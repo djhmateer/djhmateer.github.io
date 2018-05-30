@@ -2,7 +2,7 @@
 layout: post
 title:  "Wordpress Persistence in AKS"
 date:   2018-05-29 12:06
-menu: review
+#menu: review
 categories: wordpress 
 published: true 
 ---
