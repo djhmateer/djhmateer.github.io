@@ -6,8 +6,10 @@ menu: review
 categories: wordpress 
 published: true 
 ---
+This article details setting up Wordpress in Azure Kubernetes Service (AKS). I will show you how to get Wordpress running fast and securely.
 
-We had an issue where an existing [Wordpress](https://wordpress.org/) installation was years out of date and could not be updated becuase it was running a version of Wordpress called [Project Nami](http://projectnami.org/). This meant that some plugins wouldn't work and therefore the entire application was not updated.  
+## Background
+We had an issue where an existing [Wordpress](https://wordpress.org/) installation was years out of date and could not be updated because it was running a version of Wordpress called [Project Nami](http://projectnami.org/). This meant that some plugins wouldn't work and therefore the entire application was not updated.  
 
 It had become very slow (5s to load the home page).   
 
@@ -781,7 +783,9 @@ curl http://programgood.net -i
 
 ```
 ## Cert-Manager for automating LetsEncrypt
-The older version of this is [KUBE-LEGO](https://docs.microsoft.com/en-us/azure/aks/ingress) as described in the AKS docs. See comments at the bottom. Hopefully they will have better guidance once Cert-Manager becomes more stable.  
+The older version of this is KUBE-LEGO as described in the [AKS docs](https://docs.microsoft.com/en-us/azure/aks/ingress).  See comments at the bottom. Hopefully they will have better guidance once Cert-Manager becomes more stable.  
+
+I haven't put Cert-Manager nor KUBE-LEGO into production yet as I wanted to wait for more maturity from Cert-Manager. It was also really easy to manually upload the certs requested through DNSimple. I was caught out trying to do beta.hoverflylagoons.co.uk as [DNSimple Pricing](https://dnsimple.com/pricing) only gives root and www on the personal plan.
 
 
 [Cert-Manager](https://github.com/jetstack/cert-manager) and [Docs](https://cert-manager.readthedocs.io/en/latest/)
@@ -799,7 +803,6 @@ helm install --name cert-manager --namespace kube-system stable/cert-manager --s
 ```
 [Issue with rbac](https://github.com/jetstack/cert-manager/issues/256)
 
-**coming back to this as best to do redirects and manual cert install first
 
 ## Wordpress with Azure Hosted MySQL
 Lets setup a blank install of Wordpress using hosted MySQL on Azure with persistence on an Azure disk (this works fine as we have 1 node)
@@ -952,6 +955,9 @@ It worked. I had to set the dns name in the Azure portal to something that my dn
 
 The next step is to import whatever site into this test site (for performance checking etc). I use [All-in-One WP Migration](https://en-gb.wordpress.org/plugins/all-in-one-wp-migration/) 
 
+## Persistence
+[I wrote a separate article on this](/wordpress/2018/05/29/Wordpress-Persistence-AKS.html) detailing how to go forward with different types of persistence.
+
 ## Summary of where we are
 We can install Wordpress and persist page content to MySQL. We can persist media and plugins to the PersistentVolumeClaim (in this case an Azure attached disk)
 
@@ -962,13 +968,15 @@ We can install Wordpress and persist page content to MySQL. We can persist media
 - Patching of worker Nodes - this is done nightly by Azure. [Details](https://docs.microsoft.com/sl-si/azure/aks/faq) 
 ```
 az aks upgrade -g aksrg -n aks -k 1.9.6
-```
+```  
 
-## Persistence
-[I wrote an article on this](/wordpress/2018/05/29/Wordpress-Persistence-AKS.html)
+This is the base of a solid Wordpress install on AKS.  
 
 
-## Helm charts
+## Further information
+Here are some further links and information I found useful.
+
+### Helm charts
 [Helm](https://helm.sh/) is a package manager for K8s. Can the [official Wordpress Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/wordpress) help?
 
 [Quickstart](https://docs.helm.sh/using_helm/#quickstart-guide)
@@ -1034,7 +1042,7 @@ There is an [Azure version](https://github.com/Azure/helm-charts/tree/master/wor
 helm install --name wordpress azure/wordpress
 
 ```
-## Healthchecks
+### Healthchecks
 [Detail](https://www.ianlewis.org/en/using-kubernetes-health-checks)
 
 Beware that in high load situations health checks can cause the system to fail. I use Apache Benchmarks to simulate high traffic to see what happens, and if that is what is intended.
@@ -1051,7 +1059,7 @@ Increasing the size of the worker VM in this case didn't help.
 ![ps](/assets/2018-04-24/health.png)  
 Under a sustained load, the container can't handle the number of connections (the db is failing) so the probes are failing. After 10minutes the container is restarted. The specific settings are shown below. 
 
-## Requests and Limits
+### Requests and Limits
 
 An example of using requests (min) and limits (max) compute power on a deployment.  
 
@@ -1130,16 +1138,18 @@ spec:
           claimName: wp-uploads-claim
 ```
 
-## Custom Wordpress image
+### Custom Wordpress image
 The goal here is to have a custom base image to develop and test against. An easy way to do this is use the standard image: 
-      - image: wordpress:4.9.5-apache
+```
+image: wordpress:4.9.5-apache
+```
 then restore all settings over it when it has come up using: [All in one WP Migration](https://en-gb.wordpress.org/plugins/all-in-one-wp-migration/)
 
 The database should be fine as it is Azure backed
 
 The filesystem should be fine as it is Azure backed.
 
-## Testing
+### Testing
 I found that Chrome's caching could be intrusive, so purging was the answer.
 ```
 # delete chrome's cache (be wary of page cache and DNS cache)
