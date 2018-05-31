@@ -216,10 +216,14 @@ Performance on the edit screen was really bad too (this is with no plugins insta
 [Using Azure Files with Linux](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-linux) is a more detailed explanation. Perhaps there is a more performant way to access files, and to get the permissions correct than I have tried above.
 
 
-[GlusterFS](https://www.gluster.org/) using Azure Disks would be the next tactic to try here.
-
 ## Azure Disk for wp-content
-This could be a good tactic, however the production website I'm dealing with has a caching plugin enabled (WP Super Cache) which needs access to wp-config.php in the root.So this tactic would give some better security (in that a restart would reset everything back to a base state), but I'd have to deal with plugin issues too.  
+This could be a good tactic, however the production website I'm dealing with has a caching plugin enabled (WP Super Cache) which needs access to wp-config.php in the root. So this tactic would give some better security (in that a restart would reset everything back to a base state), but I'd have to deal with plugin issues too.  
+
+
+## Gluster
+Azure doesn't yet have a performant distributed filesystem, so I am trialling GlusterFS:
+
+[GlusterFS](https://www.gluster.org/) using Azure Disks would be the next tactic to try here.
 
 [Kubepress](https://github.com/codeablehq/KubePress) implements gluster.   
 

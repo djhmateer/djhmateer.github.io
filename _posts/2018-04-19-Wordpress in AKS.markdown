@@ -7,27 +7,24 @@ categories: wordpress
 published: true 
 ---
 
-This is part 6 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)   
-
-## Background business problem
-We had an issue where an existing Wordpress installation was years out of date, and could not be updated becuase it was running a version of Wordpress called Project Nami. This meant that some plugins wouldn't work, and therefore the entire application was not updated.  
+We had an issue where an existing [Wordpress](https://wordpress.org/) installation was years out of date and could not be updated becuase it was running a version of Wordpress called [Project Nami](http://projectnami.org/). This meant that some plugins wouldn't work and therefore the entire application was not updated.  
 
 It had become very slow (5s to load the home page).   
 
 ## What we considered
-We looked at many options including shared hosting, dedicated hosting, a custom VM, a VM running Docker, and orchestrated Docker (K8s).   
+We looked at many options including shared hosting, dedicated hosting, a custom VM, a VM running Docker, and orchestrated Docker using Kubernetes (commonly shortened to K8s).
 
-We ran a VM running Docker for many months as a test server - essentially a linux vm with Docker installed using docker-compose to run Wordpress and MySql in different containers.
-
-
-## Why host Wordpress in K8s?
-- Managed Linux machine
-- Easy to deploy to
-- Easy to update - critical for Wordpress
-- Density of application on 1 machine - easy to put multiple apps in the cluster
+We ran a VM running Docker for many months as a test server - essentially a VM with Docker installed using docker-compose to run Wordpress and MySQL in different containers.
 
 
-## What are we building?
+## Why host in Docker and K8s?
+- Fully scripted deployment (and source controlled)
+- Easy to deploy to dev/test/live
+- Managed Linux machine on live
+- Security - easy to update 
+- Cost - higher density of applications on VMs
+
+## What are we using?
 Azure Kubernetes Service (AKS)  
 Azure managed MySQL  
 A single node cluster with an Azure attached disk for persistence  
@@ -36,7 +33,7 @@ Nginx reverse proxy (includes enforcing https)
 Nginx server (enforces www)  
 
 ## Setting up the AKS Cluster
-I use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) tool to script all the building in Azure. At the time of writing the version is 2.0.31 and takes a few minutes to install (or longer). [Documentation](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-create)  
+I use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) tool to script all the building in Azure. At the time of writing the version is 2.0.33. 
 
 
 ```
@@ -48,7 +45,7 @@ az login
 az group create -n aksrg -l westeurope
 
 # -n is --name, -g is --resource-group, c is --node-count, -k is --kubernetes-version
-# -s is --node-vm-size, --ssh needed first time only
+# -s is --node-vm-size, --generate-ssh-keys needed first time only
 # az aks create -n aks -g aksrg -c 1 -k 1.9.6 -s Standard_B2s --generate-ssh-keys
 az aks create -n aks -g aksrg -c 1 -k 1.9.6 
 
@@ -59,15 +56,15 @@ az vm list-skus --location westeurope -o table
 
 ![ps](/assets/2018-04-24/cost.png)
 
-The Azure support team currently (5th May 2018) recommend using the default Standard_DS1_v2 vm size as the B series still needs some more work. At time of writing eastus didn't have B series.
+The Azure support team (5th May 2018) recommend using the default Standard_DS1_v2 vm size as the B series still needs some more work. At time of writing eastus didn't have B series.
 
 ![ps](/assets/2018-04-19/aks.png)
 
-The aks resource group has been created, and also an automatically created group which contains all the resources
+The aks resource group has been created and an automatically created group which contains all the resources
 
 ![ps](/assets/2018-04-19/aks2.png)
 
-and the worker (minion) VM is here:
+and the Worker (previously called Minion in K8s) VM is here:
 
 ![ps](/assets/2018-04-19/aks3.png)
 ## Dashboard
@@ -110,22 +107,22 @@ static void Main()
   }
 }
 
-
-//https://stackoverflow.com/a/44074296/26086
+// Dotnet core publish an exe console app
+// https://stackoverflow.com/a/44074296/26086
 dotnet publish -c Release -r win10-x64
 ```
 I linked the output of publish above to a ka alias, and instead of using kubectl I use k [Cmder aliases](/cmder/2018/01/30/Cmder-Shell.html)  
 
 
 ## 0.Reverse Proxy 
-We are going to use Nginx as a reverse proxy to:
+We are going to use [Nginx](https://github.com/kubernetes/ingress-nginx) as a reverse proxy to:
 
-- allow multiple websites on this cluster    
-- have a default backend
-- enforce https when calling a website  
-- enforce www (ie https://hoverflylagoons.co.uk will go to https://www.hoverflylagoons.co.uk)  
+- Allow multiple websites on this cluster    
+- Have a default backend
+- Enforce https when calling a website  
+- Enforce www (ie https://hoverflylagoons.co.uk will go to https://www.hoverflylagoons.co.uk)  
 
-All code is in [k8ssamples](https://bitbucket.org/davemateer/k8ssamples)  
+All code is in [k8ssamples](https://bitbucket.org/davemateer/k8ssamples). Repo is currently private. Please get in contact me if you want access.
 ```
 # namespace.yaml
 apiVersion: v1
@@ -324,7 +321,7 @@ This takes some time for Azure to assign an external IP address to the ingress-n
 So we now how a default backend working for this cluster!
 
 ## 1.Single App Deploy
-Lets do the simplest thing possible with a real domain that I own. All source code is in /1singleapp  
+Lets do the simplest thing possible with a real domain that I own. 
 
 ```
 # app-ingress.yaml
@@ -413,6 +410,9 @@ value: app1
 value: app1 (hoverflylagoons)
 
 k apply -f app-deployment.yaml
+
+# useful as it resets the time the deployment has been up and you can verify when the new one is there
+k replace --force -f app-deployment.yaml
 ```
 
 ![ps](/assets/2018-04-24/app1b.png)
@@ -468,8 +468,6 @@ If we have a request on: http://hoverflylagoons.co.uk we want to redirect to htt
 
 Usually this would be handled by reverse proxy, however currently that that proxy is handling the redirect to HTTPS (next section) and at time of writing I couldn't fine an elegant workaround, so with the beauty of K8s I created a new nginx container whose sole job is to handle the redirect to www.  
 
-
-Source code is in 3redirect.   
 
 The salient changes to code:  
 
@@ -604,12 +602,10 @@ spec:
       - name: davemazurecr
       
 ```
-For simplicity I've used a single service pricipal (admin). [Here]https://thorsten-hans.com/how-to-use-a-private-azure-container-registry-with-kubernetes-9b86e67b93b6) are some thoughts and links on how to make it more secure.
+For simplicity I've used a single service principal (admin). [Here](https://thorsten-hans.com/how-to-use-a-private-azure-container-registry-with-kubernetes-9b86e67b93b6) are some thoughts and links on how to make it more secure.
 
 ## 4.HTTPS Manual Certificate Install
 All websites should use HTTPS now. DNSimple who I use, make it easy to reqest a LetsEncrypt cert manually, so I'll show this first, and how to wire it up. Manually installing certs is still normal in my day job. I'll show how to get K8s to auto install certs too.
-
-Source code is in /4httpsmanual  
 
 Taken from dnsimple - "In order to install a certificate, you need 3 elements: the primary certificate, the certificate private key and the intermediate certificates.
 
@@ -785,6 +781,9 @@ curl http://programgood.net -i
 
 ```
 ## Cert-Manager for automating LetsEncrypt
+The older version of this is [KUBE-LEGO](https://docs.microsoft.com/en-us/azure/aks/ingress) as described in the AKS docs. See comments at the bottom. Hopefully they will have better guidance once Cert-Manager becomes more stable.  
+
+
 [Cert-Manager](https://github.com/jetstack/cert-manager) and [Docs](https://cert-manager.readthedocs.io/en/latest/)
 
 It needs helm and tiller to run (see below in this article). Current version is 2.9.1
@@ -824,7 +823,7 @@ is the Azure hosted MySQL which is now fully supported.  As above it is easily s
 ````
 
 az group create -n amysql -l westeurope
-az mysql server create -l westeurope -g amysql -n davemysql -u dave -p Secret123$$$ --sku-name B_Gen5_1
+az mysql server create -l westeurope -g amysql -n davemysql -u dave -p SecretYYY%%% --sku-name B_Gen5_1
 
 az mysql db create -g amysql -s davemysql -n wordpress
 
@@ -832,7 +831,7 @@ az mysql server firewall-rule create --resource-group amysql --server davemysql 
 
 az mysql server update --resource-group amysql --name davemysql --ssl-enforcement Disabled
 
-k create secret generic mysql-pass --from-literal=password=Secret123$$$
+k create secret generic mysql-pass --from-literal=password=SecretYYY%%%
 
 ```
 In dev/prod I use: B_Gen5_1 or GP_Gen5_2
@@ -841,7 +840,7 @@ If you want to create a db.bat file use call to avoid the batch file exiting aft
 
 ```
 call az group create -n amysql -l westeurope
-call az mysql server create -l westeurope -g amysql -n davemysql -u dave -p Secret123$$$ --sku-name B_Gen5_1
+call az mysql server create -l westeurope -g amysql -n davemysql -u dave -p SecretYYY%%% --sku-name B_Gen5_1
 call az mysql db create -g amysql -s davemysql -n wordpress
 
 ```
@@ -966,44 +965,7 @@ az aks upgrade -g aksrg -n aks -k 1.9.6
 ```
 
 ## Persistence
-
-The strategy I have been using so far is to have an attached disk to the VM for each Deployment. There is a [max data disks limit](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general) depending on which VM you have.  
-
-Each Pod/Container does have it's own filesystem, however this is lost on every restart. In Wordpress land some people are using this for the core wordpress files, then only the uplaoded themes and plugins go into external persisted storage.  
-
-The way we are doing it now is very easy, and is generally what Wordpress expects. There are issues with permissions doing the above.  
-
-Ideally the nfs fileshare would work well. However it is too slow to have all the core php files in it.
-
-Source code is in: 8betawordpressHoverflyLagoonsAzureFile
-
-```
-az storage account create --resource-group MC_aksrg_aks_westeurope --name davestorageaccount --location westeurop --sku Standard_LRS
-
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: azurefile
-provisioner: kubernetes.io/azure-file
-parameters:
-  storageAccount: davenfstest2
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: azurefile
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: azurefile
-  resources:
-    requests:
-      storage: 5Gi
-```
-[Azure Files documentation](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv)
-
-
-
+[I wrote an article on this](/wordpress/2018/05/29/Wordpress-Persistence-AKS.html)
 
 
 ## Helm charts
@@ -1177,19 +1139,10 @@ The database should be fine as it is Azure backed
 
 The filesystem should be fine as it is Azure backed.
 
-## Https Redirect Multiple Wordpress Sites
-- memory management
-- other resources
-- health checking
-- readiness probes
-
 ## Testing
+I found that Chrome's caching could be intrusive, so purging was the answer.
 ```
 # delete chrome's cache (be wary of page cache and DNS cache)
 chrome://settings/?search=clear
-
-# login to mysql from the azure portal
-mysql --host bobmysql.mysql.database.azure.com --user bob@bobmysql -p
-drop database wordpress;
 
 ```
