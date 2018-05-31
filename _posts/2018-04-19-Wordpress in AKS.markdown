@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Wordpress in AKS"
-date:   2018-04-19 14:06
-menu: review
+date:   2018-05-31 12:06
+#menu: review
 categories: wordpress 
 published: true 
 ---
-This article details setting up Wordpress in Azure Kubernetes Service (AKS). I will show you how to get Wordpress running fast and securely.
+This article details setting up a Wordpress instance in Azure Kubernetes Service (AKS). I will show you how to setup AKS then go step by step until we have a working Wordpress installation with SSL and appropriate redirects.
 
 ## Background
 We had an issue where an existing [Wordpress](https://wordpress.org/) installation was years out of date and could not be updated because it was running a version of Wordpress called [Project Nami](http://projectnami.org/). This meant that some plugins wouldn't work and therefore the entire application was not updated.  
