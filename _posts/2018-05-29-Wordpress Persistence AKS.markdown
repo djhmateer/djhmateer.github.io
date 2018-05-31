@@ -221,13 +221,14 @@ This could be a good tactic, however the production website I'm dealing with has
 
 
 ## Gluster
-Azure doesn't yet have a performant distributed filesystem, so I am trialling GlusterFS:
+Azure doesn't yet have a performant distributed filesystem, so I am trialling [GlusterFS](https://www.gluster.org/) using Azure Disks.  
 
-[GlusterFS](https://www.gluster.org/) using Azure Disks would be the next tactic to try here.
+[Kubepress](https://github.com/codeablehq/KubePress) implements Gluster.   
 
-[Kubepress](https://github.com/codeablehq/KubePress) implements gluster.   
+[Codeable tutorial](https://codeable.io/wordpress-developers-intro-to-docker-part-three-kubernetes/)  uses Gluster
 
-[Codeable tutorial](https://codeable.io/wordpress-developers-intro-to-docker-part-three-kubernetes/)  
+[OSS Canada](https://github.com/OSSCanada/wordpress-aks/tree/master/gluster) uses modified ARM templates from Azure quickstart.
+
 
 ## Appendix
 [Dysk](https://github.com/khenidak/dysk) looks promising but very early stages.

@@ -20,7 +20,7 @@ We ran a VM running Docker for many months as a test server - essentially a VM w
 
 
 ## Why host in Docker and K8s?
-- Fully scripted deployment (and source controlled)
+- Fully scripted and source controllable deployment
 - Easy to deploy to dev/test/live
 - Managed Linux machine on live
 - Security - easy to update 
@@ -124,7 +124,7 @@ We are going to use [Nginx](https://github.com/kubernetes/ingress-nginx) as a re
 - Enforce https when calling a website  
 - Enforce www (ie https://hoverflylagoons.co.uk will go to https://www.hoverflylagoons.co.uk)  
 
-All code is in [k8ssamples](https://bitbucket.org/davemateer/k8ssamples). Repo is currently private. Please get in contact me if you want access.
+All code is in [k8ssamples](https://bitbucket.org/davemateer/k8ssamples). Repo is currently private. Please get in contact with me if you want access.
 ```
 # namespace.yaml
 apiVersion: v1
