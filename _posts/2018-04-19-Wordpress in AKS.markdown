@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Wordpress in AKS"
-date:   2018-05-31 12:06
+date:   2018-05-31 10:06
 #menu: review
 categories: wordpress 
 published: true 
