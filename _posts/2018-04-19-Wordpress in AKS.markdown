@@ -660,7 +660,7 @@ k create secret tls bob-ssl --key bob.key --cert bob.pem
 
 ### Http and Https redirects
 - 1.https://www.hoverflylagoons.co.uk - tls handled by rp. Traffic routed to app1-svc service
-- 2.http://www.hoverflylagoons.co.uk - 308 permanent redirect to https://www.hoverflylagoons.co.uk handled by rp. This is default behaviour on the rp (ingress-nginx) see [docs](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/annotations.md#server-side-https-enforcement-through-redirect)
+- 2.http://www.hoverflylagoons.co.uk - 308 permanent redirect to https://www.hoverflylagoons.co.uk handled by rp. This is default behaviour on the rp (ingress-nginx) see [docs](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/annotations.md#server-side-https-enforcement-through-redirect)
 ```
 # 1 and 2
 curl https://www.hoverflylagoons.co.uk -i
