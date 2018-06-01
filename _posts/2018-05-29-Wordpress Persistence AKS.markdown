@@ -5,6 +5,7 @@ date:   2018-05-29 12:06
 #menu: review
 categories: wordpress 
 published: true 
+comments: true
 ---
 
 Wordpress uses persistence in 2 ways:
