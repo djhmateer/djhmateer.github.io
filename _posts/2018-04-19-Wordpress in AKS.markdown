@@ -5,6 +5,7 @@ date:   2018-05-31 10:06
 #menu: review
 categories: wordpress 
 published: true 
+comments: true
 ---
 This article details setting up a Wordpress instance in Azure Kubernetes Service (AKS). I will show you how to setup AKS then go step by step until we have a working Wordpress installation with SSL and appropriate redirects.
 
