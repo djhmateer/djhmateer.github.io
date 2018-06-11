@@ -101,6 +101,20 @@ qa! - quit all (buffers)
 / - search for a file
 
 ```
+## Surround plugin
+clone https://github.com/tpope/vim-surround  
+copy docs to \users\davidma\.vim\docs  
+copy plugin to \users\davidma\.vim\plugins  
+```
+## using Surround plugin
+VS<p> - surround with <p></p>
+viwS' - select inner word and surround with quotes
+cst - change surrounding tags
+dst - delete surrounding tags
+cs'" - change surrounding ' to "
+V... :jk norm yss<p>  - all lines selected, surround with <p> tag and </p> on each line
+
+```
 ## Config
 Showing line numbers
 ```
