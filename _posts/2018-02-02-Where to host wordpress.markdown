@@ -6,49 +6,70 @@ menu: review
 categories: wordpress 
 published: true 
 ---
-I will run through the logical steps of getting Wordpress from your dev machine and explore the possible hosting options, and whether they are a good idea.
+Lets explore some of the Azure hosting options for Wordpress:
 
-1. Azure Web App (Windows)
-2. Azure Web App (Linux)
-2. Azure Web App for Containers
-3. Azure Container Instances [part 6](/wordpress/2018/04/19/Wordpress-in-AKS.html)
-4. Custom Linux VM with Docker and local MySQL
-5. Custom Linux VW with hosted Azure MySQL
+1. Web App (Windows)
+2. App Service on Linux
+3. Web App (Docker) / Web App for Containers
+4. Azure Container Instances   
+
+Azure Kubernetes Service is [covered in this article](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
 ## 1. Web App (Windows)
 ![ps](/assets/2018-02-15/mon2.png)  
 then  
 ![ps](/assets/2018-02-15/mon1.png)
-The creation of a normal App Service that can host .NET and .NET Core on a Winows Server 2016
+The creation of a normal App Service that can host .NET and .NET Core on a Winows Server 2016. **I don't want to host Wordpress on a Windows Server mainly as it is unusual to do so.**
 
-## 2. Web App (Linux)
+## 2. Azure App Service on Linux
+[Docs](https://docs.microsoft.com/en-gb/azure/app-service/containers/app-service-linux-intro)  This is a pre built Docker image (running on a Linux host)
+
 ![ps](/assets/2018-02-15/mon3.png)   
 Notice is this A Series compute VM (not a B Series burstable)  
 ![ps](/assets/2018-02-15/mon4.png)  
 In the Runtime Stack we can run .NET Core, Java, PHP and Node.  
-Web App for Linux is really a **Web Apps For Containers with a pre built image**
+Web App for Linux is really a **Web Apps For Containers with a pre built image**  
 
-## 3. Web App (Docker)
+## 3. Web App (Docker) - Web App for Containers
+[Hanselman](https://www.hanselman.com/blog/PennyPinchingInTheCloudDeployingContainersCheaplyToAzure.aspx) has a good post on this.  
+There are 2 ways to do this. Firstly search for Web App, then select Docker:  
 ![ps](/assets/2018-02-15/mon5.png)   
-Is this Web app for Containers?
 
 ![ps](/assets/2018-02-15/mon6.png)   
+Secondly search for Web App for Containers:
 
-**HERE**
+![ps](/assets/2018-02-15/mon7.png)   
 
-## 3.Web App for Containers 
-Here we can deploy our own Docker images into a container on Azure. [Official Docs](https://azure.microsoft.com/en-gb/services/app-service/containers/)
+Here we can deploy our own Docker images into a container on Azure. [Official Docs](https://azure.microsoft.com/en-gb/services/app-service/containers/)  
 
-![ps](/assets/2018-02-15/2tier.png)
-This will be a Windows Server running Docker
+You can connect Wordpress up to a hosted MySQL and it will all work, except that a restart of the container will bring you back to a wordpress install page as the default Wordpress image will write to the local (containers) filesystem
 
-![ps](/assets/2018-02-15/2docker.png)
 
-here is what we get:
+## Web App for Containers - multi container
+[Create Wordpress tutorial](https://docs.microsoft.com/en-gb/azure/app-service/containers/tutorial-multi-container-app)
 
-![ps](/assets/2018-02-15/2vm.png)
 
-However this just gets the image from hub.docker.com and creates the container. We need another container created - I used docker-compose.yml on my localhost to get MySQL.
+## 4. Azure Container Instances
+At the time of writing these were [diagram at bottom of this page](https://azure.microsoft.com/en-gb/services/container-instances/) the options for using containers on Azure. 
+
+![ps](/assets/2018-03-01/container.png)
+
+[Overview](https://docs.microsoft.com/en-gb/azure/container-instances/)   
+[Docs](https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-overview)
+
+It seems like the use case for these currently is to do short lived containers (they offer per second billing). Maybe a 'do stuff' ccontainer. Azure functions may be a better way if possible.
+
+- no high availability
+- no load balancing
+- no scaling
+- no monitoring
+
+- fast startup
+- public IP
+- persistent storage
+
+## What Not to Do
+**Below are some articles and dead ends! Please be wary**
 
 [How to run CMSs on Web App for Containers](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/06/running-a-popular-content-management-solution-on-web-app-for-containers/)
 
@@ -125,7 +146,7 @@ Summary
 - Containers can spin up and down easily to cope with load
 - Slow performance on Windows server running Docker with Azure MySQL database 
 
-## 3.Custom Linux VM with Docker and local MySQL 
+## Custom Linux VM with Docker and local MySQL 
 [Detailed install instructions (part 2 of this series)](/docker/2018/02/01/Wordpress-on-Docker.html#going-to-uat--production)
 
 **Standard DS1_v2 1cpu 3.5GB - £37.71**
@@ -169,7 +190,7 @@ services:
 I noticed this machine can take a while to spin up down
 
 
-## 4.Custom Linux VM with Docker and hosted MySQL
+## Custom Linux VM with Docker and hosted MySQL
 Standard DS1_v2 1cpu 3.5GB - £37.71
 100 Compute units db - £64
 
