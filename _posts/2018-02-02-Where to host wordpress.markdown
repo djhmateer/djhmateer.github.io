@@ -1,75 +1,42 @@
 ---
 layout: post
 title:  "How to host Wordpress - Docker?"
-date:   2018-02-14 14:23
+date:   2018-06-18 04:43
 menu: review
 categories: wordpress 
 published: true 
 ---
-This is part 3 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)
-
 I will run through the logical steps of getting Wordpress from your dev machine and explore the possible hosting options, and whether they are a good idea.
 
-1. Test it on your local machine with Docker for Linux running
-  - What is a Web App (Windows and Linux)
-2. Web App for Containers with hosted MySQL 
-3. Custom Linux VM with Docker and local MySQL (saved to host filesystem) 
-4. Custom Linux VW with hosted Azure MySQL
+1. Azure Web App (Windows)
+2. Azure Web App (Linux)
+2. Azure Web App for Containers
+3. Azure Container Instances [part 6](/wordpress/2018/04/19/Wordpress-in-AKS.html)
+4. Custom Linux VM with Docker and local MySQL
+5. Custom Linux VW with hosted Azure MySQL
 
-5. Azure Containers [part 6](/wordpress/2018/04/19/Wordpress-in-AKS.html)
+## 1. Web App (Windows)
+![ps](/assets/2018-02-15/mon2.png)  
+then  
+![ps](/assets/2018-02-15/mon1.png)
+The creation of a normal App Service that can host .NET and .NET Core on a Winows Server 2016
 
-6. Hosted Wordpress 
-     - [wpengine](https://wpengine.com/) from USD30 per month
-     - [2020](http://www.2020media.com/shared-hosting/wordpress-hosting) from UKP10 per month
-     - [bluehost](https://www.bluehost.com/products/wordpress-hosting) from USD20 per month
-     - [123-reg](https://www.123-reg.co.uk/web-hosting/wordpress.shtml) from UKP12 per year
+## 2. Web App (Linux)
+![ps](/assets/2018-02-15/mon3.png)   
+Notice is this A Series compute VM (not a B Series burstable)  
+![ps](/assets/2018-02-15/mon4.png)  
+In the Runtime Stack we can run .NET Core, Java, PHP and Node.  
+Web App for Linux is really a **Web Apps For Containers with a pre built image**
 
-## 1. Test Wordpress on local machine using Docker
-Use my local machine to sanity check what is going on with image. I always go with the [nuclear](docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html) option to delete everything to do with docker before I start, so I get fresh images and I know nothing is lying around.
+## 3. Web App (Docker)
+![ps](/assets/2018-02-15/mon5.png)   
+Is this Web app for Containers?
 
-Previous to that I check in with official Wordpress image and maybe [rebuild my own image](/docker/2018/02/01/Wordpress-on-Docker.html#publish-image-to-dockerhub)
+![ps](/assets/2018-02-15/mon6.png)   
 
-```
-docker container prune -f
-docker image prune -af
-docker network prune -f
-docker volume prune -f
-```
-then also delete any locally created files:
+**HERE**
 
-```
-# I use windows explorer to delete the directories on local machine
-del db_data
-del wp-content
-# gets all images and runs containers
-docker-compose up
-```
-
-You should then be able to see:
-![ps](/assets/2018-02-14/wp.png)
-
-I use [All-in-One WP Migration](https://en-gb.wordpress.org/plugins/all-in-one-wp-migration/) to easily import an entire site (and theme)
-![ps](/assets/2018-02-14/import.png)
-
-Then your site is ready locally.
-
-I've got many issues with broken links, slightly broken import sections etc.. But they are easily contained within Docker, and get easily import and export (with all files source controlled).
-
-## Background
-Here is some background on what the simplest services are called:
-### Windows App Service
-![ps](/assets/2018-02-15/2windows.png)
-then
-![ps](/assets/2018-02-15/2win2.png)
-The creation of a normal App Service that can host .NET on Win Server 2016
-
-### Linux App Service
-![ps](/assets/2018-02-15/2windows.png)
-then
-![ps](/assets/2018-02-15/2linux3.png)
- Web App Service for Linux is really a **Web Apps For Containers with a pre built image**
-
-## 2.Web App for Containers 
+## 3.Web App for Containers 
 Here we can deploy our own Docker images into a container on Azure. [Official Docs](https://azure.microsoft.com/en-gb/services/app-service/containers/)
 
 ![ps](/assets/2018-02-15/2tier.png)
