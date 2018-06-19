@@ -54,8 +54,56 @@ Secret!!
 davemysql.mysql.database.azure.com
 ```
 You can connect Wordpress up to a hosted MySQL and it will all work, except that a restart of the container will bring you back to a wordpress install page as the default Wordpress image will write to the local (containers) filesystem
-## Web App for Containers - multi container
-[Create Wordpress tutorial](https://docs.microsoft.com/en-gb/azure/app-service/containers/tutorial-multi-container-app)
+### Web App for Containers - multi container
+Following this [Create Wordpress tutorial](https://docs.microsoft.com/en-gb/azure/app-service/containers/tutorial-multi-container-app)
+
+[az appservice plan create](https://docs.microsoft.com/en-us/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create)  
+
+[az webapp create](https://docs.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az_webapp_create)  
+```
+az group create -n dtestf -l westeurope
+
+az appservice plan create -g dtestf -n dtestf --sku B1 --is-linux
+
+-- name will be davewordpress.azurewebsites.net
+az webapp create -g dtestf -p dtestf -n davewordpress --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
+
+```
+with the docker-compose (ie compose-wordpress.yml) being:
+
+```
+version: '3.3'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: somewordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:latest
+     ports:
+       - "8000:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: wordpress
+volumes:
+    db_data:
+
+```
+So we are persisting data in a named volume.
+
+
 
 
 ## 4. Azure Container Instances
