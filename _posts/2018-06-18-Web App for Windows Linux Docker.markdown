@@ -1,19 +1,21 @@
 ---
 layout: post
-title:  "How to host Wordpress - Docker?"
+title:  "Web App for Windows Linux Docker"
 date:   2018-06-18 04:43
-menu: review
+#menu: review
 categories: wordpress 
 published: true 
 ---
-Lets explore some of the potential Azure hosting options for Wordpress:
+Lets explore potential Azure hosting options focussing on Wordpress which I've [had to deploy](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
 1. Web App (Windows)
 2. App Service on Linux
 3. Web App (Docker) / Web App for Containers
 4. Azure Container Instances   
 
-Azure Kubernetes Service is [covered in this article](/wordpress/2018/05/31/Wordpress-in-AKS.html)
+Summary: I'm not using any of the above. Web App for Containers looks extremely promising, but I need faster disks as [described here](wordpress/2018/05/29/Wordpress-Persistence-AKS.html). If you've got a workload which isn't disk intensive then Web App for Containers is a good fit.
+
+I am continuing to use Azure Kubernetes Service in production for Wordpress which is [covered in this article](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
 ## 1. Web App (Windows)
 Create a resource, Web, Web App  
@@ -72,6 +74,7 @@ az webapp create -g dtestf -p dtestf -n davewordpress --multicontainer-config-ty
 with the docker-compose (ie compose-wordpress.yml) being:
 
 ```
+# compose-wordpress.yml
 version: '3.3'
 
 services:
@@ -101,9 +104,71 @@ volumes:
     db_data:
 
 ```
-So we are persisting data in a named volume.
+So we are persisting the mysql data in a named volume, so it can survive a restart. The wordpress instance can't though.
+Let's move to a hosted version of MySQL and a shared volume.
+
+```
+# compose-wordpress-hosteddb.yml
+version: '3.3'
+
+services:
+   wordpress:
+     image: microsoft/multicontainerwordpress
+     volumes:
+      - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
+     ports:
+       - "8000:80"
+     restart: always
+```
+then
+```
+-- configure db variables in wordpress and the MySQL Cert
+az webapp config appsettings set --resource-group dtestf --name davewordpress --settings WORDPRESS_DB_HOST="davemysql.mysql.database.azure.com" WORDPRESS_DB_USER="dave@davemysql" WORDPRESS_DB_PASSWORD="Secret" WORDPRESS_DB_NAME="dtestf" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
+
+-- update the container
+az webapp config container set --resource-group dtestf --name davewordpress --multicontainer-config-type compose --multicontainer-config-file compose-wordpress-hosteddb.yml
+```
+I got rid of the MYSQL_SSL_CA as I'm not currently enforcing SSL from the webserver to db.
+
+**Performance problem** - for the same site it takes 1.7s compared to 1s on K8s with an attached disk. This was measured using WP-Super-Cache turned on, so files being served from disk.  The reason for this is they are using the slow Azure Files.
 
 
+### Add Redis
+
+```
+az webapp config appsettings set --resource-group dtestf --name davewordpress --settings WP_REDIS_HOST="redis"
+```
+Update the compose file:
+
+```
+# compose-wordpress-hosteddb.yml
+version: '3.3'
+
+services:
+   wordpress:
+     image: microsoft/multicontainerwordpress
+     ports:
+       - "8000:80"
+     restart: always
+
+   redis:
+     image: redis:3-alpine
+     restart: always
+```
+
+```
+-- update the container
+az webapp config container set --resource-group dtestf --name davewordpress --multicontainer-config-type compose --multicontainer-config-file compose-wordpress-hosteddb.yml
+
+```
+
+We can then install WP and turn on the Redis Object cache. I couldn't see any noticible difference.
+
+### Logs
+```
+https://davewordpress.scm.azurewebsites.net/api/logs/docker
+```
+Then follow the href link
 
 
 ## 4. Azure Container Instances
@@ -124,6 +189,8 @@ It seems like the use case for these currently is to do short lived containers (
 - fast startup
 - public IP
 - persistent storage
+
+
 
 ## What Not to Do
 **Below are some articles and dead ends! Please be wary**
