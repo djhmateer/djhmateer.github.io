@@ -6,7 +6,7 @@ menu: review
 categories: wordpress 
 published: true 
 ---
-Lets explore some of the Azure hosting options for Wordpress:
+Lets explore some of the potential Azure hosting options for Wordpress:
 
 1. Web App (Windows)
 2. App Service on Linux
@@ -16,35 +16,44 @@ Lets explore some of the Azure hosting options for Wordpress:
 Azure Kubernetes Service is [covered in this article](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
 ## 1. Web App (Windows)
-![ps](/assets/2018-02-15/mon2.png)  
+Create a resource, Web, Web App  
+![ps](/assets/2018-02-15/mon2.png){:width="400px"}  
 then  
-![ps](/assets/2018-02-15/mon1.png)
+![ps](/assets/2018-02-15/mon1.png){:width="800px"}  
 The creation of a normal App Service that can host .NET and .NET Core on a Winows Server 2016. **I don't want to host Wordpress on a Windows Server mainly as it is unusual to do so.**
 
 ## 2. Azure App Service on Linux
 [Docs](https://docs.microsoft.com/en-gb/azure/app-service/containers/app-service-linux-intro)  This is a pre built Docker image (running on a Linux host)
 
-![ps](/assets/2018-02-15/mon3.png)   
+![ps](/assets/2018-02-15/mon3.png){:width="800px"}    
 Notice is this A Series compute VM (not a B Series burstable)  
-![ps](/assets/2018-02-15/mon4.png)  
+![ps](/assets/2018-02-15/mon4.png){:width="300px"}      
 In the Runtime Stack we can run .NET Core, Java, PHP and Node.  
 Web App for Linux is really a **Web Apps For Containers with a pre built image**  
 
 ## 3. Web App (Docker) - Web App for Containers
 [Hanselman](https://www.hanselman.com/blog/PennyPinchingInTheCloudDeployingContainersCheaplyToAzure.aspx) has a good post on this.  
-There are 2 ways to do this. Firstly search for Web App, then select Docker:  
-![ps](/assets/2018-02-15/mon5.png)   
-
-![ps](/assets/2018-02-15/mon6.png)   
-Secondly search for Web App for Containers:
+There are 2 ways to do this. Firstly search for Web App, then select Docker, secondly search for Web App for Containers. They will both get to this screen:
 
 ![ps](/assets/2018-02-15/mon7.png)   
 
 Here we can deploy our own Docker images into a container on Azure. [Official Docs](https://azure.microsoft.com/en-gb/services/app-service/containers/)  
 
+Once you have a [MySQL instance installed in Azure](/wordpress/2018/05/31/Wordpress-in-AKS.html#mysql-database) I find the easiest way is to [use the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) to spin up a new database:
+```
+az mysql db create -g amysql -s davemysql -n dteste 
+
+-- delete the database 
+az mysql db delete -g amysql -s davemysql -n dteste 
+```
+![ps](/assets/2018-02-15/wordpressmysql.png){:width="500px"}   
+```
+dtestd
+dave@davemysql
+Secret!!
+davemysql.mysql.database.azure.com
+```
 You can connect Wordpress up to a hosted MySQL and it will all work, except that a restart of the container will bring you back to a wordpress install page as the default Wordpress image will write to the local (containers) filesystem
-
-
 ## Web App for Containers - multi container
 [Create Wordpress tutorial](https://docs.microsoft.com/en-gb/azure/app-service/containers/tutorial-multi-container-app)
 
