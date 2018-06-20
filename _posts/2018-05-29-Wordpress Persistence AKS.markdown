@@ -17,7 +17,7 @@ I'm using the [Azure Database for MySQL](https://azure.microsoft.com/en-gb/servi
 
 The filesystem is more complicated.    
 
-Here is a background [series](/docker/2018/02/14/What-is-docker-good-for.html) of articles on Wordpress and AKS, and [Detailed background](http://unethicalblogger.com/2017/12/01/aks-storage-research.html) on AKS persistence from a Jenkins point of view. 
+[Detailed background](http://unethicalblogger.com/2017/12/01/aks-storage-research.html) on AKS persistence from a Jenkins point of view. 
 
 ## How does AKS handle persistence?
 AKS can use:
