@@ -10,7 +10,6 @@ published: true
 Here are some of my favourite tools for web perf and analytics:
 
 ## Monitoring
-
 [Uptimerobot.com](https://uptimerobot.com) - Free tier. 50 monitors. Sends a request every 5 minutes to a website.
 
 [Pingdom.com](https://www.pingdom.com) - Free tier. Gives average response times.
@@ -24,6 +23,19 @@ Azure have an excellent uptime monitor inside Application Insights
 
 ## Performance
 [Apache benchmarks](/apachebenchmarks/2018/02/01/Apache-Benchmarks.html) load testing from the command line
+[JMeter](https://jmeter.apache.org/)  [This video](https://www.youtube.com/watch?v=8NLeq-QxkSw) was a useful 10 minute guide.
+
+[YSlow](http://yslow.org/) for testing webpages as a browser plugin  
+[Webpagetest.org](https://www.webpagetest.org) - scores on perf, compression, caching, CDN
+
+## Security
+I found an incomplete SSL Cert security chain using:
+[SSL Labs](https://www.ssllabs.com/ssltest/)  
+
+Issues with security headers
+[SecurityHeaders.com](https://securityheaders.com/)
+
+[OWASP Zed Attach Proxy (ZAP)](https://github.com/zaproxy/zaproxy/wiki/Introduction) pen testing tool for finding vulnerabilities in web apps. I've only briefly used this and it pointed to the same issues as SecurityHeaders.com above.
 
 ## Web Accessibility
 [Guidelines](https://www.wuhcag.com/wcag-checklist/)   
