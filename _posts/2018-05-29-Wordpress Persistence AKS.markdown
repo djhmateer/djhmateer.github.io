@@ -22,8 +22,8 @@ The filesystem is more complicated.
 ## How does AKS handle persistence?
 AKS can use:
 
-- [Azure disk](https://azure.microsoft.com/en-gb/pricing/details/managed-disks/)
-- [Azure files](https://azure.microsoft.com/en-gb/services/storage/files/)
+- [Azure Managed Disks](https://azure.microsoft.com/en-gb/pricing/details/managed-disks/)
+- [Azure Files](https://azure.microsoft.com/en-gb/services/storage/files/)
 
 Each AKS cluster includes two pre-created storage classes both configured to work with Azure disks.
 
