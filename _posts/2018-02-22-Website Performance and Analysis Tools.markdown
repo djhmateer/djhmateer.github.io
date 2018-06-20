@@ -26,6 +26,7 @@ Azure have an excellent uptime monitor inside Application Insights
 [JMeter](https://jmeter.apache.org/)  [This video](https://www.youtube.com/watch?v=8NLeq-QxkSw) was a useful 10 minute guide.
 
 [YSlow](http://yslow.org/) for testing webpages as a browser plugin  
+[Lighthouse plugin](https://developers.google.com/web/tools/lighthouse/)  
 [Webpagetest.org](https://www.webpagetest.org) - scores on perf, compression, caching, CDN
 
 ## Security
