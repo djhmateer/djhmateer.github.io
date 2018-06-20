@@ -5,6 +5,7 @@ date:   2018-06-18 04:43
 #menu: review
 categories: wordpress 
 published: true 
+comments: true
 ---
 Lets explore potential Azure hosting options focussing on Wordpress which I've [had to deploy](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
