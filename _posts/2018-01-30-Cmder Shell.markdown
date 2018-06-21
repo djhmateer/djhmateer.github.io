@@ -62,6 +62,9 @@ curl http://www.qnrl.com -i
 curl https://www.qnrl.com -i -k
 
 :: check for redirect to www ignoring the cert
-curl https://qnrl.com
+curl https://qnrl.com -k
+
+:: just show header information and not html
+curl https://www.qnrl.com -I
 ```
 

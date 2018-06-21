@@ -21,6 +21,9 @@ Azure have an excellent uptime monitor inside Application Insights
 ## Link Checking
 [Deadlinkchecker.com](https://www.deadlinkchecker.com) This handles redirects well
 
+## Command line tools
+[Curl](/cmder/2018/01/30/Cmder-Shell.html#curl)
+
 ## Performance
 [Apache benchmarks](/apachebenchmarks/2018/02/01/Apache-Benchmarks.html) load testing from the command line  
 [JMeter](https://jmeter.apache.org/) and [this video](https://www.youtube.com/watch?v=8NLeq-QxkSw) was a useful 10 minute guide.
