@@ -22,11 +22,11 @@ Azure have an excellent uptime monitor inside Application Insights
 [Deadlinkchecker.com](https://www.deadlinkchecker.com) This handles redirects well
 
 ## Performance
-[Apache benchmarks](/apachebenchmarks/2018/02/01/Apache-Benchmarks.html) load testing from the command line
-[JMeter](https://jmeter.apache.org/)  [This video](https://www.youtube.com/watch?v=8NLeq-QxkSw) was a useful 10 minute guide.
+[Apache benchmarks](/apachebenchmarks/2018/02/01/Apache-Benchmarks.html) load testing from the command line  
+[JMeter](https://jmeter.apache.org/) and [this video](https://www.youtube.com/watch?v=8NLeq-QxkSw) was a useful 10 minute guide.
 
 [YSlow](http://yslow.org/) for testing webpages as a browser plugin  
-[Lighthouse plugin](https://developers.google.com/web/tools/lighthouse/)  
+[Lighthouse Chrome extension](https://developers.google.com/web/tools/lighthouse/)  
 [Webpagetest.org](https://www.webpagetest.org) - scores on perf, compression, caching, CDN
 
 ## Security
@@ -40,4 +40,4 @@ Issues with security headers
 
 ## Web Accessibility
 [Guidelines](https://www.wuhcag.com/wcag-checklist/)   
-[Chrome extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en)
+[Lighthouse Chrome extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en)
