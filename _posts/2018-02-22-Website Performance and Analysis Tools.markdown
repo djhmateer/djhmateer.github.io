@@ -5,6 +5,7 @@ date:   2018-02-22 10:25
 #menu: review
 categories: website 
 published: true 
+comments: true
 ---
 
 Here are some of my favourite tools for web perf and analytics:
