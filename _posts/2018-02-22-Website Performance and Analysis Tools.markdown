@@ -12,9 +12,9 @@ Here are some of my favourite tools for web perf and analytics:
 ## Monitoring
 [Uptimerobot.com](https://uptimerobot.com) - Free tier. 50 monitors. Sends a request every 5 minutes to a website.
 
-[Pingdom.com](https://www.pingdom.com) - Free tier. Gives average response times.
+[Pingdom.com](https://www.pingdom.com) - Free tier. Gives average response times.  
 
-Azure have an excellent uptime monitor inside Application Insights  
+[Azure Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/)
 ## Infrastructure
 [Builtwith.com](https://builtwith.com) - eg is this a wordpress site, what webserver etc..
 
