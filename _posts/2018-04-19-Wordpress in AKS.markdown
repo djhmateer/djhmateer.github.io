@@ -89,6 +89,26 @@ If you ever get unauthorised using kubectl, try deleting the folder C:\Users\you
 
 ![ps](/assets/2018-04-19/dash.png)
 
+If you ever get strange permissions issues (I did after an upgrade of Kubernetes) run this script  
+```
+# dashboard-admin.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: kubernetes-dashboard
+  labels:
+    k8s-app: kubernetes-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: kubernetes-dashboard
+  namespace: kube-system
+```
+
+
 My work network seems to drop the tunnel after a few minutes.
 ![ps](/assets/2018-04-19/port.png)
 
