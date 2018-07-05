@@ -126,6 +126,21 @@ We are going to use [Nginx](https://github.com/kubernetes/ingress-nginx) as a re
 - Enforce www (ie https://hoverflylagoons.co.uk will go to https://www.hoverflylagoons.co.uk)  
 
 All code is in [k8ssamples](https://bitbucket.org/davemateer/k8ssamples). Repo is currently private. Please get in contact with me if you want access.
+
+**Update 5th July 2018**
+After upgrading my cluster and getting the error:  
+
+> It seems the cluster it is running with Authorization enabled (like RBAC) and there is no permissions for the ingress controller. Please check the configuration
+
+Following the [instructions](https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md)
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
+
+```
+And I **don't** use any of the below:
+
 ```
 # namespace.yaml
 apiVersion: v1
