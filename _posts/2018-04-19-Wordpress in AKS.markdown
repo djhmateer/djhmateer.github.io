@@ -73,16 +73,23 @@ and the Worker (previously called Minion in K8s) VM is here:
 ## Dashboard
 I find the dashboard useful - mostly to see what is waiting to happen and if the cluster is ready. It's also a great way to look around and see how the different parts of Kubernetes fit together.
 ```
-# bring up the dashboard
+# dashboard
 az aks browse -n aks -g aksrg
 
 # get the credentials of the cluster (you may need this if the above command fails)
 az aks get-credentials -n aks -g aksrg
 
+# check you are on the correct cluster
 k cluster-info
 
-# my dashboard is giving a strange error exec.. "Upgrade request required" but going directly works
-k exec -it programgood-123456-vj59d -- /bin/bash
+k config get-contexts
+
+# change cluster
+k config use-context aks
+
+# get pods
+k get po
+k get all
 ```
 [Install Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)  
 If you ever get unauthorised using kubectl, try deleting the folder C:\Users\yourname\\.kube
@@ -1097,10 +1104,10 @@ Under a sustained load, the container can't handle the number of connections (th
 
 ### Requests and Limits
 
-An example of using requests (min) and limits (max) compute power on a deployment.  
+An example of using requests (min) and limits (max) compute power on a deployment.  Sometimes it is good to set the request and the limit to the same value
 
-Liveness probe: when to restart a container
-Readiness probe: when a container is ready to start accepting traffic
+Liveness probe: when to restart a container  (this is what I always use)
+Readiness probe: when a container is ready to start accepting traffic (generally don't use this for WP containers)
 
 ```
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -1147,24 +1154,22 @@ spec:
           httpGet:
             path: /wp-login.php
             port: 80
-            #port: https
-            #scheme: HTTPS
           initialDelaySeconds: 120
           timeoutSeconds: 60 
           periodSeconds: 120
           successThreshold: 1
           failureThreshold: 6
-        readinessProbe:
-          httpGet:
-            path: /wp-login.php
-            port: 80
-              #port: https
+        #readinessProbe:
+        #  httpGet:
+        #    path: /wp-login.php
+        #    port: 80
+        #      #port: https
               #scheme: HTTPS 
-          initialDelaySeconds: 30
-          timeoutSeconds: 60 
-          periodSeconds: 120
-          successThreshold: 1
-          failureThreshold: 6
+        # initialDelaySeconds: 30
+        #  timeoutSeconds: 60 
+        #  periodSeconds: 120
+        #  successThreshold: 1
+        #  failureThreshold: 6
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: /var/www/html
