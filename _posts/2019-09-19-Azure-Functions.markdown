@@ -4,9 +4,13 @@ title:  "Azure Functions"
 date:   2018-09-19 14:43
 menu: review
 categories: azure 
-published: false 
+published: true 
 comments: true
 ---
+
+
+**NOT STARTED**
+
 Lets explore potential Azure hosting options focussing on Wordpress which I've [had to deploy](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
 1. Web App (Windows)
