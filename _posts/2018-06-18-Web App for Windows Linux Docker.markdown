@@ -14,7 +14,7 @@ Lets explore potential Azure hosting options focussing on Wordpress which I've [
 3. Web App (Docker) / Web App for Containers
 4. Azure Container Instances   
 
-Summary: I'm not using any of the above. Web App for Containers looks extremely promising, but I need faster disks as [described here](wordpress/2018/05/29/Wordpress-Persistence-AKS.html). If you've got a workload which isn't disk intensive then Web App for Containers is a good fit.
+Summary: I'm not using any of the above. Web App for Containers looks extremely promising, but I need faster disks as [described here](/wordpress/2018/05/29/Wordpress-Persistence-AKS.html). If you've got a workload which isn't disk intensive then Web App for Containers is a good fit.
 
 I am continuing to use Azure Kubernetes Service in production for Wordpress which is [covered in this article](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
