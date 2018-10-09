@@ -10,7 +10,7 @@ published: true
 I use these commands all the time in Docker to reset my system.
 
 ### Update 9th Oct 2018
-I like to go back to a clean slate easily so have a cmder shortcut
+I like to go back to a clean slate easily so have a [cmder shortcut](/cmder/2018/01/30/Cmder-Shell.html)
 ```
 ddel
 ```
