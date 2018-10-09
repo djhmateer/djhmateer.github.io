@@ -9,7 +9,13 @@ published: true
 
 I use these commands all the time in Docker to reset my system.
 
-## Update 30th Jan 2018
+### Update 9th Oct 2018
+I like to go back to a clean slate easily so have a cmder shortcut
+```
+ddel
+```
+
+### Update 30th Jan 2018
 From [this](https://stackoverflow.com/a/34616890/26086) article I now use 
 
 Day to day in testing (keep images)
