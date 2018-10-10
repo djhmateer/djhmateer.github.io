@@ -13,7 +13,7 @@ What is [projecteuler.net](https://projecteuler.net/)?
 From [Wikipedia](https://en.wikipedia.org/wiki/Project_Euler):  
 Named after the 18th Century Swiss mathematician, widely considered the most prolific mathematician of all time.
 
-*The website is a series of problems intended to be solved with computer programs.*
+The website is a **series of problems intended to be solved with computer programs**
 
 Since its creation in 17 years ago, a new problem has been added every 2 weeks giving a total of 600 problems.
 
@@ -37,6 +37,7 @@ Visually this looks like:
 ### Imperative approach
 Lets try this using the latest version (10th Oct 2018) of the .NET Core runtime which is 2.1, which includes the [C# language](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) which is version 7.3. [Download](https://www.microsoft.com/net/download) for Win / Mac. 
 
+Source code for this Euler1 problem is on [Github](https://github.com/djhmateer/Euler1Article). 
 ```
 private static void Main() => Console.WriteLine($"Answer is: {Run(10)}");
 
@@ -50,6 +51,18 @@ private static int Run(int number)
      return total;
 }
 ```
+Once you have a program that works, lets see if the answer is correct! Firstly you'll need to sign up then:
+
+
+![ps](/assets/2018-10-10/6.png)
+
+Type in your answer and if you are right you'll get:
+
+
+![ps](/assets/2018-10-10/7.png)
+
+Once you do a few problems, this is a gratifying sight. It is worth mentioning the Project Euler do not like example code posted on the web (and public repos) as this deprives others of the chance to the solve the problems by themselves.
+
 Interesting points to consider here are:
 
 - Expression Body Member usage in Main method
@@ -66,6 +79,7 @@ private static int RunLinq(int number) => Enumerable.Range(1, number - 1).Where(
 - Pass a Lambda expression which is a Predicate (a function which takes parameter(s) and returns a bool)
 - Finally using the Sum extension method
 
+I **love** this syntax (once I've used it for a while) as it expresses concisely what the code is doing.
 
 ### TDD 
 I find Euler problems lead themselves to easy unit testing and TDD. This is especially useful when trying new ways solving a problem.  
@@ -107,11 +121,19 @@ then solve the Error:
 Successfully test your test runner (I prefer R# test runner)
 
 ### Euler1 TDD
+Euler problems commonly  have a test case example which can be a good unit test ie:
+```
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.  
+Find the sum of all the multiples of 3 or 5 below 1000.  
+```
+
+So a good unit test will be:
+
 ```
 [Fact]
 public void RunTest() => Assert.Equal(23, Run(10));
 ```
-then the implementation:  
+then I can write an implementation:  
 
 ```
 private static int Run(int number)
@@ -125,7 +147,7 @@ private static int Run(int number)
 ```
 
 ## Refactoring tools  
-I use Visual Studio and [Resharper](https://www.jetbrains.com/resharper/) to explore different ways to write express code. In this example R# helped me discover (and use all the time now)
+I use Visual Studio and [Resharper](https://www.jetbrains.com/resharper/) to explore different ways to express code. In this example R# helped me discover:
 
 - Expression body member
 - Brackets
