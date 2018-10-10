@@ -1,17 +1,18 @@
 ---
 layout: post
-title:  "Coding Challenges"
-date:   2018-09-20 14:43
+title:  "Improve at Programming with Project Euler"
+date:   2018-10-10 09:03
 menu: review
 categories: coding 
 published: true 
 comments: true
 ---
 
+What is [https://projecteuler.net/](https://projecteuler.net/)?
 
-**NOT STARTED**
+asdfas
+dfasfdasdf
 
-Lets explore potential Azure hosting options focussing on Wordpress which I've [had to deploy](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
 1. Web App (Windows)
 2. App Service on Linux
