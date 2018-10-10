@@ -73,13 +73,13 @@ Interesting points to consider here are:
 I am interested in Functional Programming, and on this, my fifth time going through some Euler puzzles I'm pusing in that direction. [Linq](https://en.wikipedia.org/wiki/Language_Integrated_Query) Language Integrated Query introduced in .NET3.5 in 2007 is very functional set of concepts.  
 
 ```
-private static int RunLinq(int number) => Enumerable.Range(1, number - 1).Where(x => x % 3 == 0 || x % 5 == 0).Sum();
+private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x % 5 == 0).Sum();
 ```
-- Create a range
+- Create a Range
 - Pass a Lambda expression which is a Predicate (a function which takes parameter(s) and returns a bool)
 - Finally using the Sum extension method
 
-I **love** this syntax (once I've used it for a while) as it expresses concisely what the code is doing.
+I **love** this syntax (now I've been using it for a while) as it expresses concisely what the code is doing.
 
 ### TDD 
 I find Euler problems lead themselves to easy unit testing and TDD. This is especially useful when trying new ways solving a problem.  
@@ -152,6 +152,11 @@ I use Visual Studio and [Resharper](https://www.jetbrains.com/resharper/) to exp
 - Expression body member
 - Brackets
 - Import static member for Enumerable   
+
+## Summary
+Project Euler can be very helpful in **improving your programming skills**. I particuly enjoy (in the initial Euler problems) exploring **TDD** and **Functional Programming**. 
+
+Why not *have some fun go and do a problem now* :-)
 
 ## Source
 All source code for this Euler1 problem is on [Github](https://github.com/djhmateer/Euler1Article)
