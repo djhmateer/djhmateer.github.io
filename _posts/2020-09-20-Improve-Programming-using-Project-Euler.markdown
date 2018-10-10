@@ -21,8 +21,6 @@ There are more than 800,000 users from all over the world who have solved 1 prob
 
 I've been using this site over the last 7 years to learn new languages, and to improve my skills in existing languages
 
-
-## Euler1
 The [first question](https://projecteuler.net/problem=1) is:  
 
 ```
@@ -34,7 +32,7 @@ Visually this looks like:
 
 ![ps](/assets/2018-10-10/1.jpg){:width="300px"}
 
-### Imperative approach
+## 1. First try - Imperative approach
 Lets try this using the latest version (10th Oct 2018) of the .NET Core runtime which is 2.1, which includes the [C# language](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) which is version 7.3. [Download](https://www.microsoft.com/net/download) for Win / Mac. 
 
 Source code for this Euler1 problem is on [Github](https://github.com/djhmateer/Euler1Article). 
@@ -69,8 +67,9 @@ Interesting points to consider here are:
 - String interpolation in Main
 - Not using brackets in Run method 
 
-### Functional approach
-I am interested in Functional Programming, and on this, my fifth time going through some Euler puzzles I'm pusing in that direction. [Linq](https://en.wikipedia.org/wiki/Language_Integrated_Query) Language Integrated Query introduced in .NET3.5 in 2007 is very functional set of concepts.  
+## 2. Second Try - Improvement! - Functional approach
+**The point of this blogpost is how to improve! - so now I have working code lets try a different approach**
+I am interested in Functional Programming, and on this, my fifth time going through some Euler puzzles I'm pusing in that direction. [Linq](https://en.wikipedia.org/wiki/Language_Integrated_Query) Language Integrated Query introduced in .NET3.5 in 2007 is a very functional set of concepts.  
 
 ```
 private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x % 5 == 0).Sum();
@@ -81,7 +80,7 @@ private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x 
 
 I **love** this syntax (now I've been using it for a while) as it expresses concisely what the code is doing.
 
-### TDD 
+### TDD with XUnit
 I find Euler problems lead themselves to easy unit testing and TDD. This is especially useful when trying new ways solving a problem.  
 
 I use [Xunit](https://xunit.github.io/docs/getting-started-dotnet-core) with Visual Studio. Firstly install Xunit and then the test runner.
@@ -92,7 +91,8 @@ I use [Xunit](https://xunit.github.io/docs/getting-started-dotnet-core) with Vis
 ![ps](/assets/2018-10-10/3.png)
 
 then solve the Error:
-### Program has more than one entry point defined
+> "Program has more than one entry point defined"  
+
 ![ps](/assets/2018-10-10/4.png)
 
 [Detail](https://andrewlock.net/fixing-the-error-program-has-more-than-one-entry-point-defined-for-console-apps-containing-xunit-tests/) but essentially:
@@ -120,7 +120,7 @@ then solve the Error:
 ![ps](/assets/2018-10-10/5.png)
 Successfully test your test runner (I prefer R# test runner)
 
-### Euler1 TDD
+### TDD Euler1
 Euler problems commonly  have a test case example which can be a good unit test ie:
 ```
 If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.  
@@ -154,7 +154,7 @@ I use Visual Studio and [Resharper](https://www.jetbrains.com/resharper/) to exp
 - Import static member for Enumerable   
 
 ## Summary
-Project Euler can be very helpful in **improving your programming skills**. I particuly enjoy (in the initial Euler problems) exploring **TDD** and **Functional Programming**. 
+Project Euler is a great way to **improve your programming skills** by solving, refactoring and exploring **different approches**. I particuly enjoyed in this problem **TDD** and **LINQ**. 
 
 Why not *have some fun go and do a problem now* :-)
 
