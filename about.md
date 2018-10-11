@@ -3,9 +3,9 @@ layout: page
 title: About
 permalink: /about/
 ---
-Dave lives near Brighton in England and by day he works on large financial internal systems in ASP.NET and MSSQL. Dave gets up at 0500 most days to ~~work on side projects because he loves to code~~ entertain his son who still gets up crazy early :-)  
+Dave lives near Brighton in England and by day he works on large financial internal systems in ASP.NET and MSSQL. Dave gets up at 0500 most days to work on side projects because he loves to code ~~entertain his son who still gets up crazy early :-)~~ He started sleeping after 18 months!
 
- He then plays with his ~~5 month old~~ ~~2 year~~ 3.5 year old daughter and ~~3 month~~ nearly 2 year old son, usually listening to ABBA. Then mountain bikes to work dreaming of music and code…
+ He then plays with his ~~5 month old~~ ~~2 year~~ ~~3.5~~ 4 year old daughter and ~~3 month~~ ~~nearly 2~~ 2.5 year old son, usually listening to ABBA. Then mountain bikes to work dreaming of music and code…
 
 
 ## May 2016, London
