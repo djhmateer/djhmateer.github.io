@@ -63,7 +63,7 @@ Type in your answer and if you are right you'll get:
 
 ![ps](/assets/2018-10-10/7.png)
 
-Once you do a few problems, this is a gratifying sight. It is worth mentioning the Project Euler do not like example code posted on the web (and public repos) as this deprives others of the chance to the solve the problems by themselves.
+Once you do a few problems, this is a gratifying sight. It is worth mentioning the Project Euler do not like example code posted on the web (and public repositories) as this deprives others of the chance to the solve the problems by themselves.
 
 Interesting points to consider here are:
 
@@ -72,8 +72,8 @@ Interesting points to consider here are:
 - Not using brackets in Run method 
 
 ## 2. Second Try - Improvement! - Functional approach
-**The point of this blogpost is how to improve! - so now I have working code lets try a different approach**
-I am interested in Functional Programming, and on this, my fifth time going through some Euler puzzles I'm pusing in that direction. [Linq](https://en.wikipedia.org/wiki/Language_Integrated_Query) Language Integrated Query introduced in .NET3.5 in 2007 is a very functional set of concepts.  
+**The point of this post is how to improve! - so now I have working code lets try a different approach**
+I am interested in Functional Programming, and on this, my fifth time going through some Euler puzzles I'm pushing in that direction. [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query) Language Integrated Query introduced in .NET3.5 in 2007 is a very functional set of concepts.  
 
 ```
 private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x % 5 == 0).Sum();
@@ -84,11 +84,10 @@ private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x 
 
 I **love** this syntax (now I've been using it for a while) as it expresses concisely what the code is doing.
 
-### TDD with XUnit
+### TDD with xUnit
 I find Euler problems lead themselves to easy unit testing and TDD. This is especially useful when trying new ways solving a problem.  
 
-I use [Xunit](https://xunit.github.io/docs/getting-started-dotnet-core) with Visual Studio. Firstly install Xunit and then the test runner.
-
+I use [xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) with Visual Studio. Firstly install xUnit and then the test runner.
 
 ![ps](/assets/2018-10-10/2.png)
 
@@ -122,7 +121,7 @@ then solve the Error:
 </Project>
 ```
 ![ps](/assets/2018-10-10/5.png)
-Successfully test your test runner (I prefer R# test runner)
+Successfully test your test runner (I use the ReSharper test runner)
 
 ### TDD Euler1
 Euler problems commonly  have a test case example which can be a good unit test ie:
@@ -151,14 +150,14 @@ private static int Run(int number)
 ```
 
 ## Refactoring tools  
-I use Visual Studio and [Resharper](https://www.jetbrains.com/resharper/) to explore different ways to express code. In this example R# helped me discover:
+I use Visual Studio and [ReSharper](https://www.jetbrains.com/resharper/) to explore different ways to express code. In this example R# helped me discover:
 
 - Expression body member
 - Brackets
 - Import static member for Enumerable   
 
 ## Summary
-Project Euler is a great way to **improve your programming skills** by solving, refactoring and exploring **different approches**. I particuly enjoyed in this problem **TDD** and **LINQ**. 
+Project Euler is a great way to **improve your programming skills** by solving, refactoring and exploring **different approaches**. I particularly enjoyed in this problem **TDD** and **LINQ**. 
 
 Why not *have some fun go and do a problem now* :-)
 
