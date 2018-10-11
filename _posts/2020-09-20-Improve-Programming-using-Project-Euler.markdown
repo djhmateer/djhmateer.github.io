@@ -8,8 +8,8 @@ published: true
 comments: true
 ---
 
-What is [projecteuler.net](https://projecteuler.net/)?  
-
+![ps](/assets/2018-10-10/euler2.png){:align="right"}  
+What is [projecteuler.net](https://projecteuler.net/)?
 From [Wikipedia](https://en.wikipedia.org/wiki/Project_Euler):  
 Named after the 18th Century Swiss mathematician, widely considered the most prolific mathematician of all time.
 
@@ -19,18 +19,22 @@ Since its creation in 17 years ago, a new problem has been added every 2 weeks g
 
 There are more than 800,000 users from all over the world who have solved 1 problem.
 
-I've been using this site over the last 7 years to learn new languages, and to improve my skills in existing languages
+**I've been using this site over the last 7 years to learn new languages, and to improve my skills** in existing languages
 
 The [first question](https://projecteuler.net/problem=1) is:  
 
-```
-If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.  
-Find the sum of all the multiples of 3 or 5 below 1000.  
-```
+> If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.  
+> Find the sum of all the multiples of 3 or 5 below 1000.  
 
 Visually this looks like:
 
-![ps](/assets/2018-10-10/1.jpg){:width="300px"}
+![ps](/assets/2018-10-10/1.jpg){:width="300px"}  
+
+My strategy is always to 
+
+- Get something working
+- Check the solution is correct
+- Improve the solution
 
 ## 1. First try - Imperative approach
 Lets try this using the latest version (10th Oct 2018) of the .NET Core runtime which is 2.1, which includes the [C# language](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) which is version 7.3. [Download](https://www.microsoft.com/net/download) for Win / Mac. 
