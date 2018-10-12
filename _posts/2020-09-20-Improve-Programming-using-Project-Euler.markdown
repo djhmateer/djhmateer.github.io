@@ -2,14 +2,15 @@
 layout: post
 title:  "Improve at Programming with Project Euler"
 date:   2018-10-10 09:03
-menu: review
+#menu: review
 categories: coding 
 published: true 
 comments: true
 ---
 
 ![ps](/assets/2018-10-10/euler2.png){:align="right"}  
-What is [projecteuler.net](https://projecteuler.net/)?
+What is [projecteuler.net](https://projecteuler.net/)?  
+
 From [Wikipedia](https://en.wikipedia.org/wiki/Project_Euler):  
 Named after the 18th Century Swiss mathematician, widely considered the most prolific mathematician of all time.
 
@@ -40,7 +41,7 @@ My strategy is always to
 Lets try this using the latest version (10th Oct 2018) of the .NET Core runtime which is 2.1, which includes the [C# language](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) which is version 7.3. [Download](https://www.microsoft.com/net/download) for Win / Mac. 
 
 Source code for this Euler1 problem is on [Github](https://github.com/djhmateer/Euler1Article). 
-```
+```cs
 private static void Main() => Console.WriteLine($"Answer is: {Run(10)}");
 
 // 1. Imperative approach. Take every number from 1..number and see if it is divisible by 3 or 5
@@ -75,7 +76,7 @@ Interesting points to consider here are:
 **The point of this post is how to improve! - so now I have working code lets try a different approach**
 I am interested in Functional Programming, and on this, my fifth time going through some Euler puzzles I'm pushing in that direction. [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query) Language Integrated Query introduced in .NET3.5 in 2007 is a very functional set of concepts.  
 
-```
+```cs
 private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x % 5 == 0).Sum();
 ```
 - Create a Range
@@ -103,7 +104,7 @@ then solve the Error:
 - Edit the csproj file (right click on the project in visual studio)
 - Add 1 line.. 'GenerateProgramFile false GenerateProgramFile' so the csproj file should look like:
 
-```
+```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -125,20 +126,18 @@ Successfully test your test runner (I use the ReSharper test runner)
 
 ### TDD Euler1
 Euler problems commonly  have a test case example which can be a good unit test ie:
-```
-If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.  
-Find the sum of all the multiples of 3 or 5 below 1000.  
-```
+> If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.  
+> Find the sum of all the multiples of 3 or 5 below 1000.  
 
 So a good unit test will be:
 
-```
+```cs
 [Fact]
 public void RunTest() => Assert.Equal(23, Run(10));
 ```
 then I can write an implementation:  
 
-```
+```cs
 private static int Run(int number)
 {
     int total = 0;
