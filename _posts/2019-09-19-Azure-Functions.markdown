@@ -159,4 +159,19 @@ Put in the storage connection string into the Azure portal
 
 So this should run, but in my experience it doesn't, so the trick has been to put in a 5 minute timer function as well.
 
+```cs
+public static class TimerBump
+{
+    [FunctionName("TimerBump")]
+    public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
+    {
+        log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+    }
+}
+```
 
+
+Be careful for UTC time offsets.
+
+## Report from the database
+Now it is easy to create a report that the client can see every month to see how
