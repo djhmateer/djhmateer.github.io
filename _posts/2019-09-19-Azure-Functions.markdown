@@ -10,7 +10,7 @@ comments: true
 
 We use Azure Blob Storage to host .mp4 videos for a client. We wanted to have a download count on a per video basis. Here was my [initial question on Stack Overflow](https://stackoverflow.com/q/51657349/26086)  
 
-Using Azure Functions and with help from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) we have a good solution.
+Using Azure Functions and with help from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [Source Here](https://github.com/LoungeFlyZ/AzureBlobLogProcessing) we have a good solution.
 
 
 ## 1. Create an Azure Function Locally
@@ -61,7 +61,10 @@ Lets add a Storage account to the test resource group
 
 create video container and put anonymous read access on it.
 
-![ps](/assets/2018-10-16/a15.png)   
+![ps](/assets/2018-10-16/a15.png)    
+
+**should be named videos**    
+
 ![ps](/assets/2018-10-16/a16.png)    
 
 Use [Azure Storage Explorer](https://azure.microsoft.com/en-gb/features/storage-explorer/) to put up some test videos.  
@@ -150,7 +153,6 @@ git push azure master
 ```
 
 Put in the storage connection string into the Azure portal
-
 
 ![ps](/assets/2018-10-16/a22.png)    
 ```
