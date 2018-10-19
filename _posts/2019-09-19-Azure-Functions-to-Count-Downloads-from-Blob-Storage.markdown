@@ -10,10 +10,10 @@ comments: true
 
 We use Azure Blob Storage to host .mp4 videos for a client and  wanted to have an accurate download count on a per video basis. Here was my [initial question on Stack Overflow](https://stackoverflow.com/q/51657349/26086)  
 
-Using Azure Functions and basing strategy from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [source code](https://github.com/LoungeFlyZ/AzureBlobLogProcessing) we have a good solution.
+Using Azure Functions and basing it on the strategy from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [source](https://github.com/LoungeFlyZ/AzureBlobLogProcessing) we have a good solution.
 
 
-## 1. Create an Azure Function Locally
+## 1. Create a Test Azure Function Locally
 What are [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/)?
 > Azure Functions is a serverless compute service that enables you to run code on-demand without having to explicitly provision or manage infrastructure.
 
@@ -24,12 +24,12 @@ Lets create an Azure Function locally in Visual Studio, New Project.
 then 
 
 ![ps](/assets/2018-10-16/22.png){:width="700px"}  
-[Functions v2(.NET Standard)](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions) is where new feature work and improvements are being made.
+[Functions v2 (.NET Standard)](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions) is where new feature work and improvements are being made so that is what we are using.
 
 
 ![ps](/assets/2018-10-16/32.png)
 
-and if we go to http://localhost:7071/api/Function1?name=dave we'll get back
+And if we go to http://localhost:7071/api/Function1?name=dave we'll get back
 
 ![ps](/assets/2018-10-16/42.png)  
 
@@ -42,8 +42,10 @@ Create a new function from the Azure portal
 ![ps](/assets/2018-10-16/6.png){:width="500px"}   
 Name the function, RG and Storage  
 ![ps](/assets/2018-10-16/7.png){:width="800px"}    
+
 These assets are created  
-![ps](/assets/2018-10-16/8.png){:width="700px"}
+![ps](/assets/2018-10-16/8.png){:width="700px"}  
+
 Inside the newly created function, lets setup how to deploy to it.  
 
 Check Deployment credentials are setup, then Deployment options to setup local git deployment.  
@@ -61,7 +63,7 @@ Function has been deployed.
 ![ps](/assets/2018-10-16/a11.png){:width="500px"}  
 Testing the function - it worked!
 
-## 3. Blob Trigger
+## 3. Blog Storage 
 ![ps](/assets/2018-10-16/a13.png){:width="700px"}  
 Lets add a Storage account to the test resource group   
 
@@ -110,9 +112,9 @@ So we will:
 It is useful to run the function locally to test it is working
 
 ```cs
-public static class Function2
+public static class ProcessLogs
 {
-    [FunctionName("Function2")]
+    [FunctionName("ProcessLogs")]
     public static void Run([BlobTrigger("showlogs/{name}", Connection = "davemtestvideostorage")]Stream myBlob, string name, ILogger log)
     {
         log.LogInformation($"Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
@@ -194,6 +196,13 @@ public static class TimerBump
     }
 }
 ```
+
+## Azure Functions 
+Exceptions are caught and bubbled up to the Azure Portal UI:
+
+RunOnStartup handy for debugging
+
+Retry 5 times if excpetion [Guidance on Exceptions here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-error-pages)
 
 
 Be careful for UTC time offsets.
