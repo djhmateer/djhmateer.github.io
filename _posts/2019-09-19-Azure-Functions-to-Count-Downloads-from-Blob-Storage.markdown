@@ -135,8 +135,10 @@ and local.settings.json
 
 ```
 
+This can prove that when a file is put into the correct location in Blob storage the function will trigger.
+
 ## Setup DB and File Parsing
-I created a 5DTU SQL Azure database - the lowest powered db available  
+To hold the results of the file parsing I created a simple 5DTU SQL Azure database - the lowest powered db available.
 ![ps](/assets/2018-10-16/a20.png)    
 connect to the db from SSMS  
 
@@ -161,7 +163,7 @@ CREATE TABLE [dbo].[VideoDownloadLog](
 ```
 Put in a table to hold the data.  
 
-**Here is the [Source on Github]() of the project
+Now we have all the concepts to run the entire solutions which can be found:  [here on Github]() 
 
 ## Test Azure Function locally
 With a connection to the remote Blobs, and connection to the remote SQL Server. I found there could be quite a delay in between doing a download at the $logs file being written - up to 8 minutes.
