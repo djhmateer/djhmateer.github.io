@@ -13,17 +13,19 @@ We use Azure Blob Storage to host .mp4 videos for a client and  wanted to have a
 Using Azure Functions and basing it on the strategy from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [source](https://github.com/LoungeFlyZ/AzureBlobLogProcessing) we have a good solution.
 
 
-## 1. Create a Test Azure Function Locally
-What are [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/)?
+## What are Azure Functions? 
+[Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/)
 > Azure Functions is a serverless compute service that enables you to run code on-demand without having to explicitly provision or manage infrastructure.
 
 
-Lets create an Azure Function locally in Visual Studio, New Project.
+Let's create an Azure Function locally in Visual Studio, New Project.
 ![ps](/assets/2018-10-16/1.png)
 
 then 
 
 ![ps](/assets/2018-10-16/22.png){:width="700px"}  
+ 
+
 [Functions v2 (.NET Standard)](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions) is where new feature work and improvements are being made so that is what we are using.
 
 
@@ -33,10 +35,10 @@ And if we go to http://localhost:7071/api/Function1?name=dave we'll get back
 
 ![ps](/assets/2018-10-16/42.png)  
 
-We have created an Azure Function locally which responds to an HTTP Request 
+We have **created an Azure Function locally which responds to an HTTP Request**
 
-## 2. Deploy to Live
-Lets deploy this to Azure  
+## Deploy to Live
+Let's deploy this to Azure  
 ![ps](/assets/2018-10-16/5.png){:width="400px"}  
 Create a new function from the Azure portal  
 ![ps](/assets/2018-10-16/6.png){:width="500px"}   
@@ -46,9 +48,9 @@ Name the function, RG and Storage
 These assets are created  
 ![ps](/assets/2018-10-16/8.png){:width="700px"}  
 
-Inside the newly created function, lets setup how to deploy to it.  
+Inside the newly created function, let's setup how to deploy to it.  
 ## Deploy using Local Git
-Check Deployment credentials are setup, then Deployment options to setup local git deployment.  
+For local development I find using Local Git deployment is excellent.  Use *Deployment Center* to setup then:
 
 ![ps](/assets/2018-10-16/b31.png)  
 Use the **App Credentials** so they are specific to this app only. User credentials are across your entire Azure estate.
@@ -67,7 +69,9 @@ If all has gone well the function will deploy. So now, grab the URL
 ![ps](/assets/2018-10-16/a11.png){:width="500px"}   
 Testing the function - it worked!
 
-## 3. Blob Storage 
+## Blob Storage 
+Now we can deploy Azure Functions we need to setup some storage to host some .mp4 video files:  
+
 ![ps](/assets/2018-10-16/a13.png){:width="700px"}  
 Add a Storage account to the resource group   
 
@@ -97,13 +101,14 @@ Turn on logging of downloads:
 
 ![ps](/assets/2018-10-16/a17.png)    
 
-This will create a $logs folder only visible in Azure Storage Explorer.  
+This will create a $logs folder **only visible in Azure Storage Explorer**.  
 
 ![ps](/assets/2018-10-16/a18.png)    
 
 ~~This $logs folder holds the logs for each download from blob storage, so we just have to watch this folder with a Blob trigger (as the $logs files are blobs), then parse the file and store the data in a SQL Azure db.~~  
 
 The above strategy misses some downloads in high volume situations.  
+## Copy Logs
 
 So we will use a similar strategy to [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [source](https://github.com/LoungeFlyZ/AzureBlobLogProcessing):
 
@@ -112,9 +117,7 @@ So we will use a similar strategy to [Chris Johnson](http://www.chrisjohnson.io/
 
 It is useful to run the function locally to test it is working.
 
-
-[Github Repo Here](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)
-
+[Final source Github repo here](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)
 
 ```cs
 public static class CopyLogs
@@ -127,7 +130,7 @@ public static class CopyLogs
 
          var container = CloudStorageAccount.Parse(GetEnvironmentVariable("DaveMTestVideoStorageConnectionString")).CreateCloudBlobClient().GetContainerReference("showlogs/");
 ```
-Part of the code showing how to get the connection string. For testing locally you'll need a local.settings.json which isn't uploaded to Azure Functions.
+Part of the code showing how to get the connection string. For testing locally you'll need a local.settings.json which isn't uploaded to Azure Functions.  
 ```json
 {
   "IsEncrypted": false,
@@ -143,6 +146,10 @@ and on live:
 ![ps](/assets/2018-10-16/b32.png)    
  
 So we should now be able to connect to storage on local and live.  
+
+It seems you are supposed to use App Settings for Storage Account connection strings, but Connection String for a SQL connection string, which we'll see later. [Microsoft Docs](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob#input---configuration).  App Settings do work for both.  
+
+[Azure Functions Database](https://docs.microsoft.com/en-us/azure/azure-functions/functions-scenario-database-table-cleanup) gives more details on why Connection Strings may be better - possibly better integration with VS.
 
 ## Setup DB and File Parsing
 To hold the results of the file parsing I created a simple 5DTU SQL Azure database - the lowest powered db available.
@@ -173,14 +180,9 @@ Put in a table to hold the data.
 Now we have all the concepts to run the entire solutions which can be found [Github Repo Here](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)  
 
 ## Exceptions
-Exceptions are caught and bubbled up to the Azure Portal UI:
+Exceptions are caught and bubbled up to the Azure Portal UI
 
-RunOnStartup handy for debugging
-
-Retry 5 times if excpetion [Guidance on Exceptions here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-error-pages)
-
-
-Be careful for UTC time offsets.
+Retry 5 times if exception [Guidance on Exceptions here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-error-pages)
 
 ## Report from the database
 ![ps](/assets/2018-10-16/b33.png)    
@@ -188,9 +190,9 @@ Be careful for UTC time offsets.
 Now it is easy to create a report that the client can see every month to see how many downloads they have had.
 
 ## Summary
-- Azure Blob storage to hold videos that can be streamed
+- Azure Blob Storage to hold videos that can be streamed
 - Setup logging on Blob Storage
-- Copy logs every 5 minutes using Azure Functions
-- Parse the logs into a database
+- Copy logs every 5 minutes using an **Azure Function**
+- Parse the logs into a database using an **Azure Function**
 
 
