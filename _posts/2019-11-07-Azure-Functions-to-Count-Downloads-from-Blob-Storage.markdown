@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Azure Functions to Count Downloads from Blob Storage"
-date:   2018-10-15 09:43
+date:   2018-11-07 09:43
 menu: review
 categories: azure 
 published: true 
@@ -10,15 +10,16 @@ comments: true
 
 We use Azure Blob Storage to host .mp4 videos for a client and  wanted to have an accurate download count on a per video basis. Here was my [initial question on Stack Overflow](https://stackoverflow.com/q/51657349/26086)  
 
-Using Azure Functions and basing it on the strategy from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [source](https://github.com/LoungeFlyZ/AzureBlobLogProcessing) we have a good solution.
+I am using Azure Functions and basing it on the strategy from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [source](https://github.com/LoungeFlyZ/AzureBlobLogProcessing) 
 
 
 ## What are Azure Functions? 
 [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/)
 > Azure Functions is a serverless compute service that enables you to run code on-demand without having to explicitly provision or manage infrastructure.
 
+ 
 
-Let's create an Azure Function locally in Visual Studio, New Project.
+Let's create an Azure Function locally in Visual Studio, New Project an create the simplest thing.
 ![ps](/assets/2018-10-16/1.png)
 
 then 
@@ -26,7 +27,7 @@ then
 ![ps](/assets/2018-10-16/22.png){:width="700px"}  
  
 
-[Functions v2 (.NET Standard)](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions) is where new feature work and improvements are being made so that is what we are using.
+[Functions v2 (.NET Standard)](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions) is where **new feature work and improvements** are being made so that is what we are using.
 
 
 ![ps](/assets/2018-10-16/32.png)
@@ -187,7 +188,7 @@ Retry 5 times if exception [Guidance on Exceptions here](https://docs.microsoft.
 ## Report from the database
 ![ps](/assets/2018-10-16/b33.png)    
 
-Now it is easy to create a report that the client can see every month to see how many downloads they have had.
+Now we have a granular log of who downloaded what and when. It is easy to create a nice report that the client can see every month.
 
 ## Summary
 - Azure Blob Storage to hold videos that can be streamed
