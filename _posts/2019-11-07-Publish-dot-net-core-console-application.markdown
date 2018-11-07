@@ -60,6 +60,8 @@ If you do:
 dotnet publish -c Release -r win10-x64 
 ```
 
+Where -r is the Runtime Identifier [Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish?tabs=netcore21)
+
 It will output:  
 ![ps](/assets/2018-11-07/5.png)
 
