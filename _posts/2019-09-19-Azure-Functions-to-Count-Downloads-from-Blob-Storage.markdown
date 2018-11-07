@@ -47,25 +47,29 @@ These assets are created
 ![ps](/assets/2018-10-16/8.png){:width="700px"}  
 
 Inside the newly created function, lets setup how to deploy to it.  
-
+## Deploy using Local Git
 Check Deployment credentials are setup, then Deployment options to setup local git deployment.  
 
-Using a local git deployment is very useful, but you'll need to use the same username across everything in you Azure subscription. For example I've got davemtest as the username here.
+![ps](/assets/2018-10-16/b31.png)  
+Use the **App Credentials** so they are specific to this app only. User credentials are across your entire Azure estate.
 
 ```bat
-git remote add azure https://davemtest@davemtest.scm.azurewebsites.net:443/davemtest.git  
+git remote add azure https://$davemtest@davemtest.scm.azurewebsites.net:443/davemtest.git  
 git push -u azure master
 ```
-Setting up deployment from the command line.  
+Setting up deployment from the command line.  Use -u (--set-upstream) means that you can simply do git push and not specify which remote.
+
+![ps](/assets/2018-10-16/30.png)  
+Sometimes you'll get a badly cached password - this is where you delete it.
 
 ![ps](/assets/2018-10-16/a10.png){:width="800px"}   
-Function has been deployed.  
-![ps](/assets/2018-10-16/a11.png){:width="500px"}  
+If all has gone well the function will deploy. So now, grab the URL  
+![ps](/assets/2018-10-16/a11.png){:width="500px"}   
 Testing the function - it worked!
 
-## 3. Blog Storage 
+## 3. Blob Storage 
 ![ps](/assets/2018-10-16/a13.png){:width="700px"}  
-Lets add a Storage account to the test resource group   
+Add a Storage account to the resource group   
 
 ![ps](/assets/2018-10-16/a14.png)    
 Handy overview of types of [storage accounts](https://docs.microsoft.com/en-gb/azure/storage/common/storage-account-overview). Essentially v2:  
@@ -79,8 +83,6 @@ Basically in order or cost and uptime using Storage V2 (general purpose v2)
 - Geo-redundant storage (GRS)
 - Read-access geo-redundant storage (RA-GRS) 
 
-
-
 create video container and put anonymous read access on it.
 
 ![ps](/assets/2018-10-16/a23.png)    
@@ -89,7 +91,7 @@ create video container and put anonymous read access on it.
 
 Use [Azure Storage Explorer](https://azure.microsoft.com/en-gb/features/storage-explorer/) to put up some test videos.  
 
-[https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4](https://davemtestvideostorage.blob.core.windows.net/video/a.mp4) should now work. Seeking to a specific time in the video will not work [detail](https://blog.thoughtstuff.co.uk/2014/01/streaming-mp4-video-files-in-azure-storage-containers-blob-storage/). Use [This Console App](https://github.com/djhmateer/AzureBlobVideoSeekFix) to fix.   
+[https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4](https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4) should now work. Seeking to a specific time in the video will not work [more detail](https://blog.thoughtstuff.co.uk/2014/01/streaming-mp4-video-files-in-azure-storage-containers-blob-storage/). Use [This Console App](https://github.com/djhmateer/AzureBlobVideoSeekFix) to fix.   
 
 Turn on logging of downloads:
 
@@ -101,41 +103,46 @@ This will create a $logs folder only visible in Azure Storage Explorer.
 
 ~~This $logs folder holds the logs for each download from blob storage, so we just have to watch this folder with a Blob trigger (as the $logs files are blobs), then parse the file and store the data in a SQL Azure db.~~  
 
-The above looks like it works, but it does miss some downloads in high download situations.  
+The above strategy misses some downloads in high volume situations.  
 
-So we will:
+So we will use a similar strategy to [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [source](https://github.com/LoungeFlyZ/AzureBlobLogProcessing):
 
 - Create a timer trigger function to copy $logs files to a new container called \showlogs  
 - Put a blob watcher on the \showlogs folder  
 
+It is useful to run the function locally to test it is working.
 
-It is useful to run the function locally to test it is working
+
+[Github Repo Here](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)
+
 
 ```cs
-public static class ProcessLogs
+public static class CopyLogs
 {
-    [FunctionName("ProcessLogs")]
-    public static void Run([BlobTrigger("showlogs/{name}", Connection = "davemtestvideostorage")]Stream myBlob, string name, ILogger log)
-    {
-        log.LogInformation($"Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
-    }
-}
-```
+     // RunOnStartup true so debugging easier both locally and live
+     [FunctionName("CopyLogs")]
+     public static void Run([TimerTrigger("0 */30 * * * *", RunOnStartup = true)] TimerInfo myTimer, ILogger log)
+     {
+         log.LogInformation($"C# CopyLogs Time trigger function executed at: {DateTime.Now}");
 
-and local.settings.json
+         var container = CloudStorageAccount.Parse(GetEnvironmentVariable("DaveMTestVideoStorageConnectionString")).CreateCloudBlobClient().GetContainerReference("showlogs/");
+```
+Part of the code showing how to get the connection string. For testing locally you'll need a local.settings.json which isn't uploaded to Azure Functions.
 ```json
 {
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "davemtestvideostorage": "DefaultEndpointsProtocol=https;AccountName=davemtestvideostorage;AccountKey=SECRETKEYHERE;EndpointSuffix=core.windows.net"
+    "DaveMTestVideoStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=davemtestvideostorage;AccountKey=SECRETKEYHERE;EndpointSuffix=core.windows.net"
   }
 }
-
 ```
+and on live:
 
-This can prove that when a file is put into the correct location in Blob storage the function will trigger.
+![ps](/assets/2018-10-16/b32.png)    
+ 
+So we should now be able to connect to storage on local and live.  
 
 ## Setup DB and File Parsing
 To hold the results of the file parsing I created a simple 5DTU SQL Azure database - the lowest powered db available.
@@ -163,43 +170,9 @@ CREATE TABLE [dbo].[VideoDownloadLog](
 ```
 Put in a table to hold the data.  
 
-Now we have all the concepts to run the entire solutions which can be found:  [here on Github]() 
+Now we have all the concepts to run the entire solutions which can be found [Github Repo Here](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)  
 
-## Test Azure Function locally
-With a connection to the remote Blobs, and connection to the remote SQL Server. I found there could be quite a delay in between doing a download at the $logs file being written - up to 8 minutes.
-
-![ps](/assets/2018-10-16/a21.png)    
-Data successfully getting to the database. There is some logic in the code to deal with the vagaries of the $logs
-
-**how to deal with db connection strings
-
-## Publish Azure Function to Live
-As before
-```
-git push azure master
-```
-
-Put in the storage connection string into the Azure portal
-
-![ps](/assets/2018-10-16/a22.png)    
-```
-"davemtestvideostorage": "DefaultEndpointsProtocol=https;AccountName=davemtestvideostorage;AccountKey=SECRET CHANGE ME;EndpointSuffix=core.windows.net"
-```
-
-So this should run, but in my experience it doesn't, so the trick has been to put in a 5 minute timer function as well.
-
-```cs
-public static class TimerBump
-{
-    [FunctionName("TimerBump")]
-    public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
-    {
-        log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-    }
-}
-```
-
-## Azure Functions 
+## Exceptions
 Exceptions are caught and bubbled up to the Azure Portal UI:
 
 RunOnStartup handy for debugging
@@ -210,4 +183,14 @@ Retry 5 times if excpetion [Guidance on Exceptions here](https://docs.microsoft.
 Be careful for UTC time offsets.
 
 ## Report from the database
-Now it is easy to create a report that the client can see every month to see how
+![ps](/assets/2018-10-16/b33.png)    
+
+Now it is easy to create a report that the client can see every month to see how many downloads they have had.
+
+## Summary
+- Azure Blob storage to hold videos that can be streamed
+- Setup logging on Blob Storage
+- Copy logs every 5 minutes using Azure Functions
+- Parse the logs into a database
+
+
