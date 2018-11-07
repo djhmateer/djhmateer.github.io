@@ -85,8 +85,5 @@ This can now be shared amongst all my machines and I don't have to make sure a c
 
 I am running VS 15.8.9. With a previous version of the build tools I had to use:
 
-
-
-
 ## SharedTools
 I have 3 main developer machines - Work, Home and Laptop. I've got a private bitbucket repository where I keep **c:\sharedTools** synced up, and on each machine I set my path to be c:\sharedTools and a few other nested directories
