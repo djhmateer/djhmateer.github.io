@@ -115,6 +115,13 @@ cs'" - change surrounding ' to "
 V... :jk norm yss<p>  - all lines selected, surround with <p> tag and </p> on each line
 
 ```
+## Macros
+```
+q<letter><commands>q
+<number>@<letter>
+```
+
+
 ## Config
 Showing line numbers
 ```
@@ -141,12 +148,10 @@ Interestinly Ctrl WV doesnt work but :vs works fine. I use Ctrl WW to switch bet
 
 ## AutoHotKey
 As escape is a long way up and left, it is closer to use the caps lock key as the escape key.  
-http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_Windows#AutoHotkey
----
+[Wikia Caps Lock](http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_Windows#AutoHotkey)
 - create new file on desktop called caps.ahk
-- Capslock::Esc
-- right click and run the script
----
+- Capslock::Esc  
+- Right click and run the script
 
 ## VSCode
 Sometimes the plugin stops working. [Deleting the extensions directory](https://stackoverflow.com/a/36751445/26086) seems to work
