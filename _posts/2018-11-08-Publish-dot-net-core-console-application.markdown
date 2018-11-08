@@ -102,7 +102,7 @@ The -r is the Runtime Identifier [Microsoft Docs](https://docs.microsoft.com/en-
 
 It will output:  
 ![ps](/assets/2018-11-07/a10.png)  
-~~So here is the .exe~~ Not it isn't - see below
+~~So here is the .exe~~ **No it isn't** - see below
 
 ...you deploy your app and any required third-party dependencies along with the version of .NET Core that you used to build the app. [Microsoft .NET Core Application Deployment](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish?tabs=netcore21) 
 
