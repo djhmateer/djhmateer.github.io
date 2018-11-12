@@ -12,7 +12,7 @@ I like to drive my Windows 10 development machine from the command line using th
 
 ![ps](/assets/2018-11-07/3.png)
 
-When I typed **d** (short for devenv.exe) it opens up Visual Studio and loads the **ConsoleApp1.sln**   
+When I type **d** (short for devenv.exe) it opens up Visual Studio and loads the **ConsoleApp1.sln**   
 
 How does it do this?  
 
@@ -24,7 +24,8 @@ Let's look at my OpenVSSolution:
 ![ps](/assets/2018-11-07/4.png)
 
 ## What is d.exe?
-It is a .NET Core Console Application with [Github Source](https://github.com/djhmateer/OpenVSSolution)
+It is a .NET Core Console Application called [OpenVSSolution](https://github.com/djhmateer/OpenVSSolution) with a download exe link [here](). **If you want to download it now and put it in the path now go for it.**
+
 
 ```c#
 static void Main()
