@@ -2,7 +2,7 @@
 layout: post
 title:  "Azure Functions to Count Downloads from Blob Storage"
 date:   2018-11-07 09:43
-menu: review
+#menu: review
 categories: azure 
 published: true 
 comments: true
@@ -10,16 +10,21 @@ comments: true
 
 We use Azure Blob Storage to host .mp4 videos for a client and  wanted to have an accurate download count on a per video basis. Here was my [initial question on Stack Overflow](https://stackoverflow.com/q/51657349/26086)  
 
-I am using Azure Functions and basing it on the strategy from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his [source](https://github.com/LoungeFlyZ/AzureBlobLogProcessing) 
+I am using a strategy from [Chris Johnson](http://www.chrisjohnson.io/2016/04/24/parsing-azure-blob-storage-logs-using-azure-functions/) and his source [here](https://github.com/LoungeFlyZ/AzureBlobLogProcessing) 
+
+- Azure Functions timer every 5 minutes to copy $logs files to a new container called \showlogs
+- Azure Functions blob watcher on the \showlogs folder that parses the data and inserts into a MSSQL db.
 
 
-## What are Azure Functions? 
-[Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/)
+All code show below is in my [AzureFunctionBlobDownloadCount](https://github.com/djhmateer/AzureFunctionBlobDownloadCount) solution.
+  
+## What is Azure Functions? 
+From [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/) documentation:
 > Azure Functions is a serverless compute service that enables you to run code on-demand without having to explicitly provision or manage infrastructure.
 
  
 
-Let's create an Azure Function locally in Visual Studio, New Project an create the simplest thing.
+Let's create an Azure Function locally in Visual Studio, New Project and create the simplest thing.
 ![ps](/assets/2018-10-16/1.png)
 
 then 
@@ -96,7 +101,7 @@ create video container and put anonymous read access on it.
 
 Use [Azure Storage Explorer](https://azure.microsoft.com/en-gb/features/storage-explorer/) to put up some test videos.  
 
-[https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4](https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4) should now work. Seeking to a specific time in the video will not work [more detail](https://blog.thoughtstuff.co.uk/2014/01/streaming-mp4-video-files-in-azure-storage-containers-blob-storage/). Use [This Console App](https://github.com/djhmateer/AzureBlobVideoSeekFix) to fix.   
+[https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4](https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4) or whatever your blob storage is called, should now work. Seeking to a specific time in the video will not work [more detail](https://blog.thoughtstuff.co.uk/2014/01/streaming-mp4-video-files-in-azure-storage-containers-blob-storage/). Use this [AzureBlobVideoSeekFix](https://github.com/djhmateer/AzureBlobVideoSeekFix) console app to update the offending namespace.   
 
 Turn on logging of downloads:
 
@@ -118,7 +123,7 @@ So we will use a similar strategy to [Chris Johnson](http://www.chrisjohnson.io/
 
 It is useful to run the function locally to test it is working.
 
-[Final source Github repo here](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)
+Full [source](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)
 
 ```cs
 public static class CopyLogs
@@ -148,7 +153,7 @@ and on live:
  
 So we should now be able to connect to storage on local and live.  
 
-It seems you are supposed to use App Settings for Storage Account connection strings, but Connection String for a SQL connection string, which we'll see later. [Microsoft Docs](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob#input---configuration).  App Settings do work for both.  
+It seems you are supposed to use App Settings for Storage Account connection strings, but Connection String for a SQL connection string as described in the  [Microsoft docs](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob#input---configuration).  I've found that app settings work for both.  
 
 [Azure Functions Database](https://docs.microsoft.com/en-us/azure/azure-functions/functions-scenario-database-table-cleanup) gives more details on why Connection Strings may be better - possibly better integration with VS.
 
@@ -178,12 +183,12 @@ CREATE TABLE [dbo].[VideoDownloadLog](
 ```
 Put in a table to hold the data.  
 
-Now we have all the concepts to run the entire solutions which can be found [Github Repo Here](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)  
+Now we have all the concepts to run the entire solutions which can be found [here](https://github.com/djhmateer/AzureFunctionBlobDownloadCount)  
 
 ## Exceptions
 Exceptions are caught and bubbled up to the Azure Portal UI
 
-Retry 5 times if exception [Guidance on Exceptions here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-error-pages)
+Retry 5 times if applicable and [guidance on exceptions here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-error-pages)
 
 ## Report from the database
 ![ps](/assets/2018-10-16/b33.png)    
@@ -191,9 +196,11 @@ Retry 5 times if exception [Guidance on Exceptions here](https://docs.microsoft.
 Now we have a granular log of who downloaded what and when. It is easy to create a nice report that the client can see every month.
 
 ## Summary
+
 - Azure Blob Storage to hold videos that can be streamed
 - Setup logging on Blob Storage
 - Copy logs every 5 minutes using an **Azure Function**
 - Parse the logs into a database using an **Azure Function**
 
 
+Azure Functions were an excellent fit for doing a task every 5 minutes, having a Blob storage watcher, parsing data and inserting into MSSQL.
