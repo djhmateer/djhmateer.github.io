@@ -24,7 +24,7 @@ Let's look at my OpenVSSolution:
 ![ps](/assets/2018-11-07/4.png)
 
 ## What is d.exe?
-It is a .NET Core Console Application called [OpenVSSolution](https://github.com/djhmateer/OpenVSSolution) with a download exe link [here](). **If you want to download it now and put it in the path now go for it.**
+It is a .NET Core Console Application called [OpenVSSolution](https://github.com/djhmateer/OpenVSSolution) with a download exe link [here](https://github.com/djhmateer/OpenVSSolution/releases). **If you want to download it now and put it in the path now go for it.**
 
 
 ```c#
