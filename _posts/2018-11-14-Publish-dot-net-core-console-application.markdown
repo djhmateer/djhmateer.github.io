@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Open Visual Studio Solution from Command Line"
-date:   2018-11-08 09:03
-menu: review
+date:   2018-11-14 09:03
+#menu: review
 categories: coding 
 published: true 
 comments: true
