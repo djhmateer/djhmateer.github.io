@@ -128,4 +128,4 @@ However..
 This can now be shared amongst all my machines and I don't have to make sure a certain version of .NET Core is installed.
 
 ## Update 16th Nov 2018
-Some more interesting comments on this article are on the [reddit question](https://redd.it/9xa13n) and related [stackoverflow](https://stackoverflow.com/questions/973561/starting-visual-studio-from-a-command-prompt/53299917#53299917)
+Some more interesting comments on this article are on the [reddit question](https://redd.it/9xa13n) and related [stackoverflow](https://stackoverflow.com/questions/973561/starting-visual-studio-from-a-command-prompt/53299917)
