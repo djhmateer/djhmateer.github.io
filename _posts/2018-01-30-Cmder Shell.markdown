@@ -29,6 +29,9 @@ k=kubectl $*
 ka=KeepK8sAlive
 das = az aks browse -n aks -g aksrg
 ddel = docker container prune -f $t docker image prune -af $t docker network prune -f $t docker volume prune -f
+;= $* passes all the arguments
+;= use s nameofsolution.sln (and use tab to autocomplete) to start a solution file
+s = start $*
 ```
 
 ### Set Starup Directory
