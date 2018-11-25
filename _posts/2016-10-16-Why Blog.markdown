@@ -3,6 +3,7 @@ layout: post
 title:  "Why Blog?"
 categories: jekyll
 published: true
+comments: true
 ---
 ![On the way to Machu Picchu](/assets/3Guys_500.jpg)
 
