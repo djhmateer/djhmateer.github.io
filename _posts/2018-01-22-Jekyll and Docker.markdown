@@ -3,8 +3,9 @@ layout: post
 title:  "Jekyll and Docker"
 date:   2018-01-25
 # menu: review
-categories: jekyl
+categories: jekyll
 published: true 
+comments: true
 ---
 ![Menu](/assets/2018-01-25-Docker/screen.png)
 
