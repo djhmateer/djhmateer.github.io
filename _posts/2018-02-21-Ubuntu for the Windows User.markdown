@@ -49,7 +49,7 @@ sudo iotop
 
 
 ### Installing Docker
-[Installing Docker](/docker/2018/02/01/Wordpress-on-Docker.html#going-to-uat--production)
+Installing Docker](/docker/2018/02/01/Wordpress-on-Docker.html#going-to-uat--production)
 
 ### Installing Dot Net Core
 [Microsoft](https://www.microsoft.com/net/learn/get-started/windows#linuxubuntu)
