@@ -3,7 +3,7 @@ layout: post
 title:  "Apache Benchmarks load testing"
 date:   2018-02-01 12:02
 #menu: review
-categories: apachebenchmarks 
+categories: ApacheBenchmarks 
 published: true 
 ---
 

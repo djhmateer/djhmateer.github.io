@@ -2,7 +2,7 @@
 layout: post
 title:  "Twitter and SQL High Perf"
 date:   2017-06-19
-categories: jekyll
+categories: sql
 published: true 
 ---
 ![Interview](/assets/interview2_500.jpg)

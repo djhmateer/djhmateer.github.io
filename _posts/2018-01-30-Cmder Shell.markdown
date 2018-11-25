@@ -8,7 +8,7 @@ published: true
 ---
 [Cmder](http://cmder.net/) is my shell of choice. [download from github](https://github.com/cmderdev/cmder/releases)
 ### Where to Install
-![ps](/assets/2018-01-30/c.png)
+![ps](/assets/2018-01-30/c.png)  
 I install in C:\sharedTools\cmder (note I now use cmder full instead of cmder_mini - but both are fine) 
 
 ### Aliases

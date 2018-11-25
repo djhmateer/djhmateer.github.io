@@ -148,7 +148,7 @@ Interestinly Ctrl WV doesnt work but :vs works fine. I use Ctrl WW to switch bet
 
 ## AutoHotKey
 As escape is a long way up and left, it is closer to use the caps lock key as the escape key.  
-[Wikia Caps Lock](http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_Windows#AutoHotkey)
+[Wikia Caps Lock](http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_Windows#AutoHotkey). And [my article on this blog]({%post_url 2018-04-10-Autohotkey %})
 - create new file on desktop called caps.ahk
 - Capslock::Esc  
 - Right click and run the script
