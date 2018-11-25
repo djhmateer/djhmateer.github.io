@@ -142,7 +142,7 @@ git push --set-upstream origin master
 ```
 
 ## Updating Jekyll
-At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3. As of 25th Nov 2018 it is 3.8.5
+At time of writing the Jekyll/Jekyll image is ~~runing Jekyll 3.7.3~~ As of 25th Nov 2018 it is 3.8.5
 
 ```
 docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
