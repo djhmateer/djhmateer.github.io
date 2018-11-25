@@ -142,11 +142,11 @@ git push --set-upstream origin master
 ```
 
 ## Updating Jekyll
-At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3. 
+At time of writing the Jekyll/Jekyll image is runing Jekyll 3.7.3. As of 25th Nov 2018 it is 3.8.5
 
 ```
 docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
-jekyll bundle update
+bundle update jekyll
 ```
 If you delete your gemfile.lock and run jekyll bundle update you will get all the dependencies again (actually I didn't need to delete the lock file sometimes). It pulled jekyll 3.7.3 at the time of writing, but I make sure its the same as the [docker version](https://github.com/envygeeks/jekyll-docker)
 
