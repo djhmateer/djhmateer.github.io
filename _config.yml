@@ -32,5 +32,5 @@ markdown: kramdown
 timezone: Europe/London
 
 exclude: [
- "*.ps1","Gemfile", "Gemfile.lock", "*.sln"
+ "Gemfile", "Gemfile.lock" 
 ]
