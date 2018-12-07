@@ -3,7 +3,7 @@ layout: post
 title:  "Cmder"
 date:   2018-01-30
 #menu: review
-categories: cmder
+categories: cmder curl
 published: true 
 ---
 [Cmder](http://cmder.net/) is my shell of choice. [download from github](https://github.com/cmderdev/cmder/releases)

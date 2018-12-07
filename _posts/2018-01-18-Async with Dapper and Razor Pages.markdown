@@ -3,7 +3,7 @@ layout: post
 title:  "Async with Dapper and Razor Pages"
 date:   2018-01-18
 #menu: review
-categories: dapper
+categories: dapper sql
 published: true 
 ---
 

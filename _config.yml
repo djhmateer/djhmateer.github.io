@@ -24,6 +24,7 @@ github_username:  djhmateer
 
 #lowercase separated by hyphens
 #permalink: /articles/:title
+permalink: /:year/:month/:day/:title
 
 # Build settings
 markdown: kramdown

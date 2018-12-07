@@ -2,7 +2,7 @@
 layout: post
 title:  "Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC"
 #menu: review
-categories: jekyll
+categories: jekyll sql dapper
 published: true
 ---
 
