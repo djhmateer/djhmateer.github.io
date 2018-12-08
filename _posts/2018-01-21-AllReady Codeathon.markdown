@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "AllReady Codeathon"
-date:   2018-01-21
 # menu: review
-categories: allready 
+categories: codeathon allready 
 published: true 
+redirect_from: "/allready/2018/01/21/AllReady-Codeathon.html"
 ---
 ![Menu](/assets/2018-01-22-AllReady/header.jpg)
 
