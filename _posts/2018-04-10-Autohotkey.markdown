@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "AutoHotkey"
-date:   2018-04-10 11:22
-#menu: review
+title:  AutoHotkey
 categories: AutoHotkey
 published: true 
+redirect_from: autohotkey/2018/04/10/Autohotkey.html 
 ---
 
 I use [AutoHotkey](https://autohotkey.com/) to map the escape key to the caps-lock key which is useful when using Vim.  
