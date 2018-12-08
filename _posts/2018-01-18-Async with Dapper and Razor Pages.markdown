@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Async with Dapper and Razor Pages"
-date:   2018-01-18
 #menu: review
-categories: dapper sql
+categories: async dapper sql
 published: true 
+redirect_from: "/dapper/2018/01/18/Async-with-Dapper-and-Razor-Pages.html"
 ---
 
 ### Summary
