@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "Useful Git Commands"
-date:   2018-02-01 10:00
-#menu: review
+title:  Useful Git Commands
 categories: git
 published: true 
+redirect_from: git/2018/02/01/Useful-Git-Commands.html 
 ---
 
 I use Git every day. Here are my favourite commands, which I frequently forget, therefore I've published here. 
