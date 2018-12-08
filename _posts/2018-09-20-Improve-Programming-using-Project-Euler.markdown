@@ -1,11 +1,10 @@
 ---
 layout: post
-title:  "Improve at Programming with Project Euler"
-date:   2018-10-10 09:03
-#menu: review
-categories: coding 
+title:  Improve at Programming with Project Euler
+categories: euler programming 
 published: true 
 comments: true
+redirect_from: coding/2018/10/10/Improve-Programming-using-Project-Euler.html 
 ---
 
 ![ps](/assets/2018-10-10/euler2.png){:align="right"}  
