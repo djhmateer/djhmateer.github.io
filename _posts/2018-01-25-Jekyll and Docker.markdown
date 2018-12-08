@@ -5,7 +5,7 @@ title:  "Jekyll and Docker"
 categories: jekyll docker
 published: true 
 comments: true
-redirect_from: "/jekyl/2018/01/25/Jekyll-and-Docker.html"
+redirect_from: /jekyl/2018/01/25/Jekyll-and-Docker.html
 ---
 ![Menu](/assets/2018-01-25-Docker/screen.png)
 
