@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Apache Benchmarks load testing"
-date:   2018-02-01 12:02
+title:  Apache Benchmarks load testing
 #menu: review
-categories: ApacheBenchmarks 
+categories: ApacheBenchmarks http 
 published: true 
+redirect_from: apachebenchmarks/2018/02/01/Apache-Benchmarks.html 
 ---
 
 ![ps](/assets/2018-02-01/bash.png)
