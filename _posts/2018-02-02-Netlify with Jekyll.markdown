@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "Netlify with Jekyll"
-date:   2018-02-02 14:30
-#menu: review
-categories: netlify
+title:  Netlify with Jekyll
+categories: netlify jekyll
 published: true 
+redirect_from: netlify/2018/02/02/Netlify-with-Jekyll.html 
 ---
 I use Jekyll for this website, and for our [wedding website](https://daveellie.co.uk). I used Github pages for this website, however it isn't easy to have multiple GH pages from a single GH account, so here is how I did it with Netlify.
 
