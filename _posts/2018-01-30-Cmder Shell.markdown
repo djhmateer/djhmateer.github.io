@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Cmder"
-date:   2018-01-30
 #menu: review
 categories: cmder curl
 published: true 
+redirect_from: cmder/2018/01/30/Cmder-Shell.html 
 ---
 [Cmder](http://cmder.net/) is my shell of choice. [download from github](https://github.com/cmderdev/cmder/releases)
 ### Where to Install
