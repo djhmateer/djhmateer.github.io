@@ -1,11 +1,10 @@
 ---
 layout: post
-title:  "Web App for Windows Linux Docker"
-date:   2018-06-18 04:43
-#menu: review
+title:  Web App for Windows Linux Docker
 categories: wordpress 
 published: true 
 comments: true
+redirect_from: wordpress/2018/06/18/Web-App-for-Windows-Linux-Docker.html 
 ---
 Lets explore potential Azure hosting options focussing on Wordpress which I've [had to deploy](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
