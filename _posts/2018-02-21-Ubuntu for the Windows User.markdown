@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "Ubuntu for the Windows User"
-date:   2018-02-21 11:19
-#menu: review
-categories: ubuntu 
+title:  Ubuntu for the Windows User
+categories: ubuntu linux 
 published: true 
+redirect_from: ubuntu/2018/02/21/Ubuntu-for-the-Windows-User.html 
 ---
 Here are my most used commands in Linux.  Current favoured distibution is Ubuntu Server 16.04.3 LTS (Xenial Xerus).
 
