@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "Azure CLI and Cloud Shell"
-date:   2018-02-15 15:54
-#menu: review
-categories: azure 
+title:  Azure CLI and Cloud Shell
+categories: azure cli 
 published: true 
+redirect_from: azure/2018/02/15/Azure-CLI.html 
 ---
 ![ps](/assets/2018-02-15/azurecli.png)
 
