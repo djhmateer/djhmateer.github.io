@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Docker Delete Containers Images Networks and Volumes"
-date:   2018-01-26
+title:  Docker Delete Containers Images Networks and Volumes
 # menu: review
 categories: docker 
 published: true 
+redirect_from: docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html 
 ---
 
 I use these commands all the time in Docker to reset my system.
