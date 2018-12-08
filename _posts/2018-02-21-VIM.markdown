@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "Vim"
-date:   2018-02-21 08:28
-#menu: review
+title:  Vim
 categories: vim 
 published: true 
+redirect_from: vim/2018/02/21/VIM.html 
 ---
 After 8 months of using Vim here are my most used commands. I now find it easier and more enjoyable to edit text in Vim than in any other editor.
 
