@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "GitKraken"
-date:   2018-01-22
 # menu: review
 categories: git
 published: true 
+redirect_from: "/git/2018/01/22/Gitkraken.html"
 ---
 ![Menu](/assets/2018-01-22-AllReady/gitk.png)
 
