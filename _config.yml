@@ -35,3 +35,8 @@ timezone: Europe/London
 exclude: [
  "Gemfile", "Gemfile.lock" 
 ]
+
+repository: djhmateer/djhmateer.github.io
+
+plugins:
+  - jekyll-redirect-from
