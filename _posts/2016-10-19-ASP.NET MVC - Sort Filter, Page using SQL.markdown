@@ -2,8 +2,9 @@
 layout: post
 title:  "Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC"
 #menu: review
-categories: jekyll sql dapper
+categories: sql dapper
 published: true
+redirect_from: "jekyll/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL.html"
 ---
 
 This post more than any other, is for me to remember how I like to name things, and how to setup a high performance web application with large amounts of data needing queried in MSSQL. The example shows ASP.NET MVC whereas today I'd probably use Razor Pages on ASP.NET Core 2.0.
