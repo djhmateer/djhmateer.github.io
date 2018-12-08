@@ -2,6 +2,7 @@
 layout: post
 title:  "Learn you a Haskell for Fun and Profit"
 categories: Haskell
+redirect_from: "/jekyll/2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit.html"
 ---
 ![Cows](/assets/Mia_350.jpg)
 <p>....Because trying something new is fun!</p>
