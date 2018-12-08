@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  "Jekyll and Docker"
-date:   2018-01-25
 # menu: review
-categories: jekyll
+categories: jekyll docker
 published: true 
 comments: true
+redirect_from: "/jekyl/2018/01/25/Jekyll-and-Docker.html"
 ---
 ![Menu](/assets/2018-01-25-Docker/screen.png)
 
