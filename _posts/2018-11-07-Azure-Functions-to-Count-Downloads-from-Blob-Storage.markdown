@@ -4,7 +4,7 @@ title:  Azure Functions to Count Downloads from Blob Storage
 categories: azure 
 published: true 
 comments: true
-redirect_from: /azure/2018/11/07/Azure-Functions-to-Count-Downloads-from-Blob-Storage.html 
+redirect_from: azure/2018/11/07/Azure-Functions-to-Count-Downloads-from-Blob-Storage.html 
 ---
 
 We use Azure Blob Storage to host .mp4 videos for a client and  wanted to have an accurate download count on a per video basis. Here was my [initial question on Stack Overflow](https://stackoverflow.com/q/51657349/26086)  
