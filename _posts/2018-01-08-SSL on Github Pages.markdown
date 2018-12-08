@@ -1,14 +1,17 @@
 ---
 layout: post
 title:  "How to setup SSL and HTTPS on Github Pages with Cloudflare"
-date:   2018-01-07
-categories: security
+categories: https ssl cloudflare githubpages
 published: true 
+redirect_from: "/security/2018/01/07/SSL-on-Github-Pages.html"
 ---
 ![Menu](/assets/2018-01-08/menu.png)
 
 ### Summary
 I setup my github pages hosted blog site (this one) to be running HTTPS by using Cloudflare. There is no cost involved.
+
+### Update 2018
+Github pages now automatically gets a LetsEncrypt certificate for you! No need to use Cloudflare to do this.
 
 ### Cloudflare
 I used this article [Cloudflare blog](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/) but didn't setup any rules yet. The concept is that Cloudflare registers a certificate for you for free.
