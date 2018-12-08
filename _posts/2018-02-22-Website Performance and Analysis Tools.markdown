@@ -1,11 +1,10 @@
 ---
 layout: post
-title:  "Website Performance and Analysis Tools"
-date:   2018-02-22 10:25
-#menu: review
+title:  Website Performance and Analysis Tools
 categories: website http
 published: true 
 comments: true
+redirect_from: website/2018/02/22/Website-Performance-and-Analysis-Tools.html 
 ---
 
 Here are some of my favourite tools for web perf and analytics:
