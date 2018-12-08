@@ -4,7 +4,7 @@ title:  "Blog with Jekyll and host for Free"
 date:   2016-10-17
 categories: jekyll
 published: true 
-redirect_from: "/jekyll/2016/10/17/Blog-with-Jekyll-and-host-for-Free.html"
+redirect_from: "/jekyll/2016/10/17/Blog-with-Jekyll-and-host-for-free.html"
 ---
 ![Cows](/assets/Cows_500.jpg)
 
