@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Learn you a Haskell for Fun and Profit"
-categories: Haskell
+categories: haskell
 redirect_from: "/haskell/2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit.html"
 ---
 ![Cows](/assets/Mia_350.jpg)

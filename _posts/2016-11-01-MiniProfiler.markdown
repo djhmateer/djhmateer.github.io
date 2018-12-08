@@ -2,8 +2,9 @@
 layout: post
 title:  "Making applications faster using MiniProfiler"
 #menu: review
-categories: MiniProfiler
+categories: miniprofiler
 published: true
+redirect_from: "/miniprofiler/2016/11/01/MiniProfiler.html"
 ---
 Performance is an **essential part of any business application**.
 
