@@ -1,11 +1,10 @@
 ---
 layout: post
-title:  "Wordpress Persistence in AKS"
-date:   2018-05-29 12:06
-#menu: review
+title:  Wordpress Persistence in AKS
 categories: wordpress 
 published: true 
 comments: true
+redirect_from: wordpress/2018/05/29/Wordpress-Persistence-AKS.html 
 ---
 
 Wordpress uses persistence in 2 ways:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Wordpress in AKS
-categories: wordpress 
+categories: wordpress azure aks 
 published: true 
 comments: true
 redirect_from: wordpress/2018/05/31/Wordpress-in-AKS.html 
