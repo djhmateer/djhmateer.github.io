@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Language Terms"
-date:   2018-12-07 09:03
 menu: review
 categories: language 
 published: true 
