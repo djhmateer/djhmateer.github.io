@@ -38,5 +38,8 @@ exclude: [
 
 repository: djhmateer/djhmateer.github.io
 
+url: "https://davemateer.com" # the base hostname & protocol for your site
 plugins:
   - jekyll-redirect-from
+  - jekyll-sitemap
+
