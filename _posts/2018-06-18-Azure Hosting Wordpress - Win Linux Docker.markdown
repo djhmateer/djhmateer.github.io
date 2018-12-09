@@ -1,5 +1,6 @@
 ---
 layout: post
+title:  Azure Hosting Wordpress - Win Linux Docker
 categories: azure wordpress 
 published: true 
 comments: true
