@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Web App for Windows Linux Docker
-categories: wordpress 
+title:  Azure Hosting Wordpress - Win Linux Docker
+categories: azure wordpress 
 published: true 
 comments: true
 redirect_from: wordpress/2018/06/18/Web-App-for-Windows-Linux-Docker.html 
