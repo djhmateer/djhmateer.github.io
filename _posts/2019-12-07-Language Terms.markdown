@@ -7,13 +7,16 @@ published: true
 comments: true
 sitemap: false
 ---
+Whether it be in an interview situation, talking to colleagues, writing blogs or presenting at conferences, I like to use a common language to describe concepts. Some of the great educators eg K Scott Allen are very precise in how he talks about a subject.
+
+
 ## Styles
 - Imperative
    easier to write
    hard to read
    hard to maintain
 
-- Functionalo 
+- Functional 
    hard to write
    easy to read
    easy to maintain
@@ -28,14 +31,12 @@ sitemap: false
   expressions (ie not statements)
 Immutability
 
-
-
 - OO
 
 Separation and encapsulation
 
 ## Class / Type
-usually class name in C# is PascalCaseing (as opposed to camelCasing in Java)
+usually class name in C# is PascalCasing (as opposed to camelCasing in Java)
 create an instance of a class
 
 properties - PascalCase  
