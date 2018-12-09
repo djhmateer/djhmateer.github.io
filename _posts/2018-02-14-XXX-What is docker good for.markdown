@@ -5,6 +5,7 @@ date:   2018-02-14 14:06
 menu: review
 categories: docker 
 published: true 
+sitemap: false
 ---
 After 4 months on exploring Docker and Kubernetes heavily here is a summary of what I've found. I use Docker daily to generate this blog, and we use Kubernetes in production to run a legacy Wordpress site.
 

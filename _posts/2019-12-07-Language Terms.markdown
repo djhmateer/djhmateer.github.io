@@ -5,6 +5,7 @@ menu: review
 categories: language 
 published: true 
 comments: true
+sitemap: false
 ---
 ## Styles
 - Imperative

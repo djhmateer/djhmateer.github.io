@@ -4,6 +4,7 @@ title: All Posts
 menu: review
 permalink: /allPosts/
 published: true
+sitemap: false
 ---
 
 <ul>

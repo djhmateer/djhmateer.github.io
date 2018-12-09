@@ -5,6 +5,7 @@ date:   2018-03-12 13:23
 menu: review
 categories: kubernetes
 published: true 
+sitemap: false
 ---
 
 This is part 4 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)

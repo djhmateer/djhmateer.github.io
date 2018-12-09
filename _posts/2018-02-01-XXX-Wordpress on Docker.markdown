@@ -5,6 +5,7 @@ date:   2018-02-01 12:22
 menu: review
 categories: docker 
 published: true 
+sitemap: false
 ---
 
 This is part 2 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)
