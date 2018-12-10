@@ -64,6 +64,7 @@ n - next in search
 
 :q! - quit without saving
 :wq - write then quit
+:x - does sames as wq
 
 :e .  - open up file browser
 
