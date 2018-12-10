@@ -9,27 +9,21 @@ sitemap: false
 ---
 Interviews, talking to colleagues, writing blogs or presenting at conferences, I like to use a common language to describe concepts. Some of the great educators eg K Scott Allen are very precise in how he talks about coding.  
 
-These definitions are in relation to C#. I'll provide more detail as a reference to: wikipedia, c# docs and others. 
+These definitions are in relation to C#. I'll provide more detail as a reference to: wikipedia, microsoft documentation and common terms people use ie what people actually mean. 
 
 ## Programming Paradigm 
 [Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages. c# has is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
-- Concurrent
-- Functional
-- Generic
-- Imperative
-- Object-oriented
-- Pipleines
 
 - Imperative (contrasted with Declaritive)
-   [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) uses statements the change a program's state.
+   [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) uses statements to change a program's state. eg C#
 
 - Declaritive (contrasted with Imperative)
-   [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. Common declaritive languages are: SQL, regex, functional programming
+   [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
 
 - Procedural
-   [Wikipedia] is a type of imperative programming in which the program is built from one of more procedures (..subroutines or functions). Heavily procedural programming, in which state changes are localised to procedures or restricted to explicit arguments and returns from procedures, is a form of [structured programming].. from the 1960's onwards.. improve maintainability and quality of imperative programs. The concepts behing [object oriented programming] attempt to extend this approach.
+   [Wikipedia] is a type of imperative programming in which the program is built from one of more procedures (..subroutines or functions). Heavily procedural programming, in which state changes are localised to procedures or restricted to explicit arguments and returns from procedures, is a form of [structured programming].. from the 1960's onwards.. improve maintainability and quality of imperative programs. The concepts behind [object oriented programming] attempt to extend this approach.
 
-
+## Styles
 - Functional 
    hard to write easy to read easy to maintain easy to parallelize
    What is FP Functions first-class pure higher order composition expressions (ie not statements) Immutability
@@ -58,8 +52,6 @@ pass an argument (value) and accept a parameter (reference to that value)
 Foo(1, 2);  // 1 and 2 are arguments
 void Foo(int x, int y); // x and y are parameters
 ```
-
-
 # FP
 Why FP
 Easier
@@ -128,7 +120,11 @@ static void Main()
 
 ```
 
+functions 
 closures
+HOFs
+
+monads / flatmap
 
 
 ![ps](/assets/2018-11-07/2.png)
