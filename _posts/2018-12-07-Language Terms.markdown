@@ -11,18 +11,17 @@ Interviews, talking to colleagues, writing blogs or presenting at conferences, I
 
 These definitions are in relation to C#. I'll provide more detail as a reference to: wikipedia, microsoft documentation and detailed links. 
 
-## Programming Paradigm 
+## Programming Paradigms
 [Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages based on their features. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language) is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
 
-- Imperative (contrasted with Declaritive)
-   [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) uses statements to change a program's state. eg C#
+- [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) (contrasted with Declaritive) uses statements to change a program's state. eg C#
 
    - [Procedural](https://en.wikipedia.org/wiki/Procedural_programming) groups instructions into procedures eg C, BASIC
    - [Object Oriented](https://en.wikipedia.org/wiki/Object-oriented_programming) groups instructions together with the part of the state they operate on eg Java, C#, Lisp
 
 
-* Declaritive (contrasted with Imperative)
-   [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
+
+- [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
     - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
 ## History
