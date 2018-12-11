@@ -49,14 +49,14 @@ A type that is declared as a class is a reference type. At run time when you dec
 
 ## Fields Properties Methods
 ```c#
-public class Person()
+public class Person
 {
     // Auto-implemented property
     public string Name { get;set; }
 
     // Public field - unusual
     public int age;
-    
+
 
     // Constructor that takes an argument
     public Person(string name)
@@ -70,17 +70,21 @@ public class Person()
 
 class Program
 {
-    static void Main()
+    static async Task Main()
     {
         // create an object of type Person 
         // passing a value to the constructor
         // which will set the public property
         var person = new Person("Dave");
 
-        Console.Writeline(person.Greeting())
+        Console.WriteLine(person.Greeting())
     }
 }
 ```
+[Properties](https://docs.microsoft.com/en-us/dotnet/csharp/properties)  **HERE in broken link scratch
+[Static async Main in C#7.1](https://blogs.msdn.microsoft.com/mazhou/2017/05/30/c-7-series-part-2-async-main/)
+
+
 Access modifier is public here
 
 
