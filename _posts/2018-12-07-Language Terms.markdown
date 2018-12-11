@@ -7,34 +7,83 @@ published: true
 comments: false
 sitemap: false
 ---
-Interviews, talking to colleagues, writing blogs or presenting at conferences, I like to use a common language to describe concepts. Some of the great educators eg K Scott Allen are very precise in how he talks about coding.  
+Interviews, talking to colleagues, writing blogs or presenting at conferences, I like to use a common language to describe concepts. Some of the great educators eg K Scott Allen are very precise in how they talk technically.  
 
-These definitions are in relation to C#. I'll provide more detail as a reference to: wikipedia, microsoft documentation and common terms people use ie what people actually mean. 
+These definitions are in relation to C#. I'll provide more detail as a reference to: wikipedia, microsoft documentation and detailed links. 
 
 ## Programming Paradigm 
-[Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages. c# has is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
+[Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages based on their features. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language) is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
 
 - Imperative (contrasted with Declaritive)
    [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) uses statements to change a program's state. eg C#
 
-- Declaritive (contrasted with Imperative)
+   - [Procedural](https://en.wikipedia.org/wiki/Procedural_programming) groups instructions into procedures eg C, BASIC
+   - [Object Oriented](https://en.wikipedia.org/wiki/Object-oriented_programming) groups instructions together with the part of the state they operate on eg Java, C#, Lisp
+
+
+* Declaritive (contrasted with Imperative)
    [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
+    - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
-- Procedural
-   [Wikipedia] is a type of imperative programming in which the program is built from one of more procedures (..subroutines or functions). Heavily procedural programming, in which state changes are localised to procedures or restricted to explicit arguments and returns from procedures, is a form of [structured programming].. from the 1960's onwards.. improve maintainability and quality of imperative programs. The concepts behind [object oriented programming] attempt to extend this approach.
-
-## Styles
-- Functional 
-   hard to write easy to read easy to maintain easy to parallelize
-   What is FP Functions first-class pure higher order composition expressions (ie not statements) Immutability
-
-- OO
+## History
+- Machine code - first generation language
+- Assembly - second generation
+- Procedural - third generation
+- Object oriented
+- Declaritive - fourth generation
 
 Separation and encapsulation
 
-## Class / Type
-usually class name in C# is PascalCasing (as opposed to camelCasing in Java)
-create an instance of a class
+## Class 
+[C# Programming Guide](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/index)  
+Create an instance of a [class](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/classes)
+```c#
+// Declaring an object of type Person
+// Creating an instance of a Person class
+Person person = new Person();
+```
+A type that is declared as a class is a reference type. At run time when you declare a variable of a reference type that variable contains the value null, until you explicitly create an instance of the class by using the new operator.
+
+- A class defines a type of object
+- An object is a concrete entity based on a class, sometime referred to as an instance of a class
+
+## Fields Properties Methods
+```c#
+public class Person()
+{
+    // Auto-implemented property
+    public string Name { get;set; }
+
+    // Public field - unusual
+    public int age;
+    
+
+    // Constructor that takes an argument
+    public Person(string name)
+    {
+        Name = name;
+    }
+
+    // Method using Expression bodied memmber (C#7)
+    public string Greeting() => $"Hello {Name}";
+}
+
+class Program
+{
+    static void Main()
+    {
+        // create an object of type Person 
+        // passing a value to the constructor
+        // which will set the public property
+        var person = new Person("Dave");
+
+        Console.Writeline(person.Greeting())
+    }
+}
+```
+Access modifier is public here
+
+
 
 properties - PascalCase  
 fields - usually private and camelCase or _camelCase  
