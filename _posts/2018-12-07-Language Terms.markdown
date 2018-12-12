@@ -24,13 +24,6 @@ These definitions are in relation to C#. I'll provide more detail as a reference
 - [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
     - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
-## History
-- Machine code - first generation language
-- Assembly - second generation
-- Procedural - third generation
-- Object oriented
-- Declaritive - fourth generation
-
 Separation and encapsulation
 
 ## Class 
@@ -47,26 +40,9 @@ A type that is declared as a class is a reference type. At run time when you dec
 - An object is a concrete entity based on a class, sometime referred to as an instance of a class
 
 ## Fields Properties Methods
+Object orientated programming principles say that, the internal workings of a class should be hidden from the outside world. If you expose a field you're in essence exposing the internal implementation of the class. Therefore we wrap fields with Properties [SO Source](https://stackoverflow.com/a/295140/26086)
+
 ```c#
-public class Person
-{
-    // Auto-implemented property
-    public string Name { get;set; }
-
-    // Public field - unusual
-    public int age;
-
-
-    // Constructor that takes an argument
-    public Person(string name)
-    {
-        Name = name;
-    }
-
-    // Method using Expression bodied memmber (C#7)
-    public string Greeting() => $"Hello {Name}";
-}
-
 class Program
 {
     static async Task Main()
@@ -74,29 +50,43 @@ class Program
         // create an object of type Person 
         // passing a value to the constructor
         // which will set the public property
-        var person = new Person("Dave");
-
-        Console.WriteLine(person.Greeting())
+        var person = new Person("Dave", 45);
+        Console.WriteLine(person.Greeting());
     }
 }
+
+public class Person
+{
+    // Auto Property (C#3 which generates a private field)
+    public string Name { get; set; }
+
+    // Field commonly named _age or age (almost always should be private)
+    private int _age;
+
+    // Property. When accessed it uses the underlying field
+    public int Age
+    {
+        get { return _age; }
+        set { _age = value; }
+    }
+
+    // Constructor that takes argument (or are these parameters?)
+    public Person(string name, int age)
+    {
+        // Initialising property
+        Name = name;
+        // Initialising Field
+        Age = age;
+    }
+
+    // Method using Expression bodied memmber (C#7)
+    public string Greeting() => $"Hello {Name}";
+}
 ```
-[Properties](https://docs.microsoft.com/en-us/dotnet/csharp/properties)  **HERE in broken link scratch
-[Static async Main in C#7.1](https://blogs.msdn.microsoft.com/mazhou/2017/05/30/c-7-series-part-2-async-main/)
+[Properties](https://docs.microsoft.com/en-us/dotnet/csharp/properties)  
 
+[Capitalisation](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/capitalization-conventions)
 
-Access modifier is public here
-
-
-
-properties - PascalCase  
-fields - usually private and camelCase or _camelCase  
-to hold state
-
-constructor
-invoke a method
-  to implement behaviours
-
-static method
 
 ## Arguments vs Parameters
 pass an argument (value) and accept a parameter (reference to that value)
@@ -104,6 +94,52 @@ pass an argument (value) and accept a parameter (reference to that value)
 Foo(1, 2);  // 1 and 2 are arguments
 void Foo(int x, int y); // x and y are parameters
 ```
+## Async
+In the example above the entry point into the Console Application is a
+[Static async Task Main()](https://blogs.msdn.microsoft.com/mazhou/2017/05/30/c-7-series-part-2-async-main/) which is new in C#7.1  
+
+```c#
+// Static readonly Field so PascalCasing
+private static readonly HttpClient HttpClient = new HttpClient();
+
+static async Task Main()
+{
+    var sw = new Stopwatch();
+    sw.Start();
+    var countOfNumberOfTimesDotNetUsed = GetDotNetCountAsync("https://dotnetfoundation.org");
+    var r2 = GetDotNetCountAsync("https://davemateer.com");
+    var r3 = GetDotNetCountAsync("https://docs.microsoft.com/en-us/dotnet/csharp/async");
+    var r4 = GetDotNetCountAsync("https://docs.microsoft.com/en-us/dotnet/csharp/pattern-matching");
+    Console.WriteLine("here");
+    Console.WriteLine(await r2);
+    Console.WriteLine(await r3);
+    Console.WriteLine(await r4);
+    Console.WriteLine(await countOfNumberOfTimesDotNetUsed);
+    Console.WriteLine(sw.ElapsedMilliseconds);
+}
+
+public static async Task<int> GetDotNetCountAsync(string url)
+{
+    // Suspends GetDotNetCountAsync() to allow the caller 
+    // to accept another request, rather than blocking on this one.
+    var html = await HttpClient.GetStringAsync(url);
+    System.Threading.Thread.Sleep(1000);
+    return Regex.Matches(html, @"\.NET").Count;
+}
+```
+Without the new async entrypoint we couldn't use await in the Main method (and would have to write more code)  
+
+[Async programming docs](https://docs.microsoft.com/en-us/dotnet/csharp/async) "If you have any I/O-bound needs (such as requesting data from a network or accessing a database), you'll want to utilize asynchronous programming."
+
+> Async all the way (down/up)
+
+[SO Answer](https://stackoverflow.com/a/29809054/26086)  
+
+**HERE in program2 - write up wait for all tasks? Do a 100 calls to a webserver in parallel?**
+
+## Static
+Singletons
+
 # FP
 Why FP
 Easier
