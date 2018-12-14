@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Language Terms"
+title:  Language Terms
 menu: review
 categories: language 
 published: true 
@@ -12,7 +12,7 @@ Interviews, talking to colleagues, writing blogs or presenting at conferences, I
 These definitions are in relation to C#. I'll provide more detail as a reference to: wikipedia, microsoft documentation and detailed links. 
 
 ## Programming Paradigms
-[Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages based on their features. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language) is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
+[Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages based on their features. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
 
 - [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) (contrasted with Declaritive) uses statements to change a program's state. eg C#
 
@@ -47,8 +47,7 @@ class Program
 {
     static async Task Main()
     {
-        // create an object of type Person 
-        // passing a value to the constructor
+        // create an object of type Person passing a value to the constructor
         // which will set the public property
         var person = new Person("Dave", 45);
         Console.WriteLine(person.Greeting());
@@ -75,12 +74,12 @@ public class Person
     {
         // Initialising property
         Name = name;
-        // Initialising Field
+        // Initialising property which sets the private field
         Age = age;
     }
 
     // Method using Expression bodied memmber (C#7)
-    public string Greeting() => $"Hello {Name}";
+    public string Greeting() => $"Hello {Name}, who is {_age} years old";
 }
 ```
 [Properties](https://docs.microsoft.com/en-us/dotnet/csharp/properties)  
@@ -136,6 +135,7 @@ Without the new async entrypoint we couldn't use await in the Main method (and w
 [SO Answer](https://stackoverflow.com/a/29809054/26086)  
 
 **HERE in program2 - write up wait for all tasks? Do a 100 calls to a webserver in parallel?**
+**find the timing for each task to complete**
 
 ## Static
 Singletons
