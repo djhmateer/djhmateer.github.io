@@ -221,7 +221,7 @@ We didn't have a login to WP, so the trick was to reset the password in the db [
 ## Upgrading Issues / Legacy Versions of PHP and Wordpress
 I found the plugin [All in one WP Migration](https://en-gb.wordpress.org/plugins/all-in-one-wp-migration/) useful to dump the entire legacy site which came in around 300MB. This was all plugins, themes and database dump. So everything was overwritten in the new site.
 
-However what I found was that the existing legacy system [13.73.162.214](http://13.73.162.214) (actually this was the demo system that my colleague built) was running:
+However what I found was that the existing legacy system was running:
 
 - PHP5.5.9-1ubuntu4.22
 - Wordpress 4.7.9 (latest is 4.9.4)
