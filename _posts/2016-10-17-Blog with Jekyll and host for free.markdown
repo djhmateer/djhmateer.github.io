@@ -8,7 +8,7 @@ redirect_from: "/jekyll/2016/10/17/Blog-with-Jekyll-and-host-for-free.html"
 ---
 ![Cows](/assets/Cows_500.jpg)
 
-**25th Jan 2018 - please see updated <a href="/jekyll/2018/01/25/Jekyll-and-Docker.html">post</a> on installing Jekyll using Docker**
+**25th Jan 2018 - please see updated <a href="/2018/01/25/Jekyll-and-Docker.html">post</a> on installing Jekyll using Docker**
 
 
 Excellent for developers who know Git, even if you don't know Ruby like me :-)
