@@ -9,7 +9,7 @@ sitemap: false
 ---
 Interviews, talking to colleagues, writing blogs or presenting at conferences, I like to use a common language to describe concepts. Some of the great educators eg K Scott Allen are very precise in how they talk technically.  
 
-These definitions are in relation to C#. I'll provide more detail as a reference to: wikipedia, microsoft documentation and detailed links. 
+These definitions are in relation to C#. I'll provide more detail as a reference to: Wikipedia, Microsoft documentation and detailed links. 
 
 ## Programming Paradigms
 [Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages based on their features. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
@@ -139,6 +139,8 @@ Without the new async entrypoint we couldn't use await in the Main method (and w
 
 ## Static
 Singletons
+
+## Yielding
 
 # FP
 Why FP

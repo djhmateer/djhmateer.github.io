@@ -100,7 +100,7 @@ create video container and put anonymous read access on it.
 
 Use [Azure Storage Explorer](https://azure.microsoft.com/en-gb/features/storage-explorer/) to put up some test videos.  
 
-[https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4](https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4) or whatever your blob storage is called, should now work. Seeking to a specific time in the video will not work [more detail](https://blog.thoughtstuff.co.uk/2014/01/streaming-mp4-video-files-in-azure-storage-containers-blob-storage/). Use this [AzureBlobVideoSeekFix](https://github.com/djhmateer/AzureBlobVideoSeekFix) console app to update the offending namespace.   
+https://davemtestvideostorage.blob.core.windows.net/videos/a.mp4 or whatever your blob storage is called, should now work. Seeking to a specific time in the video will not work [more detail](https://blog.thoughtstuff.co.uk/2014/01/streaming-mp4-video-files-in-azure-storage-containers-blob-storage/). Use this [AzureBlobVideoSeekFix](https://github.com/djhmateer/AzureBlobVideoSeekFix) console app to update the offending namespace.   
 
 Turn on logging of downloads:
 
