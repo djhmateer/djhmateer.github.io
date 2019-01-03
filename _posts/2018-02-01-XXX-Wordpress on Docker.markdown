@@ -260,8 +260,6 @@ I could then get the PHP7 site to work.
 ## Performance Issues
 I noticed that reverting to PHP5.6 made the site a slower. Also this is a sercurity risk problem (not upgrading)
 
-[davewordpress demo site](http://davewordpress.westeurope.cloudapp.azure.com/)
-
 ## PHP7.x version
 As the feedback has been that it is very hard to update this site and 'it breaks when I update things' we really need to push to be on the latest bits and to keep on top of updates.
 
