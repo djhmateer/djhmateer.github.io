@@ -156,6 +156,17 @@ get stuff done faster
 Action - delegate (pointer) to a method that takes 0, one for more input parameters but does not return anything
 Func - same as above but returns a value (or reference)
 
+```c#
+// assign a function to a variable 
+// function assigned to variable triple takes one int parameter and returns an int 
+Func<int,int> triple = x => x * 3;
+var range = Enumerable.Range(1, 3);
+// pass a variable (a function!) in as an argument
+var triples = range.Select(triple).ToList(); // 3,6,9
+
+// call the invoke method on the anonymous function
+var result = triple.Invoke(3); // 9
+```
 
 lambda expressions
 They are a way to define a method
@@ -215,6 +226,3 @@ closures
 HOFs
 
 monads / flatmap
-
-
-![ps](/assets/2018-11-07/2.png)
