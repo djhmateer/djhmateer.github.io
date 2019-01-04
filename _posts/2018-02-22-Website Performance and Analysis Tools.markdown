@@ -26,7 +26,7 @@ Here are some of my favourite tools for web perf and analytics:
 
 ## Performance
 [Apache benchmarks](/apachebenchmarks/2018/02/01/Apache-Benchmarks.html) load testing from the command line  
-[JMeter](https://jmeter.apache.org/) and [this video](https://www.youtube.com/watch?v=8NLeq-QxkSw) was a useful 10 minute guide.
+[JMeter](https://jmeter.apache.org) and [this video](https://www.youtube.com/watch?v=8NLeq-QxkSw) was a useful 10 minute guide.
 
 [YSlow](http://yslow.org/) for testing webpages as a browser plugin  
 [Lighthouse Chrome extension](https://developers.google.com/web/tools/lighthouse/)  
