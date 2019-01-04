@@ -139,6 +139,9 @@ syntax on
 set belloff=all
 
 set clipboard=unnamed
+
+" If working on dos files a lot this stops the ^M line endings marker being shown
+set ffs=dos
 ```
 ## Cmder
 I used Cmder as my shell in Windows and really like it. Running Vim inside it was annoying as keyboard binding were confliced - specifically Ctrl W for new split windows. I mapped Ctrl W to Ctrl Shift W in Cmder as [shown](https://www.cs.oberlin.edu/~kuperman/help/vim/windows.html).
