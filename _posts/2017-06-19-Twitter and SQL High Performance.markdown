@@ -24,7 +24,7 @@ I did a short interview too:
 
 [Channel 9](https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL)
 
-[Facebook MVP UK and IE](https://www.facebook.com/pg/mvpsukandie/videos/)
+[Facebook MVP UK and IE](https://www.facebook.com/pg/mvpsukandie/videos)
 
 ### Write Up
 [Great Write Up](http://blog.craigtp.co.uk/post/DDD-12-In-Review)
