@@ -221,7 +221,7 @@ This could be a good tactic, however the production website I'm dealing with has
 
 
 ## Gluster
-Azure doesn't yet have a performant distributed filesystem, so I am trialling [GlusterFS](https://www.gluster.org/) using Azure Disks.  
+Azure doesn't yet have a performant distributed filesystem, so I am trialling [GlusterFS](https://www.gluster.org) using Azure Disks.  
 
 [Kubepress](https://github.com/codeablehq/KubePress) implements Gluster.   
 
