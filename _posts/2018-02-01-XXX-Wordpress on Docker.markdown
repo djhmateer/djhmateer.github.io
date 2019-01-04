@@ -8,7 +8,7 @@ published: true
 sitemap: false
 ---
 
-This is part 2 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)
+This is part 2 of a [series](/2018/02/14/What-is-docker-good-for.html)
 
 
 I wanted to explore a legacy Wordpress site:

@@ -8,7 +8,7 @@ published: true
 sitemap: false
 ---
 
-This is part 4 of a [series](/docker/2018/02/14/What-is-docker-good-for.html)
+This is part 4 of a [series](/2018/02/14/What-is-docker-good-for.html)
 
 [Pluralsight course by Nidel Poulton](https://app.pluralsight.com/library/courses/getting-started-kubernetes/table-of-contents) on "Getting Started with Kubernetes" has a good section on Minikube. The overall summary for Windows is get the minikube binary and kubectl binary in the path. I use c:\sharedTools.
 
