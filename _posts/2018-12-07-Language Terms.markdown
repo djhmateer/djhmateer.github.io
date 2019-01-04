@@ -157,6 +157,7 @@ Action - delegate (pointer) to a method that takes 0, one for more input paramet
 Func - same as above but returns a value (or reference)
 
 ```c#
+// 1. Functions as first class values
 // assign a function to a variable 
 // function assigned to variable triple takes one int parameter and returns an int 
 Func<int,int> triple = x => x * 3;
@@ -164,62 +165,75 @@ var range = Enumerable.Range(1, 3);
 // pass a variable (a function!) in as an argument
 var triples = range.Select(triple).ToList(); // 3,6,9
 
-// call the invoke method on the anonymous function
+// call the function
 var result = triple.Invoke(3); // 9
-```
 
+// 2. Functional nature of LINQ
+var a = Enumerable.Range(1, 100)
+    .Where(x => x % 20 == 0) // filter using a predicate so only get 20,40,60,80,100
+    .OrderBy(x => -x) // sort by descending into a new sequence
+    .Select(x => $"{x}%"); // map each numerical value to a string suffixed by a % into a new sequence
+
+```
 lambda expressions
 They are a way to define a method
 Lambda expression are a way to create executable code
 
-
 ## Higher Order Functions
 This HOF takes a function as an argument (functions that depend on other functions) 
 ```c#
-// Higher Order Function - second parameter Func is another function which takes an int parameter
-// returns a bool 
-public static IEnumerable<int> Find(this IEnumerable<int> values, Func<int, bool> predicate)
+static class Program
 {
-    foreach (var number in values)
-        if (predicate(number))
-            yield return number;
-}
+    static void Main()
+    {
+        // 1. Functions as first class values
+        // assign a function to a variable 
+        // function assigned to variable triple takes one int parameter and returns an int 
+        Func<int, int> triple = x => x * 3;
+        var range = Enumerable.Range(1, 3);
+        // pass a variable (a function!) in as an argument
+        var triples = range.Select(triple).ToList(); // 3,6,9
 
-public static bool IsPrime(int number)
-{
-    for (long i = 2; i < number; i++)
-        if (number % i == 0)
-            return false;
-    return true;
-}
+        // call the function
+        var result = triple.Invoke(3); // 9
 
-static void Main()
-{
-    // a Func is a delegate 
-    // a delegate allows us to create a variable to point to a method
-    // lambdas can declare a function inline
-    // lambda expression is an easy way to define a method
-    // which takes an int here and returns an int
-    Func<int, int> timesThree = x => x * 3;
-    var result = timesThree(2); // 6
+        // 2. Functional nature of LINQ
+        var a = Enumerable.Range(1, 100)
+            .Where(x => x % 20 == 0) // filter using a predicate so only get 20,40,60,80,100
+            .OrderBy(x => -x) // sort by descending into a new sequence
+            .Select(x => $"{x}%"); // map each numerical value to a string suffixed by a % into a new sequence
 
-    // anonymous method
-    // delegate allows us to create a variable to point to a method
-    //Func<int, int> triple = delegate(int x) { return x * 3; };
+        // 4.1 HOF
+        var numbers = new[] { 3, 5, 7, 9 };
+        foreach (var prime in numbers.Find(IsPrime))
+            Console.WriteLine(prime);
 
-    // a local function (using expression body syntax) is similar
-    //int triple(int x) => x * 3;
+    }
 
-    var numbers = new[] { 3, 5, 7, 9 };
-    foreach (var prime in numbers.Find(IsPrime))
-        Console.WriteLine(prime);
-
-    // pass a lambda into the HOF - receives an int, returns a bool
-    // x would be be number inside the HOF
-    var resultb = numbers.Find(x => x % 3 == 0);
+    // 4.1 Higher Order Function - second parameter Func is another function which takes an int parameter
+    // returns a bool 
+    // function that depends on a function as an input - often referred to as a callback or continuation or inversion of control
+    // this is the most common usage of a HOF
+    public static IEnumerable<int> Find(this IEnumerable<int> values, Func<int, bool> predicate)
+    {
+        foreach (var number in values)
+            if (predicate(number))
+                yield return number;
+    }
+    public static bool IsPrime(int number)
+    {
+        for (long i = 2; i < number; i++)
+            if (number % i == 0)
+                return false;
+        return true;
+    }
 }
 
 ```
+
+## HOF to avoid duplication - DB Connect
+
+
 
 functions 
 closures
