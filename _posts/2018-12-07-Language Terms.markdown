@@ -88,12 +88,14 @@ public class Person
 
 
 ## Arguments vs Parameters
-pass an argument (value) and accept a parameter (reference to that value)
+pass an argument (value) and accept a parameter (reference to that value) [SO question](https://stackoverflow.com/a/1663724/26086)  
 ```c#
-Foo(1, 2);  // 1 and 2 are arguments
-void Foo(int x, int y); // x and y are parameters
+Foo(1, 2);  // 1 and 2 are arguments as they are *values*
+void Foo(int x, int y); // x and y are parameters as they are *names*
 ```
-## Async
+but they are used interchangeably 
+
+## Async Await
 In the example above the entry point into the Console Application is a
 [Static async Task Main()](https://blogs.msdn.microsoft.com/mazhou/2017/05/30/c-7-series-part-2-async-main/) which is new in C#7.1  
 
@@ -146,7 +148,7 @@ Func - same as above but returns a value (or reference)
 // 1. Functions as first class values
 // assign a function to a variable 
 // function assigned to variable triple takes one int parameter and returns an int 
-Func<int,int> triple = x => x * 3;
+Func<int, int> triple = x => x * 3;
 var range = Enumerable.Range(1, 3);
 // pass a variable (a function!) in as an argument
 var triples = range.Select(triple).ToList(); // 3,6,9
@@ -202,8 +204,12 @@ static class Program
 
 ```
 
-## HOF to avoid duplication - DB Connect
+## HOF to encapsulate setup and teardown - DB Connection
+Sometimes called 'Hole in the middle'
 
+
+statement - doesn't return a value
+expression - returns a value
 
 
 functions 
