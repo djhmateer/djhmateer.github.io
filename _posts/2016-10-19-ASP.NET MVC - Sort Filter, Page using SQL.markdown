@@ -112,7 +112,7 @@ var sql = @"
 
 
 ## Counting
-Counts are expensive. [Some background information](http://www.sqlservercentral.com/blogs/spaghettidba/2015/05/18/counting-the-number-of-rows-in-a-table/) 
+Counts are expensive. [Some background information](http://www.sqlservercentral.com/blogs/spaghettidba/2015/05/18/counting-the-number-of-rows-in-a-table/)
 
 I've used the following technique on large tables which gives blazing fast performance
 
