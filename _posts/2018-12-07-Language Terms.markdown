@@ -134,21 +134,7 @@ Without the new async entrypoint we couldn't use await in the Main method (and w
 
 [SO Answer](https://stackoverflow.com/a/29809054/26086)  
 
-**HERE in program2 - write up wait for all tasks? Do a 100 calls to a webserver in parallel?**
-**find the timing for each task to complete**
-
-## Static
-Singletons
-
-## Yielding
-
 # FP
-Why FP
-Easier
-Easier to test
-less code
-get stuff done faster
-
 - Funcs
 - Delegate
    allow us to create variables that point to methods
@@ -179,30 +165,15 @@ lambda expressions
 They are a way to define a method
 Lambda expression are a way to create executable code
 
-## Higher Order Functions
+## Higher Order Function (fn as an input)
+This type often referred to as a continuation or a callback or Inversion of Control
+
 This HOF takes a function as an argument (functions that depend on other functions) 
 ```c#
 static class Program
 {
     static void Main()
     {
-        // 1. Functions as first class values
-        // assign a function to a variable 
-        // function assigned to variable triple takes one int parameter and returns an int 
-        Func<int, int> triple = x => x * 3;
-        var range = Enumerable.Range(1, 3);
-        // pass a variable (a function!) in as an argument
-        var triples = range.Select(triple).ToList(); // 3,6,9
-
-        // call the function
-        var result = triple.Invoke(3); // 9
-
-        // 2. Functional nature of LINQ
-        var a = Enumerable.Range(1, 100)
-            .Where(x => x % 20 == 0) // filter using a predicate so only get 20,40,60,80,100
-            .OrderBy(x => -x) // sort by descending into a new sequence
-            .Select(x => $"{x}%"); // map each numerical value to a string suffixed by a % into a new sequence
-
         // 4.1 HOF
         var numbers = new[] { 3, 5, 7, 9 };
         foreach (var prime in numbers.Find(IsPrime))
