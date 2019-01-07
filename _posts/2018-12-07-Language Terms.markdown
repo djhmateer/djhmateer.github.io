@@ -207,6 +207,11 @@ static class Program
 ## HOF to encapsulate setup and teardown - DB Connection
 Sometimes called 'Hole in the middle'
 
+See next blog post on DB Connection
+
+
+
+
 
 statement - doesn't return a value
 expression - returns a value
