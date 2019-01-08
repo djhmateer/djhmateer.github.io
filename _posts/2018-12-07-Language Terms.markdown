@@ -343,7 +343,12 @@ This is now a pure function. Instead of injecting an interface we can inject a v
 
 This works well for Configuration and environment specific settings, but things are rarely this easy.
 
+## Testing impure functions - BMI
 
+
+
+
+## Other
 statement - doesn't return a value
 expression - returns a value
 
