@@ -19,8 +19,6 @@ These definitions are in relation to C#. I'll provide more detail as a reference
    - [Procedural](https://en.wikipedia.org/wiki/Procedural_programming) groups instructions into procedures eg C, BASIC
    - [Object Oriented](https://en.wikipedia.org/wiki/Object-oriented_programming) groups instructions together with the part of the state they operate on eg Java, C#, Lisp
 
-
-
 - [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
     - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
@@ -209,6 +207,51 @@ Sometimes called 'Hole in the middle'
 
 See next blog post on DB Connection
 
+
+## Negating a Predicate
+Having a Negate extension method gives a nice style when we want to show *non* prime numbers
+```c#
+// 1. Write a function that negates a given predicate: whenever the given predicate
+// evaluates to `true`, the resulting function evaluates to `false`, and vice versa.
+public static void PrimeTest()
+{
+    var numbers = new[] { 3, 5, 7, 9 };
+
+    // function assigned to a variable takes an int and returns a bool
+    Func<int, bool> isPrime = IsPrime;
+
+    foreach (var prime in numbers.Where(isPrime.Negate()))
+        //foreach (var prime in numbers.Where(IsPrime2.Negate()))
+        Console.WriteLine(prime);
+}
+
+// a Field!
+static Func<int, bool> IsPrime2 = x =>
+{
+    for (long i = 2; i < x; i++)
+        if (x % i == 0)
+            return false;
+    return true;
+};
+
+// extension method on Func<t, bool>
+// returns a Func<T, bool>
+// negates a predicate
+public static Func<T, bool> Negate<T>(this Func<T, bool> pred)
+{
+    return t => !pred(t);
+}
+
+public static bool IsPrime(int number)
+{
+    for (long i = 2; i < number; i++)
+        if (number % i == 0)
+            return false;
+    return true;
+}
+```
+
+## Pure and Impure Functions
 
 
 
