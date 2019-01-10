@@ -135,6 +135,8 @@ Without the new async entrypoint we couldn't use await in the Main method (and w
 [SO Answer](https://stackoverflow.com/a/29809054/26086)  
 
 # FP
+Learning by example is how more seasoned developers tend to work best (* link to research papers?).  I've taken this strategy in my FP exploration notes
+
 - Funcs
 - Delegate
    allow us to create variables that point to methods
@@ -639,8 +641,277 @@ Should model objects in a way that gives you fine control over the range of inpu
 ## Absence of data with Unit
 Many functions are called for their side effects and return void. Unit is a type (we will use an empty Tuple) that can be used to represent the absence of data.
 
+Void isn't ideal when working with Action and Func so use Unit ie System.ValueTuple:
 
+```c#
+using static ConsoleApp1.Chapter3.Instrumentation.F;
+using Unit = System.ValueTuple; // empty tuple can only have 1 possible value,  so its as good as no value
 
+namespace ConsoleApp1.Chapter3.Instrumentation
+{
+    public static class Instrumentation
+    {
+        // Function returns T - in the case below it is string
+        public static T Time<T>(string op, Func<T> f)
+        {
+            var sw = new Stopwatch();
+            sw.Start();
+
+            // run the function returning T
+            T t = f();
+
+            sw.Stop();
+            Console.WriteLine($"{op} took {sw.ElapsedMilliseconds}ms");
+            return t;
+        }
+
+        // Had to overload Time just to get Action working
+        //public static void Time(string op, Action act)
+        //{
+        //    var sw = new Stopwatch();
+        //    sw.Start();
+
+        //    act();
+
+        //    sw.Stop();
+        //    Console.WriteLine($"{op} took {sw.ElapsedMilliseconds}ms");
+        //}
+    }
+
+    // write an adapter function to modify existing function to convert an Action into a Func<Unit>
+    public static class F
+    {
+        // convenience method that allows you to write return Unit() in functions that return Unit.
+        public static Unit Unit() => default(Unit);
+    }
+
+    public static class ActionExt
+    {
+        // extension method on Action that returns Func<Unit>
+        public static Func<Unit> ToFunc(this Action action)
+        {
+            // local function
+            Unit Func()
+            {
+                action();
+                // Unit() is F.Unit() which is default(Unit) - Unit() is just a shorthand
+                return Unit();
+            }
+
+            // could refactor this lambda to a method group
+            return () => Func();
+        }
+
+        // extension method on Action that returns Func<Unit>
+        public static Func<Unit> ToFunc2(this Action action)
+        {
+            // return a lambda which takes no parameters
+            return () =>
+            {
+                action(); // run the action function
+                return Unit(); // return the System.ValueTuple ie our concept of nothing
+            };
+        }
+
+        // Adapter function for Action<T> ie takes T as a parameter and returns Unit
+        public static Func<T, Unit> ToFunc<T>(this Action<T> action)
+            => (t) =>
+            {
+                action(t);
+                return Unit();
+            };
+    }
+
+    public static class InstrumentationThing
+    {
+        public static void Run()
+        {
+            Console.WriteLine("hello!");
+            var filename = @"..\..\..\file.txt";
+            // Function returns a string (the contents of the file)
+            // lambda expression - there are no input parameters so ()
+            Func<string> read = () => File.ReadAllText(filename);
+
+            //var contents = Instrumentation.Time("reading from file.txt" , () => File.ReadAllText("file.txt"));
+            var contents = Instrumentation.Time("reading from file.txt", read);
+            Console.WriteLine($"contents: {contents}");
+
+            // but what about a void returning function which takes no parameters 
+            //Action write = () => File.AppendAllText(filename, "New content!", Encoding.UTF8);
+            Action write = () => File.AppendAllText(filename, "New content!", Encoding.UTF8);
+            
+            // uses adapter function .ToFunc() to return a ValueTuple (Unit)
+            Instrumentation.Time("writing to file.txt", write.ToFunc());
+        }
+    }
+}
+```
+
+## Option Type
+Option is a container that wraps a value...or no value.
+- None - the Option is None
+- Some(T) - the Option is Some
+
+Option also called Maybe (Haskell)
+- Nothing
+- Just
+
+```c#
+using static LaYumba.Functional.F;
+public static class OptionThing
+{
+    public static void Run()
+    {
+        // creates an Option in the None state
+        // convention to use _ when a variable is ignored
+        // note this is not a C#7 discard https://stackoverflow.com/questions/42920622/c7-underscore-star-in-out-variable/42924200
+        // normal variable  with identifier _
+        Option<string> _ = None;
+
+        // Option is in the Some state
+        Option<string> john = Some("John");
+
+        // want to run different code based on if the Option is None or Some
+        string result = Greet(_); // Sorry, who?
+        string r2 = Greet("Dave"); // Hello, Dave
+        string r3 = Greet(john); // Hello, John
+
+        // 2. Subscriber
+        var dave = new Subscriber { Name = "Dave", Email = "davemateer@gmail.com" };
+        var newsletter = GreetingFor(dave); // Dear DAVE
+        var anon = new Subscriber { Email = "anon@gmail.com" };
+        var n2 = GreetingFor(anon); // Dear Subscriber
+
+        // 3. Parsing strings
+        // Int.Parse if defined below to return an Option<int>
+        Option<int> i1 = Int.Parse("10"); // Some(10)
+
+        // forcing the caller to deal with the None case 
+        string rb = i1.Match(
+                () => "Not an int!",
+                i => $"number is {i}"
+             );
+        Console.WriteLine(rb);
+
+        // don't want to be able to do i1.HasValue() as this defeats the idea
+        // point is we want to make unconditional calls to the contens without testing whether the content is there
+        Option<int> i2 = Int.Parse("hello"); // None
+        int asdf = i2.Match(
+            () => 0, // so if the original parse fails, we set it to 0
+            x => x); // asdf is 0
+
+    }
+
+    public static string Greet(Option<string> greetee) =>
+        // Match (essentially this is a null check) takes 2 functions - for None and Some
+        greetee.Match(
+            None: () => "Sorry, who?",
+            Some: (name) => $"Hello, {name}"
+        );
+
+    // conceptually Greet is similar to Greet2
+    public static string Greet2(string name)
+        => (name == null)
+            ? "Sorry, who?"
+            : $"Hello, {name}";
+
+    // 2. By using Option you're forcing  the users of the API to handle the case in which no data is available
+    // trading run time errors, for compile time errors
+    public static string GreetingFor(Subscriber subscriber) =>
+        subscriber.Name.Match(
+            () => "Dear Subscriber",
+            name => $"Dear {name.ToUpper()}");
+}
+
+public static class Int
+{
+    public static Option<int> Parse(string s) => int.TryParse(s, out var result) ? Some(result) : None;
+}
+
+public class Subscriber
+{
+    // rather than nullable, the Name is now optional
+    public Option<string> Name { get; set; }
+    public string Email { get; set; }
+}
+
+```
+None should be used instead of null, and Match instead of a null-check
+
+## Smart Constructor Pattern
+```c#
+using static F;
+// data object / custom type / anemic objects that can only represent a valid value for an age
+// structs are value types - he uses a struct here
+// classes are reference types
+public class Age
+{
+    private int Value { get; }
+
+    // smart constructor
+    public static Option<Age> Of(int age)
+        => IsValid(age) ? Some(new Age(age)) : None;
+    // private ctor
+    private Age(int value)
+    {
+        if (!IsValid(value))
+            // Age can only be instantiated with a valid value
+            throw new ArgumentException($"{value} is not a valid age"); 
+
+        Value = value;
+    }
+
+    private static bool IsValid(int age)
+        => 0 <= age && age < 120;
+
+    // logic for comparing an Age with another Age
+    public static bool operator <(Age l, Age r) => l.Value < r.Value;
+    public static bool operator >(Age l, Age r) => l.Value > r.Value;
+
+    // for readability make it possible to compare an Age with an int.
+    // the int will first be converted to an Age
+    public static bool operator <(Age l, int r) => l < new Age(r);
+    public static bool operator >(Age l, int r) => l > new Age(r);
+
+    public override string ToString() => Value.ToString();
+}
+
+public static class AgeThing
+{
+    public static void Run()
+    {
+        Console.WriteLine("hello!");
+        //var result = CalculateRiskProfile(new Age(20));
+        // this isn't going to work as we need to handle the None case in the Option<Age>
+        //var result = CalculateRiskProfile(Age.Of(20));
+
+        // regular variable pointing to a function
+        // taking a string and returning an Option<Age>
+        // using Bind!!!
+        Func<string, Option<Age>> parseAge = s => Int.Parse(s).Bind(Age.Of);
+
+        var a = parseAge("26"); // => Some(26)
+
+        // how to work with Option<Age>?
+        // Match is easiest
+    }
+
+    // honest function - it honours its signature ie you will always end up with a Risk
+    // it will never blow up with a runtime error as Age has to be valid
+    public static Risk CalculateRiskProfile(Age age)
+        => (age < 60) ? Risk.Low : Risk.Medium;
+}
+
+public enum Risk { Low, Medium, High }
+```
+
+## Summary
+- Make functions as specific as possible
+- Make functions honest - output should be of expected type - no Exceptions, no nulls
+- Use custom types to constrain input values 
+- Use smart constructors to instantiate
+- Use Option to express the possible absence of a value
+- To execute code conditionally use Match
 
 ## Other
 statement - doesn't return a value
