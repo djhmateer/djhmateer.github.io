@@ -904,7 +904,6 @@ public static class AgeThing
 
 public enum Risk { Low, Medium, High }
 ```
-
 ## Summary
 - Make functions as specific as possible
 - Make functions honest - output should be of expected type - no Exceptions, no nulls
@@ -912,6 +911,9 @@ public enum Risk { Low, Medium, High }
 - Use smart constructors to instantiate
 - Use Option to express the possible absence of a value
 - To execute code conditionally use Match
+
+## Examples (Ch 3)
+
 
 ## Other
 statement - doesn't return a value
