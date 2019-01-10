@@ -559,16 +559,17 @@ In FP:
 
 
 ```c#
-// data object / custom type that can only represent a valid value for an age
+// data object / custom type / anemic objects that can only represent a valid value for an age
 // structs are value types - he uses a struct here
 // classes are reference types
 public class Age
 {
     private int Value { get; }
+    // Age can only be instantiated with a valid value
     public Age(int value)
     {
         if (!IsValid(value))
-            throw new ArgumentException($"{value} is not a valid age");
+            throw new ArgumentException($"{value} is not a valid age"); // see below for Option improvement
 
         Value = value;
     }
@@ -597,12 +598,12 @@ public static class AgeThing
     }
 
     // honest function - it honours its signature ie you will always end up with a Risk
-    // it will never blow up as Age has to be valid
+    // it will never blow up with a runtime error as Age has to be valid
     public static Risk CalculateRiskProfile(Age age)
         => (age < 60) ? Risk.Low : Risk.Medium;
 
-    // dishonest function - it will not always abide by its signatured
-    // ie will sometimes throw an exception
+    // dishonest function - it will not always abide by its signature
+    // ie will sometimes throw an ArgumentException
     public static Risk CalculateRiskProfileDishonest(int age)
     {
         if (age < 0 || 120 <= age)
@@ -631,7 +632,13 @@ public class AgeTests
 }
 ```
 honest functions - will always abide by its signature (and not throw an exception for example)
-using the operator keyword to help compare between int and Age
+using the operator keyword to help compare between int and Age  
+
+Should model objects in a way that gives you fine control over the range of inputs that your functions will need to handle.
+
+## Absence of data with Unit
+Many functions are called for their side effects and return void. Unit is a type (we will use an empty Tuple) that can be used to represent the absence of data.
+
 
 
 
