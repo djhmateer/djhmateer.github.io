@@ -138,7 +138,9 @@ syntax on
 
 set belloff=all
 
-set clipboard=unnamed
+" Useful for synchronising clipboard with windows system https://stackoverflow.com/a/30691754/26086
+" but causes issues in VS2017 vim plugin crashing
+" set clipboard=unnamed
 
 " If working on dos files a lot this stops the ^M line endings marker being shown
 set ffs=dos
