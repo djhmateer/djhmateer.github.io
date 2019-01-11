@@ -7,19 +7,26 @@ published: true
 comments: false
 sitemap: false
 ---
-My 3 month journey so far in exploring Functional Programming in C# and the resources I've found most useful:
+My journey so far in exploring Functional Programming in C# and the resources I've found most useful:
 
 ## Why learn FP techniques
-[NDC Video by Enrico Buonanno](https://www.youtube.com/watch?v=wJq86IXkFdQ) has a very good introduction as to why we should consider FP in C# 
+[NDC Video by Enrico Buonanno](https://www.youtube.com/watch?v=wJq86IXkFdQ) has a very good introduction as to why we should consider FP in C# - he is the author of the book linked below. 
 
 - Power (do more with less code, raise the level of abstraction)
 - Safety (avoiding unnecessary side effects makes code easier to reason about)
-- Clarity 
+- Clarity (we spend more time maintaining and consuming existing code than writing new. Achieving clarity will become more natural)
 
-And
+It has pushed my C# language skills and is thoroughly enjoyable
 
-- Has pushed my C# language skills 
-- Enjoyable
+## Strategy
+- Be patient
+- Experiment in code
+
+These techniques are for ambitious breed of developer who are aiming for code which is: concise, elegant, robust and maintainable.
+
+The brown book is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages along the way just as the author did. F# and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits.
+
+'Change the way you think is hard, and learning the syntax is relatively easy'
 
 ## Favourite Resources 
 
@@ -46,9 +53,10 @@ Did some Euler problems in a functional way ie use Linq as much as possible
 [Repository of Imperative and Functional Approaches for first 17 or so](https://davemateer.visualstudio.com/_git/Euler1)  
 
 ### C# Language Skills
-[Writing a blog post on C# language terms](/2018/12/07/Language-Terms)
 
-### Book
+### Books
 ![ps](/assets/2019-01-11/3.png)  
-[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1.
+[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1.  
+
+[Detailed notes on the book](/2018/12/07/Orange-Book-Functional-Programming-in-C-Sharp)
 

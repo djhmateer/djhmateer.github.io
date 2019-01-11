@@ -1,12 +1,14 @@
 ---
 layout: post
-title:  Language Terms
+title:  Orange Book - Functional Programming in C Sharp
 menu: review
-categories: language 
+categories: c# functional 
 published: true 
 comments: false
 sitemap: false
 ---
+![ps](/assets/2019-01-11/3.png)  
+
 Interviews, talking to colleagues, writing blogs or presenting at conferences, I like to use a common language to describe concepts. Some of the great educators eg K Scott Allen are very precise in how they talk technically.  
 
 These definitions are in relation to C#. I'll provide more detail as a reference to: Wikipedia, Microsoft documentation and detailed links. 
