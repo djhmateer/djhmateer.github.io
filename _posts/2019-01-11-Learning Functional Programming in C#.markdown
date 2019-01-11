@@ -10,7 +10,7 @@ sitemap: false
 Here is the 3 month journey so far in exploring Functional Programming in C# and the resources I've found most useful:
 
 ## Why learn FP techniques
-(NDC Video by Enrico Buonanno)[https://www.youtube.com/watch?v=wJq86IXkFdQ]  
+[NDC Video by Enrico Buonanno](https://www.youtube.com/watch?v=wJq86IXkFdQ)  
 
 - Power (do more with less code, raise the level of abstraction)
 - Safety (avoiding unnecessary side effects makes code easier to reason about)
@@ -23,7 +23,7 @@ And
 
 ## Favourite Resources 
 
- - (K Scott Allen - Linq Fundamentals with C#6 Pluralsight)[https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/table-of-contents]
+ - [K Scott Allen - Linq Fundamentals with C#6 Pluralsight](https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/table-of-contents)
 
 - Extension methods
 - Select
@@ -39,11 +39,11 @@ Using ReSharper to understand the names of different concepts and different ways
 
 
 Did some Euler problems in a functional way ie use Linq as much as possible
-- (Project Euler FP)[/2018/09/20/Improve-Programming-using-Project-Euler]   
-(Repository of Imperative and Functional Approaches)[https://davemateer.visualstudio.com/_git/Euler1]  
+- [Project Euler FP](/2018/09/20/Improve-Programming-using-Project-Euler)   
+[Repository of Imperative and Functional Approaches for first 17 or so](https://davemateer.visualstudio.com/_git/Euler1)  
 
 
-(Writing a blog post on C# language terms)[/2018/12/07/Language-Terms]
+[Writing a blog post on C# language terms](/2018/12/07/Language-Terms)
 
 
 [Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.
