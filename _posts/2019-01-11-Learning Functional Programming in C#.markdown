@@ -23,7 +23,7 @@ And
 
 ## Favourite Resources 
 
- ### Pluralsight    
+### Pluralsight    
   [K Scott Allen - Linq Fundamentals with C#6 Pluralsight](https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/table-of-contents)
 
 - Extension methods
@@ -41,7 +41,8 @@ Using [ReSharper](https://www.jetbrains.com/resharper/) to understand the names 
 
 ### Euler
 Did some Euler problems in a functional way ie use Linq as much as possible
-- [Project Euler FP](/2018/09/20/Improve-Programming-using-Project-Euler)   
+[Project Euler FP](/2018/09/20/Improve-Programming-using-Project-Euler)   
+
 [Repository of Imperative and Functional Approaches for first 17 or so](https://davemateer.visualstudio.com/_git/Euler1)  
 
 ### C# Language Skills
