@@ -16,7 +16,9 @@ My journey so far in exploring Functional Programming in C# and the resources I'
 - Safety (avoiding unnecessary side effects makes code easier to reason about)
 - Clarity (we spend more time maintaining and consuming existing code than writing new. Achieving clarity will become more natural)
 
-It has pushed my C# language skills and is thoroughly enjoyable
+I have a tricky programming problem, which I've tried and the code is rapidly turning into complex unmaintainable spaghetti. So this is my reason.
+
+As a side effect it has pushed my C# language skills and is thoroughly enjoyable!
 
 ## Strategy
 - Be patient
@@ -24,7 +26,7 @@ It has pushed my C# language skills and is thoroughly enjoyable
 
 These techniques are for ambitious breed of developer who are aiming for code which is: concise, elegant, robust and maintainable.
 
-The brown book is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages along the way just as the author did. F# and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits.
+The orange book is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. F# and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. *But* I'm going to push very hard in C# first as I know it well.
 
 'Change the way you think is hard, and learning the syntax is relatively easy'
 
@@ -58,5 +60,5 @@ Did some Euler problems in a functional way ie use Linq as much as possible
 ![ps](/assets/2019-01-11/3.png)  
 [Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1.  
 
-[Detailed notes on the book](/2018/12/07/Orange-Book-Functional-Programming-in-C-Sharp)
+[My detailed post notes on the book](/2018/12/07/Orange-Book-Functional-Programming-in-C-Sharp)
 
