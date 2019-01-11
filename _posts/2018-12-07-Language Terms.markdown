@@ -135,14 +135,10 @@ Without the new async entrypoint we couldn't use await in the Main method (and w
 [SO Answer](https://stackoverflow.com/a/29809054/26086)  
 
 # FP
-Learning by example is how more seasoned developers tend to work best (* link to research papers?).  I've taken this strategy in my FP exploration notes
+Learning by example is how more seasoned developers tend to work best (* link to research papers?).  I've taken this strategy in my FP exploration writing   
 
-- Funcs
-- Delegate
-   allow us to create variables that point to methods
-
-Action - delegate (pointer) to a method that takes 0, one for more input parameters but does not return anything
-Func - same as above but returns a value (or reference)
+- Action - pointer (delegate) to a method that can take parameters and returns nothing
+- Func - pointer (delegate)  to a method that can take parameters, and returns something
 
 ```c#
 // 1. Functions as first class values
@@ -158,12 +154,12 @@ var result = triple.Invoke(3); // 9
 
 // 2. Functional nature of LINQ
 var a = Enumerable.Range(1, 100)
-    .Where(x => x % 20 == 0) // filter using a predicate so only get 20,40,60,80,100
+    .Where(x => x % 20 == 0) // filter with a predicate (a function which returns a bool) here using a lambda expression so only get 20,40..
     .OrderBy(x => -x) // sort by descending into a new sequence
     .Select(x => $"{x}%"); // map each numerical value to a string suffixed by a % into a new sequence
 
 ```
-- lambda expressions - are a way to define a method / create executable code without a method name
+- Lambda expressions - are a way to define a method / create executable code without a method name
 
 ## Higher Order Function (fn as an input)
 This type often referred to as a continuation or a callback or Inversion of Control
