@@ -49,5 +49,5 @@ Did some Euler problems in a functional way ie use Linq as much as possible
 [Writing a blog post on C# language terms](/2018/12/07/Language-Terms)
 
 ### Book
-![ps](/assets/2019-01-11/2.png)  
+![ps](/assets/2019-01-11/3.png)  
 [Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.
