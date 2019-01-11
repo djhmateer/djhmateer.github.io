@@ -180,7 +180,6 @@ static class Program
         var numbers = new[] { 3, 5, 7, 9 };
         foreach (var prime in numbers.Find(IsPrime))
             Console.WriteLine(prime);
-
     }
 
     // 4.1 Higher Order Function - second parameter Func is another function which takes an int parameter
@@ -934,13 +933,9 @@ public static class ExamplesThing
         var c = new List<int> { 1 }.Lookup(isOdd); // => Some(1)
 
         // 3 email thing
-        //var d = new Email();
-
-        // email is a type!!!
-        // ah ha - no behaviour
-        var d = Email.Create("dave");
+        // Email is a type using a smart constructor to return a new Email(string) if the string is valid
+        Option<Email> email = Email.Create("davemateer@gmail.com"); 
     }
-
     // Lookup : IEnumerable<T> -> (T -> bool) -> Option<T>
     public static Option<T> Lookup<T>(this IEnumerable<T> ts, Func<T, bool> pred)
     {
