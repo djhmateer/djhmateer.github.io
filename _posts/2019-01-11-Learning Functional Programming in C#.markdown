@@ -35,7 +35,7 @@ And
 - Take
 - Lambda expressions
 
-### Resharper
+### ReSharper
 ![ps](/assets/2019-01-11/1.png)  
 Using [ReSharper](https://www.jetbrains.com/resharper/) to understand the names of different concepts and different ways of writing something  
 
