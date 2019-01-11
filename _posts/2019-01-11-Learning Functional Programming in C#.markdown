@@ -7,7 +7,7 @@ published: true
 comments: false
 sitemap: false
 ---
-Here is the 3 month journey so far in exploring Functional Programming in C# and the resources I've found most useful:
+My 3 month journey so far in exploring Functional Programming in C# and the resources I've found most useful:
 
 ## Why learn FP techniques
 [NDC Video by Enrico Buonanno](https://www.youtube.com/watch?v=wJq86IXkFdQ) has a very good introduction as to why we should consider FP in C# 
