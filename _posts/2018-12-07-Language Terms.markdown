@@ -163,9 +163,7 @@ var a = Enumerable.Range(1, 100)
     .Select(x => $"{x}%"); // map each numerical value to a string suffixed by a % into a new sequence
 
 ```
-lambda expressions
-They are a way to define a method
-Lambda expression are a way to create executable code
+- lambda expressions - are a way to define a method / create executable code without a method name
 
 ## Higher Order Function (fn as an input)
 This type often referred to as a continuation or a callback or Inversion of Control
