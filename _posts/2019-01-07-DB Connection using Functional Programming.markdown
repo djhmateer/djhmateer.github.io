@@ -2,7 +2,7 @@
 layout: post
 title: DB Connection using Functional Programming 
 menu: review
-categories: language sql
+categories: functional c# sql
 published: true 
 comments: false
 sitemap: false
