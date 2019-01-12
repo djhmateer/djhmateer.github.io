@@ -10,7 +10,7 @@ sitemap: false
 My journey so far in exploring Functional Programming in C# and the resources I've found most useful:
 
 ## Why learn FP techniques
-[NDC Video by Enrico Buonanno](https://www.youtube.com/watch?v=wJq86IXkFdQ) has a very good introduction as to why we should consider FP in C# - he is the author of the book linked below. 
+[NDC Video by Enrico Buonanno](https://www.youtube.com/watch?v=wJq86IXkFdQ) has a very good introduction as to why we should consider FP in C# - he is the author of the orange book linked below. 
 
 - Power (do more with less code, raise the level of abstraction)
 - Safety (avoiding unnecessary side effects makes code easier to reason about)
@@ -26,7 +26,7 @@ As a side effect it has pushed my C# language skills and is thoroughly enjoyable
 
 These techniques are for ambitious breed of developer who are aiming for code which is: concise, elegant, robust and maintainable.
 
-The orange book is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. F# and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. *But* I'm going to push very hard in C# first as I know it well.
+The orange book below is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. F# and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. *But* I'm going to push very hard in C# first as I know it well.
 
 'Change the way you think is hard, and learning the syntax is relatively easy'
 
