@@ -26,7 +26,7 @@ As a side effect it has pushed my C# language skills and is thoroughly enjoyable
 
 These techniques are for ambitious breed of developer who are aiming for code which is: concise, elegant, robust and maintainable.
 
-The orange book below is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. F# and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. *But* I'm going to push very hard in C# first as I know it well.
+The orange book below is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. [F#](https://web.archive.org/web/20161027124919/http://www.programgood.net/CategoryView,category,F.aspx) and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. *But* I'm going to push very hard in C# first as I know it well.
 
 'Change the way you think is hard, and learning the syntax is relatively easy'
 
