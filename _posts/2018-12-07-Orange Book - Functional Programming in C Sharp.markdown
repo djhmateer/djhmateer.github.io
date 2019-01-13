@@ -13,18 +13,21 @@ sitemap: false
 My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
 
 - Be Patient (I've gone back to Chapter 1 many times)
-- Experiement in code ([All my source is open](https://github.com/djhmateer/functional-csharp-code))
+- Experiement in code ([All my source is open](https://github.com/djhmateer/functional-csharp-code))  
 
-# FP
 Learning by example is how more seasoned developers tend to work best (* link to research papers?).  I've taken this strategy in my FP exploration writing   
 
+## What is FP
+- Functions as first-class values
+- Avoiding state mutation
+
+# Functions as first-class values
 - Func - pointer (delegate) to a method that can take parameters, and returns something
-- Lambda expressions - are a way to define a method / create executable code without a method name
+- Lambda expressions - executable code without a method name
 
 ```c#
-// Functions as first class values
-// function assigned to variable triple takes one int parameter and returns an int 
-// lambda expression (executable code without a method name) returns whatever int value is passed in times 3
+// Variable assigned to function triple takes one int parameter and returns an int 
+// lambda expression returns parameter times 3
 
 // The variable triple is assigned to a lambda expression function 
 Func<int, int> triple = x => x * 3;
@@ -36,18 +39,37 @@ var g = Enumerable.Range(1, 100)
     .Select(x => triple(x)); // 3, 6, 9..
 ```
 
-And if F#
+It is more obvious in F# that a variable is assigned to a function
 
 ```fsharp
-// function triple takes and int, and will return an int
+// Variable triple assigned to function accepting int parameter and int, and will return an int
 let triple x = x * 3
-
 let a = triple(4) // 12
-
 printfn "a is %i" a // 12
 ```
+## Avoid State Mutation
+```cs
+// Create and populate an array
+int[] nums = { 1, 2, 3 };
+// Updates the first value of the array
+nums[0] = 7;
+var c = nums; // => [7, 2, 3]
+```
 
-and then
+```cs
+// Function (predicate signature) accepts an int and returns a bool
+Func<int, bool> isOdd = x => x % 2 == 1;
+var d = isOdd(3); // true
+
+int[] original = {7, 6, 1};
+var sorted = original.OrderBy(x => x); // [1, 6, 7]
+var filtered = original.Where(isOdd); // [7, 1]
+var e = original; // [7, 6, 1]
+```
+
+
+
+
 ```c#
 var range = Enumerable.Range(1, 3);
 // pass a variable (a function!) in as an argument
