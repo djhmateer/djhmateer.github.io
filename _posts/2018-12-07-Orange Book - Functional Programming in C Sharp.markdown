@@ -8,7 +8,12 @@ comments: false
 sitemap: false
 ---
 ![ps](/assets/2019-01-11/3.png)  
-[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1.  
+[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  
+
+My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
+
+- Be Patient (I've gone back to Chapter 1 many times)
+- Experiement in code ([All my source is open](https://github.com/djhmateer/functional-csharp-code))
 
 # FP
 Learning by example is how more seasoned developers tend to work best (* link to research papers?).  I've taken this strategy in my FP exploration writing   
@@ -17,32 +22,23 @@ Learning by example is how more seasoned developers tend to work best (* link to
 - Lambda expressions - are a way to define a method / create executable code without a method name
 
 ```c#
-Console.WriteLine("hello z1triple!");
-// 1. Functions as first class values
+// Functions as first class values
 // function assigned to variable triple takes one int parameter and returns an int 
 // lambda expression (executable code without a method name) returns whatever int value is passed in times 3
 
-// 1. the variable triple is assigned to a lambda expression 
+// The variable triple is assigned to a lambda expression function 
 Func<int, int> triple = x => x * 3;
 var a = triple(4); // 12
 
-
-// passing the function around creating more concise code
+// Passing the function around creating more concise code
 // and higher level of abstraction
 var g = Enumerable.Range(1, 100)
-    .Select(x => triple(x)); 
-
-// more verbose putting the lambda expression inline
-var h = Enumerable.Range(1, 100)
-    .Select(x => x * 3);  // 1. Functions as first class values
-// function assigned to variable triple takes one int parameter and returns an int 
-// lambda expression (executable code without a method name) returns whatever int value is passed in times 3
-Func<int, int> triple = x => x * 3;
+    .Select(x => triple(x)); // 3, 6, 9..
 ```
 
 And if F#
 
-```f#
+```fsharp
 // function triple takes and int, and will return an int
 let triple x = x * 3
 

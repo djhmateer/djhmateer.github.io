@@ -29,6 +29,7 @@ permalink: /:year/:month/:day/:title
 # Build settings
 markdown: kramdown
 #theme: minima
+highlighter: pygments 
 
 timezone: Europe/London
 
