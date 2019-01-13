@@ -21,7 +21,7 @@ Learning by example is how more seasoned developers tend to work best (* link to
 - Functions as first-class values
 - Avoiding state mutation
 
-# Functions as first-class values
+## Functions as first-class values
 - Func - pointer (delegate) to a method that can take parameters, and returns something
 - Lambda expressions - executable code without a method name
 
