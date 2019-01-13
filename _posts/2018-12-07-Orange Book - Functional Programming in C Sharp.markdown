@@ -42,7 +42,7 @@ var g = Enumerable.Range(1, 100)
 It is more obvious in F# that a variable is assigned to a function
 
 ```fsharp
-// Variable triple assigned to function accepting int parameter and int, and will return an int
+// Variable triple assigned to function accepting int parameter and will return an int
 let triple x = x * 3
 let a = triple(4) // 12
 printfn "a is %i" a // 12
