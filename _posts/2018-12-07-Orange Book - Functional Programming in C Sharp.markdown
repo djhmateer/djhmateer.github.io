@@ -10,6 +10,8 @@ sitemap: false
 ![ps](/assets/2019-01-11/3.png)  
 [Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  
 
+[Chapter 1]()
+
 My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
 
 - Be patient (I've gone back to Chapter 1 many times)
