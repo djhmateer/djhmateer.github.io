@@ -640,9 +640,9 @@ public class PrimeTests
 ```
 
 ## Summary of Ch2
+- Functions with side effects (eg I/O, DateTime) are impure.
+- Inject in impure functions (Read and Write above)
 - Use parameterised unit tests
-- Functions without side effects (eg I/O, DateTime) are pure.
-- Separate out impure functions (eg Read and Write above) to ease testing
 
 
 ## Ch3 - Data Objects -  Primitive Types are often not specific enough eg Age
