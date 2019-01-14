@@ -30,8 +30,6 @@ The orange book below is *very* thorough, and I suspect to fully understand the 
 
 'Change the way you think is hard, and learning the syntax is relatively easy'
 
-## Favourite Resources 
-
 ### Pluralsight    
   [K Scott Allen - Linq Fundamentals with C#6 Pluralsight](https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/table-of-contents)
 
@@ -43,6 +41,9 @@ The orange book below is *very* thorough, and I suspect to fully understand the 
 - All
 - Take
 - Lambda expressions
+
+## Project Euler
+After doing the Pluralsight course [I did the first 17 or so Euler puzzles in an FP / Linq way](https://davemateer.visualstudio.com/DefaultCollection/Euler1/_git/Euler1?path=%2FREADME.md&version=GBmaster) and explanation of the [first one](/2018/09/20/Improve-Programming-using-Project-Euler)
 
 ### ReSharper
 ![ps](/assets/2019-01-11/1.png)  
