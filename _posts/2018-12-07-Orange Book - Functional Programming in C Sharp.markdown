@@ -304,71 +304,74 @@ FP is a collection of techniques based on
 - Use HOF's to encapsulate DB Connection
 - Use nice extension method for time
 - Use import static member to make code more concise eg Range
-- Use list.ForEach() to Console.WriteLine out
+- Use `list.ForEach()` to Console.WriteLine out
 - Use Expression Body syntax => as methods get smaller
 - Understand lambda expressions (executable code with no method name)
 
 ## Chapter 2 - Pure and Impure Functions
 As functions become pure they are easier to reason about correctness, test, understand, and performance is easier to enhance.  
 
-In the example below he is taking the // try 1 ListFormatter and making it a pure function  
+In the example below he is taking the `// try 1` ListFormatter and making it a pure function  
 
 
 ```c#
-class Program
+using static System.Console;
+using static System.Linq.Enumerable;
+
+public static class Thing
 {
-    static void Main()
+    public static void Run()
     {
         var input = new List<string> { "coffee beans", "BANANAS", "Dates" };
         var output = new ListFormatter().Format(input);
         // Method group - same as writing x => WriteLine(x)
         output.ForEach(WriteLine);
 
-        var b = ListFormatter2.Format(input);
-        b.ForEach(WriteLine);
-
-        var c = ListFormatter3.Format(input);
-        c.ForEach(WriteLine);
+        ListFormatter2.Format(input).ForEach(WriteLine);
+        ListFormatter3.Format(input).ForEach(WriteLine);
     }
 }
-// try 3 - no shared state, so easy to parallelise
+
+// Try 3 - no shared state, so easy to parallelise
 static class ListFormatter3
 {
     public static List<string> Format(List<string> list) =>
         list.AsParallel()
-            .Select(StringExt.ToSentenceCase) // Method group
+            .Select(StringExt.ToSentenceCase) 
             .Zip(ParallelEnumerable.Range(1, list.Count), (s, i) => $"{i}. {s}") // s is string, i is int
             .ToList();
 }
 
-// try 2 - pure function as not using a mutable counter
+// Try 2 - pure function as not using a mutable counter
 static class ListFormatter2
 {
     // when all variables required within a method are provided as input the method can be static
     public static List<string> Format(List<string> list) =>
         list
             .Select(StringExt.ToSentenceCase) // Method group
-            .Zip(Enumerable.Range(1, list.Count), (s, i) => $"{i}. {s}") // s is string, i is int
+            .Zip(Range(1, list.Count), resultSelector: (s, i) => $"{i}. {s}") // s is string, i is int
             .ToList();
 }
 
-// try 1
+// Try 1
 class ListFormatter
 {
     int counter;
 
-    // impure function - mutates global state
-    string PrependCounter(string s) => $"{++counter}. {s}";
+    // Impure function - mutates global state
+    private string PrependCounter(string s)
+    {
+        return $"{++counter}. {s}";
+    }
 
-    // pure and impure functions applied similarly
+    // Pure and impure functions applied similarly
     // Expression body syntax C#6
     public List<string> Format(List<string> list)
         => list
-            .Select(StringExt.ToSentenceCase) // pure
-            .Select(PrependCounter) // impure as mutating global state
+            .Select(StringExt.ToSentenceCase) // Pure (Method Group)
+            .Select(PrependCounter) // Impure as mutating global state
             .ToList();
 }
-
 public static class StringExt
 {
     // Pure function (no side effects)
@@ -376,7 +379,37 @@ public static class StringExt
     public static string ToSentenceCase(this string s)
         => s.ToUpper()[0] + s.ToLower().Substring(1);
 }
+
+public class ListFormatter_InstanceTests
+{
+    [Test]
+    public void ItWorksOnSingletonList()
+    {
+        var input = new List<string> { "coffee beans" };
+        var output =  ListFormatter3.Format(input);
+        Assert.AreEqual("1. Coffee beans", output[0]);
+    }
+
+    [Test]
+    public void ItWorksOnLongerList()
+    {
+        var input = new List<string> { "coffee beans", "BANANAS" };
+        var output = ListFormatter3.Format(input);
+        Assert.AreEqual("1. Coffee beans", output[0]);
+        Assert.AreEqual("2. Bananas", output[1]);
+    }
+
+    [Test]
+    public void ItWorksOnAVeryLongList()
+    {
+        var size = 100000;
+        var input = Range(1, size).Select(i => $"item{i}").ToList();
+        var output = ListFormatter3.Format(input);
+        Assert.AreEqual("100000. Item100000", output[size - 1]);
+    }
+}
 ```
+Try2 and Try3 are refactored versions to Pure Functions, which are very easy to test.
 
 Interesting guideline on static methods:
 - Make pure functions static
@@ -411,7 +444,6 @@ As opposed to injecting an interface into the constructor of an object (pure DI)
 
 Here we are injecting the behaviour  
 
-
 ```c#
 public sealed class BicExistsValidator : IValidator<MakeTransfer>
 {
@@ -439,7 +471,7 @@ public class BicExistsValidatorTest
   }
 }
 ```
-BicExistsValidator has no side effects other than the ones caused by invoking the passed in function getValidCodes
+BicExistsValidator has no side effects other than the ones caused by invoking the passed in function getValidCodes therefore easy to test.
 
 ## Testing impure functions - BMI
 This is more about refactoring code to get as much pure as possible
@@ -464,8 +496,8 @@ public static class Bmi
 {
     public static void Run()
     {
-        // injecting functions as dependencies (so we are able to test the Run method)
-        // passing impure functions into the Run HOF
+        // Injecting functions as dependencies (so we are able to test the Run method below)
+        // Passing impure functions into the Run HOF
         Run(Read, Write);
     }
 
@@ -496,7 +528,7 @@ public static class Bmi
           : 25 <= bmi ? BmiRange.Overweight
           : BmiRange.Healthy;
 
-    // Impure function (will not test)
+    // Impure functions (will not test)
     // I/O always considered a side effect (as what happens in the outside world will effect the double returned)
     private static double Read(string field)
     {
@@ -504,7 +536,6 @@ public static class Bmi
         return double.Parse(ReadLine());
     }
 
-    // Impure function (will not test)
     private static void Write(BmiRange bmiRange)
        => WriteLine($"Based on your BMI, you are {bmiRange}");
 }
@@ -537,7 +568,6 @@ public class BmiTests
         // takes a BmiRange and returns void 
         // uses a local variable (result) to hold the value of BmiRange passed into the function, which the test returns
         Action<BmiRange> write = r => result = r;
-
         Bmi.Run(read, write);
         return result;
     }
@@ -551,7 +581,7 @@ static class Prime
 {
     public static void Run()
     {
-        // injecting functions as dependencies (so we are able to test the Run method)
+        // Injecting functions as dependencies (so we are able to test the Run method)
         // passing impure functions into the Run HOF
         Run(Read, Write);
     }
@@ -573,7 +603,7 @@ static class Prime
         write(isNumberPrime);
     }
 
-    // pure function
+    // Pure function
     internal static bool IsPrime(int number)
     {
         for (long i = 2; i < number; i++)
@@ -608,6 +638,12 @@ public class PrimeTests
     }
 }
 ```
+
+## Summary of Ch2
+- Use parameterised unit tests
+- Functions without side effects (eg I/O, DateTime) are pure.
+- Separate out impure functions (eg Read and Write above) to ease testing
+
 
 ## Ch3 - Data Objects -  Primitive Types are often not specific enough eg Age
 In FP:  
