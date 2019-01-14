@@ -12,7 +12,7 @@ sitemap: false
 
 My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
 
-- Be Patient (I've gone back to Chapter 1 many times)
+- Be patient (I've gone back to Chapter 1 many times)
 - Experiement in code ([All my source is open](https://github.com/djhmateer/functional-csharp-code))  
 
 Learning by example is how more seasoned developers tend to work best (* link to research papers?).  I've taken this strategy in my FP exploration writing   
@@ -55,6 +55,7 @@ int[] nums = { 1, 2, 3 };
 nums[0] = 7;
 var c = nums; // => [7, 2, 3]
 ```
+We should avoid mutating objects in place as above, and favour making new objects as below:
 
 ```cs
 // Function (predicate signature) accepts an int and returns a bool
@@ -67,27 +68,34 @@ var filtered = original.Where(isOdd); // [7, 1]
 var e = original; // [7, 6, 1]
 ```
 
+## Programming Paradigms
+[Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages based on their features. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
 
+- [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) (contrasted with Declaritive) uses statements to change a program's state. eg C#
 
+   - [Procedural](https://en.wikipedia.org/wiki/Procedural_programming) groups instructions into procedures eg C, BASIC
+   - [Object Oriented](https://en.wikipedia.org/wiki/Object-oriented_programming) groups instructions together with the part of the state they operate on eg Java, C#, Lisp
 
-```c#
-var range = Enumerable.Range(1, 3);
-// pass a variable (a function!) in as an argument
-var triples = range.Select(triple).ToList(); // 3,6,9
+- [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
+    - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
-// call the function
-var result = triple.Invoke(3); // 9
+## LINQ
+LINQ is a functional library introduced in C#3 the contains methods for performing operations on sequences eg:
 
+- Select (Map)
+- Where (Filter)
+- Sort
+
+```cs
 // 2. Functional nature of LINQ
 var a = Enumerable.Range(1, 100)
     .Where(x => x % 20 == 0) // filter with a predicate (a function which returns a bool) here using a lambda expression so only get 20,40..
     .OrderBy(x => -x) // sort by descending into a new sequence
     .Select(x => $"{x}%"); // map each numerical value to a string suffixed by a % into a new sequence
-
 ```
 
-## Higher Order Function (fn as an input)
-This type often referred to as a continuation or a callback or Inversion of Control
+## Higher Order Function (1. fn as an input)
+This type of HOF (fn as an input) is often referred to as a continuation or a callback or Inversion of Control
 
 This HOF takes a function as an argument (functions that depend on other functions) 
 ```c#
@@ -103,8 +111,6 @@ static class Program
 
     // 4.1 Higher Order Function - second parameter Func is another function which takes an int parameter
     // returns a bool 
-    // function that depends on a function as an input - often referred to as a callback or continuation or inversion of control
-    // this is the most common usage of a HOF
     public static IEnumerable<int> Find(this IEnumerable<int> values, Func<int, bool> predicate)
     {
         foreach (var number in values)
@@ -119,14 +125,142 @@ static class Program
         return true;
     }
 }
-
 ```
+ **MORE examples of simple HOFs???
 
-## HOF to encapsulate setup and teardown - DB Connection
+
+## HOF (2. to encapsulate setup and teardown) - DB Connection
 Sometimes called 'Hole in the middle'
 
-See next blog post on DB Connection
+I have used a small [Utility Class](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Services/Util.cs) for years with Dapper and [being called like this](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Services/BooksRepository.cs)  
 
+So this FP approach allows us to get rid of the using statements.  
+
+**TODO - convert this to async (coming later in book)
+
+Notice also the Timespan extension methods allowing
+
+```c#
+var result = logger.GetLogs(7.Days().Ago()).ToList();
+```
+
+[Source code for all examples](https://github.com/djhmateer/functional-csharp-code) including a Database project to recreate the FP database in (localdb)\MSSQLLocalDB  
+
+```c#
+using static ConnectionHelper_V2; // C#6 - import static members of this type
+using static F; // Beginnings of functional library used in ConnectionHelper_V2
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello World!");
+        //var logger = new DbLogger_V1();
+        var logger = new DbLogger_V2();
+        var id = logger.Log("test");
+        Console.WriteLine($"just inserted id: {id}");
+        var result = logger.GetLogs(7.Days().Ago()).ToList();
+        result.ForEach(x => Console.WriteLine($"{x.ID} : {x.Timestamp} : {x.Message}"));
+    }
+}
+
+// Classic way of doing data access
+public class DbLogger_V1
+{
+    string connString = "Server=(localdb)\\mssqllocaldb;Database=FP;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+    public int Log(string message)
+    {
+        using (var conn = new SqlConnection(connString))
+        {
+            conn.Open();
+            //conn.Execute("Insert into Logs(message) values (@message)", new { message });
+            var result = conn.Query<int>("Insert into Logs(message) values (@message); SELECT CAST(SCOPE_IDENTITY() as int)", new { message }).Single();
+            return result;
+        }
+    }
+
+    public IEnumerable<LogMessage> GetLogs(DateTime since)
+    {
+        var sqlGetLogs = "SELECT * FROM [Logs] WHERE [Timestamp] > @since";
+        using (var conn = new SqlConnection(connString))
+            return conn.Query<LogMessage>(sqlGetLogs, new { since });
+    }
+}
+
+// Functional way
+public class DbLogger_V2
+{
+    string connString = "Server=(localdb)\\mssqllocaldb;Database=FP;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+    public int Log(string message)
+        => Connect(connString, c => c.Query<int>("Insert into Logs(message) values (@message);SELECT CAST(SCOPE_IDENTITY() as int)", new { message }).Single());
+
+    public IEnumerable<LogMessage> GetLogs(DateTime since)
+        => Connect(connString, c => c.Query<LogMessage>(@"SELECT * FROM [Logs] WHERE [Timestamp] > @since", new { since }));
+}
+
+// HOF - accepts function as an input
+public static class ConnectionHelper
+{
+    // Generic method returning a generic object R
+    // R is an IEnumerable<LogMessage> when calling GetLogs
+    // R is int when calling Log
+    // function accepts a SQLConnection, which will return an R
+    public static R Connect<R>(string connString, Func<SqlConnection, R> func)
+    {
+        // using here is a statement (which doesn't return a value)
+        using (var conn = new SqlConnection(connString))
+        {
+            conn.Open();
+            return func(conn);
+        }
+    }
+}
+
+// Refactored into simpler functions
+public static class ConnectionHelper_V2
+{
+    // Using here is an expression (expressions return values)
+    // more compact expression body syntax now we are using Using
+    public static R Connect<R>(string connString, Func<IDbConnection, R> func)
+        => Using(new SqlConnection(connString), conn => { conn.Open(); return func(conn); });
+}
+
+// start of a functional library
+public static class F
+{
+    // takes 2 arguments 
+    // 1 - a disposable resource
+    // 2 - a function to be executed before the resource is disposed
+    public static R Using<TDisp, R>(TDisp disposable, Func<TDisp, R> f) where TDisp : IDisposable
+    {
+        using (disposable) return f(disposable);
+    }
+}
+
+public class LogMessage
+{
+    public int ID { get; set; }
+    public DateTime Timestamp { get; set; }
+    public string Message { get; set; }
+}
+
+public static class TimeSpanExt
+{
+    public static TimeSpan Seconds(this int @this)
+        => TimeSpan.FromSeconds(@this);
+
+    public static TimeSpan Minutes(this int @this)
+        => TimeSpan.FromMinutes(@this);
+
+    public static TimeSpan Days(this int @this)
+        => TimeSpan.FromDays(@this);
+
+    public static DateTime Ago(this TimeSpan @this)
+        => DateTime.UtcNow - @this;
+}
+```
 
 ## Negating a Predicate
 Having a Negate extension method gives a nice style when we want to show *non* prime numbers
@@ -925,17 +1059,6 @@ monads / flatmap
 Interviews, talking to colleagues, writing blogs or presenting at conferences, I like to use a common language to describe concepts. Some of the great educators eg K Scott Allen are very precise in how they talk technically.  
 
 These definitions are in relation to C#. I'll provide more detail as a reference to: Wikipedia, Microsoft documentation and detailed links. 
-
-## Programming Paradigms
-[Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages based on their features. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
-
-- [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) (contrasted with Declaritive) uses statements to change a program's state. eg C#
-
-   - [Procedural](https://en.wikipedia.org/wiki/Procedural_programming) groups instructions into procedures eg C, BASIC
-   - [Object Oriented](https://en.wikipedia.org/wiki/Object-oriented_programming) groups instructions together with the part of the state they operate on eg Java, C#, Lisp
-
-- [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
-    - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
 Separation and encapsulation
 
