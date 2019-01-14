@@ -285,9 +285,26 @@ public static class PredThing
 }
 ```
 
-## Summary of Ch1
+## Summary of Ch1 (and what can I now do?)
+FP can help make code more concise, maintainable, expressive, robust, testable, and concurrency-friendly.
 
+FP focusses on data transformation rather than state mutation
 
+FP is a collection of techniques based on
+- Functions are first-class values
+- In-place updates should be avoided
+
+### What can I do now?
+- Write more concise C# with LINQ skills improving!
+- Higher Order Function - function that accepts and or returns a fn.
+- Predicate - Func<T, bool> eg accepts an int, returns bool eg x%2==0
+- Use HOF's to raise level of abstraction ie .Where(IsPrime)
+- Use HOF's to encapsulate DB Connection
+- Use nice extension method for time
+- Use import static member to make code more concise eg Range
+- Use list.ForEach() as
+- Use Expression Body syntax => as methods get smaller
+- Understand lambda expressions (executable code with no method name)
 
 ## Chapter 2 - Pure and Impure Functions
 As functions become pure they are easier to reason about correctness, test, understand, and performance is easier to enhance.  
