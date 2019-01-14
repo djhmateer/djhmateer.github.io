@@ -10,7 +10,9 @@ sitemap: false
 ![ps](/assets/2019-01-11/3.png)  
 [Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  
 
-[Chapter 1]()
+[Chapter 1](#what-is-fp)  
+[Chapter 2](#chapter-2---pure-and-impure-functions)  
+[Chapter 3](#chapter-3---function-signatures-and-types)  
 
 My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
 
@@ -647,23 +649,36 @@ public class PrimeTests
 - Use parameterised unit tests
 
 
-## Ch3 - Data Objects -  Primitive Types are often not specific enough eg Age
+## Chapter 3 - Function Signatures and Types
+
+## Arrow Notation
+f : int -> string  
+"f has type int to string"  
+`Func<int, string>`o
+
+## Data Objects
+Primitive Types are often not specific enough eg Age  
+
 In FP:  
 - Logic is encoded in functions  
-- Data is captured in data objects, which are used as inputs and outputs to these functions  
+- Data is captured in data objects (so no logic), which are used as inputs and outputs to these functions  
 
 
+### Constraining inputs
+structs are value types - he uses a struct here
+classes are reference types
+
+### Honest functions
+An honest function will always abide by its signature (ie should never throw an exception)
 ```c#
-// data object / custom type / anemic objects that can only represent a valid value for an age
-// structs are value types - he uses a struct here
-// classes are reference types
+// Data object / custom type / anemic objects that can only represent a valid value for an age
 public class Age
 {
     private int Value { get; }
-    // Age can only be instantiated with a valid value
     public Age(int value)
     {
         if (!IsValid(value))
+            // Age can only be instantiated with a valid value - but Dishonest (can not return Age as it can throw)
             throw new ArgumentException($"{value} is not a valid age"); // see below for Option improvement
 
         Value = value;
@@ -688,17 +703,17 @@ public static class AgeThing
 {
     public static void Run()
     {
-        Console.WriteLine("hello!");
+        WriteLine("hello!");
         var result = CalculateRiskProfile(new Age(20));
     }
 
-    // honest function - it honours its signature ie you will always end up with a Risk
+    // Honest function - it honours its signature ie you will always end up with a Risk
     // it will never blow up with a runtime error as Age has to be valid
     public static Risk CalculateRiskProfile(Age age)
         => (age < 60) ? Risk.Low : Risk.Medium;
 
-    // dishonest function - it will not always abide by its signature
-    // ie will sometimes throw an ArgumentException
+    // Dishonest function - it will not always abide by its signatured
+    // ie will sometimes throw an exception
     public static Risk CalculateRiskProfileDishonest(int age)
     {
         if (age < 0 || 120 <= age)
@@ -731,7 +746,7 @@ using the operator keyword to help compare between int and Age
 
 Should model objects in a way that gives you fine control over the range of inputs that your functions will need to handle.
 
-## Absence of data with Unit
+## Absence of data with Unit - Put Timings on functions
 Many functions are called for their side effects and return void. Unit is a type (we will use an empty Tuple) that can be used to represent the absence of data.
 
 Void isn't ideal when working with Action and Func so use Unit ie System.ValueTuple:
@@ -839,6 +854,9 @@ namespace ConsoleApp1.Chapter3.Instrumentation
     }
 }
 ```
+Unit concept which returns a ValueTuple which is our representation of nothing.  
+
+Adapter function to change Action<> which is void returning function to a Func<Unit>
 
 ## Option Type
 Option is a container that wraps a value...or no value.
