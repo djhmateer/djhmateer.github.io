@@ -285,7 +285,7 @@ public static class PredThing
 }
 ```
 
-## Summary of Ch1 (and what can I now do?)
+## Summary of Ch1 
 FP can help make code more concise, maintainable, expressive, robust, testable, and concurrency-friendly.
 
 FP focusses on data transformation rather than state mutation
@@ -295,6 +295,8 @@ FP is a collection of techniques based on
 - In-place updates should be avoided
 
 ### What can I do now?
+- Pass fn's around eg Func<int,int> triple = x => x*3; 
+- list.select(x => triple(x))
 - Write more concise C# with LINQ skills improving!
 - Higher Order Function - function that accepts and or returns a fn.
 - Predicate - Func<T, bool> eg accepts an int, returns bool eg x%2==0
@@ -302,7 +304,7 @@ FP is a collection of techniques based on
 - Use HOF's to encapsulate DB Connection
 - Use nice extension method for time
 - Use import static member to make code more concise eg Range
-- Use list.ForEach() as
+- Use list.ForEach() to Console.WriteLine out
 - Use Expression Body syntax => as methods get smaller
 - Understand lambda expressions (executable code with no method name)
 
