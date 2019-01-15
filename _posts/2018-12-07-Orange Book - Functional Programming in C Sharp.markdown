@@ -83,6 +83,9 @@ var e = original; // [7, 6, 1]
 - [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
     - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
+
+I find that many C# solutions are actually written in a Procedural style rather than on OO style  
+
 ## LINQ
 LINQ is a functional library introduced in C#3 the contains methods for performing operations on sequences eg:
 
