@@ -49,12 +49,6 @@ After doing the Pluralsight course [I did the first 17 or so Euler puzzles in an
 ![ps](/assets/2019-01-11/1.png)  
 Using [ReSharper](https://www.jetbrains.com/resharper/) to understand the names of different concepts and different ways of writing something  
 
-### Euler
-Did some Euler problems in a functional way ie use Linq as much as possible
-[Project Euler FP](/2018/09/20/Improve-Programming-using-Project-Euler)   
-
-[Repository of Imperative and Functional Approaches for first 17 or so](https://davemateer.visualstudio.com/_git/Euler1)  
-
 ### C# Language Skills
 
 ### Books
