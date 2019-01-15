@@ -32,6 +32,7 @@ ddel = docker container prune -f $t docker image prune -af $t docker network pru
 ;= $* passes all the arguments
 ;= use s nameofsolution.sln (and use tab to autocomplete) to start a solution file
 s = start $*
+gp = git pull
 ```
 
 ### Set Starup Directory

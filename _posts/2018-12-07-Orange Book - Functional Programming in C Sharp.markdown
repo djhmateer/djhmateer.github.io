@@ -184,27 +184,28 @@ public class DbLogger_V2
 }
 
 // 1. Classic way of doing data access
-//public class DbLogger_V1
-//{
-//    string connString = "Server=(localdb)\\mssqllocaldb;Database=FP;Trusted_Connection=True;MultipleActiveResultSets=true";
+public class DbLogger_V1
+{
+    string connString = "Server=(localdb)\\mssqllocaldb;Database=FP;Trusted_Connection=True;MultipleActiveResultSets=true";
 
-//    public int Log(string message)
-//    {
-//        using (var conn = new SqlConnection(connString))
-//        {
-//            conn.Open();
-//            var result = conn.Query<int>("Insert into Logs(message) values (@message); SELECT CAST(SCOPE_IDENTITY() as int)", new { message }).Single();
-//            return result;
-//        }
-//    }
+    public int Log(string message)
+    {
+        using (var conn = new SqlConnection(connString))
+        {
+            conn.Open();
+            var result = conn.Query<int>("Insert into Logs(message) values (@message);
+             SELECT CAST(SCOPE_IDENTITY() as int)", new { message }).Single();
+            return result;
+        }
+    }
 
-//    public IEnumerable<LogMessage> GetLogs(DateTime since)
-//    {
-//        var sqlGetLogs = "SELECT * FROM [Logs] WHERE [Timestamp] > @since";
-//        using (var conn = new SqlConnection(connString))
-//            return conn.Query<LogMessage>(sqlGetLogs, new { since });
-//    }
-//}
+    public IEnumerable<LogMessage> GetLogs(DateTime since)
+    {
+        var sqlGetLogs = "SELECT * FROM [Logs] WHERE [Timestamp] > @since";
+        using (var conn = new SqlConnection(connString))
+            return conn.Query<LogMessage>(sqlGetLogs, new { since });
+    }
+}
 
 public static class ConnectionHelper
 {
@@ -299,12 +300,12 @@ FP is a collection of techniques based on
 - In-place updates should be avoided
 
 ### What can I do now?
-- Pass fn's around eg Func<int,int> triple = x => x*3; 
-- list.select(x => triple(x))
+- Pass fn's around eg `Func<int,int> triple = x => x*3;i`
+    - `list.select(x => triple(x))`
 - Write more concise C# with LINQ skills improving!
 - Higher Order Function - function that accepts and or returns a fn.
-- Predicate - Func<T, bool> eg accepts an int, returns bool eg x%2==0
-- Use HOF's to raise level of abstraction ie .Where(IsPrime)
+- Predicate - `Func<T, bool>` eg accepts an int, returns bool eg x%2==0
+- Use HOF's to raise level of abstraction ie `.Where(IsPrime)`
 - Use HOF's to encapsulate DB Connection
 - Use nice extension method for time
 - Use import static member to make code more concise eg Range
