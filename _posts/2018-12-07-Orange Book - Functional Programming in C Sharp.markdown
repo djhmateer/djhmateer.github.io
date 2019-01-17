@@ -17,7 +17,7 @@ sitemap: false
 My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
 
 - Be patient (I've gone back to Chapter 1 many times)
-- Experiement in code ([All my source is open](https://github.com/djhmateer/functional-csharp-code))  
+- Experiment in code ([All my source is open](https://github.com/djhmateer/functional-csharp-code))  
 
 Learning by example is how more seasoned developers tend to work best (* link to research papers?).  I've taken this strategy in my FP exploration writing   
 
