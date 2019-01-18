@@ -7,6 +7,12 @@ published: true
 comments: false
 sitemap: false
 ---
+If we follow the functional paradigm, we should refrain from state mutation altogether: once created, an object never changes.  This is the subject of [an entire chapter of the Orange Book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-9/)
+
+The 3 options discussed in the book are:
+- Immutability by convention (but mutation can creep in!)
+- Define immutable objects in C# (required some extra work in defining constructors)
+- Write data objects in F#
 
 ## 1.Value Types
 variables of value types directly contain the data
@@ -66,12 +72,12 @@ It matters whether an object is a value or a reference type but the rest is [an 
 
 [String vs string](https://stackoverflow.com/a/215422/26086) - string is an alias for System.String and can be used interchangeably. R# suggests to use the alias string.
 
-## 4. Reference types using immutable Data Object
-To enforce immutability on our Data Object, which is a reference type, we can make the public property read only ie no set.
+## 4. Immutable Data Object - Reference type
+To enforce immutability on our Data Object / Custom Type / Anemic Object, which is a reference type, we can make the public property read only ie no set.
 ```cs
 public class Person
 {
-    public string Name { get; } //C#6 readonly auto property
+    public string Name { get; } // C#6 getter-only auto-property
     public int Age { get; }
 
     public Person(string name, int age)
