@@ -84,7 +84,7 @@ var e = original; // [7, 6, 1]
     - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
 
-I find that many C# solutions are actually written in a Procedural style rather than on OO style  
+Many C# solutions rely on imperative style in their method implementations, mutating state in place and using explicit control flow. They use OO design in the large, and imperative programmming in the small. 
 
 ## LINQ
 LINQ is a functional library introduced in C#3 the contains methods for performing operations on sequences eg:
@@ -909,7 +909,7 @@ public static class OptionThing
         Console.WriteLine(rb);
 
         // don't want to be able to do i1.HasValue() as this defeats the idea
-        // point is we want to make unconditional calls to the contens without testing whether the content is there
+        // point is we want to make unconditional calls to the content without testing whether the content is there
         Option<int> i2 = Int.Parse("hello"); // None
         int asdf = i2.Match(
             () => 0, // so if the original parse fails, we set it to 0

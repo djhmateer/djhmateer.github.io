@@ -7,7 +7,14 @@ published: true
 comments: false
 sitemap: false
 ---
-If we follow the functional paradigm, we should refrain from state mutation altogether: once created, an object never changes.  This is the subject of [an entire chapter of the Orange Book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-9/)
+If we follow the functional paradigm, we should refrain from state mutation altogether: once created, an object never changes.  This is the subject of [an entire chapter of the C# FP Orange Book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-9/)
+
+Here I give an overview of Value Types, Reference types, and simple immutability through C#6 getter-only auto-property.
+
+
+Benefits of avoiding mutation are
+- [Code is easier to read, easier to write, less bugs](https://www.rubypigeon.com/posts/avoid-mutation-functional-style-in-ruby/) ie easier to reason about code.
+- Performance through concurrency
 
 The 3 options discussed in the book are:
 - Immutability by convention (but mutation can creep in!)
