@@ -6,6 +6,8 @@ published: true
 comments: true
 redirect_from: wordpress/2018/05/31/Wordpress-in-AKS.html 
 ---
+**update 25th Jan 2019 I don't recommend this way of deploying Wordpress purely because it is complex and I've found using Azure PaaS to be good. See [Azure Hosting Wordpress Article](/2018/06/18/Azure-Hosting-Wordpress-Win-Linux-Docker)**
+
 This article details setting up a Wordpress instance in Azure Kubernetes Service (AKS). I will show you how to setup AKS then go step by step until we have a working Wordpress installation with SSL and appropriate redirects.
 
 ## Background
