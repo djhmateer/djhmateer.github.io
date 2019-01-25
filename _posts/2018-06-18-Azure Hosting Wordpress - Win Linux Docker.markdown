@@ -8,21 +8,21 @@ redirect_from: wordpress/2018/06/18/Web-App-for-Windows-Linux-Docker.html
 ---
 Lets explore potential Azure hosting options focussing on Wordpress which I've [had to deploy](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 
-1. Web App (Windows) PaaS - recommended
+1. Web App (Windows) PaaS - **recommended**
 2. App Service on Linux PaaS
 3. Web App (Docker) / Web App for Containers
 4. Azure Container Instances   
 
-Summary: ~~I'm not using any of the above.~~ I'm using 1. Web App (Windows). Web App for Containers looks extremely promising, but I need faster disks as [described here](/wordpress/2018/05/29/Wordpress-Persistence-AKS.html). If you've got a workload which isn't disk intensive then Web App for Containers is a good fit.
+Summary: **update 25th Jan 2019** ~~I'm not using any of the above.~~ I'm using 1. Web App (Windows). Web App for Containers looks extremely promising, but I need faster disks as [described here](/wordpress/2018/05/29/Wordpress-Persistence-AKS.html). If you've got a workload which isn't disk intensive then Web App for Containers is a good fit.
 
-~~I am continuing to use Azure Kubernetes Service in production for Wordpress~~. The complexity of this solution made me switch back to PaaS.  [AKS covered in this article](/wordpress/2018/05/31/Wordpress-in-AKS.html)
+~~I am continuing to use Azure Kubernetes Service in production for Wordpress~~. The complexity of [this solution](/wordpress/2018/05/31/Wordpress-in-AKS.html) made me switch back to PaaS.  
 
 ## 1. Web App (Windows)
 Create a resource, Web, Web App  
 ![ps](/assets/2018-02-15/mon2.png){:width="400px"}  
 then  
 ![ps](/assets/2018-02-15/mon1.png){:width="800px"}  
-The creation of a normal App Service that can host .NET and .NET Core on a Windows Server 2016. ~~I don't want to host Wordpress on a Windows Server mainly as it is unusual to do so.~~. It works well for my use cases.  
+The creation of a normal App Service that can host .NET and .NET Core on a Windows Server 2016. **update 25th Jan 2019** ~~I don't want to host Wordpress on a Windows Server mainly as it is unusual to do so.~~. It works well for my use cases.  
 
 I download a local copy of wordpress, setup the wp-config.php to have my remote hosted MySQL connection string ( opt for a lower powered MySQL as most pages are served from the cache see below), then use "Deploymemt Center" in Azure to create a remote. Then I can simply push to that remote to deploy.  I use PHP 7.2  
 
