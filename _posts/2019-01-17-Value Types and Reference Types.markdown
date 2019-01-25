@@ -9,22 +9,21 @@ sitemap: false
 ---
 If we follow the functional paradigm, we should refrain from state mutation altogether: once created, an object never changes.  This is the subject of [an entire chapter of the C# FP Orange Book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-9/)
 
-Here I give an overview of Value Types, Reference types, and immutability through C#6 getter-only auto-property.
+Here I give an overview of Value Types, Reference types and immutability.  
 
-
-Benefits of avoiding mutation are
+## Benefits of avoiding mutation 
 - [Code is easier to read, easier to write, less bugs](https://www.rubypigeon.com/posts/avoid-mutation-functional-style-in-ruby/) ie easier to reason about
 - Performance through concurrency
 
-The 3 options discussed in the book are:
+The options discussed in the book are:
 - Immutability by convention (but mutation can creep in!)
 - Define immutable objects in C# (required some extra work in defining constructors)
 - Write data objects in F#
 
 ## 1.Value Types
-variables of value types directly contain the data
-  bool,byte,char,decimal, int etc...
-  structs, enum
+Variables of [value types](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/value-types) directly contain the data:  
+  - simple types: bool, byte, char, decimal, int etc...  
+  - structs (eg Point), enum
 
 ```cs
 // Value types
@@ -41,10 +40,11 @@ WriteLine(i); // 42
 ```
 
 ## 2.Reference Types
-  variables of reference type store references to their data
-  class
-  object
-  string
+Variables of [reference type](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/reference-types) store references to their data eg:
+ - class
+ - object
+ - string
+ etc..
 
 ```cs
 public class Thing
@@ -61,7 +61,8 @@ void UpdateThing(Thing r)
     r.Name = "test2";
 }
 WriteLine(q.Name); // test2
-```
+```  
+
 ## 3.String - Reference type but behaves like a Value Type
 ```cs
 var aa = "test1";
