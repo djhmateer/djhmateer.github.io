@@ -76,7 +76,7 @@ Value types are stored on the stack which is 1MB for 32-bit and 4MB for 64-bit, 
 
 Reference types are stored on the heap.  
 
-It matters whether an object is a value or a reference type but the rest is [an implementation deatil](https://stackoverflow.com/a/4487320/26086)  
+It matters whether an object is a value or a reference type but the rest is [an implementation detail](https://stackoverflow.com/a/4487320/26086)  
 
 [String vs string](https://stackoverflow.com/a/215422/26086) - string is an alias for System.String and can be used interchangeably. R# suggests to use the alias string.
 
