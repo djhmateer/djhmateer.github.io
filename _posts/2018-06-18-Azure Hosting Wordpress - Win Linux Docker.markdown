@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Azure Hosting Wordpress - Win Linux Docker
-categories: azure wordpress 
+categories: wordpress azure
 published: true 
 comments: true
 redirect_from: wordpress/2018/06/18/Web-App-for-Windows-Linux-Docker.html 
@@ -24,9 +24,11 @@ then
 ![ps](/assets/2018-02-15/mon1.png){:width="800px"}  
 The creation of a normal App Service that can host .NET and .NET Core on a Windows Server 2016. ~~I don't want to host Wordpress on a Windows Server mainly as it is unusual to do so.~~. It works well for my use cases.  
 
-I download a local copy of wordpress, setup the wp-config.php to have my remote hosted MySQL connection string ( opt for a lower powered MySQL as most pages are served from the cache see below), then use "Deploymemt Center" in Azure to create a remote. Then I can simply push to that remote to deploy.  
+I download a local copy of wordpress, setup the wp-config.php to have my remote hosted MySQL connection string ( opt for a lower powered MySQL as most pages are served from the cache see below), then use "Deploymemt Center" in Azure to create a remote. Then I can simply push to that remote to deploy.  I use PHP 7.2  
 
-To really make Wordpress perform I use the excellent [WP Super Cache](https://en-gb.wordpress.org/plugins/wp-super-cache/) which serves all front end pages from the cache. IIS handles this very well.
+To really make Wordpress perform I use the excellent [WP Super Cache](https://en-gb.wordpress.org/plugins/wp-super-cache/) which serves all front end pages from the cache. IIS handles this very well.  
+
+For SSL I'm using the [Let's Encrypt Extension](https://github.com/sjkp/letsencrypt-siteextension/wiki/How-to-install)  
 
 
 
