@@ -1344,6 +1344,16 @@ public class Employee
 } 
 ```
 
+### Summary
+
+- Structures like Option<T> and IEnumerable<T> can be seen as containers or abstractions allowing hou to work more effectively with the underlying values of type T.
+- Regular values eg T, elevated values eg Option<T>, IEnumerable<T>
+- Some core functions of FP allow you to work effectively with elevated values:
+    - Map (Select) applies a function to the inner value(s) and returns a new structure
+    - Bind maps an Option returning function onto an Option and flattens the result to avoid a nested Option. Similarily for IEnumerable and other structures
+    - Where filters the inner value(s) of a structure according to a given predicate
+- Types for which Map is defined are called Functors. Types for which Return and Bind are defined are called monads
+
 
 ## Chapter 5
 
