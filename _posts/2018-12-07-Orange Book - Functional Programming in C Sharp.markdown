@@ -1199,11 +1199,7 @@ public class Age
 }
 ```
 
-
 ### Using Bind to flatten a nested list
-
-asdf
-
 ```cs
 
 class PetsInNeighbourhood
@@ -1221,6 +1217,7 @@ class PetsInNeighbourhood
         };
 
         IEnumerable<IEnumerable<Pet>> nested = neighbours.Map(n => n.Pets);
+        // Flattening a nested list
         IEnumerable<Pet> flat = neighbours.Bind(n => n.Pets);
     }
 }
@@ -1244,10 +1241,109 @@ internal class Pet
 
 
 Functors are types for which a suitable Map function is defined eg IEnumerable, Option  
-Monads are types for which a Bind function is defined
+Monads are types for which a Bind function is defined eg IEnumerable, Option
 
 ### The Return Function
-asdf
+In addition to the Bind function, monads must able have a Return function that lifts a normal value T into a monadic value C<T>. For Option this is the Some function. For IEnumerable he has created a List function.
+
+```cs
+internal static void Run()
+{
+    // List is a function which returns an immutable list for the monad IEnumerable
+    IEnumerable<string> empty = List<string>();
+
+    var singleton = List("Dave");
+
+    // nice shorthand syntax for initialising immutable lists
+    var many = List("Dave", "Bob", "Alice");
+}
+```
+
+### The Where Function
+Can easily use Where in relation to Option:
+
+```cs
+    var a = ToNatural("2"); // Some(2)
+    var b = ToNatural("-2"); // None
+    var c = ToNatural("hello"); // None
+}
+
+// Parse is a function that does the int parse and reuturns Some or None
+static Option<int> ToNatural(string s) => Int.Parse(s).Where(IsNatural);
+
+static bool IsNatural(int i) => i >= 0;
+```
+
+## Coding at different levels of abstraction
+- Regular values such a T (int, Employee etc..)
+- Elevated levels eg IEnumerable<>
+
+These elevated levels enable us to better work with the represent operations on the underlying types.  
+
+If you always deal with regular values, you'll probably be stuck with low-level operations such as for loops, null checks etc.. This is inefficient and error-prone
+
+## Examples
+Business logic coming into Elevated levels of abstraction. Using Bind a lot to flatten Option, and
+```cs
+using System.Collections.Generic;
+using static F;
+
+class PetsInNeighbourhood
+{
+    internal static void Run()
+    {
+        var employees = new Dictionary<string, Employee>();
+        employees.Add("dave", new Employee{Id = "dave", WorkPermit = 
+            Some(new WorkPermit{Number = "123", Expiry = DateTime.Now.AddDays(-1)})});
+
+        var a = GetWorkPermit(employees, "dave");
+
+        var b = GetValidWorkPermit(employees, "dave");
+    }
+
+    static Option<WorkPermit> GetWorkPermit(Dictionary<string, Employee> employees, string employeeId)
+        // Lookup is a function which looks up the dictionary key returning an Option
+        // Bind is like Map (Select) except it returns a flattened list. Monad.
+        => employees.Lookup(employeeId).Bind(e => e.WorkPermit);
+
+    static Option<WorkPermit> GetValidWorkPermit(Dictionary<string, Employee> employees, string employeeId)
+        => employees
+            .Lookup(employeeId)
+            .Bind(e => e.WorkPermit)
+            .Where(HasExpired.Negate());
+
+    static Func<WorkPermit, bool> HasExpired => permit => permit.Expiry < DateTime.Now.Date;
+
+
+    // 4 Use Bind to implement AverageYearsWorkedAtTheCompany, shown below (only
+    // employees who have left should be included).
+    static double AverageYearsWorkedAtTheCompany(List<Employee> employees)
+        => employees
+            .Bind(e => e.LeftOn.Map(leftOn => YearsBetween(e.JoinedOn, leftOn)))
+            .Average();
+
+    static double YearsBetween(DateTime start, DateTime end)
+        => (end - start).Days / 365d;
+}
+
+public struct WorkPermit
+{
+    public string Number { get; set; }
+    public DateTime Expiry { get; set; }
+}
+
+public class Employee
+{
+    public string Id { get; set; }
+    public Option<WorkPermit> WorkPermit { get; set; }
+
+    public DateTime JoinedOn { get; }
+    public Option<DateTime> LeftOn { get; }
+} 
+```
+
+
+
 
 
 
