@@ -1141,10 +1141,113 @@ Option<Option<Age>> ageOpt = optI.Map(x => Age.Of(x));
 
 ### Using Bind to compose 2 functions that return an Option
 ```cs
-// Using Bind to chain to functions that return Option so we get a flattened Option<age>
+// Using Bind to chain two functions that return Option so we get a flattened Option<age>
 return Int.Parse(s)
     .Bind(x => Age.Of(x));
 ```
+
+And here is the full example 
+```cs
+public static class AskForValidAgeAndPrintFlatteringMessage
+{
+    // Reads users age from console
+    // prints out related message
+    // Error handling - the age should be valid!
+    // Notice lack of if..else statements. Operating on higher level of abstraction with Option so handled
+
+    public static void Run()
+        => WriteLine($"Only {ReadAge()}! That's young!");
+
+    static Age ReadAge()
+        => ParseAge(Prompt("Please enter your age")).Match(
+         () => ReadAge(), // if ParseAge come back as None prompt again
+         (age) => age);
+
+    static string Prompt(string prompt)
+    {
+        WriteLine(prompt);
+        return ReadLine();
+    }
+
+    static Option<Age> ParseAge(string s)
+    {
+        // Apply the Age.Of function to each element of the optI (single, could be None)
+        // 2 Option types combined give us this problem to work with
+        //Option<int> optI = Int.Parse(s);
+        //Option<Option<Age>> ageOpt = optI.Map(x => Age.Of(x));
+
+        // Using Bind to chain two functions that return Option so we get a flattened Option<age>
+        return Int.Parse(s)
+              .Bind(x => Age.Of(x));
+    }
+}
+
+public class Age
+{
+    private int Value { get; }
+    // private ctor - enforcing that Value can only be set on instantiation
+    private Age(int value) => Value = value;
+
+    private static bool IsValid(int age)
+        => 0 <= age && age < 120;
+
+    // smart constructor that creates an Age instance from the given int (returns an Option)
+    public static Option<Age> Of(int age)
+        => IsValid(age) ? Some(new Age(age)) : None;
+
+    public override string ToString() => Value.ToString();
+}
+```
+
+
+### Using Bind to flatten a nested list
+
+asdf
+
+```cs
+
+class PetsInNeighbourhood
+{
+    // flattening nested lists with Bind
+    // internal modifier is assembly scope (as opposed to private which is class scope)
+    internal static void Run()
+    {
+        var neighbours = new[]
+        {
+            new {Name = "John", Pets = new Pet[] {"Fluffy", "Thor"}},
+            new {Name = "Tim", Pets = new Pet[] {}},
+            //new {Name = "Carl", Pets = new Pet[] {"Sybil"}},
+            new {Name = "Carl", Pets = new[] {new Pet("Sybil")}},
+        };
+
+        IEnumerable<IEnumerable<Pet>> nested = neighbours.Map(n => n.Pets);
+        IEnumerable<Pet> flat = neighbours.Bind(n => n.Pets);
+    }
+}
+
+// this implementation is confusing (implicit operator style)
+internal class Pet
+{
+    // private readonly string name;
+    // generally considered better to wrap in a property
+    private string Name { get; }
+
+    //private Pet(string name) => this.Name = name;
+    public Pet(string name) => this.Name = name;
+
+    // when we pass a string to Pet
+    // it knows to return a new Pet with that name
+    public static implicit operator Pet(string name)
+        => new Pet(name);
+}
+```
+
+
+Functors are types for which a suitable Map function is defined eg IEnumerable, Option  
+Monads are types for which a Bind function is defined
+
+### The Return Function
+asdf
 
 
 
