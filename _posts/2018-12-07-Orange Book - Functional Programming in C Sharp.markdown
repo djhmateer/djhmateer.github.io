@@ -1102,6 +1102,57 @@ enum DayOfWeek
 ## Level of abstraction
 Try to work on higher levels of abstraction (not primitives) eg in Linq
 
+## Chapter 4 - Patterns in Functional Programming  
+
+### Map (Select)
+IEnumerable and Option are functors
+Anything that has a reasonable implementation of map is a `functor`. Essentially should apply a function to the containers inner values, and should have no side effects. 
+
+Map for logic and ForEach for side effects
+
+```cs
+Option<string> name = Some("Enrico");
+
+name
+   .Map(String.ToUpper) // Maps works on Option
+   .ForEach(WriteLine); // Foreach similar to Map, but takes an Action rather than a function, so its used to perform side effects
+
+IEnumerable<string> names = new[] { "Constance", "Brunhilde" };
+
+names
+   .Map(String.ToUpper) // Map works on IEnumerable (so Option an IEnumerable are specialised containers)
+   .ForEach(WriteLine);
+```
+
+### Chaining functions with Bind
+Bind is like Map but can flatten. 
+
+Here we have 2 functions which return an Option:  
+- Int.Parse(s)  
+- Age.Of(x)
+
+If we combine them with Map (select):  
+```cs
+// Apply the Age.Of function to each element of the optI (single, could be None)
+// 2 Option types combined give us this problem to work with
+Option<int> optI = Int.Parse(s);
+Option<Option<Age>> ageOpt = optI.Map(x => Age.Of(x));
+```
+
+### Using Bind to compose 2 functions that return an Option
+```cs
+// Using Bind to chain to functions that return Option so we get a flattened Option<age>
+return Int.Parse(s)
+    .Bind(x => Age.Of(x));
+```
+
+
+
+
+
+
+
+
 
 ## Other
 statement - doesn't return a value
