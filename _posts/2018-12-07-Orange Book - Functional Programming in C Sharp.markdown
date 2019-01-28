@@ -13,6 +13,7 @@ sitemap: false
 [Chapter 1](#what-is-fp)  
 [Chapter 2](#chapter-2---pure-and-impure-functions)  
 [Chapter 3](#chapter-3---function-signatures-and-types)  
+[Chapter 4](#chapter-4---patterns-in-functional-programming)  
 
 My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
 
@@ -1105,8 +1106,8 @@ Try to work on higher levels of abstraction (not primitives) eg in Linq
 ## Chapter 4 - Patterns in Functional Programming  
 
 ### Map (Select)
-IEnumerable and Option are functors
-Anything that has a reasonable implementation of map is a `functor`. Essentially should apply a function to the containers inner values, and should have no side effects. 
+IEnumerable and Option are functors  
+Anything that has a reasonable implementation of map is a `functor`. Essentially should apply a function to the containers inner values, and should have no side effects.   
 
 Map for logic and ForEach for side effects
 
@@ -1283,7 +1284,8 @@ These elevated levels enable us to better work with the represent operations on 
 If you always deal with regular values, you'll probably be stuck with low-level operations such as for loops, null checks etc.. This is inefficient and error-prone
 
 ## Examples
-Business logic coming into Elevated levels of abstraction. Using Bind a lot to flatten Option, and
+Business logic coming into Elevated levels of abstraction. Using Bind a lot to flatten Option, and Map when working with Option.  
+
 ```cs
 using System.Collections.Generic;
 using static F;
@@ -1341,6 +1343,11 @@ public class Employee
     public Option<DateTime> LeftOn { get; }
 } 
 ```
+
+
+## Chapter 5
+
+
 
 
 
