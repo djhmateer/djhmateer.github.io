@@ -104,9 +104,22 @@ If you do changes to your **_config.yml** file restart the docker container (ctr
 ## Going to Production
 Push your repository to [Github Pages](https://pages.github.com/) and it will do all it's own regenning on their server. So you can just edit posts and push them to Github and it will work. However I do really like seeing real time blog posts.  
 
-If you get stuck, try looking at the source for this [blog](https://github.com/djhmateer/djhmateer.github.io)
+If you get stuck, try looking at the source for this [blog](https://github.com/djhmateer/djhmateer.github.io)  
+
+## Updating Jekyll
+At time of writing the Jekyll/Jekyll image is ~~runing Jekyll 3.7.3~~ As of 25th Nov 2018 it is 3.8.5
+
+```
+docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
+bundle update jekyll
+```
+If you delete your gemfile.lock and run jekyll bundle update you will get all the dependencies again (actually I didn't need to delete the lock file sometimes). It pulled jekyll 3.7.3 at the time of writing, but I make sure its the same as the [docker version](https://github.com/envygeeks/jekyll-docker)
+
+## Caching 
+To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
 
 ## Multiple Github accounts
+**I don't use this anymore**
 You are only allowed 1 Github Pages account per user. [Here](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) is how I have multiple GitHub accounts on 1 machine. As an aide memoire this is what I do on my Win 10 machines:  
 
 ```
@@ -142,14 +155,3 @@ git push --set-upstream origin master
 
 ```
 
-## Updating Jekyll
-At time of writing the Jekyll/Jekyll image is ~~runing Jekyll 3.7.3~~ As of 25th Nov 2018 it is 3.8.5
-
-```
-docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
-bundle update jekyll
-```
-If you delete your gemfile.lock and run jekyll bundle update you will get all the dependencies again (actually I didn't need to delete the lock file sometimes). It pulled jekyll 3.7.3 at the time of writing, but I make sure its the same as the [docker version](https://github.com/envygeeks/jekyll-docker)
-
-## Caching 
-To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
