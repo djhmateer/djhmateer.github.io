@@ -10,10 +10,14 @@ sitemap: false
 ![ps](/assets/2019-01-11/3.png)  
 [Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  
 
-[Chapter 1](#what-is-fp)  
-[Chapter 2](#chapter-2---pure-and-impure-functions)  
-[Chapter 3](#chapter-3---function-signatures-and-types)  
-[Chapter 4](#chapter-4---patterns-in-functional-programming)  
+[Chapter 1](#what-is-fp) What is FP? Paradigms, HOF, Immutable   
+[Chapter 2](#chapter-2---pure-and-impure-functions)  Pure and Impure Functions, injecting functions, parameterised unit tests   
+[Chapter 3](#chapter-3---function-signatures-and-types)  Data objects,  Honest Functions,  Adapter Function for setup (timing), Option type, None, Some, Smart Constructor   
+[Chapter 4](#chapter-4---patterns-in-functional-programming) Patterns in FP  Map (Select), Bind, Elevated level of abstraction eg Option T, IEnumerable    
+[Chapter 5](#chapter-5---functional-composition) Functional Composition   
+[Chapter 6](#chapter-6---functional-error-handling) Part 2 (Becoming Functional) Functional Error Handling
+
+
 
 My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
 
@@ -1355,11 +1359,55 @@ public class Employee
 - Types for which Map is defined are called Functors. Types for which Return and Bind are defined are called monads
 
 
-## Chapter 5
+## Chapter 5 - Functional Composition  
+```cs
+static class Thing
+{
+    internal static void Run()
+    {
+        var joe = new Person { First = "Joe", Last = "Bloggs" };
+        // method chaining
+        // preferable way of achieving functional composition in C#
+        var email = joe.AbbreviateName().AppendDomain(); // jobl@manning.com
+
+        // composition in an elevated world
+        Option<Person> p = Some(new Person {First = "Joe", Last = "Bloggs"});
+        Option<string> a = p.Map(AbbreviateName).Map(AppendDomain);
+    }
+
+    static string AbbreviateName(this Person p) => 
+        Abbreviate(p.First) + Abbreviate(p.Last);
+
+    static string AppendDomain(this string localPart) =>
+        $"{localPart}@manning.com";
+
+    static string Abbreviate(string s) => 
+        s.Substring(0, 2).ToLower();
+}
+
+class Person
+{
+    public string First { get; set; }
+    public string Last { get; set; }
+}
+```
 
 
+## Chapter 6 - Functional Error Handling  
+A big chapter starting with:
+
+Either Type  
+- Left indicates failure (convention)   
+- Right indicates success  
+
+Either is more verbose than Option - which is expected as we choose Either when we need to be explicit about failure conditions.  
+
+Then more specialised types:  
+- Validation<T>  
+- Exception<T>  
 
 
+Validation
 
 
 
