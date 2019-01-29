@@ -94,12 +94,11 @@ If you do changes to your **_config.yml** file restart the docker container (ctr
 
 ## How I write articles
 - open my [shell](http://cmder.net/) in c:\dev\djhmateer.github.io
-- git pull 
+- git pull (I have [an alias](/cmder/2018/01/30/Cmder-Shell.html) - gp)
 - docker-compose up
 - edit or create new markdown post files in c:\dev\djhmateer.github.io\_posts directory
 - magically watch as the browser updates (I've got autosave turned on in VSCode) 
-- git commit -am "changes" (I'm lazy actually and just type 'p' - [see alias](/cmder/2018/01/30/Cmder-Shell.html))
-- git push
+- git commit -am "changes" then push (I have [an alias](/cmder/2018/01/30/Cmder-Shell.html) - p)
 
 ## Going to Production
 Push your repository to [Github Pages](https://pages.github.com/) and it will do all it's own regenning on their server. So you can just edit posts and push them to Github and it will work. However I do really like seeing real time blog posts.  
