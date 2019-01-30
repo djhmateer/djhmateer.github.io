@@ -1453,7 +1453,7 @@ static class Thing
     {
         var dave = new Candidate { Name = "Dave" };
         Either<Rejection, Candidate> result = InterviewEither.FirstRound(dave);
-        var output = GetMessage(result);
+        var output = GetMessage(result); // Success Dave!
 
         string GetMessage(Either<Rejection, Candidate> res) =>
             res.Match(
@@ -1463,7 +1463,7 @@ static class Thing
 
         var bob = new Candidate { Name = "Bob" };
         var result2 = InterviewEither.FirstRound(bob);
-        var output2 = GetMessage(result2);
+        var output2 = GetMessage(result2); // Rejected due to Bob always fails interviews
     }
 }
 
@@ -1505,6 +1505,19 @@ class Rejection
     }
 }
 ```
+
+### Railway Oriented Programming
+[Scott Wlaschin - article and video on ROP Error Handling](http://fsharpforfunandprofit.com/rop/)
+- Main track (happy path)
+- Parallel track on the Left
+- Once you are on the Left track, you stay on it until the end
+- If you're on the Right track, with each function application, you will either process along the Right track, or be diverted to the Left track.
+- Match is the end of the road, where the disjunction of the parallel tracks takes place.
+
+## Validation - perfect use case for Either  
+
+
+
 
 Then more specialised types:  
 - Validation<T>  
