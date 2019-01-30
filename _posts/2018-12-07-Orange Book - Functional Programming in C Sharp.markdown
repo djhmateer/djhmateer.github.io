@@ -1348,15 +1348,57 @@ public class Employee
 } 
 ```
 
+## Broken Link Checker using Option and Bind
+```cs
+// 1. Input (impure)
+// Get the raw html (or not - will return None if not)
+Option<string> html = getHtml(baseURL);
+
+// 2. Compute
+// Bind the html to GetHrefs - if the event of None in html this returns an empty list 
+IEnumerable<string> hrefs = html.Bind(GetHrefs);
+
+/// 
+public static Option<string> GetHtmlFromHttpClient(string url)
+{
+    var handler = new HttpClientHandler();
+    var httpClient = new HttpClient(handler);
+    try
+    {
+        HttpResponseMessage rm = httpClient.GetAsync(url).Result;
+        string html = rm.Content.ReadAsStringAsync().Result;
+        return Some(html);
+    }
+    catch (Exception ex)
+    {
+        return None;
+    }
+}
+
+/// 
+public static IEnumerable<string> GetHrefs(string html)
+{
+    var doc = new HtmlDocument();
+    doc.LoadHtml(html);
+    var hyperlinks = doc.DocumentNode.Descendants("a")
+        .Select(a => a.GetAttributeValue("href", null))
+        .Where(u => !IsNullOrEmpty(u))
+        .Distinct();
+    return hyperlinks;
+}
+
+```
+So this is becoming very nice as we don't have null checking and branching code. It is all very clean. In Chapter 6 we will look at how to handle exceptions as currently we're swallowing it, and returning None.
+
 ### Summary
 
-- Structures like Option<T> and IEnumerable<T> can be seen as containers or abstractions allowing hou to work more effectively with the underlying values of type T.
+- Structures like Option<T> and IEnumerable<T> can be seen as containers or abstractions allowing you to work more effectively with the underlying values of type T.
 - Regular values eg T, elevated values eg Option<T>, IEnumerable<T>
 - Some core functions of FP allow you to work effectively with elevated values:
     - Map (Select) applies a function to the inner value(s) and returns a new structure
     - Bind maps an Option returning function onto an Option and flattens the result to avoid a nested Option. Similarily for IEnumerable and other structures
     - Where filters the inner value(s) of a structure according to a given predicate
-- Types for which Map is defined are called Functors. Types for which Return and Bind are defined are called monads
+- Types for which Map is defined are called Functors. Types for which Return and Bind are defined are called Monads
 
 
 ## Chapter 5 - Functional Composition  
