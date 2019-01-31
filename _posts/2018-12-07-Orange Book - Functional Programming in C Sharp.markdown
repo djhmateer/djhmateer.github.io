@@ -1349,17 +1349,18 @@ public class Employee
 ```
 
 ## Broken Link Checker using Option and Bind
+
 ```cs
 // 1. Input (impure)
 // Get the raw html (or not - will return None if not)
-Option<string> html = getHtml(baseURL);
+Option<string> html = GetHtml(baseURL);
 
 // 2. Compute
-// Bind the html to GetHrefs - if the event of None in html this returns an empty list 
+// Bind the html to GetHrefs - in the event of None in html this returns an empty list 
 IEnumerable<string> hrefs = html.Bind(GetHrefs);
 
 /// 
-public static Option<string> GetHtmlFromHttpClient(string url)
+public static Option<string> GetHtml(string url)
 {
     var handler = new HttpClientHandler();
     var httpClient = new HttpClient(handler);
@@ -1371,7 +1372,7 @@ public static Option<string> GetHtmlFromHttpClient(string url)
     }
     catch (Exception ex)
     {
-        return None;
+        return None; // Nice and clean - will improve upon later
     }
 }
 
