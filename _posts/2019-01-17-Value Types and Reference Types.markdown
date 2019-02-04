@@ -7,13 +7,6 @@ published: true
 comments: false
 sitemap: false
 ---
-
-<!-- Professional verification provided by Psychology Today --> 
-<a href="https://www.psychologytoday.com/profile/428375" class="sx-verified-seal"></a> 
-<script type="text/javascript" src="https://member.psychologytoday.com/verified-seal.js" data-badge="13" data-id="428375" data-code="aHR0cHM6Ly93d3cucHN5Y2hvbG9neXRvZGF5LmNvbS9hcGkvdmVyaWZpZWQtc2VhbC9zZWFscy9bQkFER0VdL3Byb2ZpbGUvW1BST0ZJTEVfSURdP2NhbGxiYWNrPXN4Y2FsbGJhY2s="></script> 
-<!-- End Verification -->
-
-
 If we follow the functional paradigm, we should refrain from state mutation altogether: once created, an object never changes.  This is the subject of [an entire chapter of the C# FP Orange Book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-9/)
 
 Here I give an overview of Value Types, Reference types and immutability.  

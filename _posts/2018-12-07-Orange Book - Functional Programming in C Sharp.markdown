@@ -1516,7 +1516,12 @@ class Rejection
 - Match is the end of the road, where the disjunction of the parallel tracks takes place.
 
 ## Validation - perfect use case for Either  
+Here is an API that accpets a BookTransfer request via POST and runs a validation pipeline to see if it is okay. If yes, then we get a 200, otherwise a 400 BadRequest
 
+```cs
+
+
+```
 
 
 
