@@ -1515,7 +1515,9 @@ class Rejection
 - If you're on the Right track, with each function application, you will either process along the Right track, or be diverted to the Left track.
 - Match is the end of the road, where the disjunction of the parallel tracks takes place.
 
-## Validation - perfect use case for Either  
+## 1. Validation - perfect use case for Either  
+I'm going to demonstrate 3 ways of handing Errors (validation) and Exceptions.  
+
 Here is an API that accepts a BookTransfer request via POST and runs a validation pipeline to see if it is okay. If yes, then we get a 200, otherwise a 400 BadRequest  
 
 Essentially in Handle below we return Either<Error, Unit> where Right Unit denotes success.  
@@ -1760,7 +1762,7 @@ curl -i --header "Content-Type: application/json" -d "{\"Bic\":\"ABCDEFGHIJL\", 
 -H --header include extra header  
 -d --data  sends specified data in a POST  
 
-## Returning a ResultDto
+## 2.Returning a ResultDto
 Some people argue that 400 signals a syntactically incorrect request, not a semantically incorrect request as is the case here.   
 
 Another approach is to always return a 200 and return a representation of the outcome of the response with a ResultDto.   
@@ -1806,25 +1808,146 @@ Both v1 and v2 are valid ways of approaching the problem.
 
 
 
-## Variations - Validation<T> and Exceptional<T>
+## 3. Validation<T> and Exceptional<T>
 In the above v1 and v2 code we are using Either:  
 - The Left type always stays the same (Error)
 - Always having 2 generic arguments makes the code verbose
 - Either, Left and Right could be clearer
 
-Lets create some more specialised types:  
-- Validation<T>  
-- Exception<T>  
+These new types are friendlier and more intuitive.    
+- Validation indicates that some business rule has been violated    
+- Exception denotes an unexpected technical error    
 
-```bash
+and  
+- Validation<T>  - this has been particularised to a failure case fixed to IEnumerable<Error>
+- Exception<T> - failure is fixed to System.Exception   
+
+```cs
+[Route("api/[controller]")]
+[ApiController]
+public class BookTransferPController: Controller
+{
+    ILogger<BookTransferPController> logger;
+
+    // curl -i --header "Content-Type: application/json" -d "{\"Bic\":\"ABCDEFGHIJL\", \"Date\":\"2019-03-03\"}" http://localhost:55064/api/booktransferp/part
+    [HttpPost, Route("part")]
+    public IActionResult MakeFutureTransfer([FromBody] BookTransfer request)
+        => Handle(request).Match( // Unwraps value inside Validation
+            Invalid: BadRequest, // If validation failed should send back a 400 with Validation fail Message   
+            Valid: result => result.Match( // Unwraps value inside Exceptional
+                Exception: OnFaulted, // If persistence failed send a 500 with a general error message
+                Success: _ => Ok()));
+
+    // Catch Exceptions and log them
+    // Send to client a 500 and a general error message
+    IActionResult OnFaulted(Exception ex)
+    {
+        logger.LogError(ex.Message);
+        return StatusCode(500, Errors.UnexpectedError);
+    }
+
+    // As 2 different return types, can't use bind, so map together to get nested types
+    // combining the effect of validation (we may get validation errors instead of the desired return value)
+    // with the effect of exception handling (even after validation passes, we may get an exception instead of the return value)
+    // operation may fail for business reasons as well as technical reasons by stacking the 2 monadic effects
+    Validation<Exceptional<Unit>> Handle(BookTransfer request)
+        => Validate(request) // Validate returns a Validation<BookTransfer>
+            .Map(Save); // Save returns an Exceptional
+
+    Validation<BookTransfer> Validate(BookTransfer cmd)
+        => ValidateBic(cmd)
+            .Bind(ValidateDate);
 
 
+    // bic code validation
+    static readonly Regex regex = new Regex("^[A-Z]{6}[A-Z1-9]{5}$");
+    Validation<BookTransfer> ValidateBic(BookTransfer cmd)
+    {
+        if (!regex.IsMatch(cmd.Bic.ToUpper()))
+            return Errors.InvalidBic;
+        return cmd;
+    }
 
-curl -i --header "Content-Type: application/json" -d "{\"Bic\":\"ABCDEFGHIJL\", \"Date\":\"2019-03-03\"}" http://localhost:55064/api/booktransferp/part
-## could be a 500 with a general exception error
+    // date validation
+    DateTime now = DateTime.Now;
+    Validation<BookTransfer> ValidateDate(BookTransfer cmd)
+    {
+        if (cmd.Date.Date <= now.Date)
+            return Invalid(Errors.TransferDateIsPast); // could omit Invalid
+        return Valid(cmd); // could omit Valid as implicit conversion is defined
+    }
+
+    // persistence
+    string connString;
+    Exceptional<Unit> Save(BookTransfer transfer)
+    {
+        // try/catch is as small as possible
+        // immediately translate to functional style wrapping the result in an Exceptional
+        try
+        {
+            // would end up with a 500 and generic error code to client
+            // full error logged on server
+            //throw new Exception("asdf");
+            //ConnectionHelper.Connect(connString
+                //, c => c.Execute("INSERT ...", transfer));
+        }
+        catch (Exception ex) { return ex; }
+        return Unit();
+    }
+}
+
+
+// Perhaps called a Command from CQS
+// so Command should never return data
+public class BookTransfer : MakeTransfer { }
+
+public class MakeTransfer : Command
+{
+    public string Bic { get; set; }
+
+    public DateTime Date { get; set; }
+}
+
+// Can only be used as a base class to other classes 
+public abstract class Command { }
+
+public static class Errors
+{
+    public static InvalidBicError InvalidBic
+       => new InvalidBicError();
+
+    public static TransferDateIsPastError TransferDateIsPast
+       => new TransferDateIsPastError();
+
+    public static UnexpectedError UnexpectedError
+       => new UnexpectedError();
+}
+
+public sealed class UnexpectedError : Error
+{
+    public override string Message { get; }
+       = "An unexpected error has occurred";
+}
+
+public sealed class InvalidBicError : Error
+{
+    public override string Message { get; }
+       = "The beneficiary's BIC/SWIFT code is invalid";
+}
+
+public sealed class TransferDateIsPastError : Error
+{
+    public override string Message { get; }
+       = "Transfer date cannot be in the past";
+}
+
 ```
 
-
+## Summary of Error Handling
+- Errors eg Validation<T> are just part of the return type of the function so you can still reason about the function in isolation
+- Exceptions eg Exceptional can be useful with try/catch
+- Developer errors are still fine to throw an exception eg passing null value to a function that requires a value. Such exceptions are never meant to be caught; they indicate that the application logic is wrong
+- Config errors eg missing message bus
 
 
 
