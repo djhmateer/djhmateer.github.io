@@ -1946,8 +1946,8 @@ public sealed class TransferDateIsPastError : Error
 ## Summary of Error Handling
 - Errors eg Validation<T> are just part of the return type of the function so you can still reason about the function in isolation
 - Exceptions eg Exceptional can be useful with try/catch
-- Developer errors are still fine to throw an exception eg passing null value to a function that requires a value. Such exceptions are never meant to be caught; they indicate that the application logic is wrong
-- Config errors eg missing message bus
+- Developer errors are still fine for app to throw an exception eg passing null value to a function that requires a value. Such exceptions are never meant to be caught; they indicate that the application logic is wrong
+- Config errors eg missing message bus are fine for app to throw
 
 
 
