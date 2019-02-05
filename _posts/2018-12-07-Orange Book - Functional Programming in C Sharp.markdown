@@ -1516,12 +1516,46 @@ class Rejection
 - Match is the end of the road, where the disjunction of the parallel tracks takes place.
 
 ## Validation - perfect use case for Either  
-Here is an API that accpets a BookTransfer request via POST and runs a validation pipeline to see if it is okay. If yes, then we get a 200, otherwise a 400 BadRequest
+Here is an API that accepts a BookTransfer request via POST and runs a validation pipeline to see if it is okay. If yes, then we get a 200, otherwise a 400 BadRequest
 
 ```cs
 
 
 ```
+and then testing this code with Fiddler and Curl
+
+```bash
+curl -i http://localhost:55064/api/booktransfer
+## 200 OK
+
+curl -i http://localhost:55064/api/booktransfer/test
+## 400 Bad Request
+
+curl -i --header "Content-Type: application/json" -d "{\"Name\":\"Dave\"}" http://localhost:55064/api/booktransfer/test2
+## 200 received: Dave
+
+curl -i --header "Content-Type: application/json" -d "{\"Bic\":\"ABCDEFGHIJL\"}" http://localhost:55064/api/booktransfer/restful
+## 400 message: Transfer date cannot be in the past
+## has passed Bic validation!
+
+curl -i --header "Content-Type: application/json" -d "{\"Bic\":\"ABCDEFGHIJL\", \"Date\":\"2019-03-03\"}" http://localhost:55064/api/booktransfer/restful
+## 500 error - passed all validation. Hit Save which threw a not Implemented Exception
+## 200 OK  - POST worked (after I fixed not implemented exception)
+
+```
+-i --include http response headers [http header](https://curl.haxx.se/docs/manpage.html)  
+-H --header include extra header
+-d --data  sends specified data in a POST
+
+Some people argue that 400 signals a syntactically incorrect request, not a semantically incorrect request as is the case here. Another approach  is to return a representation of the outcome of the response with a ResultDto.   
+
+```cs
+
+asdf
+
+```
+
+
 
 
 
