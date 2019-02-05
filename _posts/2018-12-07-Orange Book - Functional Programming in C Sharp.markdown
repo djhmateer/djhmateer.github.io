@@ -1637,7 +1637,7 @@ namespace AWebApplication2.Controllers
         Either<Error, Unit> Save(BookTransfer request)
         {
             //throw new NotImplementedException();
-            // Pretend it has been implement and has been successful
+            // Pretend it has been implemented and has been successful
             return F.Unit();
         }
     }
@@ -1754,28 +1754,68 @@ curl -i --header "Content-Type: application/json" -d "{\"Bic\":\"ABCDEFGHIJL\", 
 ## 200 OK  - POST worked (after I fixed not implemented exception)
 
 ```
--i --include http response headers [http header](https://curl.haxx.se/docs/manpage.html)  
--H --header include extra header
--d --data  sends specified data in a POST
+-i --include http response headers [http header](https://curl.haxx.se/docs/manpage.html)    
+-H --header include extra header  
+-d --data  sends specified data in a POST  
 
-Some people argue that 400 signals a syntactically incorrect request, not a semantically incorrect request as is the case here. Another approach  is to return a representation of the outcome of the response with a ResultDto.   
+## Returning a ResultDto
+Some people argue that 400 signals a syntactically incorrect request, not a semantically incorrect request as is the case here.   
+
+Another approach is to always return a 200 and return a representation of the outcome of the response with a ResultDto.   
 
 ```cs
+[HttpPost, Route("resultDto")]
+public ResultDto<ValueTuple> BookTransfer_v2([FromBody] BookTransfer request)
+    => Handle(request).ToResult();
 
-asdf
+public class ResultDto<T>
+{
+    public bool Succeeded { get; }
+    public bool Failed => !Succeeded;
+
+    public T Data { get; }
+    public Error Error { get; }
+
+    internal ResultDto(T data) { Succeeded = true; Data = data; }
+    internal ResultDto(Error error) { Error = error; }
+}
+
+public static class EitherExt
+{
+    // translate Either<Error, T> to a ResultDto for easy serialisation and access on client side
+    // @this (the @) is allowing us to declare a reserved keyword as a variable
+    public static ResultDto<T> ToResult<T>(this Either<Error, T> @this)
+        => @this.Match(
+            Right: data => new ResultDto<T>(data),
+            Left: error => new ResultDto<T>(error));
+}
 
 ```
+This means less code in Controllers. And not replying on HTTP protocol in your representation of results.
+
+![ps](/assets/2019-01-11/10.png)    
+Showing an Error in Save, and returning as a 200.
 
 
 
-
+## Variations - Validation<T> and Exceptional<T>
+Above 
+- The Left type always stays the same (Error)
+- Always having 2 generic arguments makes the code verbose
+- Either, Left and Right could be clearer
 
 Then more specialised types:  
-- Validation<T>  
+- Validation<T>  - Either
 - Exception<T>  
 
+```bash
 
-Validation
+
+
+curl -i --header "Content-Type: application/json" -d "{\"Bic\":\"ABCDEFGHIJL\", \"Date\":\"2019-03-03\"}" http://localhost:55064/api/booktransferp/part
+## could be a 500 with a general exception error
+```
+
 
 
 
