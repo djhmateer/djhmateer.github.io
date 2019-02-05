@@ -1518,18 +1518,20 @@ class Rejection
 ## Validation - perfect use case for Either  
 Here is an API that accepts a BookTransfer request via POST and runs a validation pipeline to see if it is okay. If yes, then we get a 200, otherwise a 400 BadRequest  
 
+Essentially in Handle below we return Either<Error, Unit> where Right Unit denotes success.  
+
+In v1 below it is a 200 for success (no message returned), and 400 for error (message returned).
+
 There is a lot of interest here:
 
 - Testing API's with curl
 - 3 Different ways of generating an Error (Factory is most usual)
   - Static Factory functions for creating Errors
-  - virtual property, conversion operator from string to Error
+  - Conversion operator from string to Error
 - Returning a 400 Bad Request (will see later an alternate)
 - Matching down from Elevated abstraction on a boundary layer of the app
 - Validation pipeline using Bind
 - BookTransfer 'DTO' using inheritance - abstract base class
-
-
 
 ```cs
 using Unit = System.ValueTuple; // empty tuple can only have 1 possible value,  so it's as good as no value
@@ -1763,7 +1765,10 @@ Some people argue that 400 signals a syntactically incorrect request, not a sema
 
 Another approach is to always return a 200 and return a representation of the outcome of the response with a ResultDto.   
 
+The success path returns the Dto with succeeded=true. We are not returning any real data from the POST (which is probably good).
+
 ```cs
+// curl -i --header "Content-Type: application/json" -d "{\"Bic\":\"ABCDEFGHIJL\", \"Date\":\"2019-03-03\"}" http://localhost:55064/api/booktransfer/resultDto
 [HttpPost, Route("resultDto")]
 public ResultDto<ValueTuple> BookTransfer_v2([FromBody] BookTransfer request)
     => Handle(request).ToResult();
@@ -1794,18 +1799,21 @@ public static class EitherExt
 This means less code in Controllers. And not replying on HTTP protocol in your representation of results.
 
 ![ps](/assets/2019-01-11/10.png)    
-Showing an Error in Save, and returning as a 200.
+Showing an Error in Save, and returning as a 200.  
+
+Both v1 and v2 are valid ways of approaching the problem.
+
 
 
 
 ## Variations - Validation<T> and Exceptional<T>
-Above 
+In the above v1 and v2 code we are using Either:  
 - The Left type always stays the same (Error)
 - Always having 2 generic arguments makes the code verbose
 - Either, Left and Right could be clearer
 
-Then more specialised types:  
-- Validation<T>  - Either
+Lets create some more specialised types:  
+- Validation<T>  
 - Exception<T>  
 
 ```bash
