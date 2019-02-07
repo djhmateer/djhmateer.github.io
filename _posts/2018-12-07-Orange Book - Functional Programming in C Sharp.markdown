@@ -1948,7 +1948,16 @@ public sealed class TransferDateIsPastError : Error
 - Config errors eg missing message bus are fine for app to throw
 
 
+## Implementing BrokenLinkOrangeEither
+- Using extension methods for a pipeline (no need for failure modes eg Either)
+- Using Either for when an Exception may come back from HttpClient function
+  - then Match to split
+- Immutable data types for Link (internal) and Result (the output)
+- Lots of tests (and very easy as immutable)
 
+When to use   
+  - Map (select)
+  - Bind
 
 
 
