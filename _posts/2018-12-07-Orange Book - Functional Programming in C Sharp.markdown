@@ -1950,6 +1950,7 @@ public sealed class TransferDateIsPastError : Error
 
 ## Implementing BrokenLinkOrangeEither
 - Using extension methods for a pipeline (no need for failure modes eg Either)
+- Use plural then singular methods
 - Using Either for when an Exception may come back from HttpClient function
   - then Match to split
 - Immutable data types for Link (internal) and Result (the output)
