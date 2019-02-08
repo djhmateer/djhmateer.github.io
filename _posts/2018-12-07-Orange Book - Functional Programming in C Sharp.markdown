@@ -1956,11 +1956,81 @@ public sealed class TransferDateIsPastError : Error
 - Immutable data types for Link (internal) and Result (the output)
 - Lots of tests (and very easy as immutable)
 
+Having problems with immutability and having much more boilerplate code
+
+
+
+
 When to use   
   - Map (select)
   - Bind
 
 
+## Chapter 9 - Enforcing Immutability 
+- 1. Immutability by convention
+- 2. Define immutable objects in C# ie no setters on properties. Requires extra work in constructors
+- 3. Write data objects in F#
+
+
+Lack of safe concurrent access  
+Coupling - interdependence between different parts of the system
+
+State mutation implies loss of purity
+
+In FP it is best to avoid state mutation altogether.  
+
+
+### Strategy 1 - Immutability by convention
+ie Don't update any objects after creation ie don't use setters. Always copy and return the new object probably using a convenience method.
+
+```cs
+static void Main()
+{
+    var account = new AccountState { Status = AccountStatus.Active };
+    // Creates a copy of the object with the updated field
+    var newState = account.WithStatus(AccountStatus.Frozen);
+}
+
+public class AccountState
+{
+    public AccountStatus Status { get; set; }
+    public string Currency { get; set; }
+    public decimal AllowedOverdraft { get; set; }
+    public List<Transaction> TransactionHistory { get; set; }
+
+    public AccountState()
+    {
+        TransactionHistory = new List<Transaction>();
+    }
+
+    // Copy method or 'with-er'
+    public AccountState WithStatus(AccountStatus newStatus)
+        => new AccountState
+        {
+            Status = newStatus,
+            Currency = this.Currency,
+            AllowedOverdraft = this.AllowedOverdraft,
+            TransactionHistory = this.TransactionHistory
+        };
+}
+
+public enum AccountStatus { Requested, Active, Frozen, Dormant, Closed }
+
+public class Transaction
+{
+    public decimal Amount { get; }
+    public string Description { get; }
+    public DateTime Date { get; }
+}
+```
+
+### Strategy 2 - Define Immutable Objects
+asf
+
+
+### Immutable Lists
+Can add to the list  
+Cannot change anything in the list - need to make a copy of the object and then Replace  
 
 
 
