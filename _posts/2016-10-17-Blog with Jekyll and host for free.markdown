@@ -58,7 +58,7 @@ gem install jekyll
 * cd testsite
 * gem install bundle
 * bundle
-* I had to follow this when got an SSL error when bundle was out of date and needed upgrading: [Stackoverflow](http://stackoverflow.com/a/27641786/26086)
+* I had to follow this when got an SSL error when bundle was out of date and needed upgrading: [Stackoverflow](https://stackoverflow.com/a/27641786/26086)
 * jekyll serve
 
 ![Screenshot](/assets/Posh1.png)
@@ -94,10 +94,10 @@ I found it can take up to a minute to appear live, the trick being to watch for 
  
 ![Screenshot](/assets/GitHub.png)
 
-While doing this tutorial 19th Sept 2016 at 16:49 it seems [GitHub Status](https://status.github.com/) are experiencing problems, and the site isn't updating *typical*
+While doing this tutorial 19th Sept 2016 at 16:49 it seems [GitHub Status](https://www.githubstatus.com/) are experiencing problems, and the site isn't updating *typical*
 
 ## Put the revision date on each page
-I do this on production web apps.  It is the rev date in the footer, showing when the site was 'built'.  Have a look at the bottom of [Stackoverflow](http://stackoverflow.com).   It's an easy check to make sure the deployment pipeline is working.
+I do this on production web apps.  It is the rev date in the footer, showing when the site was 'built'.  Have a look at the bottom of [Stackoverflow](https://stackoverflow.com).   It's an easy check to make sure the deployment pipeline is working.
 
 Put in your timezone line in _config.yml eg
 

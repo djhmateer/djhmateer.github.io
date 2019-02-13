@@ -12,7 +12,7 @@ Badly perfoming software generally **doesn't deliver its intended benefits** to 
 
 [MiniProfiler](http://miniprofiler.com/) is one of the tools I use to continually measure performance. Over the last 2 years, **every application** I have written (and had to work on) has had MiniProfiler in it at some stage.
 
-What is good performance? Ask the people who use your system.  In my experience users will tell you with **brutal honesty** what they think. There is a lot of [research](http://stackoverflow.com/a/164290/26086) too.
+What is good performance? Ask the people who use your system.  In my experience users will tell you with **brutal honesty** what they think. There is a lot of [research](https://stackoverflow.com/a/164290/26086) too.
 
 ## What is MiniProfiler?
 * [MiniProfiler](http://miniprofiler.com/) can show how long database queries take (commonly the bottleneck in my applications)
@@ -151,7 +151,7 @@ A project of mine which does many calls to the Spotify API.  On this page there 
 live site [DavesTopMusic](http://www.davestopmusic.com/Artists/Details/12Chz98pHFMPJEknJQMWvI)
 
 ## 6. Controller and View Profiling
-A little bit more information can be had on controller and view instrumentation [here](http://stackoverflow.com/a/31568406/26086)
+A little bit more information can be had on controller and view instrumentation [here](https://stackoverflow.com/a/31568406/26086)
 
 ## Conclusion
 Performance is an **essential part of any business application**, and a [Feature](https://blog.codinghorror.com/performance-is-a-feature/)

@@ -10,14 +10,14 @@ Performance is an **essential part of any business application**.
 Badly perfoming software generally **doesn't deliver its intended benefits** to an organisation and is **frustrating** which leads to **user's mistakes**.  It usually **costs** more to maintain due to it being slow to develop/test/deploy.
 
 
-[MiniProfiler](http://miniprofiler.com/) is one of the tools I use to continually measure performance. Over the last 2 years, **every application** I have written (and had to work on) has had MiniProfiler in it at some stage.
+[MiniProfiler](https://miniprofiler.com/) is one of the tools I use to continually measure performance. Over the last 2 years, **every application** I have written (and had to work on) has had MiniProfiler in it at some stage.
 
 
-What is good performance? Ask the people who use your system.  In my experience users will tell you with **brutal honesty** what they think. There is a lot of [research](http://stackoverflow.com/a/164290/26086) too.
+What is good performance? Ask the people who use your system.  In my experience users will tell you with **brutal honesty** what they think. There is a lot of [research](https://stackoverflow.com/a/164290/26086) too.
 
 
 ## What is MiniProfiler?
-* [MiniProfiler](http://miniprofiler.com/) can show how long database queries take (commonly the bottleneck in my applications)
+* [MiniProfiler](https://miniprofiler.com/) can show how long database queries take (commonly the bottleneck in my applications)
 * Can show API calls, AJAX Calls, Controller and View render times
 * ASP.NET MVC / Webforms
 * Can be used in Development and Production (has good security)

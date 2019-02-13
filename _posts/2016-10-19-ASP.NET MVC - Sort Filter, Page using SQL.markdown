@@ -37,7 +37,7 @@ CREATE TABLE [dbo].[Author] (
 
 * Identity Ints for the PK (not GUIDS)
 * AuthorID for ID Column (not ID) 
-* Singular table names preferred see [here](http://stackoverflow.com/a/809018/26086) and [here](http://stackoverflow.com/a/5841297/26086)
+* Singular table names preferred see [here](https://stackoverflow.com/a/809018/26086) and [here](https://stackoverflow.com/a/5841297/26086)
  so that Master detail link tables are well named eg AuthorAddress. 
 
 **Plural Repository Names**

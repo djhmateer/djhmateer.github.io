@@ -117,7 +117,7 @@ o = sum [ x | x <- takeWhile (< 4000000) fibs, even x]
 -- What is the largest prime factor of the number 600851475143 ?
 
 -- number is prime if only divisible by 1 and itself
--- http://stackoverflow.com/a/5811176/26086
+-- https://stackoverflow.com/a/5811176/26086
 -- eg if checking isPrime 12
 -- 3 * 4 are factors
 -- 2 * 6 are factors..
