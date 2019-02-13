@@ -72,5 +72,8 @@ curl https://qnrl.com -k
 
 :: just show header information and not html **does not do a GET - uses HEAD**
 curl https://www.qnrl.com -I
+
+:: just gives the code eg 302 [https://superuser.com/a/442395/12214](https://superuser.com/a/442395/12214)
+curl -s -o /dev/null -w "%{http_code}" https://www.onenote.com
 ```
 
