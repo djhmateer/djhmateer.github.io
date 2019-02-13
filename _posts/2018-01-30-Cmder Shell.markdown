@@ -61,7 +61,7 @@ Essentially download from [here](https://curl.haxx.se/download.html#Win32)
 Then copy curl.exe, libcurl.dll and the .crt file into c:\sharedTools
 
 ```
-:: check for 301 redirect
+:: check for 301 redirect **use this**
 curl http://www.qnrl.com -i
 
 :: check for https, and ignore the cert
@@ -70,7 +70,7 @@ curl https://www.qnrl.com -i -k
 :: check for redirect to www ignoring the cert
 curl https://qnrl.com -k
 
-:: just show header information and not html
+:: just show header information and not html **does not do a GET - uses HEAD**
 curl https://www.qnrl.com -I
 ```
 
