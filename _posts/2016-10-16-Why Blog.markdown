@@ -10,7 +10,7 @@ redirect_from: "/jekyll/2016/10/16/Why-Blog.html"
 
 I started blogging 8 years ago with [Programgood - First Post](https://web.archive.org/web/20170324063932/http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx)  It turned into a very good ideas repository, not a blog.  *That's fine.*  
  
-I'd now like to try a more 'walkthrough' style blog, taking inspiration from [hanselman.com](http://www.hanselman.com) and [ScottGu](http://weblogs.asp.net/scottgu/introducing-asp-net-5) 
+I'd now like to try a more 'walkthrough' style blog, taking inspiration from [hanselman.com](https://www.hanselman.com) and [ScottGu](https://weblogs.asp.net/scottgu/introducing-asp-net-5) 
 
 Like all research projects, I start with [OneNote](https://products.office.com/en-gb/onenote/digital-note-taking-app) so I can share notes across all devices (2 at home, 1 at work and iPhone)
 
