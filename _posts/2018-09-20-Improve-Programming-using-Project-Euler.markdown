@@ -160,4 +160,6 @@ Project Euler is a great way to **improve your programming skills** by solving, 
 Why not *have some fun go and do a problem now* :-)
 
 ## Source
-All source code for this Euler1 problem is on [Github](https://github.com/djhmateer/Euler1Article)
+All source code for this Euler1 problem is on [Github](https://github.com/djhmateer/Euler1Article)  
+
+All source for Euler1-17 is on [davemateer.visualstudio.com](https://davemateer.visualstudio.com/_git/Euler1)
