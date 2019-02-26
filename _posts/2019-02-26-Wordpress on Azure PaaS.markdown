@@ -84,7 +84,7 @@ go to the website and put in some test values for username and password (as I'm 
 This is a very useful tool to transfer entire websites (eg all files and db)
 ![ps](/assets/2019-02-26/4.jpg)  
 
-To set the upload_max_filesize in Azure it seems you need the .ini file there too.  
+To set the upload_max_filesize in Azure it seems you need the .ini file there too.  [All in One Docs](https://help.servmask.com/2018/10/27/how-to-increase-maximum-upload-file-size-in-wordpress/)
 
 [Microsoft Link](https://blogs.msdn.microsoft.com/azureossds/2016/06/15/uploading-large-files-to-azure-web-apps/)  
 
