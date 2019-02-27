@@ -96,8 +96,9 @@ touch .user.ini
 upload_max_filesize = 512M
 post_max_size = 512M
 ```
-
-
 ![ps](/assets/2019-02-26/6.jpg)  
+
+## WP Super Cache
+
 
 ## SSL setup
