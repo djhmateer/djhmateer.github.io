@@ -244,4 +244,10 @@ It seems that we go down from 250ms to 60ms. So IIS is probably doing [Dynamic O
 It can take some some for the cache to be properly built. It is useful to know the final number of pages:
 ![ps](/assets/2019-02-26/15.jpg)  
 
+I have my own seeder, but it seems it doesn't always get all the pages
+![ps](/assets/2019-02-26/16.jpg)  
+
+after 2 runs I was back up to all pages cached.
+
+was 16 and 24
 ## SSL setup
