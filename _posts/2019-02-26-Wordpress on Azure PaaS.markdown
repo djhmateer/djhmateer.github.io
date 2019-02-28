@@ -255,6 +255,8 @@ after 2 runs I was back up to all pages cached.
 For debugging issues the log is excellent:
 
 ## Debugging
+
+![ps](/assets/2019-02-26/22.jpg)  
 I have *totally* broken the site by clicking on the enable debug option in WP Super Cache.
 
 ![ps](/assets/2019-02-26/20.jpg)  
