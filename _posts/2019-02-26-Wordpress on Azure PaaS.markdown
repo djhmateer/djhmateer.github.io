@@ -27,7 +27,9 @@ Create an App Service Plan in it's own resource group eg DaveWebsites
 
 Create an App Service eg davemateercom  using the default Application Insights settings
 
-Change app settings PHP7.2
+Change app settings PHP7.2  
+
+Check always on is on.
 
 ## MySQL
 Create a hosted MySQL database in own resource group eg DaveWebsitesMySQL  
@@ -195,7 +197,7 @@ To set the upload_max_filesize in Azure it seems you need the .ini file there to
 [Microsoft Link](https://blogs.msdn.microsoft.com/azureossds/2016/06/15/uploading-large-files-to-azure-web-apps/)  
 
 ## WP Super Cache
-WP Super Cache will write this into the wp-config
+WP Super Cache will write this into the wp-config. Be careful when testing that you are not logged in, as by default this wont hit the cache.
 
 ```php
 // the WP Super Cache plugin usually puts these in for us, but easier to keep in source control
@@ -234,20 +236,93 @@ In Summary for a 8.5MB homepage:
 - ctrl f5 no browser caching, and server caching on (1.4-4s)
 - f5 browser caching of assets (760-900ms)
 
-Note that we are not sending 304 not modified (thus never getting a browser cached page), nor some of the other recommended features yet.
-
 ![ps](/assets/2019-02-26/15.jpg)  
+We have not enabled sending 304 not modified (thus never getting a browser cached page), nor some of the other recommended features yet.
+
 ### IIS Caching
-It seems that we go down from 250ms to 60ms. So IIS is probably doing [Dynamic Output Caching](https://docs.microsoft.com/en-us/iis/overview/dynamic-caching-and-compression)
+It seems that we go down from 250ms to 60ms after some reloads, so IIS is probably doing [Dynamic Output Caching](https://docs.microsoft.com/en-us/iis/overview/dynamic-caching-and-compression)
 
 ## Seeding the cache
-It can take some some for the cache to be properly built. It is useful to know the final number of pages:
-![ps](/assets/2019-02-26/15.jpg)  
+It can take some some for the cache to be properly built. It is useful to know the final number of pages:  
 
-I have my own seeder, but it seems it doesn't always get all the pages
 ![ps](/assets/2019-02-26/16.jpg)  
+
+I have my own seeder, but it seems it doesn't always get all the pages, or the pages take a while to build
+![ps](/assets/2019-02-26/17.jpg)  
 
 after 2 runs I was back up to all pages cached.
 
-was 16 and 24
+![ps](/assets/2019-02-26/18.jpg)  
+For debugging issues the log is excellent:
+
+## Debugging
+I have *totally* broken the site by clicking on the enable debug option in WP Super Cache.
+
+![ps](/assets/2019-02-26/20.jpg)  
+Turned out the _ should be a $.
+
+
+## wp-config.php
+![ps](/assets/2019-02-26/21.jpg)  
+I found this by changing wp-config.php
+
+## .user.ini
+```bash
+upload_max_filesize = 512M
+post_max_size = 512M
+memory_limit = 256M
+max_execution_time = 300
+max_input_time = 300
+
+; Example Settings
+;display_errors=On
+ 
+; OPTIONAL: Turn this on to write errors to d:\home\LogFiles\php_errors.log
+log_errors=On
+```
+Because it was a php parse error it didn't show in my logs. [maybe this would help](https://stackoverflow.com/a/21429652/26086)
+
+## web.config
+I tried to see if IIS logs would help
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system.webServer>
+       <!-- added to diagnose 500 errors -->
+      <httpErrors errorMode="Detailed" />
+      <!-- stop woff 404.3 errors on admin dashboard -->
+      <staticContent> 
+        <mimeMap fileExtension=".woff" mimeType="application/x-font-woff" /> 
+      </staticContent>
+      <!-- Allow upload of large files for restoring -->
+      <security>
+        <requestFiltering>
+         <!-- This will handle requests up to 700MB (CD700) -->
+         <requestLimits maxAllowedContentLength="737280000" />
+      </requestFiltering>
+    </security>
+    <rewrite>
+      <rules>
+			<rule name="WordPress: https://qnrlcom.azurewebsites.net" patternSyntax="Wildcard">
+				<match url="*"/>
+					<conditions>
+						<add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true"/>
+						<add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true"/>
+					</conditions>
+				<action type="Rewrite" url="index.php"/>
+			</rule></rules>
+    </rewrite>
+  </system.webServer>
+  <!-- added to diagnose 500 errors -->
+  <system.web>
+        <customErrors mode="Off"/>
+        <compilation debug="true"/>
+    </system.web>
+</configuration>
+```
+but it was further down the pipeline so this didn't help - 2 places I added diagnose 500 errors code.
+
+
+
+
 ## SSL setup
