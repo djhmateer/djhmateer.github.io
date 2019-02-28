@@ -82,7 +82,6 @@ Notice the $qnrlcom username
 If you type in the wrong password see [here to clear the local windows cache](/2018/11/07/Azure-Functions-to-Count-Downloads-from-Blob-Storage#deploy-using-local-git)
 
 ## wp-config.php 
-
 Edit wp-config.php locally   
 if this is first time rename wp-config-sample.php to wp-config.php   
 edit MySQL settings putting in dbname, username etc..   
@@ -261,12 +260,11 @@ I have *totally* broken the site by clicking on the enable debug option in WP Su
 ![ps](/assets/2019-02-26/20.jpg)  
 Turned out the _ should be a $.
 
-
-## wp-config.php
+### wp-config.php
 ![ps](/assets/2019-02-26/21.jpg)  
 I found this by changing wp-config.php
 
-## .user.ini
+### .user.ini
 ```bash
 upload_max_filesize = 512M
 post_max_size = 512M
@@ -282,7 +280,7 @@ log_errors=On
 ```
 Because it was a php parse error it didn't show in my logs. [maybe this would help](https://stackoverflow.com/a/21429652/26086)
 
-## web.config
+### web.config
 I tried to see if IIS logs would help
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -322,7 +320,5 @@ I tried to see if IIS logs would help
 ```
 but it was further down the pipeline so this didn't help - 2 places I added diagnose 500 errors code.
 
-
-
-
 ## SSL setup
+As we are using Azure PaaS we can use an [automated LetsEncrypt cert](https://www.hanselman.com/blog/SecuringAnAzureAppServiceWebsiteUnderSSLInMinutesWithLetsEncrypt.aspx) and the [sjkp/letsencrypt-siteextension wiki](https://github.com/sjkp/letsencrypt-siteextension/wiki/How-to-install)
