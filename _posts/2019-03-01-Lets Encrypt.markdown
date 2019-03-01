@@ -65,3 +65,20 @@ Will need applicationID (shown in screenshot)
 ## Grant Permissions to Service Principal
 Go to resource group:  
 
+![ps](/assets/2019-03-01/7.png)  
+Interestingly I don't have permissions yet to add the role assignment
+
+
+![ps](/assets/2019-03-01/8.png)  
+On Azure AD I can see my role as User.
+
+
+## Testing
+https://hoverfly.scm.azurewebsites.net/azurejobs/#/jobs
+
+Looking at the output, everything appears to be working.
+
+![ps](/assets/2019-03-01/9.png)  
+
+
+http://hoverfly.scm.azurewebsites.net/letsencrypt
