@@ -323,4 +323,4 @@ I tried to see if IIS logs would help
 but it was further down the pipeline so this didn't help - 2 places I added diagnose 500 errors code.
 
 ## SSL setup
-As we are using Azure PaaS we can use an [automated LetsEncrypt cert](https://www.hanselman.com/blog/SecuringAnAzureAppServiceWebsiteUnderSSLInMinutesWithLetsEncrypt.aspx) and the [sjkp/letsencrypt-siteextension wiki](https://github.com/sjkp/letsencrypt-siteextension/wiki/How-to-install)
+As we are using Azure PaaS on Windows we can use an [automated LetsEncrypt cert extension](/2019/03/01/Lets-Encrypt)
