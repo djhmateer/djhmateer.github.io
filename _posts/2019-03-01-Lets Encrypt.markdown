@@ -41,7 +41,7 @@ You get the key from inside the storage, in Access Keys:
 
 ![ps](/assets/2019-03-01/3.png)  
 
-## Create a Service Principal
+## Create a Service Principal (App Registration)
 This is similar to a service account, so we can do unattended work.
 
 Select Azure Active Directory, then Switch Directory
@@ -50,7 +50,7 @@ Select Azure Active Directory, then Switch Directory
 
 New Application Registration  
 ![ps](/assets/2019-03-01/5.png)  
-Need a domain name that we can access
+The sign on URL in this case is more informational and not critical (ie could be https://davemateer.com)
 
 ## Service Principal ClientID and Secret
 
@@ -113,7 +113,10 @@ So it looks like I may need the Global Administrator to do this.
 
 ## Custom Domains and SSL
 ![ps](/assets/2019-03-01/19.png)  
-I had already setup my custom domain on the app service. Interestingly I've got another site running this extension (hoverflylagoons). 
+I had already setup my custom domain on the app service.  
+
+
+Interestingly I've got another certificate visible (I'm guessing it is on a per App Service Plan basis ie you can see all certificates here on this 'VM') 
 
 ![ps](/assets/2019-03-01/20.png)  
 Selecting the 2 sites I want a cert for
