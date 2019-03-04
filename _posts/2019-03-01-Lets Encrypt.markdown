@@ -52,7 +52,7 @@ New Application Registration
 ![ps](/assets/2019-03-01/5.png)  
 Need a domain name that we can access
 
-## Service Principla ClientID and Secret
+## Service Principal ClientID and Secret
 
 ![ps](/assets/2019-03-01/6.png)  
 After saving, the key will be displayed. *Copy this somewhere as you can't see it again*  
@@ -126,18 +126,21 @@ I had wrongly pointed my DNS A Record. Notice there is an error report URL from 
 I had the wrong storage account settings. And also noticed that 'always on' needs to be set to on otherwise jobs wont run.
 
 ## Testing
-https://hoverfly.scm.azurewebsites.net/azurejobs/#/jobs
+[https://hoverfly.scm.azurewebsites.net/azurejobs](https://hoverfly.scm.azurewebsites.net/azurejobs)  - jobs dashboard
 
-Looking at the output, everything appears to be working.
+[http://hoverfly.scm.azurewebsites.net/letsencrypt](http://hoverfly.scm.azurewebsites.net/letsencrypt)  - setup of certs
 
 ![ps](/assets/2019-03-01/9.png)  
 
-
-![ps](/assets/2019-03-01/22.png)  
-It is working.
-
-http://hoverfly.scm.azurewebsites.net/letsencrypt
+Looking at the output, everything appears to be working.
 
 ## Final
-
 ![ps](/assets/2019-03-01/24.png)  
+
+## How to install a cert for an upcoming live server
+I'm doing a migration of qnrl.com to a new site, and would like to use LetsEncrypt. 
+
+![ps](/assets/2019-03-01/25.png)  
+
+LetsEncrypt can't validate the domain as it is pointing to the current live server. The simple solution is to flip to the new site at an out of hours time, get the cert and flip back using DNS. I use Azure's Traffic Manager which is excellent.
+
