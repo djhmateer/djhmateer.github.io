@@ -208,7 +208,7 @@ then it will write files into /wwwroot/wp-content/cache/supercache/nameofsite.co
 This plugin is in charge of the /cache directory
 
 ![ps](/assets/2019-02-26/11.jpg)  
-I use 86400ms which is 1 day for the cache timeout.
+I use 86400ms which is 1 day for the cache timeout. Am trying 0 which means that it should remain there forever and not be cleaned up.  
 
 ![ps](/assets/2019-02-26/10.jpg)  
 Chrome developer tools (F12) and initial page response is 2.8seconds. I am on a slow database which is the probable cause of that.
