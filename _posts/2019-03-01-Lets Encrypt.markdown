@@ -72,6 +72,58 @@ Interestingly I don't have permissions yet to add the role assignment
 ![ps](/assets/2019-03-01/8.png)  
 On Azure AD I can see my role as User.
 
+When you do have access (I had to get my domain Global Administrator to do it for me) you should be able to:  
+
+![ps](/assets/2019-03-01/10.png)  
+
+
+## Install the Lets Encrypt Site Extension  
+
+![ps](/assets/2019-03-01/11.png)  
+The one to choose is `Azure Let's Encrypt` as [described here on his blog](https://wp.sjkp.dk/lets-encrypt-on-azure-web-apps-using-a-function-app-for-automated-renewal/). The other one is part of a more advanced setup.  
+
+If you see `"No route registered for '/letsencrypt/'"` then just restart the website.  
+
+
+![ps](/assets/2019-03-01/12.png)  
+## Configure Site Extension
+
+Either goto: [https://qnrlcom.scm.azurewebsites.net/letsencrypt](https://qnrlcom.scm.azurewebsites.net/letsencrypt) or click on the browse link in Extensions:
+
+![ps](/assets/2019-03-01/13.png)  
+ 
+ which will take you to the automated installation:  
+
+
+
+![ps](/assets/2019-03-01/14.png)  
+How to find tenent  
+
+![ps](/assets/2019-03-01/15.png)  
+How to find subscriptionID
+
+![ps](/assets/2019-03-01/16.png)  
+ClientID is ApplicationID of the Azure Active Directory, App Registration
+
+
+Update Application settings - true if haven't already added the setting.
+
+![ps](/assets/2019-03-01/18.png)  
+So it looks like I may need the Global Administrator to do this.
+
+## Custom Domains and SSL
+![ps](/assets/2019-03-01/19.png)  
+I had already setup my custom domain on the app service. Interestingly I've got another site running this extension (hoverflylagoons). 
+
+![ps](/assets/2019-03-01/20.png)  
+Selecting the 2 sites I want a cert for
+
+![ps](/assets/2019-03-01/21.png)  
+
+I had wrongly pointed my DNS A Record. Notice there is an error report URL from Lets Encrypt.
+
+![ps](/assets/2019-03-01/23.png)  
+I had the wrong storage account settings. And also noticed that 'always on' needs to be set to on otherwise jobs wont run.
 
 ## Testing
 https://hoverfly.scm.azurewebsites.net/azurejobs/#/jobs
@@ -81,4 +133,11 @@ Looking at the output, everything appears to be working.
 ![ps](/assets/2019-03-01/9.png)  
 
 
+![ps](/assets/2019-03-01/22.png)  
+It is working.
+
 http://hoverfly.scm.azurewebsites.net/letsencrypt
+
+## Final
+
+![ps](/assets/2019-03-01/24.png)  
