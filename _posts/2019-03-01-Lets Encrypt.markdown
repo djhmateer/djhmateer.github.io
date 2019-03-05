@@ -7,7 +7,7 @@ published: true
 comments: false
 sitemap: false
 ---
-Azure doesn't support [LetsEncrypt](https://letsencrypt.org/) yet. I use an [extension called letsencrypt-siteextension](https://github.com/sjkp/letsencrypt-siteextension) which works on Windows hosted sited using the App Service. Specifically I host Wordpress sites in this way, and this is a great way to get certs.  
+Azure doesn't support [LetsEncrypt](https://letsencrypt.org/) yet. I use an [extension called letsencrypt-siteextension](https://github.com/sjkp/letsencrypt-siteextension) which works on Windows hosted sited using the App Service. 
 
 Currently I'm
 - Using Lets Encrypt on Azure for smaller projects which are not mission critical
@@ -20,7 +20,7 @@ Currently I'm
 The guide below is a collection of learning over many different websites and configurations, and is meant as a guide to you (and to my future self). 
 
 ## Monitoring
-Sometimes this extension fails. I use a [free certificate monitor](https://certificate.tools/expiry-notification) to let me know when certs are about to expire
+Sometimes this extension fails. I use a [free certificate monitor](https://certificate.tools/expiry-notification) and [keychest.net](https://keychest.net) to let me know when certs are about to expire
 
 ## App Service Plan and App Service in same Resource Group 
 ![ps](/assets/2019-03-01/1.png)  
