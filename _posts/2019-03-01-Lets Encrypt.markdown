@@ -147,9 +147,11 @@ Looking at the output, everything appears to be working.
 ![ps](/assets/2019-03-01/24.png)  
 
 ## How to install a cert for an upcoming live server
-I'm doing a migration of qnrl.com to a new site, and would like to use LetsEncrypt. 
+I'm doing a migration of qnrl.com to a new site, and may use LetsEncrypt in the future.
 
 ![ps](/assets/2019-03-01/25.png)  
 
-LetsEncrypt can't validate the domain as it is pointing to the current live server. The simple solution is to flip to the new site at an out of hours time, get the cert and flip back using DNS. I use Azure's Traffic Manager which is excellent.
+LetsEncrypt can't validate the domain as it is pointing to the current live server. The simple solution is to flip to the new site at an out of hours time, get the cert and flip back using DNS. I use Azure's Traffic Manager which is excellent. We do have a current certificate so I may run both in parallel.
+
+
 
