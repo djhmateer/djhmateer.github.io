@@ -1,16 +1,16 @@
 ---
 layout: post
 title: Lets Encrypt 
-menu: review
-categories: ssl letsencrypt 
+#menu: review
+categories: ssl letsencrypt azure
 published: true 
 comments: false
-sitemap: false
+sitemap: true
 ---
 Azure doesn't support [LetsEncrypt](https://letsencrypt.org/) yet. I use an [extension called letsencrypt-siteextension](https://github.com/sjkp/letsencrypt-siteextension) which works on Windows hosted sited using the App Service. 
 
 Currently I'm
-- Using Lets Encrypt on Azure for smaller projects which are not mission critical
+- Using Lets Encrypt on Azure for smaller projects which are **not mission critical**
 - Using classic paid for certs for larger commercial sites (as there are a lot of moving parts for LE on Azure) 
 
 [Scott Hanselman](https://www.hanselman.com/blog/SecuringAnAzureAppServiceWebsiteUnderSSLInMinutesWithLetsEncrypt.aspx) has a great walkthrough.  
@@ -152,6 +152,10 @@ I'm doing a migration of qnrl.com to a new site, and may use LetsEncrypt in the 
 ![ps](/assets/2019-03-01/25.png)  
 
 LetsEncrypt can't validate the domain as it is pointing to the current live server. The simple solution is to flip to the new site at an out of hours time, get the cert and flip back using DNS. I use Azure's Traffic Manager which is excellent. We do have a current certificate so I may run both in parallel.
+
+## Summary
+- Use Lets Encrypt on Azure for smaller projects which are **not mission critical**
+- Use classic paid for certs for larger commercial sites (as there are a lot of moving parts for LE on Azure) 
 
 
 
