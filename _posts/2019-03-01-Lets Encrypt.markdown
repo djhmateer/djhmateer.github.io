@@ -2,7 +2,7 @@
 layout: post
 title: Lets Encrypt 
 #menu: review
-categories: ssl letsencrypt azure
+categories: SSL LetsEncrypt azure
 published: true 
 comments: false
 sitemap: true
