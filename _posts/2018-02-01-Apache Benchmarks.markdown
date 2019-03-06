@@ -2,7 +2,7 @@
 layout: post
 title:  Apache Benchmarks load testing
 #menu: review
-categories: ApacheBenchmarks http 
+categories: ApacheBenchmarks HTTP 
 published: true 
 redirect_from: apachebenchmarks/2018/02/01/Apache-Benchmarks.html 
 ---

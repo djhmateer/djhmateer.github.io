@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Wordpress Persistence in AKS
-categories: wordpress 
+categories: Wordpress 
 published: true 
 comments: true
 redirect_from: wordpress/2018/05/29/Wordpress-Persistence-AKS.html 

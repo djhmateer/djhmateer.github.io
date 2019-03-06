@@ -2,7 +2,7 @@
 layout: post
 title:  Docker Delete Containers Images Networks and Volumes
 # menu: review
-categories: docker 
+categories: Docker 
 published: true 
 redirect_from: docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html 
 ---

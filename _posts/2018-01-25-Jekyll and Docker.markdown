@@ -2,7 +2,7 @@
 layout: post
 title:  "Jekyll and Docker"
 # menu: review
-categories: jekyll docker
+categories: Jekyll Docker
 published: true 
 comments: true
 redirect_from: /jekyl/2018/01/25/Jekyll-and-Docker.html

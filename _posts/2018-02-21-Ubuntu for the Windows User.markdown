@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Ubuntu for the Windows User
-categories: ubuntu linux 
+categories: Ubuntu Linux 
 published: true 
 redirect_from: ubuntu/2018/02/21/Ubuntu-for-the-Windows-User.html 
 ---

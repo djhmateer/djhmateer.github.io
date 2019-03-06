@@ -2,7 +2,7 @@
 layout: post
 title:  "AllReady Codeathon"
 # menu: review
-categories: codeathon allready 
+categories: Codeathon 
 published: true 
 redirect_from: "/allready/2018/01/21/AllReady-Codeathon.html"
 ---

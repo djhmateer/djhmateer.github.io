@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Improve at Programming with Project Euler
-categories: euler programming xunit
+categories: Euler Programming Xunit
 published: true 
 comments: true
 redirect_from: coding/2018/10/10/Improve-Programming-using-Project-Euler.html 

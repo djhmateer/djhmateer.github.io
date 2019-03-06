@@ -2,7 +2,7 @@
 layout: post
 title:  "GitKraken"
 # menu: review
-categories: git
+categories: Git
 published: true 
 redirect_from: "/git/2018/01/22/Gitkraken.html"
 ---

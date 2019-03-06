@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Vim
-categories: vim 
+categories: Vim 
 published: true 
 redirect_from: vim/2018/02/21/VIM.html 
 ---

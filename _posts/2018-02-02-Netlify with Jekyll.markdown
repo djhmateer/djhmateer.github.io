@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Netlify with Jekyll
-categories: netlify jekyll
+title: Netlify with Jekyll
+categories: Netlify Jekyll
 published: true 
 redirect_from: netlify/2018/02/02/Netlify-with-Jekyll.html 
 ---

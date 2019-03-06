@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Azure CLI and Cloud Shell
-categories: azure cli 
+categories: Azure 
 published: true 
 redirect_from: azure/2018/02/15/Azure-CLI.html 
 ---

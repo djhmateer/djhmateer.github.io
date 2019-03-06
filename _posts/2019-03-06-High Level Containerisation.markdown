@@ -2,7 +2,7 @@
 layout: post
 title: Containers  
 menu: review
-categories: containers docker kubernetes 
+categories: Containers Docker Kubernetes 
 published: true 
 comments: false
 sitemap: false

@@ -2,7 +2,7 @@
 layout: post
 title:  Orange Book - Functional Programming in C Sharp
 menu: review
-categories: c# functional 
+categories: C# Functional 
 published: true 
 comments: false
 sitemap: false

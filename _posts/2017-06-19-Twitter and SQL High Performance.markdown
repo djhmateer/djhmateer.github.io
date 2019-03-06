@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Twitter and SQL High Perf"
-categories: sql twitter
+categories: SQL Twitter
 published: true 
 redirect_from: "/jekyll/2017/06/19/Twitter-and-SQL-High-Performance.html"
 ---

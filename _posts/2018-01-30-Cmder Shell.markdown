@@ -2,7 +2,7 @@
 layout: post
 title:  "Cmder"
 #menu: review
-categories: cmder curl
+categories: Cmder Curl
 published: true 
 redirect_from: cmder/2018/01/30/Cmder-Shell.html 
 ---

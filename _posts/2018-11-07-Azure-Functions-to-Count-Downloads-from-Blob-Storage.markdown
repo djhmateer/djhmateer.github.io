@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Azure Functions to Count Downloads from Blob Storage
-categories: azure 
+categories: Azure 
 published: true 
 comments: true
 redirect_from: azure/2018/11/07/Azure-Functions-to-Count-Downloads-from-Blob-Storage.html 

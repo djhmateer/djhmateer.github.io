@@ -2,7 +2,7 @@
 layout: post
 title: Learning Functional Programming in C Sharp 
 menu: review
-categories: functional c# 
+categories: Functional C# 
 published: true 
 comments: false
 sitemap: false

@@ -2,7 +2,7 @@
 layout: post
 title: Make a local copy of a website using wget
 menu: review
-categories: wget 
+categories: Wget 
 published: true 
 comments: false
 sitemap: false

@@ -2,7 +2,7 @@
 layout: post
 title: Value Types and Reference Types 
 menu: review
-categories: functional c# 
+categories: Functional C# 
 published: true 
 comments: false
 sitemap: false

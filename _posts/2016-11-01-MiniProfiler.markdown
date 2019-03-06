@@ -2,7 +2,7 @@
 layout: post
 title:  "Making applications faster using MiniProfiler"
 #menu: review
-categories: miniprofiler
+categories: MiniProfiler
 published: true
 redirect_from: "/miniprofiler/2016/11/01/MiniProfiler.html"
 ---

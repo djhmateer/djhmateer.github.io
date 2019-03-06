@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Open Visual Studio Solution from Command Line
-categories: coding 
+categories: C# 
 published: true 
 comments: true
 redirect_from: coding/2018/11/14/Open-visual-studio-from-command-line.html 

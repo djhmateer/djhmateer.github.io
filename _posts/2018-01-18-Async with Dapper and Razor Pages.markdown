@@ -2,7 +2,7 @@
 layout: post
 title:  "Async with Dapper and Razor Pages"
 #menu: review
-categories: async dapper sql
+categories: Async Dapper SQL
 published: true 
 redirect_from: "/dapper/2018/01/18/Async-with-Dapper-and-Razor-Pages.html"
 ---

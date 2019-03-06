@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Useful Git Commands
-categories: git
+categories: Git
 published: true 
 redirect_from: git/2018/02/01/Useful-Git-Commands.html 
 ---
