@@ -11,9 +11,9 @@ sitemap: false
 
 [Azure DevOps](https://azure.microsoft.com/en-gb/services/devops/) is a collection of services:
 
-- Boards (like Jira - idea to release of software.)
+- Boards (like Jira or Trello- idea to release of software.)
 - Repos (like GitHub, BitBucket)
-- Pipelines (Build, Run Automated Tests and Deploy like Appveyor, CircleCI, Jenkins, Octopus)
+- Pipelines (Build, Run Automated Tests and Deploy like TeamCity, Appveyor, CircleCI, Jenkins, Octopus)
 - Test plans (manual and exploratory testing tools)
 - Artifacts - packages eg nuget
 
