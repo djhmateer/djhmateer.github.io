@@ -4,7 +4,7 @@ title: Lets Encrypt
 #menu: review
 categories: SSL LetsEncrypt Azure
 published: true 
-comments: false
+comments: true
 sitemap: true
 ---
 Azure doesn't support [LetsEncrypt](https://letsencrypt.org/) yet. I use an [extension called letsencrypt-siteextension](https://github.com/sjkp/letsencrypt-siteextension) which works on Windows hosted sited using the App Service. 
