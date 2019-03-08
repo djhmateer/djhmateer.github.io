@@ -25,7 +25,11 @@ You can pick and choose which services to use eg could keep using GitHub
 
 There has been [a lot of people commenting on the UI](https://news.ycombinator.com/item?id=18983586) and I can confirm there is a steep learning curve.  
 
-[Excellent video from NDC London 2019](https://www.youtube.com/watch?v=ges0Q07-kSc) giving a good overview starting with the many names some of the tools have been called eg VSTS, VSO, TFS
+[Excellent video from NDC London 2019](https://www.youtube.com/watch?v=ges0Q07-kSc) giving a good overview starting with the many names some of the tools have been called eg VSTS, VSO, TFS  
+
+[AzureDevOps Hands On Labs](https://www.azuredevopslabs.com/)  
+
+[Microsoft Architecture Solutions](https://azure.microsoft.com/en-gb/solutions/architecture/?solution=devops)  
 
 ## Settings 
 <!-- <img src="/assets/2019-03-07/1.png" width="600" align="left" hspace="15">  -->

@@ -155,7 +155,7 @@ LetsEncrypt can't validate the domain as it is pointing to the current live serv
 
 ## Summary
 - Use Lets Encrypt on Azure for smaller projects which are **not mission critical**
-- Use classic paid for certs for larger commercial sites (as there are a lot of moving parts for LE on Azure) 
+- Use classic paid for certs for larger commercial sites (as there are a lot of moving parts for LE on Azure including needed elevated permissions which I didn't have on my corporate Azure account) 
 
 
 
