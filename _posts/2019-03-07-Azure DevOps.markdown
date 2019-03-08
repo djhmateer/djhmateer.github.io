@@ -98,7 +98,7 @@ We're inheriting Ubuntu build server from the Pipeline.
 Restore, Build, Test, Publish, and Publish Artifact (which doesn't go into the Azure DevOps Artifacts, but is accessible from the Agent whic does Releases
 
 ## Stages
-A push to master branch automatically triggers a deploy to Test (http://webapplication1dm-test.azurewebsites.net/)[http://webapplication1dm-test.azurewebsites.net/] then manually Approve to promote to Prod (http://webapplication1dm.azurewebsites.net/)[http://webapplication1dm.azurewebsites.net/]
+A push to master branch automatically triggers a deploy to Test [http://webapplication1dm-test.azurewebsites.net/](http://webapplication1dm-test.azurewebsites.net/) then manually Approve to promote to Prod [http://webapplication1dm.azurewebsites.net/](http://webapplication1dm.azurewebsites.net/)
 
 ![ps](/assets/2019-03-07/17.png)   
 
