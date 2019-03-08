@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Azure DevOps  
-date: 2019-03-06
 menu: review
 categories: DevOps
 published: true 
@@ -29,17 +28,16 @@ There has been [a lot of people commenting on the UI](https://news.ycombinator.c
 [Excellent video from NDC London 2019](https://www.youtube.com/watch?v=ges0Q07-kSc) giving a good overview starting with the many names some of the tools have been called eg VSTS, VSO, TFS
 
 ## Settings 
-<img src="/assets/2019-03-07/1.png" width="600" align="right" hspace="15">  
+<!-- <img src="/assets/2019-03-07/1.png" width="600" align="left" hspace="15">  -->
 
 Turning off Boards, Artifacts and Test Plans helps reduce noise. I'm keeping this Project private
-
-![ps](/assets/2019-03-07/1.png)  
+![ps](/assets/2019-03-07/1.png){:width="700px"}
 
 ## Release Pipelines
 After setting up a repository with a single index.html in it with 'Hello World' as text, lets make a Continuous Deployment pipeline that deploys to the live Azure App Service whenever a new commit is pushed to the master branch.
 
 ### Step 1 - Add an Artifact
-![ps](/assets/2019-03-07/2.png)  
+![ps](/assets/2019-03-07/2.png){:width="800px"}  
 Wiring up the Artifact directly to the master branch of the Repo (not doing any building)
 
 
@@ -92,12 +90,36 @@ Building all projects on an Ubuntu machine. Interestingly I've not got any test 
 Setting the source Repo for the Build and branch. Tagging source repo always
 
 ![ps](/assets/2019-03-07/13.png)   
-We can see in source control which every build and its version number. [More Information on Microsoft Docs](https://docs.microsoft.com/en-gb/azure/devops/pipelines/repos/pipeline-options-for-git?view=azure-devops)  
+We can see in source control which every build and its `$build.buildNumber` [More Information on Microsoft Docs](https://docs.microsoft.com/en-gb/azure/devops/pipelines/repos/pipeline-options-for-git?view=azure-devops) and [all the predefined variables](https://docs.microsoft.com/en-gb/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml)
 
-![ps](/assets/2019-03-07/13.png)   
+![ps](/assets/2019-03-07/14.png)   
 We're inheriting Ubuntu build server from the Pipeline.
 
 Restore, Build, Test, Publish, and Publish Artifact (which doesn't go into the Azure DevOps Artifacts, but is accessible from the Agent whic does Releases
+
+## Stages
+A push to master branch automatically triggers a deploy to Test (http://webapplication1dm-test.azurewebsites.net/)[http://webapplication1dm-test.azurewebsites.net/] then manually Approve to promote to Prod (http://webapplication1dm.azurewebsites.net/)[http://webapplication1dm.azurewebsites.net/]
+
+![ps](/assets/2019-03-07/17.png)   
+
+![ps](/assets/2019-03-07/20.png)   
+Setting up the Approval process so that I can approve.
+
+![ps](/assets/2019-03-07/21.png)   
+If you do this, then can only deploy the latest to Prod. I prefer the ability to promote any build to Prod (and can then easily promote a previous build to prod if something breaks), so use `Unlimited` above
+
+![ps](/assets/2019-03-07/18.png)   
+We have Release-23 in Test and Release-22 in Prod.
+
+
+## Email Alerts
+Look in your personal settings to turn them on or off
+![ps](/assets/2019-03-07/22.png)   
+
+
+## Build Minutes and Parallel Jobs
+A handy screen to see how many build minutes we have used. Notice that Public projects get free build minutes.   
+![ps](/assets/2019-03-07/16.png)    
 
 ## TLA's
 PBI - Product Backlog Item  
