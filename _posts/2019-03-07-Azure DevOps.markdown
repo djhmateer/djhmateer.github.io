@@ -147,8 +147,9 @@ then in the Azure portal we can put in the secret connection strings. We don't n
 
 ![ps](/assets/2019-03-07/23.png)    
 
-To access the configuration settings from say `Index.cshtml.cs`:
-
+To access the configuration settings from say `Index.cshtml.cs`, you can use the ASP.NET Core's DI to inject in IConfiguration which then allows us to read:
+- appsettings.json when running locally
+- Azure Application Settings and Connection Strings (these take precedence)  
 ```cs
 public class IndexModel : PageModel
 {
