@@ -124,7 +124,65 @@ A handy screen to see how many build minutes we have used. Notice that Public pr
 ![ps](/assets/2019-03-07/16.png)    
 
 ## Connection strings and secrets
-We want an automated pipeline to put in the correct secrets into the application depends on which Stage eg Dev/Test/Prod we are in.
+We want an automated pipeline to put in the correct secrets into the application depends on which Stage eg Test/Prod we are in.  
+
+The simplest workflow is if we are using a ASP.NET Core web app, then put in variables in `appsettings.json` 
+
+```json
+{
+  "Stage": "Local",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=WebApplication1;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
+
+then in the Azure portal we can put in the secret connection strings. We don't need the build chain to insert them (yet) as we have already got our Test and Prod enviornments built.
+
+![ps](/assets/2019-03-07/23.png)    
+
+To access the configuration settings from say `Index.cshtml.cs`:
+
+```cs
+public class IndexModel : PageModel
+{
+    private readonly IConfiguration _config;
+    public string Message { get; set; }
+    public string ConnectionString { get; set; }
+    public string Stage { get; set; }
+
+    public IndexModel(IConfiguration config)
+    {
+        _config = config;
+    }
+    
+    public void OnGet()
+    {
+        Message = "test message";
+        //var environment = _config.GetValue<string>("ConnectionStrings:DefaultConnection");
+        //var connection = new SqlConnection(_config.GetConnectionString("WebApplication1ConnectionString"));
+        var connection = _config.GetConnectionString("DefaultConnection");
+        var stage = _config.GetValue<string>("Stage");
+        ConnectionString = connection;
+        Stage = stage;
+    }
+}
+```
+and on the razor view:
+
+```html
+<h1 class="display-4">Welcome!_   n</h1>
+<p>Message is: @Model.Message</p>
+<p>Stage is: @Model.Stage</p>
+<p>ConnectionString is: @Model.ConnectionString</p>
+
+```
 
 ## AzureDevOps TLA's
 PBI - Product Backlog Item  
