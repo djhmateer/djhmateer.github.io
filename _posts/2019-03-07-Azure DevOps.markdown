@@ -44,8 +44,6 @@ After setting up a repository with a single index.html in it with 'Hello World' 
 ![ps](/assets/2019-03-07/2.png){:width="800px"}  
 Wiring up the Artifact directly to the master branch of the Repo (not doing any building)
 
-
-
 ### Step 2 - Trigger getting the Artifact
 ![ps](/assets/2019-03-07/3.png)  
 Trigger to deploy whenever there is a push to the branch (master as defined in first step)  
@@ -75,7 +73,7 @@ There is the yaml or visual designer way to do the Build. [From the Azure DevOps
 
 So the azure-pipelines.yml describes the Build and the Release?  
 
-The documentation recommends using the yaml way so everything is in source control.
+The documentation recommends using the yaml way so everything is in source control, however others I've talked to in real life use the gui currently.
 
 ### Visual Designer
 ![ps](/assets/2019-03-07/8.png)    
@@ -125,7 +123,10 @@ Look in your personal settings to turn them on or off
 A handy screen to see how many build minutes we have used. Notice that Public projects get free build minutes.   
 ![ps](/assets/2019-03-07/16.png)    
 
-## TLA's
+## Connection strings and secrets
+We want an automated pipeline to put in the correct secrets into the application depends on which Stage eg Dev/Test/Prod we are in.
+
+## AzureDevOps TLA's
 PBI - Product Backlog Item  
 
 
