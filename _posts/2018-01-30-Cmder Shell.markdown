@@ -23,6 +23,7 @@ gl=git log --oneline --all --graph --decorate  $*
 ls=ls -lat --show-control-chars -F --color $*
 e=explorer .
 p=git add . -A & git commit -m "auto commit" & git push
+m=git commit -am "$*" & git push
 c=code .
 cdd = cd c:\dev
 k=kubectl $*
