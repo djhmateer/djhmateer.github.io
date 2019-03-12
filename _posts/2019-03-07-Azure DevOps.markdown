@@ -224,7 +224,6 @@ Setting the BuildNumber which is useful to display at the bottom of the final we
 ```
 
 then variables being defined on the DevOps dashboard:
-![ps](/assets/2019-03-07/24.png)    
 
 
 ## DevOps Status
@@ -233,7 +232,11 @@ I had an issue where the Build was triggering when a new commit was found on the
 
 Even an hour after it was fixed I noticed issues - seeing a 17minute then 6minute then 4minute lag between Build finishing and Release artifact being picked up. I'm assuming it is message queues clearing.  
 
+## Build Agent
 
+![ps](/assets/2019-03-07/24.png)    
+
+https://azuredevopslabs.com/labs/java/dockerbuildagent/
 
 
 ## AzureDevOps TLA's
