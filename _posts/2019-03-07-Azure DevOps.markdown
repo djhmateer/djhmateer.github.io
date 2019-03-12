@@ -186,20 +186,52 @@ and on the razor view:
 ```
 
 ## Variable Substitution - Display Build information on the website
-To know exactly which release you are looking at on a Test / Prod server, to be able to tie that number back to your release number, therefore which commits are in there, is invaluable. I also like to know which connection string the app thinks it has (with security). So many production issues have been saved this way.
+To know exactly which build you are looking at on a Test / Prod server, and to be able to tie that back to a commit is invaluable. I also like to know which connection string the app thinks it has (with security). So many production issues have been saved this way.  
 
-Build.BuildId eg 62 <a href="https://dev.azure.com/penhemingway/WebApplication1/_build/results?buildId=62">Good for hyperlink</a>  
-Build.BuildNumber eg 20190312.2 - typically this is used to make a git Tag 
+I am using a [json transform of the appsetting.json file](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/transforms-variable-substitution?view=azure-devops)  
 
-Release.ReleaseId eg 50 <a href="https://dev.azure.com/penhemingway/WebApplication1/_releaseProgress?_a=release-pipeline-progress&releaseId=50">Good for hyperlink</a>  
+[Build Variables](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml) defined here  
 
+[Release Variables](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/variables?view=azure-devops&tabs=batch)  defined   
 
+- Build.BuildNumber eg 20190312.2 - typically this is used to make a git Tag 
+- Build.BuildId eg 62 useful for making <a href="https://dev.azure.com/penhemingway/WebApplication1/_build/results?buildId=62"> a hyperlink to the build</a>  
+- Release.ReleaseId eg 50 useful for making a <a href="https://dev.azure.com/penhemingway/WebApplication1/_releaseProgress?_a=release-pipeline-progress&releaseId=50">hyperlink for the release</a>  
+
+The [Build.BuildNumber format can be modified](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/options?view=azure-devops&tabs=yaml)
+
+I now use a BuildNumber like: `20190312_1426_77` ie $(Date:yyyyMMdd)_$(Date:HHmm)_$(BuildID)   
+
+![ps](/assets/2019-03-07/25.png)    
+Setting the BuildNumber which is useful to display at the bottom of the final websites.  
+
+```json
+{
+  "Stage": "Local",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=WebApplication1;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  "DevOpsBuildNumber" :  "BuildNumberNotSet",
+  "DevOpsBuildId" :  "BuildIdNotSet",
+  "DevOpsReleaseId" :  "ReleaseIdNotSet",
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
+
+then variables being defined on the DevOps dashboard:
+![ps](/assets/2019-03-07/24.png)    
 
 
 ## DevOps Status
-[status.dev.azure.com](https://status.dev.azure.com/)  
 
-I had an issue where the Build was triggering when a new commit was found on the branch, but the Release pipeline wasn't picking up that a new artifact was there.
+I had an issue where the Build was triggering when a new commit was found on the branch, but the Release pipeline wasn't picking up that a new artifact was there.  It turned out to be an issue with DevOps which was shown on the [status.dev.azure.com board](https://status.dev.azure.com/)  
+
+Even an hour after it was fixed I noticed issues - seeing a 17minute then 6minute then 4minute lag between Build finishing and Release artifact being picked up. I'm assuming it is message queues clearing.  
 
 
 
