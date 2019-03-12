@@ -16,7 +16,9 @@ My journey so far in exploring Functional Programming in C# and the resources I'
 - Safety (avoiding unnecessary side effects makes code easier to reason about)
 - Clarity (we spend more time maintaining and consuming existing code than writing new. Achieving clarity will become more natural)
 
-I have a tricky programming problem, which I've tried and the code is rapidly turning into complex unmaintainable spaghetti. So this is my reason.
+I have a tricky programming problem, which I've tried and the code is rapidly turning into complex unmaintainable spaghetti. Am I saying that OO isn't up to the job? No. But:
+
+>I believe OO becomes cognitively very difficult when a project reaches a certain scale. Functional programming allows my brain to manage complexity much better." [source](https://news.ycombinator.com/item?id=13514037)
 
 As a side effect it has pushed my C# language skills and is thoroughly enjoyable!
 
@@ -26,7 +28,7 @@ As a side effect it has pushed my C# language skills and is thoroughly enjoyable
 
 These techniques are for *an ambitious breed of developer* who is aiming for code which is: concise, elegant, robust and maintainable.
 
-The orange book below is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. [F#](https://web.archive.org/web/20161027124919/http://www.programgood.net/CategoryView,category,F.aspx) and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. I'm going to push very hard in C# first as I know it well.
+The orange book below is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. [F#](https://web.archive.org/web/20161027124919/http://www.programgood.net/CategoryView,category,F.aspx) and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. Scala is getting a lot of traction around London, and Clojure seems interesting too. I'm going to push very hard in C# first as I know it well.
 
 'Change the way you think is hard, and learning the syntax is relatively easy'
 
