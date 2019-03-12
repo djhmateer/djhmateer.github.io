@@ -185,6 +185,25 @@ and on the razor view:
 
 ```
 
+## Variable Substitution - Display Build information on the website
+To know exactly which release you are looking at on a Test / Prod server, to be able to tie that number back to your release number, therefore which commits are in there, is invaluable. I also like to know which connection string the app thinks it has (with security). So many production issues have been saved this way.
+
+Build.BuildId eg 62 <a href="https://dev.azure.com/penhemingway/WebApplication1/_build/results?buildId=62">Good for hyperlink</a>  
+Build.BuildNumber eg 20190312.2 - typically this is used to make a git Tag 
+
+Release.ReleaseId eg 50 <a href="https://dev.azure.com/penhemingway/WebApplication1/_releaseProgress?_a=release-pipeline-progress&releaseId=50">Good for hyperlink</a>  
+
+
+
+
+## DevOps Status
+[status.dev.azure.com](https://status.dev.azure.com/)  
+
+I had an issue where the Build was triggering when a new commit was found on the branch, but the Release pipeline wasn't picking up that a new artifact was there.
+
+
+
+
 ## AzureDevOps TLA's
 PBI - Product Backlog Item  
 
