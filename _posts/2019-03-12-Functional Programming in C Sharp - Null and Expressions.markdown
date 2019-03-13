@@ -33,7 +33,7 @@ Make everything you do an expression, rather than a sequence of statements eg if
 ## Immutable types
 These act like [record types](https://fsharpforfunandprofit.com/posts/records/) or data types in other languages. Essentially can only be a finitie set of attributes. [good example using With](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
-Then create static classes that work with these data types.  
+Then create static classes that work with these data types. Why static classes.. what is meant by that? 
 
 Why immutable objects?
 
