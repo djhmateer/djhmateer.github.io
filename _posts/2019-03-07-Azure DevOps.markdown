@@ -71,9 +71,7 @@ Time to deploy to live site between 35s and 60s.
 ## Build Pipeline
 There is the yaml or visual designer way to do the Build. [From the Azure DevOps Docs](https://docs.microsoft.com/en-gb/azure/devops/pipelines/get-started/pipelines-get-started?toc=/azure/devops/pipelines/toc.json&bc=/azure/devops/boards/pipelines/breadcrumb/toc.json&view=azure-devops) comments at the bottom it seems like yaml doesn't have stages in Releases (eg dev, test, prod) or approvals in Releases which are very important.  
 
-So the azure-pipelines.yml describes the Build and the Release?  
-
-The documentation recommends using the yaml way so everything is in source control, however others I've talked to in real life use the gui currently.
+The documentation recommends using the yaml way so everything is in source control, however others I've talked to who use this in production suggest the UI. 
 
 ### Visual Designer
 ![ps](/assets/2019-03-07/8.png)    
@@ -120,7 +118,7 @@ Look in your personal settings to turn them on or off
 
 
 ## Build Minutes and Parallel Jobs
-A handy screen to see how many build minutes we have used. Notice that Public projects get free build minutes.   
+A handy screen to see how many build minutes we have used. Notice that Public projects get free build minutes.  See below as I've gone to using the faster Self-hosted build agents.  
 ![ps](/assets/2019-03-07/16.png)    
 
 ## Connection strings and secrets
@@ -142,14 +140,14 @@ The simplest workflow is if we are using a ASP.NET Core web app, then put in var
   "AllowedHosts": "*"
 }
 ```
-
-then in the Azure portal we can put in the secret connection strings. We don't need the build chain to insert them (yet) as we have already got our Test and Prod enviornments built.
+Then in the Azure portal we can put in the secret connection strings. We don't need the build chain to insert them (yet) as we have already got our Test and Prod enviornments built.
 
 ![ps](/assets/2019-03-07/23.png)    
 
 To access the configuration settings from say `Index.cshtml.cs`, you can use the ASP.NET Core's DI to inject in IConfiguration which then allows us to read:
 - appsettings.json when running locally
-- Azure Application Settings and Connection Strings (these take precedence)  
+- Azure Application Settings and Connection Strings (these settings take precedence)    
+
 ```cs
 public class IndexModel : PageModel
 {
@@ -173,7 +171,7 @@ public class IndexModel : PageModel
     }
 }
 ```
-and on the razor view:
+On the razor view:  
 
 ```html
 <h1 class="display-4">Welcome!_   n</h1>
@@ -184,7 +182,14 @@ and on the razor view:
 ```
 
 ## Variable Substitution - Display Build information on the website
-To know exactly which build you are looking at on a Test / Prod server, and to be able to tie that back to a commit is invaluable. I also like to know which connection string the app thinks it has (with security). So many production issues have been saved this way.  
+To know exactly which build you are looking at on a Test / Prod server is invaluable. So many production issues have been solved this way.  
+
+![ps](/assets/2019-03-07/30.png)    
+Here we are on the Test stage, connected to the test database, on build 104 done at 14:22 on the 13th of March 2019.
+
+![ps](/assets/2019-03-07/31.png)    
+The same build on Prod.
+
 
 To add a variable which we can substitute:  
 
@@ -232,7 +237,7 @@ Setting the BuildNumber which is useful to display at the bottom of the final we
 ![ps](/assets/2019-03-07/29.png)    
 Having the BuildNumber 101, BuildDateTime 13:48, Stage: Test, and db connection string (part of it!).. provides invaluable debug information. [StackOverflow](https://stackoverflow.com) do something similar with the BuildNumber.  
 
-To access this data it is like we did above:  
+To access this data from code:   
 
 ```cs
 var connectionString = _config.GetConnectionString("DefaultConnection");
