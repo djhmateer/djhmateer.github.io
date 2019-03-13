@@ -166,11 +166,9 @@ public class IndexModel : PageModel
     public void OnGet()
     {
         Message = "test message";
-        //var environment = _config.GetValue<string>("ConnectionStrings:DefaultConnection");
-        //var connection = new SqlConnection(_config.GetConnectionString("WebApplication1ConnectionString"));
-        var connection = _config.GetConnectionString("DefaultConnection");
+        var connectionString = _config.GetConnectionString("DefaultConnection");
         var stage = _config.GetValue<string>("Stage");
-        ConnectionString = connection;
+        ConnectionString = connectionString;
         Stage = stage;
     }
 }
@@ -188,7 +186,33 @@ and on the razor view:
 ## Variable Substitution - Display Build information on the website
 To know exactly which build you are looking at on a Test / Prod server, and to be able to tie that back to a commit is invaluable. I also like to know which connection string the app thinks it has (with security). So many production issues have been saved this way.  
 
+To add a variable which we can substitute:  
+
+- Add variable into appsettings.json with local settings
+- Make sure in Releases that in Deploy Azure App Service, the File transforms JSON variable substitution is set eg **/appsettings.json 
+- Add variable in Releases, Variables.
+
+If you put the same variable in Azure dashboard Application settings it will override any previous settings 
+
+```json
+  "Stage": "Local",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=WebApplication1;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  "DevOpsBuildNumber" :  "BuildNumberNotSet",
+  "DevOpsBuildId" :  "BuildIdNotSet",
+  "DevOpsReleaseId" :  "ReleaseIdNotSet",
+```
+appsettings.json  
+
 I am using a [json transform of the appsetting.json file](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/transforms-variable-substitution?view=azure-devops)  
+
+![ps](/assets/2019-03-07/28.png)    
+Set the json transform in Test and Prod Stages
+
+![ps](/assets/2019-03-07/27.png)    
+Adding in variable in Releases, Variables
+
 
 [Build Variables](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml) defined here  
 
@@ -205,25 +229,22 @@ I now use a BuildNumber like: `20190312_1426_77` ie $(Date:yyyyMMdd)_$(Date:HHmm
 ![ps](/assets/2019-03-07/25.png)    
 Setting the BuildNumber which is useful to display at the bottom of the final websites.  
 
-```json
-{
-  "Stage": "Local",
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=WebApplication1;Trusted_Connection=True;MultipleActiveResultSets=true"
-  },
-  "DevOpsBuildNumber" :  "BuildNumberNotSet",
-  "DevOpsBuildId" :  "BuildIdNotSet",
-  "DevOpsReleaseId" :  "ReleaseIdNotSet",
-  "Logging": {
-    "LogLevel": {
-      "Default": "Warning"
-    }
-  },
-  "AllowedHosts": "*"
-}
+![ps](/assets/2019-03-07/29.png)    
+Having the BuildNumber 101, BuildDateTime 13:48, Stage: Test, and db connection string (part of it!).. provides invaluable debug information. [StackOverflow](https://stackoverflow.com) do something similar with the BuildNumber.  
+
+To access this data it is like we did above:  
+
+```cs
+var connectionString = _config.GetConnectionString("DefaultConnection");
+// so wont throw if < 50
+ConnectionString = new string(connectionString.Skip(7).Take(50).ToArray());
+
+Stage = _config.GetValue<string>("Stage");
+DevOpsBuildId = _config.GetValue<string>("DevOpsBuildId");
+DevOpsBuildNumber = _config.GetValue<string>("DevOpsBuildNumber");
+DevOpsReleaseId = _config.GetValue<string>("DevOpsReleaseId");
 ```
 
-then variables being defined on the DevOps dashboard:
 
 ## DevOps Status
 I had an issue where the Build was triggering when a new commit was found on the branch, but the Release pipeline wasn't picking up that a new artifact was there.  It turned out to be an issue with DevOps which was shown on the [status.dev.azure.com board](https://status.dev.azure.com/)  
@@ -231,17 +252,36 @@ I had an issue where the Build was triggering when a new commit was found on the
 Even an hour after it was fixed I noticed issues - seeing a 17minute then 6minute then 4minute lag between Build finishing and Release artifact being picked up. I'm assuming it is message queues clearing.  
 
 ## Build Agent
+To speed up the Builds and Releases I use my own build agent running as a Linux Docker container on my local windows machine (fast desktop with a 140Mbps synchronous internet connect). This is not recommended for Production, but is very good for experimentation with the system.
+
+[Build agent on Docker Hub](https://hub.docker.com/_/microsoft-azure-pipelines-vsts-agent) and instructions
+
+```bash
+docker run -e VSTS_ACCOUNT=penhemingway -e VSTS_TOKEN=************** -e VSTS_POOL=MateerPool -e VSTS_AGENT='workdesktop-agent' -it mcr.microsoft.com/azure-pipelines/vsts-agent
+```
+- VSTS_ACCOUNT is from: https://dev.azure.com/penhemingway/  
+- PAT Token can be got from: DevOps Portal, Your user icon, Security, then:  
+- VSTS_POOL is an obvious name (see below in Organisational settings, Agent Pools)  
+- VSTS_AGENT is the name of your build server  
 
 ![ps](/assets/2019-03-07/24.png)    
 
-https://azuredevopslabs.com/labs/java/dockerbuildagent/
+![ps](/assets/2019-03-07/26.png)    
+Setting up own pool makes it clearer in Builds and Pipelines (instead of the nebulous Default).
+
+
+Performance improvements on local vs Hosted Ubuntu:
+- Builds from 2:30 to 17seconds
+- Release stage is much faster 
+
+To see changes in Dev takes **50 seconds** now, compared with **3:30**.
 
 ## Using a database
 SQL Server hosted on Azure 
 
 To get debug error messages on Test, use the environment variable:
 
-```cs
+```bash
 ASPNETCORE_ENVIRONMENT = Development
 ```
 
