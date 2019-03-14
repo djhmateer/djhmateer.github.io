@@ -7,6 +7,7 @@ published: true
 comments: false
 sitemap: false
 ---
+Hello world! 
 
 [Azure DevOps](https://azure.microsoft.com/en-gb/services/devops/) is a collection of services:
 
@@ -194,7 +195,7 @@ The same build on Prod.
 To add a variable which we can substitute:  
 
 - Add variable into appsettings.json with local settings
-- Make sure in Releases that in Deploy Azure App Service, the File transforms JSON variable substitution is set eg **/appsettings.json 
+- Make sure in Releases (all Stages) that in Deploy Azure App Service, the File transforms JSON variable substitution is set eg **/appsettings.json 
 - Add variable in Releases, Variables.
 
 If you put the same variable in Azure dashboard Application settings it will override any previous settings 
@@ -257,7 +258,7 @@ I had an issue where the Build was triggering when a new commit was found on the
 Even an hour after it was fixed I noticed issues - seeing a 17minute then 6minute then 4minute lag between Build finishing and Release artifact being picked up. I'm assuming it is message queues clearing.  
 
 ## Build Agent
-To speed up the Builds and Releases I use my own build agent running as a Linux Docker container on my local windows machine (fast desktop with a 140Mbps synchronous internet connect). This is not recommended for Production, but is very good for experimentation with the system.
+To speed up the Builds and Releases I use my own Linux build agent running as a Docker container on my local windows machine (fast desktop with a 140Mbps synchronous internet connect). This is not recommended for Production, but is very good for experimentation with the system.
 
 [Build agent on Docker Hub](https://hub.docker.com/_/microsoft-azure-pipelines-vsts-agent) and instructions
 
