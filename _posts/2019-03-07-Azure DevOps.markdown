@@ -7,8 +7,6 @@ published: true
 comments: false
 sitemap: false
 ---
-Hello world! 
-
 [Azure DevOps](https://azure.microsoft.com/en-gb/services/devops/) is a collection of services:
 
 - Boards (like Jira or Trello- idea to release of software.)
