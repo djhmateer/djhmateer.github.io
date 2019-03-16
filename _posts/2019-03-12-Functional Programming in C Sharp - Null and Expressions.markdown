@@ -12,7 +12,7 @@ sitemap: false
 
 This article is about making our C# code more functional by using:
 
-- Expressions 
+- Expressions and ternary operator 
 - Immutable types
 - Pure methods
 - Option 
@@ -30,7 +30,7 @@ If we remember that the core tenants of what FP are
 - Functions first
 - Immutability
 
-Then Expressions first helps use keep the functions small.  
+Expressions first helps use keep the functions small.  
 Immutability helps guides the functions towards being pure (no side effects)
 
 ## Expressions
@@ -40,15 +40,15 @@ Make everything you do is an expression, rather than a sequence of statements eg
 static void PrintHello() => 
     Console.WriteLine("Hello World from a function");
 ```
-## Immutable types
-These act like [record types](https://fsharpforfunandprofit.com/posts/records/) or data types in other languages. Essentially can only be a finitie set of attributes. [good example using With](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
+## Immutable data types
+These act like [record types](https://fsharpforfunandprofit.com/posts/records/) or `data types` in other languages. Essentially can only be a finitie set of attributes. [good example using With](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
 Why immutable objects?
 
 Why use the With to return a copy of an object when wanting to mutate it? [Good SO Question here](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
 ## Pure methods
-Pure methods don't refer to any global state. The same inputs will always get the same output. Combined with immutable types this means you can be sure the same inputs will give the same outputs.  
+Pure methods don't refer to any global state. The same inputs will always get the same output. Combined with immutable data types this means you can be sure the same inputs will give the same outputs.  
 
 If we have mutable objects it could be possible for another function to mutate the object we were working on concurrently.  
 
@@ -68,6 +68,24 @@ Try to avoid. Use  Option<A> or Either<L, R> where L is the error. `Try<A>` or a
 Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Wither<L, R>`, `Try<A>` etc..
 
 [good examples at bottom of message](https://github.com/louthy/language-ext/issues/209)  
+
+
+### Functors
+asdf
+
+### Monads
+..Allows us to chain multiple functions together that all the return `Option` eg
+
+```cs
+
+```
+
+C# has a syntax for monadic types: LINQ
+
+
+## Summary
+As louthy said in is post, it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.
+
 
 
 ![ps](/assets/2019-03-07/1.png){:width="700px"}
