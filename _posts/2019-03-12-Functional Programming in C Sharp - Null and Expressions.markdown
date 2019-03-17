@@ -91,12 +91,54 @@ static Option<string> GetValue(bool hasValue) =>
 
 ```
 Lets see another example of using Map to 'stay in the elevated context' and not have to worry about nulls.
+```cs
+static void Test()
+{
+    Option<string> html = GetHtml("a");
+    //Option<string> html = GetHtml("c");
+    // Shorten html
+    Option<string> shortHtml = html.Map(x => x.Substring(0, 1)); // Some(a)
+    // Put on https
+    Option<string> addedHttps = shortHtml.Map(x => $"https://{x}"); // Some(https://a)
 
+    // Come down from elevated context and deal with None
+    string final = addedHttps.Match(Some: x => x, None: () => "No html returned so lambdas not invoked");
+}
+static Option<string> GetHtml(string url)
+{
+    if (url == "a") return "aa";
+    if (url == "b") return "bb";
+    return None;
+}
+
+```
 
 ### Bind and Monads
-..Allows us to chain multiple functions together that all the return `Option` eg
+Allows us to chain multiple functions together that all the return `Option` eg
 
 ```cs
+static void Test()
+{
+    Option<string> html = GetHtml("a");
+    //Option<string> html = GetHtml("c");
+
+    Option<string> shortHtml = html.Bind(x => ShortenHtml(x)); // x is a string
+
+    // Put on https using shortened Method syntax so don't need x
+    Option<string> addedHttps = shortHtml.Bind(PutOnHttps); 
+
+    Option<string> both = html.Bind(ShortenHtml)
+                              .Bind(PutOnHttps);
+
+    // come down from elevated context and deal with None
+    string final = addedHttps.Match(Some: x => x, None: () => "No html returned");
+    string finalb = both.Match(Some: x => x, None: () => "No html returned");
+}
+static Option<string> ShortenHtml(string html) =>
+    Some(html.Substring(0, 1));
+
+static Option<string> PutOnHttps(string html) =>
+    Some("https://" + html);
 
 ```
 
