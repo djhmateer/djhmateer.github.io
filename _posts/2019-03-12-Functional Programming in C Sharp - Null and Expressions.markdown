@@ -65,7 +65,7 @@ In F# you work with value types which definately have values.
 Try to avoid. Use  Option<A> or Either<L, R> where L is the error. `Try<A>` or an `Exception<A>` could be used.
 
 ## Functors, Applicatives and Monads
-Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Either<L, R>`, `Try<A>` etc..
+Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Either<L, R>`, `Try<A>` etc.. Is IEnumerable a core functional type or maybe Seq?
 
 [good examples at bottom of message](https://github.com/louthy/language-ext/issues/209) which are here too  
 
@@ -144,7 +144,8 @@ static Option<string> PutOnHttps(string html) =>
 
 C# has a syntax for monadic types: LINQ
 
-## Method chaining in LINQ vs Bind  
+## Collections / Method chaining in LINQ vs Bind  
+In my broken links checker example application, after getting the html from a page, I'm dealing with collections a lot and have used a lot of extension method chaining.. is there a better way using Bind?
 
 
 ## Summary
