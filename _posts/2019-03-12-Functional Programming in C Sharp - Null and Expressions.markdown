@@ -65,15 +65,35 @@ In F# you work with value types which definately have values.
 Try to avoid. Use  Option<A> or Either<L, R> where L is the error. `Try<A>` or an `Exception<A>` could be used.
 
 ## Functors, Applicatives and Monads
-Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Wither<L, R>`, `Try<A>` etc..
+Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Either<L, R>`, `Try<A>` etc..
 
-[good examples at bottom of message](https://github.com/louthy/language-ext/issues/209)  
+[good examples at bottom of message](https://github.com/louthy/language-ext/issues/209) which are here too  
+
+### Match Map and Functors
+```cs
+// Annoying having to do this to get the value
+string value = GetValue(true).Match(
+    Some: name => $"Hello, {name}",
+    None: () => "Goodbye"
+);
+Console.WriteLine($"{value}");
+
+// Map - Functor
+// Lambda inside map wont be invoked if Option is in None state
+// Option is a replacement for if statements
+Option<string> valueb = GetValue(true).Map(name => $"Hello, {name}");
+Console.WriteLine($"{valueb}"); // Some(Hello, Skoucail)
+
+static Option<string> GetValue(bool hasValue) =>
+    hasValue
+        ? Some("Skoucail")
+        : None;
+
+```
+Lets see another example of using Map to 'stay in the elevated context' and not have to worry about nulls.
 
 
-### Functors
-asdf
-
-### Monads
+### Bind and Monads
 ..Allows us to chain multiple functions together that all the return `Option` eg
 
 ```cs
@@ -81,6 +101,8 @@ asdf
 ```
 
 C# has a syntax for monadic types: LINQ
+
+## Method chaining in LINQ vs Bind  
 
 
 ## Summary
