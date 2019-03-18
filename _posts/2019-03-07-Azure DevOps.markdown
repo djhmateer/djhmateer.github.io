@@ -248,8 +248,6 @@ DevOpsBuildId = _config.GetValue<string>("DevOpsBuildId");
 DevOpsBuildNumber = _config.GetValue<string>("DevOpsBuildNumber");
 DevOpsReleaseId = _config.GetValue<string>("DevOpsReleaseId");
 ```
-
-
 ## DevOps Status
 I had an issue where the Build was triggering when a new commit was found on the branch, but the Release pipeline wasn't picking up that a new artifact was there.  It turned out to be an issue with DevOps which was shown on the [status.dev.azure.com board](https://status.dev.azure.com/)  
 
@@ -288,6 +286,12 @@ To get debug error messages on Test, use the environment variable:
 ```bash
 ASPNETCORE_ENVIRONMENT = Development
 ```
+## AzureDevOpsDemoGenerator
+[https://azuredevopsdemogenerator.azurewebsites.net](https://azuredevopsdemogenerator.azurewebsites.net) generates up sample DevOps projects with Boards,. Repos, Pipelines, Test Plans and Artifacts.  
+
+[https://azuredevopslabs.com/labs/azuredevops/continuousintegration/](https://azuredevopslabs.com/labs/azuredevops/continuousintegration/) requries the Parts Unlimited project be setup. This is an ASP.NET 4.5 project talking to MSSQL.  
+
+
 
 ## AzureDevOps TLA's
 PBI - Product Backlog Item  
