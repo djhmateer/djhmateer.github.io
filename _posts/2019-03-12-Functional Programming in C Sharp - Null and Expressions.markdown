@@ -112,7 +112,6 @@ static Option<string> GetHtml(string url)
 }
 
 ```
-
 ### Bind and Monads
 Allows us to chain multiple functions together that all the return `Option` eg
 
@@ -141,11 +140,45 @@ static Option<string> PutOnHttps(string html) =>
     Some("https://" + html);
 
 ```
-
 C# has a syntax for monadic types: LINQ
 
 ## Collections / Method chaining in LINQ vs Bind  
 In my broken links checker example application, after getting the html from a page, I'm dealing with collections a lot and have used a lot of extension method chaining.. is there a better way using Bind?
+
+Here is some exploratory code showing that we can stay in the elevated context by using IEnumerable<T> which handles nulls fine, and by using chained extension methods.  
+```cs
+// C# has a syntax for monadic types: LINQ
+// Is Bind the same as method chaining in LINQ when using IEnumerable<T>
+// Bind is for working with Option<T> and Either<L,R> but supports IEnumerable<T>
+// https://github.com/louthy/language-ext/issues/456
+static void Six()
+{
+    IEnumerable<string> listHrefs = GetListHrefs("a");
+    // LINQ extension method style
+    IEnumerable<string> final = listHrefs
+                                    .ClassifyLinks(); // extension method eg Relative, Absolute
+
+    // Does Bind help? No I don't think so
+    //var finalb = listHrefs.Bind(ClassifyLinksb);
+}
+
+// Doesn't make sense - we need to be operating on the whole sequence 
+//static IEnumerable<string> ClassifyLinksb(string html) => 
+//    html.Select(x => ClassifyLink(x));
+
+static IEnumerable<string> ClassifyLinks(this IEnumerable<string> html) => 
+    html.Select(ClassifyLink);
+
+static string ClassifyLink(string link) => 
+    link == "aa" ? "aaa" : "nothing";
+
+static IEnumerable<string> GetListHrefs(string html)
+{
+    if (html == "a") yield return "aa";
+    yield return null;
+}
+```
+If Option<T> is a replace for if statements, then perhaps we could refactor the ClassifyLink to use Bind?
 
 
 ## Summary
