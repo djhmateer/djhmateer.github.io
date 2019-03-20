@@ -30,6 +30,13 @@ There has been [a lot of people commenting on the UI](https://news.ycombinator.c
 
 [Microsoft Architecture Solutions](https://azure.microsoft.com/en-gb/solutions/architecture/?solution=devops)  
 
+## Goal
+Goal is that infrastructure should be defined just like code, which can be checked into source control. So then we can spin up all the infrastructure in Azure at any point eg for a Feature branch that I want to test.  
+
+Perhaps there is webserver (PaaS) and a database (MSSQL) initially.  
+
+Below is shown how to setup the Build and Release pipelines in the GUI, however at the buttom we will explore how to do it from code (azure-pipelines.yml).  
+
 ## Settings 
 <!-- <img src="/assets/2019-03-07/1.png" width="600" align="left" hspace="15">  -->
 
