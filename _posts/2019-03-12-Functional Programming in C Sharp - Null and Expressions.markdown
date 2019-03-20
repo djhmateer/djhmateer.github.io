@@ -8,9 +8,11 @@ comments: false
 sitemap: false
 ---
 
-[Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) describes how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
+[Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) summarised how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
+[Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source code for the first 17 puzzles using LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
+[Part x](/2018/12/07/Orange-Book-Functional-Programming-in-C-Sharp) are my notes on the [Orange book](https://www.manning.com/books/functional-programming-in-c-sharp)  
 
-This article is about making our C# code more functional by using:
+Part 3 is this article on making our C# code more functional by using:
 
 - Expressions and ternary operator 
 - Immutable types
@@ -40,6 +42,7 @@ Make everything you do is an expression, rather than a sequence of statements eg
 static void PrintHello() => 
     Console.WriteLine("Hello World from a function");
 ```
+
 ## Immutable data types
 These act like [record types](https://fsharpforfunandprofit.com/posts/records/) or `data types` in other languages. Essentially can only be a finitie set of attributes. [good example using With](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
@@ -59,17 +62,26 @@ Nulls wont ever leave C#. LanguageExt was created to help avoid nulls by using a
 
 [null article](https://templecoding.com/blog/2017/01/31/handling-nulls-in-csharp-the-right-way/)  
 
-In F# you work with value types which definately have values.
+In F# you work with record types (value types) which definately have values.
 
 ## Exceptions
-Try to avoid. Use  Option<A> or Either<L, R> where L is the error. `Try<A>` or an `Exception<A>` could be used.
+Try to avoid. Use `Option<A>` or `Either<L, R>` where L is the error. `Try<A>` or an `Exception<A>` are further abstractions over `Either`.
 
 ## Functors, Applicatives and Monads
-Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Either<L, R>`, `Try<A>` etc.. Is IEnumerable a core functional type or maybe Seq?
+Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Either<L, R>`, `Try<A>` etc.. We can consider `IEnumerable<T>` to be a core functional type as it abstracts away null checking, and does not mutate (ie always returns a new result).
 
-[good examples at bottom of message](https://github.com/louthy/language-ext/issues/209) which are here too  
+[Good examples at bottom of message](https://github.com/louthy/language-ext/issues/209) which are here too  
 
-### Match Map and Functors
+### Option, Match, Map and Functors
+`IEnumerable` and `Option` are `Functors`. Essentially anything which has a reasonable implementation of Map is a functor.
+
+
+GetValue below may, or may not return a string. The function signature is 'honest' in that it is obvious that it may or may not return a string as the return type is `Option<string>`.  
+
+`Match` brings down the elevated type. Essentially this is a null check.  
+
+The strategy is to try and work in the elevated level of abstraction to avoid: loops, null checks etc.. which are error prone. Why not abstract this away if we can?  
+
 ```cs
 // Annoying having to do this to get the value
 string value = GetValue(true).Match(
@@ -79,6 +91,7 @@ string value = GetValue(true).Match(
 Console.WriteLine($"{value}");
 
 // Map - Functor
+// Map is like Select for an Option<T>
 // Lambda inside map wont be invoked if Option is in None state
 // Option is a replacement for if statements
 Option<string> valueb = GetValue(true).Map(name => $"Hello, {name}");
@@ -90,7 +103,7 @@ static Option<string> GetValue(bool hasValue) =>
         : None;
 
 ```
-Lets see another example of using Map to 'stay in the elevated context' and not have to worry about nulls.
+Lets see another example of using `Map` to stay in the elevated context and not have to worry about nulls.
 ```cs
 static void Test()
 {
@@ -113,7 +126,9 @@ static Option<string> GetHtml(string url)
 
 ```
 ### Bind and Monads
-Allows us to chain multiple functions together that all the return `Option` eg
+Allows us to chain multiple functions together that all the return `Option`. Bind is like `Map` but can flatten two Option<T>'s together.. we don't want an Option<Option<T>>. `SelectMany` is Bind in LINQ, and can also be called `FlatMap` in other langauges.  
+
+Example here is using Bind to compose 2 functions which return an `Option<string>`:  
 
 ```cs
 static void Test()
@@ -133,17 +148,19 @@ static void Test()
     string final = addedHttps.Match(Some: x => x, None: () => "No html returned");
     string finalb = both.Match(Some: x => x, None: () => "No html returned");
 }
-static Option<string> ShortenHtml(string html) =>
-    Some(html.Substring(0, 1));
+    static Option<string> ShortenHtml(string html) =>
+        // Haven't considered the None state
+        Some(html.Substring(0, 1));
 
-static Option<string> PutOnHttps(string html) =>
-    Some("https://" + html);
+    static Option<string> PutOnHttps(string html) =>
+        html == "" ? None :
+        Some("https://" + html);
 
 ```
 C# has a syntax for monadic types: LINQ
 
 ## Collections / Method chaining in LINQ vs Bind  
-In my broken links checker example application, after getting the html from a page, I'm dealing with collections a lot and have used a lot of extension method chaining.. is there a better way using Bind?
+In my broken links checker example application, after getting the html from a page, I'm dealing with collections and have used extension method chaining.. is there a better way using Bind?
 
 Here is some exploratory code showing that we can stay in the elevated context by using IEnumerable<T> which handles nulls fine, and by using chained extension methods.  
 ```cs
