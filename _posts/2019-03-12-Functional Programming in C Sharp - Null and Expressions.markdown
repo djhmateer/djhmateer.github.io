@@ -197,12 +197,28 @@ static IEnumerable<string> GetListHrefs(string html)
 ```
 If Option<T> is a replace for if statements, then perhaps we could refactor the ClassifyLink to use Bind?
 
+## Immutability
+asdf
+
+## Database Connection
+asdf
+
+## Parameterised Unit Tests
+asdf
+
 
 ## Summary
-As louthy said in is post, it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.
+As louthy said in is post, it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.  
 
+These 'basics' of FP in C# allow us to build applications which have:
 
+- Power (do more with less code, raise the level of abstraction)
+- Safety (avoiding unnecessary side effects makes code easier to reason about)
+- Clarity (we spend more time maintaining and consuming existing code than writing new. Achieving clarity will become more natural)
 
-![ps](/assets/2019-03-07/1.png){:width="700px"}
+by having:
 
-
+- short methods which are ideally expressions ie just a return or =>
+- composed methods using LINQ for collections, Map and Bind for Option<T>, Either<L,R>
+- static methods so no OO boilerplate
+- immutable objects so no side effects (making our lives easier as the only way something can change is in the function we are in)

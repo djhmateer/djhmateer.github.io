@@ -260,7 +260,7 @@ I had an issue where the Build was triggering when a new commit was found on the
 
 Even an hour after it was fixed I noticed issues - seeing a 17minute then 6minute then 4minute lag between Build finishing and Release artifact being picked up. I'm assuming it is message queues clearing.  
 
-## Build Agent
+## Linux Docker Build Agent
 To speed up the Builds and Releases I use my own Linux build agent running as a Docker container on my local windows machine (fast desktop with a 140Mbps synchronous internet connect). This is not recommended for Production, but is very good for experimentation with the system.
 
 [Build agent on Docker Hub](https://hub.docker.com/_/microsoft-azure-pipelines-vsts-agent) and instructions
@@ -284,6 +284,11 @@ Performance improvements on local vs Hosted Ubuntu:
 - Release stage is much faster 
 
 To see changes in Dev takes **50 seconds** now, compared with **3:30**.
+
+## Windows Build Agent
+Apparently they are [working on a Windows Docker build agent](https://mohitgoyal.co/2019/01/05/running-azure-devops-private-agents-as-docker-containers/) but for now we have to use a local one:
+
+
 
 ## Using a database
 SQL Server hosted on Azure 
