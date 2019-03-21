@@ -197,9 +197,6 @@ static IEnumerable<string> GetListHrefs(string html)
 ```
 If Option<T> is a replace for if statements, then perhaps we could refactor the ClassifyLink to use Bind?
 
-## Immutability
-asdf
-
 ## Database Connection
 asdf
 
