@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Azure DevOps  
+title: Azure DevOps GUI Pipelines
 menu: review
 categories: DevOps
 published: true 
@@ -35,7 +35,7 @@ Goal is that infrastructure should be defined just like code, which can be check
 
 Perhaps there is webserver (PaaS) and a database (MSSQL) initially.  
 
-Below is shown how to setup the Build and Release pipelines in the GUI, however at the buttom we will explore how to do it from code (azure-pipelines.yml).  
+Below is shown how to setup the Build and Release pipelines in the GUI, however [in the next article we will explore the azure-pipelines.yml recommended way](). **This is what I use in production**  
 
 ## Settings 
 <!-- <img src="/assets/2019-03-07/1.png" width="600" align="left" hspace="15">  -->
@@ -288,6 +288,23 @@ To see changes in Dev takes **50 seconds** now, compared with **3:30**.
 ## Windows Build Agent
 Apparently they are [working on a Windows Docker build agent](https://mohitgoyal.co/2019/01/05/running-azure-devops-private-agents-as-docker-containers/) but for now we have to use a local one:
 
+![ps](/assets/2019-03-07/40.png)    
+I found that using Powershell was the way forward (so don't download the agent). Essentially:
+
+```powershell
+mkdir agent ; cd agent
+Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-2.148.1.zip", "$PWD")
+
+# configures the agent - I chose to not run it as a service
+.\config.cmd
+
+# runs it in the powershell
+.\run.cmd
+```
+- pat (personal access token) is found from Personal, Security on the dev.azure.com page
+- url is of the form:  https://dev.azure.com/djhmateer
+- pool is: DJHMateerWindowsPool
+- name is: WorkDesktopWindows
 
 
 ## Using a database
@@ -303,9 +320,11 @@ ASPNETCORE_ENVIRONMENT = Development
 
 [https://azuredevopslabs.com/labs/azuredevops/continuousintegration/](https://azuredevopslabs.com/labs/azuredevops/continuousintegration/) requries the Parts Unlimited project be setup. This is an ASP.NET 4.5 project talking to MSSQL.  
 
-
-
 ## AzureDevOps TLA's
 PBI - Product Backlog Item  
 
 
+## Summary
+We have looked at using the GUI for driving Azure DevOps.   
+
+In the [next article we will look at driving the Pipeline from yml which is the recommended way]()
