@@ -36,7 +36,10 @@ asdf
 
 [Do I need quotes for string in YAML](https://stackoverflow.com/questions/19109912/do-i-need-quotes-for-strings-in-yaml) well, as there are so many caveats a good rule of thumb is to use quotes.  
 
-[Build Number Format](https://docs.microsoft.com/en-gb/azure/devops/pipelines/build/options?view=azure-devops&tabs=yaml)  asdf
+## Variables
+[Predefined Variables](https://docs.microsoft.com/en-gb/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml) here  
+
+[Build Number Format](https://docs.microsoft.com/en-gb/azure/devops/pipelines/build/options?view=azure-devops&tabs=yaml)  only in BuildNumber ie name: will it change /refs/heads/master to refs_heads_master
 
 
 ## Publish
@@ -74,8 +77,9 @@ variables:
     scriptLocation: 'inlineScript'
     inlineScript: 'az group create -l $(azureRegion) -n TestRG'
 ```
-
-and then an external file:
+## Azure CLI - Pass variables to file
+nd then an external file:
+[AzureCLI@1 documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)
 
 ```yml
 
