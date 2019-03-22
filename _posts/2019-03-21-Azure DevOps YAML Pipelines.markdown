@@ -22,7 +22,7 @@ Once cloned and built locally, to get your own version working you'll need
 - Azure Resource Manager service connection
 
 ## VS Code Extension
-Azure Pipelines extension
+Azure Pipelines extension is very handy for code completion.
 
 
 ## Azure Resource Manager service connection  
@@ -77,13 +77,20 @@ variables:
     scriptLocation: 'inlineScript'
     inlineScript: 'az group create -l $(azureRegion) -n TestRG'
 ```
+
 ## Azure CLI - Pass variables to file
-nd then an external file:
+
 [AzureCLI@1 documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)
 
 ```yml
 
 ```
+when working with bash files on windows:
+
+- debug info at top useful so can see in devops ui what the actual commands were
+- careful not to put a space after a multiline \
+- careful to set LF as the line endings (and git doesn't do anything improper)
+- max number of free ServerFarms allowed is 10 (for an MSDN subscription)
 
 
 
