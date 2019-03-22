@@ -5,6 +5,7 @@ categories: C#
 published: true 
 comments: true
 redirect_from: coding/2018/11/14/Open-visual-studio-from-command-line.html 
+sitemap: true
 ---
 
 I like to drive my Windows 10 development machine from the command line using the [Cmder Shell](/cmder/2018/01/30/Cmder-Shell.html):

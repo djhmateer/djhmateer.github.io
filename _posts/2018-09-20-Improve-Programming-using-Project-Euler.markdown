@@ -5,6 +5,7 @@ categories: Euler Programming Xunit
 published: true 
 comments: true
 redirect_from: coding/2018/10/10/Improve-Programming-using-Project-Euler.html 
+sitemap: true
 ---
 
 ![ps](/assets/2018-10-10/euler2.png){:align="right"}  

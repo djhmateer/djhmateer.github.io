@@ -4,6 +4,7 @@ title: Netlify with Jekyll
 categories: Netlify Jekyll
 published: true 
 redirect_from: netlify/2018/02/02/Netlify-with-Jekyll.html 
+sitemap: true
 ---
 I use Jekyll for this website, and for our [wedding website](https://web.archive.org/web/20180901013553/https://daveellie.co.uk/). I used Github pages for this website, however it isn't easy to have multiple GH pages from a single GH account, so here is how I did it with Netlify.
 

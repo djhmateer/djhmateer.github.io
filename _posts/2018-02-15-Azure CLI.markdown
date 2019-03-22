@@ -4,6 +4,7 @@ title:  Azure CLI and Cloud Shell
 categories: Azure 
 published: true 
 redirect_from: azure/2018/02/15/Azure-CLI.html 
+sitemap: true
 ---
 ![ps](/assets/2018-02-15/azurecli.png)
 

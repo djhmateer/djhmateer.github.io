@@ -5,6 +5,7 @@ categories: HTTP
 published: true 
 comments: true
 redirect_from: website/2018/02/22/Website-Performance-and-Analysis-Tools.html 
+sitemap: true
 ---
 
 Here are some of my favourite tools for web perf and analytics:

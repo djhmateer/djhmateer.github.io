@@ -4,6 +4,7 @@ title:  "How to setup SSL and HTTPS on Github Pages with Cloudflare"
 categories: SSL Cloudflare GitHub
 published: true 
 redirect_from: "/security/2018/01/07/SSL-on-Github-Pages.html"
+sitemap: true
 ---
 ![Menu](/assets/2018-01-08/menu.png)
 

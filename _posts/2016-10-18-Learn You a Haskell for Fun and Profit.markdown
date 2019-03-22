@@ -3,6 +3,7 @@ layout: post
 title:  "Learn you a Haskell for Fun and Profit"
 categories: Haskell Functional
 redirect_from: "/haskell/2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit.html"
+sitemap: true
 ---
 ![Cows](/assets/Mia_350.jpg)
 <p>....Because trying something new is fun!</p>

@@ -5,6 +5,7 @@ title:  "Async with Dapper and Razor Pages"
 categories: Async Dapper SQL
 published: true 
 redirect_from: "/dapper/2018/01/18/Async-with-Dapper-and-Razor-Pages.html"
+sitemap: true
 ---
 
 ### Summary

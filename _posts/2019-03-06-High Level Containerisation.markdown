@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Containers  
-menu: review
+#menu: review
 categories: Containers Docker Kubernetes 
 published: true 
-comments: false
-sitemap: false
+comments: true
+sitemap: true
 ---
 
 This is an article I helped write for my [employer - Quorum Network Resources](https://www.qnrl.com) in October 2018. 
@@ -14,7 +14,7 @@ I specifically like this first diagram:
 
 ![ps](/assets/2019-03-06/1.png)  
 
-It occurred to me that we push projects further 'right' in the diagram above. For example I found that we can [Run Wordpress really well in PaaS](/2019/02/26/Wordpress-on-Azure-PaaS) without the need of the flexibility of containers. [Drupal](https://www.drupal.org/) was a different story and we went left to IaaS (VM). Azure Functions proved invaluable for [Counting Downloads from Blob Storage](https://davemateer.com/2018/11/07/Azure-Functions-to-Count-Downloads-from-Blob-Storage)
+It occurred to me that we push projects further 'right' in the diagram above. For example I found that we can [Run Wordpress really well in PaaS](/2019/02/26/Wordpress-on-Azure-PaaS) without the need of the flexibility of containers. [Drupal](https://www.drupal.org/) was a different story and we went left to IaaS (VM). Azure Functions proved invaluable for [Counting Downloads from Blob Storage](/2018/11/07/Azure-Functions-to-Count-Downloads-from-Blob-Storage)
 
 New projects are using as much PaaS and FaaS as possible, containers for services and for the ease of development. We use [Azure DevOps](https://azure.microsoft.com/en-gb/services/devops/) for source control, CI/CD and process management. 
 
@@ -86,7 +86,7 @@ We work in the Azure Container space, which has changed dramatically over the la
 It is a complex area - let us help you deploy your software easily and reduce your costs. Please drop us an email or call.  
 
 ## Final Note
-Thanks again to [Quroum](https://www.qnrl.com) for letting me post this here - [drop me a line: david.mateer@qnrl.com](mailto:david.mateer@qnrl.com) if we can help. Lots of very smart people work there, and me too.
+Thanks again to [Quroum](https://www.qnrl.com) for letting me post this here - [drop me a line: david.mateer@qnrl.com](mailto:david.mateer@qnrl.com) if we can help. 
 
 
 

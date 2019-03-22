@@ -5,6 +5,7 @@ categories: Wordpress Azure
 published: true 
 comments: true
 redirect_from: wordpress/2018/06/18/Web-App-for-Windows-Linux-Docker.html 
+sitemap: true
 ---
 Lets explore potential Azure hosting options focussing on Wordpress which I've [had to deploy](/wordpress/2018/05/31/Wordpress-in-AKS.html)
 

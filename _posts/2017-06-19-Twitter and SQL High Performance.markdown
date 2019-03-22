@@ -4,6 +4,7 @@ title:  "Twitter and SQL High Perf"
 categories: SQL Twitter
 published: true 
 redirect_from: "/jekyll/2017/06/19/Twitter-and-SQL-High-Performance.html"
+sitemap: true
 ---
 ![Interview](/assets/interview2_500.jpg)
 

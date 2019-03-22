@@ -5,6 +5,7 @@ title:  Docker Delete Containers Images Networks and Volumes
 categories: Docker 
 published: true 
 redirect_from: docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html 
+sitemap: true
 ---
 
 I use these commands all the time in Docker to reset my system.

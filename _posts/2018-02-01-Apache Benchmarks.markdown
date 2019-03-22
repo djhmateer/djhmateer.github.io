@@ -5,6 +5,7 @@ title:  Apache Benchmarks load testing
 categories: ApacheBenchmarks HTTP 
 published: true 
 redirect_from: apachebenchmarks/2018/02/01/Apache-Benchmarks.html 
+sitemap: true
 ---
 
 ![ps](/assets/2018-02-01/bash.png)

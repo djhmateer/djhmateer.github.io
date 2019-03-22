@@ -6,6 +6,7 @@ categories: Jekyll Docker
 published: true 
 comments: true
 redirect_from: /jekyl/2018/01/25/Jekyll-and-Docker.html
+sitemap: true
 ---
 ![Menu](/assets/2018-01-25-Docker/screen.png)
 

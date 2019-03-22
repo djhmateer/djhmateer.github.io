@@ -5,6 +5,7 @@ title:  "Cmder"
 categories: Cmder Curl
 published: true 
 redirect_from: cmder/2018/01/30/Cmder-Shell.html 
+sitemap: true
 ---
 [Cmder](http://cmder.net/) is my shell of choice. [download from github](https://github.com/cmderdev/cmder/releases)
 ### Where to Install

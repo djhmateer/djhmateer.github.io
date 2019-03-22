@@ -5,6 +5,7 @@ title:  "AllReady Codeathon"
 categories: Codeathon 
 published: true 
 redirect_from: "/allready/2018/01/21/AllReady-Codeathon.html"
+sitemap: true
 ---
 ![Menu](/assets/2018-01-22-AllReady/header.jpg)
 

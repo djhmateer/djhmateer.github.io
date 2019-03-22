@@ -5,6 +5,7 @@ categories: Wordpress Azure AKS
 published: true 
 comments: true
 redirect_from: wordpress/2018/05/31/Wordpress-in-AKS.html 
+sitemap: true
 ---
 **update 25th Jan 2019 I don't recommend this way of deploying Wordpress purely because it is complex and I've found using Azure PaaS to be good. See [Azure Hosting Wordpress Article](/2018/06/18/Azure-Hosting-Wordpress-Win-Linux-Docker)**
 

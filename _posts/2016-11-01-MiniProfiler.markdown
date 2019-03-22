@@ -5,6 +5,7 @@ title:  "Making applications faster using MiniProfiler"
 categories: MiniProfiler
 published: true
 redirect_from: "/miniprofiler/2016/11/01/MiniProfiler.html"
+sitemap: true
 ---
 Performance is an **essential part of any business application**.
 

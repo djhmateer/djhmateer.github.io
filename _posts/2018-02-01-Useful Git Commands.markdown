@@ -4,6 +4,7 @@ title:  Useful Git Commands
 categories: Git
 published: true 
 redirect_from: git/2018/02/01/Useful-Git-Commands.html 
+sitemap: true
 ---
 
 I use Git every day. Here are my favourite commands, which I frequently forget, therefore I've published here. 

@@ -5,6 +5,7 @@ categories: Blogging
 published: true
 comments: true
 redirect_from: "/jekyll/2016/10/16/Why-Blog.html"
+sitemap: true
 ---
 ![On the way to Machu Picchu](/assets/3Guys_500.jpg)
 

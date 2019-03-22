@@ -5,6 +5,7 @@ categories: Wordpress
 published: true 
 comments: true
 redirect_from: wordpress/2018/05/29/Wordpress-Persistence-AKS.html 
+sitemap: true
 ---
 
 Wordpress uses persistence in 2 ways:

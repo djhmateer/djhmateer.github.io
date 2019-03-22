@@ -5,6 +5,7 @@ title:  "GitKraken"
 categories: Git
 published: true 
 redirect_from: "/git/2018/01/22/Gitkraken.html"
+sitemap: true
 ---
 ![Menu](/assets/2018-01-22-AllReady/gitk.png)
 
