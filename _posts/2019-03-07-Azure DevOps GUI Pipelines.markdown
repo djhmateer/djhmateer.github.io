@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Azure DevOps GUI Pipelines
+title: Azure DevOps GUI Pipelines **Work in Progress**
 menu: review
 categories: DevOps
 published: true 
@@ -16,6 +16,8 @@ sitemap: false
      - Releases - (like Jenkins, Octopus deploy)
 - Test plans (manual and exploratory testing tools)
 - Artifacts - packages eg nuget
+
+[Use the YAML way of defining Azure DevOps](/2019/03/21/Azure-DevOps-YAML-Pipelines). I found that exploring the GUI was very helping in understanding the product, but Infrastructure as Code (IaC) is **where you should be**
 
 For continuous delivery especially for collaboration / more complex projects this pipeline is invaluable. It needs time and work to set it up and maintain it. 
  

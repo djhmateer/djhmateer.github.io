@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Azure DevOps YAML Pipelines
+title: Azure DevOps YAML Pipelines **Work in Progress**
 menu: review
 categories: DevOps
 published: true 
 comments: false
 sitemap: false
 ---
-In the [previous article on Azure DevOps GUI Pipelines]() we got a CI/CD pipeline working deploying an ASP.NET Core 2.2 application to Azure PaaS, using Windows and Linux hosted build agents.  
+In the [previous article on Azure DevOps GUI Pipelines](/2019/03/07/Azure-DevOps-GUI-Pipelines) we got a CI/CD pipeline working deploying an ASP.NET Core 2.2 application to Azure PaaS, using Windows and Linux hosted build agents.  
 
 In this article we are doing this in code `azure-pipelines.yml` with the goal of:
 
@@ -325,8 +325,8 @@ Get an end to end application working with:
 - BuildNumber at bottom of website
 - SQL Database
 - Protected production environment (manual step to publish to it)
-- Blue/Green environment or slots?
-- Test
+- Blue/Green environment
+- Staging
 - Every feature branch gets its own Infrastructure
 - Unit Testing, Selenium testing, Load testing (manual)
 
