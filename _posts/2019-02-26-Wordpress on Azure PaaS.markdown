@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Wordpress on Azure PaaS 
-menu: review
+#menu: review
 categories: Wordpress 
 published: true 
-comments: false
-sitemap: false
+comments: true
+sitemap: true
 ---
 Install [Wordpress](https://en-gb.wordpress.org/download/) on Azure Windows PaaS (Platform as a Service):  
 
