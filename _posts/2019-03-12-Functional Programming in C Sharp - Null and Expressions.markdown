@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Functional Programming in C# - Nulls and Expressions
+title: Functional Programming in C# - Expressions, Option, Either
 menu: review
 categories: DevOps
 published: true 
@@ -57,15 +57,55 @@ If we have mutable objects it could be possible for another function to mutate t
 
 So if we have a pure function (which doesn't act on a mutable global variable) then we can make the function `static`. More [discussion in ch 2.2.3 of the orange book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-2/113)
 
-## Don't use nulls
-Nulls wont ever leave C#. LanguageExt was created to help avoid nulls by using an Option.
+## Option (Maybe) type - Don't use nulls
+Many functional languages disallow null values, as null-references can introduce hard to fund bugs. This is a type safe alternative to null values [ref to a few words in this section](https://github.com/nlkl/Optional)  
 
-[null article](https://templecoding.com/blog/2017/01/31/handling-nulls-in-csharp-the-right-way/)  
+Pattern: Whenever I'm using a 'base type' eg int, string,
 
-In F# you work with record types (value types) which definately have values.
+Nulls wont ever leave C#. LanguageExt was created to help avoid nulls by using an Option.  
 
-## Exceptions
-Try to avoid. Use `Option<A>` or `Either<L, R>` where L is the error. `Try<A>` or an `Exception<A>` are further abstractions over `Either`.
+[null article](https://templecoding.com/blog/2017/01/31/handling-nulls-in-csharp-the-right-way/)    
+
+An `Option<T>` can be in one of two states. `Some` representing the presence of a value and `None` representing the lack of a value. Unlike null, an option type forces the user to check if a value is actually present, thereby mitigating many of the problems of null values.
+
+```cs
+Option<string> html = None;
+Option<string> htmlb = Some("html here");
+
+// forces us to deal with the None case
+string result = html.Match( Some: x => x, None: () => "none returned"); // none returned
+string resultb =htmlb.Match(Some: x => x, None: () => "none returned"); // html here
+```
+
+and now in a function which returns an `Option<string>`
+
+```cs
+Option<string> html = GetHtml(url);
+// an invalid url would return None
+// a valid request would return the html
+string result = html.Match( Some: x => x, None: () => "none returned");
+
+// Function signature is honest - it may, or may not return a string
+public static Option<string> GetHtml(string url)
+{
+    var httpClient = new HttpClient(new HttpClientHandler());
+    try
+    {
+        var responseMessage = httpClient.GetAsync(url).Result;
+        return responseMessage.Content.ReadAsStringAsync().Result;
+    }
+    catch (Exception ex) { return None; }
+}
+```
+And a function which taken an `Option<string>`
+```cs
+```
+
+
+In F# you work with record types (value types as opposed to variables) which definately have values?
+
+## Either type - Exceptions
+Use `Option<A>` or `Either<L, R>` where L is the error. `Try<A>` or an `Exception<A>` are further abstractions over `Either`.
 
 ## Functors, Applicatives and Monads
 Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Either<L, R>`, `Try<A>` etc.. We can consider `IEnumerable<T>` to be a core functional type as it abstracts away null checking, and does not mutate (ie always returns a new result).
