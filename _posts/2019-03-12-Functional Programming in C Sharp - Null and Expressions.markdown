@@ -101,6 +101,17 @@ And a function which taken an `Option<string>`
 ```cs
 ```
 
+## Map - works on Option
+Apply a function to the containers inner values, and take into accout None
+
+```cs
+Option<string> name = Some("Enrico");
+
+name
+   .Map(String.ToUpper) // Map works on Option applying the function
+   .ForEach(WriteLine); // Foreach similar to Map, but takes an Action rather than a function, so its used to perform side effects
+```
+
 
 In F# you work with record types (value types as opposed to variables) which definately have values?
 
