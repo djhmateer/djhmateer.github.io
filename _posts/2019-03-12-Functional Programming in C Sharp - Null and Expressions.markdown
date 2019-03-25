@@ -14,18 +14,19 @@ sitemap: false
 
 Part 3 is this article on making our C# code more functional by using:
 
-- Expressions and ternary operator 
+- Expressions and the ternary operator 
 - Immutable types
 - Pure methods
-- Option 
-- Either
-- Functors, Applicatives and Monads
+- Option type 
+- Match and Map
+- Either type
+- Bind
 
 [Inspiration for this article](https://github.com/louthy/language-ext/issues/209)
 
-The initial problems the library was trying to solve was that of:
-- Nulls
-- Immutability
+The initial problems the C# [functional library language-ext](https://github.com/louthy/language-ext/issues) was trying to solve were that of:
+- Nulls 
+- Immutability  
 [Original HN Article from 2014 on language-ext](https://news.ycombinator.com/item?id=8631158)
 
 If we remember that the core tenants of what FP are
@@ -47,11 +48,11 @@ Then prefer `ternary operators` as they are more concise leading to more *readab
 ```cs
 static Option<string> GetValue(bool hasValue) =>
     hasValue
-        ? Some("Skoucail")
+        ? Some("Bob")
         : None;
 
 // Even more concise 
-static Option<string> GetValue(bool hasValue) => hasValue ? Some("Skoucail") : None;
+static Option<string> GetValue(bool hasValue) => hasValue ? Some("Bob") : None;
 ```
 
 ## Immutable Data objects / Smart Constructors
@@ -63,7 +64,7 @@ static void A()
     PersonOO dave = new PersonOO();
     dave.Name = "dave";
     dave.Age = 45;
-    // We don't do this in FP.. F# (by default), Haskell etc. do not allow this
+    // We don't do this in FP.. F# (by default), Haskell etc. does not allow this
     // Should avoid mutating objects in place and favour making new ones (as can be sure no side effects anywhere else)
     dave.Age = 46;
 
@@ -98,7 +99,6 @@ class Person
 
     // Updates here, enforcing a new object is returned every time
     // strings are nullable because they are reference types
-    // default to null
     public Person With(string name = null, int? age = null)
     {
         // if null, return the current value
@@ -112,7 +112,6 @@ class Person
 ```
 Interesting C#8 nullable / non-nullable reference types (same intent as Option<T>) [discussed here](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types)
 
-
 These act like [record types](https://fsharpforfunandprofit.com/posts/records/) or `data types` in other languages. Essentially can only be a finitie set of attributes. [good example using With](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
 Why use the With to return a copy of an object when wanting to mutate it? [Good SO Question here](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
@@ -125,7 +124,7 @@ If we have mutable objects it could be possible for another function to mutate t
 So if we have a pure function (which doesn't act on a mutable global variable) then we can make the function `static`. More [discussion in ch 2.2.3 of the orange book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-2/113)
 
 ## Option type
-Many functional languages disallow null values, as null-references can introduce hard to find bugs. Option is a type safe alternative to null values [ref to a few words in this section](https://github.com/nlkl/Optional). As discussed above C#8 is [getting nullable and non-nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types) which should give similar safety.  
+Many functional languages disallow null values, as null-references can introduce hard to find bugs. Option is a type safe alternative to null values [ref to a few words in this section](https://github.com/nlkl/Optional). As discussed above C#8 is [getting nullable and non-nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types) which should give similar safety.   
 
 Pattern: Whenever I'm using a 'base type' eg int, string.  
 
@@ -133,19 +132,26 @@ Nulls wont ever leave C#. LanguageExt was created to help avoid nulls by using a
 
 [null article](https://templecoding.com/blog/2017/01/31/handling-nulls-in-csharp-the-right-way/)    
 
-An `Option<T>` can be in one of two states. `Some` representing the presence of a value and `None` representing the lack of a value. Unlike null, an option type forces the user to check if a value is actually present, thereby mitigating many of the problems of null values.
 
 ### None / Some
-```cs
-// None represents nothing
-Option<string> html = None;
-// Some is a container for the string
-Option<string> htmlb = Some("html here");
+An `Option<T>` can be in one of two states. `Some` representing the presence of a value and `None` representing the lack of a value. Unlike null, an option type forces the user to check if a value is actually present, thereby mitigating many of the problems of null values.
 
-// Forces us to deal with the None case
-string result = html.Match( Some: x => x, None: () => "none returned"); // none returned
-string resultb =htmlb.Match(Some: x => x, None: () => "none returned"); // html here
+```cs
+// Option<string> - may or may not contain a value
+static void B()
+{
+    // None represents nothing.
+    Option<string> html = None;
+    // Some is a container for the string
+    Option<string> htmlb = Some("html here");
+
+    // Forces us to deal with the None case
+    string result = html.Match(Some: x => x, None: () => "none returned"); // none returned
+    string resultb = htmlb.Match(Some: x => x, None: () => "none returned"); // html here
+}
 ```
+
+// HERE *** C()
 
 ### Match
 A function which returns an `Option<string>`
@@ -251,18 +257,21 @@ static Option<string> GetHtml(string url)
 ```
 
 ## Bind
-**HERE**** number Threee() in source code
+Allows us to chain multiple functions together that all the return `Option`. Bind is like `Map` but can flatten two Option<T>'s together.. we don't want an Option<Option<T>>. `SelectMany` is Bind in LINQ, and can also be called `FlatMap` in other langauges.  
+
+Example here is using Bind to compose 2 functions which return an `Option<string>`:  
+
+Threee() in source code
 ```cs
 // Using Bind so we can chain multiple Option<T> functions together
 static void Three()
 {
-    Option<string> html = GetHtml("a");
-    //Option<string> html = GetHtml("c");
+    Option<string> html = GetHtml("a"); // Some(aa)
 
-    Option<string> shortHtml = html.Bind(x => ShortenHtml(x)); // x is a string
+    Option<string> shortHtml = html.Bind(x => ShortenHtml(x)); // x is a string.. Some(a)
 
-    // put on https using shortened Method syntax so don't need x
-    Option<string> addedHttps = shortHtml.Bind(PutOnHttps);
+    // Put on https using shortened Method syntax so don't need x
+    Option<string> addedHttps = shortHtml.Bind(PutOnHttps); // Some(https://a)
 
     Option<string> both = html.Bind(ShortenHtml)
                               .Bind(PutOnHttps);
@@ -281,49 +290,25 @@ static Option<string> PutOnHttps(string html) =>
     Some("https://" + html);
 
 ```
-
-
-## Either type - Exceptions
-Use `Option<A>` or `Either<L, R>` where L is the error. `Try<A>` or an `Exception<A>` are further abstractions over `Either`.
-
-
-### Bind and Monads
-Allows us to chain multiple functions together that all the return `Option`. Bind is like `Map` but can flatten two Option<T>'s together.. we don't want an Option<Option<T>>. `SelectMany` is Bind in LINQ, and can also be called `FlatMap` in other langauges.  
-
-Example here is using Bind to compose 2 functions which return an `Option<string>`:  
+Another example of `Bind` on `Option<string>`:
 
 ```cs
-static void Test()
+// Bind - Monad - Bind two Option<strings>
+static void Five()
 {
-    Option<string> html = GetHtml("a");
-    //Option<string> html = GetHtml("c");
-
-    Option<string> shortHtml = html.Bind(x => ShortenHtml(x)); // x is a string
-
-    // Put on https using shortened Method syntax so don't need x
-    Option<string> addedHttps = shortHtml.Bind(PutOnHttps); 
-
-    Option<string> both = html.Bind(ShortenHtml)
-                              .Bind(PutOnHttps);
-
-    // come down from elevated context and deal with None
-    string final = addedHttps.Match(Some: x => x, None: () => "No html returned");
-    string finalb = both.Match(Some: x => x, None: () => "No html returned");
+    // If either GetFirstName() or MakeFullName(string firstName) returned None
+    // then name would be None
+    // return is not an Option<Option<string>>.. but flattened
+    Option<string> name = GetFirstName().Bind(MakeFullName);
+    Console.WriteLine(name); // Some(Joe Bloggs)
 }
-    static Option<string> ShortenHtml(string html) =>
-        Some(html.Substring(0, 1));
 
-    static Option<string> PutOnHttps(string html) =>
-        html == "" ? None :
-        Some("https://" + html);
+static Option<string> GetFirstName() =>
+    Some("Joe");
 
+static Option<string> MakeFullName(string firstName) =>
+    Some($"{firstName} Bloggs");
 ```
-C# has a syntax for monadic types: LINQ
-
-## Bind Option<string> to IEnumerable<string>
-```cs
-```
-
 ## Collections / Method chaining in LINQ vs Bind  
 In my broken links checker example application, after getting the html from a page, I'm dealing with collections and have used extension method chaining.. is there a better way using Bind?
 
@@ -362,6 +347,10 @@ static IEnumerable<string> GetListHrefs(string html)
 ```
 If Option<T> is a replace for if statements, then perhaps we could refactor the ClassifyLink to use Bind?
 
+## Either type - Exceptions
+Use `Option<A>` or `Either<L, R>` where L is the error. `Try<A>` or an `Exception<A>` are further abstractions over `Either`.
+
+
 ## Either - Error Handling (Validation or Exception)
 Railway Oriented Programming
 
@@ -370,7 +359,6 @@ asdf
 
 ## Either - Validation
 asdf
-
 
 ## Database Connection
 asdf
