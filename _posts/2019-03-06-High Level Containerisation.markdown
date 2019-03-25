@@ -33,7 +33,9 @@ See diagram above
 - IaaS - Infrastructure as a Service
 - Containers
 - PaaS - Platform as a Service (eg Azure App Service)
-- FaaS - Functions as a Service (eg Azure Functions, AWS Lambdas)
+- FaaS - Functions as a Service (eg Azure Functions, AWS Lambdas)  
+
+- IaC - Infrastructure as Code (eg use az commands to define Azure infrastructure. Use to define everything from IaaS to FaaS)
 
 Virtual machines offer the most flexibility, however you are responsible for setup (in the Windows world there is usually some manual setup) and patching and ultimately a lot of the resources remain unused.  
 
