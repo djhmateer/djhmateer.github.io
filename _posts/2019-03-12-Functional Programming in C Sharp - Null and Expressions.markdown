@@ -110,7 +110,7 @@ class Person
     }
 }
 ```
-Interesting C#8 nullable / non-nullable reference types (same intent as Option<T>) [discussed here](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types)
+Interesting C#8 nullable / non-nullable reference types, same intent as `Option<T>` [discussed here](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types)  
 
 These act like [record types](https://fsharpforfunandprofit.com/posts/records/) or `data types` in other languages. Essentially can only be a finitie set of attributes. [good example using With](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
@@ -151,10 +151,8 @@ static void B()
 }
 ```
 
-// HERE *** C()
-
-### Match
-A function which returns an `Option<string>`
+### Match and Map
+`Match` comes down from the elevated abstraction to a primitive type eg string.
 ```cs
 Option<string> html = GetHtml(url);
 // an invalid url would return None
