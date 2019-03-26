@@ -2,17 +2,15 @@
 layout: post
 title: Functional Programming in C# - Expressions, Option, Either
 menu: review
-categories: DevOps
+categories: Functional C#
 published: true 
 comments: false
 sitemap: false
 ---
 
 [Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) summarised how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
-[Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source code for the first 17 puzzles using LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
-[Part x](/2018/12/07/Orange-Book-Functional-Programming-in-C-Sharp) are my notes on the [Orange book](https://www.manning.com/books/functional-programming-in-c-sharp)  
-
-Part 3 is this article on making our C# code more functional by using:
+[Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) annd [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
+[Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is this article on making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext):
 
 - Expressions / ternary operator 
 - Pure functions
@@ -22,7 +20,7 @@ Part 3 is this article on making our C# code more functional by using:
 - Bind
 - Either type
 
-[Inspiration for this article](https://github.com/louthy/language-ext/issues/209)
+[Inspiration for this article](https://github.com/louthy/language-ext/issues/209) and where to practically start with FP in C#.
 
 The initial problems the C# [functional library language-ext](https://github.com/louthy/language-ext/issues) was trying to solve were that of:
 - Nulls 
@@ -84,6 +82,24 @@ static void One()
 
     // This is impure - as the website may be down, so a unit test would return a different result 
     var resultb = GetHtml("test.com");
+}
+
+// This is a pure function
+// Very easy to unit test
+static int Double(int i) => i * 2;
+
+// Pure function - input (number) will always produce the same output (bool)
+// as there is no shared state the function can be static
+static bool IsPrime(int number)
+{
+    if (number <= 1) return false;
+    if (number == 2) return true;
+    if (number % 2 == 0) return false;
+
+    for (long i = 2; i < number; i+=2)
+        if (number % i == 0)
+            return false;
+    return true;
 }
 ```
 If we have mutable objects it could be possible for another function to mutate the object we were working on concurrently.  

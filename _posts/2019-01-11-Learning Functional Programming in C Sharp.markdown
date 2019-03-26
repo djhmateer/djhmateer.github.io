@@ -33,7 +33,7 @@ The orange book below is *very* thorough, and I suspect to fully understand the 
 'Change the way you think is hard, and learning the syntax is relatively easy'
 
 ### Pluralsight    
-  [K Scott Allen - Linq Fundamentals with C#6 Pluralsight](https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/table-of-contents)
+[K Scott Allen - Linq Fundamentals with C#6 Pluralsight](https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/table-of-contents)
 
 - Extension methods
 - Select
@@ -55,7 +55,7 @@ Using [ReSharper](https://www.jetbrains.com/resharper/) to understand the names 
 
 ### Books
 ![ps](/assets/2019-01-11/3.png)  
-[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1.  
+[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1, and I now think is one of the best C# programming books I've read.
 
 [My detailed post notes on the book](/2018/12/07/Orange-Book-Functional-Programming-in-C-Sharp)
 
