@@ -14,13 +14,13 @@ sitemap: false
 
 Part 3 is this article on making our C# code more functional by using:
 
-- Expressions and the ternary operator 
+- Expressions / ternary operator 
+- Pure functions
 - Immutable types
-- Pure methods
 - Option type 
 - Match and Map
-- Either type
 - Bind
+- Either type
 
 [Inspiration for this article](https://github.com/louthy/language-ext/issues/209)
 
@@ -54,6 +54,15 @@ static Option<string> GetValue(bool hasValue) =>
 // Even more concise 
 static Option<string> GetValue(bool hasValue) => hasValue ? Some("Bob") : None;
 ```
+What we are doing is building up a sequence of expressions which are then very easy to test and reason about.
+
+## Pure functions
+Pure functions don't refer to any global state. The same inputs will always get the same output. Combined with immutable data types this means you can be sure the same inputs will give the same outputs.  
+
+If we have mutable objects it could be possible for another function to mutate the object we were working on concurrently.  
+
+So if we have a pure function (which doesn't act on a mutable global variable) then we can make the function `static`. More [discussion in ch 2.2.3 of the orange book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-2/113)
+
 
 ## Immutable Data objects / Smart Constructors
 We never want to mutate an object in FP, but a create a new one. This makes sure there are no side effects caused somewhere else, thus ensuring a function remains pure. It also makes concurrency simpler.
@@ -116,26 +125,33 @@ These act like [record types](https://fsharpforfunandprofit.com/posts/records/) 
 
 Why use the With to return a copy of an object when wanting to mutate it? [Good SO Question here](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
-## Pure functions
-Pure functions don't refer to any global state. The same inputs will always get the same output. Combined with immutable data types this means you can be sure the same inputs will give the same outputs.  
-
-If we have mutable objects it could be possible for another function to mutate the object we were working on concurrently.  
-
-So if we have a pure function (which doesn't act on a mutable global variable) then we can make the function `static`. More [discussion in ch 2.2.3 of the orange book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-2/113)
-
 ## Option type
 Many functional languages disallow null values, as null-references can introduce hard to find bugs. Option is a type safe alternative to null values [ref to a few words in this section](https://github.com/nlkl/Optional). As discussed above C#8 is [getting nullable and non-nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types) which should give similar safety.   
 
-Pattern: Whenever I'm using a 'base type' eg int, string.  
+Pattern: Whenever I'm using a primitive type eg int, string.    
 
 Nulls wont ever leave C#. LanguageExt was created to help avoid nulls by using an Option.  
 
 [null article](https://templecoding.com/blog/2017/01/31/handling-nulls-in-csharp-the-right-way/)    
 
-
 ### None / Some
 An `Option<T>` can be in one of two states. `Some` representing the presence of a value and `None` representing the lack of a value. Unlike null, an option type forces the user to check if a value is actually present, thereby mitigating many of the problems of null values.
 
+```cs
+// Option type with None and Some
+static void AA()
+{
+    Option<string> html = GetHtmlAA("badurl"); // will fail
+    Option<string> htmlb = GetHtmlAA("test.com"); // will succeed
+}
+
+static Option<string> GetHtmlAA(string url) =>
+    // None represents nothing. Part of language-ext
+    // Some represents a container for the string
+    url == "test.com" ? Some("html here") : None;
+```
+
+### Match
 ```cs
 // Option<string> - may or may not contain a value
 static void B()
@@ -345,25 +361,139 @@ static IEnumerable<string> GetListHrefs(string html)
 ```
 If Option<T> is a replace for if statements, then perhaps we could refactor the ClassifyLink to use Bind?
 
-## Either type - Exceptions
-Use `Option<A>` or `Either<L, R>` where L is the error. `Try<A>` or an `Exception<A>` are further abstractions over `Either`.
+## Either - Exception handling
+Here we are using `Either` to return back the `Exception` or the valid result html `string`.
+```cs
+// Either - Exception handling
+static void Eight()
+{
+    Option<string> result = GetHtml("invalidurl"); // None. ie it will swallow the exception
 
+    Either<Exception, string> resultb = GetHtmlE("invalidurl");  // Left(System.InvalidaOperationException)
+
+    // Did the request throw an exception or return html?
+    resultb.Match(
+        Left: ex => HandleException(ex),
+        Right: ProcessPipeline
+        );
+
+    // Keep in the elevated context 
+    var resultc = resultb.Map(x => x.Substring(0, 1)); // if not an Exception ie Right, then apply a lambda expression
+
+    // Bind an Either<Exception, string> with an Either<Exception, string>
+    var resultd = resultb.Bind(DoSomething);
+}
+
+static Either<Exception, string> DoSomething(string thing) => thing.Substring(0, 1);
+
+static void HandleException(Exception ex) => Console.WriteLine(ex);
+
+static void ProcessPipeline(string html) => Console.WriteLine(html);
+
+
+public static Either<Exception, string> GetHtmlE(string url)
+{
+    var httpClient = new HttpClient(new HttpClientHandler());
+    try
+    {
+        var httpResponseMessage = httpClient.GetAsync(url).Result;
+        return httpResponseMessage.Content.ReadAsStringAsync().Result;
+    }
+    catch (Exception ex) { return ex; }
+}
+
+```
 
 ## Either - Error Handling (Validation or Exception)
 Railway Oriented Programming
 
-## Either - Exception handling
-asdf
+```cs
+// Either - Errors in Validation handling
+static void Nine()
+{
+    var url = "https://davemateer.com";
+    var result = RunUrlValidationPipeline(url);
 
-## Either - Validation
-asdf
+    var message = result.Match(Left: r => $"Rejected because: {r.ReasonForRejection}",
+        Right: x => "Success"); // Rejected because: Is not in allowed suffixes
+}
 
-## Database Connection
-asdf
+// Railway oriented validation
+// a url which needs to go through a validation pipeline
+// if it fails at any point it goes on the left track 
+// and wont go any further on right
+public static Either<URLRejection, string> RunUrlValidationPipeline(string url) =>
+    DoesUrlStartWithHttp(url)
+    .Bind(DoesUrlStartWithHttps)
+    .Bind(IsUrlInAllowedSuffixes);
+
+public static Either<URLRejection, string> DoesUrlStartWithHttp(string url) => url; // pass
+
+public static Either<URLRejection, string> DoesUrlStartWithHttps(string url) => url; // pass
+
+public static Either<URLRejection, string> IsUrlInAllowedSuffixes(string url)
+{
+    return new URLRejection { ReasonForRejection = "Is not in allowed suffixes" };
+    //return url; // hack for yes it does
+}
+
+public class URLRejection
+{
+    public string ReasonForRejection { get; set; }
+}
+```
+## Either type - Further abstractions Exceptions
+`Try<A>` or an `Exception<A>` are further abstractions over `Either`.
 
 ## Parameterised Unit Tests
-asdf
+As functions get smaller and are easier to test, it is very useful to be able to test a lot of scenarios using parameters. I'm using `xunit` here:  
 
+```cs
+using static Xunit.Assert;
+
+// Parameterised Tests using Xunit
+[Theory]
+[InlineData("http://microsoft.com/", URLType.Absolute)]
+[InlineData("http://microsoft.com", URLType.Absolute)]
+[InlineData("https://microsoft.com/", URLType.Absolute)]
+[InlineData("https://microsoft.com", URLType.Absolute)]
+
+[InlineData("http://www.microsoft.com/", URLType.Absolute)]
+[InlineData("http://www.microsoft.com", URLType.Absolute)]
+[InlineData("https://www.microsoft.com/", URLType.Absolute)]
+[InlineData("https://www.microsoft.com", URLType.Absolute)]
+[InlineData("Https://www.microsoft.com", URLType.Absolute)]
+
+// Site root relative
+[InlineData("/", URLType.Relative)]
+[InlineData("/2016/10/17/Blog-with-Jekyll-and-host-for-free", URLType.Relative)]
+
+// Document relative - need to watch for these
+//[InlineData("dreamweaver/contents.html", URLType.Relative)]
+
+// Protocol relative - meaning current protocol ie http or https 
+//[InlineData("//www.adobe.com/support/dreamweaver/contents.html", URLType.Relative)]
+[InlineData("//draft.blogger.com/rearrange?blogID=9185258468770746323&widgetType=Profile&widgetId=Profile1&action=editWidget&sectionId=footer-2-2", URLType.Protocol)]
+
+//https://stackoverflow.com/a/28865728/26086
+[InlineData("spotify:track:5xRYEnLUno3P8LmAxjFuLg", URLType.Invalid)]
+[InlineData("ftp://example.com/download.zip", URLType.Invalid)]
+[InlineData("mailto:davemateer@gmail.com", URLType.Invalid)]
+[InlineData("file:///home/user/file.txt", URLType.Invalid)]
+[InlineData("tel:1-888-555-5555", URLType.Invalid)]
+[InlineData("urn:isbn:0451450523", URLType.Invalid)]
+[InlineData("view-source:https://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn?rq=1", URLType.Invalid)]
+
+[InlineData("#paragraph1", URLType.Invalid)]
+[InlineData("#", URLType.Invalid)]
+
+[InlineData("https://davemateer.com/2018/01/30/Cmder-Shell#aliases", URLType.Absolute)]
+public static void GetURLType_Absolute_ReturnAbsolute(string input, URLType expected)
+{
+    var result = input.GetURLType();
+    Equal(expected, result);
+}
+```
 
 ## Summary
 As louthy said in is post, it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.   
