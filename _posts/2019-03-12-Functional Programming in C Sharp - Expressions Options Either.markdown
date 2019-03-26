@@ -7,11 +7,13 @@ published: true
 comments: true
 sitemap: true
 ---
+This article is on making *C# code more functional by using functional abstractions*. It has been preceeded by 2 articles on why I've got to here, and the background reasons behind trying functional programming in C#.
 
 [Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) summarised how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
 [Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
 Part 3 is this article on making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext):
 
+We are going to be looking at:  
 - Expressions / ternary operator 
 - Pure functions
 - Immutable types
@@ -20,12 +22,7 @@ Part 3 is this article on making C# code more functional by using abstractions f
 - Bind
 - Either type
 
-[Inspiration for this article](https://github.com/louthy/language-ext/issues/209) and where to practically start with FP in C#.
-
-The initial problems the C# [functional library language-ext](https://github.com/louthy/language-ext/issues) was trying to solve were that of:
-- Nulls 
-- Immutability  
-[Original HN Article from 2014 on language-ext](https://news.ycombinator.com/item?id=8631158)
+[Inspiration for this article](https://github.com/louthy/language-ext/issues/209) and where to practically start with FP in C#. The initial problems the C# [functional library language-ext](https://github.com/louthy/language-ext/issues) was trying to solve were that of Nulls and Immutability  [Original HN Article from 2014 on language-ext](https://news.ycombinator.com/item?id=8631158)
 
 If we remember that the core tenants of what FP are
 - Functions first
@@ -50,7 +47,7 @@ Immutability helps guide the functions towards being pure (no side effects)
 - Twelve(); // Either - Validation pipeline
 
 ## Expressions
-Make everything you do is an expression, rather than a sequence of statements eg if using expression-bodied methods that start with =>
+Try to make everything you do an expression, rather than a sequence of statements eg if using expression-bodied methods that start with =>
 
 ```cs
 static void PrintHello() => 
@@ -536,7 +533,7 @@ public static void GetURLType_Absolute_ReturnAbsolute(string input, URLType expe
 ```
 
 ## Summary
-As louthy said in [his post](https://github.com/louthy/language-ext/issues/209), it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.   
+As [louthy said in his post](https://github.com/louthy/language-ext/issues/209), it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.   
 
 These 'basics' of FP in C# allow us to build applications which have:
 
@@ -550,6 +547,10 @@ By having:
 - Composed methods using LINQ for collections, Map and Bind for Option<T>, Either<L,R>
 - Static methods so no OO boilerplate
 - Immutable objects so no side effects (making our lives easier as the only way something can change is in the function we are in)
+
+With the techniques shown here, I've built an application which crawls for dead links on a website. I've used this application to be the real world test bed as I've gone thorugh learning FP. As in most real world applications, there is much more complexity than initially it looks like. These techniques have guided my code to be simpler and more maintainable.  
+
+
 
 <br />
 <br />
