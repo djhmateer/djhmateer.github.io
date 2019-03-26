@@ -88,7 +88,7 @@ static void One()
 // Very easy to unit test
 static int Double(int i) => i * 2;
 
-// Pure function - input (number) will always produce the same output (bool)
+// Pure function - input (int) will always produce the same output (bool)
 // as there is no shared state the function can be static
 static bool IsPrime(int number)
 {
