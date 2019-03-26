@@ -34,7 +34,24 @@ If we remember that the core tenants of what FP are
 - Immutability
 
 Expressions first helps keep the functions small.  
-Immutability helps guide the functions towards being pure (no side effects)
+Immutability helps guide the functions towards being pure (no side effects)  
+
+In the article below there are these examples demonstrating FP techniques:  
+[Source here is here]()
+```cs
+One(); // Pure functions
+Two(); // Immutability, Smart Constructor
+Three(); // Option type with None and Some
+Four(); // Option with Match to primitive
+Five(); // Option and Map (Functor)
+Six(); // IEnumerable and Select (Functor)
+Seven(); // Chaining Map
+Eight(); // Bind
+Nine(); // Bind chain 
+Ten(); // IEnumerable and Extension methods chaining
+Eleven(); // Either - Exception
+Twelve(); // Either - Validation pipeline
+```
 
 ## Expressions
 Make everything you do is an expression, rather than a sequence of statements eg if using expression-bodied methods that start with =>
