@@ -1,16 +1,16 @@
 ---
 layout: post
 title: Functional Programming in C# - Expressions, Option, Either
-menu: review
+#menu: review
 categories: Functional C#
 published: true 
-comments: false
-sitemap: false
+comments: true
+sitemap: true
 ---
 
 [Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) summarised how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
-[Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) annd [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
-[Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is this article on making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext):
+[Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
+Part 3 is this article on making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext):
 
 - Expressions / ternary operator 
 - Pure functions
@@ -34,22 +34,20 @@ If we remember that the core tenants of what FP are
 Expressions first helps keep the functions small.  
 Immutability helps guide the functions towards being pure (no side effects)  
 
-In the article below there are these examples demonstrating FP techniques:  
-[Source here is here]()
-```cs
-One(); // Pure functions
-Two(); // Immutability, Smart Constructor
-Three(); // Option type with None and Some
-Four(); // Option with Match to primitive
-Five(); // Option and Map (Functor)
-Six(); // IEnumerable and Select (Functor)
-Seven(); // Chaining Map
-Eight(); // Bind
-Nine(); // Bind chain 
-Ten(); // IEnumerable and Extension methods chaining
-Eleven(); // Either - Exception
-Twelve(); // Either - Validation pipeline
-```
+## Index of Examples
+[Source code for this article is here](https://github.com/djhmateer/FPInCSharpDemos) and here are the examples demonstrating FP abstractions:    
+- One(); // Pure functions
+- Two(); // Immutability, Smart Constructor
+- Three(); // Option type with None and Some
+- Four(); // Option with Match to primitive
+- Five(); // Option and Map (Functor)
+- Six(); // IEnumerable and Select (Functor)
+- Seven(); // Chaining Map
+- Eight(); // Bind
+- Nine(); // Bind chain 
+- Ten(); // IEnumerable and Extension methods chaining
+- Eleven(); // Either - Exception
+- Twelve(); // Either - Validation pipeline
 
 ## Expressions
 Make everything you do is an expression, rather than a sequence of statements eg if using expression-bodied methods that start with =>

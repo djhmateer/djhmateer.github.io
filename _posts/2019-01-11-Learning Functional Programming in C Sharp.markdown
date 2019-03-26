@@ -1,13 +1,15 @@
 ---
 layout: post
 title: Learning Functional Programming in C Sharp 
-menu: review
+#menu: review
 categories: Functional C# 
 published: true 
-comments: false
-sitemap: false
+comments: true
+sitemap: true
 ---
-My journey so far in exploring Functional Programming in C# and the resources I've found most useful:
+Part 1 is this article on how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
+[Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
+[Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext):
 
 ## Why learn FP techniques
 [NDC Video by Enrico Buonanno](https://www.youtube.com/watch?v=wJq86IXkFdQ) has a very good introduction as to why we should consider FP in C# - he is the author of the orange book linked below. 
@@ -28,7 +30,7 @@ As a side effect it has pushed my C# language skills and is thoroughly enjoyable
 
 These techniques are for *an ambitious breed of developer* who is aiming for code which is: concise, elegant, robust and maintainable.
 
-The orange book below is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. [F#](https://web.archive.org/web/20161027124919/http://www.programgood.net/CategoryView,category,F.aspx) and [Haskell](2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. Scala is getting a lot of traction around London, and Clojure seems interesting too. I'm going to push very hard in C# first as I know it well.
+The orange book below is *very* thorough, and I suspect to fully understand the ideas I'll have to learn other languages just as the author did. [F#](https://web.archive.org/web/20161027124919/http://www.programgood.net/CategoryView,category,F.aspx) and [Haskell](/2016/10/18/Learn-You-a-Haskell-for-Fun-and-Profit) are the 2 natural fits. Scala is getting a lot of traction around London, and Clojure seems interesting too. I'm going to push very hard in C# first as I know it well.
 
 'Change the way you think is hard, and learning the syntax is relatively easy'
 
@@ -51,11 +53,6 @@ After doing the Pluralsight course [I did the first 17 or so Euler puzzles in an
 ![ps](/assets/2019-01-11/1.png)  
 Using [ReSharper](https://www.jetbrains.com/resharper/) to understand the names of different concepts and different ways of writing something  
 
-### C# Language Skills
-
 ### Books
 ![ps](/assets/2019-01-11/3.png)  
-[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1, and I now think is one of the best C# programming books I've read.
-
-[My detailed post notes on the book](/2018/12/07/Orange-Book-Functional-Programming-in-C-Sharp)
-
+[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1, and think is one of the best C# programming books I've read.
