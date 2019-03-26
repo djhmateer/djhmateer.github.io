@@ -551,3 +551,5 @@ By having:
 - Static methods so no OO boilerplate
 - Immutable objects so no side effects (making our lives easier as the only way something can change is in the function we are in)
 
+<br />
+<br />
