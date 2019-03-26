@@ -58,7 +58,17 @@ What we are doing is building up a sequence of expressions which are then very e
 
 ## Pure functions
 Pure functions don't refer to any global state. The same inputs will always get the same output. Combined with immutable data types this means you can be sure the same inputs will give the same outputs.  
+```cs
+static void One()
+{
+    // A function is pure if the same input always gives the same output
+    // can't have any IO...eg API call, 
+    var result = Double(2);
 
+    // This is impure - as the website may be down, so a unit test would return a different result 
+    var resultb = GetHtml("test.com");
+}
+```
 If we have mutable objects it could be possible for another function to mutate the object we were working on concurrently.  
 
 So if we have a pure function (which doesn't act on a mutable global variable) then we can make the function `static`. More [discussion in ch 2.2.3 of the orange book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-2/113)
@@ -68,19 +78,21 @@ So if we have a pure function (which doesn't act on a mutable global variable) t
 We never want to mutate an object in FP, but a create a new one. This makes sure there are no side effects caused somewhere else, thus ensuring a function remains pure. It also makes concurrency simpler.
 
 ```cs
-static void A()
+// Immutability (Core part of FP!), Smart ctor
+static void Two()
 {
     PersonOO dave = new PersonOO();
     dave.Name = "dave";
     dave.Age = 45;
-    // We don't do this in FP.. F# (by default), Haskell etc. does not allow this
+    // Don't do this in FP.. F# (by default), Haskell etc. does not allow this
     // Should avoid mutating objects in place and favour making new ones (as can be sure no side effects anywhere else)
     dave.Age = 46;
 
-    Person bob = new Person(name:"bob", age:42);
+    Person bob = new Person(name: "bob", age: 22);
+    //bob.Age = 23; // compiler doesn't allow this
     // Creating a new version of bob with an updated age
     var bob2 = bob.With(age: 43);
-    // Another new version of bob with an updated age 
+    // A new version of bob with updated age 
     var bob3 = Birthday(bob);
 }
 
@@ -112,10 +124,8 @@ class Person
     {
         // if null, return the current value
         // else set the newly passed in value
-        return new Person(
-            name: name ?? Name,
-            age: age ?? Age
-            );
+        // ?? null coalescing operator
+        return new Person(name: name ?? Name, age: age ?? Age);
     }
 }
 ```
@@ -139,13 +149,13 @@ An `Option<T>` can be in one of two states. `Some` representing the presence of 
 
 ```cs
 // Option type with None and Some
-static void AA()
+static void Three()
 {
-    Option<string> html = GetHtmlAA("badurl"); // will fail
-    Option<string> htmlb = GetHtmlAA("test.com"); // will succeed
+    Option<string> html = GetHtmlThree("badurl"); // will fail
+    Option<string> htmlb = GetHtmlThree("test.com"); // will succeed
 }
 
-static Option<string> GetHtmlAA(string url) =>
+static Option<string> GetHtmlThree(string url) =>
     // None represents nothing. Part of language-ext
     // Some represents a container for the string
     url == "test.com" ? Some("html here") : None;
@@ -153,68 +163,29 @@ static Option<string> GetHtmlAA(string url) =>
 
 ### Match
 ```cs
-// Option<string> - may or may not contain a value
-static void B()
+// Option type with Match down to primitive type
+static void Four()
 {
-    // None represents nothing.
-    Option<string> html = None;
-    // Some is a container for the string
-    Option<string> htmlb = Some("html here");
+    // 2 different results of the GetHtml function
+    Option<string> result = None;
+    Option<string> resultb = Some("html here");
 
     // Forces us to deal with the None case
-    string result = html.Match(Some: x => x, None: () => "none returned"); // none returned
-    string resultb = htmlb.Match(Some: x => x, None: () => "none returned"); // html here
+    // Null reference exceptions can't happen as it wont compile unless we handle it
+    // Match down to primitive type (as opposed to elevated types of Option<T>, IEnumerable<T>, Either<T>)
+    string stringResult = result.Match(Some: x => x, None: () => "none returned"); // none returned
+    string stringResultb = resultb.Match(Some: x => x, None: () => "none returned"); // html here
 }
 ```
 
-### Match and Map
-`Match` comes down from the elevated abstraction to a primitive type eg string.
+### Map
+We can `Match` down to a primitive type, or can stay in the elevated types and do logic using `Map`
 ```cs
-Option<string> html = GetHtml(url);
-// an invalid url would return None
-// a valid request would return the html
-string result = html.Match( Some: x => x, None: () => "none returned");
-
-// Function signature is honest - it may, or may not return a string
-public static Option<string> GetHtml(string url)
+// Match and Map
+static void Five()
 {
-    var httpClient = new HttpClient(new HttpClientHandler());
-    try
-    {
-        var responseMessage = httpClient.GetAsync(url).Result;
-        return responseMessage.Content.ReadAsStringAsync().Result;
-    }
-    catch (Exception ex) { return None; }
-}
-```
-
-## Map on Option
-Apply a function to the containers inner values, and take into accout None
-
-```cs
-Option<string> name = Some("Enrico");
-
-// Map works on Option applying the function..just like select on IEnumerable.. they are both functors
-Option<string> result = name.Map(x => x.ToUpper()); // Some(ENRICO)
-
-
-IEnumerable<string> names = new[] { "Bob", "Alice" };
-
-IEnumerable<string> resultb = names.Map(x => x.ToUpper()); // a normal IEnumerable
-IEnumerable<string> resultc = names.Select(x => x.ToUpper()); // a normal IEnumerable
-```
-
-### Map vs Match - Keep on Elevated
-We can `Match` down to a concrete type, or can stay in the elevated types and do logic using `Map`
-```cs
-// Option and Match
-static void One()
-{
-    // Match down to concrete type (as opposed to elevated types of Option<T>, IEnumerable<T>, Either<T>)
-    string value = GetValue(true).Match(
-        Some: name => $"Hello, {name}",
-        None: () => "Goodbye"
-    );
+    string value = GetValue(true)
+                   .Match(Some: name => $"Hello, {name}", None: () => "Goodbye");
     Console.WriteLine(value); // Hello, Bob
 
     // Map - Functor
@@ -222,14 +193,35 @@ static void One()
     // Option is a replacement for if statements ie if obj == null
     // Working in elevated context to do logic
     // Similar to LINQ on IEnumerable.. ie if it is an empty list, then nothing will happen
-    Option<string> valueb = GetValue(true).Map(name => $"Hello, {name}");
-    Console.WriteLine(valueb); // Some(Hello, Bob)
+    Option<string> result = GetValue(true).Map(name => $"Hello, {name}");
+    Console.WriteLine(result); // Some(Hello, Bob)
+
+    Option<string> resultb = GetValue(false).Map(name => $"Hello, {name}"); // None
 }
 
 // Ternary nice and clean
-static Option<string> GetValue(bool hasValue) => hasValue
-        ? Some("Bob")
-        : None;
+static Option<string> GetValue(bool hasValue) =>
+    hasValue ? Some("Bob") : None;
+```
+
+## Map and IEnumerable 
+Apply a function to the containers inner values, and take into account None. This is very similar to working with IEnumerable and running a `Select` over each item in the collection. 
+
+```cs
+// IEnumerable Map and Select
+static void Six()
+{
+    Option<string> name = Some("Bob");
+
+    // Map works on Option applying the function..just like select on IEnumerable.. they are both functors
+    Option<string> result = name.Map(x => x.ToUpper()); // Some(BOB)
+
+
+    IEnumerable<string> names = new[] { "Bob", "Alice" };
+
+    IEnumerable<string> resultb = names.Map(x => x.ToUpper()); // a normal IEnumerable
+    IEnumerable<string> resultc = names.Select(x => x.ToUpper()); // a normal IEnumerable
+}
 
 ```
 
@@ -246,74 +238,47 @@ GetValue below may, or may not return a string. The function signature is 'hones
 
 The strategy is to try and work in the elevated level of abstraction to avoid: loops, null checks etc.. which are error prone. Why not abstract this away if we can?  
 
-### Map multiple
-Lets see another example of using `Map` to stay in the elevated context and not have to worry about nulls.
+### Map chaining
+Lets see another example of using `Map` to stay in the elevated context and not have to worry about nulls. We want to apply multiple functions in the elevated context.  
 ```cs
-static void Test()
+
+// Using Map (to avoid having to check for null at each stage)
+static void Seven()
 {
-    Option<string> html = GetHtml("a");
-    //Option<string> html = GetHtml("c");
-    // Shorten html
+    //Option<string> html = GetHtml("a");
+    Option<string> html = GetHtml("c");
+    // shorten html
     Option<string> shortHtml = html.Map(x => x.Substring(0, 1)); // Some(a)
-    // Put on https
+                                                                 // put on https
     Option<string> addedHttps = shortHtml.Map(x => $"https://{x}"); // Some(https://a)
 
-    // Come down from elevated context and deal with None
-    string final = addedHttps.Match(Some: x => x, None: () => "No html returned so lambdas not invoked");
+    // come down from elevated context and deal with None
+    string final = addedHttps.Match(Some: x => x, None: () => "No html returned");
 }
+
 static Option<string> GetHtml(string url)
 {
     if (url == "a") return "aa";
     if (url == "b") return "bb";
     return None;
 }
-
 ```
 
 ## Bind
-Allows us to chain multiple functions together that all the return `Option`. Bind is like `Map` but can flatten two Option<T>'s together.. we don't want an Option<Option<T>>. `SelectMany` is Bind in LINQ, and can also be called `FlatMap` in other langauges.  
+Rather than having the do separate calls to Map, we can use Bind, which allows us to chain multiple functions together that all the return `Option`. Bind is like `Map` but can flatten two Option<T>'s together.. we don't want an `Option<Option<T>>`. `SelectMany` is Bind in LINQ, and can also be called `FlatMap` in other languages.    
 
 Example here is using Bind to compose 2 functions which return an `Option<string>`:  
 
-Threee() in source code
-```cs
-// Using Bind so we can chain multiple Option<T> functions together
-static void Three()
-{
-    Option<string> html = GetHtml("a"); // Some(aa)
-
-    Option<string> shortHtml = html.Bind(x => ShortenHtml(x)); // x is a string.. Some(a)
-
-    // Put on https using shortened Method syntax so don't need x
-    Option<string> addedHttps = shortHtml.Bind(PutOnHttps); // Some(https://a)
-
-    Option<string> both = html.Bind(ShortenHtml)
-                              .Bind(PutOnHttps);
-
-    // come down from elevated context and deal with None
-    string final = addedHttps.Match(Some: x => x, None: () => "No html returned");
-    string finalb = both.Match(Some: x => x, None: () => "No html returned");
-}
-
-static Option<string> ShortenHtml(string html) =>
-    // Haven't considered the None state
-    Some(html.Substring(0, 1));
-
-static Option<string> PutOnHttps(string html) =>
-    html == "" ? None :
-    Some("https://" + html);
-
-```
-Another example of `Bind` on `Option<string>`:
-
 ```cs
 // Bind - Monad - Bind two Option<strings>
-static void Five()
+// SelectMany or FlatMap
+static void Eight()
 {
     // If either GetFirstName() or MakeFullName(string firstName) returned None
     // then name would be None
     // return is not an Option<Option<string>>.. but flattened
-    Option<string> name = GetFirstName().Bind(MakeFullName);
+    Option<string> name = GetFirstName()
+                         .Bind(MakeFullName);
     Console.WriteLine(name); // Some(Joe Bloggs)
 }
 
@@ -322,54 +287,99 @@ static Option<string> GetFirstName() =>
 
 static Option<string> MakeFullName(string firstName) =>
     Some($"{firstName} Bloggs");
+
 ```
+Another example of `Bind` on `Option<string>`:
+
+```cs
+// Using Bind so we can chain multiple Option<T> functions together
+static void Nine()
+{
+    Option<string> html = GetHtml("a");
+    //Option<string> html = GetHtml("c");
+
+    // we don't want to have Option<Option<string>>
+    Option<string> shortHtml = html.Bind(x => ShortenHtml(x)); // x is a string
+
+    // put on https using shortened Method syntax so don't need x
+    Option<string> addedHttps = shortHtml.Bind(PutOnHttps);
+
+    Option<string> both = html.Bind(ShortenHtml)
+                              .Bind(PutOnHttps);
+
+    // Come down from elevated context and deal with None
+    string final = addedHttps.Match(Some: x => x, None: () => "No html returned");
+    string finalb = both.Match(Some: x => x, None: () => "No html returned");
+}
+
+static Option<string> ShortenHtml(string html) =>
+    html == "" ? None :
+    Some(html.Substring(0, 10));
+
+static Option<string> PutOnHttps(string html) =>
+    html.Length < 3 ? None : // business rule to catch invalid html
+    Some("https://" + html);
+```
+
 ## Collections / Method chaining in LINQ vs Bind  
 In my broken links checker example application, after getting the html from a page, I'm dealing with collections and have used extension method chaining.. is there a better way using Bind?
 
 Here is some exploratory code showing that we can stay in the elevated context by using IEnumerable<T> which handles nulls fine, and by using chained extension methods.  
+
+Bind is for working with Option<T> and Either<L,R> (and more) but also supports IEnumerable<T> [more information](https://github.com/louthy/language-ext/issues/456)  
+
 ```cs
-// C# has a syntax for monadic types: LINQ
-// Is Bind the same as method chaining in LINQ when using IEnumerable<T>
-// Bind is for working with Option<T> and Either<L,R> but supports IEnumerable<T>
-// https://github.com/louthy/language-ext/issues/456
-static void Six()
+// IEnumerable and Extension methods
+static void Ten()
 {
-    IEnumerable<string> listHrefs = GetListHrefs("a");
+    IEnumerable<string> listHrefs = GetListHrefs();
+    var baseUrl = "https://davemateer.com";
     // LINQ extension method style
-    IEnumerable<string> final = listHrefs
-                                    .ClassifyLinks(); // extension method eg Relative, Absolute
-
-    // Does Bind help? No I don't think so
-    //var finalb = listHrefs.Bind(ClassifyLinksb);
+    // if UrlType is Invalid (ie not Absolute or Relative) then don't add to this list
+    IEnumerable<string> finalUrl = listHrefs
+                                  // extension method which suffixes Relative, Absolute or Invalid
+                                  .GetUrlTypes()
+                                  // depending on UrlType above, process the url
+                                  .ProcessUrls(baseUrl);
 }
 
-// Doesn't make sense - we need to be operating on the whole sequence 
-//static IEnumerable<string> ClassifyLinksb(string html) => 
-//    html.Select(x => ClassifyLink(x));
+static IEnumerable<string> ProcessUrls(this IEnumerable<string> urls, string baseUrl) =>
+    // ProcessUrl could return None so we use Bind instead of Select
+    urls.Bind(x => ProcessUrl(x, baseUrl));
 
-static IEnumerable<string> ClassifyLinks(this IEnumerable<string> html) => 
-    html.Select(ClassifyLink);
+static Option<string> ProcessUrl(string url, string baseUrl) =>
+    url.EndsWith("Absolute") ? url :
+    url.EndsWith("Relative") ? Some(baseUrl + url) :
+    None;
 
-static string ClassifyLink(string link) => 
-    link == "aa" ? "aaa" : "nothing";
+static IEnumerable<string> GetUrlTypes(this IEnumerable<string> html) =>
+    // Apply GetUrlType to each element in the list
+    html.Select(GetUrlType);
 
-static IEnumerable<string> GetListHrefs(string html)
+// Using expressions instead of if..return
+static string GetUrlType(string link) =>
+    link.StartsWith("https://") ? $"{link} : Absolute" :
+    link.StartsWith("/") ? $"{link} : Relative" :
+    "{link} : Unknown";
+
+static IEnumerable<string> GetListHrefs()
 {
-    if (html == "a") yield return "aa";
-    yield return null;
+    yield return "/programming-in-c-sharp";
+    yield return "https://bbc.co.uk";
+    yield return "mailto:davemateer@gmail.com";
 }
+
 ```
-If Option<T> is a replace for if statements, then perhaps we could refactor the ClassifyLink to use Bind?
 
 ## Either - Exception handling
 Here we are using `Either` to return back the `Exception` or the valid result html `string`.
 ```cs
 // Either - Exception handling
-static void Eight()
+static void Eleven()
 {
     Option<string> result = GetHtml("invalidurl"); // None. ie it will swallow the exception
 
-    Either<Exception, string> resultb = GetHtmlE("invalidurl");  // Left(System.InvalidaOperationException)
+    Either<Exception, string> resultb = GetHtmlE("invalidurl");  // Left(System.InvalidOperationException)
 
     // Did the request throw an exception or return html?
     resultb.Match(
@@ -390,7 +400,6 @@ static void HandleException(Exception ex) => Console.WriteLine(ex);
 
 static void ProcessPipeline(string html) => Console.WriteLine(html);
 
-
 public static Either<Exception, string> GetHtmlE(string url)
 {
     var httpClient = new HttpClient(new HttpClientHandler());
@@ -401,7 +410,6 @@ public static Either<Exception, string> GetHtmlE(string url)
     }
     catch (Exception ex) { return ex; }
 }
-
 ```
 
 ## Either - Error Handling (Validation or Exception)
@@ -409,7 +417,7 @@ Railway Oriented Programming
 
 ```cs
 // Either - Errors in Validation handling
-static void Nine()
+static void Twelve()
 {
     var url = "https://davemateer.com";
     var result = RunUrlValidationPipeline(url);
@@ -442,6 +450,7 @@ public class URLRejection
     public string ReasonForRejection { get; set; }
 }
 ```
+
 ## Either type - Further abstractions Exceptions
 `Try<A>` or an `Exception<A>` are further abstractions over `Either`.
 
@@ -496,7 +505,7 @@ public static void GetURLType_Absolute_ReturnAbsolute(string input, URLType expe
 ```
 
 ## Summary
-As louthy said in is post, it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.   
+As louthy said in [his post](https://github.com/louthy/language-ext/issues/209), it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.   
 
 These 'basics' of FP in C# allow us to build applications which have:
 
@@ -510,3 +519,4 @@ By having:
 - Composed methods using LINQ for collections, Map and Bind for Option<T>, Either<L,R>
 - Static methods so no OO boilerplate
 - Immutable objects so no side effects (making our lives easier as the only way something can change is in the function we are in)
+
