@@ -193,7 +193,7 @@ This is a very useful tool to transfer entire websites (eg all files and db)
 
 To set the upload_max_filesize in Azure it seems you need the .ini file there too.  [All in One Docs](https://help.servmask.com/2018/10/27/how-to-increase-maximum-upload-file-size-in-wordpress/)
 
-[Microsoft Link](https://blogs.msdn.microsoft.com/azureossds/2016/06/15/uploading-large-files-to-azure-web-apps/)  
+[Microsoft Link](https://web.archive.org/web/20190111131454/https://blogs.msdn.microsoft.com/azureossds/2016/06/15/uploading-large-files-to-azure-web-apps/) 
 
 ## WP Super Cache
 WP Super Cache will write this into the wp-config. Be careful when testing that you are not logged in, as by default this wont hit the cache.
