@@ -13,9 +13,9 @@ sitemap: false
   </div>
 
 
-<div class="boxed">
+<!-- <div class="boxed"> -->
   <p> <a href="https://davemateer.com/asdfasd">DaveMateer broken link</a> sentence of bad link</p>
-  </div>
+  <!-- </div> -->
 
 <p><a href="https://davemateer.com/asdfasd">DaveMateer broken link</a> sentence of bad link with no div</p>
 
