@@ -32,21 +32,46 @@ Change app settings PHP7.2
 Check always on is on.
 
 ## MySQL
-Create a hosted MySQL database in own resource group eg DaveWebsitesMySQL  
+Create a hosted MySQL database in own resource group eg DaveWebsitesMySQL. Be wary of the Basic pricing tier as the performance can be very variable.
 
-db name could be: davemysql.mysql.database.azure.com  
+db server: dave.mysql.database.azure.com  
+dbname: davemateercom  
+user: davedbuser@dave  
+password: asdflkj23989$$$ 
 
 ![ps](/assets/2019-02-26/3.jpg)  
 Allow access for Azure services, and Disable Enforce SSL  
 
 Cloud shell for:
 ```bash
-# be very careful when pasting into cloud shell no space after the p
-# a good password is asdflkj23989$$$
-# other characters can interfere with bash
-mysql --host davexxxx.mysql.database.azure.com --user davexxxx@davexxx -p
+mysql --host dave.mysql.database.azure.com --user davedbuser@dave -p
 # create a databasename the same as the website app service
 create database davemateercom;
+```
+
+### Export and Import
+I've had to export the database and import into a higher pricing tier. Here is how to do it:
+
+```bash
+# export
+mysqldump --host dave.mysql.database.azure.com  --user davedbuser@dave -p davemateercom > dump.sql
+
+# import
+mysql --host davenew.mysql.database.azure.com --user davedbusernew@davenew -p davemateercomnew < dump.sql
+```
+and then in `wp-config.php` in the site root:  
+
+```php
+define( 'DB_NAME', 'davemateercomnew' );
+
+/** MySQL database username */
+define( 'DB_USER', 'davedbusernew@davenew' );
+
+/** MySQL database password */
+define( 'DB_PASSWORD', 'asdflkj23989$$$' );
+
+/** MySQL hostname */
+define( 'DB_HOST', 'davenew.mysql.database.azure.com' );
 ```
 
 ## Wordpress
@@ -120,9 +145,12 @@ App Service, Advanced Tools, Kudu, Debug console, CMD
 upload_max_filesize = 256M
 # post size must be bigger than upload
 post_max_size = 512M
-memory_limit = 256M
+# was 256 by trying more for divi theme
+memory_limit = 512M
 max_execution_time = 300
 max_input_time = 300
+# for divi theme
+max_input_vars = 3000 
 
 ; Example Settings
 ;display_errors=On
@@ -186,6 +214,18 @@ maxAllowedContentLength is so I can upload large (300MB) files to the All in One
 
 The other rewrite section was written in by default by Azure.
 go to the website and put in some test values for username and password (as I'm usually restoring a backup)
+
+## WP_DEBUG
+To turn on Wordpress debug and writing to log file, which gets written in `wp-content\debug.log`
+
+```php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+```
+
+## Divi Theme
+[Divi theme](https://www.elegantthemes.com/gallery/divi/) has a support center page which displays useful PHP variables such as: PHP Version, Post Max size etc..  
+
 
 ## All in One WP Migration
 This is a very useful tool to transfer entire websites (eg all files and db)
