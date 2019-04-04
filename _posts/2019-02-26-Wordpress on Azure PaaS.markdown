@@ -2,7 +2,7 @@
 layout: post
 title: Wordpress on Azure PaaS 
 #menu: review
-categories: Wordpress 
+categories: Wordpress MySQL
 published: true 
 comments: true
 sitemap: true
