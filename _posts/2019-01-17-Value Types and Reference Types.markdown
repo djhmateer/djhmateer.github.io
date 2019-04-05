@@ -6,6 +6,7 @@ categories: Functional C#
 published: true 
 comments: true
 sitemap: true
+image: /assets/2019-04-05/1.jpg
 ---
 
 ![ps](/assets/2019-04-05/1.jpg)  

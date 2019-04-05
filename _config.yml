@@ -22,6 +22,10 @@ baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: dave_mateer
 github_username:  djhmateer
 
+twitter:
+  username: dave_mateer
+  card: summary
+
 #lowercase separated by hyphens
 #permalink: /articles/:title
 permalink: /:year/:month/:day/:title
