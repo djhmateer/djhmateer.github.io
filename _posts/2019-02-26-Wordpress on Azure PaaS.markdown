@@ -304,12 +304,18 @@ Turned out the _ should be a $.
 
 ### wp-config.php
 ![ps](/assets/2019-02-26/21.jpg)  
-I found this by changing wp-config.php
+I found this by changing wp-config.php. There are 2 useful debug settings:  
+
+```php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+```
 
 ### .user.ini
 ```bash
 upload_max_filesize = 512M
 post_max_size = 512M
+## trying 512 for memory as issues with perf and memory usage on backend
 memory_limit = 256M
 max_execution_time = 300
 max_input_time = 300
