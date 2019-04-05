@@ -129,3 +129,6 @@ This can now be shared amongst all my machines and I don't have to make sure a c
 
 ## Update 16th Nov 2018
 Some more interesting comments on this article are on the [reddit question](https://redd.it/9xa13n) and related [stackoverflow](https://stackoverflow.com/questions/973561/starting-visual-studio-from-a-command-prompt/53299917)
+
+## Update 5th Apr 2019
+Code now looks for a VS2019 install and prefers that over a VS2017 install.  
