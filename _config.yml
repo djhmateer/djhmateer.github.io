@@ -42,4 +42,5 @@ url: "https://davemateer.com" # the base hostname & protocol for your site
 plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-seo-tag
 

@@ -1,13 +1,16 @@
 ---
 layout: post
 title: Value Types and Reference Types 
-menu: review
+#menu: review
 categories: Functional C# 
 published: true 
-comments: false
-sitemap: false
+comments: true
+sitemap: true
 ---
-If we follow the functional paradigm, we should refrain from state mutation altogether: once created, an object never changes.  This is the subject of [an entire chapter of the C# FP Orange Book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-9/)
+
+![ps](/assets/2019-04-05/1.jpg)  
+
+If we follow the [functional paradigm](/2019/01/11/Learning-Functional-Programming-in-C-Sharp), we should refrain from state mutation altogether: once created, an object never changes.  This is the subject of [an entire chapter of the C# FP Orange Book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-9/)
 
 Here I give an overview of Value Types, Reference types and immutability.  
 
@@ -20,7 +23,7 @@ The options discussed in the book are:
 - Define immutable objects in C# (required some extra work in defining constructors)
 - Write data objects in F#
 
-## 1.Value Types
+## 1. Value Types
 Variables of [value types](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/value-types) directly contain the data:  
   - simple types: bool, byte, char, decimal, int etc...  
   - structs (eg Point), enum
@@ -39,7 +42,7 @@ void Update(int j)
 WriteLine(i); // 42
 ```
 
-## 2.Reference Types
+## 2. Reference Types
 Variables of [reference type](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/reference-types) store references to their data eg:
  - class
  - object
@@ -63,7 +66,7 @@ void UpdateThing(Thing r)
 WriteLine(q.Name); // test2
 ```  
 
-## 3.String - Reference type but behaves like a Value Type
+## 3. String - Reference type but behaves like a Value Type
 ```cs
 var aa = "test1";
 UpdateString(aa);
@@ -104,4 +107,8 @@ Person UpdatePersonName(Person t) => new Person("test2", t.Age);
 WriteLine(s); // test1, 45
 WriteLine(u); // test2, 45
 ```
+
+This has been a brief look at `Value types` (eg int), `Reference types` (eg custom classes) and making `Immutable Objects`.   
+
+Have a look at my [series on leaning FP in C#](/2019/01/11/Learning-Functional-Programming-in-C-Sharp)
 
