@@ -1,12 +1,17 @@
 ---
 layout: post
 title: Functional Programming in C# - Expressions, Option, Either
+description:  Making C# more functional by using abstractions. It has been preceeded by 2 articles on why I've got to here, and the background reasons behind trying functional programming in C#.
 #menu: review
 categories: Functional C#
 published: true 
 comments: true
 sitemap: true
+image: /assets/2019-04-05/2.jpg
 ---
+
+![ps](/assets/2019-04-05/2.jpg)  
+
 This article is on making *C# code more functional by using functional abstractions*. It has been preceeded by 2 articles on why I've got to here, and the background reasons behind trying functional programming in C#.
 
 [Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) summarised how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
