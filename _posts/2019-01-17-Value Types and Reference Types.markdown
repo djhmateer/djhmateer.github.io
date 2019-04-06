@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Value Types and Reference Types 
+description: Overview of Value Types, Reference types and immutability.  
 #menu: review
 categories: Functional C# 
 published: true 
