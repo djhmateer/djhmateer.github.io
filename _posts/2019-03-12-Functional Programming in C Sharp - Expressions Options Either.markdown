@@ -555,7 +555,7 @@ By having:
 
 With the techniques shown here, I've built an application which crawls for dead links on a website. I've used this application to be the real world test bed as I've gone thorugh learning FP. As in most real world applications, there is much more complexity than initially it looks like. These techniques have guided my code to be simpler and more maintainable.  
 
-
-
 <br />
 <br />
+
+<sup>[Thanks to Pixabay for the image of Machu Picchu](https://pixabay.com/photos/peru-mountains-machu-picchu-2135770/)</sup>
