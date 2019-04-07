@@ -23,6 +23,8 @@ Ever wondered how to get previews of blog post articles on:
 This is summary_large_image
 
 
+![ps](/assets/2019-04-07/2.png)  
+This is summary
 
 ## Twitter Card
 [Twitter Card documentation](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started)
