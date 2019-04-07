@@ -22,7 +22,6 @@ Ever wondered how to get previews of blog post articles on:
 ![ps](/assets/2019-04-07/1.png)  
 This is summary_large_image
 
-
 ![ps](/assets/2019-04-07/2.png)  
 This is summary
 
@@ -73,5 +72,8 @@ and on my site:
 <script type="application/ld+json">
 {"mainEntityOfPage":{"@type":"WebPage","@id":"https://davemateer.com/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either"},"@type":"BlogPosting","url":"https://davemateer.com/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either","dateModified":"2019-03-12T00:00:00+00:00","datePublished":"2019-03-12T00:00:00+00:00","headline":"Functional Programming in C# - Expressions, Option, Either","image":"https://davemateer.com/assets/2019-04-05/2.jpg","description":"Making C# more functional by using abstractions. It has been preceeded by 2 articles on why I’ve got to here, and the background reasons behind trying functional programming in C#.","@context":"http://schema.org"}</script>
 ```
+
+So here the plugin is only using 2 twitter tags, then using the Open Graph for the rest.  
+
 
 
