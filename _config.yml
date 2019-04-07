@@ -24,6 +24,7 @@ github_username:  djhmateer
 
 twitter:
   username: dave_mateer
+  card: summary #default is summary_large_image
 
 #lowercase separated by hyphens
 #permalink: /articles/:title
