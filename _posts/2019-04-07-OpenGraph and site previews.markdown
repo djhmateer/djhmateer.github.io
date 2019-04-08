@@ -75,5 +75,8 @@ and on my site:
 
 So here the plugin is only using 2 twitter tags, then using the Open Graph for the rest.  
 
+## LinkedIn
+[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/inspect/)
+
 
 
