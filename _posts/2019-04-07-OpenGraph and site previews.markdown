@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Twitter Card, Open Graph and Site previews **Work in Progress**
-description: Twitter Card, Open Graph big description here 
+description: Twitter Card and  Open Graph looking at how to get previews working in Twitter, Teams, Slack, Facebook, WhatsApp, LinkedIn. Also looking at the jekyll-seo-tag plugin. 
 menu: review
 categories: TwitterCard OpenGraph
 published: true 
