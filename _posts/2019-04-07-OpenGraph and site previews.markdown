@@ -31,6 +31,7 @@ This is summary
 [Twitter Card Validator](https://cards-dev.twitter.com/validator) gives you a preview of what a tweet will look like.  
 The underlying code needed to render my page is:
 
+### Jekyll-seo-tag
 This is very different from the twitter documentation. I'm using [Jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag)
 ```html
 <!-- can be summary, summary_large_image, app, player-->
@@ -39,7 +40,6 @@ This is very different from the twitter documentation. I'm using [Jekyll-seo-tag
 <meta name="twitter:site" content="@dave_mateer" />
 ```
 Content is cached on Twitter for 7 days after a link to a card markup has been published in a tweet.
-
 
 ## Open Graph
 Twitter first checks it's own cards tags, then falls back to Open Graph
@@ -76,7 +76,16 @@ and on my site:
 So here the plugin is only using 2 twitter tags, then using the Open Graph for the rest.  
 
 ## LinkedIn
-[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/inspect/)
+[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/inspect/)  
 
+Have an author tag:  
+```html
+ <meta name="author" content="Dave Mateer">
+```
+
+Make sure description is at least 100 characters long
+
+## Yeost SEO - Wordpress
+This plugin helps put in similar tags
 
 

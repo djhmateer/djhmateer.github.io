@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Value Types and Reference Types 
-description: Overview of Value Types, Reference types and immutability.  
+description: Overview of Value Types, Reference types and immutability. Looking at the benefits of avoiding mutation and what types are Value Reference and which are the outliers, and why it doesn't matter.
 #menu: review
 categories: Functional C# 
 published: true 
