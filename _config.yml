@@ -22,7 +22,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: dave_mateer
 github_username:  djhmateer
 
-author: dave_mateer 
 twitter:
   username: dave_mateer
   #card: summary #default is summary_large_image
