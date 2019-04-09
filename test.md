@@ -9,6 +9,7 @@ sitemap: false
   <p> <a href="/asdfasd">Internal broken link</a> sentence of bad link</p>
 
 <p><a href="/asdfasd2">Internal broken link2</a> sentence of bad link2</p>
+<p><a href="/test2">test2</a> test 2 page</p>
 
   <div>
     <p> <a href="https://www.google.co.uk">Google good link</a> sentence of good link </p>
