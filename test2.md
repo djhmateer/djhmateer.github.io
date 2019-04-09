@@ -8,7 +8,7 @@ layout: default
 <p></p>
 
 <p> <a href="/notthere">Internal link relative broken</a> asdfsdadf </p>
-<p> <a href="https://www.qnrl.com/asdf">External link absolute broken</a> asdfsdadf </p>
+<p> <a href="https://www.qnrl.com/anotherbrokenurl">External link absolute broken</a> asdfsdadf </p>
 
 <p> <a href="https://www.google.co.uk">Google test link</a> asdfsdadf </p>
 <ul>

@@ -6,9 +6,9 @@ sitemap: false
 
   <h1 class="page-heading">Testing page for Broken Links</h1>
 
-  <p> <a href="/asdfasd">Internal broken link</a> sentence of bad link</p>
+  <p> <a href="/brokenurl">Internal broken link</a> sentence of bad link</p>
 
-<p><a href="/asdfasd2">Internal broken link2</a> sentence of bad link2</p>
+<p><a href="/brokenurl2">Internal broken link2</a> sentence of bad link2</p>
 <p><a href="/test2">test2</a> test 2 page</p>
 <p><a href="/allPosts">allPosts</a> allPosts</p>
 
