@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: none
 ---
 
 <div class="home">
@@ -7,10 +7,10 @@ layout: default
 <img src="/assets/2019-01-11/6.jpg" />  
 <p></p>
 
-<p>
-<a href="https://www.google.co.uk">Google test link</a> asdfsdadf
-</p>
+<p> <a href="/notthere">Internal link relative broken</a> asdfsdadf </p>
+<p> <a href="https://www.qnrl.com/asdf">External link absolute broken</a> asdfsdadf </p>
 
+<p> <a href="https://www.google.co.uk">Google test link</a> asdfsdadf </p>
 <ul>
   {% for post in site.posts %}
     {% if post.menu != 'review' %}
