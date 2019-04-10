@@ -85,6 +85,14 @@ Have an author tag:
 
 Make sure description is at least 100 characters long
 
+## Chrome Plugin
+[Open Graph Preview Chrome plugin](https://chrome.google.com/webstore/detail/open-graph-preview/ehaigphokkgebnmdiicabhjhddkaekgh?hl=en) which renders for:
+- facebook
+- twitter
+- vk.com
+- ok.ru
+
+
 ## Yeost SEO - Wordpress
 This plugin helps put in similar tags
 
