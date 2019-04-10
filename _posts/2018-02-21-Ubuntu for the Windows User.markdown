@@ -11,16 +11,31 @@ Here are my most used commands in Linux.  Current favoured distibution is Ubuntu
 ```
 # apt-get is the lower level, apt is meant to be more pleasant!
 
+sudo apt update        # updates packages
+sudo apt --upgradeable  # shows list
+sudo apt upgrade        # does the upgrade 
+
+
 apt-get update    # updates the package lists
 apt-get upgrade   # upgrades current packages
 apt-get dist-upgrade  # distribution updates 
 
 apt-get install openssh-server  # so can ssh, and scp into the machine
 
+# copy to the linux machine
 scp * dave@xps:wordpress/.
 scp docker-compose.yml uploads.ini wp-config.php dave@xps:wordpress/.
 
+# copy from the linux machine
+-p preserving date
+-r recurse
+scp -rp azureuser@testmachine.westeurope.cloudapp.azure.com:/var/log/apache2/* .
+
 top
+df -h  # check disk usage
+
+tar cc
+tar xvf
 
 pwd
 ls -lat
