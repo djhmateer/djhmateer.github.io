@@ -6,6 +6,7 @@ categories: Functional C#
 published: true 
 comments: true
 sitemap: true
+image: /assets/2019-01-11/3.png
 ---
 Part 1 is this article on how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
 [Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
