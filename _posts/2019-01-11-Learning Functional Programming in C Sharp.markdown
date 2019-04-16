@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Learning Functional Programming in C Sharp 
+description: How I learned functional programming in C# and why. Specifically Power, Safety and Clarity of the code. My main strategy is to be patient and code.. a lot.
 #menu: review
 categories: Functional C# 
 published: true 
