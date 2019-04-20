@@ -12,6 +12,9 @@ sitemap: false
 
 <p><a href="">Link with nothing in it ie a href=""</a> blank</p>
 
+<p><img src="/asdfas.png" /> Broken link to an image</p>
+
+
 
 
 <p><a href="/test2">test2</a> test 2 page</p>
