@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Azure IaaS Webservers
+title: Azure IaaS Blue Green Linux Webservers
 description: 
 menu: review
 categories: Azure IaaS 
@@ -10,23 +10,62 @@ sitemap: false
 image: /assets/2019-04-05/1.jpg
 ---
 
-When PaaS isn't good enough for hosting a web application we use IaaS. Drupal didn't work well, and Wordpress stuggles on PaaS with intensive plugins such as Divvi theme builder.
+When PaaS isn't good enough for hosting a web application we use IaaS. Drupal didn't work well, and Wordpress stuggles on PaaS with intensive plugins such as Divvi theme builder.  
+
+There is surprisingly little help out there!  
+
+[Blue-Green deployments using Azure Traffic Manager](https://azure.microsoft.com/en-gb/blog/blue-green-deployments-using-azure-traffic-manager/)  
+[The DOs and Donts of Blue-Green deployment](https://minops.com/blog/2015/02/the-dos-and-donts-of-bluegreen-deployment/)  
+is it A/B, Red/Black...
+
+
+
 
 ## A Single VM with Hosted Azure MySQL
 
 ![ps](/assets/2019-04-07/1.png)  
 
 
-## Multiple VMs with a single Hosted Azure MySQL
+## Multiple VMs with a single Hosted Azure MySQL using Azure Load Balancer (didn't work)
 Using this for 
 - Master / backup
 - Blue / Green deployments
 
-Failover happens automatically using
+Failover happens automatically. Upgrades can be done on the secondary vm and then switched over.  
+
+First strategy **didn't work** as couldn't use weighting on the Azure Load Balancer.  
+[Create lb using the cli](https://docs.microsoft.com/en-us/azure/load-balancer/quickstart-create-basic-load-balancer-cli) 
+[Azure Load Balancer SKU](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview#skus) it seems we have to pay for it now (or are recommended to)
+
+```bash
+#put code in here from /UKFDrupal repo
+```
+
+[How to add/remove a vm from the lb](https://docs.microsoft.com/en-us/azure/load-balancer/quickstart-create-basic-load-balancer-cli)
+```bash
+# remove nic1 from lb
+az network nic ip-config address-pool remove \
+    --resource-group dmtest3 \
+    --nic-name nic1 \
+    --ip-config-name ipConfig1 \
+    --lb-name myLoadBalancer \
+    --address-pool myBackEndPool 
+
+# add nic1 from lb
+az network nic ip-config address-pool add \
+    --resource-group dmtest3 \
+    --nic-name nic1 \
+    --ip-config-name ipConfig1 \
+    --lb-name myLoadBalancer \
+    --address-pool myBackEndPool
+```
 
 - Azure Load Balancer
 - Availability Set
 - Multiple VM's
+
+- Virtual Machine Scale Sets (VMSS)  - for autoscale based on the same VM image  
+
 
 ## Multi VMs and multiple DB's
 - Azure Traffic Manager
