@@ -12,13 +12,14 @@ image: /assets/2019-04-05/1.jpg
 
 When PaaS isn't good enough for hosting a web application we use IaaS. Drupal didn't work well, and Wordpress stuggles on PaaS with intensive plugins such as Divvi theme builder.  
 
-There is surprisingly little help out there!  
+There is surprisingly little help out there to go further than a single VM.  
 
 [Blue-Green deployments using Azure Traffic Manager](https://azure.microsoft.com/en-gb/blog/blue-green-deployments-using-azure-traffic-manager/)  
 [The DOs and Donts of Blue-Green deployment](https://minops.com/blog/2015/02/the-dos-and-donts-of-bluegreen-deployment/)  
 is it A/B, Red/Black...
 
 
+[Using Azure Traffic Manager](https://azure.microsoft.com/en-us/blog/blue-green-deployments-using-azure-traffic-manager/ )
 
 
 ## A Single VM with Hosted Azure MySQL
@@ -26,14 +27,14 @@ is it A/B, Red/Black...
 ![ps](/assets/2019-04-07/1.png)  
 
 
-## Multiple VMs with a single Hosted Azure MySQL using Azure Load Balancer (didn't work)
-Using this for 
+## Multiple VMs with a single Hosted Azure MySQL using Azure Load Balancer 
+This is good for load balancing, but not for:  
+
 - Master / backup
 - Blue / Green deployments
 
-Failover happens automatically. Upgrades can be done on the secondary vm and then switched over.  
+Loadbalancing failovers happens automatically. Upgrades can be done on the secondary vm and then switched over.  
 
-First strategy **didn't work** as couldn't use weighting on the Azure Load Balancer.  
 [Create lb using the cli](https://docs.microsoft.com/en-us/azure/load-balancer/quickstart-create-basic-load-balancer-cli) 
 [Azure Load Balancer SKU](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview#skus) it seems we have to pay for it now (or are recommended to)
 
