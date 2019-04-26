@@ -8,7 +8,9 @@ Dave lives near Brighton in England and by day he works on large financial inter
  He then plays with his ~~5 month old~~ ~~2 year~~ ~~3.5~~ 4.5 year old daughter and ~~3 month~~ ~~nearly 2~~ 2.5 year old son, usually listening to ABBA. Then ~~mountain bikes~~ takes the train to work dreaming of music and code…
 
 ## 2019
-Dave is speaking on Functional programming in C# including [Functional Brighton](https://www.meetup.com/Functional-Brighton/events/260140369/) where he will demo a Broken link checker written functionally. [This is an example of a link which it should pickup!](https://www.meetup.com/Functional-Brighton/events/260140369/asdf/)  
+Dave is speaking on Functional programming in C# including [Functional Brighton](https://www.meetup.com/Functional-Brighton/events/260140369/) where he will demo a Broken link checker written functionally. 
+
+<!-- [This is an example of a link which it should pickup!](https://www.meetup.com/Functional-Brighton/events/260140369/asdf/)   -->
 
 <!-- <a href="/test">test page link<a> -->
 
