@@ -19,19 +19,20 @@ Ever wondered how to get previews of blog post articles on:
 - Whats App
 - LinkedIn
 
-![ps](/assets/2019-04-07/1.png)  
-This is summary_large_image
+It is a mix of different html tags that you'll need. 
 
-![ps](/assets/2019-04-07/2.png)  
-This is summary
+[Twitter Card Validator](https://cards-dev.twitter.com/validator) gives you a preview of what a tweet will look like eg:
 
-## Twitter Card
+![ps](/assets/2019-04-07/1.png){:width="400px"}   
+
+Lets start with Twitter:
+
+## Twitter Cards
 [Twitter Card documentation](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started)
 
 [Twitter Card Validator](https://cards-dev.twitter.com/validator) gives you a preview of what a tweet will look like.  
 The underlying code needed to render my page is:
 
-### Jekyll-seo-tag
 This is very different from the twitter documentation. I'm using [Jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag)
 ```html
 <!-- can be summary, summary_large_image, app, player-->
@@ -41,8 +42,15 @@ This is very different from the twitter documentation. I'm using [Jekyll-seo-tag
 ```
 Content is cached on Twitter for 7 days after a link to a card markup has been published in a tweet.
 
+![ps](/assets/2019-04-07/2.png){:width="400px"}   
+This is summary
+
+
 ## Open Graph
-Twitter first checks it's own cards tags, then falls back to Open Graph
+Twitter first checks it's own cards tags, then falls back to [Open Graph](http://ogp.me/) which [many of the other interesting platforms use](https://stackoverflow.com/questions/10397510/do-services-other-than-facebook-use-open-graph)  
+
+I use a 'seo' plugin on 
+
 
 ```html
 <meta name="twitter:card" content="summary" />
