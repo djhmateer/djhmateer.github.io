@@ -116,11 +116,13 @@ Which is useful for looking at your pages quickly
 
 [Open Graph meta tags and SEO](https://neilpatel.com/blog/open-graph-meta-tags/) are discussed in depth here
 
+[How to clear LinkedIn Cache for Link Preview](https://woorkup.com/linkedin-cache/) as well as clear Facebook and Twitter cache links.  
+
 
 ## Summary
-It only takes a few tags to get previews working well on Twitter, LinkedIn etc. Watch out for caching if you can't see the site previews updating as you would expect - sometimes waiting overnight or a few days cures things.  
+It only takes a few tags to get previews working well on Twitter, LinkedIn etc. Update your CMS and blog to get previews working!   
 
-Update your CMS and blog to get previews working! 
+
 
 ![alt text](/assets/2019-04-07/10.jpg "Isle of Skye, Scotland"){:width="400px"}
 <!-- ![alt text](/assets/2019-04-07/10.jpg ""){:width="300px"}    -->
