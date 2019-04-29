@@ -22,6 +22,9 @@ Here I'm going to cover:
 - WP Super Cache
 - SSL
 
+Then finally I'm going to say if you're using a power hungry plugin such as the [Divi Plugin](https://kinsta.com/) I **wouldn't recommend Azure PaaS**.   
+
+
 ## Azure App Service
 Create an App Service Plan in it's own resource group eg DaveWebsites  
 
@@ -370,3 +373,8 @@ but it was further down the pipeline so this didn't help - 2 places I added diag
 
 ## SSL setup
 As we are using Azure PaaS on Windows we can use an [automated LetsEncrypt cert extension](/2019/03/01/Lets-Encrypt), however for mission critical apps I'm choosing not to at the moment.
+
+## Performance
+What we've found is the the [Divi Plugin](https://kinsta.com/) we've been using is very power hungry, so the backend administration of the site is slow. Front end is excellent with the caching plugin. 
+
+In the future I may seriously look at a more custom WP hosting provider eg [Kinsta](https://kinsta.com/)
