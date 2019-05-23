@@ -2,7 +2,7 @@
   <div class="wrapper">
     {% assign custom_url = site.url | append: site.baseurl %}
     {% assign full_base_url = site.github.url | default: custom_url %}
-    <a class="site-title" href="{{ full_base_url }}/">{{ site.title | escape }}</a>
+    <a class="site-title" href="{{ relative_url }}/">{{ site.title | escape }}</a>
     <nav class="site-nav">
       <a href="#" class="menu-icon">
         <svg viewBox="0 0 18 15" width="18px" height="15px">
@@ -12,7 +12,7 @@
         </svg>
       </a>
       <div class="trigger">
-        {% for my_page in site.pages %} {% if my_page.title %} {% if my_page.menu != 'review' %} <a class="page-link" href="{{ my_page.url | prepend: full_base_url }}">{{ my_page.title | escape }}</a> {% endif %} {% endif %} {% endfor %}
+        {% for my_page in site.pages %} {% if my_page.title %} {% if my_page.menu != 'review' %} <a class="page-link" href="{{ my_page.url | prepend: relative_url }}">{{ my_page.title | escape }}</a> {% endif %} {% endif %} {% endfor %}
       </div>
     </nav>
   </div>
