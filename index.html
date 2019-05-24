@@ -33,6 +33,7 @@ image: /assets/2019-01-11/6.jpg
 {% endfor %}
 </div>
 
+{% if jekyll.environment != 'production' %}
 <div class="home">
 
   <h1 class="page-heading">Testing page for Broken Links</h1>
@@ -57,3 +58,4 @@ image: /assets/2019-01-11/6.jpg
   </div>
 
 </div>
+{% endif %}
