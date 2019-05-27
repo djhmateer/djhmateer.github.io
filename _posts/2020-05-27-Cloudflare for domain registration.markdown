@@ -1,0 +1,70 @@
+---
+layout: post
+title: Jemoji
+description: 
+menu: review
+categories: Jekyll 
+published: true 
+comments: false
+sitemap: false
+image: /assets/2019-05-27/1.png
+---
+***********************
+asdfasdf
+
+
+
+
+
+Why people want to you emoji's escapes me, or it did, until I started using them for fast conversation and txt messaging.  
+
+[A friend of mine](https://ohare.blog/) pointed me to the [emoji support on a Jekyll hosted blogs](https://github.com/jekyll/jemoji) which has over 1.5million downloads from [rubygems](https://rubygems.org/gems/jemoji)
+
+![alt text](/assets/2019-05-27/1.png "Emoji cheat sheet"){:width="700px"}     
+[A handy emoji cheat sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)
+
+So to use an emoji you use this syntax in the markdown:   
+
+```
+I give this plugin two :+1:!
+```
+I give this plugin two :+1:!
+
+## How to install
+Add the following to your site's `Gemfile`
+
+```
+gem 'jemoji'
+```
+
+And add the following to your site's `_config.yml`
+
+```yml
+plugins:
+  - jemoji
+```
+
+Then I followed my blog post instructions on [updating Jekyll](/2018/01/25/Jekyll-and-Docker#updating-jekyll) which got the dependency
+
+```
+docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
+bundle update jekyll
+```
+
+## Local Testing
+Developing locally the image urls were broken and looked like:    
+[https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png](https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png)
+
+On live they worked looking like:  
+[https://github.githubassets.com/images/icons/emoji/unicode/1f4ee.png](https://github.githubassets.com/images/icons/emoji/unicode/1f4ee.png)
+
+so in the `config.yml` file I put in 
+
+```
+emoji:
+  src: "https://github.githubassets.com/images/icons/"
+```
+
+
+
+
