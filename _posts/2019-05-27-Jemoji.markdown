@@ -1,0 +1,21 @@
+---
+layout: post
+title: Jemoji
+description: 
+menu: review
+categories: Jekyll 
+published: true 
+comments: false
+sitemap: false
+image: /assets/2019-04-05/1.jpg
+---
+
+Why people want to you emoji's escapes me, or it did, until I started using them for fast conversation and txt messaging.  
+
+[A friend of mine](https://ohare.blog/) pointed me to the [emoji support on a Jekyll hosted blogs](https://github.com/jekyll/jemoji)
+
+[A handy emoji cheat sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)
+
+I give this plugin two :+1:!
+
+## How to install
