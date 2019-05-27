@@ -48,4 +48,5 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag # twitter / opengraph
   - jekyll-feed # atom
+  - jemoji
 
