@@ -50,3 +50,6 @@ plugins:
   - jekyll-feed # atom
   - jemoji
 
+emoji:
+  src: "https://github.githubassets.com/images/icons/"
+
