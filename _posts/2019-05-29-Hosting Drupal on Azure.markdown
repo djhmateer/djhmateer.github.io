@@ -50,6 +50,6 @@ asdfasfd
 ## 3rd Party Hosting
 Very attractive to look at these. We'd need to make sure that crontab jobs are available for our jobs which require updates.
 
-
-
-
+[druplal.org/hosting](https://www.drupal.org/hosting/enterprise)  
+[Platform.sh](https://platform.sh/pricing/)  - have a London Office.
+[ixis](https://ixis.co.uk/contact) - Manchester
