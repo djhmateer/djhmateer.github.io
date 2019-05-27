@@ -52,7 +52,7 @@ Developing locally the image urls were broken and looked like:
 On live they worked looking like:  
 [https://github.githubassets.com/images/icons/emoji/unicode/1f4ee.png](https://github.githubassets.com/images/icons/emoji/unicode/1f4ee.png)
 
-so in the `config.yml` file I put in 
+so in the `_config.yml` file I put in 
 
 ```
 emoji:
