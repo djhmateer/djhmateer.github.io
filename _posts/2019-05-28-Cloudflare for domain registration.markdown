@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Jemoji
+title: Cloudflare for domains 
 description: 
 menu: review
-categories: Jekyll 
+categories: Cloudflare
 published: true 
 comments: false
 sitemap: false
