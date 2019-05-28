@@ -3,7 +3,7 @@ layout: post
 title: Hosting Drupal on Azure IaaS using Azure CLI
 description: 
 menu: review
-categories: Drupal Azure AzureCLI
+categories: Drupal Azure AzureCLI sed
 published: true 
 comments: false
 sitemap: false
@@ -13,6 +13,8 @@ image: /assets/2019-05-27/1.png
 I've blogged on hosting [Wordpress on Azure PaaS](https://davemateer.com/2019/02/26/Wordpress-on-Azure-PaaS) and [Many different Azure options for hosting Wordpress](https://davemateer.com/2018/06/18/Azure-Hosting-Wordpress-Win-Linux-Docker).   
 
 So when I was asked to find [Drupal](https://www.drupal.org/) hosting for an enterprise customer which had to be on Azure, I tried the same strategy.  
+
+[All code here is on GitHub](https://github.com/djhmateer/AzureVMDrupal)
 
 ## What is Drupal?
 [Drupal on Wikipedia](https://en.wikipedia.org/wiki/Drupal) tells us it came out in 2000, and uses PHP and MySQL. So interestingly it precedes [Wordpress](https://en.wikipedia.org/wiki/WordPress) by 3 years.
@@ -49,24 +51,115 @@ az group list
 ```
 
 ### AZ CLI
-Now lets make a basic Ubuntu LTS (currently 18.04.2) VM to login to:
+Now lets make a basic Ubuntu LTS (currently 18.04.2) VM:
 
 ```bash
+# infra.sh in the demo repo
+#!/bin/bash
+
+# activate debugging from here
+set -x
+
+rg=DaveDrupalTEST1
+dnsname=davedrupaltest1
+vmname=davedrupaltest
+
+region=westeurope
+vnet=vnet
+subnet=subnet
+publicIPName=publicIP
+nsgname=nsg
+nicName=nic
+image=UbuntuLTS
+adminusername=azureuser
+adminpassword=zp1234567890TEST
+
+###
+# Create VNET #
+###
+echo "-= Creating Resource Group ${rg} "
+az group create \
+   --name ${rg} \
+   --location ${region}
+
+az network vnet create \
+    --resource-group ${rg} \
+    --name ${vnet} \
+    --address-prefix 192.168.0.0/16 \
+    --subnet-name ${subnet} \
+    --subnet-prefix 192.168.1.0/24
+
+az network public-ip create \
+    --resource-group ${rg} \
+    --name ${publicIPName} \
+    --dns-name ${dnsname}
+
+az network nsg create \
+    --resource-group ${rg} \
+    --name ${nsgname}
+
+# allow ssh
+az network nsg rule create \
+    --resource-group ${rg} \
+    --nsg-name ${nsgname} \
+    --name nsgGroupRuleSSH \
+    --protocol tcp \
+    --priority 1000 \
+    --destination-port-range 22 \
+    --access allow
+
+# allow port 80
+az network nsg rule create \
+    --resource-group ${rg} \
+    --nsg-name ${nsgname} \
+    --name nsgGroupRuleWeb80 \
+    --protocol tcp \
+    --priority 1001 \
+    --destination-port-range 80 \
+    --access allow
+
+# allow port 443
+az network nsg rule create \
+    --resource-group ${rg} \
+    --nsg-name ${nsgname} \
+    --name nsgGroupRuleWeb443 \
+    --protocol tcp \
+    --priority 1002 \
+    --destination-port-range 443 \
+    --access allow
+
+#create a virtual nic
+az network nic create \
+    --resource-group ${rg} \
+    --name ${nicName} \
+    --vnet-name ${vnet} \
+    --subnet ${subnet} \
+    --public-ip-address ${publicIPName} \
+    --network-security-group ${nsgname}
+
+#create vm
+az vm create \
+    --resource-group ${rg} \
+    --name ${vmname} \
+    --location ${region} \
+    --nics ${nicName} \
+    --image ${image} \
+    --admin-username ${adminusername} \
+    --admin-password ${adminpassword} \
+    --custom-data cloud-init.txt 
 
 ```
-I have seen nsg rules eg port 80 look like they have completed, but in fact they can't be seen on the UI, and don't seem to have been successful.  
-
-
+Notice the custom-data at the end, which is cloud-init (see below)  
 
 Be careful of any unusual characters in passwords eg $ which can cause bash conflicts  
 
-### Unix Line Endings
+### Fix Line Endings with sed
 Also be careful that text files having unix style line endings. A useful command to fix these are:
 
 ```bash
-
+sed -i 's/\r$//' *.sh
 ```
-### Connect to VM
+### Test connect to the VM
 Lets connect into this VM:
 
 ```
@@ -74,12 +167,13 @@ ssh azureuser@ukfinancedrupaltest1.westeurope.cloudapp.azure.com
 ```
 If you see an error 'WARNING: POSSIBLE DNS SPOOFING DETECTED!' this could mean that you've used this hostname before. I increment the number at the end and spin up and down infrastructure quickly. The solution is to delete the entry from: `C:\Users\davidma\.ssh\known_hosts`
 
-### Install Apache, PHP7 manually 
+### Install Apache, PHP7 manually (don't do this!)
+Use cloud-init - see below.  
+
 Lets install software. This may change with future versions of Ubuntu, as I originally started with 16.04 LTS. Some [simple instructions are here](https://vitux.com/how-to-install-php5-and-php7-on-ubuntu-18-04-lts/) and [Drupal specific on 16.04](https://websiteforstudents.com/install-drupal-cms-on-ubuntu-16-04-lts-with-apache2-mariadb-php-7-1-and-lets-encrypt-ssl-tls/)  
 
 ```bash
 sudo apt update
-# -y = Automatic yes to prompts
 sudo apt install apache2 -y
 sudo systemctl stop apache2.service
 sudo systemctl start apache2.service
@@ -88,24 +182,136 @@ sudo apt-get install software-properties-common -y
 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt update
 sudo apt install php7.1 libapache2-mod-php7.1 php7.1-common php7.1-mbstring php7.1-xmlrpc php7.1-soap php7.1-gd php7.1-xml php7.1-intl php7.1-mysql php7.1-cli php7.1-mcrypt php7.1-zip php7.1-curl -y
-# so we can test PHP
 sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 ```
-Now if go to your [ukfinancedrupaltest2.westeurope.cloudapp.azure.com](http://ukfinancedrupaltest2.westeurope.cloudapp.azure.com) you should see 
+Now if go to your [davedrupaltest1.westeurope.cloudapp.azure.com](http://davedrupaltest1.westeurope.cloudapp.azure.com) you should see 
 
 ![alt text](/assets/2019-05-27/2.png "Apache2 Default Page"){:width="500px"}     
-also the [test php](http://ukfinancedrupaltest2.westeurope.cloudapp.azure.com/info.php) should give a test screen  
+also the [test php](http://davedrupaltest1.westeurope.cloudapp.azure.com/info.php) should give a test screen  
 
 I have seen commands silently fail, so be careful!
 
-## Use Cloud Init to automatically provision the VM
-This is in the same vein as Puppet or Chef
+## Use Cloud Init to automatically provision the VM (do this!)
+[cloud-init](https://cloud-init.io/) is in the same vein as Puppet or Chef ie it helps automating software installation on VM. [it is supported on Azure VM deployment](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-automate-vm-deployment)
 
-### Database
-And a database
 ```bash
+# cloud-ini.txt in the repo
+#cloud-config
+package_upgrade: true
+packages:
+  - apache2
+runcmd:
+  - apt-get install software-properties-common -y
+  - sudo add-apt-repository ppa:ondrej/php -y
+  - sudo apt update
+  - sudo apt install php7.1 libapache2-mod-php7.1 php7.1-common php7.1-mbstring php7.1-xmlrpc php7.1-soap php7.1-gd php7.1-xml php7.1-intl php7.1-mysql php7.1-cli php7.1-mcrypt php7.1-zip php7.1-curl -y
+  - sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 ```
+
+### Database
+And a database connection
+```bash
+#!/bin/bash
+
+# activate debugging from here
+set -x
+
+rg=DaveMysqlTEST1
+region=westeurope
+
+# db name must be unique 
+mysqlserver=davetestx
+sqladmin=adminusernamex
+sqlpassword=password123456789TK
+
+echo "create resource group ${rg}"
+az group create \
+   --name ${rg} \
+   --location ${region}
+
+# careful of cheap is B_Gen5_1, prod is GP_Gen5_2
+echo "create mysql server"
+az mysql server create \
+    --resource-group ${rg} \
+    --name ${mysqlserver} \
+    --location ${region} \
+    --admin-user ${sqladmin} \
+    --admin-password ${sqlpassword} \
+    --sku-name GP_Gen5_2 \
+    --ssl-enforcement Disabled \
+    --version 5.7
+    --storage-size 50000
+
+#configure firewalls
+echo "begin azure firewall"
+az mysql server firewall-rule create \
+    --name allAzureIPs \
+    --server ${mysqlserver} \
+    --resource-group ${rg} \
+    --start-ip-address 0.0.0.0 \
+    --end-ip-address 0.0.0.0
+
+echo "end azure firewall"
+```
+
+### Manual Steps
+```bash
+# Add to the end of the pho.ini
+sudo vim /etc/php/7.1/apache2/php.ini
+
+memory_limit = 512M 
+upload_max_filesize = 512M
+max_execution_time = 360
+date.timezone = Europe/London
+
+
+cd /var/www/html/davetest
+
+git clone xxxxxx - # your drupal repo here
+# use the PAT (Personal Access Token) method eg u: davemateer@gmail.com p: pat
+
+# need to wire up the database connection settings in Drupal here if not done already
+
+sudo nano /etc/apache2/sites-available/davetest.conf
+
+<VirtualHost *:80>
+     ServerAdmin admin@example.com
+     DocumentRoot /var/www/html/davetest/public_html
+     ServerName davetest.westeurope.cloudapp.azure.com
+     ServerAlias davetest.westeurope.cloudapp.azure.com
+
+     ErrorLog ${APACHE_LOG_DIR}/error.log
+     CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+      <Directory /var/www/html/davetest/public_html/>
+            Options FollowSymlinks
+            AllowOverride All
+            Require all granted
+      </Directory>
+
+      <Directory /var/www/html/davetest/public_html/>
+            RewriteEngine on
+            RewriteBase /
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+      </Directory>
+</VirtualHost>
+
+
+sudo systemctl restart apache2.service
+
+sudo a2ensite davetest.conf
+sudo a2enmod rewrite
+sudo a2enmod env
+sudo a2enmod dir
+sudo a2enmod mime
+
+sudo systemctl restart apache2.service
+
+```
+
 
 ## Using hosted Azure MySQL 
 This works well. However you are charged egress from the database - see [Do I incur any network data transfer charges](https://azure.microsoft.com/en-gb/pricing/details/mysql/#faq), and Drupal in very database heavy.  Database has a rolling 7 day backup strategy, and we have tested the rollback which works very well. 
@@ -114,12 +320,21 @@ This works well. However you are charged egress from the database - see [Do I in
 To avoid a lot of database egress traffic charges, there is a standard Drupal caching plugin which works well.
 
 ## Failover and Blue/Green Resilience
-asdf
+[Availability Sets ensure the VMs are distributed across isolated hardware clusters](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-availability-sets) is a normal thing to do. 
+
+[Scale Sets allow you to deploy identical vms which auto-scale](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-create-vmss)
+
+[Azure Load Balancer allows you to spread the load](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-load-balancer)
 
 ## 3rd Party Hosting
+So as you can see it takes effort to host Drupal and to set it up. It also takes some significant resources/cost to run this per month, which makes 3rd party hosting a viable alternative. 
+
+
+
 Very attractive to look at these. We'd need to make sure that crontab jobs are available for our jobs which require updates.
 
-[druplal.org/hosting/enterprise](https://www.drupal.org/hosting/enterprise) list of enterprise hosting
+[druplal.org/hosting/enterprise](https://www.drupal.org/hosting/enterprise) list of enterprise hosting  
+
 [Platform.sh](https://platform.sh/pricing/)  - have a London Office.  
 [ixis](https://ixis.co.uk/contact) - Manchester  
 
