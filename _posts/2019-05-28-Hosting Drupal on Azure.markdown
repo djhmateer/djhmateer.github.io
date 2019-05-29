@@ -14,7 +14,7 @@ I've blogged on hosting [Wordpress on Azure PaaS](https://davemateer.com/2019/02
 
 So when I was asked to find [Drupal](https://www.drupal.org/) hosting for an enterprise customer which had to be on Azure, I tried the same strategy.  
 
-[All code here is on GitHub](https://github.com/djhmateer/AzureVMDrupal)
+[All source listed here is on GitHub](https://github.com/djhmateer/AzureVMDrupal)
 
 ## What is Drupal?
 [Drupal on Wikipedia](https://en.wikipedia.org/wiki/Drupal) tells us it came out in 2000, and uses PHP and MySQL. So interestingly it precedes [Wordpress](https://en.wikipedia.org/wiki/WordPress) by 3 years.
@@ -230,7 +230,7 @@ az group create \
    --name ${rg} \
    --location ${region}
 
-# careful of cheap is B_Gen5_1, prod is GP_Gen5_2
+# SKUs are developer is B_Gen5_1, prod is GP_Gen5_2
 echo "create mysql server"
 az mysql server create \
     --resource-group ${rg} \
@@ -256,8 +256,9 @@ echo "end azure firewall"
 ```
 
 ### Manual Steps
+I am using [Drupal 7.67 which can be downloaded here](https://www.drupal.org/project/drupal) or clone it straight onto the webserver.  
 ```bash
-# Add to the end of the pho.ini
+# Add to the end of the php.ini
 sudo vim /etc/php/7.1/apache2/php.ini
 
 memory_limit = 512M 
@@ -265,14 +266,56 @@ upload_max_filesize = 512M
 max_execution_time = 360
 date.timezone = Europe/London
 
+sudo systemctl restart apache2.service
 
-cd /var/www/html/davetest
+cd /var/www/html
 
-git clone xxxxxx - # your drupal repo here
+# useful to get drupal on the webserver quickly
+git clone --branch 7.x https://git.drupalcode.org/project/drupal.git .
+
+# Never leave like this in production!
+chmod -R 777 .
+
+# create the settings.php file
+cd sites/default
+cp default.settings.php settings.php
+# https://www.drupal.org/docs/7/install/step-3-create-settingsphp-and-the-files-directory
+chmod 755 settings.php
+vim settings.php
+# around line 247 to avoid having to use the UI, you can do this
+$databases = array (
+  'default' =>
+  array (
+    'default' =>
+    array (
+      'database' => 'davetest',
+      'username' => 'adminusernamex@davetestx',
+      'password' => 'password123456789TKT',
+      'host' => 'davetestx.mysql.database.azure.com',
+      'port' => '',
+      'driver' => 'mysql',
+      'prefix' => '',
+    ),
+  ),
+);
+
+cd ..
+# need this to be correct as can't do configuration / caching properly
+chmod 644 default
+
+# create a cloud shell and create the database
+mysql --host davetestx.mysql.database.azure.com --user adminusernamex@davetestx -p 
+password123456789TKT
+create database davetest;
+
+# next steps are optional to create a separate VirtualHost
+# or could put the site in default root ie /var/www/html
+sudo mkdir davetest
+
+#git clone xxxxxx - # your source drupal repo here
 # use the PAT (Personal Access Token) method eg u: davemateer@gmail.com p: pat
 
-# need to wire up the database connection settings in Drupal here if not done already
-
+# setup a 
 sudo nano /etc/apache2/sites-available/davetest.conf
 
 <VirtualHost *:80>
@@ -299,9 +342,7 @@ sudo nano /etc/apache2/sites-available/davetest.conf
       </Directory>
 </VirtualHost>
 
-
 sudo systemctl restart apache2.service
-
 sudo a2ensite davetest.conf
 sudo a2enmod rewrite
 sudo a2enmod env
@@ -310,14 +351,38 @@ sudo a2enmod mime
 
 sudo systemctl restart apache2.service
 
+# need to wire up the database connection settings in Drupal here if not done already
 ```
+![alt text](/assets/2019-05-27/3.png "Installing Drupal 7"){:width="400px"}     
+Handy to use the UI to put in the database settings.
 
+![alt text](/assets/2019-05-27/4.png "Clean install of Drupal 7"){:width="500px"}     
+Clean install of Drupal 7
 
 ## Using hosted Azure MySQL 
 This works well. However you are charged egress from the database - see [Do I incur any network data transfer charges](https://azure.microsoft.com/en-gb/pricing/details/mysql/#faq), and Drupal in very database heavy.  Database has a rolling 7 day backup strategy, and we have tested the rollback which works very well. 
 
 ## Drupal Caching
 To avoid a lot of database egress traffic charges, there is a standard Drupal caching plugin which works well.
+
+![alt text](/assets/2019-05-27/5.png "Turn on caching"){:width="500px"}     
+
+![alt text](/assets/2019-05-27/6.png "A cache hit"){:width="500px"}     
+Browser requested the page, and drupal served from its cache ie didn't hit the database
+
+![alt text](/assets/2019-05-27/7.png "A browser cache hit"){:width="500px"}     
+Browser served pages from its own cache as got a 304 
+
+Remember when testing the cache to not be logged in, as we never want any sort of admin user to be hitting the cache and seeing out of date content.  
+
+![alt text](/assets/2019-05-27/9.png "Turn off errors"){:width="500px"}     
+Turn off errors! If you get `cache MISS` then it could be due to errors in the site. [This blog post](https://www.jeffgeerling.com/blogs/jeff-geerling/always-getting-x-drupal-cache) was very helpful.
+
+![alt text](/assets/2019-05-27/8.png "IP Geolocation turned off"){:width="500px"}     
+We found IP Geolocation causing SESS cookie problems for anonymous users:  [article here](http://redcrackle.com/blog/how-detect-which-module-creates-session-cookie)
+
+## SSL with Lets-Encrypt
+We have used [certbot](https://certbot.eff.org/lets-encrypt/ubuntuxenial-apache) and [external tools](/2019/03/01/Lets-Encrypt) to monitor if the cert is about to run out (hence certbot may need looking at)
 
 ## Failover and Blue/Green Resilience
 [Availability Sets ensure the VMs are distributed across isolated hardware clusters](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-availability-sets) is a normal thing to do. 
@@ -328,8 +393,6 @@ To avoid a lot of database egress traffic charges, there is a standard Drupal ca
 
 ## 3rd Party Hosting
 So as you can see it takes effort to host Drupal and to set it up. It also takes some significant resources/cost to run this per month, which makes 3rd party hosting a viable alternative. 
-
-
 
 Very attractive to look at these. We'd need to make sure that crontab jobs are available for our jobs which require updates.
 
