@@ -362,6 +362,20 @@ Clean install of Drupal 7
 ## Using hosted Azure MySQL 
 This works well. However you are charged egress from the database - see [Do I incur any network data transfer charges](https://azure.microsoft.com/en-gb/pricing/details/mysql/#faq), and Drupal in very database heavy.  Database has a rolling 7 day backup strategy, and we have tested the rollback which works very well. 
 
+## Restoring from an existing db
+The Azure Cloud shell is very useful. Be careful with passwords for the MySQL instance - $ and % can trip up (and need to be escaped). 
+
+```bash
+# dump out db
+mysqldump --host olddb.mysql.database.azure.com  --user adminusername@olddb  -p olddbname > output.sql
+
+# I then use the very handy download file tool from Azure Cloud Shell
+
+# restore
+mysql --host davetestx.mysql.database.azure.com --user adminusernamex@davetestx -p davetest < output.sql
+password123456789TK
+```
+
 ## Drupal Caching
 To avoid a lot of database egress traffic charges, there is a standard Drupal caching plugin which works well.
 
@@ -385,6 +399,26 @@ We found IP Geolocation causing SESS cookie problems for anonymous users:  [arti
 We have used [certbot](https://certbot.eff.org/lets-encrypt/ubuntuxenial-apache) and [external tools](/2019/03/01/Lets-Encrypt) to monitor if the cert is about to run out (hence certbot may need looking at)
 
 ## Failover and Blue/Green Resilience
+I was asked to look into how to host a Drupal 7 site and have 
+
+- High Availability (fault tolerant) if one webserver went down (we had an outage due to memory issues)
+- Updated scenario - a Blue/Green scenario where we could patch the 'offline' webserver
+
+
+- [Overview of Azure Load Balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) and [SKU comparison](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview#skus) has a Basic and Standard, but is a *load balancer* and can't handle all traffic to 1 machine then failover to another
+
+- [Azure Traffic Manager](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview) is also a load balancer but can handle failover scenarios
+
+[Blue-Green Deployments using Azure Traffic Manager](https://azure.microsoft.com/en-us/blog/blue-green-deployments-using-azure-traffic-manager/)  
+
+
+![alt text](/assets/2019-05-27/10.png "HA and Blue Green"){:width="500px"}     
+Azure Traffic Manager to handle routing between Blue and Green. Then Load Balancers are providing High Availability in each region (as these would be split).  Big thank you to RC for this.
+
+A more simple design would be to have ATM and 2 VM's.
+
+
+
 [Availability Sets ensure the VMs are distributed across isolated hardware clusters](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-availability-sets) is a normal thing to do. 
 
 [Scale Sets allow you to deploy identical vms which auto-scale](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-create-vmss)
