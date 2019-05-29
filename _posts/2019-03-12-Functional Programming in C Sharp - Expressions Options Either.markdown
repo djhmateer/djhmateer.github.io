@@ -58,7 +58,7 @@ Try to make everything you do an expression, rather than a sequence of statement
 static void PrintHello() => 
     Console.WriteLine("Hello World from a function");
 ```
-Then prefer `ternary operators` as they are more concise leading to more *readable code*
+Then prefer `the conditional operator` aka `ternary operators` as they are more concise leading to more *readable code*
 
 ```cs
 static Option<string> GetValue(bool hasValue) =>
