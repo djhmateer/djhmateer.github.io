@@ -412,7 +412,7 @@ I was asked to look into how to host a Drupal 7 site and have
 [Blue-Green Deployments using Azure Traffic Manager](https://azure.microsoft.com/en-us/blog/blue-green-deployments-using-azure-traffic-manager/)  
 
 
-![alt text](/assets/2019-05-27/10.png "HA and Blue Green"){:width="500px"}     
+![alt text](/assets/2019-05-27/10.png "HA and Blue Green"){:width="300px"}     
 Azure Traffic Manager to handle routing between Blue and Green. Then Load Balancers are providing High Availability in each region (as these would be split).  Big thank you to RC for this.
 
 A more simple design would be to have ATM and 2 VM's.
