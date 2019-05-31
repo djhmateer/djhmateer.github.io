@@ -360,7 +360,9 @@ Handy to use the UI to put in the database settings.
 Clean install of Drupal 7
 
 ## Using hosted Azure MySQL 
-This works well. However you are charged egress from the database - see [Do I incur any network data transfer charges](https://azure.microsoft.com/en-gb/pricing/details/mysql/#faq), and Drupal in very database heavy.  Database has a rolling 7 day backup strategy, and we have tested the rollback which works very well. 
+This works well. ~~However you are charged egress from the database - see~~ [Do I incur any network data transfer charges](https://azure.microsoft.com/en-gb/pricing/details/mysql/#faq).  egress is only charged if the data leaves the Azure network.
+
+Database has a rolling 7 day backup strategy, and we have tested the rollback which works very well. 
 
 ## Restoring from an existing db
 The Azure Cloud shell is very useful. Be careful with passwords for the MySQL instance - $ and % can trip up (and need to be escaped). 
