@@ -3,12 +3,11 @@ layout: post
 title:  "Test broken link page"
 categories: Test
 published: true
-comments: true
-sitemap: true
+comments: false
+sitemap: false
 ---
 ![On the way to Machu Picchu](/assets/3Guys_500.jpg)
 
-## Bad Links
 <div class="home">
   <h1 class="page-heading">Testing page for Broken Links</h1>
   <p> <a href="/brokenurl">Internal broken link</a> sentence of bad link</p>
