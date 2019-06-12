@@ -12,10 +12,6 @@ Dave is speaking on Functional programming in C# including [Functional Brighton]
 
 <!-- [This is an example of a link which it should pickup!](https://www.meetup.com/Functional-Brighton/events/260140369/asdf/)   -->
 
-<a href="/test">test page link<a>
-
-
-
 ## May 2016, London
 
 [![Screenshot](/assets/SkillsMatters2.png)](https://skillsmatter.com/skillscasts/8181-lscc-talks-may)
