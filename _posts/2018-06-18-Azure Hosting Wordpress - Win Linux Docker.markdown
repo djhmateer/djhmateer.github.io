@@ -343,4 +343,4 @@ Performance is not good.
 
 [https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl](https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl)
 
-[https://www.hyper.sh](https://www.hyper.sh)
+~~https://www.hyper.sh~~
