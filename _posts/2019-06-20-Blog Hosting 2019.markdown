@@ -1,0 +1,31 @@
+---
+layout: post
+title: Blog Hosting 2019 
+description: 
+menu: review
+categories: Blog 
+published: true 
+comments: false
+sitemap: false
+image: /assets/2019-05-27/1.png
+---
+
+## Technical People 
+GitHub Pages
+Jekyll 
+
+Local development of articles using Jekyll and Docker
+
+## Non Dev Blog
+Wordpress hosted on a 3rd party provider
+
+
+
+
+
+
+
+
+
+
+

@@ -45,6 +45,15 @@ Jeff Bezos - write the press release first.
 - Pluralsight make videos
 - Youtube
 
+## Blogging Advice Articles
+[Blogging Advice for Beginners](https://buffer.com/resources/blogging-advice-for-beginners-from-16-experts)  
+
+I liked 'Get ideas from your audience', specifically if someone asks you an interesting question then write a blog post to answer that question. I was asked recently about how to get the 'meta tags' so that Twitter previews work well. So I [wrote a blog post on it](/2019/04/07/Twitter-card-open-graph-site-preview).
+
+
+
+
+
 ## Conclusion
 Blogging is good - go for it!
 
