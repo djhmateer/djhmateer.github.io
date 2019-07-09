@@ -258,9 +258,12 @@ echo "end azure firewall"
 ### Manual Steps
 I am using [Drupal 7.67 which can be downloaded here](https://www.drupal.org/project/drupal) or clone it straight onto the webserver.  
 ```bash
+# optional - makes it easy to run as root and dont have to type sudo
+# be careful
+sudo su
+
 # Add to the end of the php.ini
 sudo vim /etc/php/7.1/apache2/php.ini
-
 memory_limit = 512M 
 upload_max_filesize = 512M
 max_execution_time = 360
@@ -269,6 +272,10 @@ date.timezone = Europe/London
 sudo systemctl restart apache2.service
 
 cd /var/www/html
+
+# need to delete files otherwise the git clone wont work
+# https://stackoverflow.com/questions/9864728/how-to-get-git-to-clone-into-current-directory
+rm *
 
 # useful to get drupal on the webserver quickly
 git clone --branch 7.x https://git.drupalcode.org/project/drupal.git .
