@@ -288,23 +288,25 @@ cd sites/default
 cp default.settings.php settings.php
 # https://www.drupal.org/docs/7/install/step-3-create-settingsphp-and-the-files-directory
 chmod 755 settings.php
-vim settings.php
+
+## **I got an error adding in the db connection string, but it worked not doing this and using the webUI**
+##vim settings.php
 # around line 247 to avoid having to use the UI, you can do this
-$databases = array (
-  'default' =>
-  array (
-    'default' =>
-    array (
-      'database' => 'davetest',
-      'username' => 'adminusernamex@davetestx',
-      'password' => 'password123456789TKT',
-      'host' => 'davetestx.mysql.database.azure.com',
-      'port' => '',
-      'driver' => 'mysql',
-      'prefix' => '',
-    ),
-  ),
-);
+#$databases = array (
+#  'default' =>
+#  array (
+#    'default' =>
+#    array (
+#      'database' => 'davetest',
+#      'username' => 'adminusernamex@davetestx',
+#      'password' => 'password123456789TKT',
+#      'host' => 'davetestx.mysql.database.azure.com',
+#      'port' => '',
+#      'driver' => 'mysql',
+#      'prefix' => '',
+#    ),
+#  ),
+#);
 
 cd ..
 # need this to be correct as can't do configuration / caching properly
