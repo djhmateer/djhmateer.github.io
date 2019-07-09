@@ -163,7 +163,7 @@ sed -i 's/\r$//' *.sh
 Lets connect into this VM:
 
 ```
-ssh azureuser@ukfinancedrupaltest1.westeurope.cloudapp.azure.com
+ssh azureuser@davedrupaltest1.westeurope.cloudapp.azure.com
 ```
 If you see an error 'WARNING: POSSIBLE DNS SPOOFING DETECTED!' this could mean that you've used this hostname before. I increment the number at the end and spin up and down infrastructure quickly. The solution is to delete the entry from: `C:\Users\davidma\.ssh\known_hosts`
 
