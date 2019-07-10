@@ -38,9 +38,9 @@ We couldn't make the backend admin site usable.
 ## Using IaaS (Infrastructure as a Service) ie a VM and AZ CLI
 I am a big fan of the [Azure CLI](/2018/02/15/Azure-CLI) so used scripting to make the process as repeatable as possible (Infrastructure as Code).
 
-I generally write bash shell scripts and run them from Windows WSL. This seems to be an easy path with lots of help on the web. To install and update the Azure CLI from WSL there is a [handy 1 liner](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install).  
+I write bash shell scripts and run them from Windows WSL. This seems to be an easy path with lots of help on the web. To install and update the Azure CLI from WSL there is a [handy 1 liner](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install).  An good alternative is to run the scripts from the Cloud Shell in the web UI.
 
-Once installed and logging in:
+Once installed and logged in:
 
 ```bash
 az login
@@ -51,104 +51,10 @@ az group list
 ```
 
 ### AZ CLI
+[Here is the source of the scripts which is updated from below](https://github.com/djhmateer/AzureVMDrupal)  
+
 Now lets make a basic Ubuntu LTS (currently 18.04.2) VM:
 
-```bash
-# infra.sh in the demo repo
-#!/bin/bash
-
-# activate debugging from here
-set -x
-
-rg=DaveDrupalTEST1
-dnsname=davedrupaltest1
-vmname=davedrupaltest
-
-region=westeurope
-vnet=vnet
-subnet=subnet
-publicIPName=publicIP
-nsgname=nsg
-nicName=nic
-image=UbuntuLTS
-adminusername=azureuser
-adminpassword=zp1234567890TEST
-
-###
-# Create VNET #
-###
-echo "-= Creating Resource Group ${rg} "
-az group create \
-   --name ${rg} \
-   --location ${region}
-
-az network vnet create \
-    --resource-group ${rg} \
-    --name ${vnet} \
-    --address-prefix 192.168.0.0/16 \
-    --subnet-name ${subnet} \
-    --subnet-prefix 192.168.1.0/24
-
-az network public-ip create \
-    --resource-group ${rg} \
-    --name ${publicIPName} \
-    --dns-name ${dnsname}
-
-az network nsg create \
-    --resource-group ${rg} \
-    --name ${nsgname}
-
-# allow ssh
-az network nsg rule create \
-    --resource-group ${rg} \
-    --nsg-name ${nsgname} \
-    --name nsgGroupRuleSSH \
-    --protocol tcp \
-    --priority 1000 \
-    --destination-port-range 22 \
-    --access allow
-
-# allow port 80
-az network nsg rule create \
-    --resource-group ${rg} \
-    --nsg-name ${nsgname} \
-    --name nsgGroupRuleWeb80 \
-    --protocol tcp \
-    --priority 1001 \
-    --destination-port-range 80 \
-    --access allow
-
-# allow port 443
-az network nsg rule create \
-    --resource-group ${rg} \
-    --nsg-name ${nsgname} \
-    --name nsgGroupRuleWeb443 \
-    --protocol tcp \
-    --priority 1002 \
-    --destination-port-range 443 \
-    --access allow
-
-#create a virtual nic
-az network nic create \
-    --resource-group ${rg} \
-    --name ${nicName} \
-    --vnet-name ${vnet} \
-    --subnet ${subnet} \
-    --public-ip-address ${publicIPName} \
-    --network-security-group ${nsgname}
-
-#create vm
-az vm create \
-    --resource-group ${rg} \
-    --name ${vmname} \
-    --location ${region} \
-    --nics ${nicName} \
-    --image ${image} \
-    --admin-username ${adminusername} \
-    --admin-password ${adminpassword} \
-    --custom-data cloud-init.txt 
-
-```
 Notice the custom-data at the end, which is cloud-init (see below)  
 
 Be careful of any unusual characters in passwords eg $ which can cause bash conflicts  
@@ -210,50 +116,7 @@ runcmd:
 ```
 
 ### Database
-And a database connection
-```bash
-#!/bin/bash
 
-# activate debugging from here
-set -x
-
-rg=DaveMysqlTEST1
-region=westeurope
-
-# db name must be unique 
-mysqlserver=davetestx
-sqladmin=adminusernamex
-sqlpassword=password123456789TK
-
-echo "create resource group ${rg}"
-az group create \
-   --name ${rg} \
-   --location ${region}
-
-# SKUs are developer is B_Gen5_1, prod is GP_Gen5_2
-echo "create mysql server"
-az mysql server create \
-    --resource-group ${rg} \
-    --name ${mysqlserver} \
-    --location ${region} \
-    --admin-user ${sqladmin} \
-    --admin-password ${sqlpassword} \
-    --sku-name GP_Gen5_2 \
-    --ssl-enforcement Disabled \
-    --version 5.7
-    --storage-size 50000
-
-#configure firewalls
-echo "begin azure firewall"
-az mysql server firewall-rule create \
-    --name allAzureIPs \
-    --server ${mysqlserver} \
-    --resource-group ${rg} \
-    --start-ip-address 0.0.0.0 \
-    --end-ip-address 0.0.0.0
-
-echo "end azure firewall"
-```
 
 ### Manual Steps
 I am using [Drupal 7.67 which can be downloaded here](https://www.drupal.org/project/drupal) or clone it straight onto the webserver.  
