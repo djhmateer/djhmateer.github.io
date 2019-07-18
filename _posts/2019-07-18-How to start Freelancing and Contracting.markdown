@@ -28,20 +28,21 @@ There is no legal difference (in the UK) as both are self-employed, and are resp
 - Twitter friends - 
 
 ## Attend Local User Groups
-Brighton Based
-[.NET SouthEast](http://www.dotnetsoutheast.co.uk/) which is on [Meetup]()
+### Brighton Based
+[.NET SouthEast](http://www.dotnetsoutheast.co.uk/) which is on [Meetup]()  
 [Brighton ALT.NET v2](https://www.meetup.com/brightonaltdotnet/)  
-[Brighton Indie Hackers](https://www.meetup.com/Brighton-Indie-Hackers/)
-[Brighton Web Development](https://www.meetup.com/Brighton-Web-Development-Meetup/)  
-[Sussex Azure User Group](https://sussexazure.uk/)
+[Brighton Indie Hackers](https://www.meetup.com/Brighton-Indie-Hackers/)   
+[Brighton Web Development](https://www.meetup.com/Brighton-Web-Development-Meetup/)    
+[Sussex Azure User Group](https://sussexazure.uk/)  
+[Functional Brighton](https://www.meetup.com/Functional-Brighton/)  - not running currently July 2019
 
-London
+### London
 [London .NET User Group](https://www.meetup.com/London-NET-User-Group/)  
 
-Portsmouth
-Southampton
-Cambridge
-Oxford
+Portsmouth  
+Southampton  
+Cambridge  
+Oxford  
 
 ## Speak at user groups
 
