@@ -32,9 +32,21 @@ I'm learning about software startups and SaaS products now. It seems like the a 
 - Marketing
 - Entrepreneurship
 
+- Presentation Skills
+- Writing Skills
+- Negotiation Skills
+
 Learning about any new area, I like to do as much research as possible to try and avoid making the same mistakes as everyone else. [Starting a SaaS company book reviews](/2019/07/18/Starting-a-SaaS-company-book-reviews).   
 
+## Podcasts
+[a16z podcast](https://a16z.com/podcasts/) - specifically [Justin Kan](https://a16z.com/2019/06/10/lessons-from-serial-entrepreneur-justin-kan/) who co-founded [twitch.tv](https://twitch.tv)
 
+[Jonathan Stark - Ditching Hourly podcast](https://jonathanstark.com/podcast)
+
+## Youtube
+[B is for Build](https://www.youtube.com/channel/UCl4-WBRqWA2MlxmZorKOV7w) Chris is an entrepreneur who builds cars, produces professional videos, sells marchandise, gets sponsorship for each video..
+
+[Chrisfix](https://www.youtube.com/user/PaintballOO7/videos) 
 
 
 

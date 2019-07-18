@@ -74,6 +74,13 @@ This seems more geared to jobs
 
 ##Recruiters
 
+## Resources
+
+### Hourly Billing is Nuts - Jonathan Stark
+I've bought [Hourly Billing is Nuts](https://jonathanstark.com/hbin) on pdf. He talks a lot about value pricing, highligting how important initial engagments are
+
+
+
 
 
 
