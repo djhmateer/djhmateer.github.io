@@ -61,7 +61,9 @@ London
 Ask for help in finding work eg.... 
 
 ### Job boards
-[Wried Sussex](https://www.wiredsussex.com/jobs/jobsearch.asp)
+[Wired Sussex](https://www.wiredsussex.com/jobs/jobsearch.asp)
+
+[cwjobs](https://www.cwjobs.co.uk/)
 
 ### Stackoverflow jobs
 contract
