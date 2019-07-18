@@ -49,6 +49,9 @@ To some degree this research phase of my company will all be about setting feasa
 
 So my overall goal of book review phase is to: come up with a strategy on how to execute an idea.
 
+## How to do a book review
+[Writer Center - how to do a book review](https://writingcenter.unc.edu/tips-and-tools/book-reviews/)
+
 
 ## Zero to One - Peter Thiel
 - Notes on Startups, or How to Build The Future
