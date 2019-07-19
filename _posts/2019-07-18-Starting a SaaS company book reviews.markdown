@@ -52,8 +52,12 @@ So my overall goal of book review phase is to: come up with a strategy on how to
 ## How to do a book review
 [Writer Center - how to do a book review](https://writingcenter.unc.edu/tips-and-tools/book-reviews/)
 
+I'll aim to put the books in my favourite order
 
 ## Zero to One - Peter Thiel
+<a href="https://www.amazon.co.uk/Zero-One-Notes-Start-Future/dp/0753555204/ref=sr_1_1?keywords=zero+to+one&qid=1563530230&s=gateway&sr=8-1">
+![alt text](/assets/2019-07-18/2.jpg "Books"){:width="600px"}     
+</a>
 - Notes on Startups, or How to Build The Future
 
 
@@ -102,9 +106,35 @@ Never underestimate your own power
 
 
 ## This is Marketing - Seth Godin
-asdf
+<a href="https://www.amazon.co.uk/This-Marketing-Cant-Until-Learn/dp/0241370140/ref=sr_1_1?keywords=this+is+marketing&qid=1563530627&s=gateway&sr=8-1">
+![alt text](/assets/2019-07-18/3.jpg "Books"){:width="600px"}     
+</a>
+
+I liked the simple marketing worksheet at the back of the book:
+- Who's it for?
+- What's it for?
+- What is the worldview of the audience you're seeking to reach?
+- What are they afraid of?
+- What story will you tell? Is it true?
+- What change are you seeking to make?
+- How will it change their status?
+- How will you reach the early adopters?
+- Why will they tell their friends?
+- What will they tell their friends?
+- What asset are you building?
+- Are you proud of it?
+
+I liked the ideas on:
+
+Always be testing
+Scrapbooking ie Typeface, price, offers, images, interface.. of other products
+and to be irresistable
+
+To spend a lot of time on your audience, understand their needs
 
 
+
+## Other
 [makebook.io](https://makebook.io)  
 
 ## Four Hour Work Week - Tim Ferris

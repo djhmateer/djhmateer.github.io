@@ -39,10 +39,12 @@ There is no legal difference (in the UK) as both are self-employed, and are resp
 ### London
 [London .NET User Group](https://www.meetup.com/London-NET-User-Group/)  
 
-Portsmouth  
-Southampton  
-Cambridge  
-Oxford  
+### Portsmouth  
+
+### Southampton  
+[DevSouthCoast](https://www.meetup.com/developersouthcoast/) and [Twitter](https://twitter.com/DevSouthCoast) (Oct 2019 stopping)
+### Cambridge  
+### Oxford  
 
 ## Speak at user groups
 
@@ -61,9 +63,9 @@ London
 Ask for help in finding work eg.... 
 
 ### Job boards
-[Wired Sussex](https://www.wiredsussex.com/jobs/jobsearch.asp)
+[Wired Sussex](https://www.wiredsussex.com/jobs/jobsearch.asp)  
 
-[cwjobs](https://www.cwjobs.co.uk/)
+[jobserve](https://www.jobserve.com)
 
 ### Stackoverflow jobs
 contract
