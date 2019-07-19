@@ -65,7 +65,7 @@ Ask for help in finding work eg....
 ### Job boards
 [Wired Sussex](https://www.wiredsussex.com/jobs/jobsearch.asp)  
 
-[jobserve](https://www.jobserve.com)
+[jobserve](https://www.jobserve.com) follor their RSS feed for +30 miles from Brighton. Maybe use [Feedly](https://feedly.com)
 
 ### Stackoverflow jobs
 contract
