@@ -10,8 +10,13 @@ sitemap: false
 image: /assets/2019-05-27/1.png
 ---
 
-Domains
+# Domains and Registration
 https://tld-list.com/
+cloudflare (not for .co.uk yet) as they charge wholesale if you move domain to them
 
-Site Checking
+# Site Checking
 https://sitechecker.pro/tool/crawl-report/
+
+SSL Cert expiring
+
+Broken link checking

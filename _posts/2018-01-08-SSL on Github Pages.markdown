@@ -11,6 +11,9 @@ sitemap: true
 ### Summary
 I setup my github pages hosted blog site (this one) to be running HTTPS by using Cloudflare. There is no cost involved.
 
+### Update July 2019
+Cloudflare offer wholesale prices on transferring in domain names, so I've moved davemateer.com domain name to Cloudflare, and therefore am using it to do SSL.
+
 ### Update 2018
 Github pages now automatically gets a LetsEncrypt certificate for you! No need to use Cloudflare to do this.
 
@@ -31,7 +34,7 @@ Under the Crypto tab on Cloudflare
 ### Turn off Injected Javascript (Email Address Obfuscation)
 By default you will get an injected javascript file on all pages to help email addresses be obfuscated called email-decode.min.js. No thank you. In the Scrape Shield menu option.
 ![SSL](/assets/2018-01-08/email.png)
-and server side excludes I turned off too.
+and server side excludes I turned off too. This is found in the menu `Scrape Shield`
 
 ### Don't use Cloudflare's Cache
 We can disable it for 3 hours like this

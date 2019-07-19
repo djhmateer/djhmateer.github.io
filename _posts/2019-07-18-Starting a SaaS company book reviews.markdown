@@ -7,11 +7,11 @@ categories: SaaS
 published: true 
 comments: false
 sitemap: false
-image: /assets/2019-05-27/1.png
+image: /assets/2019-07-18/1.jpg
 ---
 This is part of a series on [From Developer to Business Owner](/2019/06/20/From-Developer-to-Business-Owner-SaaS)  
 
-![alt text](/assets/2019-07-18/1.jpg "Books"){:width="600px"}     
+![alt text](/assets/2019-07-18/1.jpg "Books"){:width="400px"}     
 There are many books on startups, covering topics like
 
 - Sales
@@ -41,28 +41,41 @@ The goal of reviewing these books in this 'startup domain' is that I
 - Work with nice people (who I choose to work with)
 
 
-To some degree this research phase of my company will all be about setting feasable goals, and deciding on strategies for
+To some degree this research phase of my company will all be about setting feasible goals, and deciding on strategies for
 
-- Choosing what markets to target (how do you do that?)
-- Choosing what style of products to build?
-- How to tell if your product idea is a success
+- Choosing what markets to target
+- Choosing what style of products to build
+- How to measure success
 
-So my overall goal of book review phase is to: come up with a strategy on how to execute an idea.
+My overall goal of book review phase is to: come up with a strategy on how to execute an idea.
 
 ## How to do a book review
 [Writer Center - how to do a book review](https://writingcenter.unc.edu/tips-and-tools/book-reviews/)
 
+> Above all, a review makes an argument.
+> .. it is a commentary, not merely a summary
+
 I'll aim to put the books in my favourite order
 
 ## Zero to One - Peter Thiel
+My commentary: Be disruptive, be optimistic!, get a monopoly, do something good, monopolise, and the great Dylan quote of "He who is not busy being born is busy dying". This book didn't speak to me as a soon to be standup founder, but it did expound so common traits of successful founders.
+
+
 <a href="https://www.amazon.co.uk/Zero-One-Notes-Start-Future/dp/0753555204/ref=sr_1_1?keywords=zero+to+one&qid=1563530230&s=gateway&sr=8-1">
-![alt text](/assets/2019-07-18/2.jpg "Books"){:width="600px"}     
+![alt text](/assets/2019-07-18/2.jpg "Books"){:width="200px"}     
 </a>
 - Notes on Startups, or How to Build The Future
 
+Disruptive innovation (not to be iterative)
+
+Be contrary! Think for yourself.  
+
+> All happy companies are different - each one earns a monopoly by solving a unique problem.
+> All failed companies are the same - they failed to escape the competition
+ 
 
 5. Last Mover Advantage
-Start small and monopolise  
+Start small and *monopolise*
  Focus on a nice group eg ebay power sellers, and get that market
 
 6. You are not a lottery ticket
@@ -71,8 +84,7 @@ Do something good
 
 7. Follow the Money
 idea must have potential to succeed at a vast scale
-focus relentlesslelly on *something you are good at*
-
+focus relentlessly on *something you are good at*
 
 9. Foundations
 remote working hard for a startup
@@ -89,7 +101,7 @@ viral marketing
 
 12. Man and Machine
 Hybrid of AI and people 
-eg palantir - detect anomolies in data - terrorism fraud etc..
+eg palantir - detect anomalies in data - terrorism fraud etc..
 
 13. Seeing Green
 7 business goals
@@ -106,8 +118,9 @@ Never underestimate your own power
 
 
 ## This is Marketing - Seth Godin
+I found this book disappointing as it didn't get into enough detail. The last page of marketing worksheet was good.
 <a href="https://www.amazon.co.uk/This-Marketing-Cant-Until-Learn/dp/0241370140/ref=sr_1_1?keywords=this+is+marketing&qid=1563530627&s=gateway&sr=8-1">
-![alt text](/assets/2019-07-18/3.jpg "Books"){:width="600px"}     
+![alt text](/assets/2019-07-18/3.jpg "Books"){:width="200px"}     
 </a>
 
 I liked the simple marketing worksheet at the back of the book:
@@ -132,8 +145,6 @@ and to be irresistable
 
 To spend a lot of time on your audience, understand their needs
 
-
-
 ## Other
 [makebook.io](https://makebook.io)  
 
@@ -141,18 +152,20 @@ To spend a lot of time on your audience, understand their needs
 [fourhourworkweek.com](https://fourhourworkweek.com/)  
 Eustress
 
-
 - Definition
 - Elimination
 - Automation
 - Liberation
 
+I've read this book many times for the sheer enjoyment and inspirational value.
 
 ## The Lean Startup  - Eric Ries
 asdf
 [getbeamer.com SaaS books](https://www.getbeamer.com/blog/top-15-must-read-books-for-saas-founders-for-2019/)  
 
 
+## Deep Thinking
+I love the idea of deep focus. Need to find notes on this!
 
 
 
