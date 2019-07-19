@@ -145,8 +145,13 @@ and to be irresistable
 
 To spend a lot of time on your audience, understand their needs
 
-## Other
+## MakeBook
 [makebook.io](https://makebook.io)  
+targeted at digital product startups
+
+
+## Choose Your First Product - Leon Bambrick
+[Website](https://yourfirstproduct.com/)
 
 ## Four Hour Work Week - Tim Ferris
 [fourhourworkweek.com](https://fourhourworkweek.com/)  
@@ -167,6 +172,11 @@ asdf
 ## Deep Thinking
 I love the idea of deep focus. Need to find notes on this!
 
+## Don't Make me Think - Steve Krugg
+A common sense approach to web usability
+
+## Rocket Surgery Made Easy - Steve Krugg
+Guide to finding and fixing usability problems
 
 
 

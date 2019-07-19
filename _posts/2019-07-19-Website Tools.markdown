@@ -16,7 +16,11 @@ cloudflare (not for .co.uk yet) as they charge wholesale if you move domain to t
 
 # Site Checking
 https://sitechecker.pro/tool/crawl-report/
+  very limited free
+  multiple description, multiple titles in my blog
+no redirect to https (problem with cloudlare)
+very good knowledge base
 
-SSL Cert expiring
+# SSL Cert expiring
 
-Broken link checking
+# Broken link checking
