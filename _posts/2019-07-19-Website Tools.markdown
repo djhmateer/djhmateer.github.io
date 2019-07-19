@@ -21,6 +21,8 @@ https://sitechecker.pro/tool/crawl-report/
 no redirect to https (problem with cloudlare)
 very good knowledge base
 
+There is a chrome plugin.
+
 # SSL Cert expiring
 
 # Broken link checking

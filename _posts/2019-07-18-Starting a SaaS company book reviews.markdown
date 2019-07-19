@@ -148,6 +148,7 @@ To spend a lot of time on your audience, understand their needs
 ## MakeBook
 [makebook.io](https://makebook.io)  
 targeted at digital product startups
+[Good video](https://www.youtube.com/watch?time_continue=82&v=6reLWfFNer0)
 
 
 ## Choose Your First Product - Leon Bambrick
