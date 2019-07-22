@@ -11,8 +11,8 @@ image: /assets/2019-05-27/1.png
 ---
 
 # Domains and Registration
-https://tld-list.com/
-cloudflare (not for .co.uk yet) as they charge wholesale if you move domain to them
+[tld-list.com](https://tld-list.com/)  shows where to get cheap domain names  
+[Cloudflare](https://cloudflare.com) (not for .co.uk yet) as they charge wholesale if you move domain to them  
 
 # Site Checking
 https://sitechecker.pro/tool/crawl-report/
