@@ -58,6 +58,12 @@ London
 
 [NDC London](https://ndc-london.com/)  
 
+### DDD Events
+[Adrian Banks list of DDD Events](https://blog.adrianbanks.co.uk/ddd-grouped.html)  
+[DDD East Anglia](https://www.dddeastanglia.com/)  - 21st September 2019 (Cambridge).. I have a ticket!
+[DDD East Midlands](https://www.dddeastmidlands.com/) - 26th Oct 2019 (Nottingham).. No ticket sold out 
+[DDD Reading]() - 12th October 2019.. no announcement yet on tickets
+
 
 ### Twitter
 Ask for help in finding work eg.... 

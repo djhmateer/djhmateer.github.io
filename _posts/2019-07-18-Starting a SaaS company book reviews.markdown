@@ -150,6 +150,45 @@ To spend a lot of time on your audience, understand their needs
 targeted at digital product startups
 [Good video](https://www.youtube.com/watch?time_continue=82&v=6reLWfFNer0)
 
+## Growing a Productized Service (ManyPixels)
+[Free book written in 24hours](https://docs.google.com/document/d/1-br9CMwTZP9Dk_vN6z51PgbdI848k0RJsiZholXwuj4/mobilebasic)
+
+[https://www.manypixels.co/](https://www.manypixels.co/) employs designers then charges customers a monthly fee for unlimited services.  Pay a fixed monthly price and get designs back in 1-2 days (or more for web work). He has 20 designers around the world working for him. Essentially he has **productized or scaled a service business**
+
+### Finding an Oppportunity
+Talk to customers or find out online **what customers are complaining about**:
+
+- Quora
+- Online forums
+- Nice facebook groups
+- Twitter
+- StackExchange network?
+
+
+In the case of ManyPixels I realised myself and other customers had the following problems when ordering design services:
+
+- Lack of transparency (designers charged different prices every time)
+- Poor experience (creating a job offer and reviewing candidates was annoying and took time, multiple candidates bailed too)
+- Poor communication (creating briefs was difficult, and the designers did not always understand briefs)
+- Unreliable workforce (as a business with projects, I wanted to make sure the freelancers would be reliable and continue the work)
+- Lack of trust (paying upfront freelance graphic designers)
+
+Solution :
+
+- Fixed fee (no more proposals, no more back and forth)
+- On-demand workforce (tap a button, and get your design done work - no more job offers, no more reviewing of candidates)
+- Streamlined communication (beautiful forms to submit your design briefs, and a platform to communicate with the designers and manage all your files)
+- Insurance (Money back guarantee)
+
+It becomes easier to craft a solution once you know each pain point customers are experiencing.
+
+### Conclusion
+- Find product/market fit: Talk to your customers
+- Building a marketing machine: Talk to your customers, run experiments, be data-driven (not too much at the beginning)
+- Focus on hiring great people: Keep your structure simple, do not put too many processes in place
+- Delegate and automate: Use tools to automate, get an internal wiki to delegate task
+- Grow yourself as a leader: Focus on your leadership, get an executive coach, be aligned with co-founders
+
 
 ## Choose Your First Product - Leon Bambrick
 [Website](https://yourfirstproduct.com/)
