@@ -155,6 +155,9 @@ targeted at digital product startups
 
 [https://www.manypixels.co/](https://www.manypixels.co/) employs designers then charges customers a monthly fee for unlimited services.  Pay a fixed monthly price and get designs back in 1-2 days (or more for web work). He has 20 designers around the world working for him. Essentially he has **productized or scaled a service business**
 
+## Brilliant Freelancer
+[Brighton farm brilliant freelancer](https://www.brightonfarm.com/) 
+
 ### Finding an Oppportunity
 Talk to customers or find out online **what customers are complaining about**:
 
