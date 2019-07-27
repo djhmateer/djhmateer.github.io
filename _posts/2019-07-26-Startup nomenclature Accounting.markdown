@@ -29,7 +29,7 @@ this is different from gross income which only deducts the cost of good sold.
 ### Households
 Net income refers to the (gross) income minus taxes.
 
-x
+x2
 
 
 
