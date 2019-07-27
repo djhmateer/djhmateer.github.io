@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Jemoji
-description: 
-menu: review
-categories: Jekyll 
+title: Jemojis in Jekyll
+description: Why people use emoji's escapes me, or it did, until I started using them for fast conversation and txt messaging.
+#menu: review
+categories: Jekyll Jemoji
 published: true 
 comments: false
 sitemap: false
 image: /assets/2019-05-27/1.png
 ---
 
-Why people want to you emoji's escapes me, or it did, until I started using them for fast conversation and txt messaging.  
+Why people use emoji's escapes me, or it did, until I started using them for fast conversation and txt messaging.
 
 [A friend of mine](https://ohare.blog/) pointed me to the [emoji support on a Jekyll hosted blogs](https://github.com/jekyll/jemoji) which has over 1.5million downloads from [rubygems](https://rubygems.org/gems/jemoji)
 

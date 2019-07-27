@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Startup 
+title: Startup nomenclature Accounting
 description: 
 menu: review
-categories: SaaS 
+categories: Accounting Startup 
 published: true 
 comments: false
 sitemap: false
