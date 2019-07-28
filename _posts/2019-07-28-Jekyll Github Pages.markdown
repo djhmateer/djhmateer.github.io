@@ -49,16 +49,31 @@ docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
 # update the gem bundles
 bundle update 
 ```
+Every now and again run the bundle update to keep your local instance up to date with what is being done on GH Pages. This is a very 'secure' way of working as:
+
+- There is no dynamic part of your website so nothing to hack!
+- GH does a rebuild every time, so they are responsible for keeping everything up to date (including all infrastructure)
+
+## _config.yml and Themes
+Lets have a look at the themes [included with GH Pages](https://pages.github.com/versions/). The default is minima:
+
+```bash
+# Build settings
+markdown: kramdown
+theme: minima
+#theme: jekyll-theme-architect
+plugins:
+  - jekyll-feed
+```
+we could j
 
 
-### _config.yml
-
-
-## Themes
 
 What are the themes options on GH Pages interface?
 
 What is the GH gem plugin?
+
+### _config.yml
 
 ## Product Sites on GH Pages / Jekyll
 
