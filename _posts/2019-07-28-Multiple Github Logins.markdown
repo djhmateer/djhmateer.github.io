@@ -27,6 +27,31 @@ Make sure [your version of git is up to date](https://git-scm.com/download). As 
 ![alt text](/assets/2019-07-18/4.png "Git Credential Manager"){:width="400px"}     
 We want Git Credential Manager.
 
+## Delete current cache of passwords (Windows)
+Search for `Credential Manager` from the start key on Windows and delete any cached access tokens.
+
+![alt text](/assets/2019-07-18/5.png "Remove cached access token from credential manager"){:width="400px"}     
+
+## HTTPS not SSH Keys
+We are using https not ssh keys
+![alt text](/assets/2019-07-18/6.png "HTTPS not SSH"){:width="400px"}     
+
+So after doing a 
+
+```bash
+git clone https://github.com/penhemingway/penhemingway.github.io.git
+git remote -v
+
+# we get
+#origin  https://github.com/penhemingway/penhemingway.github.io.git (fetch)
+#origin  https://github.com/penhemingway/penhemingway.github.io.git (push)
+
+git remote set-url origin https://penhemingway@github.com/penhemingway/penhemingway.github.io.git
+
+#origin  https://penhemingway@github.com/penhemingway/penhemingway.github.io.git (fetch)
+#origin  https://penhemingway@github.com/penhemingway/penhemingway.github.io.git (push)
+```
+
 
 
 
