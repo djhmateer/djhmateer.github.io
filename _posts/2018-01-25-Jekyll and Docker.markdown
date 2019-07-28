@@ -18,7 +18,7 @@ It is now very easy to get Jekyll running locally with Docker using the official
 Firstly install [Docker CE (Community Edition)](https://www.docker.com/community-edition)
 
 ## Jekyll/Jekyll Docker Image
-Then run the Jekyll image on Docker from a new test directory
+Then run the [Jekyll image on Docker](https://hub.docker.com/r/jekyll/jekyll) from a new test directory
 
 ```
 cd c:/temp/myBlog
@@ -42,7 +42,10 @@ jekyll new .
 ```
 ![new](/assets/2018-01-25-Docker/new.png)
 
-You now have a brand new Jekyll site in c:\temp\myBlog
+You now have a brand new Jekyll site in c:\temp\myBlog. On 28th July 2019, this was Jekyll 3.8.6
+
+![Bash](/assets/2018-01-25-Docker/1.png)
+These are the files produced
 
 ## Serving the site Locally
 We need to open up port 4000 from docker. Exit out of bash and re-run the command:
@@ -59,6 +62,8 @@ docker ps -a
 docker rm -f 1 2 3
 ```
 Now you should be able to see your site by going to localhost:4000 in your browser
+
+![Bash](/assets/2018-01-25-Docker/2.png)
 
 If it doesn't work try deleting all of Dockers [remnants](/docker/2018/01/26/Docker-Delete-Containers-Images-Networks-and-Volumes.html)
 
@@ -119,7 +124,9 @@ If you delete your gemfile.lock and run jekyll bundle update you will get all th
 To improve docker-compose up times it looks like it is possible to cache the Gems locally [see Caching](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
 
 ## Multiple Github accounts
-**I don't use this anymore**
+**update 28th July 2019** I've [written an article here]() on how to do it.
+
+**SSH Keys - I don't use this anymore**
 You are only allowed 1 Github Pages account per user. [Here](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) is how I have multiple GitHub accounts on 1 machine. As an aide memoire this is what I do on my Win 10 machines:  
 
 ```
