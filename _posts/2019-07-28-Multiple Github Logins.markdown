@@ -3,7 +3,7 @@ layout: post
 title: Multiple GitHub Logins 
 description: 
 menu: review
-categories: Github 
+categories: GitHub 
 published: true 
 comments: false
 sitemap: false
@@ -32,11 +32,15 @@ Search for `Credential Manager` from the start key on Windows and delete any cac
 
 ![alt text](/assets/2019-07-18/5.png "Remove cached access token from credential manager"){:width="400px"}     
 
+then login on your main account again to GH
+
+![alt text](/assets/2019-07-18/7.png "Login to GH"){:width="400px"}     
+
 ## HTTPS not SSH Keys
 We are using https not ssh keys
 ![alt text](/assets/2019-07-18/6.png "HTTPS not SSH"){:width="400px"}     
 
-So after doing a 
+Lets go to our 2nd account:
 
 ```bash
 git clone https://github.com/penhemingway/penhemingway.github.io.git
@@ -50,7 +54,16 @@ git remote set-url origin https://penhemingway@github.com/penhemingway/penheming
 
 #origin  https://penhemingway@github.com/penhemingway/penhemingway.github.io.git (fetch)
 #origin  https://penhemingway@github.com/penhemingway/penhemingway.github.io.git (push)
+
+git config credential.useHttpPath true
 ```
+![alt text](/assets/2019-07-18/8.png "HTTPS not SSH"){:width="400px"}     
+Now login with the 2nd account and it works
+
+## What have we done?
+[Technically this issues explains more](https://github.com/microsoft/Git-Credential-Manager-for-Windows/issues/749) but essentially we are telling the 2nd account to `useHttpPath` which means along with providing the username in the remote, it can use a different login.  
+
+I like having my main account as the default.
 
 
 
