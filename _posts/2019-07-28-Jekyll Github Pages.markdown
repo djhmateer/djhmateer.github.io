@@ -9,23 +9,21 @@ comments: false
 sitemap: false
 image: /assets/2019-07-18/1.jpg
 ---
-I've been using Jekyll for [nearly 3 years for this blog](/2016/10/17/Blog-with-Jekyll-and-host-for-free). This is an update on how I now use it.
+I've been using Jekyll for [nearly 3 years for this blog](/2016/10/17/Blog-with-Jekyll-and-host-for-free). This is an update on how I use it.
 
 - I have [Multiple sites hosted on GitHub Pages using separate GitHub Logins]()
 - I use [Docker on my Windows Machine to have it hosted locally and livereload]()
 - I sometimes use [Cloudflare as a domain registrar as they are cheap and for SSL Cert and other CDN goodness]()
 - I use redirects when I changed my blog naming strategy
 
-
-
 This article is on how to choose a theme, and how it wires together. I struggled to show a friend how to wire a theme together and get it working for her [blog website](https://agoyal.co.uk).
 
-I'm also going to be creating a few websites soon for products which I'd like to use GH Pages for, maybe Jekyll.  
+I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, maybe Jekyll.  
 
 ## Blog Sites on GH Pages / Jekyll
 If you [follow my initial tutorial on setting up Jekyll locally]() we can:
 
-- get a local site (notice no ruby files)
+- get a create local site (notice no ruby files)
 - docker-compose file so can easily run it locally
 - setup on GitHub Pages
 
@@ -51,6 +49,8 @@ bundle update
 
 ### _config.yml
 
+
+## Themes
 
 What are the themes options on GH Pages interface?
 
