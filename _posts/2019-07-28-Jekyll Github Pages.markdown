@@ -18,16 +18,16 @@ I've been using [Jekyll](https://jekyllrb.com/) and [it's source](https://github
 - I sometimes use [Cloudflare as a domain registrar as they are cheap and for SSL Cert and other CDN goodness]()
 - I use redirects when I changed my blog naming strategy
 
-This article is on how to choose a theme, and how it wires together. I struggled to show a friend how to wire a theme together and get it working for her [blog website](https://agoyal.co.uk).
+This article is on how to choose a theme, and how it wires together. I struggled to show a friend how to get it working for her [blog website](https://agoyal.co.uk).
 
 I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, maybe Jekyll.  
 
 ## Blog Sites on GH Pages / Jekyll
 If you [follow my initial tutorial on setting up Jekyll locally]() we can:
 
-- get a create local site (notice no ruby files)
-- docker-compose file so can easily run it locally
-- setup on GitHub Pages
+- Create local site (notice no ruby files)
+- Docker-compose file so can easily run it locally
+- Setup on GitHub Pages
 
 ![alt text](/assets/2019-07-28/1.png "Files for a Jekyll install"){:width="400px"}     
 
@@ -41,7 +41,7 @@ Lets setup the gemfile to use the [GitHub pages gem](https://github.com/github/p
 # comment in the github-pages gem
 gem "github-pages", group: :jekyll_plugins
 ```
-then you'll probably need to delete gemfile.lock file, then run docker-compose up. Perhaps we need to this next?
+then you'll probably need to delete gemfile.lock (as you're essenitally downgrading jekyll) file, then run docker-compose up. 
 
 ```
 docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
