@@ -66,6 +66,9 @@ git config credential.useHttpPath true
 ![alt text](/assets/2019-07-18/8.png "HTTPS not SSH"){:width="400px"}     
 Now login with the 2nd account and it works
 
+## MFA
+Does this work with Multi Factor Authentication?
+
 ## What have we done?
 [Technically this issues explains more](https://github.com/microsoft/Git-Credential-Manager-for-Windows/issues/749) 
 
