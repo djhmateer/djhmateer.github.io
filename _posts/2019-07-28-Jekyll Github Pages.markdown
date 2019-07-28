@@ -9,7 +9,9 @@ comments: false
 sitemap: false
 image: /assets/2019-07-18/1.jpg
 ---
-I've been using Jekyll for [nearly 3 years for this blog](/2016/10/17/Blog-with-Jekyll-and-host-for-free). This is an update on how I use it.
+I've been using [Jekyll](https://jekyllrb.com/) and [it's source](https://github.com/jekyll/jekyll) for [nearly 3 years for this blog](/2016/10/17/Blog-with-Jekyll-and-host-for-free). 
+
+> Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity
 
 - I have [Multiple sites hosted on GitHub Pages using separate GitHub Logins]()
 - I use [Docker on my Windows Machine to have it hosted locally and livereload]()
