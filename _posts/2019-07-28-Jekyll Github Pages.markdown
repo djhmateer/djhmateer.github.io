@@ -43,8 +43,10 @@ gem "github-pages", group: :jekyll_plugins
 ```
 then you'll probably need to delete gemfile.lock (as you're essenitally downgrading jekyll) file, then run docker-compose up. 
 
-```
+```bash
+# spin up the docker image in interactive mode
 docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
+# update the gem bundles
 bundle update 
 ```
 
