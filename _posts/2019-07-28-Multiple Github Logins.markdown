@@ -28,12 +28,17 @@ Search for `Credential Manager` from the start key on Windows and delete any cac
 
 ![alt text](/assets/2019-07-18/5.png "Remove cached access token from credential manager"){:width="400px"}     
 
-then do a push to your main account on GH which will prompt for a login:
+## Edit the git config file
+In a repo requiring your 2nd GH account:
 
-![alt text](/assets/2019-07-18/7.png "Login to GH"){:width="300px"}     
+![alt text](/assets/2019-07-28/2.png "Edit the config file"){:width="800px"}     
 
-## UseHttpPath 
-Now lets use a repo from our 2nd account: 
+So I specify the name of any non-default GH accounts, and add useHttpPath.  
+
+I prefer manually editing the .git/config file. To see the hidden file in VS Code, File, Preferences, Settings, search for exclude. Delete the .git setting.
+
+## git commands 
+This is another way of doing the above.
 
 ```bash
 git clone https://github.com/penhemingway/penhemingway.github.io.git
@@ -58,16 +63,13 @@ git config credential.useHttpPath true
 ![alt text](/assets/2019-07-18/8.png "HTTPS not SSH"){:width="400px"}     
 Now login with the 2nd account and it works
 
-## MFA
-Does this work with Multi Factor Authentication? Yes.
-
 ## What have we done?
 [Technically this issues explains more](https://github.com/microsoft/Git-Credential-Manager-for-Windows/issues/749) 
 
 ![alt text](/assets/2019-07-18/9.png "Got 2 cached passwords now"){:width="400px"}     
 And looking at the Windows Credential Manager you can see our 2 cached passwords.  
 
-I find this much easier than the old SSH keys methods!
+I find this much easier than SSH keys.
 
 
 
