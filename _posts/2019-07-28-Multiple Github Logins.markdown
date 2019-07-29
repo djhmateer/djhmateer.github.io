@@ -9,21 +9,13 @@ comments: false
 sitemap: false
 image: /assets/2019-07-18/1.jpg
 ---
-I use multiple GitHub logins to host mutiple GitHub static pages websites: 
+I use multiple GitHub logins to host multiple [GitHub Pages User Sites](https://pages.github.com/#tutorial):
 
 - [https://github.com/djhmateer](https://github.com/djhmateer) - my main GH account which hosts [davemateer.com](https://davemateer.com)
-- [https://github.com/penhemingway](https://github.com/penhemingway) - my 2nd account for [penhemingway.github.io](https://penhemingway.github.io)
+- [https://github.com/penhemingway](https://github.com/penhemingway) - my 2nd account [penhemingway.github.io](https://penhemingway.github.io)
 
 ![alt text](/assets/2019-07-18/6.png "HTTPS not SSH"){:width="350px"}     
- Importantly I use HTTPS (which is now the norm) rather than SSH Keys. If you use SSH then [try this](https://medium.com/@pinglinh/how-to-have-2-github-accounts-on-one-machine-windows-69b5b4c5b14e)
-
-## Static Sites
-Why have multiple logins? Yes it is possible to host multiple 'websites' under a single GH login using the [2 static hosting models that GH give](https://help.github.com/en/articles/user-organization-and-project-pages).
-
-- User and Organisation Pages eg [djhmateer.github.io](https://djhmateer.github.io)
-- Project Pages sites eg [djhmateer.github.io/startbootstrap-jekyll](https://djhmateer.github.io/startbootstrap-jekyll)
-
-In my opinion this is messy, as you get cross pollination potentially with: djhmateer.github.io (which is davemateer.com) pointing to davemateer.com/startbootstrap-jekyll. 
+ Importantly I use HTTPS, which is now the norm, [rather than SSH Keys](https://medium.com/@pinglinh/how-to-have-2-github-accounts-on-one-machine-windows-69b5b4c5b14e)
 
 ## Multiple GH Logins
 Make sure [your version of git is up to date](https://git-scm.com/download). As of 28th July 2019 it is 2.22.0. and you've got Git Credenital Manager installer. This is for Windows, but I'm sure the *nix concepts will be the same.

@@ -27,14 +27,20 @@ p=git add . -A & git commit -m "auto commit" & git push
 m=git commit -am "$*" & git push
 c=code .
 cdd = cd c:\dev
-k=kubectl $*
-ka=KeepK8sAlive
-das = az aks browse -n aks -g aksrg
 ddel = docker container prune -f $t docker image prune -af $t docker network prune -f $t docker volume prune -f
 ;= $* passes all the arguments
 ;= use s nameofsolution.sln (and use tab to autocomplete) to start a solution file
 s = start $*
 gp = git pull
+du = docker-compose up
+dup = docker-compose up -d
+dd = docker-compose down
+
+;unused
+;k=kubectl $*
+;ka=KeepK8sAlive
+;das = az aks browse -n aks -g aksrg
+
 ```
 
 ### Set Starup Directory

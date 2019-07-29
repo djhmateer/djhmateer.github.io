@@ -76,6 +76,12 @@ What is the GH gem plugin?
 ### _config.yml
 
 ## Product Sites on GH Pages / Jekyll
+Why have multiple logins? Yes it is possible to host multiple 'websites' under a single GH login using the [2 static hosting models that GH give](https://help.github.com/en/articles/user-organization-and-project-pages).
+
+- User and Organisation Pages eg [djhmateer.github.io](https://djhmateer.github.io)
+- Project Pages sites eg [djhmateer.github.io/startbootstrap-jekyll](https://djhmateer.github.io/startbootstrap-jekyll)
+
+In my opinion this is messy, as you get cross pollination potentially with: djhmateer.github.io (which is davemateer.com) pointing to davemateer.com/startbootstrap-jekyll. 
 
 
 
