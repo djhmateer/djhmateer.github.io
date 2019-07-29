@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Multiple GitHub Logins 
-description: 
-menu: review
+description: Using multiple GitHub logins to host multiple GitHub Pages static sites. I'm using HTTPS rather than SSH keys. 
+#menu: review
 categories: GitHub 
 published: true 
-comments: false
-sitemap: false
-image: /assets/2019-07-18/1.jpg
+comments: true   
+sitemap: true
+image: /assets/2019-07-18/6.png
 ---
 I use multiple GitHub logins to host multiple [GitHub Pages User Sites](https://pages.github.com/#tutorial):
 
@@ -67,10 +67,9 @@ Now login with the 2nd account and it works
 [Technically this issues explains more](https://github.com/microsoft/Git-Credential-Manager-for-Windows/issues/749) 
 
 ![alt text](/assets/2019-07-18/9.png "Got 2 cached passwords now"){:width="400px"}     
-And looking at the Windows Credential Manager you can see our 2 cached passwords.  
+And looking at the Windows Credential Manager (after you've logged into your default GH account again) you can see our 2 cached passwords.   
 
-I find this much easier than SSH keys.
-
+So now I don't notice I'm working with multiple GitHub Accounts on one machine.
 
 
 
