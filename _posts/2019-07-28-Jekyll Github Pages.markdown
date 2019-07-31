@@ -18,7 +18,7 @@ I've been using [Jekyll](https://jekyllrb.com/) and [it's source](https://github
 - I sometimes use [Cloudflare as a domain registrar as they are cheap and for SSL Cert and other CDN goodness]()
 - I use redirects when I changed my blog naming strategy
 
-This article is on how to choose a theme, and how it wires together. I struggled to show a friend how to get it working for her [blog website](https://agoyal.co.uk).
+This article is on how jekyll works and choosing a theme. I struggled to show a friend how to get it working for her [blog website](https://agoyal.co.uk).
 
 I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, maybe Jekyll.  
 
