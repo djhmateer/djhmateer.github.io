@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: Jekyll GitHub Pages 
+title: Jekyll GitHub Pages 
 description: 
 menu: review
 categories: Jekyll GitHub
