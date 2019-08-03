@@ -23,24 +23,27 @@ This article is on how jekyll works and choosing a theme. I struggled to show a 
 I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, maybe Jekyll.  
 
 ## Blog Sites on GH Pages / Jekyll
+
 If you [follow my initial tutorial on setting up Jekyll locally]() we can:
 
 - Create local site (notice no ruby files)
 - Docker-compose file so can easily run it locally
 - Setup on GitHub Pages
 
-![alt text](/assets/2019-07-28/1.png "Files for a Jekyll install"){:width="400px"}     
+![alt text](/assets/2019-07-28/1.png "Files for a Jekyll install"){:width="400px"}
 
 ### Gemfile
+
 Lets setup the gemfile to use the [GitHub pages gem](https://github.com/github/pages-gem) which will force Jekyll locally to use the same version as on GH Pages. [Here are the versions of gems and themes used on GH Pages](https://pages.github.com/versions/) as GH Pages will do a build for us automatically. GH Pages uses Jekyll 3.8.5 as of 28th July 2019. Whereas latest Jekyll is 3.8.6
 
 ```bash
-# comment out the 3.8.6 version 
+# comment out the 3.8.6 version
 # gem "jekyll", "~> 3.8.6"
 
 # comment in the github-pages gem
 gem "github-pages", group: :jekyll_plugins
 ```
+
 then you'll probably need to delete gemfile.lock (as you're essenitally downgrading jekyll) file, then run docker-compose up. 
 
 ```bash
@@ -50,14 +53,16 @@ docker container prune -f $t docker image prune -af $t docker network prune -f $
 # spin up the docker image in interactive mode
 docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
 # update the gem bundles
-bundle update 
+bundle update
 ```
+
 Every now and again run the bundle update to keep your local instance up to date with what is being done on GH Pages. This is a very 'secure' way of working as:
 
 - There is no dynamic part of your website so nothing to hack!
 - GH does a rebuild every time, so they are responsible for keeping everything up to date (including all infrastructure)
 
 ## _config.yml and Themes
+
 Lets have a look at the themes [included with GH Pages](https://pages.github.com/versions/). The default is minima:
 
 ```bash
@@ -68,9 +73,8 @@ theme: minima
 plugins:
   - jekyll-feed
 ```
+
 we could j
-
-
 
 What are the themes options on GH Pages interface?
 
@@ -79,6 +83,7 @@ What is the GH gem plugin?
 ### _config.yml
 
 ## Product Sites on GH Pages / Jekyll
+
 Why have multiple logins? Yes it is possible to host multiple 'websites' under a single GH login using the [2 static hosting models that GH give](https://help.github.com/en/articles/user-organization-and-project-pages).
 
 - User and Organisation Pages eg [djhmateer.github.io](https://djhmateer.github.io)
