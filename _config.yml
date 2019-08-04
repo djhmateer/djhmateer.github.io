@@ -1,48 +1,22 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing these this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 title: Dave Mateer's Blog
 email: davemateer@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
- In depth articles on software production
-baseurl: "" # the subpath of your site, e.g. /blog
-#url: https://djhmateer.github.io # the base hostname & protocol for your site
+description: In depth articles on software production
+baseurl: "" 
+url: "https://davemateer.com" 
 twitter_username: dave_mateer
 github_username:  djhmateer
-
 twitter:
   username: dave_mateer
-  #card: summary #default is summary_large_image
 
-#lowercase separated by hyphens
-#permalink: /articles/:title
+# the url structure
 permalink: /:year/:month/:day/:title
 
-# Build settings
 markdown: kramdown
-#theme: minima
 
 timezone: Europe/London
 
-exclude: [
- "Gemfile", "Gemfile.lock" 
-]
-
 repository: djhmateer/djhmateer.github.io
 
-url: "https://davemateer.com" # the base hostname & protocol for your site
 plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
@@ -52,4 +26,22 @@ plugins:
 
 emoji:
   src: "https://github.githubassets.com/images/icons/"
+
+defaults:
+  -
+    scope:
+      path: ""
+      # ie not for pages
+      type: "posts"
+    values:
+      # the default layout to use if none is specified
+      layout: post
+      # I dont use the concept of drafts so default to published true
+      published: true
+
+exclude: 
+ - Gemfile
+ - Gemfile.lock 
+ - docker-compose.yml
+
 

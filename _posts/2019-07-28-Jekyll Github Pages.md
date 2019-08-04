@@ -1,10 +1,8 @@
 ---
-layout: post
 title: Jekyll GitHub Pages 
 description: 
 menu: review
 categories: Jekyll GitHub
-published: true 
 comments: false
 sitemap: false
 image: /assets/2019-07-18/1.jpg
