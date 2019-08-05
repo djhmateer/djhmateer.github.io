@@ -1,12 +1,12 @@
 ---
 layout: post
 title: Azure Sphere MT3620
-description: What is the Azure Sphere MT3620 Starter kit and initial impressions 
-menu: review
-categories: IoT 
+description: What is the Azure Sphere MT3620 Starter kit, what is Azure Sphere and my initial impressions on getting code samples working
+# menu: review
+categories: IoT AzureSphere
 published: true 
-comments: false   
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2019-08-05/1.jpg
 ---
 
