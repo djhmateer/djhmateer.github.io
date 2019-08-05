@@ -20,6 +20,9 @@ This article is on how jekyll works and choosing a theme. I struggled to show a 
 
 I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, maybe Jekyll.  
 
+## Videos
+[Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
+
 ## Blog Sites on GH Pages / Jekyll
 
 If you [follow my initial tutorial on setting up Jekyll locally]() we can:
