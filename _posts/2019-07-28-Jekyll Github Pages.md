@@ -144,17 +144,32 @@ exclude:
 
 Lets have a look at the themes [included with GH Pages](https://pages.github.com/versions/). The default is minima:
 
-```bash
-# Build settings
+```yml
+# _config.yml 
 markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
 ```
 
-By default the theme is hidden away from us in a gemfile which was referenced in `_config.yml`
+By default the [minima theme](https://rubygems.org/gems/minima) and [minima source](https://github.com/jekyll/minima) is hidden away from us in a gemfile which was referenced in `_config.yml`  
+
+```bash
+# Show the path of the theme - we're not going to need this
+# /usr/local/bundle/gems/minima-2.5.0
+bundle show minima
+```
+
+## Customise Jekyll Themes
+
+I'm going to be modifying my themes heavily so lets bring into the codebase.
 
 
+
+
+## Includes
+
+_includes
 
 ## Videos
 [Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
