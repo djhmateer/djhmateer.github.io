@@ -95,6 +95,7 @@ plugins:
   - jekyll-seo-tag # twitter / opengraph
   - jekyll-feed # atom
   - jemoji
+  - jekyll-github-metadata
 
 emoji:
   src: "https://github.githubassets.com/images/icons/"
