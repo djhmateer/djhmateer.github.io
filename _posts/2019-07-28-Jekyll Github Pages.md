@@ -20,8 +20,9 @@ This article is a summary of what I've learned so far, and how my workflow has c
 
 I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, and maybe Jekyll will be a good fit.
 
-## Set up Jekyll on your local machine
-I like to do this as it gives me immediate feedback on how the site looks. It is not strictly necessary as GitHub Pages can build the Jekyll site for you.  
+## Set up Jekyll locally using Docker
+
+I like to do this as it gives me immediate feedback on how the site looks. It is not strictly necessary as GitHub Pages can do the build for you. 
 
 I've written articles on [Setting up Docker and Livereload](/2018/01/25/Jekyll-and-Docker) and [having multiple GitHub Pages User Sites](/2019/07/28/Multiple-Github-Logins), but essentially I now do this:
 
@@ -42,37 +43,13 @@ jekyll serve
 
 No ruby files (they are inside the docker container), and no theme files (they too are inside the docker container as we're using the default theme minima, which is inside a gem)
 
-### Setup Gemfile for GitHub Pages
-
-Lets setup the gemfile to use the [GitHub pages gem](https://github.com/github/pages-gem) which will force Jekyll locally to use the same version as on GH Pages. [Here are the versions of gems and themes used on GH Pages](https://pages.github.com/versions/) as GH Pages will do a build for us automatically. GH Pages uses Jekyll 3.8.5 as of 28th July 2019. Whereas latest Jekyll is 3.8.6
-
-```bash
-# _config.yml
-# comment out the 3.8.6 version
-# gem "jekyll", "~> 3.8.6"
-
-# comment in the github-pages gem
-gem "github-pages", group: :jekyll_plugins
-```
-
-then in the console:
-
-```bash
-# spin up the docker image in interactive mode
-docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
-# update the gem bundles
-bundle update
-```
-
-If this fails try deleting Gemfile.lock
-
-## Frontmatter
+## FrontMatter
 Here is the yml for this page which is under development
 
 ```yml
 ---
-title: Jekyll GitHub Pages 
-description: Description to go here 
+title: Jekyll GitHub Pages
+description: Description to go here
 menu: review
 categories: Jekyll GitHub
 comments: false
@@ -86,10 +63,10 @@ I've been using Jekyll...
 - If you change the title, it will not update url (but is useful for Capitalisation on page)
 
 ## Blog post conventions
+
 I have urls like this [https://davemateer.com/2019/07/28/Multiple-Github-Logins](https://davemateer.com/2019/07/28/Multiple-Github-Logins) which I find easy to read and see the date, and the title of the post.
 
 By default Jekyll uses categories in the url which I find can be messy as I like to use a few categories usually.
-
 
 ```yml
 # _config.yml
@@ -173,3 +150,29 @@ _includes
 
 ## Videos
 [Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
+
+## Old
+
+### Setup Gemfile for GitHub Pages
+
+Lets setup the gemfile to use the [GitHub pages gem](https://github.com/github/pages-gem) which will force Jekyll locally to use the same version as on GH Pages. [Here are the versions of gems and themes used on GH Pages](https://pages.github.com/versions/) as GH Pages will do a build for us automatically. GH Pages uses Jekyll 3.8.5 as of 28th July 2019. Whereas latest Jekyll is 3.8.6
+
+```bash
+# _config.yml
+# comment out the 3.8.6 version
+# gem "jekyll", "~> 3.8.6"
+
+# comment in the github-pages gem
+gem "github-pages", group: :jekyll_plugins
+```
+
+then in the console:
+
+```bash
+# spin up the docker image in interactive mode
+docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
+# update the gem bundles
+bundle update
+```
+
+If this fails try deleting Gemfile.lock
