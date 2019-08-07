@@ -31,23 +31,23 @@ docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
 
 # create a new jekyll site in the current directory even if directory is not empty
 jekyll new . --force
+
+# will now be able to see your site on localhost:4000 (notice no livereload)
+jekyll serve
 ```
 
 [Docker hub jekyll/jekyll](https://hub.docker.com/r/jekyll/jekyll) and [GitHub Source](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
 
-If you [follow my initial tutorial on setting up Jekyll locally]() we can:
-
-- Create local site (notice no ruby files)
-- Docker-compose file so can easily run it locally
-- Setup on GitHub Pages
-
 ![alt text](/assets/2019-07-28/1.png "Files for a Jekyll install"){:width="400px"}
+
+No ruby files (they are inside the docker container), and no theme files (they too are inside the docker container as we're using the default theme minima, which is inside a gem)
 
 ### Setup Gemfile for GitHub Pages
 
 Lets setup the gemfile to use the [GitHub pages gem](https://github.com/github/pages-gem) which will force Jekyll locally to use the same version as on GH Pages. [Here are the versions of gems and themes used on GH Pages](https://pages.github.com/versions/) as GH Pages will do a build for us automatically. GH Pages uses Jekyll 3.8.5 as of 28th July 2019. Whereas latest Jekyll is 3.8.6
 
 ```bash
+# _config.yml
 # comment out the 3.8.6 version
 # gem "jekyll", "~> 3.8.6"
 
@@ -55,24 +55,92 @@ Lets setup the gemfile to use the [GitHub pages gem](https://github.com/github/p
 gem "github-pages", group: :jekyll_plugins
 ```
 
-then you'll probably need to delete gemfile.lock (as you're essenitally downgrading jekyll) file, then run docker-compose up. 
+then in the console:
 
 ```bash
-# clear down all cached containers to make sure you get the latest
-# my shortcut for all these commands in ddel
-docker container prune -f $t docker image prune -af $t docker network prune -f $t docker volume prune -f
 # spin up the docker image in interactive mode
 docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
 # update the gem bundles
 bundle update
 ```
 
-Every now and again run the bundle update to keep your local instance up to date with what is being done on GH Pages. This is a very 'secure' way of working as:
+If this fails try deleting Gemfile.lock
 
-- There is no dynamic part of your website so nothing to hack!
-- GH does a rebuild every time, so they are responsible for keeping everything up to date (including all infrastructure)
+## Frontmatter
+Here is the yml for this page which is under development
 
-## _config.yml and Themes
+```yml
+---
+title: Jekyll GitHub Pages 
+description: Description to go here 
+menu: review
+categories: Jekyll GitHub
+comments: false
+sitemap: false
+image: /assets/2019-07-18/1.jpg
+---
+I've been using Jekyll...
+```
+
+- If you change date in frontmatter, it updates the url which I don't use 
+- If you change the title, it will not update url (but is useful for Capitalisation on page)
+
+## Blog post conventions
+I have urls like this [https://davemateer.com/2019/07/28/Multiple-Github-Logins](https://davemateer.com/2019/07/28/Multiple-Github-Logins) which I find easy to read and see the date, and the title of the post.
+
+By default Jekyll uses categories in the url which I find can be messy as I like to use a few categories usually.
+
+
+```yml
+# _config.yml
+title: Dave Mateer's Blog
+email: davemateer@gmail.com
+description: In depth articles on software production
+baseurl: "" 
+url: "https://davemateer.com" 
+twitter_username: dave_mateer
+github_username:  djhmateer
+twitter:
+  username: dave_mateer
+
+# the url structure
+permalink: /:year/:month/:day/:title
+
+markdown: kramdown
+
+timezone: Europe/London
+
+repository: djhmateer/djhmateer.github.io
+
+plugins:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-seo-tag # twitter / opengraph
+  - jekyll-feed # atom
+  - jemoji
+
+emoji:
+  src: "https://github.githubassets.com/images/icons/"
+
+defaults:
+  -
+    scope:
+      path: ""
+      # ie not for pages
+      type: "posts"
+    values:
+      # the default layout to use if none is specified
+      layout: post
+      # I don't use the concept of drafts so default to published true
+      published: true
+
+exclude: 
+ - Gemfile
+ - Gemfile.lock 
+ - docker-compose.yml
+```
+
+## Themes
 
 Lets have a look at the themes [included with GH Pages](https://pages.github.com/versions/). The default is minima:
 
@@ -80,28 +148,11 @@ Lets have a look at the themes [included with GH Pages](https://pages.github.com
 # Build settings
 markdown: kramdown
 theme: minima
-#theme: jekyll-theme-architect
 plugins:
   - jekyll-feed
 ```
 
-we could j
-
-What are the themes options on GH Pages interface?
-
-What is the GH gem plugin?
-
-### _config.yml
-
-## Product Sites on GH Pages / Jekyll
-
-Why have multiple logins? Yes it is possible to host multiple 'websites' under a single GH login using the [2 static hosting models that GH give](https://help.github.com/en/articles/user-organization-and-project-pages).
-
-- User and Organisation Pages eg [djhmateer.github.io](https://djhmateer.github.io)
-- Project Pages sites eg [djhmateer.github.io/startbootstrap-jekyll](https://djhmateer.github.io/startbootstrap-jekyll)
-
-In my opinion this is messy, as you get cross pollination potentially with: djhmateer.github.io (which is davemateer.com) pointing to davemateer.com/startbootstrap-jekyll. 
-
+By default the theme is hidden away from us in a gemfile which was referenced in `_config.yml`
 
 
 

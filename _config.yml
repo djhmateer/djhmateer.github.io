@@ -36,7 +36,7 @@ defaults:
     values:
       # the default layout to use if none is specified
       layout: post
-      # I dont use the concept of drafts so default to published true
+      # I don't use the concept of drafts so default to published true
       published: true
 
 exclude: 
