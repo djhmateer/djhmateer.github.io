@@ -7,7 +7,7 @@ comments: false
 sitemap: false
 image: /assets/2019-07-18/1.jpg
 ---
-I've been using [Jekyll](https://jekyllrb.com/) and [it's source](https://github.com/jekyll/jekyll) for [nearly 3 years for this blog](/2016/10/17/Blog-with-Jekyll-and-host-for-free). 
+I've been using [Jekyll](https://jekyllrb.com/) ([GitHub source](https://github.com/jekyll/jekyll)) for [nearly 3 years for this blog](/2016/10/17/Blog-with-Jekyll-and-host-for-free) hosted on [GitHub Pages](https://pages.github.com/)
 
 > Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity
 
@@ -16,14 +16,24 @@ I've been using [Jekyll](https://jekyllrb.com/) and [it's source](https://github
 - I sometimes use [Cloudflare as a domain registrar as they are cheap and for SSL Cert and other CDN goodness]()
 - I use redirects when I changed my blog naming strategy
 
-This article is on how jekyll works and choosing a theme. I struggled to show a friend how to get it working for her [blog website](https://agoyal.co.uk).
+This article is a summary of what I've learned so far, and how my workflow has changed. It came about as I struggled to show a friend how to get [her blog started](https://agoyal.co.uk).
 
-I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, maybe Jekyll.  
+I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, and maybe Jekyll will be a good fit.
 
-## Videos
-[Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
+## Set up Jekyll on your local machine
+I like to do this as it gives me immediate feedback on how the site looks. It is not strictly necessary as GitHub Pages can build the Jekyll site for you.  
 
-## Blog Sites on GH Pages / Jekyll
+I've written articles on [Setting up Docker and Livereload](/2018/01/25/Jekyll-and-Docker) and [having multiple GitHub Pages User Sites](/2019/07/28/Multiple-Github-Logins), but essentially I now do this:
+
+```bash
+# run jekyll on a linux docker image
+docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
+
+# create a new jekyll site in the current directory even if directory is not empty
+jekyll new . --force
+```
+
+[Docker hub jekyll/jekyll](https://hub.docker.com/r/jekyll/jekyll) and [GitHub Source](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
 
 If you [follow my initial tutorial on setting up Jekyll locally]() we can:
 
@@ -33,7 +43,7 @@ If you [follow my initial tutorial on setting up Jekyll locally]() we can:
 
 ![alt text](/assets/2019-07-28/1.png "Files for a Jekyll install"){:width="400px"}
 
-### Gemfile
+### Setup Gemfile for GitHub Pages
 
 Lets setup the gemfile to use the [GitHub pages gem](https://github.com/github/pages-gem) which will force Jekyll locally to use the same version as on GH Pages. [Here are the versions of gems and themes used on GH Pages](https://pages.github.com/versions/) as GH Pages will do a build for us automatically. GH Pages uses Jekyll 3.8.5 as of 28th July 2019. Whereas latest Jekyll is 3.8.6
 
@@ -94,3 +104,6 @@ In my opinion this is messy, as you get cross pollination potentially with: djhm
 
 
 
+
+## Videos
+[Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
