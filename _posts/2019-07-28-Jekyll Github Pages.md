@@ -35,6 +35,9 @@ jekyll new . --force
 
 # will now be able to see your site on localhost:4000 (notice no livereload)
 jekyll serve
+
+# keep all gems up to date - most importantly github-pages which will pull all dependencies locally so same as live
+bundle update
 ```
 
 [Docker hub jekyll/jekyll](https://hub.docker.com/r/jekyll/jekyll) and [GitHub Source](https://github.com/envygeeks/jekyll-docker/blob/master/README.md)
@@ -43,7 +46,8 @@ jekyll serve
 
 No ruby files (they are inside the docker container), and no theme files (they too are inside the docker container as we're using the default theme minima, which is inside a gem)
 
-## FrontMatter
+## Front Matter
+
 Here is the yml for this page which is under development
 
 ```yml
@@ -59,7 +63,7 @@ image: /assets/2019-07-18/1.jpg
 I've been using Jekyll...
 ```
 
-- If you change date in frontmatter, it updates the url which I don't use 
+- If you change date in front matter, it updates the url which I don't use 
 - If you change the title, it will not update url (but is useful for Capitalisation on page)
 
 ## Blog post conventions
@@ -118,6 +122,23 @@ exclude:
  - docker-compose.yml
 ```
 
+## Hosting on GitHub Pages
+
+I like hosting on GitHub Pages as it is: fast, solid, automatic Lets Encrypt SSL Certificate, and simple.  
+
+You can upload a single index.html file and GH Pages will render that fine, and a full static site, just upload the `_site` directory for Jekyll, and GH Pages will serve that fine. However if you upload a Jekyll site GH Pages will automatically build the site.
+
+GH only supports certain [these dependencies](https://pages.github.com/versions/)
+
+```bash
+# _config.yml
+# comment out the 3.8.6 version
+# gem "jekyll", "~> 3.8.6"
+
+# comment in the github-pages gem
+gem "github-pages", group: :jekyll_plugins
+```
+
 ## Themes
 
 Lets have a look at the themes [included with GH Pages](https://pages.github.com/versions/). The default is minima:
@@ -138,10 +159,35 @@ By default the [minima theme](https://rubygems.org/gems/minima) and [minima sour
 bundle show minima
 ```
 
+An easy way to get all the files is to [clone the soure](https://github.com/jekyll/minima) then copy these directories into your new blog site:
+
+- _layouts
+  - default.html - base layout
+  - home.html - layout for landing page
+  - page.html - layout for pages (ie not posts)
+  - post.html - the layout for posts
+- _includes
+  - disqus_comments.html
+  - footer.html
+  - google-analytics.html
+  - head.html
+  - header.html
+  - social.html
+- _saas 
+  - minia.scss - the core
+  - minima/_base.scss
+  - minmia/_layout.scss
+  - minima/_syntax-highlighting.scss
+- assets
+
+
+
+
 ## Customise Jekyll Themes
 
-I'm going to be modifying my themes heavily so lets bring into the codebase.
 
+[jekyllrb.com/showcase/](https://jekyllrb.com/showcase/) for interesting showcases  
+[talk.jekyllrb.com](https://talk.jekyllrb.com/) for more showcases on sites
 
 
 
@@ -151,6 +197,19 @@ _includes
 
 ## Videos
 [Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Old
 
