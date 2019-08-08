@@ -14,20 +14,22 @@ Why people use emoji's escapes me, or it did, until I started using them for fas
 
 [A friend of mine](https://ohare.blog/) pointed me to the [emoji support on a Jekyll hosted blogs](https://github.com/jekyll/jemoji) which has over 1.5million downloads from [rubygems](https://rubygems.org/gems/jemoji)
 
-![alt text](/assets/2019-05-27/1.png "Emoji cheat sheet"){:width="700px"}     
+![alt text](/assets/2019-05-27/1.png "Emoji cheat sheet"){:width="700px"}
 [A handy emoji cheat sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)
 
-So to use an emoji you use this syntax in the markdown:   
+So to use an emoji you use this syntax in the markdown:
 
-```
+```bash
 I give this plugin two :+1:!
 ```
+
 I give this plugin two :+1:!
 
 ## How to install
-Add the following to your site's `Gemfile`
 
-```
+Add the following to your site's `Gemfile` or if you are using the `github-pages` plugin in the Gemfile, don't add it (as it is already there)
+
+```bash
 gem 'jemoji'
 ```
 
@@ -40,25 +42,22 @@ plugins:
 
 Then I followed my blog post instructions on [updating Jekyll](/2018/01/25/Jekyll-and-Docker#updating-jekyll) which got the dependency
 
-```
+```bash
 docker run --rm -v=%cd%:/srv/jekyll -it jekyll/jekyll /bin/bash
-bundle update jekyll
+bundle update
 ```
 
 ## Local Testing
-Developing locally the image urls were broken and looked like:    
+
+Developing locally the image urls were broken and looked like:
 [https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png](https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png)
 
 On live they worked looking like:  
 [https://github.githubassets.com/images/icons/emoji/unicode/1f4ee.png](https://github.githubassets.com/images/icons/emoji/unicode/1f4ee.png)
 
-so in the `_config.yml` file I put in 
+so in the `_config.yml` file I put in:
 
-```
+```yml
 emoji:
   src: "https://github.githubassets.com/images/icons/"
 ```
-
-
-
-

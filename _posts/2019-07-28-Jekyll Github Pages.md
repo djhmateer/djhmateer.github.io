@@ -126,17 +126,42 @@ exclude:
 
 I like hosting on GitHub Pages as it is: fast, solid, automatic Lets Encrypt SSL Certificate, and simple.  
 
-You can upload a single index.html file and GH Pages will render that fine, and a full static site, just upload the `_site` directory for Jekyll, and GH Pages will serve that fine. However if you upload a Jekyll site GH Pages will automatically build the site.
+You can upload a single index.html file and GH Pages will render that fine, and a full static site, just upload the `_site` directory for Jekyll, and GH Pages will serve that fine.  
 
-GH only supports certain [these dependencies](https://pages.github.com/versions/)
+However if you upload a Jekyll site GH Pages will automatically build the site.  
+
+You don't need the `Gemfile` when uploading the GH Pages as it only looks at the _config.yml.  
+
+GH only supports [these dependencies](https://pages.github.com/versions/)
 
 ```bash
-# _config.yml
-# comment out the 3.8.6 version
-# gem "jekyll", "~> 3.8.6"
+# Gemfile
+source "https://rubygems.org"
 
-# comment in the github-pages gem
+# Don't specify a version as we want to keep in sync with the github-pages version below
+#gem "jekyll", "~> 3.8"
+
+# This is the default theme for new Jekyll sites.
+# We haved pulled minima into the 
+# gem "minima", "~> 2.0"
+
+# If you want to use GitHub Pages, remove the "gem "jekyll"" above and
+# uncomment the line below. To upgrade, run `bundle update github-pages`.
 gem "github-pages", group: :jekyll_plugins
+
+# As we are using github-pages don't put any other plugins in here
+# as gh-pages pulls many in as dependencies
+group :jekyll_plugins do
+    # gem "jekyll-feed", "~> 0.6"
+end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Performance-booster for watching directories on Windows
+gem "wdm", "~> 0.1.0" if Gem.win_platform?s
 ```
 
 ## Themes
@@ -180,20 +205,27 @@ An easy way to get all the files is to [clone the soure](https://github.com/jeky
   - minima/_syntax-highlighting.scss
 - assets
 
-
-
-
-## Customise Jekyll Themes
-
+## Designs
 
 [jekyllrb.com/showcase/](https://jekyllrb.com/showcase/) for interesting showcases  
 [talk.jekyllrb.com](https://talk.jekyllrb.com/) for more showcases on sites
 
+## Add-ons to Jekyll
+
+As we're using the standard GH Build we are constrained to the [following dependencies](https://pages.github.com/versions/).  
+
+I use:
+
+- [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) - generates a sitemap.xml (for seo)
+- [jekyll-github-metadata](https://github.com/jekyll/github-metadata) - puts in GH Revision on page (for troubleshooting builds and sanity checking if worked)
+- [jekyll-feed](https://github.com/jekyll/jekyll-feed) generates feed.xml Atom (RSS) feed of posts
+- [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) seo meta data and [Open Graph and Twitter Cards](2019/04/07/Twitter-card-open-graph-site-preview).
+- [jemoji](https://github.com/jekyll/jemoji) - for [telephone, twitter etc. icons](/2019/05/27/Jemoji)
 
 
-## Includes
+-
 
-_includes
+
 
 ## Videos
 [Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
