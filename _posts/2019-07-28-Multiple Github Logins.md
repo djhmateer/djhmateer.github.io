@@ -15,30 +15,33 @@ I use multiple GitHub logins to host multiple [GitHub Pages User Sites](https://
 - [https://github.com/penhemingway](https://github.com/penhemingway) - my 2nd account [penhemingway.github.io](https://penhemingway.github.io)
 - [https://github.com/qjhemingway](https://github.com/qjhemingway) - my 3rd account [qjhemingway.github.io](https://qjhemingway.github.io)
 
-![alt text](/assets/2019-07-18/6.png "HTTPS not SSH"){:width="350px"}     
+![alt text](/assets/2019-07-18/6.png "HTTPS not SSH"){:width="350px"}
  Importantly I use HTTPS, which is now the norm, [rather than SSH Keys](https://medium.com/@pinglinh/how-to-have-2-github-accounts-on-one-machine-windows-69b5b4c5b14e)
 
 ## Multiple GH Logins
+
 Make sure [your version of git is up to date](https://git-scm.com/download). As of 28th July 2019 it is 2.22.0. and you've got Git Credenital Manager installer. This is for Windows, but I'm sure the *nix concepts will be the same.
 
-![alt text](/assets/2019-07-18/4.png "Git Credential Manager"){:width="400px"}     
+![alt text](/assets/2019-07-18/4.png "Git Credential Manager"){:width="400px"}
 We want Git Credential Manager.
 
 ## Delete current cache of GitHub passwords
+
 Search for `Credential Manager` from the start key on Windows and delete any cached passwords. 
 
-![alt text](/assets/2019-07-18/5.png "Remove cached access token from credential manager"){:width="400px"}     
+![alt text](/assets/2019-07-18/5.png "Remove cached access token from credential manager"){:width="400px"}
 
 ## Edit the git config file
+
 In a repo requiring your 2nd GH account:
 
-![alt text](/assets/2019-07-28/2.png "Edit the config file"){:width="800px"}     
+![alt text](/assets/2019-07-28/2.png "Edit the config file"){:width="800px"}
 
 So I specify the name of any non-default GH accounts, and add useHttpPath.  
-
 I prefer manually editing the .git/config file. To see the hidden file in VS Code, File, Preferences, Settings, search for exclude. Delete the .git setting.
 
-## git commands 
+## git commands
+
 This is another way of doing the above.
 
 ```bash
@@ -61,14 +64,16 @@ git remote -v
 # any credentials used should be associated with full repository path, not the entire domain eg github.com default (our main account)
 git config credential.useHttpPath true
 ```
-![alt text](/assets/2019-07-18/8.png "HTTPS not SSH"){:width="400px"}     
+
+![alt text](/assets/2019-07-18/8.png "HTTPS not SSH"){:width="400px"}
 Now login with the 2nd account and it works
 
-## What have we done?
-[Technically this issues explains more](https://github.com/microsoft/Git-Credential-Manager-for-Windows/issues/749) 
+## What have we done
 
-![alt text](/assets/2019-07-18/9.png "Got 2 cached passwords now"){:width="400px"}     
-And looking at the Windows Credential Manager (after you've logged into your default GH account again) you can see our 2 cached passwords.   
+[Technically this issues explains more](https://github.com/microsoft/Git-Credential-Manager-for-Windows/issues/749)
+
+![alt text](/assets/2019-07-18/9.png "Got 2 cached passwords now"){:width="400px"}
+And looking at the Windows Credential Manager (after you've logged into your default GH account again) you can see our 2 cached passwords.
 
 So now I don't notice I'm working with multiple GitHub Accounts on one machine.
 
