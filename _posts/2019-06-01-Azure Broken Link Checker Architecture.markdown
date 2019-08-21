@@ -20,6 +20,12 @@ image: /assets/2019-05-27/1.png
 - Use ACI and spin it up fast when the scan starts (in readyness)
 
 
+Language-ext
+.NET Core 2.2
+HttpClient
+
+1 request at a time
+
 
 
 
