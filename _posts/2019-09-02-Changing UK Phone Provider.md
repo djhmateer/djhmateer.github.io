@@ -34,7 +34,6 @@ For me it didn't matter. All the areas I've lived in have had marginal coverage,
 
 I mistakenly thought using some old phones would be a good idea. They didn't get as good a signal as my new(ish) iPhone7. So the moral of the story is to use a new phone!
 
-
 ![alt text](/assets/2019-08-05/1.jpg "Don't use old phones!"){:width="600px"}
 
 ## Links
