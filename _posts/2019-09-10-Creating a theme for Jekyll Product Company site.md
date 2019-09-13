@@ -10,16 +10,17 @@ sitemap: false
 image: /assets/2019-08-05/1.jpg
 ---
 
-I'm mostly a back end developer and entrepreneur working on C# and MSSQL.  
+I'm developer and entrepreneur working on C# and MSSQL.  
 
-Hosting a site with Jekyll on GitHub Pages, content editing in markdown is all something I'm comfortable with.  
-
-CSS, Javascript and design are things I know less well, but I have some websties I need to do:
+CSS, Javascript and design are things I know less well! I have a need for: 
 
 - Charity website eg Rewilding Sussex
-- My new company website eg BrightSoft
 - Product website eg Broken Link Checker
+- My new company website eg BrightSoft
+- Advice on my wifes [hoverflylagoons.co.uk](https://hoverflylagoons.co.uk) Wordpress site
 - Update personal blogs eg davemateer.com, mateer.dev, peter [animateddata.com](https://www.animateddata.com/)
+
+So it became time to look into the front end again.
 
 ## HTML Template for single (long) page site
 
@@ -34,6 +35,8 @@ Here are my go to sites for templates:
 The latest style of sites (Bootstrap4 et al.) is to design for mobile first, so longer pages that are easily swipeable are what is happening.
 
 If the site is multi page, or will require a build pipeline I generally go to Jekyll:
+
+Hosting, domain names, SEO, sitemaps, image optinmisation, search are covered elsewhere on my blog.
 
 ## Who is the website for
 
@@ -130,17 +133,23 @@ business-casual.scss is in the default _sass folder.
 
 
 
+## Form design eg contact
+
+material design?
+
+## Form submit and email
+
+[Getting stuff done video](https://www.youtube.com/watch?v=No7dtPtbtcE) triggers eg zapier
+
+## Image resizing
+
+asdf
 
 
-## Who is the target audience
 
-Developers?  
-Is it easy to understand?  
 
-What is the call to action
--try the product
--buy the product
--sign up for newsletter
+
+
 
 ## Jekyllrb.com
 
