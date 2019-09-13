@@ -168,4 +168,4 @@ asdf
 
 
 
-![alt text](/assets/2019-08-05/1.jpg "Don't use old phones!"){:width="600px"}
+![alt text](/assets/2019-08-05/1x.jpg "Don't use old phones!"){:width="600px"}
