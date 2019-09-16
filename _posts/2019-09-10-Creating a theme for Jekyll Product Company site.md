@@ -12,12 +12,12 @@ image: /assets/2019-08-05/1.jpg
 
 I'm developer and entrepreneur working on C# and MSSQL.  
 
-CSS, Javascript and design are things I know less well! I have a need for: 
+CSS, Javascript and design are things I know less well! I have a need for:
 
 - Charity website eg Rewilding Sussex
 - Product website eg Broken Link Checker
 - My new company website eg BrightSoft
-- Advice on my wifes [hoverflylagoons.co.uk](https://hoverflylagoons.co.uk) Wordpress site
+- Advice on my wife's [hoverflylagoons.co.uk](https://hoverflylagoons.co.uk) Wordpress site
 - Update personal blogs eg davemateer.com, mateer.dev, peter [animateddata.com](https://www.animateddata.com/)
 
 So it became time to look into the front end again.
@@ -59,12 +59,11 @@ For a products website it could be:
 - Sign up for a newsletter for when it releases (potential customer)
 - Tips on how to use the prouduct (existing customer)
 
-
 ## HTML Template with Jekyll for multi pages sites
 
 [ExperimentingWithCode](https://experimentingwithcode.com/using-a-bootstrap-theme-with-jekyll/) has a good tutorial on splitting up the [Business Casual Bootstrap4 html tempate](https://startbootstrap.com/themes/business-casual/) and using Jekyll.  
 
-Here is [my implementation of his code](https://github.com/djhmateer/dm-startbootstrap-business-casual) which is more towards that current default of [putting scss partials into /_sass](https://jekyllrb.com/docs/assets/)
+[My implementation of his code](https://github.com/djhmateer/dm-startbootstrap-business-casual) which is more towards that current default of [putting scss partials into /_sass](https://jekyllrb.com/docs/assets/)
 
 {% highlight html %}
 {% raw  %}
@@ -130,6 +129,7 @@ Sass allows for variables in CSS.
 business-casual.scss is in the default _sass folder.
 
 /css/main.scss is transformed into /css/main.css which currently isn't minified (but is tiny 1.1k in our case.) Bootstrap4 minified is 23.4k
+
 
 
 
