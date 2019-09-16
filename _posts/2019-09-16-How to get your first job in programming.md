@@ -29,7 +29,6 @@ Messed around with HTML / CSS / Javascript / Python
 ## It's about people
 
 Communication- can you talk to people?
-  Are you 
 Technical skills can be taught/picked up by someone who is interested
 
 ## Are you a good person
@@ -103,10 +102,3 @@ The Joel Test
 ## CV Templates
 
 https://preview.themeforest.net/item/porto-responsive-html5-template/full_screen_preview/4106987?_ga=2.48266853.2118312912.1568632778-1690105632.1568283525
-
-
-
-
-
-
-![alt text](/assets/2019-08-05/1x.jpg "Don't use old phones!"){:width="600px"}
