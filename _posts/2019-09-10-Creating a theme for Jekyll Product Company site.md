@@ -20,7 +20,7 @@ CSS, Javascript and design are things I know less well! I have a need for:
 - Advice on my wife's [hoverflylagoons.co.uk](https://hoverflylagoons.co.uk) Wordpress site
 - Update personal blogs eg davemateer.com, mateer.dev, peter [animateddata.com](https://www.animateddata.com/)
 
-So it became time to look into the front end again. For [commercial projects I like to use boring technology](https://news.ycombinator.com/item?id=20985875) like this link and others on hacker news.
+So it became time to look into the front end again. For [commercial projects I like to use boring technology](https://news.ycombinator.com/item?id=20985875). For a product website the simplest possible thing will be static HTML/CSS:
 
 ## HTML Template for single (long) page site
 
@@ -30,16 +30,17 @@ Static site generators like Jekyll are templating engines predominantly. If you 
 
 Here are my go to sites for templates:
 
-- [Themeforest](https://themeforest.net/category/site-templates)
+- [Themeforest](https://themeforest.net/category/site-templates) - this seems to be the biggest
 - [UICookies.com](https://uicookies.com/) 
 - [ThemeHunt](https://themehunt.com/items/html/corporate-business/latest)
+- [WrapBootstrap.com](https://wrapbootstrap.com/themes/business)
 - [HTML5up.net](https://html5up.net)
 
 The latest style of sites (Bootstrap4 et al.) is to design for mobile first, so longer pages that are easily swipeable are what is happening.
 
 If the site is multi page, or will require a build pipeline I generally go to Jekyll:
 
-Hosting, domain names, SEO, sitemaps, image optinmisation, search are covered elsewhere on my blog.
+[Hosting, domain names, SEO, sitemaps, image optimisation, search]() are covered elsewhere on my blog.
 
 ## Who is the website for
 
@@ -56,13 +57,21 @@ For a charity it could be:
 
 For a products website it could be:
 
-- Try the product quickly (potential customer)
 - Understand what the product does in 3 seconds (potential customer)
+- Try the product quickly (potential customer)
+- Login to use the product (existing customer)
 - Find support (existing customer)
-- Sign up for a newsletter for when it releases (potential customer)
-- Tips on how to use the prouduct (existing customer)
+- Tips on how to use the product (existing customer)
 
-## HTML Template with Jekyll for multi pages sites
+## Choosing a Theme
+
+Some themes make me feel nausious with animations
+SaaS (Software as a Service) is a good keyword
+Landing Page menu heading
+
+
+
+## Jekyll
 
 [ExperimentingWithCode](https://experimentingwithcode.com/using-a-bootstrap-theme-with-jekyll/) has a good tutorial on splitting up the [Business Casual Bootstrap4 html tempate](https://startbootstrap.com/themes/business-casual/) and using Jekyll.  
 
@@ -104,7 +113,7 @@ then the generated css is linked:
 </head>
 ```
 
-This will be minified by the Jekyll Sass build pipeline
+The main.css will be built (but not minified?) by the Jekyll Sass build pipeline
 
 ## Sass / SCSS
 

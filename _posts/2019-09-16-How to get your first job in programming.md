@@ -101,4 +101,7 @@ The Joel Test
 
 ## CV Templates
 
+[Themeforest CV/Resume Templates](https://themeforest.net/category/site-templates/specialty-pages?sort=date&tags=resume,cv&term=resume#content)
+
+
 https://preview.themeforest.net/item/porto-responsive-html5-template/full_screen_preview/4106987?_ga=2.48266853.2118312912.1568632778-1690105632.1568283525
