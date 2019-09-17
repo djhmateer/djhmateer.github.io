@@ -20,7 +20,7 @@ CSS, Javascript and design are things I know less well! I have a need for:
 - Advice on my wife's [hoverflylagoons.co.uk](https://hoverflylagoons.co.uk) Wordpress site
 - Update personal blogs eg davemateer.com, mateer.dev, peter [animateddata.com](https://www.animateddata.com/)
 
-So it became time to look into the front end again.
+So it became time to look into the front end again. For [commercial projects I like to use boring technology](https://news.ycombinator.com/item?id=20985875) like this link and others on hacker news.
 
 ## HTML Template for single (long) page site
 
@@ -31,6 +31,9 @@ Static site generators like Jekyll are templating engines predominantly. If you 
 Here are my go to sites for templates:
 
 - [Themeforest](https://themeforest.net/category/site-templates)
+- [UICookies.com](https://uicookies.com/) 
+- [ThemeHunt](https://themehunt.com/items/html/corporate-business/latest)
+- [HTML5up.net](https://html5up.net)
 
 The latest style of sites (Bootstrap4 et al.) is to design for mobile first, so longer pages that are easily swipeable are what is happening.
 
