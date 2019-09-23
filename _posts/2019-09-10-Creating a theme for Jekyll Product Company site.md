@@ -24,6 +24,7 @@ CSS, Javascript and design are things I know less well! I have a need for:
 So it became time to look into the front end again. For [commercial projects I like to use boring technology](https://news.ycombinator.com/item?id=20985875). For a product website the simplest possible thing will be static HTML/CSS:
 
 ## Write your own CSS
+
 [Website design in 4 minutes hacker news discussion](https://news.ycombinator.com/item?id=12166687) shows a very simple way of starting. Note the strong comments in the disucssion about colour contrast.
 
 ## HTML Template for single (long) page site

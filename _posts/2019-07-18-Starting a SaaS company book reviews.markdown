@@ -57,6 +57,28 @@ I'll aim to put the books in my favourite order
 
 [How to Read a Book: The Classic Guide to Intelligent Reading](https://www.amazon.co.uk/How-Read-Book-Intelligent-Touchstone/dp/0671212095/ref=sr_1_1?crid=BROS949G6GI7&keywords=how+to+read+a+book+the+classic+guide+to+intelligent+reading&qid=1569234864&sprefix=how+to+read+a+book%2Caps%2C150&sr=8-1) is what is says!
 
+## Deep Thinking
+
+I love the idea of deep focus. 
+
+1.Work Deeply
+ focus on wildly important
+ > work with great intensity... Teddy Roosevelt
+
+2.Embrace boredom
+
+3.Quit social media
+
+4.Drain the shalows ie schedule 30min blocks
+quantify the depth of every action eg how long to train someone else to do it?
+learn to say no
+become hard to reach
+dont respond to some emails
+
+get valuable things done
+find places to work deeply
+> I love a focussed life as it is the best kind there is
+
 ## The $100 Startup - Chris Guillebeau
 
 asfd
@@ -223,10 +245,6 @@ I've read this book many times for the sheer enjoyment and inspirational value.
 asdf
 [getbeamer.com SaaS books](https://www.getbeamer.com/blog/top-15-must-read-books-for-saas-founders-for-2019/)  
 
-
-## Deep Thinking
-
-I love the idea of deep focus. Need to find notes on this!
 
 ## Don't Make me Think - Steve Krugg
 
