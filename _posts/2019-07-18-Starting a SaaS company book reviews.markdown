@@ -28,10 +28,9 @@ Learning about any new domain I like to start with books, specifically so I can
 
 The goal of reviewing these books in this 'startup domain' is that I
 
-- Want to start a software startup company (so I can make proper money in the long term for my family, have flexibility to enjoy my kids growing up and be there as a Dad, and because it looks like a lot of fun and a challenge!)  
+- Want to start a software startup company (so I can do what I love, make proper money in the long term for my family, have flexibility to enjoy my kids growing up and be there as a Dad, and because it looks like a lot of fun and a challenge!)  
 
-- Do something in software as I really enjoy `Building Stuff` as opposed to infrastructure which I find more as `Configuring Stuff`
-
+- Do something in software as I really enjoy `Building Stuff` as opposed to infrastructure which I find more like `Configuring Stuff`
 - Want to be as smart as possible so as - not to burn out, not to lose our cash
 - Want to become more social - love speaking at conferences, meeting people, and helping people
 - Want to have a healthy lifestyle (which is not immediately synonymous with running a startup!)
@@ -81,7 +80,22 @@ find places to work deeply
 
 ## The $100 Startup - Chris Guillebeau
 
-asfd
+My commentary: I agree with the author in that he is pushing to do your love/hobby! Most importantly he is focussin the reader on finding out what other peoples problems are and to help them (ideally in that love/hobby area).
+
+Passion and What Others care about -> success
+
+What is your hobby? For me this is programming, and the love of the craft.
+
+What do other people buy?
+
+Find out what other peoples problems are and solve them eg contribute to StackOverflow, go on forums and help people.
+"What can I help you with"?
+
+One page business plan
+140 character mission statement
+
+Launch!
+Self promotion
 
 ## Zero to One - Peter Thiel
 

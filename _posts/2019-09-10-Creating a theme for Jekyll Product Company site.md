@@ -20,7 +20,6 @@ CSS, Javascript and design are things I know less well! I have a need for:
 - Advice on my wife's [hoverflylagoons.co.uk](https://hoverflylagoons.co.uk) Wordpress site
 - Update personal blogs eg davemateer.com, mateer.dev, peter [animateddata.com](https://www.animateddata.com/)
 
-
 So it became time to look into the front end again. For [commercial projects I like to use boring technology](https://news.ycombinator.com/item?id=20985875). For a product website the simplest possible thing will be static HTML/CSS:
 
 ## Write your own CSS
