@@ -58,7 +58,7 @@ I'll aim to put the books in my favourite order
 
 ## Deep Thinking
 
-I love the idea of deep focus. 
+I love the idea of deep focus.  
 
 1.Work Deeply
  focus on wildly important
@@ -77,6 +77,24 @@ dont respond to some emails
 get valuable things done
 find places to work deeply
 > I love a focussed life as it is the best kind there is
+
+## Bootstrappers Handbook
+
+[Bootstrappers Handbook - makebook.io](https://makebook.io/)
+
+1.Idea
+
+2.Build
+
+3.Launch
+
+4.Grow
+
+5.Monetise
+
+6.Automate
+
+7.Exit
 
 ## The $100 Startup - Chris Guillebeau
 
