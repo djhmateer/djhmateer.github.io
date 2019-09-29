@@ -152,3 +152,29 @@ private static int GetMiddleNameLength(Person? person)
     return person?.MiddleName is { Length: var length } ? length : 0;
 ```
 
+## Dammit Operator!
+Not allowed to call it dammit operator. Null ignoring operator.
+
+```cs
+var middle = person.MiddleName;
+// null ignoring operator
+return middle!.Length;
+```
+
+## Turn off warnings
+Can turn off at a file level
+
+```cs
+#nullable disable
+```
+But if we want to have nullable reference types eg
+
+```cs
+#nullable disable warnings
+// #nullable disable annotations
+public string? MiddleName { get; set; }
+```
+but disable the warnings we need disable warnings.
+
+So this is how we can take chunks of code and get warnings bit by bit.
+
