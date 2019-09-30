@@ -9,7 +9,6 @@ comments: false
 sitemap: false
 image: /assets/2019-08-05/1.jpg
 ---
-
 C#8 runs on .NET Core 3 and both are installed with Visual Studio 16.3
 
 [Mads Torgersen at dotnetconf](https://www.youtube.com/watch?v=TJiLhRPgyq4&list=PLReL099Y5nRd04p81Q7p5TtyjCrj9tz1t&index=3&t=0s) shows a good demo.
@@ -172,6 +171,7 @@ Can turn off at a file level
 ```cs
 #nullable disable
 ```
+
 But if we want to have nullable reference types eg
 
 ```cs
@@ -183,3 +183,45 @@ public string? MiddleName { get; set; }
 but disable the warnings we need disable warnings.
 
 So this is how we can take chunks of code and get warnings bit by bit.
+
+## Bill Wagner Part 2
+
+[YouTube](
+https://www.youtube.com/watch?v=fhf8N4004u0&list=PLReL099Y5nRd04p81Q7p5TtyjCrj9tz1t&index=5&t=11s) part 2
+
+## AsyncIterators
+
+```cs
+await foreach (var number in GenerateSequence())
+{
+    Console.WriteLine($"The time is ... {number}");
+}
+
+```
+
+Pattern Matching
+
+Matching on a type
+using switch statements
+  useful for boolean rules _
+
+Default Interface Members
+
+Indices and Ranges
+
+hat 1 is the last element in the sequenece.
+
+Using statments
+Can remove the { }
+
+Static Local Functions
+ReadOnly local members
+  if not supposed to change state then can put on
+NullCoalescingAssignment
+
+```cs
+  numbers ??= new List<int>();
+```
+
+
+
