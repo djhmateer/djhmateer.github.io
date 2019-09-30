@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Whats new in C#8
+title: Nullale Reference Types in C#8
 description: 
 menu: review
 categories: C# 
@@ -15,6 +15,7 @@ C#8 runs on .NET Core 3 and both are installed with Visual Studio 16.3
 [Mads Torgersen at dotnetconf](https://www.youtube.com/watch?v=TJiLhRPgyq4&list=PLReL099Y5nRd04p81Q7p5TtyjCrj9tz1t&index=3&t=0s) shows a good demo.
 
 ## Null Debugger Message
+
 Error messages now show what is null
 
 ![alt text](/assets/2019-09-29/1.jpg "Shows where null actually is"){:width="400px"}
@@ -51,7 +52,8 @@ class Person
 }
 ```
 
-## Enable Nullable Reference Types 
+## Enable Nullable Reference Types
+
 In the .csproj file (edit by double clicking on the file) add in a <Nullable> section which is enabled. This featured is disabled by default.
 
 ```xml
@@ -72,6 +74,7 @@ Then we'll get a compiler warning:
 > Warning CS8618 Non-nullable property 'MiddleName' is uninitialized. Consider declaring the property as nullable.	ConsoleApp1	
 
 ## Nullable Reference Types
+
 [One of the differences between value types and reference types is that value types are not nullable while reference types are nullable](https://www.telerik.com/blogs/c-8-nullable-references)
 
 We could have:
@@ -153,6 +156,7 @@ private static int GetMiddleNameLength(Person? person)
 ```
 
 ## Dammit Operator!
+
 Not allowed to call it dammit operator. Null ignoring operator.
 
 ```cs
@@ -162,6 +166,7 @@ return middle!.Length;
 ```
 
 ## Turn off warnings
+
 Can turn off at a file level
 
 ```cs
@@ -174,7 +179,7 @@ But if we want to have nullable reference types eg
 // #nullable disable annotations
 public string? MiddleName { get; set; }
 ```
+
 but disable the warnings we need disable warnings.
 
 So this is how we can take chunks of code and get warnings bit by bit.
-
