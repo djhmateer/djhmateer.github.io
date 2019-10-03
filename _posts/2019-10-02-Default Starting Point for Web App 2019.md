@@ -474,3 +474,237 @@ public ActionResult Get(
     return Ok();
 }
 ```
+
+## Blazor Modal Popup
+
+Lets make a component (reusable)
+
+/Components
+
+Add new Razor Component
+
+```html
+<!-- ProductList.razor -->
+using Microsoft.AspNetCore.Components.Web
+@using DMCrafts.WebSite.Models
+@using DMCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+<div class="card-columns">
+    @foreach (var product in ProductService.GetProducts())
+    {
+        <div class="card">
+            <div class="card-img" style="background-image: url('@product.Image')"></div>
+            <div class="card-body">
+                <h5 class="card-title">@product.Title</h5>
+            </div>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                <button @onclick="(e => SelectProduct(product.Id))"
+                        data-toggle="modal" data-target="#productModal" class="btn btn-primary">More Info</button>
+
+            </small>
+        </div>
+    }
+</div>
+@code {
+    Product selectProduct;
+    string selectProductId;
+
+    void SelectProduct(string productId)
+    {
+        selectProductId = productId;
+        selectProduct = ProductService.GetProducts().First(x => x.Id == productId);
+    }
+}
+
+```
+
+This is a blazor component
+
+```cs
+// ConfigureServices
+services.AddServerSideBlazor();
+
+// Configure
+endpoints.MapBlazorHub();
+```
+wiring up in startup.cs
+
+```html
+<!-- index.html -->
+@(await Html.RenderComponentAsync<ProductList>(RenderMode.ServerPrerendered))
+
+<script src="_framework/blazor.server.js"></script>
+```
+
+at the end of index.html patching in our blazor component, and the javascript file to make updates happen.
+
+
+Pin the productId
+
+![alt text](/assets/2019-10-01/1.jpg "Pinning"){:width="600px"}
+
+Making a modal popup using bootstrap
+
+![alt text](/assets/2019-10-01/2.jpg "Modal working"){:width="600px"}
+
+Wow so it is working and displaying the correct product in the modal popup. Without writing any javascript.
+
+## Add in Star Rating System
+
+Fontawesome class for star glyphs
+
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+Databinding - just change the variable.
+
+DB gets updated
+
+```html
+@using Microsoft.AspNetCore.Components.Web
+@using DMCrafts.WebSite.Models
+@using DMCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+
+
+<div class="card-columns">
+    @foreach (var product in ProductService.GetProducts())
+    {
+        <div class="card">
+            <div class="card-img" style="background-image: url('@product.Image')"></div>
+            <div class="card-body">
+                <h5 class="card-title">@product.Title</h5>
+            </div>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                <button @onclick="(e => SelectProduct(product.Id))"
+                        data-toggle="modal" data-target="#productModal" class="btn btn-primary">
+                    More Info
+                </button>
+            </small>
+
+        </div>
+    }
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@if (selectedProduct != null)
+{
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productTitle">@selectedProduct.Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('@selectedProduct.Image');">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@selectedProduct.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @if (voteCount == 0)
+                        {
+                            <span>Be the first to vote!</span>
+                        }
+                        else
+                        {
+                            <span>@voteCount @voteLabel</span>
+                        }
+                        @for (int i = 1; i < 6; i++)
+                        {
+                            var currentStar = i;
+                            if (i <= currentRating)
+                            {
+                                <span class="fa fa-star checked" @onclick="(e => SubmitRating(currentStar))"></span>
+                            }
+                            else
+                            {
+                                <span class="fa fa-star" @onclick="(e => SubmitRating(currentStar))"></span>
+                            }
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    Product selectedProduct;
+    // State managed on the server
+    string selectedProductId;
+
+    void SelectProduct(string productId)
+    {
+        selectedProductId = productId;
+        selectedProduct = ProductService.GetProducts().First(x => x.Id == productId);
+        GetCurrentRating();
+    }
+
+    int currentRating = 0;
+    int voteCount = 0;
+    string voteLabel;
+
+    void GetCurrentRating()
+    {
+        if(selectedProduct.Ratings == null)
+        {
+            currentRating = 0;
+            voteCount = 0;
+        }
+        else
+        {
+            voteCount = selectedProduct.Ratings.Count();
+            voteLabel = voteCount > 1 ? "Votes" : "Vote";
+            // average
+            currentRating = selectedProduct.Ratings.Sum() / voteCount;
+        }
+
+        System.Console.WriteLine($"Current rating for {selectedProduct.Id}: {currentRating}");
+    }
+
+    void SubmitRating(int rating)
+    {
+        System.Console.WriteLine($"Rating received for {selectedProduct.Id}: {rating}");
+        ProductService.AddRating(selectedProductId, rating);
+        SelectProduct(selectedProductId);
+    }
+}
+```
+
+epic!
+
+## Publish
+
+Right click, Publish, DMCrafts
+
+Target Framework
+Deployment Mode: Self-Contained
+Target Runtime: win-x86
+
+https://dmcrafts.azurewebsites.net/
+
+fork this maybe (7 people have already)
+https://github.com/dotnet-presentations/ContosoCrafts
+
+https://dotnet.microsoft.com/
+Learn
+ this is where the videos are
+
+Community
+https://dotnet.microsoft.com/platform/community
+
+https://gitter.im/aspnet/Home
+
+https://discordapp.com/channels/143867839282020352/276477384780152834
+
