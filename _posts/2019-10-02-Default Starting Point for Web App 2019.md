@@ -318,6 +318,7 @@ ul {
     background: linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
 }
 ```
+
 Pages/Shared/
  _Layout.cshtml
 
@@ -330,4 +331,146 @@ patching in google fonts (under site.css in the _Layout.cshtml)
 
 also made some changes to the header to make it look nicer (colours)
 
+## An API
 
+endpoints are a bit more flexible than routes.
+
+This is low level (doing it in startup.cs)
+
+```cs
+// not an ideal way to create an API but good to see
+endpoints.MapGet("/products", context =>
+{
+    var products = app.ApplicationServices.GetService<JsonFileProductService>().GetProducts();
+    var json = JsonSerializer.Serialize<IEnumerable<Product>>(products);
+    return context.Response.WriteAsync(json);
+});
+```
+
+[jsonview.com chrome extension](https://jsonview.com/) but that didn't work for me. [this one did JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
+
+## ProductsController API
+
+/Controllers/ProductsController.cs
+Add, New Controller, Scafflow Empty Controller
+
+So now we get /api/products/1
+
+```cs
+[Route("[controller]")]
+[ApiController]
+public class ProductsController : ControllerBase
+{
+    public JsonFileProductService ProductService { get; }
+
+    public ProductsController(JsonFileProductService productService)
+    {
+        ProductService = productService;
+    }
+
+    [HttpGet]
+    public IEnumerable<Product> Get()
+    {
+        // default is to return json (do in startup)
+        return ProductService.GetProducts();
+    }
+}
+```
+changed it to /products
+
+then have to wire this up in startup (as we've been in Razor pages and now need to tell startup about Controller)
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddRazorPages();
+    // only add what we need ie just controllers
+    services.AddControllers();
+    // singleton would be only one of these services
+    // transient comes and goes.. geta
+    services.AddTransient<JsonFileProductService>();
+}
+
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Error");
+        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+        app.UseHsts();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+
+    app.UseRouting();
+
+    app.UseAuthorization();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapRazorPages();
+        endpoints.MapControllers();
+```
+
+AddControllers in ConfigureServices, and endpoints.MapControllers in Configure.
+
+## Ratings API
+
+AddRating function
+
+-Get - get information
+-Post - insert a new record
+-Put - update a record
+-Patch - update a little bit of a record
+
+```cs
+
+public void AddRating(string productId, int rating)
+{
+    var products = GetProducts();
+
+    var product = products.First(x => x.Id == productId);
+
+    if (product.Ratings is null)
+        product.Ratings = new int[] { rating };
+    else
+    {
+        var ratings = product.Ratings.ToList();
+        ratings.Add(rating);
+        product.Ratings = ratings.ToArray();
+    }
+
+    using var outputStream = File.OpenWrite(JsonFileName);
+    JsonSerializer.Serialize(
+        new Utf8JsonWriter(outputStream, new JsonWriterOptions
+        {
+            SkipValidation = true,
+            Indented = true
+        }),
+        products
+    );
+}
+```
+
+modified code from the video that adds a rating if none there already, then serialises it out to file.
+
+```cs
+// https://localhost:44341/products/rate?ProductId=jenlooper-cactus&rating=5
+[HttpGet]
+[Route("Rate")]
+public ActionResult Get(
+    [FromQuery]string productId, 
+    [FromQuery]int rating)
+{
+    ProductService.AddRating(productId, rating);
+
+    // returns a 200
+    return Ok();
+}
+```
