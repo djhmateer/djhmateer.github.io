@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Default starting point for Web App 2019 
+title: Starting point for Web App in 2019 and Blazor?
 description: 
 menu: review
 categories: .NET Stadards JSON
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2019-08-05/1.jpg
+image: /assets/2019-10-03/3.jpg
 ---
 
 [Scott Hanselman](https://twitter.com/shanselman) and [Leslie Richardson](https://twitter.com/lyrichardson01) have made a surprisingly in-depth 'beginners tutorial' on ASP.NET Core 3.0 covering:
@@ -18,16 +18,26 @@ image: /assets/2019-08-05/1.jpg
 - Creating an API
 - Server Side Blazor
 
-[The Youtube video series is here](https://www.youtube.com/watch?v=lE8NdaX97m0&list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy&index=2&t=0s) and source is [here github.com/dotnet-presentations/ContosoCrafts](https://github.com/dotnet-presentations/ContosoCrafts). I've got my private repo [DMCrafts on Bitbucket](https://bitbucket.org/davemateer/dmcrafts/src/master/). [Ping me on Twitter](https://twitter.com/djhmateer) if you'd like to see it.
+[The Youtube video series is here](https://www.youtube.com/watch?v=lE8NdaX97m0&list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy&index=2&t=0s) and source is [here on github.com/dotnet-presentations/ContosoCrafts](https://github.com/dotnet-presentations/ContosoCrafts). I've got my test repo [DMCrafts on Bitbucket](https://bitbucket.org/davemateer/dmcrafts/src/master/).
 
 ## Naming Standards
 
-I like how they name the:
+I like how they name initial solution and project:
 
 -Solution: DMContosoCrafts  
 -Web Project: DMContosoCrafts.Website
 
-It is not overly complicated
+![alt text](/assets/2019-10-03/5.jpg "Files"){:width="200px"}
+I like where things are:
+
+- wwwroot for anything static
+- Components for razor components used in server side blazor
+- Controllers for API Controllers
+- Models for our C# representation of domain objects
+- Pages for the dynamic .cshtml razor pages
+- Services for 'resposity' style data access
+
+
 
 [I talked about my SQL Standards here](/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL)
 
@@ -672,16 +682,21 @@ DB gets updated
 }
 ```
 
-epic!
+![alt text](/assets/2019-10-03/4.jpg "Stars working"){:width="600px"}  
+
+Epic! We have a:
+
+- Modal popup being passed the correct data with no javascript nor page refresh
+- A voting system with ajax like funcitonality with no javascript nor custom webservice
 
 ## Publish to Azure
 
 I deployed to an Azure App Service (Windows) using the VS2019 UI: Right click, Publish, DMCrafts
 
-I needed to set:  
+I needed to set in the pubish settings:
 
--Deployment Mode: Self-Contained
--Target Runtime: win-x86
+- Deployment Mode: Self-Contained
+- Target Runtime: win-x86
 
 [dmcrafts.azurewebsite.net](https://dmcrafts.azurewebsites.net/) is where I published this app
 
@@ -689,17 +704,16 @@ I needed to set:
 
 ## More Information
 
-[dotnet.microsoft.com](https://dotnet.microsoft.com/) is where the vidoes are (learn)
+[dotnet.microsoft.com](https://dotnet.microsoft.com/) is where these vidoes are (learn)
 
-[dotnet.microsoft.com/platform/community](https://dotnet.microsoft.com/platform/community)
+[dotnet.microsoft.com/platform/community](https://dotnet.microsoft.com/platform/community) is links to all the community related things eg: [gitter.im/aspnet](https://gitter.im/aspnet/Home) and [discordapp.com](https://discordapp.com/channels/143867839282020352/276477384780152834)
 
-[gitter.im/aspnet](https://gitter.im/aspnet/Home)
-
-[discordapp.com](https://discordapp.com/channels/143867839282020352/276477384780152834)
+[dotnetconf videos on youtube - blazor videos here](https://www.youtube.com/playlist?list=PLReL099Y5nRd04p81Q7p5TtyjCrj9tz1t)
 
 ## Summary
 
 - ASP.NET Core 3.0 Razor Pages app
+- Deployed to Windows Azure PaaS
 - JSON data store
 - System.Text.Serialization new serializer
 - C#8 Features (using declaration)
