@@ -3,16 +3,16 @@ layout: post
 title: Default starting point for Web App 2019 
 description: 
 menu: review
-categories: .NET Stadards
+categories: .NET Stadards JSON
 published: true 
 comments: false     
 sitemap: false
 image: /assets/2019-08-05/1.jpg
 ---
 
-[Scott Hanselman](https://twitter.com/shanselman) and [Leslie Richardson](https://twitter.com/lyrichardson01) have made a surprisingly in depth 'beginners tutorial' on ASP.NET Core 3.0 covering:
+[Scott Hanselman](https://twitter.com/shanselman) and [Leslie Richardson](https://twitter.com/lyrichardson01) have made a surprisingly in-depth 'beginners tutorial' on ASP.NET Core 3.0 covering:
 
-- Naming conventions
+- Naming
 - The new json serialiser
 - Razor Pages
 - Creating an API
@@ -22,8 +22,12 @@ image: /assets/2019-08-05/1.jpg
 
 ## Naming Standards
 
-Solution: DMContosoCrafts  
-Project: DMContosoCrafts.Website
+I like how they name the:
+
+-Solution: DMContosoCrafts  
+-Web Project: DMContosoCrafts.Website
+
+It is not overly complicated
 
 [I talked about my SQL Standards here](/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL)
 
@@ -36,11 +40,11 @@ To add a .gitignore file press the button in VisualStudio
 wwwroot (static stuff)
 Graphics css etc
  
-Add new File [(Shift+F2) extension from Mads Kristensen](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile) is an invaluable extension.
+Add new File [(Shift+F2) extension from Mads Kristensen](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile) is useful.
 
-## Json
+## JSON
 
-We are going to be using json as a datastore, and the new json serialiser `System.Text.Serialization`
+We are going to be using a JSON file as a datastore, using the new serialiser `System.Text.Serialization`
 
 ```json
  {
@@ -55,7 +59,7 @@ We are going to be using json as a datastore, and the new json serialiser `Syste
 
 ```
 
-The json data we will be looking at stored in  `wwwroot/data/products.json`
+The data we will be looking at and updating is stored in  `wwwroot/data/products.json`
 
 ```cs
 public class Product
@@ -81,8 +85,7 @@ Our C# representation of the Product stored in `Models/Product.cs`
 
 ## Services
 
-I want something.. don't care how you do it. SRP
-Services/JsonFileProductService.cs
+I use a services folder to store my Repositories (when using a db). So using the Single Responsibility Principle, here we are just getting the products from the products.json file.
 
 ```cs
 namespace DMCrafts.WebSite.Services
@@ -117,11 +120,13 @@ namespace DMCrafts.WebSite.Services
 }
 ```
 
+`Services/JsonFileProductService.cs`
+
 ## Razor Pages
 
-Lets display the data on the `index.cshtml` (csharp html)
+Lets display the data on the `index.cshtml` (csharp html)  
 
-Logging is a service that is made available by ASP.NET
+Logging is a service that is made available by ASP.NET and is injected in. Below we are injecting in our service created above.
 
 ```cs
 public class IndexModel : PageModel
@@ -148,7 +153,7 @@ public class IndexModel : PageModel
 }
 ```
 
-Wiring up our product service inside the index.cshtml.cs code behind. todo - refactor this!
+Wiring up our product service inside the index.cshtml.cs code behind.
 
 ```html
 <div class="card-columns">
@@ -325,11 +330,9 @@ patching in google fonts (under site.css in the _Layout.cshtml)
 
 also made some changes to the header to make it look nicer (colours)
 
-## An API
+## A Low Level API
 
-endpoints are a bit more flexible than routes.
-
-This is low level (doing it in startup.cs)
+Endpoints are a bit more flexible than routes, however this is low level (doing it in startup.cs)
 
 ```cs
 // not an ideal way to create an API but good to see
@@ -343,12 +346,11 @@ endpoints.MapGet("/products", context =>
 
 [jsonview.com chrome extension](https://jsonview.com/) but that didn't work for me. [this one did JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
 
-## ProductsController API
+## Route ProductsController API
 
-/Controllers/ProductsController.cs
-Add, New Controller, Scafflow Empty Controller
+`/Controllers/ProductsController.cs` Add, New Controller, Scaffold Empty Controller
 
-So now we get /api/products/1
+So now we get by default /api/products, however below we have /products
 
 ```cs
 [Route("[controller]")]
@@ -371,9 +373,7 @@ public class ProductsController : ControllerBase
 }
 ```
 
-changed it to /products
-
-then have to wire this up in startup (as we've been in Razor pages and now need to tell startup about Controller)
+Then have to wire this up in startup (as we've been in Razor pages and now need to tell startup about Controller)
 
 ```cs
 public void ConfigureServices(IServiceCollection services)
@@ -425,7 +425,6 @@ AddRating function
 -Patch - update a little bit of a record
 
 ```cs
-
 public void AddRating(string productId, int rating)
 {
     var products = GetProducts();
@@ -453,7 +452,7 @@ public void AddRating(string productId, int rating)
 }
 ```
 
-modified code from the video that adds a rating if none there already, then serialises it out to file.
+Modified code from the video that adds a rating if none there already, then serialises it out to file.
 
 ```cs
 // https://localhost:44341/products/rate?ProductId=jenlooper-cactus&rating=5
@@ -470,13 +469,11 @@ public ActionResult Get(
 }
 ```
 
-## Blazor Modal Popup
+## Blazor
 
-Lets make a component (reusable)
+Lets make a component (reusable) by first taking the card into a Blazor Component, then adding SPA like functionality to press a button and it increments the star rating.
 
-`Components/ProductsList.razor`
-
-Add new Razor Component
+`Components/ProductsList.razor` Add new Razor Component
 
 ```html
 <!-- ProductList.razor -->
@@ -497,7 +494,6 @@ using Microsoft.AspNetCore.Components.Web
             <small class="text-muted">
                 <button @onclick="(e => SelectProduct(product.Id))"
                         data-toggle="modal" data-target="#productModal" class="btn btn-primary">More Info</button>
-
             </small>
         </div>
     }
@@ -512,10 +508,9 @@ using Microsoft.AspNetCore.Components.Web
         selectProduct = ProductService.GetProducts().First(x => x.Id == productId);
     }
 }
-
 ```
 
-This is a blazor component
+This is a razor component
 
 ```cs
 // ConfigureServices
@@ -524,7 +519,8 @@ services.AddServerSideBlazor();
 // Configure
 endpoints.MapBlazorHub();
 ```
-wiring up in startup.cs
+
+Wiring up Blazor in startup.cs
 
 ```html
 <!-- index.html -->
@@ -533,7 +529,7 @@ wiring up in startup.cs
 <script src="_framework/blazor.server.js"></script>
 ```
 
-at the end of index.html patching in our blazor component, and the javascript file to make updates happen.
+At the end of index.html here we are patching in our blazor component, and the javascript file to make updates happen.
 
 Pin the productId
 
@@ -680,11 +676,12 @@ epic!
 
 ## Publish to Azure
 
-Right click, Publish, DMCrafts
+I deployed to an Azure App Service (Windows) using the VS2019 UI: Right click, Publish, DMCrafts
 
-Target Framework
-Deployment Mode: Self-Contained
-Target Runtime: win-x86
+I needed to set:  
+
+-Deployment Mode: Self-Contained
+-Target Runtime: win-x86
 
 [dmcrafts.azurewebsite.net](https://dmcrafts.azurewebsites.net/) is where I published this app
 
@@ -700,3 +697,10 @@ Target Runtime: win-x86
 
 [discordapp.com](https://discordapp.com/channels/143867839282020352/276477384780152834)
 
+## Summary
+
+-ASP.NET Core 3.0 Razor Pages app
+-JSON data store
+-System.Text.Serialization new serializer
+-C#8 Features (using declaration)
+-Server Side Blazor to give AJAX like interactivity without the need for a custom webservice or any javascript
