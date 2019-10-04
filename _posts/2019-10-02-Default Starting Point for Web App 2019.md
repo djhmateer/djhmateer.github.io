@@ -3,24 +3,29 @@ layout: post
 title: Default starting point for Web App 2019 
 description: 
 menu: review
-categories: .NET 
+categories: .NET Stadards
 published: true 
 comments: false     
 sitemap: false
 image: /assets/2019-08-05/1.jpg
 ---
 
-https://www.youtube.com/watch?v=lE8NdaX97m0&list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy&index=2&t=0s
+[Scott Hanselman](https://twitter.com/shanselman) and [Leslie Richardson](https://twitter.com/lyrichardson01) have made a surprisingly in depth 'beginners tutorial' on ASP.NET Core 3.0 covering:
 
-https://github.com/dotnet-presentations/ContosoCrafts
+- Naming conventions
+- The new json serialiser
+- Razor Pages
+- Creating an API
+- Server Side Blazor
 
-## Naming
+[The Youtube video series is here](https://www.youtube.com/watch?v=lE8NdaX97m0&list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy&index=2&t=0s) and source is [here github.com/dotnet-presentations/ContosoCrafts](https://github.com/dotnet-presentations/ContosoCrafts). I've got my private repo [DMCrafts on Bitbucket](https://bitbucket.org/davemateer/dmcrafts/src/master/). [Ping me on Twitter](https://twitter.com/djhmateer) if you'd like to see it.
 
-Project:
-DMContosoCrafts.WebSite
+## Naming Standards
 
-Solution:
-DMContosoCrafts
+Solution: DMContosoCrafts  
+Project: DMContosoCrafts.Website
+
+[I talked about my SQL Standards here](/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL)
 
 ## Add to Source Control
 
@@ -31,18 +36,11 @@ To add a .gitignore file press the button in VisualStudio
 wwwroot (static stuff)
 Graphics css etc
  
-wwwroot/data
-  products.json
+Add new File [(Shift+F2) extension from Mads Kristensen](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile) is an invaluable extension.
 
-Add new File (Shift+F2) extension
-https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile
+## Json
 
-Models
-  Product.cs
-
-## json
-
-Going to be using json as a datastore, and the new json serialiser `System.Text.Serialization`
+We are going to be using json as a datastore, and the new json serialiser `System.Text.Serialization`
 
 ```json
  {
@@ -57,11 +55,9 @@ Going to be using json as a datastore, and the new json serialiser `System.Text.
 
 ```
 
-The data we will be looking at.
-
+The json data we will be looking at stored in  `wwwroot/data/products.json`
 
 ```cs
-
 public class Product
 {
     public string Id { get; set; }
@@ -81,10 +77,12 @@ public class Product
 }
 ```
 
-## Service
+Our C# representation of the Product stored in `Models/Product.cs`
+
+## Services
 
 I want something.. don't care how you do it. SRP
-Services/ folder
+Services/JsonFileProductService.cs
 
 ```cs
 namespace DMCrafts.WebSite.Services
@@ -121,7 +119,7 @@ namespace DMCrafts.WebSite.Services
 
 ## Razor Pages
 
-Lets display the data on the index.cshtml (csharp html)
+Lets display the data on the `index.cshtml` (csharp html)
 
 Logging is a service that is made available by ASP.NET
 
@@ -129,7 +127,6 @@ Logging is a service that is made available by ASP.NET
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-    //private readonly JsonFileProductService _productService;
 
     public JsonFileProductService ProductService;
 
@@ -142,7 +139,6 @@ public class IndexModel : PageModel
     {
         _logger = logger;
         ProductService = productService;
-        //_productService = productService;
     }
 
     public void OnGet()
@@ -180,8 +176,6 @@ then woring on the css whichs sits on top of bootstrap:
   cursor: pointer;
 }
 
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
 .card-columns .card:hover .card-img {
     opacity: 1;
     -webkit-transform-style: preserve-3d;
@@ -324,7 +318,7 @@ Pages/Shared/
 
 ```html
 <link href="https://fonts.googleapis.com/css?family=Yellowtail&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 ```
 
 patching in google fonts (under site.css in the _Layout.cshtml)
@@ -376,6 +370,7 @@ public class ProductsController : ControllerBase
     }
 }
 ```
+
 changed it to /products
 
 then have to wire this up in startup (as we've been in Razor pages and now need to tell startup about Controller)
@@ -479,7 +474,7 @@ public ActionResult Get(
 
 Lets make a component (reusable)
 
-/Components
+`Components/ProductsList.razor`
 
 Add new Razor Component
 
@@ -539,7 +534,6 @@ wiring up in startup.cs
 ```
 
 at the end of index.html patching in our blazor component, and the javascript file to make updates happen.
-
 
 Pin the productId
 
@@ -684,7 +678,7 @@ DB gets updated
 
 epic!
 
-## Publish
+## Publish to Azure
 
 Right click, Publish, DMCrafts
 
@@ -692,19 +686,17 @@ Target Framework
 Deployment Mode: Self-Contained
 Target Runtime: win-x86
 
-https://dmcrafts.azurewebsites.net/
+[dmcrafts.azurewebsite.net](https://dmcrafts.azurewebsites.net/) is where I published this app
 
-fork this maybe (7 people have already)
-https://github.com/dotnet-presentations/ContosoCrafts
+[github.com/dotnet-presentations/ContosoCrafts](https://github.com/dotnet-presentations/ContosoCrafts) is where the original code is.
 
-https://dotnet.microsoft.com/
-Learn
- this is where the videos are
+## More Information
 
-Community
-https://dotnet.microsoft.com/platform/community
+[dotnet.microsoft.com](https://dotnet.microsoft.com/) is where the vidoes are (learn)
 
-https://gitter.im/aspnet/Home
+[dotnet.microsoft.com/platform/community](https://dotnet.microsoft.com/platform/community)
 
-https://discordapp.com/channels/143867839282020352/276477384780152834
+[gitter.im/aspnet](https://gitter.im/aspnet/Home)
+
+[discordapp.com](https://discordapp.com/channels/143867839282020352/276477384780152834)
 

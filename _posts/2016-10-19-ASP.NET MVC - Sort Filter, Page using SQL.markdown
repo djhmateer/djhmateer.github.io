@@ -2,29 +2,34 @@
 layout: post
 title:  "Best practices for Sort, Filter, Page using MSSQL and ASP.NET MVC"
 #menu: review
-categories: SQL Dapper
+categories: SQL Dapper Standards
 published: true
 redirect_from: "/jekyll/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL.html"
 sitemap: true
+comments: true
 ---
 
 This post more than any other, is for me to remember how I like to name things, and how to setup a high performance web application with large amounts of data needing queried in MSSQL. The example shows ASP.NET MVC whereas today I'd probably use Razor Pages on ASP.NET Core 2.0.
 
 ## Summary
+
 * Name things consistently 
 * Make SQL do the heavy lifting of: Sorting, Filtering, Paging.  
 * Keep data access as simple
 * [Source on Github](https://github.com/djhmateer/thinkbooks)
 
 ## Background
+
 I've been writing business apps for 16 years, with the last 10 being on MSSQL with ASP.NET.  What I've noticed is that my applications are much simpler and more performant if I **leave data manipulation to the database**
 
 ## Example App
+
 * ASP.NET MVC app
 * Service layer (DAL) - Repository pattern
-* MSSQL 
+* MSSQL
  
 ## Conventions
+
 **Singular Table Names**
 {% highlight sql %}
 CREATE TABLE [dbo].[Author] (
@@ -74,11 +79,13 @@ RESTful resources are mostly plural eg [Spotify API](https://developer.spotify.c
 {% endhighlight %}
 
 ## Use Full Blown SQL
+
 If performance is an issue from the start use full SQL on your Dev machine (or whatever version you'll run in Prod) and a way of [loading real data fast](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) using [Fastmember](https://github.com/mgravell/fast-member) is a very good start compared to Datatables.. Full SQL means you will be able to use Database Engine Tuning Advisor to help with indexes.
 
 [MiniProfiler has helped me a lot](/miniprofiler/2016/11/01/MiniProfiler.html) to quantify performance.
 
-## No Linq? 
+## No Linq
+
 For the next sections see a [Repository](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Services/AuthorsRepository.cs) of Authors
 
 For this project I found using SQL and Dapper to be perfect. I didn't need linq. Linq may have been much more handy with a smaller dataset, and where performance wasn't critical.
@@ -86,6 +93,7 @@ For this project I found using SQL and Dapper to be perfect. I didn't need linq.
 I found that for large datasets using dynamic sql with parameterised variables to be incredibly performant and flexible. In the code above you'll notice an inline variable sanitizedSortColumn. 
 
 ## Ordering
+
 [CASE strategy works](https://dba.stackexchange.com/a/9115/29091) but it doesn't [use indexes](https://stackoverflow.com/questions/1497181/sql-server-doesnt-use-index-in-stored-procedure). 
 
 The solution is to use plain old SQL (with all the usual caveats about SQL injection!)
@@ -93,6 +101,7 @@ The solution is to use plain old SQL (with all the usual caveats about SQL injec
 I found that if you are constrained in a large organisation, then sp_executesql works well if you 'have to use SP's'!
 
 ## Paging
+
 SQL2005 - CTE's works  
 SQL2012 and greater - ORDER BY OFFSET FETCH seems to perform better 
 
@@ -111,13 +120,13 @@ var sql = @"
 
 [Full code](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Services/AuthorsRepository.cs)
 
-
 ## Counting
+
 Counts are expensive. [Some background information](http://www.sqlservercentral.com/blogs/spaghettidba/2015/05/18/counting-the-number-of-rows-in-a-table/)
 
 I've used the following technique on large tables which gives blazing fast performance
 
-```
+```sql
 -- If we are are just want to know how many rows are in the entire tables really quickly
 if (authorIDFilter == null && dateOfBirthFilter == null && firstNameFilter.IsNullOrWhiteSpace() && lastNameFilter.IsNullOrWhiteSpace())
 {
@@ -144,4 +153,5 @@ else
 If you are counting over multiple tables and are having daily jobs running running.  Do the processing and put total main query count into a helper table.
 
 ## How to handle the Front End
+
 [Keeping filters sticky, Paging, Keeping the URL clean](https://github.com/djhmateer/thinkbooks/blob/master/ThinkBooksWebsite/Controllers/AuthorsController.cs) and more are more easily explained by looking at this example.
