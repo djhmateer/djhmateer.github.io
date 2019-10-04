@@ -533,11 +533,11 @@ At the end of index.html here we are patching in our blazor component, and the j
 
 Pin the productId
 
-![alt text](/assets/2019-10-01/1.jpg "Pinning"){:width="600px"}
+![alt text](/assets/2019-10-03/1.jpg "Pinning"){:width="600px"}
 
 Making a modal popup using bootstrap
 
-![alt text](/assets/2019-10-01/2.jpg "Modal working"){:width="600px"}
+![alt text](/assets/2019-10-03/2.jpg "Modal working"){:width="600px"}
 
 Wow so it is working and displaying the correct product in the modal popup. Without writing any javascript.
 
@@ -699,8 +699,8 @@ I needed to set:
 
 ## Summary
 
--ASP.NET Core 3.0 Razor Pages app
--JSON data store
--System.Text.Serialization new serializer
--C#8 Features (using declaration)
--Server Side Blazor to give AJAX like interactivity without the need for a custom webservice or any javascript
+- ASP.NET Core 3.0 Razor Pages app
+- JSON data store
+- System.Text.Serialization new serializer
+- C#8 Features (using declaration)
+- Server Side Blazor to give AJAX like interactivity without the need for a custom webservice or any javascript
