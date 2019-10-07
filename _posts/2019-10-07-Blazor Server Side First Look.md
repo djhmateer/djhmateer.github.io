@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Blazor Server Side 
+title: Blazor Server Side - First Look
 description: 
 menu: review
-categories: .NET 
+categories: .NET  Blazor
 published: true 
 comments: false     
 sitemap: false
