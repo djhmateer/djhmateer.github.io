@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Blazor Server Side - First Look
+title: how does Blazor Server Side work 
 description: 
 menu: review
 categories: .NET  Blazor
@@ -11,10 +11,9 @@ image: /assets/2019-08-05/1.jpg
 ---
 
 
-can it run on Azure?
-.NET Core 3
-Windows vs Linux PaaS
+## What is Blazor Server Side
 
-Should we be using it for forms over data / crud apps now?
-or considering it as a middle ground to: react/vue/angular
+## Does it use the same components as client side
+
+## What components are available
 
