@@ -2,11 +2,11 @@
 layout: post
 title: Software Architecture Guidebook 
 description: 
-menu: review
+#menu: review
 categories: Architecture Guidebook 
 published: true 
-comments: false     
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2019-10-03/6.png
 ---
 
