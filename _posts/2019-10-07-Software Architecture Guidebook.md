@@ -10,11 +10,17 @@ sitemap: false
 image: /assets/2019-10-03/3.jpg
 ---
 
-Simon Brown
+When coming to a legacy project, I've used the following techniques by [Simon Brown](https://simonbrown.je/) and his [twitter](https://twitter.com/simonbrown) to:
 
-[Techtribes Guidebook - example](https://leanpub.com/techtribesje)
-[Software Architecture for Developers - Volume 1](https://leanpub.com/software-architecture-for-developers)
-[Software Architecutre for Developers - Volume 2](https://leanpub.com/visualising-software-architecture)
+- Help document a project when I first get started on it
+- Be the go to source of truth (for me)
+- Document the language used in the team and the history
+- Document all the people involved
+- Document where things are stored
+
+[Techtribes Guidebook - example](https://leanpub.com/techtribesje) is a very useful example.  
+
+[Software Architecture for Developers - Volume 1](https://leanpub.com/software-architecture-for-developers) and [Software Architecutre for Developers - Volume 2](https://leanpub.com/visualising-software-architecture) are the 2 in depth books he has written.  
 
 1.Introduction
 2.Context
@@ -29,5 +35,11 @@ Simon Brown
 11.Operation and Support
 12.Devcelopment Evironment
 13.Decision Log
+
+## Videos
+
+[Falmouth 2019 - Visualising software architecture with the C4 model](https://www.youtube.com/watch?v=x2-rSnhpw0g&feature=youtu.be)
+
+[NDC 2017 - Visualise, document and explore your software architecture](https://www.youtube.com/watch?v=Ym9nhVZs89o)  
 
 ![alt text](/assets/2019-10-03/5.jpg "Files"){:width="200px"}
