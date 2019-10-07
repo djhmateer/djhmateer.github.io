@@ -225,105 +225,7 @@ then woring on the css whichs sits on top of bootstrap:
     background: #fbfafd;
 }
 
-
-a.navbar-brand {
-    white-space: normal;
-    font-family: 'Yellowtail', cursive;
-    font-size: xx-large;
-    text-align: center;
-    word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-   color: #0366d6;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #252152;
-    border-color: #252152;
-}
-.btn-primary:hover {
-    color: #fff;
-    background-color: #e9a8a6;
-    border-color: #e9a8a6;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-p {
-    font-family: 'Nunito', sans-serif;
-}
-h1 {
-    font-family: 'Nunito', sans-serif;
-}
-ul {
-    font-family: 'Nunito', sans-serif;
-}
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
-    font-family: 'Nunito', sans-serif;
-}
-/*Backgrounds*/
-.bg-navbar {
-    background: -webkit-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: -o-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: -moz-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-}
-.bg-footer {
-    background: -webkit-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: -o-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: -moz-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-}
+...etc
 ```
 
 Pages/Shared/
@@ -427,10 +329,10 @@ AddControllers in ConfigureServices, and endpoints.MapControllers in Configure.
 
 AddRating function
 
--Get - get information
--Post - insert a new record
--Put - update a record
--Patch - update a little bit of a record
+- Get - get information
+- Post - insert a new record
+- Put - update a record
+- Patch - update a little bit of a record
 
 ```cs
 public void AddRating(string productId, int rating)
