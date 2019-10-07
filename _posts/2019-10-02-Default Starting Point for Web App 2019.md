@@ -24,10 +24,11 @@ image: /assets/2019-10-03/3.jpg
 
 I like how they name initial solution and project:
 
--Solution: DMContosoCrafts  
--Web Project: DMContosoCrafts.Website
+- Solution: DMContosoCrafts  
+- Web Project: DMContosoCrafts.Website
 
-![alt text](/assets/2019-10-03/5.jpg "Files"){:width="200px"}
+![alt text](/assets/2019-10-03/5.jpg "Files"){:width="200px"}  
+
 I like where things are:
 
 - wwwroot for anything static
@@ -37,8 +38,6 @@ I like where things are:
 - Pages for the dynamic .cshtml razor pages
 - Services for 'resposity' style data access
 
-
-
 [I talked about my SQL Standards here](/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL)
 
 ## Add to Source Control
@@ -47,9 +46,8 @@ To add a .gitignore file press the button in VisualStudio
 
 ## Where to put files
 
-wwwroot (static stuff)
-Graphics css etc
- 
+wwwroot - static stuff Graphics css etc  
+
 Add new File [(Shift+F2) extension from Mads Kristensen](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile) is useful.
 
 ## JSON
@@ -710,6 +708,8 @@ I needed to set in the pubish settings:
 
 [dotnetconf videos on youtube - blazor videos here](https://www.youtube.com/playlist?list=PLReL099Y5nRd04p81Q7p5TtyjCrj9tz1t)
 
+[Steve Smith - @ardalis Clean Architecture starting point](https://github.com/ardalis/CleanArchitecture) is a more in depth starting point. 
+
 ## Summary
 
 - ASP.NET Core 3.0 Razor Pages app
@@ -718,3 +718,4 @@ I needed to set in the pubish settings:
 - System.Text.Serialization new serializer
 - C#8 Features (using declaration)
 - Server Side Blazor to give AJAX like interactivity without the need for a custom webservice or any javascript
+
