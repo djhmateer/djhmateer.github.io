@@ -69,6 +69,19 @@ The component on the server, renders into an in-memory representation of that re
 
 ## CPassParametersToComponents
 
+## DWeatherFetchData
+
+Comes from the example template in Blazor, but converted to not be a SPA but just a component on the page.
+
+- OnInitializedAsync
+
+> Any asynchronous operations, which require the component to re-render once they complete, should be placed in the OnInitializedAsync method.
+
+**problem here is that the service is being called Twice... why?
+
+okay to solve this
+https://github.com/aspnet/AspNetCore/issues/13448
+
 
 ## B - Save json to a file (Service injection)
 
@@ -99,7 +112,28 @@ debounce
 ## File Upload
 
 
-## Resources 
+## Resources and People
 
 Scott Hanselman
+
+[Blazored](https://github.com/Blazored) by [Chris Saintly](https://chrissainty.com/) and [twitter](https://twitter.com/Chris_Sainty)
+
+[SQL-MisterMagoo](https://github.com/SQL-MisterMagoo?tab=repositories)
+
+[Awesome-Blazor](https://github.com/AdrienTorris/awesome-blazor)
+
+[Gitter Blazor channel](https://gitter.im/aspnet/Blazor)
+
+[The Original talk by Steve Sandersen in Jul 2017 NDC](https://www.youtube.com/watch?v=MiLAE6HMr10)
+
+[Balanced article and discussion by Scott Allen](https://odetocode.com/blogs/scott/archive/2019/09/24/the-blazor-bet.aspx)
+
+## Component Libraries
+
+[Radzen - free](https://razor.radzen.com/)
+
+## Problems
+
+[Blazer Server prerenderig with parameters to components - will be back in 3.1](https://github.com/aspnet/AspNetCore/issues/14433)  
+[More dicussion of same issue here](https://github.com/aspnet/AspNetCore/issues/13721)
 
