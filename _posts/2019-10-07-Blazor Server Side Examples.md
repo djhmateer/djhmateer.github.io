@@ -22,6 +22,7 @@ Blazor apps are based on components usually written as a .razor file. Razor is a
 // Components/Counter.razor
 @using Microsoft.AspNetCore.Components.Web
 
+// One way data binding 
 <p>Current count: @currentCount</p>
 
 <button @onclick="IncrementCount">Click me</button>
@@ -63,17 +64,18 @@ o
 
 - ServerPrerendered is for mainly, but not exclusively for SEO - the current layout is rendered server side and sent to the client in the initial Response - it is "Static" content - the user does not yet have a connection to the "Blazor" server - there is no SignalR connection yet, but there will be one soon. Once the connection is Active, the client is updated with a new render of the components which is interactive.jk
 
-
-## ACounter
+## ACounter (One way binding)
 
 This is the canonical first example.
 
 - Press a button
 - No page refresh
-- update a UI element
+- update a UI element (One way binding from backing field to )
 - keep state
 
 The component on the server, renders into an in-memory representation of that render tree that can be used to update the UI.
+
+## ASlider (Twow way binding)
 
 ## BComponentsNest
 
