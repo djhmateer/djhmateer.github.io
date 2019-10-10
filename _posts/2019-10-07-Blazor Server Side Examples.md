@@ -54,6 +54,16 @@ then wire in a Blazor Component into the page you need it
 <script src="_framework/blazor.server.js"></script>
 ```
 
+Notice here that I'm using ServerPrerendered. This is used to Prerender a site for SEO or even just to present a bett4er experience for the user.
+o
+
+[From, SQL-MisterMagoo](https://gitter.im/aspnet/Blazor?at=5d72228ba08e2b4bd29896bf)  
+
+- Server = the index is sent to the client, then the SignalR connection is made, and when the connection becomes active, the components are rendered and sent to the client (the user sees and can interact with your components)
+
+- ServerPrerendered is for mainly, but not exclusively for SEO - the current layout is rendered server side and sent to the client in the initial Response - it is "Static" content - the user does not yet have a connection to the "Blazor" server - there is no SignalR connection yet, but there will be one soon. Once the connection is Active, the client is updated with a new render of the components which is interactive.jk
+
+
 ## ACounter
 
 This is the canonical first example.
@@ -79,8 +89,13 @@ Comes from the example template in Blazor, but converted to not be a SPA but jus
 
 **problem here is that the service is being called Twice... why?
 
+https://docs.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-3.0#stateful-reconnection-after-prerendering
+
 okay to solve this
 https://github.com/aspnet/AspNetCore/issues/13448
+
+Contosocrafts has the same issue
+
 
 
 ## B - Save json to a file (Service injection)
@@ -128,12 +143,25 @@ Scott Hanselman
 
 [Balanced article and discussion by Scott Allen](https://odetocode.com/blogs/scott/archive/2019/09/24/the-blazor-bet.aspx)
 
+## Videos and Books
+
+- [An Introduciton to Building Applicaitons in Blazor](http://blazorhelpwebsite.com/Market/Books/AnIntroductiontoBuildingApplicationswithBlazor.aspx) 
+
+- [Hanselman and Richardson ContosoCrafts](https://www.youtube.com/watch?v=lE8NdaX97m0&list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy&index=2&t=0s) 
+
+- [dotnetconf vidoes 2019](https://www.youtube.com/playlist?list=PLReL099Y5nRd04p81Q7p5TtyjCrj9tz1t)
+
 ## Component Libraries
 
 [Radzen - free](https://razor.radzen.com/)
+
+[Blazorise](https://rcbootstrapdemo.blazorise.com/) 
 
 ## Problems
 
 [Blazer Server prerenderig with parameters to components - will be back in 3.1](https://github.com/aspnet/AspNetCore/issues/14433)  
 [More dicussion of same issue here](https://github.com/aspnet/AspNetCore/issues/13721)
 
+## Service being called twice
+
+when using Hanselman style embedding blazor component in a page
