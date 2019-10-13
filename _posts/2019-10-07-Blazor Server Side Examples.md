@@ -55,10 +55,9 @@ then wire in a Blazor Component into the page you need it
 <script src="_framework/blazor.server.js"></script>
 ```
 
-Notice here that I'm using ServerPrerendered. This is used to Prerender a site for SEO or even just to present a bett4er experience for the user.
-o
+Notice here that I'm using ServerPrerendered. This is used to prerender a site for SEO or even just to present a better experience for the user.
 
-[From, SQL-MisterMagoo](https://gitter.im/aspnet/Blazor?at=5d72228ba08e2b4bd29896bf)  
+[SQL-MisterMagoo gives an explanation:](https://gitter.im/aspnet/Blazor?at=5d72228ba08e2b4bd29896bf)  
 
 - Server = the index is sent to the client, then the SignalR connection is made, and when the connection becomes active, the components are rendered and sent to the client (the user sees and can interact with your components)
 
@@ -75,7 +74,7 @@ This is the canonical first example.
 
 The component on the server, renders into an in-memory representation of that render tree that can be used to update the UI.
 
-## ASlider (Twow way binding)
+## ASlider (Two way binding)
 
 ## BComponentsNest
 
@@ -98,14 +97,11 @@ https://github.com/aspnet/AspNetCore/issues/13448
 
 Contosocrafts has the same issue
 
-
-
 ## B - Save json to a file (Service injection)
 
 asdf
 
 ## Save to a DB (EF / Dapper)
-
 
 ## Receive updates from webcrawler
 
@@ -113,12 +109,11 @@ asdf
 
 ## Tic-tac-toe game
 
-
 ## CRUD / Forms over data
-
 
 ## Typeahead
 
+Look at Blazored example
 debounce
 
 ## Modal
@@ -161,7 +156,7 @@ Scott Hanselman
 
 ## Problems
 
-[Blazer Server prerenderig with parameters to components - will be back in 3.1](https://github.com/aspnet/AspNetCore/issues/14433)  
+[Blazer Server prerendering with parameters to components - will be back in 3.1](https://github.com/aspnet/AspNetCore/issues/14433)  
 [More dicussion of same issue here](https://github.com/aspnet/AspNetCore/issues/13721)
 
 ## Service being called twice
