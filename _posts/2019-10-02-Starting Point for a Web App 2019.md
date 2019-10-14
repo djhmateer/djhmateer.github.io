@@ -1,14 +1,16 @@
 ---
 layout: post
-title: Starting point for Web App in 2019 and Blazor?
-description: 
-menu: review
-categories: .NET Stadards JSON
+title: Starting point for Web App in 2019 and Blazor
+description: Looking at how to start Web Application in 2019 and deciding not to use Blazor.
+#menu: review
+categories: .NET Blazor Standards JSON
 published: true 
-comments: false     
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2019-10-03/3.jpg
 ---
+
+TL;DR - I'm [not recommending Blazor yet](/2019/10/07/blazor)
 
 [Scott Hanselman](https://twitter.com/shanselman) and [Leslie Richardson](https://twitter.com/lyrichardson01) have made a surprisingly in-depth 'beginners tutorial' on ASP.NET Core 3.0 covering:
 
@@ -18,7 +20,9 @@ image: /assets/2019-10-03/3.jpg
 - Creating an API
 - Server Side Blazor
 
-[The Youtube video series is here](https://www.youtube.com/watch?v=lE8NdaX97m0&list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy&index=2&t=0s) and source is [here on github.com/dotnet-presentations/ContosoCrafts](https://github.com/dotnet-presentations/ContosoCrafts). I've got my test repo [DMCrafts on Bitbucket](https://bitbucket.org/davemateer/dmcrafts/src/master/).
+[The Youtube video series is here](https://www.youtube.com/watch?v=lE8NdaX97m0&list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy&index=2&t=0s) and source is [here on github.com/dotnet-presentations/ContosoCrafts](https://github.com/dotnet-presentations/ContosoCrafts). I've got my test repo [DMCrafts on Bitbucket](https://bitbucket.org/davemateer/dmcrafts/src/master/).  
+
+This blog post is a collection of my research and initial findings into mostly Blazor. It will be interesting to see how this space evolves in the next few years.
 
 ## Naming Standards
 
@@ -40,13 +44,7 @@ I like where things are:
 
 [I talked about my SQL Standards here](/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL)
 
-## Add to Source Control
-
 To add a .gitignore file press the button in VisualStudio
-
-## Where to put files
-
-wwwroot - static stuff Graphics css etc  
 
 Add new File [(Shift+F2) extension from Mads Kristensen](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile) is useful.
 
@@ -598,8 +596,6 @@ I needed to set in the pubish settings:
 - Deployment Mode: Self-Contained
 - Target Runtime: win-x86
 
-[dmcrafts.azurewebsite.net](https://dmcrafts.azurewebsites.net/) is where I published this app
-
 [github.com/dotnet-presentations/ContosoCrafts](https://github.com/dotnet-presentations/ContosoCrafts) is where the original code is.
 
 ## More Information
@@ -614,10 +610,11 @@ I needed to set in the pubish settings:
 
 ## Summary
 
+This is an interesting start to a project, but as of today I'm not recommending the Blazor part.
+
 - ASP.NET Core 3.0 Razor Pages app
 - Deployed to Windows Azure PaaS
 - JSON data store
 - System.Text.Serialization new serializer
 - C#8 Features (using declaration)
 - Server Side Blazor to give AJAX like interactivity without the need for a custom webservice or any javascript
-
