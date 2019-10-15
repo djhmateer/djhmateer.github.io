@@ -8,20 +8,21 @@ comments: false
 sitemap: false
 image: /assets/2019-05-27/1.png
 ---
-<!-- ![alt text](/assets/2019-07-18/1.jpg "Books"){:width="600px"}      -->
-Firstly lets define some terms:
+
+# Terms
 
 - Freelance - usually work remotely, and for several clients, often simultaneously. Common for web developers.
 - Contractor - usually work for 1 client full-time for a set period, often in the clients office
 
 [Source](https://www.simplybusiness.co.uk/knowledge/articles/2016/05/difference-between-freelancer-and-contractor/)  
 
-## Legal
+## Sole Trader or Limited Company
 
 There is no legal difference (in the UK) as both are self-employed, and are responsible for registering with HMRC as self-employed, and completing a self assessment tax return each year. [Source](https://www.simplybusiness.co.uk/knowledge/articles/2016/05/difference-between-freelancer-and-contractor/)
 
 - Sole Trader
 - Limited Company
+
 
 ## Where to look for freelance/contract work
 
