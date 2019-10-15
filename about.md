@@ -13,6 +13,16 @@ Dave is speaking on Functional programming in C# including [Functional Brighton]
 
 <!-- [This is an example of a link which it should pickup!](https://www.meetup.com/Functional-Brighton/events/260140369/asdf/)   -->
 
+## DDD 2017, Microsoft, Reading
+
+![DDD12](/assets/DaveDDD12_500.jpg)
+
+[Craig did Great Write Up](http://blog.craigtp.co.uk/post/DDD-12-In-Review) of the conference which included a good summary of Dave's talk on Twitter data processing
+
+Dave did an interview on [Channel 9](https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL) about streaming large amounts of data into SQL Server.
+
+<iframe src="https://channel9.msdn.com/Events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL/player" width="960" height="540" allowFullScreen frameBorder="0" title="Streaming Large Volumes of Data into SQL - Microsoft Channel 9 Video"></iframe>
+
 ## May 2016, London
 
 [![Screenshot](/assets/SkillsMatters2.png)](https://skillsmatter.com/skillscasts/8181-lscc-talks-may)

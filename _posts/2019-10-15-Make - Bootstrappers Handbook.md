@@ -29,7 +29,7 @@ This section is about:
 
 He suggest **solving your own problems** first and thinking small.
 
-Also your passion to industry.
+Also what are your passions.
 
 ![alt text](/assets/2019-10-15/2.jpg "Trello"){:width="700px"}
 
