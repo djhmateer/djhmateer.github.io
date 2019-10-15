@@ -10,21 +10,23 @@ sitemap: false
 image: /assets/2019-05-27/1.png
 ---
 
-I've blogged on hosting [Wordpress on Azure PaaS](https://davemateer.com/2019/02/26/Wordpress-on-Azure-PaaS) and [Many different Azure options for hosting Wordpress](https://davemateer.com/2018/06/18/Azure-Hosting-Wordpress-Win-Linux-Docker).   
+I've blogged on hosting [Wordpress on Azure PaaS](https://davemateer.com/2019/02/26/Wordpress-on-Azure-PaaS) and [Many different Azure options for hosting Wordpress](https://davemateer.com/2018/06/18/Azure-Hosting-Wordpress-Win-Linux-Docker).
 
 So when I was asked to find [Drupal](https://www.drupal.org/) hosting for an enterprise customer which had to be on Azure, I tried the same strategy.  
 
 [All source listed here is on GitHub](https://github.com/djhmateer/AzureVMDrupal)
 
 ## What is Drupal?
+
 [Drupal on Wikipedia](https://en.wikipedia.org/wiki/Drupal) tells us it came out in 2000, and uses PHP and MySQL. So interestingly it precedes [Wordpress](https://en.wikipedia.org/wiki/WordPress) by 3 years.
 
 I'm using Drupal 7 as this is what the design shop uses who built the site.
 
 ## Don't host Drupal on Azure PaaS (Platform as a Service)
+
 In today's modern Cloud world I dislike using bare metal or unmanaged VM's, and always prefer to go more 'right' in the diagram below
 
-![alt text](/assets/2019-03-06/1.png "Cloud strategies"){:width="500px"}     
+![alt text](/assets/2019-03-06/1.png "Cloud strategies"){:width="500px"}
 
 However the comparable performance on a backend admin screen was:
 
@@ -36,6 +38,7 @@ The most likely cause is the underlying shared filesystem performance as [discus
 We couldn't make the backend admin site usable.  
 
 ## Using IaaS (Infrastructure as a Service) ie a VM and AZ CLI
+
 I am a big fan of the [Azure CLI](/2018/02/15/Azure-CLI) so used scripting to make the process as repeatable as possible (Infrastructure as Code).
 
 I write bash shell scripts and run them from Windows WSL. This seems to be an easy path with lots of help on the web. To install and update the Azure CLI from WSL there is a [handy 1 liner](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install).  An good alternative is to run the scripts from the Cloud Shell in the web UI.
@@ -51,6 +54,7 @@ az group list
 ```
 
 ### AZ CLI
+
 [Here is the source of the scripts which is updated from below](https://github.com/djhmateer/AzureVMDrupal)  
 
 Now lets make a basic Ubuntu LTS (currently 18.04.2) VM:
@@ -60,20 +64,25 @@ Notice the custom-data at the end, which is cloud-init (see below)
 Be careful of any unusual characters in passwords eg $ which can cause bash conflicts  
 
 ### Fix Line Endings with sed
+
 Also be careful that text files having unix style line endings. A useful command to fix these are:
 
 ```bash
 sed -i 's/\r$//' *.sh
 ```
+
 ### Test connect to the VM
+
 Lets connect into this VM:
 
-```
+```bash
 ssh azureuser@davedrupaltest1.westeurope.cloudapp.azure.com
 ```
+
 If you see an error 'WARNING: POSSIBLE DNS SPOOFING DETECTED!' this could mean that you've used this hostname before. I increment the number at the end and spin up and down infrastructure quickly. The solution is to delete the entry from: `C:\Users\davidma\.ssh\known_hosts`
 
 ### Install Apache, PHP7 manually (don't do this!)
+
 Use cloud-init - see below.  
 
 Lets install software. This may change with future versions of Ubuntu, as I originally started with 16.04 LTS. Some [simple instructions are here](https://vitux.com/how-to-install-php5-and-php7-on-ubuntu-18-04-lts/) and [Drupal specific on 16.04](https://websiteforstudents.com/install-drupal-cms-on-ubuntu-16-04-lts-with-apache2-mariadb-php-7-1-and-lets-encrypt-ssl-tls/)  

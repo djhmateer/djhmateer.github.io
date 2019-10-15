@@ -3,7 +3,7 @@ layout: post
 title: Starting point for Web App in 2019 and Blazor
 description: Looking at how to start Web Application in 2019 and deciding not to use Blazor.
 #menu: review
-categories: .NET Blazor Standards JSON
+categories: Blazor .NET Standards JSON
 published: true 
 comments: true     
 sitemap: true

@@ -11,7 +11,9 @@ image: /assets/2019-05-27/1.png
 ---
 
 [How to Register a Domain Name]()
+
 [How does DNS work]()
+
 [Can my .co.uk domain name be seen in other countries]()
 
 [Why do I need an SSL Certificate]()
@@ -19,12 +21,12 @@ image: /assets/2019-05-27/1.png
 [Choosing a theme for Jekyll]()
 
 ## Technical People 
+
 Domain name registration [DNSimple](https://dnsimple.com/) are excellent. Current price is $15 per year for a domain then $5 per month for servicing on that domain. [DNS Simple Pricing](https://dnsimple.com/pricing)  
 
 [Name Mesh domain name checker](https://www.namemesh.com) excellent!
 
 [fasthosts domain name checker](https://www.fasthosts.co.uk/domain-names) eg agoyal.co.uk and useful for a £5 for first year .co.uk domain
-
 
 I'm trialing [CloudFlare](https://cloudflare.com) as they give wholesale costs on domains ie $8.03 for a .com domain. Currently they are [transfer in only (not new domains).
 
@@ -39,15 +41,11 @@ https://help.github.com/en/articles/using-jekyll-as-a-static-site-generator-with
 
 https://github.com/pages-themes/cayman
 
-
-
- - Free LetsEncrypt SSL Cert. [Why do I need an SSL Certificate]()
- - Free hosting
-o
+- Free LetsEncrypt SSL Cert. [Why do I need an SSL Certificate]()
+- Free hosting
 
 username.github.io
 agoyal12.github.io
-
 
 Jekyll 
 
@@ -58,15 +56,5 @@ Local development of articles using Jekyll and Docker and [VS Code]()
 [Markdown Cheat Sheet]()
 
 ## Non Dev Blog
+
 Wordpress hosted on a 3rd party provider
-
-
-
-
-
-
-
-
-
-
-

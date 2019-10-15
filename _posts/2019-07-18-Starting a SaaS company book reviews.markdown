@@ -96,6 +96,8 @@ find places to work deeply
 
 7.Exit
 
+[I've done a blog post on this book as I like the style of it](/2019/10/15/Make-Bootstrappers-Handbook)
+
 ## The $100 Startup - Chris Guillebeau
 
 My commentary: I agree with the author in that he is pushing to do your love/hobby! Most importantly he is focussin the reader on finding out what other peoples problems are and to help them (ideally in that love/hobby area).

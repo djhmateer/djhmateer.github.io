@@ -15,15 +15,16 @@ Ever wondered how to get previews of blog post articles on: Twitter, Microsoft T
 It is a mix of different html tags that you'll need as each website does things differently. 
 
 We will look at [Twitter Cards](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started) and Open Graph (developed by Facebook). I've used 2 seo-plugins which do this job well: [Jekyll-seo-tag for Jekyll](https://github.com/jekyll/jekyll-seo-tag) and [Yoast SEO for Wordpress](https://yoast.com/wordpress/plugins/seo/).
- 
+
 ## Twitter Cards
+
  [Twitter Card Validator](https://cards-dev.twitter.com/validator) gives you a very useful preview of what a tweet would look like eg:
 
-![alt text](/assets/2019-04-07/1.png "Well formed Twitter Card preview"){:width="300px"}   
+![alt text](/assets/2019-04-07/1.png "Well formed Twitter Card preview"){:width="300px"}
 This is good
 
 
-![alt text](/assets/2019-04-07/3.png "Badly formed Twitter Card preview"){:width="300px"}     
+![alt text](/assets/2019-04-07/3.png "Badly formed Twitter Card preview"){:width="300px"}
 However this blog post hasn't had all the necessary tags applied, so it gives an ugly 'no image'
 
 [Twitter Card documentation](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started)

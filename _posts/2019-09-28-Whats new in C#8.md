@@ -222,6 +222,3 @@ NullCoalescingAssignment
 ```cs
   numbers ??= new List<int>();
 ```
-
-
-
