@@ -16,11 +16,24 @@ image: /assets/2019-10-15/1.jpg
 
 His book is a 'brain dump' and he is candid about his failures. His first piece of advice is:
 
-> Always Keep Shipping
+> **Always Keep Shipping**
 
-
+This seems to be a commonality amongst startup entrepreneurs - just do it and learn along the way, as getting stuff out there is massive.
 
 ## Idea
+
+This section is about:
+
+- Coming up with ideas
+- Qualifying them
+
+He suggest **solving your own problems** first and thinking small.
+
+Also your passion to industry.
+
+![alt text](/assets/2019-10-15/2.jpg "Trello"){:width="700px"}
+
+[Trello](https://trello.com/) is a good tool for this.
 
 
 
