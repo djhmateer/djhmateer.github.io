@@ -35,9 +35,9 @@ Also what are your passions.
 
 [Trello](https://trello.com/) is a good tool for this.
 
-
-
 ## Build
+
+> 
 
 ## Launch
 
