@@ -27,17 +27,36 @@ This section is about:
 - Coming up with ideas
 - Qualifying them
 
-He suggest **solving your own problems** first and thinking small.
+He suggests **solving your own problems** first and thinking small.
 
-Also what are your passions.
+Also what are your **passions**.
 
 ![alt text](/assets/2019-10-15/2.jpg "Trello"){:width="700px"}
 
 [Trello](https://trello.com/) is a good tool for this.
 
+- What problem does it solve?
+- Who does it solve it for?
+- How easy to build/execute
+
 ## Build
 
-> 
+I like to think about the headline of the product (Jeff Bezos - write the headline) to focus on building the MVP (Minimum Viable Product) which should work well.
+
+"Broken link checker to make sure your website works and is professional! Look good in front of your clients when everything works"
+
+"Full report with screenshots showing where all the broken links are"
+
+- Be fast (1 month build Rule of Thumb)
+- Focus on getting the MVP (Minimum Viable Product) working
+- Technical - use what you know
+- Minimalist design
+
+Focus on a CTA (Call to Action) for the launch?
+
+"Find any broken links in my website now"
+
+Have a minimalist landing page
 
 ## Launch
 
