@@ -19,7 +19,7 @@ When coming to a legacy project, I've used the following techniques by [Simon Br
 - Document all the people involved
 - Document where things are stored
 
-[Techtribes Guidebook - example](https://leanpub.com/techtribesje) is a very useful example, and this is a free download.  
+[Techtribes Guidebook - example](https://leanpub.com/techtribesje) is a very useful example, and this is a free download.  [Online viewing in HTML I find easier](https://leanpub.com/techtribesje/read)
 
 [Software Architecture for Developers - Volume 1](https://leanpub.com/software-architecture-for-developers) and [Software Architecutre for Developers - Volume 2](https://leanpub.com/visualising-software-architecture) are the 2 in depth books he has written.  
 
