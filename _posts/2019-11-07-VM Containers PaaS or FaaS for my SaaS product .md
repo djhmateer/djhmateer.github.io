@@ -12,21 +12,78 @@ image: /assets/2019-10-15/1.jpg
 
 I am building a greenfield SaaS (Software as a Service) product which is a Broken Link Checker.  
 
-I've had nearly a decade of experience in Azure VM's / Containers / PaaS (Platform as a Service) and FaaS (Functions as a Service) for corporate clients.  
+I've had nearly a decade of experience in Azure mostly on the PaaS side which I love. Also have used VM's / Containers / FaaS (Functions as a Service) for corporate clients.  
 
 [An article on hosting Drupal using IaaS with Azure CLI and Cloud Init](/2019/05/28/Hosting-Drupal-on-Azure)
 
 ## Eat my own dogfood
 
-So now it is my money on the line, what infrastructure am I going to choose to run my first SaaS product?
+So now it is my money on the line, what infrastructure am I going to choose to run my first SaaS product? Well, what is the spec I hear you say:
 
-## Bare Metal
+- It is a broken link checker so will need a lot on inbound bandwidth
+- I'm using SignalR on the frontend (Websockets) which can consume resources on the server
+- I'm using Puppeteer which is memory hungry (Chrome)
+- .NET Core 3, so hope to run on Linux (which I know enough about)
+- Will need a datastore (MSSQL is what I've used for years)
+- Will need to be mindful of the IP (and being blocked by some domains)
+
+- Simplicity
+- Lots of unit tests
+- Lots of integration tests
+
+## Colocation
 
 Buy my own server hardware and co-locate it somewhere eg [Fastnet in Brighton](https://fastnet.co.uk/data-centre-hosting/).  No thanks. I'm not a hardware guy so want to abstract this away.
 
-## VMs
+[https://www.hetzner.com/colocation/13-rack](https://www.hetzner.com/colocation/13-rack)
+  14U Rack
+  2TB of traffic
+  1GBit/s port
 
-asdf
+## VMs
+ 
+My first choice is to run VM's on Azure (as have got some free credits that they give everyone) and I'm used to it.
+
+### VPS (Virtual Private Server - virtualision layer)
+
+[ovh.co.uk/vps/](https://www.ovh.co.uk/vps/)  
+12GB RAM
+50GB disk
+2 vcores
+£18 per month
+
+[ionos.co.uk](https://www.ionos.co.uk/servers/vps#packages) 
+
+[https://www.hetzner.com/cloud](https://www.hetzner.com/cloud) 
+ 8GB RAM
+ 2vCPU
+ 20TB of traffic
+
+## Public Cloud
+
+[ovh public cloud](https://www.ovh.co.uk/vps/vps-cloud-ram.xml)
+
+2 vcores
+30GB RAM
+50GB SSD
+£40 per month
+
+100Mbps unlimited traffic
+
+### Dedicated Servers (no virtualisation)
+
+[OVH Dedicated Servers](https://www.ovh.co.uk/dedicated_servers/) around £55pm
+
+Guaranteed bandwidth of 500 Mbit/s with burst available unlimited traffic
+
+[Hertzner](https://www.hetzner.com/dedicated-rootserver/matrix-ex) around £50 per month
+
+
+## Containers
+
+I use containers daily for [writing this blog](2018/01/25/Jekyll-and-Docker), but after [a year of looking after deployments to an AKS Kubernetes cluster](2019/03/06/High-Level-Containerisation) I don't want to use containers if I don't have to. 
+
+I'm a one man software company and want to keep things as simple as possible.
 
 ## PaaS
 
