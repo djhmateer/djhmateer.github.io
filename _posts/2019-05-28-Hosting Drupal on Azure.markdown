@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Hosting Drupal on Azure IaaS using Azure CLI
-description: 
-menu: review
+description: How to host Drupal 7 in todays modern Cloud world. Examining what happens when you use Azure PaaS (don't) and how to get good performance.
+# menu: review
 categories: Drupal Azure AzureCLI sed
 published: true 
-comments: false
-sitemap: false
-image: /assets/2019-05-27/1.png
+comments: true
+sitemap: true
+image: /assets/2019-05-27/4.png
 ---
 
 I've blogged on hosting [Wordpress on Azure PaaS](https://davemateer.com/2019/02/26/Wordpress-on-Azure-PaaS) and [Many different Azure options for hosting Wordpress](https://davemateer.com/2018/06/18/Azure-Hosting-Wordpress-Win-Linux-Docker).
@@ -16,7 +16,7 @@ So when I was asked to find [Drupal](https://www.drupal.org/) hosting for an ent
 
 [All source listed here is on GitHub](https://github.com/djhmateer/AzureVMDrupal)
 
-## What is Drupal?
+## What is Drupal
 
 [Drupal on Wikipedia](https://en.wikipedia.org/wiki/Drupal) tells us it came out in 2000, and uses PHP and MySQL. So interestingly it precedes [Wordpress](https://en.wikipedia.org/wiki/WordPress) by 3 years.
 
@@ -30,7 +30,7 @@ In today's modern Cloud world I dislike using bare metal or unmanaged VM's, and 
 
 However the comparable performance on a backend admin screen was:
 
-- 14secs to load (full VM power, and full MySQL hosted)
+- 14secs to load (full PaaS power, and full MySQL hosted)
 - 4secs on a VM  
 
 The most likely cause is the underlying shared filesystem performance as [discussed here](https://www.reddit.com/r/AZURE/comments/79mx4k/basic_wordpress_website_super_slow_even_with/) and [here](https://drupal.stackexchange.com/questions/256514/performance-is-notoriously-slow).  
@@ -41,7 +41,7 @@ We couldn't make the backend admin site usable.
 
 I am a big fan of the [Azure CLI](/2018/02/15/Azure-CLI) so used scripting to make the process as repeatable as possible (Infrastructure as Code).
 
-I write bash shell scripts and run them from Windows WSL. This seems to be an easy path with lots of help on the web. To install and update the Azure CLI from WSL there is a [handy 1 liner](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install).  An good alternative is to run the scripts from the Cloud Shell in the web UI.
+I write bash shell scripts and run them from [Windows WSL - here is a handy install guide](https://www.computerhope.com/issues/ch001879.htm). This seems to be an easy path with lots of help on the web. To install and update the Azure CLI from WSL there is a [handy 1 liner](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install).  An good alternative is to run the scripts from the Cloud Shell in the web UI.
 
 Once installed and logged in:
 
@@ -260,11 +260,13 @@ password123456789TK
 ```
 
 ## Drupal Caching
-To avoid a lot of database egress traffic charges, there is a standard Drupal caching plugin which works well.
 
-![alt text](/assets/2019-05-27/5.png "Turn on caching"){:width="500px"}     
+There is a standard Drupal caching plugin which works well.
 
-![alt text](/assets/2019-05-27/6.png "A cache hit"){:width="500px"}     
+![alt text](/assets/2019-05-27/5.png "Turn on caching"){:width="500px"}
+
+![alt text](/assets/2019-05-27/6.png "A cache hit"){:width="500px"}
+
 Browser requested the page, and drupal served from its cache ie didn't hit the database
 
 ![alt text](/assets/2019-05-27/7.png "A browser cache hit"){:width="500px"}     
@@ -279,14 +281,15 @@ Turn off errors! If you get `cache MISS` then it could be due to errors in the s
 We found IP Geolocation causing SESS cookie problems for anonymous users:  [article here](http://redcrackle.com/blog/how-detect-which-module-creates-session-cookie)
 
 ## SSL with Lets-Encrypt
+
 We have used [certbot](https://certbot.eff.org/lets-encrypt/ubuntuxenial-apache) and [external tools](/2019/03/01/Lets-Encrypt) to monitor if the cert is about to run out (hence certbot may need looking at)
 
 ## Failover and Blue/Green Resilience
-I was asked to look into how to host a Drupal 7 site and have 
+
+I was asked to look into how to host a Drupal 7 site and have the following. I **never got this working properly**
 
 - High Availability (fault tolerant) if one webserver went down (we had an outage due to memory issues)
 - Updated scenario - a Blue/Green scenario where we could patch the 'offline' webserver
-
 
 - [Overview of Azure Load Balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) and [SKU comparison](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview#skus) has a Basic and Standard, but is a *load balancer* and can't handle all traffic to 1 machine then failover to another
 
@@ -294,13 +297,11 @@ I was asked to look into how to host a Drupal 7 site and have
 
 [Blue-Green Deployments using Azure Traffic Manager](https://azure.microsoft.com/en-us/blog/blue-green-deployments-using-azure-traffic-manager/)  
 
+![alt text](/assets/2019-05-27/10.png "HA and Blue Green"){:width="300px"}
 
-![alt text](/assets/2019-05-27/10.png "HA and Blue Green"){:width="300px"}     
 Azure Traffic Manager to handle routing between Blue and Green. Then Load Balancers are providing High Availability in each region (as these would be split).  Big thank you to RC for this.
 
 A more simple design would be to have ATM and 2 VM's.
-
-
 
 [Availability Sets ensure the VMs are distributed across isolated hardware clusters](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-availability-sets) is a normal thing to do. 
 
@@ -309,6 +310,7 @@ A more simple design would be to have ATM and 2 VM's.
 [Azure Load Balancer allows you to spread the load](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-load-balancer)
 
 ## 3rd Party Hosting
+
 So as you can see it takes effort to host Drupal and to set it up. It also takes some significant resources/cost to run this per month, which makes 3rd party hosting a viable alternative. 
 
 Very attractive to look at these. We'd need to make sure that crontab jobs are available for our jobs which require updates.
