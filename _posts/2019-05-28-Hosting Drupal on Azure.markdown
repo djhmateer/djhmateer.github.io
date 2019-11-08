@@ -41,7 +41,7 @@ We couldn't make the backend admin site usable.
 
 I am a big fan of the [Azure CLI](/2018/02/15/Azure-CLI) so used scripting to make the process as repeatable as possible (Infrastructure as Code).
 
-I write bash shell scripts and run them from [Windows WSL - here is a handy install guide](https://www.computerhope.com/issues/ch001879.htm). This seems to be an easy path with lots of help on the web. To install and update the Azure CLI from WSL there is a [handy 1 liner](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install).  An good alternative is to run the scripts from the Cloud Shell in the web UI.
+I write bash shell scripts and run them from [Windows WSL - here is a handy install guide](https://www.computerhope.com/issues/ch001879.htm). This seems to be an easy path with lots of help on the web. To install and update the Azure CLI from WSL there is a [handy 1 liner](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest).  An good alternative is to run the scripts from the Cloud Shell in the web UI.
 
 Once installed and logged in:
 
