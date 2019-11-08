@@ -71,6 +71,8 @@ Also be careful that text files having unix style line endings. A useful command
 sed -i 's/\r$//' *.sh
 ```
 
+If you get 'Permission denied error' try setting the permissions with chmod 777 filename.sh
+
 ### Test connect to the VM
 
 Lets connect into this VM:
