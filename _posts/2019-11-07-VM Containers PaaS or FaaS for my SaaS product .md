@@ -31,7 +31,7 @@ So now it is my money on the line, what infrastructure am I going to choose to r
 - Lots of unit tests
 - Lots of integration tests
 
-## Colocation
+## 1.Colocation
 
 Buy my own server hardware and co-locate it somewhere eg [Fastnet in Brighton](https://fastnet.co.uk/data-centre-hosting/).  No thanks. I'm not a hardware guy so want to abstract this away.
 
@@ -40,11 +40,42 @@ Buy my own server hardware and co-locate it somewhere eg [Fastnet in Brighton](h
   2TB of traffic
   1GBit/s port
 
-## VMs
- 
-My first choice is to run VM's on Azure (as have got some free credits that they give everyone) and I'm used to it.
+## Azure IaaS (Infrastructure as a Service)
 
-### VPS (Virtual Private Server - virtualision layer)
+My first choice is to run VM's on Azure (as have got some free credits that they give everyone) and I'm used to their interface, so lets have a look at pros and cons:
+
+- Bandwidth costs
+- Memory costs
+- Ease of deployment
+
+I want a docker-esque style of deployment without the complexity, so I've used cloud-init before to deploy to a newly created VM.
+
+- Must be super simple and agile
+- Deployments must be really fast
+- Automated testing (Azure DevOps)?
+- VM patching easily handled by throwing it away and creating a new one
+- Test environments easily created by script
+- New Live environments (I forsee scaling out to different locations) scriptable
+
+I had some scripts lying around that makes it easy to create VM's on Azure, so lets explore that:
+
+### Cloud-init
+
+[Azure OVH and Hetzer all support cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/availability.html)
+
+
+## 2.Public Cloud VM
+
+[ovh public cloud](https://www.ovh.co.uk/vps/vps-cloud-ram.xml)
+2 vcores
+30GB RAM
+50GB SSD
+£40 per month
+100Mbps unlimited traffic
+
+## 3.VPS (Virtual Private Server - virtualision layer)
+
+Much cheaper than public cloud
 
 [ovh.co.uk/vps/](https://www.ovh.co.uk/vps/)  
 12GB RAM
@@ -59,25 +90,13 @@ My first choice is to run VM's on Azure (as have got some free credits that they
  2vCPU
  20TB of traffic
 
-## Public Cloud
-
-[ovh public cloud](https://www.ovh.co.uk/vps/vps-cloud-ram.xml)
-
-2 vcores
-30GB RAM
-50GB SSD
-£40 per month
-
-100Mbps unlimited traffic
-
-### Dedicated Servers (no virtualisation)
+## 4.Dedicated Servers (no virtualisation)
 
 [OVH Dedicated Servers](https://www.ovh.co.uk/dedicated_servers/) around £55pm
 
 Guaranteed bandwidth of 500 Mbit/s with burst available unlimited traffic
 
 [Hertzner](https://www.hetzner.com/dedicated-rootserver/matrix-ex) around £50 per month
-
 
 ## Containers
 
@@ -90,14 +109,12 @@ I'm a one man software company and want to keep things as simple as possible.
 Windows?
 Linux - which is a docker container under the hood
 
-
 ## FaaS
 
-Tempting to build out my service this way.
+Tempting to build out my service this way, and I did spike it.
 
 - Azure Durable Functions
 - Azure Queues
 - Azure SQL
-
 
 ![alt text](/assets/2019-10-23/4.jpg "Deploying"){:width="600px"}
