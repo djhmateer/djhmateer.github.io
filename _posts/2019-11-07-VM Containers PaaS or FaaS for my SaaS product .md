@@ -59,10 +59,45 @@ I want a docker-esque style of deployment without the complexity, so I've used c
 
 I had some scripts lying around that makes it easy to create VM's on Azure, so lets explore that:
 
-### Cloud-init
+### Azure VM create
 
-[Azure OVH and Hetzer all support cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/availability.html)
+[Setting up WSL, Azure CLI and Cloud Init](/2019/05/28/Hosting-Drupal-on-Azure)
 
+I am using Bash on Windows Subsystem for Linux and the Azure CLI to create and run scripts to
+
+- spin up a new Ubuntu LTS VM
+- allow port 22 for SSH access
+- allow port 80 for http
+- allow port 443 for https
+- install the .NET Core SDK
+- create /var/www directory
+- clone the repository from bitbucket (using a dedicated user)
+
+I can then SSH into the VM and
+
+```bash
+cd /var/www/brokenlink
+
+# This does: sudo dotnet run --urls=http://0.0.0.0:80 
+./up.sh
+```
+
+I'm running kestrel as an edge server. [MS Docs on when you should use a reverse proxy](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-3.0) - the big one for me is running multiple websites on the same machine is an issue for Kestrel. I'm not doing that here, so keeping things simple is vital.
+
+I've tested websockets (for signalR) which work fine with the default implementation of Kestrel.
+
+I'm pretty sure I'll be moving off Azure because of bandwidth and memory costs, but it is good for now for development ie super easy to spin up a test VM with running code on it.
+
+[Azure OVH and Hetzer all support cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/availability.html) so I'm hoping a move to OVH will not be too hard.
+
+How to handle Dev / Test / Live?
+
+How to handle persistence of data? I'll probably use MSSQL or Postgres.
+  will probably use fast SQL import scripts for all test data to start with
+
+How to handle live code updates
+live db schema changes
+patching of the VM - this should be easy if I can recreate the VM every time
 
 ## 2.Public Cloud VM
 
