@@ -73,7 +73,7 @@ I am using Bash on Windows Subsystem for Linux and the Azure CLI to create and r
 - create /var/www directory
 - clone the repository from bitbucket (using a dedicated user)
 
-I can then SSH into the VM and
+I can then SSH into the VM and spin up the app and see the output.
 
 ```bash
 cd /var/www/brokenlink
@@ -81,6 +81,16 @@ cd /var/www/brokenlink
 # This does: sudo dotnet run --urls=http://0.0.0.0:80 
 ./up.sh
 ```
+
+- setup www-data user properly
+- setup permissions on the folder
+- setup systemd to monitor Kestrel [MS docs](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.0#monitor-the-app)
+
+then:
+
+- eventually get rid of the SDK and only have the runtime
+- then probably have a Azure DevOps agent (or Octopus)
+- so build would happen then push artifacts to the agent
 
 I'm running kestrel as an edge server. [MS Docs on when you should use a reverse proxy](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-3.0) - the big one for me is running multiple websites on the same machine is an issue for Kestrel. I'm not doing that here, so keeping things simple is vital.
 
