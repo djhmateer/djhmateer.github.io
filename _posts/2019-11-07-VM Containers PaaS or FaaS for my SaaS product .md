@@ -31,7 +31,7 @@ So now it is my money on the line, what infrastructure am I going to choose to r
 - Lots of unit tests
 - Lots of integration tests
 
-## 1.Colocation
+## 0.Colocation
 
 Buy my own server hardware and co-locate it somewhere eg [Fastnet in Brighton](https://fastnet.co.uk/data-centre-hosting/).  No thanks. I'm not a hardware guy so want to abstract this away.
 
@@ -40,7 +40,7 @@ Buy my own server hardware and co-locate it somewhere eg [Fastnet in Brighton](h
   2TB of traffic
   1GBit/s port
 
-## Azure IaaS (Infrastructure as a Service)
+## 1.Azure IaaS (Infrastructure as a Service)
 
 My first choice is to run VM's on Azure (as have got some free credits that they give everyone) and I'm used to their interface, so lets have a look at pros and cons:
 
@@ -59,13 +59,12 @@ I want a docker-esque style of deployment without the complexity, so I've used c
 
 I had some scripts lying around that makes it easy to create VM's on Azure, so lets explore that:
 
-### Azure VM create
-
 [Setting up WSL, Azure CLI and Cloud Init](/2019/05/28/Hosting-Drupal-on-Azure)
 
 I am using Bash on Windows Subsystem for Linux and the Azure CLI to create and run scripts to
 
 - spin up a new Ubuntu LTS VM
+[Linux VM Sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general) and [Price Calculator](https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/)
 - allow port 22 for SSH access
 - allow port 80 for http
 - allow port 443 for https
@@ -100,48 +99,59 @@ I'm pretty sure I'll be moving off Azure because of bandwidth and memory costs, 
 
 [Azure OVH and Hetzer all support cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/availability.html) so I'm hoping a move to OVH will not be too hard.
 
-How to handle Dev / Test / Live?
+TODO:
 
-How to handle persistence of data? I'll probably use MSSQL or Postgres.
+- How to handle Dev / Test / Live?
+
+- How to handle persistence of data? I'll probably use MSSQL or Postgres.
   will probably use fast SQL import scripts for all test data to start with
 
-How to handle live code updates
-live db schema changes
-patching of the VM - this should be easy if I can recreate the VM every time
+- How to handle live code updates
+- live db schema changes
+- patching of the VM - this should be easy if I can recreate the VM every time
 
-## 2.Public Cloud VM
+## 2.VPS (Virtual Private Server - virtualision layer)
 
-[ovh public cloud](https://www.ovh.co.uk/vps/vps-cloud-ram.xml)
-2 vcores
-30GB RAM
-50GB SSD
-£40 per month
-100Mbps unlimited traffic
-
-## 3.VPS (Virtual Private Server - virtualision layer)
-
-Much cheaper than public cloud
+This feels similar to Azure VM's that share CPU eg B series, and have limited bandwidth.
 
 [ovh.co.uk/vps/](https://www.ovh.co.uk/vps/)  
-12GB RAM
-50GB disk
-2 vcores
-£18 per month
+
+- 12GB RAM
+- 50GB disk
+- 2 vcores
+- **£18** per month
 
 [ionos.co.uk](https://www.ionos.co.uk/servers/vps#packages) 
 
 [https://www.hetzner.com/cloud](https://www.hetzner.com/cloud) 
- 8GB RAM
- 2vCPU
- 20TB of traffic
+
+- 8GB RAM
+- 2vCPU
+- 20TB of traffic
+
+## 3.Public Cloud VM (OVH)
+
+A middle ground - unlmited traffic but still virtual CPUs
+
+[ovh public cloud](https://www.ovh.co.uk/vps/vps-cloud-ram.xml)
+
+- 2 vcores
+- 30GB RAM
+- 50GB SSD
+- **£40** per month
+- 100Mbps unlimited traffic
 
 ## 4.Dedicated Servers (no virtualisation)
 
-[OVH Dedicated Servers](https://www.ovh.co.uk/dedicated_servers/) around £55pm
+[OVH Dedicated Servers](https://www.ovh.co.uk/dedicated_servers/) around 
+
+- **£55pm**
 
 Guaranteed bandwidth of 500 Mbit/s with burst available unlimited traffic
 
-[Hertzner](https://www.hetzner.com/dedicated-rootserver/matrix-ex) around £50 per month
+[Hertzner](https://www.hetzner.com/dedicated-rootserver/matrix-ex) around 
+ 
+- **£50** per month
 
 ## Containers
 
