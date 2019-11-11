@@ -50,7 +50,7 @@ bundle update
 ## Local Testing
 
 Developing locally the image urls were broken and looked like:
-[https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png](https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png)
+https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png
 
 On live they worked looking like:  
 [https://github.githubassets.com/images/icons/emoji/unicode/1f4ee.png](https://github.githubassets.com/images/icons/emoji/unicode/1f4ee.png)

@@ -13,7 +13,7 @@ I use multiple GitHub logins to host multiple [GitHub Pages User Sites](https://
 
 - [https://github.com/djhmateer](https://github.com/djhmateer) - my main GH account which hosts [davemateer.com](https://davemateer.com)
 - [https://github.com/penhemingway](https://github.com/penhemingway) - my 2nd account [penhemingway.github.io](https://penhemingway.github.io)
-- [https://github.com/qjhemingway](https://github.com/qjhemingway) - my 3rd account [qjhemingway.github.io](https://qjhemingway.github.io)
+- [https://github.com/qjhemingway](https://github.com/qjhemingway) - my 3rd account [qjhemingway.github.io] (https://qjhemingway.github.io)
 
 ![alt text](/assets/2019-07-18/6.png "HTTPS not SSH"){:width="350px"}
  Importantly I use HTTPS, which is now the norm, [rather than SSH Keys](https://medium.com/@pinglinh/how-to-have-2-github-accounts-on-one-machine-windows-69b5b4c5b14e)

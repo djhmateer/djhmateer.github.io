@@ -101,14 +101,17 @@ sudo apt update
 sudo apt install php7.1 libapache2-mod-php7.1 php7.1-common php7.1-mbstring php7.1-xmlrpc php7.1-soap php7.1-gd php7.1-xml php7.1-intl php7.1-mysql php7.1-cli php7.1-mcrypt php7.1-zip php7.1-curl -y
 sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 ```
-Now if go to your [davedrupaltest1.westeurope.cloudapp.azure.com](http://davedrupaltest1.westeurope.cloudapp.azure.com) you should see 
 
-![alt text](/assets/2019-05-27/2.png "Apache2 Default Page"){:width="500px"}     
-also the [test php](http://davedrupaltest1.westeurope.cloudapp.azure.com/info.php) should give a test screen  
+Now if go to your davedrupaltest1.westeurope.cloudapp.azure.com you should see 
+
+![alt text](/assets/2019-05-27/2.png "Apache2 Default Page"){:width="500px"}
+
+also the davedrupaltest1.westeurope.cloudapp.azure.com/info.php should give a test screen  
 
 I have seen commands silently fail, so be careful!
 
 ## Use Cloud Init to automatically provision the VM (do this!)
+
 [cloud-init](https://cloud-init.io/) is in the same vein as Puppet or Chef ie it helps automating software installation on VM. [it is supported on Azure VM deployment](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-automate-vm-deployment)
 
 ```bash

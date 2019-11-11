@@ -45,7 +45,7 @@ It is an ecosystem comprising of
 
 ## Setup Azure Sphere Account
 
-[So this is not very user friendly but following along it did work](https://docs.microsoft.com/en-us/azure-sphere/install/azure-directory-account)  
+[So this is not very user friendly but following along it did work] (https://docs.microsoft.com/en-us/azure-sphere/install/azure-directory-account)  
 
 > Azure Sphere uses Azure Active Directory (AAD) to enforce enterprise access control. Therefore, to use Azure Sphere, you need a Microsoft work or school account (sometimes called an organizational account) that is associated with an AAD.
 
