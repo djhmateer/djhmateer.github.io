@@ -10,7 +10,7 @@ sitemap: true
 image: /assets/2019-10-03/3.jpg
 ---
 
-TL;DR - I'm [not recommending Blazor yet](/2019/10/07/blazor)
+TL;DR - I'm [not recommending Blazor yet](/2019/10/07/Blazor)
 
 [Scott Hanselman](https://twitter.com/shanselman) and [Leslie Richardson](https://twitter.com/lyrichardson01) have made a surprisingly in-depth 'beginners tutorial' on ASP.NET Core 3.0 covering:
 
