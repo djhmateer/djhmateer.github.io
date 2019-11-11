@@ -82,7 +82,6 @@ When you do have access (I had to get my domain Global Administrator to do it fo
 
 ![ps](/assets/2019-03-01/10.png)  
 
-
 ## Install the Lets Encrypt Site Extension  
 
 ![ps](/assets/2019-03-01/11.png)  
@@ -90,17 +89,15 @@ The one to choose is `Azure Let's Encrypt` as [described here on his blog](https
 
 If you see `"No route registered for '/letsencrypt/'"` then just restart the website.  
 
-
 ![ps](/assets/2019-03-01/12.png)  
+
 ## Configure Site Extension
 
 Either goto: [https://qnrlcom.scm.azurewebsites.net/letsencrypt](https://qnrlcom.scm.azurewebsites.net/letsencrypt) or click on the browse link in Extensions:
 
-![ps](/assets/2019-03-01/13.png)  
- 
- which will take you to the automated installation:  
+![ps](/assets/2019-03-01/13.png)
 
-
+which will take you to the automated installation:  
 
 ![ps](/assets/2019-03-01/14.png)  
 How to find tenent  
@@ -111,16 +108,15 @@ How to find subscriptionID
 ![ps](/assets/2019-03-01/16.png)  
 ClientID is ApplicationID of the Azure Active Directory, App Registration
 
-
 Update Application settings - true if haven't already added the setting.
 
 ![ps](/assets/2019-03-01/18.png)  
 So it looks like I may need the Global Administrator to do this.
 
 ## Custom Domains and SSL
+
 ![ps](/assets/2019-03-01/19.png)  
 I had already setup my custom domain on the app service.  
-
 
 Interestingly I've got another certificate visible (I'm guessing it is on a per App Service Plan basis ie you can see all certificates here on this 'VM') 
 
@@ -135,18 +131,21 @@ I had wrongly pointed my DNS A Record. Notice there is an error report URL from 
 I had the wrong storage account settings. And also noticed that 'always on' needs to be set to on otherwise jobs wont run.
 
 ## Testing
-[https://hoverfly.scm.azurewebsites.net/azurejobs](https://hoverfly.scm.azurewebsites.net/azurejobs)  - jobs dashboard
 
-[http://hoverfly.scm.azurewebsites.net/letsencrypt](http://hoverfly.scm.azurewebsites.net/letsencrypt)  - setup of certs
+https://hoverfly.scm.azurewebsites.net/azurejobs  - jobs dashboard  
+
+http://hoverfly.scm.azurewebsites.net/letsencrypt  - setup of certs  
 
 ![ps](/assets/2019-03-01/9.png)  
 
 Looking at the output, everything appears to be working.
 
 ## Final
+
 ![ps](/assets/2019-03-01/24.png)  
 
 ## How to install a cert for an upcoming live server
+
 I'm doing a migration of qnrl.com to a new site, and may use LetsEncrypt in the future.
 
 ![ps](/assets/2019-03-01/25.png)  
@@ -154,8 +153,6 @@ I'm doing a migration of qnrl.com to a new site, and may use LetsEncrypt in the 
 LetsEncrypt can't validate the domain as it is pointing to the current live server. The simple solution is to flip to the new site at an out of hours time, get the cert and flip back using DNS. I use Azure's Traffic Manager which is excellent. We do have a current certificate so I may run both in parallel.
 
 ## Summary
+
 - Use Lets Encrypt on Azure for smaller projects which are **not mission critical**
-- Use classic paid for certs for larger commercial sites (as there are a lot of moving parts for LE on Azure including needed elevated permissions which I didn't have on my corporate Azure account) 
-
-
-
+- Use classic paid for certs for larger commercial sites (as there are a lot of moving parts for LE on Azure including needed elevated permissions which I didn't have on my corporate Azure account)

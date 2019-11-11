@@ -57,7 +57,7 @@ sudo su
 
 ## Azure CLI
 
-[One line from MS Docs to install AzureCLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install) and [Drupal and AzureCLI](2019/05/28/Hosting-Drupal-on-Azure).
+[One line from MS Docs to install AzureCLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install) and [Drupal and AzureCLI](/2019/05/28/Hosting-Drupal-on-Azure).
 
 If you come across file lock issues - debconf dbdriver config dat is locked by another process, try [this link](https://askubuntu.com/questions/136881/debconf-dbdriver-config-config-dat-is-locked-by-another-process-resource-t) which tells you to find the process then kill it.
 
