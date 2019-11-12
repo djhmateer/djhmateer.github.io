@@ -75,10 +75,6 @@ sudo apt-get install iotop
 sudo iotop
 ```
 
-### Installing Docker
-
-[Installing Docker](/docker/2018/02/01/Wordpress-on-Docker.html#going-to-uat--production)
-
 ### Installing Dot Net Core
 
 [Microsoft](https://www.microsoft.com/net/learn/get-started/windows#linuxubuntu)
@@ -88,4 +84,3 @@ sudo iotop
 [https://www.ubuntu.com/download/server](https://www.ubuntu.com/download/server)
 
 [Install instructions](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#1) using Rufus to create a bootable USB stick.
-
