@@ -25,6 +25,46 @@ I used these articles to help me setup Serilog in my application as I wanted
 Add NuGet package Serilog.AspNetCore
 
 ```cs
+public class Program
+{
+public static void Main(string[] args)
+{
+    Log.Logger = new LoggerConfiguration()
+        .MinimumLevel.Information() // this is the default
+        .Enrich.FromLogContext()
+        .WriteTo.Console()
+        .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+        .CreateLogger();
+
+    try
+    {
+        Log.Information("Starting up");
+        CreateHostBuilder(args).Build().Run();
+    }
+    catch (Exception ex)
+    {
+        Log.Fatal(ex, "Application start-up failed");
+    }
+    finally
+    {
+        Log.CloseAndFlush();
+    }
+}
+
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .UseSerilog()
+        // configuring logging for SignalR
+        .ConfigureLogging(logging =>
+        {
+            logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Information);
+            //logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+}
 
 ```
 
@@ -43,8 +83,11 @@ If not MinimumLevel is specificed, then Information level and higher will be pro
 
 It is nice to see colour in the output:
 
-![alt text](/assets/2019-11-13/1.jpg "Console logging"){:width="600px"}
+<!-- ![alt text](/assets/2019-11-13/1.jpg "Console logging"){:width="600px"} -->
+![alt text](/assets/2019-11-13/1.jpg "Console logging")
+However this is quite noisy.
 
+## Setup dev HTTPS cert
 
 [Hanselman post on developing locally with ASP.NET Core under HTTPS](https://www.hanselman.com/blog/DevelopingLocallyWithASPNETCoreUnderHTTPSSSLAndSelfSignedCerts.aspx) 
 
@@ -54,3 +97,81 @@ dotnet dev-certs https --trust
 
 dotnet run
 ```
+
+## Turn off existing logging
+
+There are a few spots in the application that traces of the default logger might remain. In appsettings.Development.json and appsettings.json, get rid of the logging section so all that is left is:
+
+```json
+{
+  "AllowedHosts": "*"
+}
+```
+
+## Writing to the log
+
+Here are 2 methods to writing to the log. The [preferred way is Log.Information](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/#writing-your-own-log-events)
+
+```cs
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
+{
+    logger.LogInformation("******Inside Configure2");
+    Log.Information("***Inside configure 3");
+
+    if (env.IsDevelopment())
+    {
+        logger.LogInformation("****In Development Environment");
+        app.UseDeveloperExceptionPage();
+    }
+}
+```
+
+## Writing to the log from a SignalR Hub
+
+```cs
+public class CrawlHub : Hub
+{
+    public async IAsyncEnumerable<Thing> Crawl(string url, [EnumeratorCancellation]CancellationToken cancellationToken)
+    {
+        var count = 10;
+        // patch in the crawler for the url passed in
+        for (var i = 0; i < count; i++)
+        {
+            Log.Information($"inside crawl {url}");
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+        // ....
+    }
+}
+
+```
+
+## Tuning the logs
+
+Program.cs
+
+```cs
+Log.Logger = new LoggerConfiguration()
+    //.MinimumLevel.Information() // this is the default
+    // Suppress framework log noise eg routing and handling
+    // so we'll see warnings and errors from the framework
+    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+```
+
+Startup.cs
+
+```cs
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+// don't want request logging for static files so put it here in the pipeline
+app.UseSerilogRequestLogging();
+```
+
+<!-- ![alt text](/assets/2019-11-13/2.jpg "Console logging"){:width="600px"} -->
+![alt text](/assets/2019-11-13/2.jpg "A nicer log")
+
+## DevOps
+
+[Seq](https://datalust.co/) looks like a good way of analysing the logfiles in production coupled with Serilog. I'll get to that :-)
