@@ -89,6 +89,13 @@ But these are overridden by Properties/launchsettings.json:
 }
 ```
 
+I'd like to force it to use a 'command' or something via a command line switch.
+
+I guess using a build server would be more usual here.
+
+maybe trying doing a publish from Visual Studio?
+
+
 ## DB Connection Strings and Secrets
 
 Okay these should never be stored in source control, and I envisage will be more easily injected in via the Build Server (Azure DevOps). But for the simplest possible solution:
