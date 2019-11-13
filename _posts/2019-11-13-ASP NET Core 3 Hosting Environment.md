@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: 
+title: ASP.NET Core 3 Hosting Environment
 description: 
 menu: review
 categories: ASP.NETCore3 
@@ -21,16 +21,14 @@ sudo dotnet run --configuration Debug --urls=http://0.0.0.0:80
 
 ## Debug and Release Configuration
 
-https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli
+[MS Docs](https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli)
 
-
-```
+```bash
 dotnet publish -c Debug
 dotnet publish -c Release
 ```
 
 However the Release version had pdb files, and the directory looks identical on disk.
-
 
 ## Hosting Environment
 
@@ -95,12 +93,11 @@ I guess using a build server would be more usual here.
 
 maybe trying doing a publish from Visual Studio?
 
-
 ## DB Connection Strings and Secrets
 
 Okay these should never be stored in source control, and I envisage will be more easily injected in via the Build Server (Azure DevOps). But for the simplest possible solution:
 
-dbconnection strings etc
+- dbconnection strings etc
 
-appsettings.Development.json
-appsettings.Production.json
+- appsettings.Development.json
+- appsettings.Production.json
