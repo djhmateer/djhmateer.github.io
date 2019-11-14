@@ -70,12 +70,14 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ## Log Levels
 
+Here is my interpretation of Log Levels:
+
 - Verbose
 - Debug - internal system events
 - Information - describe what is happening in the system
-- Warning - when service is degraded
-- Error - functionality is unavailable
-- Fatal - top level critical
+- Warning - eg an HttpRequestException in GetBaseUrl - normal but good to know about
+- Error - When a path in the app is taken and it shouldn't be. Recoverable.
+- Fatal - Top level critical. App stops. Not recoverable. Maybe a user gets into a state and can't use the app.
 
 If not MinimumLevel is specificed, then Information level and higher will be processed.
 
