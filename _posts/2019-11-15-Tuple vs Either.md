@@ -17,7 +17,8 @@ image: /assets/2019-11-13/1.jpg
 Here is a function I've been writing using [language-ext](https://github.com/louthy/language-ext)
 
 ```cs
-public static async void Main2(string urlToProcess) 
+// calling code
+public static async void Main2(string urlToProcess)
 {
     Either<Exception, string> r = await GetBaseUrl(urlToProcess);
     // okay I should handle the Exception in Left
@@ -26,6 +27,7 @@ public static async void Main2(string urlToProcess)
     //...
 }
 
+// the function
 public static Either<Exception, string> GetBaseUrl(string url)
 {
     if (url.StartsWith("http://") || url.StartsWith("https://")) { }
@@ -52,7 +54,7 @@ public static Either<Exception, string> GetBaseUrl(string url)
     return redirectedToUrl.Remove(redirectedToUrl.Length - 1);
 }
 
-// tests
+// testing the function
 [Theory]
 [InlineData("bbc.co.uk", "https://www.bbc.co.uk")]
 [InlineData("https://bbc.co.uk", "https://www.bbc.co.uk")]
@@ -83,6 +85,7 @@ public static async IAsyncEnumerable<UIMessage> Crawl(string url)
     // ...
 }
 
+// the function
 public static async Task<(bool success, string? processedUrl, string? errorMessage)> GetBaseUrl(string url)
 {
     if (url.StartsWith("http://") || url.StartsWith("https://")) { }
@@ -109,7 +112,7 @@ public static async Task<(bool success, string? processedUrl, string? errorMessa
     return (success: true, redirectedToUrl.Remove(redirectedToUrl.Length - 1), default);
 }
 
-// xUnit tests
+// testing the function
 [Theory]
 [InlineData("bbc.co.uk", "https://www.bbc.co.uk")]
 [InlineData("https://bbc.co.uk", "https://www.bbc.co.uk")]
@@ -118,10 +121,12 @@ public static async Task GetBaseUrl_Happy(string input, string expected)
     var (success, processedUrl, errorMessage) = await GetBaseUrl(input);
     if (success)
         Equal(expected, processedUrl);
-    else 
+    else
         Equal(expected, errorMessage);
 }
-
 ```
+
+## Conclusion
+
 
 ![alt text](/assets/2019-11-13/2.jpg "A nicer log")
