@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tuple desconstruction or Either 
+title: Tuple desconstruction vs Option / Maybe / Either 
 description: 
 menu: review
 categories: Functional 
@@ -16,12 +16,13 @@ image: /assets/2019-11-13/1.jpg
 
 Here is a function I've been writing using [language-ext](https://github.com/louthy/language-ext)
 
+**todo - put in a simple Option<string> blacklist function to demonstrate the differences**
+
 ```cs
 // calling code
 public static async void Main2(string urlToProcess)
 {
     Either<Exception, string> r = await GetBaseUrl(urlToProcess);
-    // okay I should handle the Exception in Left
     var baseUrl = r.Match(Left: ex => "", Right: x => x);
     if (baseUrl == "") return; // todo - get exception to the UI
     //...
@@ -49,8 +50,6 @@ public static Either<Exception, string> GetBaseUrl(string url)
     {
         return ex;
     }
-
-    // get rid of trailing / by chopping last character
     return redirectedToUrl.Remove(redirectedToUrl.Length - 1);
 }
 
@@ -127,6 +126,13 @@ public static async Task GetBaseUrl_Happy(string input, string expected)
 ```
 
 ## Conclusion
+
+There is no 'right way' to code. I'm aiming to make my code 
+
+- clear
+- testable
+
+Currently both ways seem pretty good. I'm not using any monadic composition of the tuple(bool, T) yet, but lets see how it goes.
 
 
 ![alt text](/assets/2019-11-13/2.jpg "A nicer log")
