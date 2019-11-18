@@ -238,8 +238,18 @@ server {
         proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header   X-Forwarded-Proto $scheme;
     }
+    location /crawlHub {
+        proxy_pass http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
 }
 ```
+
+Notice to get SignalR working properly with Websockets we have to have the second /crawlHub section [as described here](https://stackoverflow.com/questions/48300288/signalr-in-asp-net-core-behind-nginx)
 
 ## Systemd - Create a Service
 
