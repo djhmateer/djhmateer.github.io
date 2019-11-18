@@ -17,7 +17,12 @@ I'm a fan of Infrastructure as Code (IaC) so I can script out building up my inf
 - Nginx reverse proxying to Kestrel
 - Systemd to monitor kestrel
 
-This allows us to be able to spin up a new environment with the latest OS patches on it within 5 minutes.  
+This allows us to be able to spin up a new environment with the latest OS patches, apt-get updates etc.. on it within 5 minutes.  The goal is to have a docker like environment where we treat the server(s) as replaceable 'things', and I'm continually spinning up new instances when patches are applied.
+
+- How to handle DNS changeover of a live domain with significant traffic
+- How will I handle state ie where the is the DB?
+
+As with these things it is a gradual improvement that is important.
 
 ## Azure CLI
 
