@@ -27,6 +27,64 @@ Some great in-depth articles are:
 - [From the aspnetmonsters article - You're using HttpClient Wrong...](https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/):
 - [You are probably still using httpclient wrong](https://josefottosson.se/you-are-probably-still-using-httpclient-wrong-and-it-is-destabilizing-your-software/)
 
+## What not to do 
+
+[YouTube from NDC](https://www.youtube.com/watch?v=ojDxK_-I-To)
+
+```cs
+public static async Task Main()
+{
+    Console.WriteLine("Starting connections");
+    for (var i = 0; i < 20; i++)
+    {
+        // HttpClient implements IDisposable
+        // creating many connection pools
+        // risk is can run out of sockets (if loads of runs)
+        // can stay in TIMEWAIT state of 240s
+        // ~16,000 ephemeral ports on windows
+        using (var client = new HttpClient())
+        {
+            var result = await client.GetAsync("https://davemateer.com");
+            Console.WriteLine(result.StatusCode);
+        }
+    }
+    Console.WriteLine("Connections done");
+}
+```
+
+```bash
+netstat -n | grep "TIME_WAIT"
+```
+
+![alt text](/assets/2019-11-13/10.jpg "All the connections remain open for 4 minutes")
+
+Can see all the sockets remain open for 4 minutes.
+
+## Use an HttpClient Singleton
+
+This has the problem of DNS not being updated
+
+## IHttpClientFactory
+
+- Manages the lifetime of HttpMessageHandlers
+- Central location for naming and configuring logical httpclients
+- Integreates with Polly
+- Diagnostics and logging
+
+## Simplest possible thing with HttpClientFactory
+
+https://garywoodfine.com/making-api-calls-with-httpclientfactory-in-console-applications/
+
+https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+
+## Console App
+https://nodogmablog.bryanhogan.net/2018/07/polly-httpclientfactory-and-the-policy-registry-in-a-console-application/
+
+
+
+
+
+
 ## Never use .Result
 
 on asynchronous methods. Even .GetAwaiter().GetResult().
