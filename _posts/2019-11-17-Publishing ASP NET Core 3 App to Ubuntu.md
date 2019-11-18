@@ -3,11 +3,11 @@ layout: post
 title: Publishing an ASP.NET Core 3 Application to Ubuntu 
 description: 
 menu: review
-categories: Linux 
+categories: Linux cloud-init AzureCLI
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2019-11-13/1.jpg
+image: /assets/2019-11-13/3.jpg
 ---
 
 I'm a fan of Infrastructure as Code (IaC) so I can script out building up my infrstructure using:
