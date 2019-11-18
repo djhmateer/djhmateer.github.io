@@ -21,14 +21,13 @@ This allows us to be able to spin up a new environment with the latest OS patche
 
 ## Azure CLI
 
-Here is my Azure CLI bash script.
+Here is my Azure CLI bash script starting on WSL.
 
 ![alt text](/assets/2019-11-13/3.jpg "Running the Azure CLI from WSL")
 
 So plain text generated passwords are not great, but this is fast and very useful to develop with. Potentially use SSH keys would be nicer as then wouldn't have to copy and paste the password every time.
 
-
-infra.sh
+`infra.sh`
 
 ```bash
 #!/bin/bash
@@ -147,6 +146,10 @@ echo -e "\nssh -o StrictHostKeyChecking=no ${adminusername}@${dnsname}.westeurop
 # echo -e "\n${dnsname}.westeurope.cloudapp.azure.com\nssh ${adminusername}@${dnsname}.westeurope.cloudapp.azure.com\n${adminpassword}" & > infra.txt
 ```
 
+![alt text](/assets/2019-11-13/4.jpg "What the script creates")
+
+The Azure CLI script creates these artifacts.  
+
 Be careful if switching between Azure subscriptions midway through deployments - I've had it get confused.
 
 ## Cloud-init
@@ -218,7 +221,9 @@ runcmd:
   - sudo restart now
 ```
 
-/var/log/output.log
+![alt text](/assets/2019-11-13/5.jpg "Machine is now ready")
+
+To debug any issues with this script look in `/var/log/cloud-init-output.log`
 
 ## Nginx Config
 
@@ -286,6 +291,13 @@ There are good docs here [Hosting and Deploying on Linux with Nginx](https://doc
 
 ## Useful commands and debugging
 
-sudo nginx -s reload
-sudo systemctl status kestrel-blc.service
-sudo journalctl -fu kestrel-blc.service
+To see cloud init problems look in `/var/log/cloud-init-output.log`  
+
+nginx config is in `/etc/nginx/sites-available/default`
+
+To reload nginx config `sudo nginx -s reload`
+
+To debug kestrel systemd problems:
+
+- sudo systemctl status kestrel-blc.service
+- sudo journalctl -fu kestrel-blc.service
