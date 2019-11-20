@@ -10,9 +10,8 @@ sitemap: false
 image: /assets/2019-11-13/1.jpg
 ---
 
-[From NuGet](https://www.nuget.org/packages/Microsoft.Extensions.Http/) 
+[From NuGet](https://www.nuget.org/packages/Microsoft.Extensions.Http/): 
 The HttpClient factory is a pattern for configuring and retrieving named HttpClients in a composable way. The HttpClient factory provides extensibility to plug in DelegatingHandlers that address cross-cutting concerns such as service location, load balancing, and reliability. The default HttpClient factory provides built-in diagnostics and logging and manages the lifetimes of connections in a performant way.
-
 
 I'm writing a broken link checker website and want to make sure the code consumes as few resources as possible and can take a large amount of load (http requests!)
 
