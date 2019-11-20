@@ -24,6 +24,66 @@ The SocketsHttpHandler establishes a pool of connections for each unique endpoin
 
 Subsequent requests to the same endpoint will attempt to locate an available connection from the pool. If there are no free connections and the connection limit for that endpoint has not been reached, a new connection will be established. Once the connection limit is reached, requests are held in a queue, until a connection is free to send them.
 
+## Real life
+
+```cs
+public static async IAsyncEnumerable<UIMessage> Crawl(string url)
+{
+    // want to share the HttpClient so can use ConnectionPooling and lifetime management 
+    // of those connections
+    var httpClient = new HttpClient();
+
+    // Get base url eg davemateer.com should return https://davemateer.com etc..
+    var (success, baseUrl, errorMessage) = await GetBaseUrl(url, httpClient);
+    if (!success)
+    {
+        Log.Warning($"Can't GetBaseUrl: {url} - getting {errorMessage}");
+        yield return new UIMessage($"Error: {errorMessage} trying {url}", true);
+        yield break;
+    }
+
+    // ip address for debugging
+    var ips = await Dns.GetHostAddressesAsync(url);
+
+    Log.Information($"requesting {baseUrl}");
+    yield return new UIMessage($"base {baseUrl} {ips[0].MapToIPv4()}", true);
+
+    // We have a good base url eg https://davemateer.com, so start the crawl
+
+    // simulate internal links
+    for (int i = 0; i < 100; i++)
+    {
+        var sw = Stopwatch.StartNew();
+        yield return new UIMessage($"{baseUrl}", true);
+        var httpResponseMessage = await httpClient.GetAsync(baseUrl);
+        yield return new UIMessage($"{(int)httpResponseMessage.StatusCode} {sw.ElapsedMilliseconds}", false);
+    }
+
+    // simulate external links
+    var url2 = "https://google.co.uk";
+    var url2b = "google.co.uk";
+    ips = await Dns.GetHostAddressesAsync(url2b);
+    var httpResponseMessage2 = await httpClient.GetAsync(url2);
+    yield return new UIMessage($"{url2} {ips[0].MapToIPv4()} {(int)httpResponseMessage2.StatusCode} ", true);
+
+    url2 = "https://bbc.co.uk";
+    url2b = "bbc.co.uk";
+    ips = await Dns.GetHostAddressesAsync(url2b);
+    httpResponseMessage2 = await httpClient.GetAsync(url2);
+    yield return new UIMessage($"{url2} {ips[0].MapToIPv4()} {(int)httpResponseMessage2.StatusCode} ", true);
+}
+```
+
+![alt text](/assets/2019-11-13/32.jpg "Connection pool sharing")
+Shared connection for all that went to davemateer.com. New connections for google.co.uk and bbc.co.uk
+
+![alt text](/assets/2019-11-13/34.jpg "Very fast when sharing a pool")
+Very fast when sharing
+
+![alt text](/assets/2019-11-13/35.jpg "Slower when a new HttpClient is made every time")
+Slower when a new HttpClient is made every time
+
+## Netstat
 
 ```bash
 # n- Addresses and port numbers in numerical form
@@ -40,7 +100,6 @@ netstat -ano
 # wc - word count
 netstat -ano | grep "216.58" | wc -l
 ```
-
 
 ## Connection Lifetime 120s
 
@@ -160,64 +219,5 @@ static async Task Main(string[] args)
 ![alt text](/assets/2019-11-13/32.jpg "10 Connections Used")
 
 If we comment out MaxConnectionsPerServer, it will use 200 connections which takes longer (1.9s), as it is not Pooling. **need to look into this more**
-
-## Real life
-
-```cs
-public static async IAsyncEnumerable<UIMessage> Crawl(string url)
-{
-    // want to share the HttpClient so can use ConnectionPooling and lifetime management 
-    // of those connections
-    var httpClient = new HttpClient();
-
-    // Get base url eg davemateer.com should return https://davemateer.com etc..
-    var (success, baseUrl, errorMessage) = await GetBaseUrl(url, httpClient);
-    if (!success)
-    {
-        Log.Warning($"Can't GetBaseUrl: {url} - getting {errorMessage}");
-        yield return new UIMessage($"Error: {errorMessage} trying {url}", true);
-        yield break;
-    }
-
-    // ip address for debugging
-    var ips = await Dns.GetHostAddressesAsync(url);
-
-    Log.Information($"requesting {baseUrl}");
-    yield return new UIMessage($"base {baseUrl} {ips[0].MapToIPv4()}", true);
-
-    // We have a good base url eg https://davemateer.com, so start the crawl
-
-    // simulate internal links
-    for (int i = 0; i < 100; i++)
-    {
-        var sw = Stopwatch.StartNew();
-        yield return new UIMessage($"{baseUrl}", true);
-        var httpResponseMessage = await httpClient.GetAsync(baseUrl);
-        yield return new UIMessage($"{(int)httpResponseMessage.StatusCode} {sw.ElapsedMilliseconds}", false);
-    }
-
-    // simulate external links
-    var url2 = "https://google.co.uk";
-    var url2b = "google.co.uk";
-    ips = await Dns.GetHostAddressesAsync(url2b);
-    var httpResponseMessage2 = await httpClient.GetAsync(url2);
-    yield return new UIMessage($"{url2} {ips[0].MapToIPv4()} {(int)httpResponseMessage2.StatusCode} ", true);
-
-    url2 = "https://bbc.co.uk";
-    url2b = "bbc.co.uk";
-    ips = await Dns.GetHostAddressesAsync(url2b);
-    httpResponseMessage2 = await httpClient.GetAsync(url2);
-    yield return new UIMessage($"{url2} {ips[0].MapToIPv4()} {(int)httpResponseMessage2.StatusCode} ", true);
-}
-```
-
-![alt text](/assets/2019-11-13/32.jpg "Connection pool sharing")
-Shared connection for all that went to davemateer.com. New connections for google.co.uk and bbc.co.uk
-
-![alt text](/assets/2019-11-13/34.jpg "Very fast when sharing a pool")
-Very fast when sharing
-
-![alt text](/assets/2019-11-13/35.jpg "Slower when a new HttpClient is made every time")
-Slower when a new HttpClient is made every time
 
 
