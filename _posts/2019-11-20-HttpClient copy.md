@@ -12,7 +12,7 @@ image: /assets/2019-11-13/1.jpg
 
 I'm writing a broken link checker website and want to make sure the code consumes as few resources as possible and can take a large amount of load (http requests!)
 
-From [HTTPClient Connection pooling in .NET Core](https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core):
+From [HTTPClient Connection pooling in .NET Core > 2.1](https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core):
 
 > HttpClient in .NET Core (since 2.1) performs connection pooling and lifetime management of those connections. This supports the use of a single HttpClient instance which reduces the chances of socket exhaustion whilst ensuring connections re-connect periodically to reflect DNS changes.
 
