@@ -177,6 +177,13 @@ public static async Task<HttpResponseMessage> HttpClientRequestAsync
 }
 ```
 
+## Final version with Exception handling
+
+Using tuple deconstruction with a nullable errorMessage
+
+```cs
+```
+
 ## Tardis
 
 Interesting that some functions are not async yet return a Task eg ScheduleByAccount
