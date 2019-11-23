@@ -152,11 +152,30 @@ var (httpResponseMessage, elapsedMilliseconds) =
     await WithHttpTimerAsync(url, httpClient, cancellationToken, HttpClientRequestAsync);
 
 // Wrapper
+public static async Task<(HttpResponseMessage output, string elapsedMilliseconds)>
+            WithHttpTimerAsync(string url, HttpClient httpClient, CancellationToken cancellationToken,
+                               Func<string, HttpClient, CancellationToken, Task<HttpResponseMessage>> function)
+{
+    var sw = Stopwatch.StartNew();
+    var output = await function(url, httpClient, cancellationToken);
+    return (output, sw.ElapsedMilliseconds.ToString());
+}
 
+// Function
+public static Task<HttpResponseMessage> HttpClientRequestAsync
+    (string url, HttpClient httpClient, CancellationToken cancellationToken)
+{
+    return httpClient.GetAsync(url, cancellationToken);
+}
 
+// Function async - should it be this?
+// see Tardis below
+public static async Task<HttpResponseMessage> HttpClientRequestAsync
+    (string url, HttpClient httpClient, CancellationToken cancellationToken)
+{
+    return await httpClient.GetAsync(url, cancellationToken);
+}
 ```
-
-
 
 ## Tardis
 
