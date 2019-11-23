@@ -14,7 +14,7 @@ Sometimes called Hole in the Middle
 
 ## Timer Wrapper with string input, int output function
 
-I have a function (method) which I want to time. But I don't want to clutter the function up with Stopwatch code.
+I have a function which I want to time. But I don't want to clutter the function up with Stopwatch code.
 
 ```cs
 // Calling code
@@ -23,7 +23,7 @@ I have a function (method) which I want to time. But I don't want to clutter the
 
 // Wrapper
 // Return a tuple with the int output of the inner function, and the elapsedMilliseconds of this WithTimer wrapper
-// pass in the string input of the inner function
+// pass in the string input to the inner function
 public static (int output, string elapsedMilliseconds) WithTimer(string input, Func<string, int> function)
 {
     var sw = Stopwatch.StartNew();
@@ -31,7 +31,7 @@ public static (int output, string elapsedMilliseconds) WithTimer(string input, F
     return (output, sw.ElapsedMilliseconds.ToString());
 }
 
-// Function
+// Function that DoesSomething
 public static int DoSomething(string input)
 {
     Thread.Sleep(500);
@@ -39,7 +39,7 @@ public static int DoSomething(string input)
 }
 ```
 
-## Passing a lambda function into the WithTimer
+## Passing a statement lambda into the WithTimer
 
 Instead of passing a function ie DoSomething function which we want to run, just pass in a lambda expression which does the thing.
 
@@ -55,8 +55,46 @@ Instead of passing a function ie DoSomething function which we want to run, just
 
 ## Passing 2 arguments into WithHttpTimer
 
-```cs
+My HttpClientRequest function takes 2 arguments - url and httpClient. I am sharing a singleton of HttpClient across the lifetime of the request for [HttpClient connection pooling reasons](/HttpClient)
 
+```cs
+// Calling code
+// pass in a url, httpClient and the function to run
+//(HttpResponseMessage httpResponseMessage, string elapsedMilliseconds) = WithHttpTimer(url, httpClient, (x,y) => HttpClientRequestB(x,y));
+// Calling code using Method Group syntax
+(HttpResponseMessage httpResponseMessage, string elapsedMilliseconds) = 
+    WithHttpTimer(url, httpClient, HttpClientRequestB);
+//
+var (httpResponseMessage, elapsedMilliseconds) =
+        WithHttpTimer(url, httpClient, (x, y) =>
+        {
+            return y.GetAsync(x).Result;
+        });
+
+//
+var (httpResponseMessage, elapsedMilliseconds) =
+        WithHttpTimer(url, httpClient, (x, y) => y.GetAsync(x).Result);
+
+// Wrapper
+// takes a string, httpClient, and a function
+// returns an httpResponseMessage and elapsedMillisecoonds
+public static (HttpResponseMessage output, string elapsedMilliseconds) WithHttpTimer(string url, HttpClient httpClient, Func<string, HttpClient, HttpResponseMessage> function)
+{
+    var sw = Stopwatch.StartNew();
+    var output = function(url, httpClient);
+    return (output, sw.ElapsedMilliseconds.ToString());
+}
+
+// Function
+// Returning HttpResponseMessage to check the status code
+public static HttpResponseMessage HttpClientRequestB(string url, HttpClient httpClient)
+{
+    //var httpClient = new HttpClient();
+    var httpResponseMessage = httpClient.GetAsync(url).Result;
+    //httpResponseMessage = CheckCharacterSet(httpResponseMessage);
+    return httpResponseMessage;
+
+}
 ```
 
 ## Timer Wrapper using Async
@@ -64,8 +102,8 @@ Instead of passing a function ie DoSomething function which we want to run, just
 I use async all the way and one of the main functions I want to wrap is using HttpClient, which I want to be async. And I need to make sure it is cancellable, so a stalled HttpClient call can be immediately cancelled.
 
 ```cs
-// calling code
-(int output, string elapsedMilliseconds) thing2 = await WithTimerAsync("input for DoSomethingAsync", DoSomethingAsync);
+// Calling code
+var (outputB, elapsedMillisecondsB)  = await WithTimerAsync("input for DoSomethingAsync", DoSomethingAsync);
 
 // Wrapper
 public static async Task<(int output, string elapsedMilliseconds)> WithTimerAsync(string input, Func<string, Task<int>> function)
@@ -76,15 +114,49 @@ public static async Task<(int output, string elapsedMilliseconds)> WithTimerAsyn
 }
 
 // Function
-async Task<int> DoSomethingAsync(string input)
+public static async Task<int> DoSomethingAsync(string input)
 {
     await Task.Delay(500);
     return 2;
 }
+```
 
+## HttpClient Wrapper using Async
+
+```cs
+// Calling code
+//var (httpResponseMessage, elapsedMilliseconds) =
+//    await WithHttpTimerAsync(url, httpClient, (x, y) => y.GetAsync(x));
+// Calling code passing ct - very handy as it is in scope
+var (httpResponseMessage, elapsedMilliseconds) =
+    await WithHttpTimerAsync(url, httpClient, (x, y) => y.GetAsync(x, cancellationToken));
+
+// Wrapper
+public static async Task<(HttpResponseMessage output, string elapsedMilliseconds)>
+            WithHttpTimerAsync(string url, HttpClient httpClient, 
+                Func<string, HttpClient, Task<HttpResponseMessage>> function)
+{
+    var sw = Stopwatch.StartNew();
+    var output = await function(url, httpClient);
+    return (output, sw.ElapsedMilliseconds.ToString());
+}
+```
+
+## HttpClient Wrapper using Async in a separate method passing ct through
+
+Need to be able to handle exceptions ie what if the connection goes down / site goes down / doesn't exist?
+
+```cs
+// Calling code
+var (httpResponseMessage, elapsedMilliseconds) =
+    await WithHttpTimerAsync(url, httpClient, cancellationToken, HttpClientRequestAsync);
+
+// Wrapper
 
 
 ```
+
+
 
 ## Tardis
 
