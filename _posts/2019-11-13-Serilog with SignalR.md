@@ -20,6 +20,8 @@ I used these articles to help me setup Serilog in my application as I wanted
 
 [Logging and Diagnostics in SignalR](https://docs.microsoft.com/en-us/aspnet/core/signalr/diagnostics?view=aspnetcore-3.0)
 
+[Top level global error handler with IAsyncEnumerable](/IAsyncEnumerable-try-catch)
+
 ## How to Setup
 
 Add NuGet package Serilog.AspNetCore
@@ -153,11 +155,50 @@ public class CrawlHub : Hub
 Program.cs
 
 ```cs
-Log.Logger = new LoggerConfiguration()
-    //.MinimumLevel.Information() // this is the default
-    // Suppress framework log noise eg routing and handling
-    // so we'll see warnings and errors from the framework
-    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+public static void Main(string[] args)
+    {
+        Log.Logger = new LoggerConfiguration()
+            //.MinimumLevel.Information() // this is the default
+            // Suppress framework log noise eg routing and handling
+            // so we'll see warnings and errors from the framework
+            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
+
+        try
+        {
+            Log.Information("");
+            Log.Information("Starting up BLC.Website (Program.cs)");
+            CreateHostBuilder(args).Build().Run();
+        }
+        catch (Exception ex)
+        {
+            Log.Fatal(ex, "Application start-up failed");
+        }
+        finally
+        {
+            Log.CloseAndFlush();
+        }
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .UseSerilog()
+            // configuring logging for SignalR
+            .ConfigureLogging(logging =>
+            {
+                //logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Information);
+                logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Warning);
+                // turn on for connection debugging
+                //logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
+}
 ```
 
 Startup.cs
@@ -171,7 +212,6 @@ app.UseStaticFiles();
 app.UseSerilogRequestLogging();
 ```
 
-<!-- ![alt text](/assets/2019-11-13/2.jpg "Console logging"){:width="600px"} -->
 ![alt text](/assets/2019-11-13/2.jpg "A nicer log")
 
 ## DevOps
