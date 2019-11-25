@@ -31,7 +31,7 @@ public class CrawlHub : Hub
         // handing off to Crawler which returns back messages (UIMessage objects) every now and again on progress
         await foreach (var uiMessage in Crawler.Crawl(url, cancellationToken))
         {
-// Check the cancellation token regularly so that the server will stop
+            // Check the cancellation token regularly so that the server will stop
             // producing items if the client disconnects.
             cancellationToken.ThrowIfCancellationRequested()
             if (uiMessage.Message.Contains("404"))
@@ -65,11 +65,21 @@ Error not being shown in the log files.
 
 [Microsoft.aspnetcore.signalr.hubexception](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.signalr.hubexception?view=aspnetcore-3.0) - The exception thrown from a hub when an error occurs.
 
-Maybe use a channel?
-https://docs.microsoft.com/en-us/aspnet/core/signalr/streaming?view=aspnetcore-3.0
-
-
 ## SO Question
 
 [I asked a question on this](https://stackoverflow.com/questions/59020363/try-catch-using-iasyncenumerable-in-signalr-asp-net-core-3-0)
+
+## 1.Update a variable inside the try block
+
+https://jacksondunstan.com/articles/3038
+
+## 2.GetAsynEnumerator()
+
+## 3.Channels
+
+Maybe use a channel?
+https://docs.microsoft.com/en-us/aspnet/core/signalr/streaming?view=aspnetcore-3.0
+
+https://github.com/dotnet/roslyn/issues/39583#issuecomment-548696280
+
 
