@@ -65,21 +65,69 @@ Error not being shown in the log files.
 
 [Microsoft.aspnetcore.signalr.hubexception](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.signalr.hubexception?view=aspnetcore-3.0) - The exception thrown from a hub when an error occurs.
 
-## SO Question
+## 1. GetAsyncEnumerator
 
-[I asked a question on this](https://stackoverflow.com/questions/59020363/try-catch-using-iasyncenumerable-in-signalr-asp-net-core-3-0)
+[I asked a question on this and figured out a solution with some pointers](https://stackoverflow.com/questions/59020363/try-catch-using-iasyncenumerable-in-signalr-asp-net-core-3-0)
 
-## 1.Update a variable inside the try block
+This was a strategy [which Jackson Dunstan used](https://jacksondunstan.com/articles/3038) and I copied him:
 
-https://jacksondunstan.com/articles/3038
+```cs
+// A wrapper iterator so can catch exceptions here which can't be done in 
+// a block which does yield return
+public async IAsyncEnumerable<UIMessage> Crawl(string url, [EnumeratorCancellation] CancellationToken cancellationToken)
+{
+    await using var messageEnumerator = CrawlAndGetMessages(url, cancellationToken).GetAsyncEnumerator(cancellationToken);
+    var more = true;
+    //for (var more = true; more;)
+    while (more)
+    {
+        // Catch exceptions only on executing/resuming the iterator function
+        try
+        {
+            more = await messageEnumerator.MoveNextAsync();
+        }
+        catch (TaskCanceledException)
+        {
+            // This is normal behaviour but is passes a cancellation token
+            // so will bubble up to here
+            // Catch in the javascript to update the UI with a message
+            Log.Information("Crawl cancelled");
+        }
+        catch (Exception ex)
+        {
+            Log.Fatal("Top level Crawl caught an unhandled exception: " + ex);
+            throw; // The exception will bubble up to the UI through normal channels
+        }
 
-## 2.GetAsynEnumerator()
+        // If completed successfully don't yield the last message
+        if (more) 
+            yield return messageEnumerator.Current;
+    }
+}
 
-## 3.Channels
+public async IAsyncEnumerable<UIMessage> CrawlAndGetMessages(string url, [EnumeratorCancellation]CancellationToken cancellationToken)
+{
+    // handing off to Crawler which returns back messages (UIMessage objects) every now and again on progress
+    await foreach (var uiMessage in Crawler.Crawl(url, cancellationToken))
+    {
+        // Check the cancellation token regularly so that the server will stop
+        // producing items if the client disconnects.
+        cancellationToken.ThrowIfCancellationRequested();
 
-Maybe use a channel?
-https://docs.microsoft.com/en-us/aspnet/core/signalr/streaming?view=aspnetcore-3.0
+        if (uiMessage.Message.Contains("404"))
+            // it should be displayed on the error list - this is not a stream
+            await Clients.Caller.SendAsync("ReceiveBrokenLinkMessage", "404 error on blah", cancellationToken);
+        else
+            // update the stream UI with whatever is happening in static Crawl
+            yield return new UIMessage(uiMessage.Message, uiMessage.Hyperlink, uiMessage.NewLine);
+    }
+}
+```
 
-https://github.com/dotnet/roslyn/issues/39583#issuecomment-548696280
+[This restriction is slated for removal](https://github.com/dotnet/csharplang/issues/2949) which would be very nice.
 
+## 2.Channels
 
+[This was another strategy to use Channels](https://github.com/dotnet/roslyn/issues/39583#issuecomment-548696280)
+
+[MS Channel Docs here](https://docs.microsoft.com/en-us/aspnet/core/signalr/streaming?view=aspnetcore-3.0)
