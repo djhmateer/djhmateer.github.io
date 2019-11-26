@@ -101,6 +101,27 @@ netstat -ano
 netstat -ano | grep "216.58" | wc -l
 ```
 
+## Streaming
+
+[From this blog on streaming](https://josefottosson.se/you-are-probably-still-using-httpclient-wrong-and-it-is-destabilizing-your-software/) 
+
+dont want to use
+
+```cs
+// NO!
+var result = httpClient.GetStringAsync(GitHubConstants.RepositoriesPath).Result; 
+
+// Don't store whole response in a string
+var result = await httpClient.GetStringAsync(GitHubConstants.RepositoriesPath).ConfigureAwait(false);
+return JsonConvert.DeserializeObject<List<GitHubRepositoryDto>>(result);
+```
+
+
+
+
+## DELETE BELOW?
+
+
 ## Connection Lifetime 120s
 
 ```cs
