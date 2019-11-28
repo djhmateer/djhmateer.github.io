@@ -16,7 +16,9 @@ sitemap: false
 <p><img src="/asdfas.png" /> Broken link to an image</p>
 <p><a href="https://nodomainhere.co.uk/">Nodomainhere link</a></p>
 <p><a href="/test2">test2</a> test 2 page</p>
-<p><a href="/allPosts">allPosts</a> allPosts</p>
+
+<!-- <p><a href="/allPosts">allPosts</a> allPosts</p> -->
+
   <div>
     <p> <a href="https://www.google.co.uk">Google good link</a> sentence of good link </p>
   </div>
