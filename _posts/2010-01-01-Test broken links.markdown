@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Test broken link page"
+title:  Test broken link page
 categories: Test
 published: true
 comments: false
@@ -8,13 +8,18 @@ sitemap: false
 ---
 ![On the way to Machu Picchu](/assets/3Guys_500.jpg)
 
-<div class="home">
-  <h1 class="page-heading">Testing page for Broken Links</h1>
-  <p> <a href="/brokenurl">Internal broken link</a> sentence of bad link</p>
+## Testing page for Broken Links
+  
+<p> <a href="/brokenurl">Internal broken link</a> sentence of bad link</p>
+
 <p><a href="/brokenurl2">Internal broken link2</a> sentence of bad link2</p>
+
 <p><a href="">Link with nothing in it ie a href=""</a> blank</p>
+
 <p><img src="/asdfas.png" /> Broken link to an image</p>
+
 <p><a href="https://nodomainhere.co.uk/">Nodomainhere link</a></p>
+
 <p><a href="/test2">test2</a> test 2 page</p>
 
 <!-- <p><a href="/allPosts">allPosts</a> allPosts</p> -->
@@ -30,7 +35,8 @@ I'd now like to try a more 'walkthrough' style blog, taking inspiration from [ha
 
 Like all research projects, I start with [OneNote](https://products.office.com/en-gb/onenote/digital-note-taking-app) so I can share notes across all devices (2 at home, 1 at work and iPhone)
 
-## Why Blog?
+## Why Blog
+
 * Helps you learn (by the act of writing down logically)
 * Help others 
 * Build brand as a developer so you can earn good money
