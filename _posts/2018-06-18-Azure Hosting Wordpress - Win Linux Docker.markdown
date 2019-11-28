@@ -12,13 +12,14 @@ Lets explore potential Azure hosting options focussing on Wordpress which I've [
 1. Web App (Windows) PaaS - **recommended**
 2. App Service on Linux PaaS
 3. Web App (Docker) / Web App for Containers
-4. Azure Container Instances   
+4. Azure Container Instances
 
 Summary: **update 25th Jan 2019** ~~I'm not using any of the above.~~ I'm using 1. Web App (Windows). Web App for Containers looks extremely promising, but I need faster disks as [described here](/wordpress/2018/05/29/Wordpress-Persistence-AKS.html). If you've got a workload which isn't disk intensive then Web App for Containers is a good fit.
 
 ~~I am continuing to use Azure Kubernetes Service in production for Wordpress~~. The complexity of [this solution](/wordpress/2018/05/31/Wordpress-in-AKS.html) made me switch back to PaaS.  
 
 ## 1. Web App (Windows)
+
 Create a resource, Web, Web App  
 ![ps](/assets/2018-02-15/mon2.png){:width="400px"}  
 then  
@@ -34,15 +35,17 @@ For SSL I'm using the [Let's Encrypt Extension](https://github.com/sjkp/letsencr
 
 
 ## 2. Azure App Service on Linux
+
 [Docs](https://docs.microsoft.com/en-gb/azure/app-service/containers/app-service-linux-intro)  This is a pre built Docker image (running on a Linux host)
 
-![ps](/assets/2018-02-15/mon3.png){:width="800px"}    
+![ps](/assets/2018-02-15/mon3.png){:width="800px"}
 Notice is this A Series compute VM (not a B Series burstable)  
-![ps](/assets/2018-02-15/mon4.png){:width="300px"}      
+![ps](/assets/2018-02-15/mon4.png){:width="300px"}
 In the Runtime Stack we can run .NET Core, Java, PHP and Node.  
 Web App for Linux is really a **Web Apps For Containers with a pre built image**  
 
 ## 3. Web App (Docker) - Web App for Containers
+
 [Hanselman](https://www.hanselman.com/blog/PennyPinchingInTheCloudDeployingContainersCheaplyToAzure.aspx) has a good post on this.  
 There are 2 ways to do this. Firstly search for Web App, then select Docker, secondly search for Web App for Containers. They will both get to this screen:
 
@@ -279,12 +282,15 @@ Summary
 - Containers can spin up and down easily to cope with load
 - Slow performance on Windows server running Docker with Azure MySQL database 
 
-## Custom Linux VM with Docker and local MySQL 
+## Custom Linux VM with Docker and local MySQL
 
 **Standard DS1_v2 1cpu 3.5GB - £37.71**
-```
+
+
+```bash
 ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
 ```
+
 177s to run from a fairly clean 100Mbits connection
 
 Was mostly db was taking power 33% CPU
@@ -292,7 +298,6 @@ Was mostly db was taking power 33% CPU
 2.4MB used (400MB free)
 
 You can scale the VM - however it does take 5 minutes or so. Filesystem is still intact (same disk), therefore as our db_data and wp-data directories are shared to the host, it just all works.
-
 
 **D16S_V3 16cpu, 64GB - £532**
 58secs to run (100MBit line flooded)
@@ -304,7 +309,7 @@ load test easy to fail the machine.
 
 Have to be careful with such little RAM - would probably be better using Alpine linux. It was very easy to run out of RAM. Can tell Docker how much to use:
 
-```
+```yml
 # docker-compose.yml
 services:
    db:
@@ -321,17 +326,19 @@ services:
 **B1mS 1 cpu and 2GB RAM £13 per month**
 I noticed this machine can take a while to spin up down
 
-
 ## Custom Linux VM with Docker and hosted MySQL
+
 Standard DS1_v2 1cpu 3.5GB - £37.71
 100 Compute units db - £64
 
-```
+```bash
 ab -n 1000 -c 100 http://davewordpressb.westeurope.cloudapp.azure.com/
 ```
+
 140secs to run
 
 ## Appendix
+
 Web App Service on Windows and Linux using PHP
 If you select this Wordpress template, you'll get Windows Server 2016 with PHP7, connected to a hosted MySQL db.
 ![ps](/assets/2018-02-15/template.png)
@@ -339,8 +346,9 @@ If you select this Wordpress template, you'll get Windows Server 2016 with PHP7,
 Performance is not good.
 
 ## Interesting Links
+
 [http://www.wordpressdocker.com/](http://www.wordpressdocker.com/)
 
-[https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl](https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl)
+~~~https://www.joyent.com/blog/wordpress-on-autopilot-with-ssl~~~
 
 ~~https://www.hyper.sh~~
