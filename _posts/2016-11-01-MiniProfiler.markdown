@@ -16,6 +16,7 @@ Badly perfoming software generally **doesn't deliver its intended benefits** to 
 What is good performance? Ask the people who use your system.  In my experience users will tell you with **brutal honesty** what they think. There is a lot of [research](https://stackoverflow.com/a/164290/26086) too.
 
 ## What is MiniProfiler?
+
 * [MiniProfiler](http://miniprofiler.com/) can show how long database queries take (commonly the bottleneck in my applications)
 * Can show API calls, AJAX Calls, Controller and View render times
 * ASP.NET MVC / Webforms
@@ -108,6 +109,7 @@ Here is a screen where using an ORM is **asking for trouble**
 Filtering, Sorting and Paging. Also returning a count of total records.  Difficult to get right in an ORM, and fine in SQL.  Very fast performance (18ms).
 
 ## 4. N+1
+
 If you have 50 Authors on the screen, and each has an AuthorStatusID which is Foreign Key'd to an AuthorStatus table:
 
 ![Cows](/assets/MiniProfiler_8.jpg)
@@ -143,13 +145,13 @@ var sql = @"
 
 380ms to 9ms - much much faster!  The other 2 times are browserlink javascript calls from visual studio.
 
-
 ## 5. API calls
+
 ![Cows](/assets/MiniProfiler_6.jpg)
 
 A project of mine which does many calls to the Spotify API.  On this page there were 6 API calls, and 1 SQL call.  MiniProfiler was very useful in highlighting **which API calls were taking the most time**  Interestingly I found issues with Azure's DNS, which meant it was much faster to run on EC2 for a while (was a geolocation lookup issue). Also I found doing API calls in parallel worked well for Spotify (whose response times are fantastic).
 
-live site [DavesTopMusic](http://www.davestopmusic.com/Artists/Details/12Chz98pHFMPJEknJQMWvI)
+was a live site - http://www.davestopmusic.com/Artists/Details/12Chz98pHFMPJEknJQMWvI
 
 ## 6. Controller and View Profiling
 A little bit more information can be had on controller and view instrumentation [here](https://stackoverflow.com/a/31568406/26086)
