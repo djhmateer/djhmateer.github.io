@@ -45,7 +45,7 @@ It is an ecosystem comprising of
 
 ## Setup Azure Sphere Account
 
-[So this is not very user friendly but following along it did work] (https://docs.microsoft.com/en-us/azure-sphere/install/azure-directory-account)  
+So this is not very user friendly but following along it did work - https://docs.microsoft.com/en-us/azure-sphere/install/azure-directory-account
 
 > Azure Sphere uses Azure Active Directory (AAD) to enforce enterprise access control. Therefore, to use Azure Sphere, you need a Microsoft work or school account (sometimes called an organizational account) that is associated with an AAD.
 
@@ -81,7 +81,7 @@ azsphere device show-ota-status
 
 ## Building a Blink Application
 
-[Quickstarts](https://docs.microsoft.com/en-us/azure-sphere/quickstarts/qs-overview)
+Quickstarts - https://docs.microsoft.com/en-us/azure-sphere/quickstarts/qs-overview
 
 ```bash
 azsphere device prep-debug
@@ -128,7 +128,7 @@ so it seems it only supports C at the moment (although C++ is a maybe)
 
 ## Blinking light
 
-[link](https://www.element14.com/community/groups/internet-of-things/blog/2019/04/24/avnets-azure-sphere-starter-kit-out-of-box-demo-part-1-of-3?ICID=azuresphere-kit-datasheet-widget) and [Avnet Github Link](https://github.com/Avnet/AvnetAzureSphereStarterKitReferenceDesign.git)
+link - https://www.element14.com/community/groups/internet-of-things/blog/2019/04/24/avnets-azure-sphere-starter-kit-out-of-box-demo-part-1-of-3?ICID=azuresphere-kit-datasheet-widget and [Avnet Github Link](https://github.com/Avnet/AvnetAzureSphereStarterKitReferenceDesign.git)
 
 It shows:
 
@@ -154,9 +154,9 @@ LPS22HH: Pressure     [hPa] : 1008.31
 LPS22HH: Temperature  [degC]: 32.77
 ```
 
-[Demo2](https://www.element14.com/community/groups/internet-of-things/blog/2019/05/01/azure-sphere-starter-kit-out-of-box-demo-blog-post-2) is showing the IoT hub on Azure
+Demo2 - https://www.element14.com/community/groups/internet-of-things/blog/2019/05/01/azure-sphere-starter-kit-out-of-box-demo-blog-post-2 is showing the IoT hub on Azure
 
-[Demo3](https://www.element14.com/community/groups/internet-of-things/blog/2019/05/09/avnets-azure-sphere-starter-kit-out-of-box-demo-part-3-of-3) is IoT Central on Azure
+Demo3 - https://www.element14.com/community/groups/internet-of-things/blog/2019/05/09/avnets-azure-sphere-starter-kit-out-of-box-demo-part-3-of-3 is IoT Central on Azure
 
 [Azure Sphere Samples on GitHub](https://github.com/Azure/azure-sphere-samples)
 These seem quite low level
