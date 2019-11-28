@@ -65,4 +65,9 @@ static async Task Main()
 }
 ```
 
-Exposed an underlying issues with my link checker in that it timed out only in production (which is on an Ubuntu Linux box).
+## Timeouts
+
+This behaviour exposed an underlying issues with my link checker in that it timed out only in production (which is on an Ubuntu Linux box) as opposed to after 19s on my Windows development machine.
+
+## Most common user-agents
+
