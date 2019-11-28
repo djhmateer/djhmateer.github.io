@@ -25,7 +25,7 @@ Dave did an interview on [Channel 9](https://channel9.msdn.com/events/DDD/DDD12-
 
 ## May 2016, London
 
-[![Screenshot](/assets/SkillsMatters2.png)](https://skillsmatter.com/skillscasts/8181-lscc-talks-may)  
+[![Screenshot](/assets/SkillsMatters2.png)]
 
 Refactoring towards testable code and happier developers - skillsmatter's video currently down https://skillsmatter.com/skillscasts/8181-lscc-talks-may
 
@@ -39,7 +39,7 @@ He will start at the beginning then get more detailed covering: formatting, comm
 
 ### April 2015, London
 
-[![Screenshot](/assets/SkillsMatters1.png)](https://skillsmatter.com/skillscasts/6350-30m-plus-songs-explore-your-favorite-music-with-spotifys-json-web-api-mvc5-dapper-and-oauth2)  
+[![Screenshot](/assets/SkillsMatters1.png)]
 
 30,000,000+ songs! Explore your favourite music with Spotify's JSON Web API, MVC5, Dapper and OAuth2 - skills matter video is down https://skillsmatter.com/skillscasts/6350-30m-plus-songs-explore-your-favorite-music-with-spotifys-json-web-api-mvc5-dapper-and-oauth2
 

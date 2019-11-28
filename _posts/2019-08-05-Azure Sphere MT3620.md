@@ -38,10 +38,8 @@ It is an ecosystem comprising of
 
 [From Getting Started](https://docs.microsoft.com/en-us/azure-sphere/)
 
-**from 11th Nov 2019 - the links below are broken here as MS have done something**
-
 - Plug in your device and wait (maybe 5 minutes) for the USB drivers to install
-- [Install the SDK for Visual Studio](https://aka.ms/AzureSphereSDKDownload) which took 15 minutes on my laptop and it seemed to hang, but was just a large background download happening
+- Install the SDK for Visual Studio - https://aka.ms/AzureSphereSDKDownload which took 15 minutes on my laptop and it seemed to hang, but was just a large background download happening
 
 ## Setup Azure Sphere Account
 
