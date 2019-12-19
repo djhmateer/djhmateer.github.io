@@ -222,22 +222,9 @@ I use:
 - [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) seo meta data and [Open Graph and Twitter Cards](2019/04/07/Twitter-card-open-graph-site-preview).
 - [jemoji](https://github.com/jekyll/jemoji) - for [telephone, twitter etc. icons](/2019/05/27/Jemoji)
 
-
--
-
-
-
 ## Videos
+
 [Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
-
-
-
-
-
-
-
-
-
 
 
 
