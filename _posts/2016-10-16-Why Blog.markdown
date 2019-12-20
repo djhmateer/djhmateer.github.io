@@ -10,14 +10,15 @@ sitemap: true
 ![On the way to Machu Picchu](/assets/3Guys_500.jpg)
 
 I started blogging 8 years ago with [Programgood - First Post](https://web.archive.org/web/20170324063932/http://www.programgood.net/2008/11/08/GoalsBackgroundOfProgramGoodNet.aspx)  It turned into a very good ideas repository, not a blog.  *That's fine.*  
- 
-I'd now like to try a more 'walkthrough' style blog, taking inspiration from [hanselman.com](https://www.hanselman.com) and [ScottGu](https://weblogs.asp.net/scottgu/introducing-asp-net-5) 
+
+I'd now like to try a more 'walkthrough' style blog, taking inspiration from [hanselman.com](https://www.hanselman.com) and [ScottGu](https://weblogs.asp.net/scottgu/introducing-asp-net-5)
 
 Like all research projects, I start with [OneNote](https://products.office.com/en-gb/onenote/digital-note-taking-app) so I can share notes across all devices (2 at home, 1 at work and iPhone)
 
-## Why Blog?
+## Why Blog
+
 * Helps you learn (by the act of writing down logically)
-* Help others 
+* Help others
 * Build brand as a developer so you can earn good money
 * Carrot to 'finish' writing projects
 * Sharpen communication through written word
@@ -25,11 +26,12 @@ Like all research projects, I start with [OneNote](https://products.office.com/e
 * Tell stories
 
 ## Titles
+
 What is in it for your reader?
 
-What are you passionate about?  It really doesn't matter how much of an 'expert' you are at a subject.  If you care enough to write on a subject, then damn, <b>get on it</b>, and write it.  More than likely, others will care about the same.
+What are you passionate about?  It really doesn't matter how much of an 'expert' you are at a subject.  If you care enough to write on a subject, then damn, **get on it**, and write it.  More than likely, others will care about the same.
 
-## Who are your (fabulous) target audience?
+## Who are your (fabulous) target audience
 
 Jeff Bezos - write the press release first.
 
@@ -37,24 +39,20 @@ Jeff Bezos - write the press release first.
 
 "Dave Mateer is a professional software developer who can make *simple* *performant* and *maintainable* code"
 
-## How to reach your (awesome) audience?
+## How to reach your (awesome) audience
 
-- Talk at conferences
-- Answer questions on SO and link to articles
-- Do code reviews are link to articles
-- Pluralsight make videos
-- Youtube
+-Talk at conferences
+-Answer questions on SO and link to articles
+-Do code reviews are link to articles
+-Pluralsight make videos
+-Youtube
 
 ## Blogging Advice Articles
+
 [Blogging Advice for Beginners](https://buffer.com/resources/blogging-advice-for-beginners-from-16-experts)  
 
 I liked 'Get ideas from your audience', specifically if someone asks you an interesting question then write a blog post to answer that question. I was asked recently about how to get the 'meta tags' so that Twitter previews work well. So I [wrote a blog post on it](/2019/04/07/Twitter-card-open-graph-site-preview).
 
-
-
-
-
 ## Conclusion
-Blogging is good - go for it!
 
-<p></p>
+Blogging is good - go for it!
