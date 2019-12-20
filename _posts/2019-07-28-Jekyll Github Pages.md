@@ -1,28 +1,31 @@
 ---
 title: Jekyll GitHub Pages 
-description: 
-menu: review
+description: Jekyll and how I have successfully built a blog over the last 3 years and refined my workflow. 
+#menu: review
 categories: Jekyll GitHub
-comments: false
-sitemap: false
-image: /assets/2019-07-18/1.jpg
+comments: true
+sitemap: true
+image: /assets/2019-07-18/20.jpg
 ---
-I've been using [Jekyll](https://jekyllrb.com/) ([GitHub source](https://github.com/jekyll/jekyll)) for [nearly 3 years for this blog](/2016/10/17/Blog-with-Jekyll-and-host-for-free) hosted on [GitHub Pages](https://pages.github.com/)
 
-> Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity
+![alt text](/assets/2019-07-18/20.jpg "Jekyll"){:width="400px"}
 
-- I have [Multiple sites hosted on GitHub Pages using separate GitHub Logins]()
-- I use [Docker on my Windows Machine to have it hosted locally and livereload]()
-- I sometimes use [Cloudflare as a domain registrar as they are cheap and for SSL Cert and other CDN goodness]()
+I've been using [Jekyll](https://jekyllrb.com/) ([GitHub source](https://github.com/jekyll/jekyll)) for [nearly 3 years for this blog](/2016/10/17/Blog-with-Jekyll-and-host-for-free) hosted on [GitHub Pages](https://pages.github.com/)  
+
+> Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity  
+
+- I have [Multiple sites hosted on GitHub Pages using separate GitHub Logins](/2019/07/28/Multiple-Github-Logins)
+- I use [Docker on my Windows Machine to have it hosted locally and livereload](/2018/01/25/Jekyll-and-Docker)
+- I sometimes use [Cloudflare as a domain registrar as they are cheap and for SSL Cert and other CDN goodness](/2018/01/08/SSL-on-Github-Pages)
 - I use redirects when I changed my blog naming strategy
 
-This article is a summary of what I've learned so far, and how my workflow has changed. It came about as I struggled to show a friend how to get [her blog started](https://agoyal.co.uk).
+This article is a summary of what I've learned so far, and how my workflow has changed.
 
-I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, and maybe Jekyll will be a good fit.
+I'm going to be creating a few websites soon for products which I'd like to use GH Pages for, and maybe Jekyll will be an excellent fit.
 
 ## Set up Jekyll locally using Docker
 
-I like to do this as it gives me immediate feedback on how the site looks. It is not strictly necessary as GitHub Pages can do the build for you. 
+I like to do this as it gives me immediate feedback on how the site looks. It is not strictly necessary as GitHub Pages can do the build for you.
 
 I've written articles on [Setting up Docker and Livereload](/2018/01/25/Jekyll-and-Docker) and [having multiple GitHub Pages User Sites](/2019/07/28/Multiple-Github-Logins), but essentially I now do this:
 
@@ -219,39 +222,13 @@ I use:
 - [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) - generates a sitemap.xml (for seo)
 - [jekyll-github-metadata](https://github.com/jekyll/github-metadata) - puts in GH Revision on page (for troubleshooting builds and sanity checking if worked)
 - [jekyll-feed](https://github.com/jekyll/jekyll-feed) generates feed.xml Atom (RSS) feed of posts
-- [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) seo meta data and [Open Graph and Twitter Cards](2019/04/07/Twitter-card-open-graph-site-preview).
+- [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) seo meta data and [Open Graph and Twitter Cards](/2019/04/07/Twitter-card-open-graph-site-preview).
 - [jemoji](https://github.com/jekyll/jemoji) - for [telephone, twitter etc. icons](/2019/05/27/Jemoji)
+
+However I may well transition to not using these add-ons as described in the first video below.
 
 ## Videos
 
+[Getting Sh*t done with Jekyll by Ronan Berder](https://www.youtube.com/watch?v=No7dtPtbtcE) - an excellent video on pragmatic Jekyll usage
+
 [Giraffe Academy](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB) - a good intro set of videos
-
-
-
-
-
-## Old
-
-### Setup Gemfile for GitHub Pages
-
-Lets setup the gemfile to use the [GitHub pages gem](https://github.com/github/pages-gem) which will force Jekyll locally to use the same version as on GH Pages. [Here are the versions of gems and themes used on GH Pages](https://pages.github.com/versions/) as GH Pages will do a build for us automatically. GH Pages uses Jekyll 3.8.5 as of 28th July 2019. Whereas latest Jekyll is 3.8.6
-
-```bash
-# _config.yml
-# comment out the 3.8.6 version
-# gem "jekyll", "~> 3.8.6"
-
-# comment in the github-pages gem
-gem "github-pages", group: :jekyll_plugins
-```
-
-then in the console:
-
-```bash
-# spin up the docker image in interactive mode
-docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/jekyll /bin/bash
-# update the gem bundles
-bundle update
-```
-
-If this fails try deleting Gemfile.lock
