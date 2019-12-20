@@ -19,10 +19,9 @@ sitemap: false
 
 [Use the YAML way of defining Azure DevOps](/2019/03/21/Azure-DevOps-YAML-Pipelines). I found that exploring the GUI was very helping in understanding the product, but Infrastructure as Code (IaC) is **where you should be**
 
-For continuous delivery especially for collaboration / more complex projects this pipeline is invaluable. It needs time and work to set it up and maintain it. 
- 
-You can pick and choose which services to use eg could keep using GitHub
+For continuous delivery especially for collaboration / more complex projects this pipeline is invaluable. It needs time and work to set it up and maintain it.
 
+You can pick and choose which services to use eg could keep using GitHub
 
 There has been [a lot of people commenting on the UI](https://news.ycombinator.com/item?id=18983586) and I can confirm there is a steep learning curve.  
 
@@ -33,6 +32,7 @@ There has been [a lot of people commenting on the UI](https://news.ycombinator.c
 [Microsoft Architecture Solutions](https://azure.microsoft.com/en-gb/solutions/architecture/?solution=devops)  
 
 ## Goal
+
 Goal is that infrastructure should be defined just like code, which can be checked into source control. So then we can spin up all the infrastructure in Azure at any point eg for a Feature branch that I want to test.  
 
 Perhaps there is webserver (PaaS) and a database (MSSQL) initially.  
@@ -46,28 +46,33 @@ Turning off Boards, Artifacts and Test Plans helps reduce noise. I'm keeping thi
 ![ps](/assets/2019-03-07/1.png){:width="700px"}
 
 ## Release Pipelines
+
 After setting up a repository with a single index.html in it with 'Hello World' as text, lets make a Continuous Deployment pipeline that deploys to the live Azure App Service whenever a new commit is pushed to the master branch.
 
 ### Step 1 - Add an Artifact
+
 ![ps](/assets/2019-03-07/2.png){:width="800px"}  
 Wiring up the Artifact directly to the master branch of the Repo (not doing any building)
 
 ### Step 2 - Trigger getting the Artifact
+
 ![ps](/assets/2019-03-07/3.png)  
 Trigger to deploy whenever there is a push to the branch (master as defined in first step)  
 
 ### Step 3 - Stages create an Agent to do the Deploy
+
 ![ps](/assets/2019-03-07/4.png)  
 Use VS2017 here - could use Ubuntu, Server 2019, Mac, Self Hosted agent
 
 ### Step 4 - Azure App Service Deploy
+
 ![ps](/assets/2019-03-07/5.png)  
 So it is zipping up everything in the linked repository and sending to an already created App Service in Azure.  
 
-![ps](/assets/2019-03-07/7.png)    
+![ps](/assets/2019-03-07/7.png)
 For each release you can see the logs, and could deploy from here manually eg to **roll back** to a previous release.  
 
-![ps](/assets/2019-03-07/6.png)    
+![ps](/assets/2019-03-07/6.png)
 
 [Azure App Service Deploy](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureRmWebAppDeploymentV4/README.md) - looks like it uses Zip Deploy  
 
@@ -77,6 +82,7 @@ Stages, Prod Deploy - 1 job, 1 task, using a Windows machine running VS2017 to d
 Time to deploy to live site between 35s and 60s.  
 
 ## Build Pipeline
+
 There is the yaml or visual designer way to do the Build. [From the Azure DevOps Docs](https://docs.microsoft.com/en-gb/azure/devops/pipelines/get-started/pipelines-get-started?toc=/azure/devops/pipelines/toc.json&bc=/azure/devops/boards/pipelines/breadcrumb/toc.json&view=azure-devops) comments at the bottom it seems like yaml doesn't have stages in Releases (eg dev, test, prod) or approvals in Releases which are very important.  
 
 The documentation recommends using the yaml way so everything is in source control, however others I've talked to who use this in production suggest the UI. 
@@ -106,7 +112,8 @@ We're inheriting Ubuntu build server from the Pipeline.
 Restore, Build, Test, Publish, and Publish Artifact (which doesn't go into the Azure DevOps Artifacts, but is accessible from the Agent whic does Releases
 
 ## Stages
-A push to master branch automatically triggers a deploy to Test [http://webapplication1dm-test.azurewebsites.net/](http://webapplication1dm-test.azurewebsites.net/) then manually Approve to promote to Prod [http://webapplication1dm.azurewebsites.net/](http://webapplication1dm.azurewebsites.net/)
+
+A push to master branch automatically triggers a deploy to Test http://webapplication1dm-test.azurewebsites.net then manually Approve to promote to Prod http://webapplication1dm.azurewebsites.net
 
 ![ps](/assets/2019-03-07/17.png)   
 
