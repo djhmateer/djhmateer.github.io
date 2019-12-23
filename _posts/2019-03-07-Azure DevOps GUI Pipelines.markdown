@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Azure DevOps GUI Pipelines **Work in Progress**
+title: Azure DevOps GUI Pipelines
 menu: review
 categories: DevOps
 published: true 
