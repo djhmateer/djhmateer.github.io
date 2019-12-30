@@ -1,55 +1,90 @@
 ---
 layout: post
-title:  "Cmder"
+title:  Cmder
+description: Cmder is my shell of choice - here is how I use it daily and the tweaks I've used over the years
 #menu: review
 categories: Cmder Curl
 published: true 
+comments: true
 redirect_from: cmder/2018/01/30/Cmder-Shell.html 
 sitemap: true
 ---
 [Cmder](http://cmder.net/) is my shell of choice, [and you can download the latest relase from Github](https://github.com/cmderdev/cmder/releases). To update it you simply overwrite the files with the latest versions in the cmder directory.
 
+![ps](/assets/2018-01-30/5.jpg)
+
+Top left window is my blog, top right is my current project. Bottom left is a WSL running Ubuntu where I run bash scripts using the Azure CLI. Bottom right is my scratch shell - commonly used for `ssh` into Linux VMs.
+
 ## Where to Install
 
-![ps](/assets/2018-01-30/c.png)  
+![ps](/assets/2018-01-30/6.jpg)  
 
-I install in C:\sharedTools\cmder (note I now use cmder full instead of cmder_mini - but both are fine)
+I install in `C:\sharedTools\cmder` (I use cmder full instead of cmder_mini - but both are fine). I then source control this folder and use across my work machine, home laptop and home desktop. [OpenVSSolution is discussed here and I use all the time!](/2018/11/14/Open-visual-studio-from-command-line), AutoHotKey script [is for binding Caps Lock key to the escape key for Vim](/2018/04/10/Autohotkey)
 
 ## Aliases
 
 The Nov 2017 release fixes issue that aliases don't work without the legacy console enabled in Win10.
 
-Update the file C:\sharedTools\cmder\config\user-aliases.cmd
+Update the file `C:\sharedTools\cmder\config\user-aliases.cmd`
 
 Here are my favourite aliases
 
-```bash
+```bat
+;= REM p(ush) - add everything, commit everything and push
+p=git add . & git commit -m "auto commit" & git push
+
+;= REM git pull
+gp=git pull
+
+;= REM m(message) - use this instead of p(push) so can have better commit messages
+m=git add . & git commit -m "$*" & git push
+
+;= REM g(it) (l)og - view the commit log nicely
 gl=git log --oneline --all --graph --decorate  $*
-ls=ls -lat --show-control-chars -F --color $*
-e=explorer .
-p=git add . -A & git commit -m "auto commit" & git push
-m=git commit -am "$*" & git push
-c=code .
+
+gs=git status
+
+;= REM parts of the filesystem I use a lot
 cdd = cd c:\dev
-ddel = docker container prune -f $t docker image prune -af $t docker network prune -f $t docker volume prune -f
-;= $* passes all the arguments
-;= use s nameofsolution.sln (and use tab to autocomplete) to start a solution file
-s = start $*
-gp = git pull
+cdl = cd c:\dev\test
+cdj = cd c:\dev\test\brokenlink
+
+;= REM nicely show a file list
+ls=ls -lat --show-control-chars -F --color $*
+
+;= REM windows explorer!
+e=explorer .
+
+;= REM vs code!
+c=code .
+
+clear=cls
+
+;= REM Docker
 du = docker-compose up
 dup = docker-compose up -d
 dd = docker-compose down
 
-;unused
-;k=kubectl $*
-;ka=KeepK8sAlive
-;das = az aks browse -n aks -g aksrg
-```
+;= get rid of any cachedf containers, images, networks and volumes
+ddel = docker container prune -f $t docker image prune -af $t docker network prune -f $t docker volume prune -f
 
+;= REM cmder
+history=cat -n "%CMDER_ROOT%\config\.history"
+unalias=alias /d $1
+cmderr=cd /d "%CMDER_ROOT%"
+```
 
 ## Set Starup Directory
 
 ![ps](/assets/2018-01-30/startup.png)
+
+Don't type it in - press the Startup dir which does it for you
+
+## Set Font
+
+![ps](/assets/2018-01-30/7.jpg)
+
+I prefer Consolas 14.
 
 ## Git prompt
 
