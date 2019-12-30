@@ -46,6 +46,7 @@ dd = docker-compose down
 ;das = az aks browse -n aks -g aksrg
 ```
 
+
 ## Set Starup Directory
 
 ![ps](/assets/2018-01-30/startup.png)
