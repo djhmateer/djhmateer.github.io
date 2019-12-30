@@ -52,14 +52,22 @@ dd = docker-compose down
 
 ## Git prompt
 
-The prompt shows you easily if there are
+The Git prompt shows you if there are
+
+![ps](/assets/2018-01-30/3.jpg)
+
+- No changes (white)
+- Master branch
+- Origin remote
 
 ![ps](/assets/2018-01-30/2.jpg)
--Current changes to be committed (yellow - super handy)
--Which branch you are on (master)
+
+- Outstanding changes to be committed (yellow italic)
 
 ![ps](/assets/2018-01-30/1.jpg)  
--NPM package.json version
+
+- NPM package.json version
+
 The `tachyons@4.11.2` points to the [npm package.json file](https://nodejs.org/en/knowledge/getting-started/npm/what-is-the-file-package-json/)
 
 ## Split the Window
