@@ -23,11 +23,11 @@ I install in `C:\sharedTools\cmder` (I use cmder full instead of cmder_mini - bu
 
 ## Aliases
 
-The Nov 2017 release fixes issue that aliases don't work without the legacy console enabled in Win10.
+The Nov 2017 release fixes issue that aliases don't work without the legacy console enabled in Win10.  
 
-Update the file `C:\sharedTools\cmder\config\user-aliases.cmd`
+**Update 30th Dec 2019** have updated to latest version and thoughts over last few years of using Cmder
 
-Here are my favourite aliases
+Here are my favourite aliases updating the file `C:\sharedTools\cmder\config\user-aliases.cmd`
 
 ```bat
 ;= REM p(ush) - add everything, commit everything and push
@@ -108,8 +108,9 @@ The `tachyons@4.11.2` points to the [npm package.json file](https://nodejs.org/e
 
 ## Split the Window
 
-![ps](/assets/2018-01-30/split.png)
-Very nice to split the screen
+![ps](/assets/2018-01-30/split.png)  
+
+Very nice to split the screen, but I tend to use multiple windows now instead.
 
 ## Only show 1 active window in the taskbar
 
@@ -119,12 +120,17 @@ Settings (Win Alt P)
 
 ## Keyboard shortcuts
 
-Shift Insert - pastes multi line
+- Shift Insert - pastes multi line
+- Shift Alt # - open a new terminal window (eg 9 for WSL in my case)
+
+[More keyboard shortcuts here](https://cmder.net/)
 
 ## Curl
 
-Such a useful tool: 
-[run curl from windows](https://superuser.com/questions/134685/run-curl-commands-from-windows-console)  
+Below are instructions on running curl in Windows which I used to use. Now I just use WSL.
+
+Such a useful tool:
+[Run curl from windows](https://superuser.com/questions/134685/run-curl-commands-from-windows-console)  
 
 Essentially download from [here](https://curl.haxx.se/download.html#Win32)
 
