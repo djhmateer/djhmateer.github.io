@@ -1,13 +1,14 @@
 ---
 layout: post
 title:  Cmder
-description: Cmder is my shell of choice - here is how I use it daily and the tweaks I've used over the years
+description: Cmder is my wonderful shell of choice on Windows - here is how I use it daily and the tweaks I've used over the past 3 years
 #menu: review
 categories: Cmder Curl
 published: true 
 comments: true
 redirect_from: cmder/2018/01/30/Cmder-Shell.html 
 sitemap: true
+image: /assets/2018-01-30/5.jpg
 ---
 [Cmder](http://cmder.net/) is my shell of choice, [and you can download the latest relase from Github](https://github.com/cmderdev/cmder/releases). To update it you simply overwrite the files with the latest versions in the cmder directory.
 
