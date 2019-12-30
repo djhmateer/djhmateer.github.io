@@ -7,19 +7,23 @@ published: true
 redirect_from: cmder/2018/01/30/Cmder-Shell.html 
 sitemap: true
 ---
-[Cmder](http://cmder.net/) is my shell of choice. [download from github](https://github.com/cmderdev/cmder/releases)
-### Where to Install
-![ps](/assets/2018-01-30/c.png)  
-I install in C:\sharedTools\cmder (note I now use cmder full instead of cmder_mini - but both are fine) 
+[Cmder](http://cmder.net/) is my shell of choice, [and you can download the latest relase from Github](https://github.com/cmderdev/cmder/releases). To update it you simply overwrite the files with the latest versions in the cmder directory.
 
-### Aliases
+## Where to Install
+
+![ps](/assets/2018-01-30/c.png)  
+
+I install in C:\sharedTools\cmder (note I now use cmder full instead of cmder_mini - but both are fine)
+
+## Aliases
+
 The Nov 2017 release fixes issue that aliases don't work without the legacy console enabled in Win10.
 
 Update the file C:\sharedTools\cmder\config\user-aliases.cmd
 
 Here are my favourite aliases
 
-```
+```bash
 gl=git log --oneline --all --graph --decorate  $*
 ls=ls -lat --show-control-chars -F --color $*
 e=explorer .
@@ -40,25 +44,41 @@ dd = docker-compose down
 ;k=kubectl $*
 ;ka=KeepK8sAlive
 ;das = az aks browse -n aks -g aksrg
-
 ```
 
-### Set Starup Directory
+## Set Starup Directory
+
 ![ps](/assets/2018-01-30/startup.png)
 
-### Split the Window
+## Git prompt
+
+The prompt shows you easily if there are
+
+![ps](/assets/2018-01-30/2.jpg)
+-Current changes to be committed (yellow - super handy)
+-Which branch you are on (master)
+
+![ps](/assets/2018-01-30/1.jpg)  
+-NPM package.json version
+The `tachyons@4.11.2` points to the [npm package.json file](https://nodejs.org/en/knowledge/getting-started/npm/what-is-the-file-package-json/)
+
+## Split the Window
+
 ![ps](/assets/2018-01-30/split.png)
 Very nice to split the screen
 
-### Only show 1 active window in the taskbar
+## Only show 1 active window in the taskbar
+
 ![ps](/assets/2018-01-30/active.png)
 
 Settings (Win Alt P)
 
-### Keyboard shortcuts
+## Keyboard shortcuts
+
 Shift Insert - pastes multi line
 
 ## Curl
+
 Such a useful tool: 
 [run curl from windows](https://superuser.com/questions/134685/run-curl-commands-from-windows-console)  
 
@@ -68,7 +88,7 @@ Essentially download from [here](https://curl.haxx.se/download.html#Win32)
 
 Then copy curl.exe, libcurl.dll and the .crt file into c:\sharedTools
 
-```
+```bash
 :: check for 301 redirect **use this**
 curl http://www.qnrl.com -i
 
@@ -84,4 +104,3 @@ curl https://www.qnrl.com -I
 :: just gives the code eg 302 [https://superuser.com/a/442395/12214](https://superuser.com/a/442395/12214)
 curl -s -o /dev/null -w "%{http_code}" https://www.onenote.com
 ```
-
