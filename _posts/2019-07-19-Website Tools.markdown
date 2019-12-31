@@ -10,11 +10,13 @@ sitemap: false
 image: /assets/2019-05-27/1.png
 ---
 
-# Domains and Registration
+## Domains and Registration
+
 [tld-list.com](https://tld-list.com/)  shows where to get cheap domain names  
 [Cloudflare](https://cloudflare.com) (not for .co.uk yet) as they charge wholesale if you move domain to them  
 
-# Site Checking
+## Site Checking
+
 https://sitechecker.pro/tool/crawl-report/
   very limited free
   multiple description, multiple titles in my blog
@@ -23,6 +25,10 @@ very good knowledge base
 
 There is a chrome plugin.
 
-# SSL Cert expiring
+## Site technologies
 
-# Broken link checking
+[BuiltWith.com](https://builtwith.com/)
+
+## SSL Cert expiring
+
+## Broken link checking
