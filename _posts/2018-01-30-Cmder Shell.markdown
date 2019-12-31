@@ -77,6 +77,8 @@ cmderr=cd /d "%CMDER_ROOT%"
 
 ## Set Starup Directory
 
+In Cmd::Cmder and WSL::Bash  
+
 ![ps](/assets/2018-01-30/startup.png)
 
 Don't type it in - press the Startup dir which does it for you
