@@ -133,7 +133,7 @@ This feels similar to Azure VM's that share CPU eg B series, and have limited ba
 
 A middle ground - unlmited traffic but still virtual CPUs
 
-[ovh public cloud](https://www.ovh.co.uk/vps/vps-cloud-ram.xml)
+[OVH public cloud](https://www.ovh.co.uk/vps/vps-cloud-ram.xml)
 
 - 2 vcores
 - 30GB RAM
