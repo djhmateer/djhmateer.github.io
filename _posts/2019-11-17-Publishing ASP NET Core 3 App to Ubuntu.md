@@ -228,6 +228,8 @@ runcmd:
   - sudo restart now
 ```
 
+[Fix line endings with SED](/2019/05/28/Hosting-Drupal-on-Azure#fix-line-endings-with-sed) if you need to switch from Windows to Unix line endings.  
+
 ![alt text](/assets/2019-11-13/5.jpg "Machine is now ready")
 
 To debug any issues with this script look in `/var/log/cloud-init-output.log`
