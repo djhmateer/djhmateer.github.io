@@ -159,6 +159,8 @@ Be careful if switching between Azure subscriptions midway through deployments -
 
 ## Cloud-init
 
+**update Jan 2020** There is also [run-command invoke](https://docs.microsoft.com/en-us/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) which is an alternative.  
+
 This is a python based library which runs commands after the machine builds. It is patched in from the Azure CLI script above.
 
 cloud-init.txt
