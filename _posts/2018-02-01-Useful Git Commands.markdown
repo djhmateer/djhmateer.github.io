@@ -14,9 +14,22 @@ I use Git every day. Here are my favourite commands, which I frequently forget, 
 
 ![alt text](/assets/2019-11-13/70.jpg "Using Git"){:width="800px"}
 
-**Update 30th Dec 2019** - [I now alias the common commands](/2018/01/30/Cmder-Shell#aliases)
+**Update 30th Dec 2019** - [I now alias the common commands](/2018/01/30/Cmder-Shell#aliases)  
+
+[Delete Windows Cached passwords using Credential Manager](/2019/07/28/Multiple-Github-Logins)
 
 ```bash
+# branch
+git checkout -b davem/infrastructure
+
+# above is a shortcut for:
+git branch davem/infrastructure
+git checkout davem/infrastructure
+
+# push the branch to the remote
+# -u is short for --set-upstream so I can do a git push and it will go
+git push -u origin davem/infrastructure
+
 
 # replace local version with remote version - https://stackoverflow.com/a/5288284/26086
 git stash; git fetch origin; git reset --hard origin/master
