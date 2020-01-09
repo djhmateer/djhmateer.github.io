@@ -48,8 +48,9 @@ A repository level text will override a global autocrlf
 
 ```bash
 # Set default behavior to automatically normalize line endings.
-* text=auto
-# Bash shell scripts must keep unix line endings
+# NO We don't want this!! LEAVE line endings alone
+# * text=auto
+# Bash shell scripts make sure to keep unix line endings
 /infra/* text eol=lf
 ```
 
