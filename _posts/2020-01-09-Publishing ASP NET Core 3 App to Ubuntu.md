@@ -1,40 +1,42 @@
 ---
 layout: post
-title: Publishing an ASP.NET Core 3 Application to Ubuntu 
-description: 
-menu: review
-categories: Linux cloud-init AzureCLI
+title: Infrastructure as Code for an ASP.NET Core 3.1 Web App on Ubuntu 
+description: Automate deploying of an Ubuntu VM on Azure then building and installing an ASP.NET Core 3.1 application
+#menu: review
+categories: AzureCLI Linux cloud-init
 published: true 
-comments: false     
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2019-11-13/3.jpg
 ---
 
-I'm a fan of Infrastructure as Code (IaC) so I can script out building up my infrstructure using:
+I'm a fan of Infrastructure as Code (IaC) so I can script out building up my infrastructure using:
 
-- Azure CLI from Bash on WSL (Windows Subsystem for Linux) to build a VM and networking
-- Cloud-init to run scripts on the newly created VM
-- Nginx reverse proxying to Kestrel
-- Systemd to monitor kestrel
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest) from Bash on [Windows Subsystem for Linux - WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) to build a VM and networking
+- [Cloud-init](https://cloud-init.io/) to run scripts on the newly created VM
+- [Nginx](https://www.nginx.com/) reverse proxying to [Kestrel](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-3.1)
+- [Systemd](https://en.wikipedia.org/wiki/Systemd) to monitor Kestrel
 
-This allows us to be able to spin up a new environment with the latest OS patches, apt-get updates etc.. on it within 5 minutes.  The goal is to have a docker like environment where we treat the server(s) as replaceable 'things', and I'm continually spinning up new instances when patches are applied.
+This allows us to be able to spin up a new environment with the latest OS patches, apt-get updates etc.. on it within 5 minutes.  The goal is to have a docker-like environment where we treat the server(s) as replaceable 'things', and I'm continually spinning up new instances when patches are applied.
 
+Some questions I'm still working on are:
+
+- How to do full CI/CD ie do the build on another server (using Azure DevOps probably). This solution below is perfect for the dev phase of a project
 - How to handle DNS changeover of a live domain with significant traffic
 - How will I handle state ie where the is the DB?
 
-As with these things it is a gradual improvement that is important.
+As with all these things it is a gradual improvement of the process that is important.
 
 ## Azure CLI
 
-Here is my Azure CLI bash script starting on WSL.
+Below is my Azure CLI Bash script running under WSL using [Cmder as the shell](/2018/01/30/Cmder-Shell). This is for a current project in development that is hosted on a single Ubuntu VM (currenlty) with Nginx as a reverse proxy. Remember to get the [line endings correct ie set to Unix style LF](/2020/01/09/Line-endings-ignore-in-Git)
 
 ![alt text](/assets/2019-11-13/3.jpg "Running the Azure CLI from WSL")
 
 So plain text generated passwords are not great, but this is fast and very useful to develop with. Potentially use SSH keys would be nicer as then wouldn't have to copy and paste the password every time.
 
-`infra.sh`
-
 ```bash
+# infra.sh
 #!/bin/bash
 
 # activate debugging from here
@@ -43,8 +45,8 @@ set -x
 # generate a random suffix between 1 and 1000
 int=$(shuf -i 1-1000 -n 1)
 # Password must have the 3 of the following: 1 lower case character, 1 upper case character, 1 number and 1 special character
-# generate a 24 character password (normal, capitals and numbers)
-password=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c24)
+# generate a 34 character password (normal, capitals and numbers)
+password=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c34)
 
 rg=DaveTEST${int}
 dnsname=davetest${int}
@@ -159,8 +161,6 @@ Be careful if switching between Azure subscriptions midway through deployments -
 
 ## Cloud-init
 
-**update Jan 2020** There is also [run-command invoke](https://docs.microsoft.com/en-us/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) which is an alternative.  
-
 This is a python based library which runs commands after the machine builds. It is patched in from the Azure CLI script above.
 
 cloud-init.txt
@@ -170,7 +170,7 @@ cloud-init.txt
 
 package_upgrade: true
 runcmd:
-  - sudo wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+  - wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
   - sudo dpkg -i packages-microsoft-prod.deb
   - sudo add-apt-repository universe -y
   - sudo apt-get update -y
@@ -181,37 +181,38 @@ runcmd:
   - sudo apt-get install nginx -y
 
   # use the runtime when get build pipeline working
-  #- sudo apt-get install aspnetcore-runtime-3.0 -y
-  - sudo apt-get install dotnet-sdk-3.0 -y
+  - sudo apt-get install dotnet-sdk-3.1 -y
   - sudo mkdir /var/www
   - cd /var/www
 
   # Clone the repo - using an account with readonly privs only to that repo
+  # this is what I'd type, but special characters needs to be escaped
   #- sudo git clone https://penhemingway:SECRET@bitbucket.org/davemateer/brokenlink.git
   # escape chars https://stackoverflow.com/questions/6172719/escape-character-in-git-proxy-password?noredirect=1&lq=1
-  - sudo git clone https://penhemingway:SECRET@bitbucket.org/davemateer/brokenlink.git
+  - sudo git clone https://penhemingway:SECRET@bitbucket.org/davemateer/brokenlink.git blsource
 
   # nginx config
-  - sudo cp /var/www/brokenlink/Infra/nginxdefault.txt /etc/nginx/sites-available/default
+  - sudo cp /var/www/blsource/infra/nginxdefault.txt /etc/nginx/sites-available/default
   - sudo nginx -s reload
 
   # create a publish directory for Kestrel
-  - sudo mkdir /var/www/brokenlink2
+  - sudo mkdir /var/www/blweb
 
   # publish the app
-  - cd /var/www/brokenlink/BLC.Website
+  - cd /var/www/blsource/BLC.Website
   - sudo dotnet publish --configuration Release 
 
   # copy files to publish directory
-  - cd bin/Release/netcoreapp3.0/publish/
-  - sudo cp -a * /var/www/brokenlink2/.
+  - cd bin/Release/netcoreapp3.1/publish/
+  - sudo cp -a * /var/www/blweb/.
 
   # change ownership of the files - TODO review this
-  - sudo chown -R www-data:www-data /var/www/brokenlink
-  - sudo chown -R www-data:www-data /var/www/brokenlink2
+  - sudo chown -R www-data:www-data /var/www/blsource
+  - sudo chown -R www-data:www-data /var/www/blweb
+  - sudo chmod -R 777 /var/www/blsource
 
   # make the systemd service to keep Kestrel alive
-  - cd /var/www/brokenlink/Infra
+  - cd /var/www/blsource/infra
   - sudo cp kestrel-blc.service /etc/systemd/system/kestrel-blc.service
 
   # start the Kestrel web app using systemd using kestrel-blc.service text files
@@ -224,8 +225,11 @@ runcmd:
   - sudo git config --global user.name "Pen Hemingway"
   - sudo git config --global user.email "penhemingway@outlook.com"
 
+  - sudo rm -rf /var/www/html
+
   # OS updates need a reboot
-  - sudo restart now
+  # it sometimes needs this
+  #- sudo restart now
 ```
 
 [Fix line endings with SED](/2019/05/28/Hosting-Drupal-on-Azure#fix-line-endings-with-sed) if you need to switch from Windows to Unix line endings.  
@@ -234,11 +238,17 @@ runcmd:
 
 To debug any issues with this script look in `/var/log/cloud-init-output.log`
 
+**update Jan 2020** There are many alternatives to cloud-init including:
+
+-[CustomScriptExtension](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux) which I've used successfully for Windows Server IaC automations. This essentially runs a powershell script on the Windows server after it is built.
+
+-[Run-command invoke](https://docs.microsoft.com/en-us/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) which I've explored unsuccessfully for Windows Server IaC automation.
+
 ## Nginx Config
 
-nginxdefault.txt
-
 ```bash
+# nginxdefault.txt
+
 server {
     listen        80;
     server_name   *.westeurope.cloudapp.azure.com;
@@ -269,9 +279,9 @@ Notice to get SignalR working properly with Websockets we have to have the secon
 
 Systemd is an init system to provides many features for starting, stopping and managing processes
 
-kestrel-blc.service
-
 ```bash
+# kestrel-blc.service
+
 [Unit]
 Description=BLC.Website running on ASP.NET CORE 3
 
@@ -310,3 +320,8 @@ To debug kestrel systemd problems:
 
 - sudo systemctl status kestrel-blc.service
 - sudo journalctl -fu kestrel-blc.service
+
+## Conclusion
+
+I spin up and tear down servers all the time safe in the knowledge that everything is source controlled. Going back to configuring servers manually is so.... 20th Century :-)
+
