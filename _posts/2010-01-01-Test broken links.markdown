@@ -13,7 +13,7 @@ This page has 7 problems on it:
   
 <p> <a href="/brokenurl">Internal broken link</a> sentence of bad link</p>
 
-<p><a href="/brokenurl2">Internal broken link2</a> sentence of bad link2</p>
+<p><a href="/brokenurl2/">Internal broken link2 with a trailing slash</a> sentence of bad link2</p>
 
 <p><a href="">Link with nothing in it ie a href=""</a> blank</p>
 
