@@ -16,3 +16,11 @@ image: /assets/2019-11-13/3.jpg
 ## Increase keyboard refresh rate
 
 Control Panel, Keyboard
+
+## Change inside {}
+
+`ci}` Change inside {}
+
+or:  
+
+`di}`  Delete inside {}}
