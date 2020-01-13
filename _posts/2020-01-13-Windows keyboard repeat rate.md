@@ -11,5 +11,8 @@ image: /assets/2019-11-13/3.jpg
 ---
 
 
+[From Mike Countermarsh's Learning Vim in a Week](https://www.youtube.com/watch?v=_NUO4JEtkDw&t=1038s)
+
+## Increase keyboard refresh rate
 
 Control Panel, Keyboard
