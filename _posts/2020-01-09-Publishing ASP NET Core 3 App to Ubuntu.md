@@ -132,24 +132,48 @@ az network nic create \
 # https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/
 # https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general
 
+# username and password
+#az vm create \
+#    --resource-group ${rg} \
+#    --name ${vmname} \
+#    --location ${region} \
+#    --nics ${nicName} \
+#    --image ${image} \
+#    --admin-username ${adminusername} \
+#    --admin-password ${adminpassword} \
+#    --custom-data cloud-init.txt \
+#    --size Standard_B1ms
+
+# ssh keys
 az vm create \
     --resource-group ${rg} \
     --name ${vmname} \
     --location ${region} \
     --nics ${nicName} \
     --image ${image} \
-    --admin-username ${adminusername} \
-    --admin-password ${adminpassword} \
+    --ssh-key-values sshkey-work.pub sshkey-homelenovo.pub sshkey-homedesktop.pub \
     --custom-data cloud-init.txt \
-    --size Standard_B1ms
-    # --size Standard_DS1_v2
+    --size Standard_B2s
 
-# B1MS
+## patch DNS through to the new VM using DNSimple
+generate_post_data()
+{
+  cat <<EOF
+{
+  "content": "${dnsname}.westeurope.cloudapp.azure.com",
+  "ttl": 60
+}
+EOF
+}
 
-# echo -e "\n${dnsname}.westeurope.cloudapp.azure.com\nssh ${adminusername}@${dnsname}.westeurope.cloudapp.azure.com\n${adminpassword}"
-# -o is skip are you sure about ssh keys
+curl  -H 'Authorization: Bearer XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' \
+      -H 'Accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -X PATCH \
+      -d "$(generate_post_data)" \
+      https://api.dnsimple.com/v2/63829/zones/hmsoftware.uk/records/17539400
+
 echo -e "\nssh -o StrictHostKeyChecking=no ${adminusername}@${dnsname}.westeurope.cloudapp.azure.com\n${adminpassword}"
-# save to file
 # echo -e "\n${dnsname}.westeurope.cloudapp.azure.com\nssh ${adminusername}@${dnsname}.westeurope.cloudapp.azure.com\n${adminpassword}" & > infra.txt
 ```
 
