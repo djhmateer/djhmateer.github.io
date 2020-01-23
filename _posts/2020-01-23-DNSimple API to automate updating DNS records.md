@@ -22,6 +22,29 @@ I use [DNSimple](https://dnsimple.com/) to register and host my domain hmsoftwar
 
 ![alt text](/assets/2020-01-09/30.jpg "Manually entered values into DNSimple UI"){:width="400px"}  
 
+## Sandbox
+
+[DNSimple API v2 Documentation](https://developer.dnsimple.com/v2/) suggest using their sandbox first:
+
+[https://sandbox.dnsimple.com/](You need to create a totally separate login to this site compared with dnsimple.com.)
+
+![alt text](/assets/2020-01-09/31.jpg "Create an Account Token"){:width="400px"}  
+The preferred way is to use an Account OAuth2 Token:
+
+```bash
+# using an account token (preferred way)
+curl -H 'Authorization: Bearer V1zX3u1diJJoS3GXjMErZ3DNxXXXXXXX' https://api.sandbox.dnsimple.com/v2/whoami
+
+# HTTP Basic Authentication (not recommended) 
+ curl -u 'djhmateer@hotmail.com:SERCRETPASSWORD' -H 'Content-Type: application/json' https://api.sandbox.dnsimple.com/v2/whoami
+```
+
+I found this curl command worked in `WSL` but not on Windows.
+
+## Modify a DNS record
+
+
+
 ## Difference between A, CNAME, ALIAS and URL records
 
 [This article gives detail](https://support.dnsimple.com/articles/differences-between-a-cname-alias-url/?utm_source=dnsimple.com&utm_medium=referral&utm_campaign=formhelp) 
@@ -31,7 +54,6 @@ I use [DNSimple](https://dnsimple.com/) to register and host my domain hmsoftwar
 
 ## Automating the update of DNS
 
-[DNSimple API v2 Documentation](https://developer.dnsimple.com/v2/) suggest using their sandbox first:
 
 `api.sandbox.dnsimple.com` is the sandbox endpoint domain
 
@@ -39,10 +61,4 @@ Can authenticate via HTTP Basic Authenication adn OAUTH2 token
 
 Account token - recommended. Only to the resource connected to the account
 User Token
-
-## Sandbox
-
-https://sandbox.dnsimple.com/
-
-It seemed that I should be able to login to the sandbox with existing DNSimple credentials but that didn't work.
 
