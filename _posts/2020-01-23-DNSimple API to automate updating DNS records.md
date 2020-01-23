@@ -7,7 +7,7 @@ categories: DNSimple
 published: true 
 comments: true
 sitemap: true
-image: /assets/2019-01-09/32.jpg
+image: /assets/2019-01-09/32_small.jpg
 ---
 
 As part of my [build script for a new product](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu) I frequently spin up a new virtual machine in Azure which gives me a domain name such as:
