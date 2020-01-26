@@ -107,7 +107,10 @@ Lets follow the `ScaffoldingReadMe.txt` to patch in the new code:
 services.AddMvc(); // before serives.AddRazorPages();
 endpoints.MapControllers(); // before endponts.MapRaorPages();
 
-how to make sure we've using our new pages?
+**how to make sure we've using our new pages?
+https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=netcore-cli#feedback
+
+*feedback
 
 
 
