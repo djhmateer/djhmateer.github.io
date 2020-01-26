@@ -13,3 +13,10 @@ image: /assets/2019-11-13/3.jpg
 
 Should I have 1 repository for everything in my c:\dev folder?
 
+## Using Visual Studio Git plugin
+
+click on add to Source Control on bottom right of screen
+
+- puts in a .gitingnore (very useful)
+- allows an easy way to publish a new repo to Github/Devops etc.. (super userful)
+
