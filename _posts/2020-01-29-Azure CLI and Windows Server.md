@@ -2,11 +2,11 @@
 layout: post
 title: Azure CLI and Windows Server 
 description: Using IaC to have a DevOps pipeline for a legacy app which needs to be deployed onto a Windows Server 
-menu: review
+#menu: review
 categories: Azure IaC WindowsServer 
 published: true 
-comments: false     
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2020-01-09/50.jpg
 ---
 
