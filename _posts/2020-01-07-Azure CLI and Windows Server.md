@@ -1,25 +1,27 @@
 ---
 layout: post
 title: Azure CLI and Windows Server 
-description: Using IaC to have a good devops pipeline for a legacy app which needs to be deployed onto a Windows Server 
+description: Using IaC to have a devops pipeline for a legacy app which needs to be deployed onto a Windows Server 
 menu: review
-categories: Azure Infrastructure Windows 
+categories: Azure IaC Windows 
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2019-11-13/60.jpg
+image: /assets/2020-01-09/50.jpg
 ---
 
-![alt text](/assets/2019-11-13/60.jpg "Laptop"){:width="400px"}
+![alt text](/assets/2020-01-09/50.jpg "Installing on Windows Server"){:width="400px"}
 
-Lets optimise a legacy application which is sitting on expensive Azure VM's and make sure we have a good pipeline
+Imagine this play matt is Windows Server and we need to install all the toys on it automatically...
+
+Lets optimise a legacy application which is sitting on expensive Azure VM's and make sure we have a good pipeline.
+
+The first step I like to do is setup the most minimal automated pipeline so I can test the application and spin in up and down with easy. So although I love Azure DevOps, I like to do things manually first.
 
 - Make sure costs of VM's are minimised
 - How to handle the costs of the database
 
 [I deploy Linux VM's on Azure running .NET Core using a simple automated deployment pipeline](/2019/11/17/Publishing-ASP-NET-Core-3-App-to-Ubuntu)
-
-I've done the same for Windows servers:
 
 ## Azure CLI
 
@@ -39,6 +41,7 @@ password=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c34)
 
 rg=appnameTEST${int}
 dnsname=appnametest${int}
+# useful to keep the same name as when typing into multiple machines don't need to remember number
 adminusername=dave
 adminpassword=${password}
 vmname=appnametest
@@ -123,6 +126,7 @@ az vm create \
     --admin-username ${adminusername} \
     --admin-password ${adminpassword} \
     --size Standard_D2s_v3
+    # other useful options are
     # --size Standard_D4s_v3
     # --size Standard_DS1_v2
     # --image win2016datacenter \
@@ -131,7 +135,7 @@ az vm create \
     # --image win2019datacentercore 
 
 
-# Use CustomScript extension to install IIS and powershell to do other things
+# Use CustomScript extension to install IIS (half of it) and powershell to do other things
 # and dump output to a log file
 # Useful log files are:
 #1.C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
@@ -167,9 +171,9 @@ What I first noticed was how slow the server UI seemed to respond. The size `Sta
 
 ## Automating a build
 
-On linux I use [Cloud-init](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu) to bash scripts after the VM has built.
+On Linux I use [Cloud-init](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu) to bash scripts after the VM has built.
 
-I'm using powershell via `az vm extension set` and the `CustomScriptExtension` to run commands after the machine has been built. As you can see I've made the repo public as I don't mind who copies my build, and it makes security easier.
+Here on Windows I'm using PowerShell via `az vm extension set` and the `CustomScriptExtension` to run commands after the machine has been built. As you can see I've made the repo public as I don't mind who copies my build.
 
 There are numerous ways of automating the build
 
@@ -179,34 +183,33 @@ There are numerous ways of automating the build
 
 [More docs here for extension](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows) and [cli docs](https://docs.microsoft.com/en-us/cli/azure/vm/extension?view=azure-cli-latest) 
 
-### IIS
+### PowerShell installing IIS
 
-[Useful SO Question](https://stackoverflow.com/questions/37892173/automating-installation-of-iis?noredirect=1&lq=1) 
+[Useful SO Question](https://stackoverflow.com/questions/37892173/automating-installation-of-iis?noredirect=1&lq=1)
 
 ```powershell
-Install-WindowsFeature -Name web-server, Web-App-Dev,Web-Net-Ext, Web-Net-Ext45,Web-AppInit,Web-ASP,Web-Asp-Net,Web-Asp-Net45,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Includes,Web-WebSockets -IncludeManagementTools 
+Install-WindowsFeature -Name web-server, Web-App-Dev,Web-Net-Ext, Web-Net-Ext45,Web-AppInit,Web-ASP,Web-Asp-Net,Web-Asp-Net45,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Includes,Web-WebSockets -IncludeManagementTools
 ```
 
-### Chocolately
+### Chocolatey
 
-Useful for installing some apps, like `sudo apt install` on linux
+Useful for installing some apps, and it is like any package manager eg apt `sudo apt install` on Linux
 
 ```powershell
 # Get chocolately
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-## GIT
 choco install git.install -y
 choco install sql-server-management-studio -y
 choco install urlrewrite -y
 choco install iis-arr -y
 ```
 
-### SQL Server
+### SQL Server and Full PowerShell Script
 
 To install a developer edition of SQL Server locally on a UAT box, it should be easy? It isn't
 
-[Here is a good tutorial from Octopus](https://octopus.com/blog/automate-sql-server-install) but I couldn't find a way of making it run without manually doing it.
+[Here is a good tutorial from Octopus](https://octopus.com/blog/automate-sql-server-install) which I couldn't quite get to work, ending up with running the install script automatically when a user (me) first logs into the VM.
 
 ```powershell
 Install-WindowsFeature -Name web-server, Web-App-Dev,Web-Net-Ext, Web-Net-Ext45,Web-AppInit,Web-ASP,Web-Asp-Net,Web-Asp-Net45,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Includes,Web-WebSockets -IncludeManagementTools 
@@ -258,19 +261,27 @@ cd c:\sqlserver
 & 'C:/Program Files/Git/cmd/git.exe' clone https://davemateer@bitbucket.org/davemateer/consoleapp2.git .
 
 # SQL Server Install
-
 $pathToConfigurationFile = "c:\sqlserver\ConfigurationFile.ini"
 $copyFileLocation = "C:\Temp\ConfigurationFile.ini"
 New-Item "C:\Temp" -ItemType "Directory" -Force 
 Copy-Item $pathToConfigurationFile $copyFileLocation -Force
 
-# login to the server and run the command from powershell to complete the install
-#& c:\sqlserver\SQLServer\Setup.exe "/ConfigurationFile=c:/temp/ConfigurationFile.ini"
+## Run the command on first logon (trick to get SQL Server to install properly)
+function OnStartup-ScheduleSqlServerSetupFile {
+     $regPath = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
+     $command = 'c:\sqlserver\SQLServer\Setup.exe /ConfigurationFile=c:/temp/ConfigurationFile.ini'
+     New-ItemProperty $regPath -Name "SqlSetupCompletion" -Value $command | Out-Null
+     Write-Host "Scheduled Execution of SQL Server"
+}
+
+OnStartup-ScheduleSqlServerSetupFile
 ```
 
-I've heard the way to do it is to reboot the machine via the script then keep going and it will install.
+Many thanks to SteveG for the run command on first logon trick!
 
-### configurationfile.ini (mssql)
+### configurationfile.ini
+
+This is the custom MSSQL configuration build file described in the [Octopus blog](https://octopus.com/blog/automate-sql-server-install). I used it to install MSSQL into a `.\dev` instance
 
 ```ini
 ;SQL Server 2017 Configuration File
@@ -460,3 +471,9 @@ BROWSERSVCSTARTUPTYPE="Automatic"
 
 SAPWD="somethingsecret!!22"
 ```
+
+## Conclusion
+
+We can now spin up and down Windows infrastructure on Azure with ease. I'm using this to explore a legacy application and optimise its running costs. It makes life much easier as a developer to know I don't need to remember how to setup a server. It is in source control.
+
+Welcome to making your life easier in the 21st Century. 
