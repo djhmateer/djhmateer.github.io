@@ -12,9 +12,9 @@ image: /assets/2020-01-09/50.jpg
 
 ![alt text](/assets/2020-01-09/50.jpg "Installing on Windows Server"){:width="400px"}
 
-Imagine this play matt is Windows Server and we need to install all the toys on it automatically...
+Imagine this play matt is Windows Server and we need to install all the toys on it automatically, many times...
 
-Lets optimise a legacy application which is sitting on expensive Azure VM's and make sure we have a good pipeline.
+Lets optimise a legacy application which is sitting on expensive Azure VM's and make sure we have a good `IaC - Infrastructure as Code` pipeline to help us test it.
 
 The first step I like to do is setup the most minimal automated pipeline so I can test the application and spin in up and down with easy. So although I love Azure DevOps, I like to do things manually first.
 
@@ -474,6 +474,6 @@ SAPWD="somethingsecret!!22"
 
 ## Conclusion
 
-We can now spin up and down Windows infrastructure on Azure with ease. I'm using this to explore a legacy application and optimise its running costs. It makes life much easier as a developer to know I don't need to remember how to setup a server. It is in source control.
+We can now spin up and down Windows infrastructure on Azure with ease. I'm using this to explore a legacy application and optimise its running costs. It makes my life calmer as a developer to know I don't need to remember how to setup a server,  and of course all scripts are in source control.
 
-Welcome to making your life easier in the 21st Century. 
+Welcome to making our life's easier in the 21st Century.
