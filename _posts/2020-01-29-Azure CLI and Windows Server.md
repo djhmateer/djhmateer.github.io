@@ -196,7 +196,7 @@ Install-WindowsFeature -Name web-server, Web-App-Dev,Web-Net-Ext, Web-Net-Ext45,
 Useful for installing some apps, and it is like any package manager eg apt `sudo apt install` on Linux
 
 ```powershell
-# Get chocolately
+# Get chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 choco install git.install -y
@@ -222,7 +222,7 @@ New-Item -ItemType Directory c:\inetpub\pathway2.cdn
 New-WebSite -Name Pathway -Port 80 -HostHeader pathway360.hmsoftware.org -PhysicalPath "$env:systemdrive\inetpub\pathway2"
 New-WebSite -Name Pathway_CDN -Port 80 -HostHeader cdn.willowpathway.hmsoftware.org -PhysicalPath "$env:systemdrive\inetpub\pathway2.cdn"
 
-# Get chocolately
+# Get chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # GIT
@@ -277,7 +277,7 @@ function OnStartup-ScheduleSqlServerSetupFile {
 OnStartup-ScheduleSqlServerSetupFile
 ```
 
-Many thanks to SteveG for the run command on first logon trick!
+Many thanks to [Steve Goodman](http://linkedin.com/in/steve-goodman-uk) for the run command on first logon process.
 
 ### configurationfile.ini
 
@@ -471,6 +471,10 @@ BROWSERSVCSTARTUPTYPE="Automatic"
 
 SAPWD="somethingsecret!!22"
 ```
+
+## Other Options
+
+[Boxstarter which uses chocolatey packages](https://boxstarter.org/) looks interesting which wraps chocolatey packages.
 
 ## Conclusion
 
