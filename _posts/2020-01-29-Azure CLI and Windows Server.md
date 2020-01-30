@@ -277,7 +277,7 @@ function OnStartup-ScheduleSqlServerSetupFile {
 OnStartup-ScheduleSqlServerSetupFile
 ```
 
-Many thanks to [Steve Goodman](http://linkedin.com/in/steve-goodman-uk) for the run command on first logon process.
+Many thanks to [Steve Goodman](http://linkedin.com/in/steve-goodman-uk) for the run command on first logon tip.
 
 ### configurationfile.ini
 
