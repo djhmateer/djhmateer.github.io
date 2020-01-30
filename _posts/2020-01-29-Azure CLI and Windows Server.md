@@ -12,7 +12,7 @@ image: /assets/2020-01-09/50.jpg
 
 ![alt text](/assets/2020-01-09/50.jpg "Installing on Windows Server"){:width="400px"}
 
-Imagine this play matt is Windows Server and we need to install all the toys on it automatically, many times...
+Imagine this play mat is Windows Server and we need to install all the toys on it automatically, many times...
 
 Lets optimise a legacy application which is sitting on expensive Azure VM's and make sure we have a good `IaC - Infrastructure as Code` pipeline to help us test it.
 
