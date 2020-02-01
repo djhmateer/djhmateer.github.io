@@ -14,11 +14,16 @@ I'm developing a SaaS based product, and need `Authentication` (who you are) and
 [Identity on ASP.NET Core](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) gives us this
 
 - Supports login functionality
-- Manages users, passwords, profile data, roles, claims, tokens, email confmation and more
+- Manages users, passwords, profile data, roles, claims, tokens, email confirmation and more
+- Supports Single Sign on
 
-I use a password manager [eg LastPass](https://lastpass.com) and never use Single Sign on OAuth2 [external authentication providers](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/social/?view=aspnetcore-3.1&tabs=visual-studio) such as Facebook, Google, Twitter, Microsoft as I can never rememmber which one I've used on a particular website. I enjoy the simplicity of separate passwords on each site which are stored in a password manager. This will also simplify the auth process for my SaaS products.
+I use a password manager [eg LastPass](https://lastpass.com) and never use Single Sign on OAuth2 [external authentication providers](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/social/?view=aspnetcore-3.1&tabs=visual-studio) such as Facebook, Google, Twitter, Microsoft as I can never remember which one I've used on a particular website. I enjoy the simplicity of separate passwords on each site which are stored in a password manager.
 
-[MS Docs on Authentication](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/individual?view=aspnetcore-3.1) are the obvious place to start.
+[It seems though that I'm in the minority](https://www.indiehackers.com/product/startday/google-login-vs-regular-email-almost-50-used-g--LzVsMo61s3b85ZRAfLf?utm_campaign=top-milestones-daily&utm_medium=email&utm_source=indie-hackers-emails) I suspect because I regularly use 3 different machines so its difficult to remember which provider I used on a particular website. Google Single Sign On has become a winner apparently.
+
+[MS Docs on ASP.NET Core Security](https://docs.microsoft.com/en-gb/aspnet/core/security/?view=aspnetcore-3.1) are the obvious place to start.
+
+Lets start with a single username and password login, then add in SSO (Single Sign on) afterwards.
 
 ## File new project VS GUI
 
@@ -26,7 +31,25 @@ I use a password manager [eg LastPass](https://lastpass.com) and never use Singl
 
 ![alt text](/assets/2020-01-09/40.jpg "Individual user account"){:width="600px"}  
 
-Once the project template has finished we need to create the database, and I'm using the default MSSQL:
+Once the project template has finished we need to create the database, and I'm using the default MSSQL and have modified the `appsettings.json` file to give a saner name for my db.
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-WebApplication2;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
+
+and now run the migrations:
 
 ```bash
 # make sure you have the global ef tools installed
@@ -36,9 +59,9 @@ dotnet tool install -g dotnet-ef
 dotnet ef database update
 ```
 
-Could use the Powershell package manager console in Visual Studio to do `Update-Database` but I am a fan of the command line
+Could use the PowerShell package manager console in Visual Studio to do `Update-Database` but I am a fan of the command line
 
-### Could not execute becuase the specificed command or file was not found
+### Could not execute because the specified command or file was not found
 
 ![alt text](/assets/2020-01-09/41.jpg "Error doing a dotnet ef database update"){:width="600px"}  
 [See this thread if you have any problems with the tool](https://github.com/dotnet/efcore/issues/15448), for example forgetting to install it!
@@ -71,23 +94,8 @@ This has always been perplexing for me that you have to do this separate step to
 # install the scaffolder globally
 dotnet tool install -g dotnet-aspnet-codegenerator
 
-# add nuget packages to the project
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
-dotnet add package Microsoft.AspNetCore.Identity.UI
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add package Microsoft.EntityFrameworkCore.Tools
-
-# list options
-dotnet aspnet-codegenerator identity -h
-
-# this is the minimum number of files - use the fully qualified name of your DB context
-dotnet aspnet-codegenerator identity -dc WebApplication1.Data.ApplicationDbContext --files "Account.Register;Account.Login"
-
-# miss out the --files flag to get all identity UI pages
-# --force to override all files
-dotnet aspnet-codegenerator identity -dc WebApplication1.Data.ApplicationDbContext --force
+# miss out the --files flag to get all identity UI pages --force to override all files
+dotnet aspnet-codegenerator identity -dc WebApplication2.Data.ApplicationDbContext
 ```
 
 So this added in these files:
@@ -101,6 +109,36 @@ Areas/Identity/Pages/_ValidationScriptsPartial.cshtml
 Areas/Identity/Pages/_ViewImports.cshtml
 ScaffoldingReadMe.txt
 ```
+
+## Put Authorize on a page
+
+Lets make it so the User has to be authenticated to view the privacy page.
+
+```cs
+[Authorize]
+public class PrivacyModel : PageModel
+{
+    private readonly ILogger<PrivacyModel> _logger;
+
+    public PrivacyModel(ILogger<PrivacyModel> logger)
+    {
+        _logger = logger;
+    }
+
+    public void OnGet()
+    {
+    }
+}
+```
+
+![alt text](/assets/2020-01-09/60.jpg "Authorisation on a page"){:width="400px"}  
+
+It works!
+
+## Update Startup.cs
+
+[As I want to retain full control of identity lets Create Full Identity UI Source](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=netcore-cli#create-full-identity-ui-source)
+
 
 Lets follow the `ScaffoldingReadMe.txt` to patch in the new code:
 
