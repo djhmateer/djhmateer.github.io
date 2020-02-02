@@ -182,7 +182,7 @@ Lets get onto Release asap and the easiest way is to publish a WebApp to Azure.
 
 ![alt text](/assets/2020-01-09/70.jpg "Publish quickly to Azure"){:width="400px"}  
 
-I created a DB too with the connection string as DefaultConnection 
+I created a DB too with the connection string as DefaultConnection. It created a `Standard 10DTU` as default where there is a `Basic 5DTU` which is fine for testing. I changed it over in the [portal.azure.com UI](https://portal.azure.com).
 
 Default settings gave me (on 2nd Feb 2020):
 
@@ -198,7 +198,13 @@ Add in Development settings in Azure so we can see the problem
 
 ![alt text](/assets/2020-01-09/72.jpg "Ah of course it is the migrations not done"){:width="600px"}  
 
-## External Authenticaion Provider - Google
+There is an option in VS2019 Publish to include migration on publish. Lets do that.
+
+## Cookies
+
+![alt text](/assets/2020-01-09/74.jpg "Cookies in production"){:width="600px"}  
+
+## External Authentication Provider - Google
 
 [Overview from MS Docs](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/social/?view=aspnetcore-3.1&tabs=visual-studio)
 
