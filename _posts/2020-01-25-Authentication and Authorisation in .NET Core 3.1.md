@@ -9,25 +9,27 @@ comments: false
 sitemap: false
 image: /assets/2019-11-13/3.jpg
 ---
-I'm developing a SaaS based product, and need `Authentication` (who you are) and `Authorisation` (what you're allowed to do in my web app).
+I'm developing a SaaS based product, and need `Authentication` (who you are) and `Authorisation` (what you're allowed to do) in my app.
 
-[Identity on ASP.NET Core](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) gives us this
+[Identity on ASP.NET Core](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) gives us:
 
-- Supports login functionality
+- Local Login with details stored in my database
 - Manages users, passwords, profile data, roles, claims, tokens, email confirmation and more
-- Supports Single Sign on
+- External/Social Login eg Google, Facebook, Twitter, Microsoft Account
 
-I use a password manager [eg LastPass](https://lastpass.com) and never use Single Sign on OAuth2 [external authentication providers](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/social/?view=aspnetcore-3.1&tabs=visual-studio) such as Facebook, Google, Twitter, Microsoft as I can never remember which one I've used on a particular website. I enjoy the simplicity of separate passwords on each site which are stored in a password manager.
+I use a password manager [eg LastPass](https://lastpass.com) and never use [external authentication providers](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/social/?view=aspnetcore-3.1&tabs=visual-studio) such as Facebook, Google, Twitter, Microsoft as I can never remember which one I've used on a particular website. I enjoy the simplicity of separate passwords on each site which are stored in a password manager.
 
-[It seems though that I'm in the minority](https://www.indiehackers.com/product/startday/google-login-vs-regular-email-almost-50-used-g--LzVsMo61s3b85ZRAfLf?utm_campaign=top-milestones-daily&utm_medium=email&utm_source=indie-hackers-emails) I suspect because I regularly use 3 different machines so its difficult to remember which provider I used on a particular website. Google Single Sign On has become a winner apparently.
+[It seems though that I'm in the minority](https://www.indiehackers.com/product/startday/google-login-vs-regular-email-almost-50-used-g--LzVsMo61s3b85ZRAfLf?utm_campaign=top-milestones-daily&utm_medium=email&utm_source=indie-hackers-emails) I suspect because I regularly use 3 different machines so its difficult to remember which provider I used on a particular website. Google has become a winner apparently.
 
 [MS Docs on ASP.NET Core Security](https://docs.microsoft.com/en-gb/aspnet/core/security/?view=aspnetcore-3.1) are the obvious place to start.
 
-Lets start with a single username and password login, then add in SSO (Single Sign on) afterwards.
+Lets start with a single username and password login, then add in External afterwards.
+
+I am not using a WebAPI or a SPA, otherwise I would be looking at [something like IdentityServer4, Azure AD](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) to secure the API's
 
 ## File new project VS GUI
 
-[Following along from this MS Doc](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) 
+[Following along from this MS Doc](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio)
 
 ![alt text](/assets/2020-01-09/40.jpg "Individual user account"){:width="600px"}  
 
@@ -49,7 +51,30 @@ Once the project template has finished we need to create the database, and I'm u
 }
 ```
 
-and now run the migrations:
+## SQLite
+
+As an interesting aside you can create a [SQLite version](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=netcore-cli#create-a-web-app-with-authentication):
+
+```bash
+# SQLite version - has an app.db file in the root of the project
+dotnet new webapp --auth Individual -o WebApp1
+# MSSQL version -uld is use-local-database
+dotnet new webapp --auth Individual -uld -o WebApp1
+```
+
+which gives this as the `appsettings.json` connection string:
+
+```json
+  "ConnectionStrings": {
+    "DefaultConnection": "DataSource=app.db"
+  },
+```
+
+[DB Browser for SQLite](https://sqlitebrowser.org/) is a good browser for this db.
+
+## MSSQL
+
+Lets continue with MSSQL and now run the migrations, which means actually standing up the database and creating tables, views etc..
 
 ```bash
 # make sure you have the global ef tools installed
@@ -139,6 +164,43 @@ It works!
 
 [As I want to retain full control of identity lets Create Full Identity UI Source](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=netcore-cli#create-full-identity-ui-source)
 
+## AddDefaultIdentity
+
+[AddDefaultIdentity was introduced in .NET Core 2.1](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=netcore-cli#adddefaultidentity-and-addidentity)
+
+```cs
+AddIdentity()
+AddDefaultUI()
+AddDefaultTokenProviders()
+```
+
+## Testing
+
+[Chrome delete cookies](chrome://settings/siteData) on localhost to see what cookies are placed. 
+
+Lets get onto Release asap and the easiest way is to publish a WebApp to Azure.
+
+![alt text](/assets/2020-01-09/70.jpg "Publish quickly to Azure"){:width="400px"}  
+
+I created a DB too with the connection string as DefaultConnection 
+
+Default settings gave me (on 2nd Feb 2020):
+
+> HTTP Error 500.30 - ANCM In-Process Start Failure
+
+Set deployment mode to Self Contained and it will work. This was due to Azure not having 3.1.1 version of the runtime. It had 3.1.0. [This blog has a nice way of finding out](https://jonhilton.net/2018/09/26/check-the-versions-of-asp.net-core-available-to-your-azure-app-service/)
+
+![alt text](/assets/2020-01-09/71.jpg "Problem - probably db connection related"){:width="600px"}  
+
+![alt text](/assets/2020-01-09/73.jpg "Problem - probably db connection related"){:width="600px"}  
+
+Add in Development settings in Azure so we can see the problem
+
+![alt text](/assets/2020-01-09/72.jpg "Ah of course it is the migrations not done"){:width="600px"}  
+
+## External Authenticaion Provider - Google
+
+[Overview from MS Docs](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/social/?view=aspnetcore-3.1&tabs=visual-studio)
 
 Lets follow the `ScaffoldingReadMe.txt` to patch in the new code:
 
