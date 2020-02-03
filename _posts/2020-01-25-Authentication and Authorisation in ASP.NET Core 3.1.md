@@ -204,21 +204,83 @@ There is an option in VS2019 Publish to include migration on publish. Lets do th
 
 ![alt text](/assets/2020-01-09/74.jpg "Cookies in production"){:width="600px"}  
 
-## External Authentication Provider - Google
+## Account Confirmation and Password Recovery
 
-[Overview from MS Docs](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/social/?view=aspnetcore-3.1&tabs=visual-studio)
+I want to make sure email works properly for account confirmation and password recovery, and we need to set this up manually.
 
-Lets follow the `ScaffoldingReadMe.txt` to patch in the new code:
+[MS Docs on setting up email](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/accconfirm?view=aspnetcore-3.1&tabs=visual-studio)
 
-services.AddMvc(); // before serives.AddRazorPages();
-endpoints.MapControllers(); // before endponts.MapRaorPages();
+I'm using [SendGrid](https://sendgrid.com)
 
-**how to make sure we've using our new pages?
-[how to patch in this new code and not use default](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=netcore-cli#feedback) - this seems to be still referred to v2.1
+[Could store secrets securely in local](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) but I'm not as am doing dev on 3 local machines and have to store the SendGrid API key somewhere.
 
-*feedback
+```bash
+dotnet add package SendGrid
+```
 
-[ASP.NET Core documentation sample](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/samples?view=aspnetcore-3.1) - maybe will help in putting in outdated code
+As usual weird stuff happens while testing email!
+
+So lets go back to [smtp4dev the old windows GUI version](https://github.com/rnwood/smtp4dev) which is a dummy service to make sure our app is actually working.
+
+```cs
+// Startup.cs
+// using Smtp4Dev and SendGrid
+services.AddTransient<IEmailSender, EmailSender>();
+
+// Service/EmailSender.cs
+public class EmailSender : IEmailSender
+{
+    private readonly IWebHostEnvironment env;
+    public EmailSender(IWebHostEnvironment env) => this.env = env;
+
+    public Task SendEmailAsync(string email, string subject, string message) => 
+        env.IsDevelopment() ? ExecuteSmtp4Dev(subject, message, email) 
+            : ExecuteSendGrid(subject, message, email);
+
+    public Task ExecuteSmtp4Dev(string subject, string message, string email)
+    {
+        var host = "localhost";
+        var port = 25;
+        var enableSsl = false;
+        var userName = "";
+        var password = "";
+        var senderEmail = "davemateer@gmail.com";
+
+        var client = new SmtpClient(host, port)
+        {
+            Credentials = new NetworkCredential(userName, password),
+            EnableSsl = enableSsl
+        };
+        return client.SendMailAsync(new MailMessage(senderEmail, email, subject, message) { IsBodyHtml = true });
+    }
+
+    public Task ExecuteSendGrid(string subject, string message, string email)
+    {
+        var sendGridKey = "SECRET";
+        var client = new SendGridClient(sendGridKey);
+        var sendGridUser = "davemateer@gmail.com";
+        var msg = new SendGridMessage()
+        {
+            From = new EmailAddress("davemateer@gmail.com", sendGridUser),
+            Subject = subject,
+            PlainTextContent = message,
+            HtmlContent = message
+        };
+        msg.AddTo(new EmailAddress(email));
+        msg.SetClickTracking(false, false);
+        return client.SendEmailAsync(msg);
+    }
+
+```
+
+Then I had to update the `RegisterConfirmation.cshtml.cs` commenting out the developer code to register a sender:
+
+![alt text](/assets/2020-01-09/75.jpg "Commenting out developer code"){:width="600px"}  
+
+Then even sending emails is tricky.. outlook.com is ignoring the emails I'm sending from my davemateer@gmail.com address (well taking ages to show up.. maybe 5 minutes) and going to junk. Obviously need to set this up properly. Lets get Google auth working as should be more reliable to implement.
+
+
+
 
 
 
