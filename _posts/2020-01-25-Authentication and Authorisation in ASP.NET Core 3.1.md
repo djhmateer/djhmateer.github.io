@@ -33,6 +33,13 @@ I am not using a WebAPI or a SPA, otherwise I would be looking at [something lik
 
 ![alt text](/assets/2020-01-09/40.jpg "Individual user account"){:width="600px"}  
 
+Or we can do it via the CLI
+
+```bash
+# MSSQL version -uld is use-local-database
+dotnet new webapp --auth Individual -uld -o WebApp1
+```
+
 Once the project template has finished we need to create the database, and I'm using the default MSSQL and have modified the `appsettings.json` file to give a saner name for my db.
 
 ```json
@@ -51,30 +58,9 @@ Once the project template has finished we need to create the database, and I'm u
 }
 ```
 
-## SQLite
-
-As an interesting aside you can create a [SQLite version](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=netcore-cli#create-a-web-app-with-authentication):
-
-```bash
-# SQLite version - has an app.db file in the root of the project
-dotnet new webapp --auth Individual -o WebApp1
-# MSSQL version -uld is use-local-database
-dotnet new webapp --auth Individual -uld -o WebApp1
-```
-
-which gives this as the `appsettings.json` connection string:
-
-```json
-  "ConnectionStrings": {
-    "DefaultConnection": "DataSource=app.db"
-  },
-```
-
-[DB Browser for SQLite](https://sqlitebrowser.org/) is a good browser for this db.
-
 ## MSSQL
 
-Lets continue with MSSQL and now run the migrations, which means actually standing up the database and creating tables, views etc..
+Lets run the migrations, which means actually standing up the database and creating tables, views etc..
 
 ```bash
 # make sure you have the global ef tools installed
@@ -277,7 +263,7 @@ Then I had to update the `RegisterConfirmation.cshtml.cs` commenting out the dev
 
 ![alt text](/assets/2020-01-09/75.jpg "Commenting out developer code"){:width="600px"}  
 
-Then even sending emails is tricky.. outlook.com is ignoring the emails I'm sending from my davemateer@gmail.com address (well taking ages to show up.. maybe 5 minutes) and going to junk. Obviously need to set this up properly. Lets get Google auth working as should be more reliable to implement.
+Then even sending emails is tricky.. outlook.com is ignoring the emails I'm sending from my davemateer@gmail.com address (well taking ages to show up.. maybe 5 minutes) and going to junk. Obviously need to set this up properly. [Lets get Google auth working as should be more reliable to implement.](/2020/02/03/External-Authentication-in-ASP.NET-Core-3.1)
 
 
 
