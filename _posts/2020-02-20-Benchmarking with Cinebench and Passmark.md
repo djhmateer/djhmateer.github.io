@@ -42,7 +42,15 @@ And various other laptops I support which I'll need to get a Cinebench score for
 - XPS17 (8GB RAM, no SSD as stolen for old MBP)
 - XPS15 (dodgy - hard resets after a few minutes when warming up)
 
-## How often should we refresh hardware
+## Azure hardware
+
+![alt text](/assets/2020-02-03/25.jpg "Azure Windows Server D2s_v3"){:width="250px"}  
+
+- Azure Standard_D2s_v3 Server (Intel Xeon Platinum 8171M 2.1GHz, 1 core, 2 threads)
+
+Interestingly it is reporting Server 2016 but it is 2019 installed. And the processor should be 2.6GHz but is reporting 2.1 (and during load it is only hitting 2.1).  This is a very low score, which could point to having access to a slow dev machine to be a good thing (or as I do, have eveything as infrastructure as code so you can easily spin up and down machines).
+
+## How often should we refresh local hardware
 
 I used to get new machines every 3 years as a matter of principle, however:
 
