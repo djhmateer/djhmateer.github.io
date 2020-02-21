@@ -14,7 +14,7 @@ Professional curiosity is a wonderful thing! I'm interested in finding out more 
 
 [Linus tech tips on YouTube is great for keeping up to date](https://www.youtube.com/user/LinusTechTips/videos)
 
-I've got machines which I use all the time so here they are rated (most powerful first) according to [Cinebench](https://www.maxon.net/en-gb/products/cinebench-r20-overview/), which is a rough guide to CPU performance. Cinebench is available on the Apple Store and Microsoft Store.
+I've got machines which I use all the time so here they are rated (most powerful first) according to [Cinebench](https://www.maxon.net/en-gb/products/cinebench-r20-overview/), which is a rough guide to CPU performance. Cinebench is available on the Apple Store, Microsoft Store and [direct from maxon.net](https://www.maxon.net/en-us/support/downloads/)
 
 ![alt text](/assets/2020-02-03/20.jpg "Work desktop 4790K"){:width="300px"}  
 
