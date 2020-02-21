@@ -48,6 +48,12 @@ And various other laptops I support which I'll need to get a Cinebench score for
 
 - Azure Standard_D2s_v3 Server (Intel Xeon Platinum 8171M 2.1GHz, 1 core, 2 threads)
 
+![alt text](/assets/2020-02-03/26.jpg "Azure Windows Server Standard_B2s"){:width="250px"}  
+
+- Azure Standard_B2s Server (Intel Xeon E5-2673 v4, 2 cores, 4GB RAM)
+
+[Azure VM Sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)
+
 Interestingly it is reporting Server 2016 but it is 2019 installed. And the processor should be 2.6GHz but is reporting 2.1 (and during load it is only hitting 2.1).  This is a very low score, which could point to having access to a slow dev machine to be a good thing (or as I do, have eveything as infrastructure as code so you can easily spin up and down machines).
 
 ## How often should we refresh local hardware
