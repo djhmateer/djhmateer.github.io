@@ -1,14 +1,17 @@
 ---
 layout: post
 title: Changing UK Phone Provider 
-description: 
-menu: review
+description: Changing UK Phone providers - some simple tests of the 4 physical networks.
+#menu: review
 categories: Phone 
 published: true 
-comments: false     
-sitemap: false
-image: /assets/2019-08-05/1.jpg
+comments: true     
+sitemap: true
+image: /assets/2020-02-03/30.jpg
 ---
+
+![alt text](/assets/2020-02-03/30.jpg "Changing phone providers"){:width="800px"}
+
 UK Internet can take many weeks to switch on, so the ideal interim measure is to use a Personal hotspot on a mobile phone. Easy?! I think not.  
 
 After moving a few times in the last year and now paying for my own mobile phone, this is what I now do:  
@@ -26,7 +29,7 @@ There are 4 physical phone networks in the UK. Others such as Tesco piggyback.
 
 ## Deals
 
-For me it didn't matter. All the areas I've lived in have had marginal coverage, so I bought the best plan availalbe for that network.  
+For me it didn't matter. All the areas I've lived in have had marginal coverage, so I bought the best plan available for that network.  
 
 [Three offer unlimited (1TB)](http://www.three.co.uk/Store/SIM/Plans_for_phones) are very exciting especially if you can get 5G.
 
@@ -34,11 +37,12 @@ For me it didn't matter. All the areas I've lived in have had marginal coverage,
 
 I mistakenly thought using some old phones would be a good idea. They didn't get as good a signal as my new(ish) iPhone7. So the moral of the story is to use a new phone!
 
-![alt text](/assets/2019-08-05/1.jpg "Don't use old phones!"){:width="600px"}
+## Boosting the signal
+
+[The ultimate campervan setup](https://www.gjot.uk/the-ultimate-campervan-4g-wifi-setup/) has an interesting link on putting in a signal booster for 4G coverage for data. This looks very interesting.
 
 ## Links
 
 [SpeedTest.net](https://www.speedtest.net/) on the mobile phone gives a good idea of speed
 
-[OpenSignal](https://www.opensignal.com/) provide independant maps and data on signal coverage.
-
+[OpenSignal](https://www.opensignal.com/) provide independent maps and data on signal coverage.
