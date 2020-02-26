@@ -29,6 +29,8 @@ I am not using a WebAPI or a SPA, otherwise I would be looking at [something lik
 
 ## File new project VS GUI
 
+I highly recommend doing this as [adding scaffoled identity to an existing app](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=visual-studio#scaffold-identity-into-a-razor-project-without-existing-authorization) is not straightforward and having a working example is invaluable.
+
 [Following along from this MS Doc](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio)
 
 ![alt text](/assets/2020-01-09/40.jpg "Individual user account"){:width="600px"}  
@@ -104,6 +106,16 @@ This has always been perplexing for me that you have to do this separate step to
 ```bash
 # install the scaffolder globally
 dotnet tool install -g dotnet-aspnet-codegenerator
+
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+dotnet add package Microsoft.AspNetCore.Identity.UI
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+# useful for app.UseDatabaseErrorPage();
+dotnet add package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
 
 # miss out the --files flag to get all identity UI pages --force to override all files
 dotnet aspnet-codegenerator identity -dc WebApplication2.Data.ApplicationDbContext
