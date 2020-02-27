@@ -46,7 +46,12 @@ And various other laptops I support which I'll need to get a Cinebench score for
 
 ![alt text](/assets/2020-02-03/25.jpg "Azure Windows Server D2s_v3"){:width="250px"}  
 
-- Azure Standard_D2s_v3 Server (Intel Xeon Platinum 8171M 2.1GHz, 1 core, 2 threads) $154 per month
+- Azure Windows Server, Standard_D2s_v3 Server (Intel Xeon Platinum 8171M 2.1GHz, 1 core, 2 threads) $154 per month
+
+![alt text](/assets/2020-02-03/31.jpg "Azure Windows Desktop D2s_v3"){:width="250px"}  
+
+- Azure Windows 10 Desktop 1909, Standard_D2s_v3 Server (Intel Xeon Platinum 8171M 2.1GHz, 1 core, 2 threads) Interestingly Cinebench reports 2.1GHz and it doesn't seem to turbo to 2.6.  
+- Also interesting is 357 then 344 score I got afterwards.. maybe it was doing other tasks as the machine had just been built.
 
 ![alt text](/assets/2020-02-03/26.jpg "Azure Windows Server Standard_B2s"){:width="250px"}  
 
