@@ -64,7 +64,13 @@ Once the project template has finished we need to create the database, and I'm u
 
 Lets run the migrations, which means actually standing up the database and creating tables, views etc..
 
+[https://dotnet.microsoft.com/download/dotnet-core](https://dotnet.microsoft.com/download/dotnet-core)
+
 ```bash
+# latest version of dotnet installed?
+# currently v3.1.2 and SDK is 3.1.102 (see download link above for latest)
+dotnet --info
+
 # make sure you have the global ef tools installed
 dotnet tool install -g dotnet-ef
 
@@ -81,7 +87,7 @@ Could use the PowerShell package manager console in Visual Studio to do `Update-
 
 So this works well out of the box giving an EF Context backed store in MSSQL `(localdb)\mssqllocaldb`
 
-![alt text](/assets/2020-01-09/43.jpg "Generate the db locally using migrations"){:width="300px"}  
+![alt text](/assets/2020-01-09/43.jpg "Generate the db locally using migrations"){:width="400px"}  
 
 ## Run it with defaults
 
@@ -89,7 +95,9 @@ So this works well out of the box giving an EF Context backed store in MSSQL `(l
 
 [The defaults are that we need 6 characters, alphanumeric, etc..](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio#configure-identity-services)
 
-![alt text](/assets/2020-01-09/46.jpg "nice developer friendly auto email confirm"){:width="400px"}  
+![alt text](/assets/2020-01-09/46.jpg "nice developer friendly auto email confirm"){:width="800px"}  
+
+A nice developer feature is to have a friendly auto email confirm.
 
 ## Scaffolding out Pages - create full identity UI source
 
@@ -97,13 +105,17 @@ So this works well out of the box giving an EF Context backed store in MSSQL `(l
 
 [Lets create full identity UI source](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=visual-studio#create-full-identity-ui-source)
 
-Where are the pages eg `/Identity/Account/RegisterConfirmation`? The are provided as a Razor Class Library in a NuGet [Microsoft.AspnetCore.Identity.UI](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity.UI) package.
+Where are the pages eg `/Identity/Account/RegisterConfirmation`? They are provided as a Razor Class Library in a NuGet [Microsoft.AspnetCore.Identity.UI](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity.UI) package.
 
 This has always been perplexing for me that you have to do this separate step to see the source pages as I always end up modifying them.
 
 [Scaffold identity into a Razor project with authorization](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=netcore-cli#scaffold-identity-into-a-razor-project-with-authorization)
 
 ```bash
+# clean nuget packages (close Visual Studio)
+# this helps get rid of any dependency issues which may be cached
+dotnet nuget locals all --clear
+
 # install the scaffolder globally
 dotnet tool install -g dotnet-aspnet-codegenerator
 
@@ -132,6 +144,10 @@ Areas/Identity/Pages/_ValidationScriptsPartial.cshtml
 Areas/Identity/Pages/_ViewImports.cshtml
 ScaffoldingReadMe.txt
 ```
+
+## C#8 Nullable Reference Types issue
+
+[I found an issue and raised an issue with a fix as I like to use Nullable Ref Type checking](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-3.1&tabs=visual-studio#create-full-identity-ui-source)
 
 ## Put Authorize on a page
 
