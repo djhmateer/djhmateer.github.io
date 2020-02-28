@@ -48,16 +48,7 @@ Once the project template has finished we need to create the database, and I'm u
 {
   "ConnectionStrings": {
     "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-WebApplication2;Trusted_Connection=True;MultipleActiveResultSets=true"
-  },
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information"
-    }
-  },
-  "AllowedHosts": "*"
-}
+  }...
 ```
 
 ## MSSQL
@@ -87,9 +78,9 @@ Could use the PowerShell package manager console in Visual Studio to do `Update-
 
 So this works well out of the box giving an EF Context backed store in MSSQL `(localdb)\mssqllocaldb`
 
-![alt text](/assets/2020-01-09/43.jpg "Generate the db locally using migrations"){:width="400px"}  
+![alt text](/assets/2020-01-09/43.jpg "Generate the db locally using migrations"){:width="300px"}  
 
-## Run it with defaults
+## Run Identity with defaults
 
 ![alt text](/assets/2020-01-09/45.jpg "it works!"){:width="300px"}  
 
@@ -180,13 +171,93 @@ It works!
 
 ## AddDefaultIdentity
 
-[AddDefaultIdentity was introduced in .NET Core 2.1](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=netcore-cli#adddefaultidentity-and-addidentity)
+[AddDefaultIdentity was introduced in .NET Core 2.1](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=netcore-cli#adddefaultidentity-and-addidentity) to cut down code. However I like to be explicit:
 
 ```cs
-AddIdentity()
-AddDefaultUI()
-AddDefaultTokenProviders()
+//services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+// being more explicit
+services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+// if not using default need this for redirect to login when access denied
+services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = $"/Identity/Account/Login";
+    options.LogoutPath = $"/Identity/Account/Logout";
+    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+});
 ```
+
+## Where to keep Identity Options
+
+The generated file is in
+
+```cs
+[assembly: HostingStartup(typeof(BLC.Website.Areas.Identity.IdentityHostingStartup))]
+namespace BLC.Website.Areas.Identity
+{
+    public class IdentityHostingStartup : IHostingStartup
+    {
+        public void Configure(IWebHostBuilder builder)
+        {
+            builder.ConfigureServices((context, services) =>
+            {
+                // defaults copied from 
+                // https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=netcore-cli#configure-identity-services
+
+                services.Configure<IdentityOptions>(options =>
+                {
+                    // Password settings.
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredUniqueChars = 0;
+
+                    // Lockout settings.
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                    options.Lockout.MaxFailedAccessAttempts = 5;
+                    options.Lockout.AllowedForNewUsers = true;
+
+                    // User settings.
+                    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                    options.User.RequireUniqueEmail = true;
+
+                    // not default, but came as part of the template
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.SignIn.RequireConfirmedEmail = false;
+                });
+
+                // setup the redirect to login page when going to an [Authorised] page
+                services.ConfigureApplicationCookie(options =>
+                {
+                    // Cookie settings
+                    options.Cookie.HttpOnly = true;
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                    options.LoginPath = "/Identity/Account/Login";
+                    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                    options.SlidingExpiration = true;
+                });
+            });
+        }
+    }
+}
+```
+
+## Workflow
+
+Should we be waiting for RequiredConfirmedAccount or RequireConfirmedEmail?
+
+This can be very annoying if emails are not delivered quickly, which is a huge topic.
+
+![alt text](/assets/2020-02-03/45.jpg "Waiting for an email to be delivered"){:width="600px"}  
+
+This was 3 minutes after I'd sent the email to SendGrid's API and it was still processing. I got it after 5 minutes. The recovery email seemed to be instant.
 
 ## Testing
 
@@ -217,6 +288,7 @@ There is an option in VS2019 Publish to include migration on publish. Lets do th
 ## Cookies
 
 ![alt text](/assets/2020-01-09/74.jpg "Cookies in production"){:width="600px"}  
+
 
 ## Account Confirmation and Password Recovery
 
@@ -292,9 +364,3 @@ Then I had to update the `RegisterConfirmation.cshtml.cs` commenting out the dev
 ![alt text](/assets/2020-01-09/75.jpg "Commenting out developer code"){:width="600px"}  
 
 Then even sending emails is tricky.. outlook.com is ignoring the emails I'm sending from my davemateer@gmail.com address (well taking ages to show up.. maybe 5 minutes) and going to junk. Obviously need to set this up properly. [Lets get Google auth working as should be more reliable to implement.](/2020/02/03/External-Authentication-in-ASP.NET-Core-3.1)
-
-
-
-
-
-
