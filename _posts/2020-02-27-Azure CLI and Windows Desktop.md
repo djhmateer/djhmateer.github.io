@@ -5,8 +5,8 @@ description:
 menu: review
 categories: Azure IaC WindowsDesktop 
 published: true 
-comments: true     
-sitemap: true
+comments: false     
+sitemap: false
 image: /assets/2020-02-03/40.jpg
 ---
 
