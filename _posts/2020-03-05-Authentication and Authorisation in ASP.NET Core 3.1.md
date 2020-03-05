@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Identity - Authentication and Authorisation in ASP.NET Core 3.1 
-description: 
+description: Setting up Authentication and Authorisation using the inbuilt Identity in ASP.NET Core 3.1. Scaffolding out the source.
 menu: review
 categories: Auth 
 published: true 
@@ -363,4 +363,28 @@ Then I had to update the `RegisterConfirmation.cshtml.cs` commenting out the dev
 
 ![alt text](/assets/2020-01-09/75.jpg "Commenting out developer code"){:width="600px"}  
 
-Then even sending emails is tricky.. outlook.com is ignoring the emails I'm sending from my davemateer@gmail.com address (well taking ages to show up.. maybe 5 minutes) and going to junk. Obviously need to set this up properly. [Lets get Google auth working as should be more reliable to implement.](/2020/02/03/External-Authentication-in-ASP.NET-Core-3.1)
+Then even sending emails is tricky.. outlook.com is ignoring the emails I'm sending from my davemateer@gmail.com address (well taking ages to show up.. maybe 5 minutes) and going to junk. Obviously need to set this up properly.
+
+## Warnings in Log file
+
+[Here is my article on Setting up Serilog for SignalR and ASP.NET Core 3](/2020/03/05/Serilog-with-SignalR) From looking at these logs I found warnings on my production (Linux) server which didn't appear on my dev (Windows) machine.
+
+```txt
+2020-03-05 15:59:56.173 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2020-03-05 15:59:56.175 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2020-03-05 15:59:56.210 +00:00 [WRN] No XML encryptor configured. Key "728cdab0-df5a-4cbf-aadb-00f81be60905" may be persisted to storage in unencrypted form.2020-03-05 16:00:52.263 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2020-03-05 16:00:52.279 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2020-03-05 16:00:52.354 +00:00 [WRN] No XML encryptor configured. Key "a0179284-0c0c-4174-86c8-eb3003fb5415" may be persisted to storage in unencrypted form.2020-03-05 16:05:59.371 +00:00 [WRN] Failed to determine the https port for redirect.
+```
+
+[From the docs it seems strange it doesn't work on a single machine by default](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1) actually [maybe okay as none of the conditions are met](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/default-settings?view=aspnetcore-3.1)
+
+[Good background](https://softwaredesigncorner.blogspot.com/2019/08/how-to-resolve-aspnet-core-key.html)
+
+![alt text](/assets/2020-01-09/90.jpg "No errors when starting as my local user"){:width="800px"}  
+
+**but why didn't nginx patch it through..**
+
+## Conclusion
+
+It takes some work but there is good authentication and authorisation out of the box with ASP.NET Core. [Lets get Google auth working as should be more easier for the user..I hope](/2020/02/03/External-Authentication-in-ASP.NET-Core-3.1)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Serilog with SignalR 
-description: 
+description: Setting up the excellent Serilog to work with SignalR on ASP.NET Core 3.1
 menu: review
 categories: Serilog SignalR
 published: true 
@@ -10,11 +10,7 @@ sitemap: false
 image: /assets/2019-11-13/1.jpg
 ---
 
-I used these articles to help me setup Serilog in my application as I wanted
-
-- Console logging
-- and File logging (rolling)
-- On dev and live (Ubuntu Linux)
+I used these articles to help me setup Serilog in my SignalR based application.
 
 [Serilog in ASP.NET Core 3](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/)
 
@@ -24,23 +20,28 @@ I used these articles to help me setup Serilog in my application as I wanted
 
 ## How to Setup
 
-Add NuGet package Serilog.AspNetCore
+Add NuGet package `Serilog.AspNetCore`
 
 ```cs
 public class Program
 {
 public static void Main(string[] args)
 {
-    Log.Logger = new LoggerConfiguration()
-        .MinimumLevel.Information() // this is the default
+   Log.Logger = new LoggerConfiguration()
+        //.MinimumLevel.Information() // this is the default
+        // Suppress framework log noise eg routing and handling
+        // so we'll see warnings and errors from the framework
+        .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
         .Enrich.FromLogContext()
         .WriteTo.Console()
-        .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+        .WriteTo.File(@"logs/warning.txt", restrictedToMinimumLevel: LogEventLevel.Warning, rollingInterval: RollingInterval.Day)
+         // careful - lots of data here
+        .WriteTo.File(@"logs/info.txt", restrictedToMinimumLevel: LogEventLevel.Information, rollingInterval: RollingInterval.Day)
         .CreateLogger();
-
     try
     {
-        Log.Information("Starting up");
+        Log.Information("");
+        Log.Information("Starting up BLC.Website (Program.cs)");
         CreateHostBuilder(args).Build().Run();
     }
     catch (Exception ex)
@@ -59,7 +60,9 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         // configuring logging for SignalR
         .ConfigureLogging(logging =>
         {
-            logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Information);
+            //logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Information);
+            logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Warning);
+            // turn on for connection debugging
             //logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
         })
         .ConfigureWebHostDefaults(webBuilder =>
@@ -67,7 +70,6 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
             webBuilder.UseStartup<Startup>();
         });
 }
-
 ```
 
 ## Log Levels
@@ -81,14 +83,14 @@ Here is my interpretation of Log Levels:
 - Error - When a path in the app is taken and it shouldn't be. Recoverable.
 - Fatal - Top level critical. App stops. Not recoverable. Maybe a user gets into a state and can't use the app.
 
-If not MinimumLevel is specificed, then Information level and higher will be processed.
+If not MinimumLevel is specified, then Information level and higher will be processed.
 
 ## Development workflow
 
-It is nice to see colour in the output:
+It is nice to see colour in the output, but I rarely (at the moment) use the command line to run apps and still use VisualStudio.
 
-<!-- ![alt text](/assets/2019-11-13/1.jpg "Console logging"){:width="600px"} -->
-![alt text](/assets/2019-11-13/1.jpg "Console logging")
+![alt text](/assets/2019-11-13/1.jpg "Console logging"){:width="700px"}
+<!-- ![alt text](/assets/2019-11-13/1.jpg "Console logging") -->
 However this is quite noisy.
 
 ## Setup dev HTTPS cert
@@ -138,7 +140,6 @@ public class CrawlHub : Hub
     public async IAsyncEnumerable<Thing> Crawl(string url, [EnumeratorCancellation]CancellationToken cancellationToken)
     {
         var count = 10;
-        // patch in the crawler for the url passed in
         for (var i = 0; i < count; i++)
         {
             Log.Information($"inside crawl {url}");
@@ -152,56 +153,7 @@ public class CrawlHub : Hub
 
 ## Tuning the logs
 
-Program.cs
-
-```cs
-public static void Main(string[] args)
-    {
-        Log.Logger = new LoggerConfiguration()
-            //.MinimumLevel.Information() // this is the default
-            // Suppress framework log noise eg routing and handling
-            // so we'll see warnings and errors from the framework
-            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
-            .CreateLogger();
-
-        try
-        {
-            Log.Information("");
-            Log.Information("Starting up BLC.Website (Program.cs)");
-            CreateHostBuilder(args).Build().Run();
-        }
-        catch (Exception ex)
-        {
-            Log.Fatal(ex, "Application start-up failed");
-        }
-        finally
-        {
-            Log.CloseAndFlush();
-        }
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .UseSerilog()
-            // configuring logging for SignalR
-            .ConfigureLogging(logging =>
-            {
-                //logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Information);
-                logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Warning);
-                // turn on for connection debugging
-                //logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
-            })
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
-}
-```
-
-Startup.cs
+`Startup.cs`
 
 ```cs
 
@@ -212,7 +164,7 @@ app.UseStaticFiles();
 app.UseSerilogRequestLogging();
 ```
 
-![alt text](/assets/2019-11-13/2.jpg "A nicer log")
+![alt text](/assets/2019-11-13/2.jpg "A nicer log"){:width="700px"}
 
 ## DevOps
 
