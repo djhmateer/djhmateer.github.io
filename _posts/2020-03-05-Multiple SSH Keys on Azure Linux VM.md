@@ -154,4 +154,4 @@ ssh blc
 
 ## Conclusion
 
-I use SSH keys like this all the time. Thanks to Tom who finally made me dig into this and figure it out. Nice!
+I use SSH keys like this all the time. Thanks to [@tbbuck](https://twitter.com/tbbuck) who finally made me dig into this and figure it out. Nice!
