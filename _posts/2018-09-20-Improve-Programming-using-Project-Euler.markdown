@@ -42,9 +42,11 @@ My strategy is always to
 - Improve the solution
 
 ## 1. First try - Imperative approach
+
 Lets try this using the latest version (10th Oct 2018) of the .NET Core runtime which is 2.1, which includes the [C# language](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) which is version 7.3. [Download](https://www.microsoft.com/net/download) for Win / Mac. 
 
 Source code for this Euler1 problem is on [Github](https://github.com/djhmateer/Euler1Article). 
+
 ```cs
 private static void Main() => Console.WriteLine($"Answer is: {Run(10)}");
 
@@ -77,12 +79,14 @@ Interesting points to consider here are:
 - Not using brackets in Run method 
 
 ## 2. Second Try - Improvement! - Functional approach
+
 **The point of this post is how to improve! - so now I have working code lets try a different approach**
 I am interested in Functional Programming, and on this, my fifth time going through some Euler puzzles I'm pushing in that direction. [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query) Language Integrated Query introduced in .NET3.5 in 2007 is a very functional set of concepts.  
 
 ```cs
 private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x % 5 == 0).Sum();
 ```
+
 - Create a Range
 - Pass a Lambda expression which is a Predicate (a function which takes parameter(s) and returns a bool)
 - Finally using the Sum extension method
@@ -90,6 +94,7 @@ private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x 
 I **love** this syntax (now I've been using it for a while) as it expresses concisely what the code is doing.
 
 ### TDD with xUnit
+
 I find Euler problems lead themselves to easy unit testing and TDD. This is especially useful when trying new ways solving a problem.  
 
 I use [xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) with Visual Studio. Firstly install xUnit and then the test runner.
@@ -125,10 +130,12 @@ then solve the Error:
   </ItemGroup>
 </Project>
 ```
+
 ![ps](/assets/2018-10-10/5.png)
 Successfully test your test runner (I use the ReSharper test runner)
 
 ### TDD Euler1
+
 Euler problems commonly  have a test case example which can be a good unit test ie:
 > If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.  
 > Find the sum of all the multiples of 3 or 5 below 1000.  
@@ -139,6 +146,7 @@ So a good unit test will be:
 [Fact]
 public void RunTest() => Assert.Equal(23, Run(10));
 ```
+
 then I can write an implementation:  
 
 ```cs
@@ -153,21 +161,23 @@ private static int Run(int number)
 ```
 
 ## Refactoring tools  
+
 I use Visual Studio and [ReSharper](https://www.jetbrains.com/resharper/) to explore different ways to express code. In this example R# helped me discover:
 
 - Expression body member
 - Brackets
-- Import static member for Enumerable   
+- Import static member for Enumerable
 
 ## Summary
+
 Project Euler is a great way to **improve your programming skills** by solving, refactoring and exploring **different approaches**. I particularly enjoyed in this problem **TDD** and **LINQ**. 
 
 Why not *have some fun go and do a problem now* :-)
 
+**update 5th March 2020 - [thread on twitter about FizzBuzz using C#8 Pattern Matching and FP](https://twitter.com/paullouth/status/1235309908783964165)**
+
 ## Source
+
 All source code for this Euler1 problem is on [Github](https://github.com/djhmateer/Euler1Article)  
 
 All source for Euler1-17 is on [davemateer.visualstudio.com](https://davemateer.visualstudio.com/_git/Euler1)
-
-<br />
-<br />
