@@ -118,6 +118,14 @@ I couldn't get this to work, so a simple workaround is to copy the keys from WSL
  cp ~/.ssh/* /mnt/c/Users/djhma/.ssh/
 ```
 
+## Warning: Unprotected Private Key File
+
+If you get this error after copying keys from WSL to Windows
+
+![alt text](/assets/2020-01-09/80.jpg "Setting permissions"){:width="800px"}  
+
+[Setting permissions](https://superuser.com/a/1311633/12214)
+
 ## Config file for an Alias
 
 in `c:\Users\djhma\.ssh\config` I have this alias setup:
@@ -127,6 +135,10 @@ Host blc
     User dave
     HostName davetest426.westeurope.cloudapp.azure.com
 ```
+
+![alt text](/assets/2020-01-09/81.jpg "Setting permissions"){:width="800px"}  
+
+Set permissions on this file too.
 
 then I simply have to type:
 
