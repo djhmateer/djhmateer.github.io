@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Multiple SSH Keys for an Azure CLI generated Linux VM
-description: 
-menu: review
-categories: SSH 
+description: Connecting to a Linux VM from multiple machines using an SSH Key from WSL and Windows. Creating a nice alias too!
+#menu: review
+categories: SSH AzureCLI
 published: true 
-comments: false     
-sitemap: false
-image: /assets/2019-11-13/3.jpg
+comments: true     
+sitemap: true
+image: /assets/2020-01-09/20.jpg
 ---
 
 ![alt text](/assets/2020-01-09/20.jpg "Connecting to a Linux VM using SSH Keys"){:width="600px"}  
@@ -19,6 +19,8 @@ An SSH Key (public/private key pair) is the preferred way to connect to a Linux 
 - More secure as can't brute force
 
 [MS Documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed#overview-of-ssh-and-keys)
+
+Here are my [build scripts for spinning up a Linux VM, deploying a web app and updating DNS](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu), which inspired me to learn about SSH.
 
 ## Manually Generate Keys
 
@@ -118,13 +120,13 @@ I couldn't get this to work, so a simple workaround is to copy the keys from WSL
  cp ~/.ssh/* /mnt/c/Users/djhma/.ssh/
 ```
 
-## Warning: Unprotected Private Key File
+### Warning: Unprotected Private Key File
 
 If you get this error after copying keys from WSL to Windows
 
-![alt text](/assets/2020-01-09/80.jpg "Setting permissions"){:width="800px"}  
+![alt text](/assets/2020-01-09/80.jpg "Setting permissions"){:width="500px"}  
 
-[Setting permissions](https://superuser.com/a/1311633/12214)
+Give minimum permissions to get rid of the error. [More information](https://superuser.com/a/1311633/12214)
 
 ## Config file for an Alias
 
@@ -132,16 +134,24 @@ in `c:\Users\djhma\.ssh\config` I have this alias setup:
 
 ```bash
 Host blc
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
     User dave
-    HostName davetest426.westeurope.cloudapp.azure.com
+    HostName hmsoftware.uk
 ```
 
-![alt text](/assets/2020-01-09/81.jpg "Setting permissions"){:width="800px"}  
+Notice here I'm linking to a domain name which my [build script updates the DNS record automatically](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu).
 
-Set permissions on this file too.
+[With more detail here on not adding the key to known hosts](https://superuser.com/a/433621/12214)
 
-then I simply have to type:
+![alt text](/assets/2020-01-09/81.jpg "Setting permissions"){:width="500px"}  
+
+Set permissions on this file too, then I simply have to type:
 
 ```bash
 ssh blc
 ```
+
+## Conclusion
+
+I use SSH keys like this all the time. Thanks to Tom who finally made me dig into this and figure it out. Nice!
