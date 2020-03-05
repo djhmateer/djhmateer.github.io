@@ -41,6 +41,8 @@ I mistakenly thought using some old phones would be a good idea. They didn't get
 
 [The ultimate campervan setup](https://www.gjot.uk/the-ultimate-campervan-4g-wifi-setup/) has an interesting link on putting in a signal booster for 4G coverage for data. This looks very interesting.
 
+[mobilerepeater.co.uk](https://www.mobilerepeater.co.uk/blogs/boost-signal/iphone-signal-booster-guide) looks like a good start for boosting a signal.
+
 ## Links
 
 [SpeedTest.net](https://www.speedtest.net/) on the mobile phone gives a good idea of speed
