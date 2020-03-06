@@ -21,7 +21,7 @@ The first step I like to do is setup the most minimal automated pipeline so I ca
 - Make sure costs of VM's are minimised
 - How to handle the costs of the database
 
-[I deploy Linux VM's on Azure running .NET Core using a simple automated deployment pipeline](/2019/11/17/Publishing-ASP-NET-Core-3-App-to-Ubuntu)
+[I deploy Linux VM's on Azure running .NET Core using a simple automated deployment pipeline](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu)
 
 ## Azure CLI
 
