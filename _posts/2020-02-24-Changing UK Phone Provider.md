@@ -41,10 +41,20 @@ I mistakenly thought using some old phones would be a good idea. They didn't get
 
 [The ultimate campervan setup](https://www.gjot.uk/the-ultimate-campervan-4g-wifi-setup/) has an interesting link on putting in a signal booster for 4G coverage for data. This looks very interesting.
 
-[mobilerepeater.co.uk](https://www.mobilerepeater.co.uk/blogs/boost-signal/iphone-signal-booster-guide) looks like a good start for boosting a signal.
+[mobilerepeater.co.uk](https://www.mobilerepeater.co.uk/blogs/boost-signal/iphone-signal-booster-guide) looks like a good start for boosting a signal, and [4G Mobile Phone Signal Boosters](https://www.mobilerepeater.co.uk/collections/4g-signal-boosters) may be worth trying out, perhaps with a money back guarantee?
+
+[Specifically this one](https://www.mobilerepeater.co.uk/collections/all-mobileboosters/products/mr-4g-pro-kit-4g-data-ee) may be worth trying for fun.
 
 ## Links
 
 [SpeedTest.net](https://www.speedtest.net/) on the mobile phone gives a good idea of speed
 
 [OpenSignal](https://www.opensignal.com/) provide independent maps and data on signal coverage.
+
+## Conclusion
+
+Chatting to friends in the know there are some opinions (for the SE of England anyway)
+
+- O2 is a good network but EE better in some locations
+- No love for Three (coverage lacking, and hesitancy about ability to keep providing unlimited)
+- O2 data is expensive ie £30 for 100GB (but probably get good reliability)
