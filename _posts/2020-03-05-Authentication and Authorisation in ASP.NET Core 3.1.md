@@ -369,21 +369,29 @@ Then even sending emails is tricky.. outlook.com is ignoring the emails I'm send
 
 [Here is my article on Setting up Serilog for SignalR and ASP.NET Core 3](/2020/03/05/Serilog-with-SignalR) From looking at these logs I found warnings on my production (Linux) server which didn't appear on my dev (Windows) machine.
 
+[Here is a test WebApplication5 with infra.sh deployment script](https://github.com/djhmateer/WebApplication5) which spins up Kestrel, NGinx on Ubuntu
+
 ```txt
-2020-03-05 15:59:56.173 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
-2020-03-05 15:59:56.175 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
-2020-03-05 15:59:56.210 +00:00 [WRN] No XML encryptor configured. Key "728cdab0-df5a-4cbf-aadb-00f81be60905" may be persisted to storage in unencrypted form.2020-03-05 16:00:52.263 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
-2020-03-05 16:00:52.279 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
-2020-03-05 16:00:52.354 +00:00 [WRN] No XML encryptor configured. Key "a0179284-0c0c-4174-86c8-eb3003fb5415" may be persisted to storage in unencrypted form.2020-03-05 16:05:59.371 +00:00 [WRN] Failed to determine the https port for redirect.
+2020-03-06 15:49:10.158 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2020-03-06 15:49:10.160 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2020-03-06 15:49:10.185 +00:00 [WRN] No XML encryptor configured. Key "cd2047d5-7f97-43fe-9435-b3802cf5723d" may be persisted to storage in unencrypted form.
+2020-03-06 15:50:08.083 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2020-03-06 15:50:08.091 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2020-03-06 15:50:08.188 +00:00 [WRN] No XML encryptor configured. Key "6389be03-53e2-4a9b-9905-078830712dd3" may be persisted to storage in unencrypted form.
+2020-03-06 15:52:37.626 +00:00 [WRN] Failed to determine the https port for redirect.
 ```
 
-[From the docs it seems strange it doesn't work on a single machine by default](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1) actually [maybe okay as none of the conditions are met](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/default-settings?view=aspnetcore-3.1)
+[From the docs it seems strange it doesn't work on a single machine by default](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1) with  [the defaults](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/default-settings?view=aspnetcore-3.1)
 
-[Good background](https://softwaredesigncorner.blogspot.com/2019/08/how-to-resolve-aspnet-core-key.html)
+[Others have solved](https://softwaredesigncorner.blogspot.com/2019/08/how-to-resolve-aspnet-core-key.html) but this is confusing why a single machine is throwing these warnings.
 
 ![alt text](/assets/2020-01-09/90.jpg "No errors when starting as my local user"){:width="800px"}  
 
-**but why didn't nginx patch it through..**
+Console showing no errors
+
+![alt text](/assets/2020-01-09/91.jpg "No errors when starting as my local user"){:width="800px"}  
+
+But log showing errors coming in before the app starts up
 
 ## Conclusion
 
