@@ -16,13 +16,14 @@ This article is on making *C# code more functional by using functional abstracti
 
 [Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) summarised how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
 [Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
-Part 3 is this article on making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext):
+Part 3 is this article on making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext)  
+[Notes](/2020/03/06/Orange-Book-Functional-Programming-in-C-Sharp) Are my developer notes whilst working through the book
 
 We are going to be looking at:  
-- Expressions / ternary operator 
+- Expressions / ternary operator
 - Pure functions
 - Immutable types
-- Option type 
+- Option type
 - Match and Map
 - Bind
 - Either type
@@ -30,6 +31,7 @@ We are going to be looking at:
 [Inspiration for this article](https://github.com/louthy/language-ext/issues/209) and where to practically start with FP in C#. The initial problems the C# [functional library language-ext](https://github.com/louthy/language-ext/issues) was trying to solve were that of Nulls and Immutability  [Original HN Article from 2014 on language-ext](https://news.ycombinator.com/item?id=8631158)
 
 If we remember that the core tenants of what FP are
+
 - Functions first
 - Immutability
 
@@ -37,6 +39,7 @@ Expressions first helps keep the functions small.
 Immutability helps guide the functions towards being pure (no side effects)  
 
 ## Index of Examples
+
 [Source code for this article is here](https://github.com/djhmateer/FPInCSharpDemos) and here are the examples demonstrating FP abstractions:    
 - One(); // Pure functions
 - Two(); // Immutability, Smart Constructor
@@ -52,12 +55,14 @@ Immutability helps guide the functions towards being pure (no side effects)
 - Twelve(); // Either - Validation pipeline
 
 ## Expressions
+
 Try to make everything you do an expression, rather than a sequence of statements eg if using expression-bodied methods that start with =>
 
 ```cs
 static void PrintHello() => 
     Console.WriteLine("Hello World from a function");
 ```
+
 Then prefer `the conditional operator` aka `ternary operators` as they are more concise leading to more *readable code*
 
 ```cs
@@ -69,10 +74,13 @@ static Option<string> GetValue(bool hasValue) =>
 // Even more concise 
 static Option<string> GetValue(bool hasValue) => hasValue ? Some("Bob") : None;
 ```
+
 What we are doing is building up a sequence of expressions which are then very easy to test and reason about.
 
 ## Pure functions
+
 Pure functions don't refer to any global state. The same inputs will always get the same output. Combined with immutable data types this means you can be sure the same inputs will give the same outputs.  
+
 ```cs
 static void One()
 {
@@ -102,12 +110,13 @@ static bool IsPrime(int number)
     return true;
 }
 ```
+
 If we have mutable objects it could be possible for another function to mutate the object we were working on concurrently.  
 
 So if we have a pure function (which doesn't act on a mutable global variable) then we can make the function `static`. More [discussion in ch 2.2.3 of the orange book](https://livebook.manning.com/#!/book/functional-programming-in-c-sharp/chapter-2/113)
 
-
 ## Immutable Data objects / Smart Constructors
+
 We never want to mutate an object in FP, but a create a new one. This makes sure there are no side effects caused somewhere else, thus ensuring a function remains pure. It also makes concurrency simpler.
 
 ```cs

@@ -1,13 +1,20 @@
 ---
 layout: post
-title: Azure DevOps YAML Pipelines **Work in Progress**
-menu: review
-categories: DevOps
-published: true 
-comments: false
-sitemap: false
+title: Azure DevOps YAML Pipelines
+description: Configuring and using Azure DevOps using YAML and Infrastucture as Code
+#menu: review
+categories: Azure DevOps
+published: true
+comments: true
+sitemap: true
+image: /assets/2019-03-21/1.png
 ---
-In the [previous article on Azure DevOps GUI Pipelines](/2019/03/07/Azure-DevOps-GUI-Pipelines) we got a CI/CD pipeline working deploying an ASP.NET Core 2.2 application to Azure PaaS, using Windows and Linux hosted build agents.  
+[Part 1 - Azure DevOps GUI Pipelines](/2019/03/07/Azure-DevOps-GUI-Pipelines) Azure DevOps GUI Piplines  
+Part 2 - Azure DevOps YAML Pipelines
+
+## YAML Pipelines
+
+In [Part 1](/2019/03/07/Azure-DevOps-GUI-Pipelines) we got a CI/CD pipeline working deploying an ASP.NET Core 2.2 application to Azure PaaS, using Windows and Linux hosted build agents.  
 
 In this article we are doing this in code `azure-pipelines.yml` with the goal of:
 
@@ -18,35 +25,41 @@ In this article we are doing this in code `azure-pipelines.yml` with the goal of
 
 Once cloned and built locally, to get your own version working you'll need
 
-- a local agent running (although can use their slower hosted agents). [See previous article]()
+- a local agent running (although can use their slower hosted agents). see build agents in [Part 1 - Azure DevOps GUI Pipelines](/2019/03/07/Azure-DevOps-GUI-Pipelines)
 - Azure Resource Manager service connection
 
 ## VS Code Extension
+
 Azure Pipelines extension is very handy for code completion.
 
-
 ## Azure Resource Manager service connection  
+
 ![ps](/assets/2019-03-21/1.png)  
 This gives DevOps permission to work on the Azure Subscription.  
 
 Be careful not to select a Resource Group as that limits the access.  
 
-## Build 
+## Build
+
 [Do I need quotes for string in YAML](https://stackoverflow.com/questions/19109912/do-i-need-quotes-for-strings-in-yaml) well, as there are so many caveats a good rule of thumb is to use quotes.  
 
 ## Variables
+
 Passing variables around can be difficult.  Documentation on 
 [Predefined Variables](https://docs.microsoft.com/en-gb/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml) here      
 
 [Build Number Format](https://docs.microsoft.com/en-gb/azure/devops/pipelines/build/options?view=azure-devops&tabs=yaml)  only in BuildNumber ie name: will it change /refs/heads/master to refs_heads_master  I had to do string manipulation in bash to extract the actual branch name.
 
 ## Publish
+
 [PublishBuildArtifacts@1 documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/publish-build-artifacts?view=azure-devops) notice the @1 means version 1.
 
 ## Deploy to Existing Azure
+
 [AzureRmWebAppDeployment documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment?view=azure-devops)
 
 ## Azure CLI - Build new Infrastructure inline
+
 Am using the Azure CLI for this rather than Azure Resource Manager (ARM) templates as I'm more experienced in the CLI.
 
 [AzureCLI documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)  
@@ -65,6 +78,7 @@ Here is a very simple inline example of creating azure infrastructure from Azure
 ```
 
 and introducing a variable:
+
 ```yml
 variables:
   buildConfiguration: 'Release'
@@ -77,9 +91,11 @@ variables:
     scriptLocation: 'inlineScript'
     inlineScript: 'az group create -l $(azureRegion) -n TestRG'
 ```
+
 However we really need an external script to do this:  
 
 ## Final Files 
+
 [AzureCLI@1 documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)  
 
 `azure-pipelines.yml` is defined below:  
@@ -313,6 +329,7 @@ az webapp create \
 #az webapp config connection-string set --resource-group $RESOURCEGROUP_NAME --name $WEBAPP_NAME --connection-string-type SQLServer 
 #--settings DefaultConnection="$SQL_CONNECTIONSTRING"
 ```
+
 when working with bash files on windows:
 
 - debug info at top useful so can see in devops ui what the actual commands were
@@ -321,7 +338,9 @@ when working with bash files on windows:
 - max number of free ServerFarms allowed is 10 (for an MSDN subscription)
 
 ## Next
+
 Get an end to end application working with:
+
 - BuildNumber at bottom of website
 - SQL Database
 - Protected production environment (manual step to publish to it)
@@ -330,6 +349,10 @@ Get an end to end application working with:
 - Every feature branch gets its own Infrastructure
 - Unit Testing, Selenium testing, Load testing (manual)
 
+## Conclusion
 
+You can do a lot with YAML in Azure DevOps, and no doubt will be able to do a lot more every day.
 
+If you have a smaller project I'd suggest looking at [Infrastructure as Code for an ASP.NET Core 3.1 Web App](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu).   
 
+Sometimes the simper the better......

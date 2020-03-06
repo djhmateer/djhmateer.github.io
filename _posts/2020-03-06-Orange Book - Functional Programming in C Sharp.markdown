@@ -1,36 +1,50 @@
 ---
 layout: post
 title:  Orange Book - Functional Programming in C Sharp
-menu: review
+description: Notes from the excellent Orange Book on Functional Programming in C# 
+#menu: review
 categories: C# Functional 
 published: true 
-comments: false
-sitemap: false
+comments: true
+sitemap: true
+image: /assets/2019-01-11/3.png
 ---
-![ps](/assets/2019-01-11/3.png)  
-[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  
 
-[Chapter 1](#what-is-fp) What is FP? Paradigms, HOF, Immutable   
-[Chapter 2](#chapter-2---pure-and-impure-functions)  Pure and Impure Functions, injecting functions, parameterised unit tests   
-[Chapter 3](#chapter-3---function-signatures-and-types)  Data objects,  Honest Functions,  Adapter Function for setup (timing), Option type, None, Some, Smart Constructor   
-[Chapter 4](#chapter-4---patterns-in-functional-programming) Patterns in FP  Map (Select), Bind, Elevated level of abstraction eg Option T, IEnumerable    
-[Chapter 5](#chapter-5---functional-composition) Functional Composition   
-[Chapter 6](#chapter-6---functional-error-handling) Part 2 (Becoming Functional) Functional Error Handling
+![alt text](/assets/2019-01-11/3.png "The Orange book"){:width="300px"}
 
 
+[Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is this article on how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
+[Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
+[Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext)  
+Notes Are my developer notes whilst working through the book (this article)
+
+[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  So in-depth that it took me 6 months to read the first 6 chapters, then a few years to write the blog post series linked above. 
+
+I now routinely use FP concepts in my code and have never looked back.
+
+Mainly for my benefit, I've finally got around to publishing these developer notes I took on reading the book.
+
+- [Chapter 1](#what-is-fp) What is FP? Paradigms, HOF, Immutable
+- [Chapter 2](#chapter-2---pure-and-impure-functions)  Pure and Impure Functions, injecting functions, parameterised unit tests
+- [Chapter 3](#chapter-3---function-signatures-and-types)  Data objects,  Honest Functions,  Adapter Function for setup (timing), Option type, None, Some, Smart Constructor
+- [Chapter 4](#chapter-4---patterns-in-functional-programming) Patterns in FP  Map (Select), Bind, Elevated level of abstraction eg Option T, IEnumerable
+- [Chapter 5](#chapter-5---functional-composition) Functional Composition
+- [Chapter 6](#chapter-6---functional-error-handling) Part 2 (Becoming Functional) Functional Error Handling
 
 My [strategy and why I'm doing this](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is:
 
 - Be patient (I've gone back to Chapter 1 many times)
 - Experiment in code ([All my source is open](https://github.com/djhmateer/functional-csharp-code))  
 
-Learning by example is how more seasoned developers tend to work best (* link to research papers?).  I've taken this strategy in my FP exploration writing   
+Learning by example is how more seasoned developers tend to work best.  I've taken this strategy in my FP exploration writing.
 
 ## What is FP
+
 - Functions as first-class values
 - Avoiding state mutation
 
 ## Functions as first-class values
+
 - Func - pointer (delegate) to a method that can take parameters, and returns something
 - Lambda expressions - executable code without a method name
 
@@ -56,7 +70,9 @@ let triple x = x * 3
 let a = triple(4) // 12
 printfn "a is %i" a // 12
 ```
+
 ## Avoid State Mutation
+
 ```cs
 // Create and populate an array
 int[] nums = { 1, 2, 3 };
@@ -64,6 +80,7 @@ int[] nums = { 1, 2, 3 };
 nums[0] = 7;
 var c = nums; // => [7, 2, 3]
 ```
+
 We should avoid mutating objects in place as above, and favour making new objects as below:
 
 ```cs
@@ -78,6 +95,7 @@ var e = original; // [7, 6, 1]
 ```
 
 ## Programming Paradigms
+
 [Programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) are a way to classify programming languages based on their features. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) is classified in [6 different paradigms](https://en.wikipedia.org/wiki/Comparison_of_multi-paradigm_programming_languages)
 
 - [Imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) (contrasted with Declaritive) uses statements to change a program's state. eg C#
@@ -88,10 +106,10 @@ var e = original; // [7, 6, 1]
 - [Declaritive programming](https://en.wikipedia.org/wiki/Declarative_programming) expresses logic of a computation without describing its control flow. eg SQL, regex, functional programming
     - [Functional programming](https://en.wikipedia.org/wiki/Functional_programming) evaluation of functions, avoids changing state eg Lisp, Clojure, Erlang, Haskell, F#, SQL (this domain specific language uses some elements of FP), C#
 
-
 Many C# solutions rely on imperative style in their method implementations, mutating state in place and using explicit control flow. They use OO design in the large, and imperative programmming in the small. 
 
 ## LINQ
+
 LINQ is a functional library introduced in C#3 the contains methods for performing operations on sequences eg:
 
 - Select (Map)
@@ -107,9 +125,11 @@ var a = Enumerable.Range(1, 100)
 ```
 
 ## Higher Order Function (1. fn as an input)
+
 This type of HOF (fn as an input) is often referred to as a continuation or a callback or Inversion of Control
 
 This HOF takes a function as an argument (functions that depend on other functions) 
+
 ```c#
 static class Program
 {
@@ -2247,6 +2267,7 @@ public static async Task<int> GetDotNetCountAsync(string url)
     return Regex.Matches(html, @"\.NET").Count;
 }
 ```
+
 Without the new async entrypoint we couldn't use await in the Main method (and would have to write more code)  
 
 [Async programming docs](https://docs.microsoft.com/en-us/dotnet/csharp/async) "If you have any I/O-bound needs (such as requesting data from a network or accessing a database), you'll want to utilize asynchronous programming."
@@ -2255,3 +2276,6 @@ Without the new async entrypoint we couldn't use await in the Main method (and w
 
 [SO Answer](https://stackoverflow.com/a/29809054/26086)  
 
+## Conclusion
+
+This is a set of helper notes for the book. Well done if you read this far!

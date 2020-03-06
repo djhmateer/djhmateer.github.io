@@ -1,12 +1,22 @@
 ---
 layout: post
 title: Azure DevOps GUI Pipelines
-menu: review
-categories: DevOps
+description: Configuring Azure DevOps with just the GUI and trying it out..
+#menu: review
+categories: Azure DevOps
 published: true 
-comments: false
-sitemap: false
+comments: true
+sitemap: true
+image: /assets/2019-03-07/1.png
 ---
+
+Part 1 - Azure DevOps GUI Pipelines  
+[Part 2 - Azure DevOps YAML Pipelines](/2019/03/21/Azure-DevOps-YAML-Pipelines) Using Infrastructure as Code to define our pipelines (do this!)  
+
+Both these articles were written when I needed to use DevOps, and now I'm not using it (March 2020) so I'm putting the thoughts at the time online. 
+
+## What is Azure DevOps
+
 [Azure DevOps](https://azure.microsoft.com/en-gb/services/devops/) is a collection of services:
 
 - Boards (like Jira or Trello- idea to release of software.)
@@ -37,7 +47,7 @@ Goal is that infrastructure should be defined just like code, which can be check
 
 Perhaps there is webserver (PaaS) and a database (MSSQL) initially.  
 
-Below is shown how to setup the Build and Release pipelines in the GUI, however [in the next article we will explore the azure-pipelines.yml recommended way](). **This is what I use in production**  
+Below is shown how to setup the Build and Release pipelines in the GUI, however [in the next article we will explore the azure-pipelines.yml recommended way](/2019/03/21/Azure-DevOps-YAML-Pipelines). 
 
 ## Settings
 <!-- <img src="/assets/2019-03-07/1.png" width="600" align="left" hspace="15">  -->

@@ -10,7 +10,8 @@ sitemap: true
 
 [Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) summarised how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
 Part 2 is this article taking a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
-[Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext):
+[Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext)  
+[Notes](/2020/03/06/Orange-Book-Functional-Programming-in-C-Sharp) Are my developer notes whilst working through the book  
 
 ![ps](/assets/2018-10-10/euler2.png){:align="right"}  
 What is [projecteuler.net](https://projecteuler.net/)?  

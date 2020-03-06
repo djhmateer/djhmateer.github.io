@@ -9,11 +9,14 @@ comments: true
 sitemap: true
 image: /assets/2019-01-11/3.png
 ---
+
 Part 1 is this article on how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
 [Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
-[Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext):
+[Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext)  
+[Notes](/2020/03/06/Orange-Book-Functional-Programming-in-C-Sharp) Are my developer notes whilst working through the book
 
 ## Why learn FP techniques
+
 [NDC Video by Enrico Buonanno](https://www.youtube.com/watch?v=wJq86IXkFdQ) has a very good introduction as to why we should consider FP in C# - he is the author of the orange book linked below. 
 
 - Power (do more with less code, raise the level of abstraction)
@@ -27,6 +30,7 @@ I have a tricky programming problem, which I've tried and the code is rapidly tu
 As a side effect it has pushed my C# language skills and is thoroughly enjoyable!
 
 ## Strategy
+
 - Be patient
 - Experiment in code
 
@@ -36,7 +40,8 @@ The orange book below is *very* thorough, and I suspect to fully understand the 
 
 'Change the way you think is hard, and learning the syntax is relatively easy'
 
-### Pluralsight    
+### Pluralsight
+
 [K Scott Allen - Linq Fundamentals with C#6 Pluralsight](https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/table-of-contents)
 
 - Extension methods
@@ -49,15 +54,15 @@ The orange book below is *very* thorough, and I suspect to fully understand the 
 - Lambda expressions
 
 ## Project Euler
+
 After doing the Pluralsight course [I did the first 17 or so Euler puzzles in an FP / Linq way](https://davemateer.visualstudio.com/DefaultCollection/Euler1/_git/Euler1?path=%2FREADME.md&version=GBmaster) and explanation of the [first one](/2018/09/20/Improve-Programming-using-Project-Euler)
 
 ### ReSharper
+
 ![ps](/assets/2019-01-11/1.png)  
 Using [ReSharper](https://www.jetbrains.com/resharper/) to understand the names of different concepts and different ways of writing something  
 
 ### Books
+
 ![ps](/assets/2019-01-11/3.png)  
 [Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  It took me many attempts to understand Chapter 1, and think is one of the best C# programming books I've read.
-
-<br />
-<br />
