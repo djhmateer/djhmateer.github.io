@@ -367,6 +367,8 @@ Then even sending emails is tricky.. outlook.com is ignoring the emails I'm send
 
 ## Warnings in Log file
 
+TL;DR - [I'm ignorning these warnings as I don't mind about expired tokens and having to login again on service restart](https://github.com/dotnet/aspnetcore/issues/3309)  
+
 [Here is my article on Setting up Serilog for SignalR and ASP.NET Core 3](/2020/03/05/Serilog-with-SignalR) From looking at these logs I found warnings on my production (Linux) server which didn't appear on my dev (Windows) machine.
 
 [Here is a test WebApplication5 with infra.sh deployment script](https://github.com/djhmateer/WebApplication5) which spins up Kestrel, NGinx on Ubuntu
