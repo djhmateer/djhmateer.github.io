@@ -103,6 +103,8 @@ So in total, a doubling a power (roughly) for a modern day system.
 
 [SPECviewperf 13](https://www.spec.org/gwpg/gpc.static/vp13info.html) is for measuring graphics based performance.
 
+[Crystal Disk Mark](https://crystalmark.info/en/software/crystaldiskmark/) for testing disks.
+
 [userbenchmark.com](https://userbenchmark.com) looks to [be flawed](https://www.tomshardware.com/uk/news/userbenchmark-benchmark-change-criticism-amd-intel,40032.html)
 
 ## Conclusion
