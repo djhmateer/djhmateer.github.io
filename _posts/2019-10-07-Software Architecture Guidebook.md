@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Software Architecture Guidebook 
+title: Software Architecture Guidebookx
 description: Using Simon Brown's guidebook architecture
 #menu: review
 categories: Architecture Guidebook 
