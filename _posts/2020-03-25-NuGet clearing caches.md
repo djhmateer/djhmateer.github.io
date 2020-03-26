@@ -42,7 +42,7 @@ Local resources cleared.
 
 Even doing a Clean Solution in Visual Studio won't get rid of the packages folder in the solution.
 
-So remember to delete `packages` in your solution
+So remember to delete `packages` in your solution (then watch inside the directory as it rebuilds)
 
 As a side note - the `packages` folder should not be checked into source control (it is ignored in the default .NET .gitignore file)
 

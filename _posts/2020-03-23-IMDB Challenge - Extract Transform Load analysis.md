@@ -14,7 +14,6 @@ image: /assets/2019-01-11/3.png
 
 Dataset: [Direct connect to MySQL](https://relational.fit.cvut.cz/dataset/IMDb) and my version in source control [here]()
 
-
 ## Questions
 
 asdf
@@ -45,7 +44,6 @@ Transform and exploring - do we need any data cleansing?
 SQL great once I had data loaded
 
 Load scripts very good as can rebuild on any machine with `useDb` flag. If I delete in correct order, then don't need to take off constraints.
-
 
 C# good for complex queries to understand the data and to get something working even though it will not per as performant.
 
