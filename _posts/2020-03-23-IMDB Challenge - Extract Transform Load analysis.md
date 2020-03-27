@@ -30,9 +30,12 @@ get a feel for data - number of rows
 
 used the same as the source even though I don't like it:
 
-[link to my goto article on db design]()
+[Link to my article on db naming](/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL)
 
-## ETL
+Composite keys in link tables thoughts?
+Capitalisation of columns names
+
+## ETL with C#
 
 Extract from CSV
 Transform and exploring - do we need any data cleansing?
@@ -46,6 +49,11 @@ SQL great once I had data loaded
 Load scripts very good as can rebuild on any machine with `useDb` flag. If I delete in correct order, then don't need to take off constraints.
 
 C# good for complex queries to understand the data and to get something working even though it will not per as performant.
+
+-count (1)
+-group by
+-group by having
+-put in left join pipeline strategy
 
 ## Querying with C#
 
