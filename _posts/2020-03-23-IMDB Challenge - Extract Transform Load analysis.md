@@ -18,7 +18,21 @@ Dataset: [Direct connect to MySQL](https://relational.fit.cvut.cz/dataset/IMDb) 
 
 asdf
 
-## Data Analysis with Excel
+## Strategy
+
+Git to source control data, SQL queries, C# importer and analyser, db diagram photo
+Analyse csv data with Excel
+Draw a rough DB diagram on paper to trial relationships
+SSMS with db diagrams to enter schema and 
+DB Project in Visual Studio to keep schema source controlled
+
+C# with CsvHelper to load in the delimited text files (Extract)
+C# to analyse the data for anomalies and fix (Transform)
+C# with Dapper to insert (Load)
+SQL to answer questions
+C# to answer harder questions - clarity over speed, iterative code fine to start with
+
+## Initial Data Analysis with Excel
 
 Load from CSV (even though it is semicolon separated)
 
