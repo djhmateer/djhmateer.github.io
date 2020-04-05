@@ -16,9 +16,12 @@ image: /assets/2020-02-03/40.jpg
 
 ## Why use one
 
-## Examples in MSSQL
+Hierarchy - can use recursive queries in MSSQL using Common Table Expressions eg [here](https://stackoverflow.com/questions/14518090/recursive-query-in-sql-server) and [MS Docs](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15)
 
-MSSQL introduced Graph functionality in SQL2017, then included more in SQL2019 (specifically a `shortest_path` implementation)
+
+## MSSQL
+
+[MSSQL introduced SQL Graph](https://docs.microsoft.com/en-us/sql/relational-databases/graphs/sql-graph-overview?view=sql-server-ver15) functionality in SQL2017, then included more in SQL2019 (specifically a `SHORTEST_PATH` implementation)
 
 [RedGate 2017 example](https://www.red-gate.com/simple-talk/sql/t-sql-programming/sql-graph-objects-sql-server-2017-good-bad/)
 
@@ -31,3 +34,7 @@ MSSQL introduced Graph functionality in SQL2017, then included more in SQL2019 (
 ## Neo4J
 
 Is a popular JVM based Graph database. There is an official [.NET driver for it too](https://neo4j.com/developer/dotnet/)
+
+## Other articles
+
+[Terry McCann from adatis](https://adatis.co.uk/sql-server-2017-graph-data-processing-an-introduction/)
