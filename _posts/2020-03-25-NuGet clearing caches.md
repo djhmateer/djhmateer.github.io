@@ -46,6 +46,18 @@ So remember to delete `packages` in your solution (then watch inside the directo
 
 As a side note - the `packages` folder should not be checked into source control (it is ignored in the default .NET .gitignore file)
 
+## Resetting the repo
+
+This will [clean out everything](https://stackoverflow.com/a/64966/26086) resetting back to a clean state.
+
+-d is directories
+-x is remove untracked files not in gitignore
+-f is force
+
+```bash
+ git clean -xfd
+```
+
 ## DotNetCore
 
 The above was working from a .NET Framework solution using VS2019.
