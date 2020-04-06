@@ -109,8 +109,8 @@ private static List<Actor> LoadActorsFromCsv()
 
 public class Actor
 {
-    // favouring the simplest data type in this load
-    // until I understand the data well
+    // favouring the simplest data type string in this load
+    // until I understand the data (ie what edge cases are there)
     public string actorid { get; set; }
     public string name { get; set; }
     public string sex { get; set; }
@@ -118,7 +118,7 @@ public class Actor
 
 ```
 
-These load scripts are very good as can rebuild on any machine with a clone from source control.
+These load scripts are very good as can rebuild on any machine with a clone from source control. This is a very simple load script with no thought towards insert performance. [I could use SQLBulkCopy and FastMember](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) if Dapper isn't fast enough. In fact in the [SQL Graph exploration I did]() the insert performance was much poorer than here. I explored using `.AsParallel()` and `Full blown SQL 2019 Developer edition` as a simple fix. Neither worked.
 
 ## Querying with SQL
 

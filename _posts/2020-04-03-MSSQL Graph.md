@@ -14,6 +14,10 @@ image: /assets/2020-02-03/40.jpg
 
 ## What is a graph database
 
+[Tony Bater eloquently answered this](https://www.sqlservercentral.com/articles/relational-database-or-graph-database-why-not-have-both) by asking: What problem is so intractable that SQL Server is not the best solution.
+
+His domain of healthcare, specifically a complex hierarchy of related concepts.
+
 ## Why use one
 
 Hierarchy - can use recursive queries in MSSQL using Common Table Expressions eg [here](https://stackoverflow.com/questions/14518090/recursive-query-in-sql-server) and [MS Docs](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15)
@@ -58,3 +62,7 @@ Is a popular JVM based Graph database. There is an official [.NET driver for it 
 ## Other articles
 
 [Terry McCann from adatis](https://adatis.co.uk/sql-server-2017-graph-data-processing-an-introduction/)
+
+[Degrees of separation using a CTE](https://stackoverflow.com/questions/55717636/finding-shortest-path-up-to-ten-degrees-of-separation)
+
+[Another degrees of separation using a CTE](https://stackoverflow.com/questions/33814857/sql-query-6-degrees-of-separation-for-network-analysis)
