@@ -7,20 +7,24 @@ categories: WVD
 published: true 
 comments: false
 sitemap: false
-image: /assets/2020-03-01.dbdiag.png
+image: /assets/2020-03-01/dbdiag.png
 ---
 
-![alt text](/assets/2020-03-01.dbdiag.png "DB Diagram"){:width="300px"}
+![alt text](/assets/2020-03-01/dbdiag.png "DB Diagram"){:width="300px"}
 
 Many times in my career I've worked on Extract Transform Load (ETL) solutions. Often they have grown organically through stored procedures, take a time (hours) to run, and are fragile.
 
-Here is an interesting challenge my friend gave me to answer 15 questions on a dataset. The challenge was originally set for a different database, but I decided to use SQL Server and more focus on veracity of the answer over speed
+Here is an interesting challenge my friend gave me to answer 15 questions on a dataset. The challenge was originally set for a different database [Neo4J - a Graph Database](https://neo4j.com/), but I decided to use SQL Server and more focus on veracity of the answers over speed.
 
 [Source code for this article is here]() and the [dataset originally came from here](https://relational.fit.cvut.cz/dataset/IMDb)
+
+Coding challenges are excellent for learning as you inevitably find out the unexpected along the way eg `INSERT INTO tablename` can be written as `INSERT tablename` and `DELETE FROM tablename` can be written as `DELETE tablename`
 
 ## Questions
 
 asdf
+
+Question 12 - Shortest Path. This is a classic traversal problem that Graph datbases are suited to. [Here is my article on MSSQL's implementation of Graph functionality](/2020/04/03/MSSQL-Graph)
 
 ## Strategy
 
@@ -87,15 +91,11 @@ foreach (var actor in actors)
         Console.WriteLine("non M or F in Actor sex column");
 
     var sql = @"
-    INSERT INTO Actors
-    (actorid
-    ,name
-    ,sex)
-    VALUES (@actorid
-    ,@name
-    ,@sex)
-    ";
-    // handy mapper - don't need to specify column names
+    INSERT Actors
+    VALUES (@actorid, @name, @sex)";
+    // don't need INSERT INTO
+    // don't need to specify column names
+    // dapper will map column names from actor object
     db.Execute(sql, actor);
 }
 
