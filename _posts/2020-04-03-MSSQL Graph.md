@@ -32,9 +32,8 @@ Hierarchy - can use recursive queries in MSSQL using Common Table Expressions eg
 
 ## Nodes and Edges
 
-Nodes are the things eg Members, Actors, Posts
-Edges are the relationships eg writtenBy, likes, actedIn
-
+- Nodes are the things eg Members, Actors, Posts  
+- Edges are the relationships eg writtenBy, likes, actedIn
 
 ## Syntax and ORMs
 
@@ -43,17 +42,13 @@ Edges are the relationships eg writtenBy, likes, actedIn
 INSERT Likes ($to_id,$from_id) VALUES
        ((SELECT $node_id FROM dbo.ForumPosts WHERE PostID = 4),
        (SELECT $node_id FROM dbo.ForumMembers WHERE MemberID = 1)),
-
 ```
 
 The syntax to insert data is verbose and a good candidate for an ORM to help however [Entity Framework doesn't have support yet](https://stackoverflow.com/questions/46733719/syntax-for-entity-framework-query-to-sql-server-2017-graph-database) 
 
 Notice here that `INSERT INTO` is just `INSERT` which is [quite a common shortcut apparently](https://www.red-gate.com/simple-talk/sql/learn-sql-server/working-with-the-insert-statement-in-sql-server/). The same is true for `DELETE FROM tablename` ie just use `DELETE tablename`
 
-I use my own ETL to generate raw SQL to insert data. I've found that unsurprisingly it is much slower to insert that just into raw tables:
-
-
-
+I use my own ETL to generate raw SQL to insert data. I've found that unsurprisingly it is much slower to insert than just into raw tables:
 
 ## Neo4J
 
