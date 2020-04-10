@@ -12,13 +12,13 @@ image: /assets/2020-02-03/40.jpg
 
 ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"}
 
-I've used [Vim](https://www.vim.org/) in anger [for around 3 years and here are my favourite commands](/2018/02/21/VIM). I never use Vim the actual editor, but the implementations for [vim in VSCode]() and [vim in Visual Studio]().
+I've used [Vim](https://www.vim.org/) in anger [for around 3 years and here are my favourite commands](/2018/02/21/VIM). I never use Vim the actual editor, but the implementations for [Vim for VSCode](https://github.com/VSCodeVim/Vim) and [Vim plugin for Visual Studio](https://github.com/VsVim/VsVim).
+
+The subject of [What are the benefits of using Vim](https://stackoverflow.com/questions/597077/what-are-the-benefits-of-learning-vim) is fascinating. There is [a lot of stuff out there including this fun looking book](https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/introduction/)
 
 I've used [AutoHotkey](https://www.autohotkey.com/) together with [a script](/2018/04/10/Autohotkey) to bind CapsLock to escape key for years.
 
-
-And I've tied it all together across my machine
-
+And I've tied it all together across my machines.
 
 OneNote with Vim bindings is great! Some things give you inexplicable joy. Being able to edit documents without my fingers leaving the keyboard is one of them.
 
