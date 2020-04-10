@@ -107,6 +107,10 @@ So in total, a doubling a power (roughly) for a modern day system.
 
 [userbenchmark.com](https://userbenchmark.com) looks to [be flawed](https://www.tomshardware.com/uk/news/userbenchmark-benchmark-change-criticism-amd-intel,40032.html)
 
+[ExtremeOverclocking.com](https://files.extremeoverclocking.com/browse.php?c=1) including download link for: CPU-z (CPU info)
+
+[GPU Temp](http://gputemp.com/) was good for looking at GPU temps!
+
 ## Conclusion
 
 Older machines are more than powerful enough for my needs, however I will keep hardware fresh to keep learning and made sure lack of power never gets in my way.
