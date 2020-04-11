@@ -8,6 +8,8 @@ sitemap: true
 comments: true
 ---
 
+**Update 11th April 2020** I now use another tool to map CapsLock to my escape key - [OneNote with Vim](/2020/04/10/OneNote-with-Vim#map-capslock-to-escape-key)
+
 I use [AutoHotkey](https://autohotkey.com/) to map the escape key to the caps-lock key which is useful when using Vim.  
 
 To run the ahk script on startup of Windows 10 I used this [article](https://www.maketecheasier.com/schedule-autohotkey-startup-windows/)
