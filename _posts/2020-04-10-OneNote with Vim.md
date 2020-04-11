@@ -2,11 +2,11 @@
 layout: post
 title: OneNote with Vim 
 description: OneNote with Vim bindings is giving me great joy! Here I describe how I've set it up with vim_ahk Autohotkey scripts on Windows.
-menu: review
+#menu: review
 categories: OneNote Vim 
 published: true 
-comments: false     
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2020-04-10/2.jpg
 ---
 
@@ -70,15 +70,10 @@ Ctrl PAGE Down - next page
 Ctrl PAGE Up - previous page  
 
 Ctrl Alt n - create new page below current in tab bar  
-Ctrl M - open new onenote window  
+Ctrl M - open new OneNote window  
 
-Ctrl Shift [ - decrease size of pages tab bar  
-
-## Other Applications with Vim plugins
-
-[Vimium plugin for Chrome](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) - Drive chrome using Vim shortcuts
-
-[Google Search Keyboard Shortcuts for Chrome](https://chrome.google.com/webstore/detail/google-search-keyboard-sh/iobmefdldoplhmonnnkchglfdeepnfhd?hl=en) I've used this for years so when searching google I can use tab to go through the results (in Chrome), then ctrl enter to open a new tab.
+Ctrl Alt 1 - make Heading 1,2 etc..
+Ctrl Alt 0 - make normal size text
 
 ## Conclusion
 

@@ -1,34 +1,40 @@
 ---
 layout: post
 title: Vim commands most used 
-description: 
-menu: review
+description: Learning new Vim commands is a never ending journey of frustration and happiness. Here are my most used commands. Good luck to us all.
+#menu: review
 categories: Vim 
 published: true 
-comments: false     
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2020-04-10/10.jpg
 ---
 
 ![alt text](/assets/2020-04-10/10.jpg "Nuffield tractor 1953"){:width="600px"}
 
-[I've been using Vim in anger for 3 years now](/2018/02/21/VIM) and have recently [found a way to use it with my favourite note taking application OneNote](/2020/04/10/OneNote-with-Vim) so I thought I'd revisit my favourite most used commands and learn some more the the process.
+[I recently found a way to use Vim with my favourite note taking application OneNote](/2020/04/10/OneNote-with-Vim) so I thought I'd revisit my favourite most used commands.
 
-```bash
+```
 CapsLock - mapped to escape
-h,j,k,l - move up, down, left, right
+
+h,j,k,l - move cursor
 w - move forward by a word
+b - move back by a word
+{ - move back by paragraph
+} - move forward by paragraph
+
 o - start writing on next line
 x - delete character
 dd - delete a line
+cc - change whole line
 dw - delete word
-. - repeat deleting a line (useful for deleting a lot)
+. - repeat last (useful for deleting a lot)
 u - undo
-i - insert
+i - insert text at cursor
 gg - go to top of document
 G - go to end of document
 yy - yank line
-P - put
+p - put
 
 v - visual mode (for copying)
 
@@ -41,13 +47,20 @@ J - join next line to this one
 ~ - capitalise
 
 D - delete to end of line
+C - change to end of line
 
-fw - find lettter w
+fw - find letter w
+; - move again to same character in same direction
 
 A - go to end of line and start inserting
 
 $ - go to end of line (I normally use A as this goes to insert mode too)
 0 - go to beginning of line
+
+/ - search 
+n - next in same direction
+N - next in opposite direction
+
 ```
 
 Here are my lesser used commands:
@@ -65,14 +78,20 @@ I - insert at beginning of line
 
 ```
 
-## _vimrc
+## Other lists
 
-```bash
+[Greg Hewgill on Stack Overflow](https://stackoverflow.com/a/5400978/26086)
 
-```
+[My post 3 years ago on Vim](/2018/02/21/VIM)
 
-## Keyboard repeat set faster
+## Windows Keyboard Repeat
 
-This is very useful to make navigation feel more responsive eg h,j,k,l and also repeat .
+This is very useful to make Vim commands mostly navigation feel more responsive eg h,j,k,l and also repeat . in all Vim implementations.
 
-![alt text](/assets/2020-04-10/1.jpg "Setting keyboard repeat rate faster"){:width="400px"}
+![alt text](/assets/2020-04-10/1.jpg "Setting keyboard repeat rate faster"){:width="300px"}
+
+## Conclusion
+
+Learning new Vim commands is a never ending journey of frustration and happiness.
+
+Good luck to us all!!!
