@@ -12,11 +12,11 @@ image: /assets/2020-04-10/2.jpg
 
 ![alt text](/assets/2020-04-10/2.jpg "OneNote with Vim"){:width="600px"}
 
-I've used [Vim](https://www.vim.org/) in anger for 3 years (here are my [favourite commands so far](/2018/02/21/VIM)). I never use Vim the editor, but the implementations for [Vim for VSCode](https://github.com/VSCodeVim/Vim) and [Vim plugin for Visual Studio](https://github.com/VsVim/VsVim), and now OneNote!!!!
+I've used [Vim](https://www.vim.org/) in anger for 3 years (here are my [most used commands so far](/2020/04/10/Vim-commands-most-used)). I never use Vim the editor, but the implementations for [Vim for VSCode](https://github.com/VSCodeVim/Vim) and [Vim plugin for Visual Studio](https://github.com/VsVim/VsVim), and now OneNote!!!!
 
 The subject of [What are the benefits of using Vim](https://stackoverflow.com/questions/597077/what-are-the-benefits-of-learning-vim) is fascinating. There is [a lot of stuff out there including this fun looking book](https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/introduction/)
 
-> Some things give you inexplicable joy. Being able to edit text well is one. Chocolate is the another!
+> Some things give you inexplicable joy. Being able to edit text well is one. Chocolate is another!
 
 ## OneNote
 
@@ -66,8 +66,8 @@ I found that using multiple ahk mappings, like [the script I used to use](/2018/
 [From Microsoft OneNote keyboard shortcuts](
 https://support.office.com/en-gb/article/keyboard-shortcuts-in-onenote-for-windows-44b8b3f4-c274-4bcc-a089-e80fdcc87950)
 
-Ctrl PAGE Down - next page  
-Ctrl PAGE Up - previous page  
+Ctrl Page Down - next page  
+Ctrl Page Up - previous page  
 
 Ctrl Alt n - create new page below current in tab bar  
 Ctrl M - open new OneNote window  
