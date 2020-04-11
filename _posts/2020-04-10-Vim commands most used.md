@@ -31,25 +31,31 @@ i - insert
 gg - go to top of document
 G - go to end of document
 yy - yank line
+P - put
 
 v - visual mode (for copying)
 
 ci( - change inside ()
 di( - delete inside ()
 
+rp - replace character with p
+
 J - join next line to this one
 ~ - capitalise
+
+D - delete to end of line
 
 fw - find lettter w
 
 A - go to end of line and start inserting
-
-
 ```
 
 Here are my lesser used commands:
 
 ```bash
+# visual block mode (vertical)
+ctrl v, I, move cursor, x   - inserts
+
 I - insert at beginnning of line
 ```
 
