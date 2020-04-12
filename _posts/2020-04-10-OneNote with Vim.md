@@ -54,6 +54,7 @@ To turn off these bindings which survives a restart I've commented out the apps 
 
 . repeat last command. I use this after doing a `dd` to delete a line  
 J join 2 lines doesn't work
+{ navigate by paragraph
 
 ## Map CapsLock to Escape Key
 

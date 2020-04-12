@@ -57,7 +57,7 @@ A - go to end of line and start inserting
 $ - go to end of line (I normally use A as this goes to insert mode too)
 0 - go to beginning of line
 
-/ - search 
+/ - search
 n - next in same direction
 N - next in opposite direction
 
@@ -94,4 +94,4 @@ This is very useful to make Vim commands mostly navigation feel more responsive 
 
 Learning new Vim commands is a never ending journey of frustration and happiness.
 
-Good luck to us all!!!
+Good luck to us all!!!!
