@@ -11,7 +11,7 @@ image: /assets/2020-04-10/10.jpg
 ---
 
 ![alt text](/assets/2020-04-10/10.jpg "Nuffield tractor 1955"){:width="600px"}  
-1955 Nuffield - older technology can be good.. Vi was written in 1977...
+1955 Nuffield - older technology can be good and make you very happy... Vi was written in 1977...
 
 [I recently found a way to use Vim with my favourite note taking application OneNote](/2020/04/10/OneNote-with-Vim) so I thought I'd revisit my favourite most used commands.
 
