@@ -42,6 +42,8 @@ v - visual mode (for copying)
 ci( - change inside ()
 di( - delete inside ()
 
+dt" - delete up to "
+
 rp - replace character with p
 
 J - join next line to this one
@@ -96,3 +98,7 @@ This is very useful to make Vim commands mostly navigation feel more responsive 
 Learning new Vim commands is a never ending journey of frustration and happiness.
 
 Good luck to us all!!!!
+
+a
+b
+c

@@ -53,7 +53,7 @@ To turn off these bindings which survives a restart I've commented out the apps 
 ### What doesn't work in vim_ahk
 
 . repeat last command. I use this after doing a `dd` to delete a line  
-J join 2 lines doesn't work
+J join [behaves strangely](https://github.com/rcmdnk/vim_ahk/issues/46)
 { navigate by paragraph
 
 ## Map CapsLock to Escape Key
