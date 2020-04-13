@@ -8,11 +8,13 @@ redirect_from: coding/2018/11/14/Open-visual-studio-from-command-line.html
 sitemap: true
 ---
 
+**13th April 2020** Update [See latest post on upgrading to .NET Core 3](/2020/04/13/NET-Core-Single-Executable-Console-Application) which makes a lot of this article historical.
+
 I like to drive my Windows 10 development machine from the command line using the [Cmder Shell](/cmder/2018/01/30/Cmder-Shell.html):
 
 ![ps](/assets/2018-11-07/3.png)
 
-When I type **d** (short for devenv.exe) it opens up Visual Studio and loads the **ConsoleApp1.sln**   
+When I type **d** (short for devenv.exe) it opens up Visual Studio and loads the **ConsoleApp1.sln**
 
 How does it do this?  
 
@@ -23,9 +25,9 @@ It found **d.exe** in the path in c:\sharedTools\OpenVSSolution
 Let's look at my OpenVSSolution:  
 ![ps](/assets/2018-11-07/4.png)
 
-## What is d.exe?
-It is a .NET Core Console Application called [OpenVSSolution](https://github.com/djhmateer/OpenVSSolution) with a download exe link [here](https://github.com/djhmateer/OpenVSSolution/releases). **If you want to download it now and put it in the path now go for it.**
+## What is d.exe
 
+It is a .NET Core Console Application called [OpenVSSolution](https://github.com/djhmateer/OpenVSSolution) with a download exe link [here](https://github.com/djhmateer/OpenVSSolution/releases). **If you want to download it now and put it in the path now go for it.**
 
 ```c#
 static void Main()
@@ -65,7 +67,9 @@ static void Main()
     proc.Start();
 }
 ```
+
 and the reason it is called d.exe is in the .csproj file I've named the assembly as d.
+
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
@@ -79,26 +83,31 @@ and the reason it is called d.exe is in the .csproj file I've named the assembly
 ```
 
 ## How to Publish and Distribute a .NET Core Console Application?
+
 If you do:
 
-```
+```bash
 dotnet publish -c Release
 ```
+
 [Microsoft Docs dotnet publish](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish?tabs=netcore21)
 
 -c is for Configuration. Default is Debug.  
 
 ## Framework-dependent deployment (FDD)
+
 You'll get a 24kb Framework-dependent deployment (FDD) [Microsoft .NET Core Application Deployment](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish?tabs=netcore21) which you can run from the command line with `dotnet d.dll`  
 
 You don't have to target the operating system - so this dll can run on Linux as well.  
 
 ## Self-contained deployment (SCD)
+
 Let's target only the Windows platform:
 
 ```bash
-dotnet publish -c Release -r win10-x64 
+dotnet publish -c Release -r win10-x64
 ```
+
 The -r is the Runtime Identifier [Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish?tabs=netcore21)
 
 It will output:  
@@ -113,8 +122,10 @@ This is a Self-contained deployment (SCD) This looks like it should work as ther
 
 On Windows this gives a 67MB release folder which looks like it should be able to be copied and distributed.
 
-However..   
+However..
+
 ## Assembly specified in the application dependencies manifest (d.deps.json) was not found
+
  Try transporting to another machine and you may get:
 
  >   An assembly specified in the application dependencies manifest (d.deps.json) was not found:  
@@ -122,13 +133,19 @@ However..
  >   path: 'runtimes/win-x64/lib/netcoreapp2.1/Microsoft.CSharp.dll'  
 
 ## Go into the publish directory
-![ps](/assets/2018-11-07/a11.png)  
 
+![ps](/assets/2018-11-07/a11.png)  
 
 This can now be shared amongst all my machines and I don't have to make sure a certain version of .NET Core is installed.
 
 ## Update 16th Nov 2018
+
 Some more interesting comments on this article are on the [reddit question](https://redd.it/9xa13n) and related [stackoverflow](https://stackoverflow.com/questions/973561/starting-visual-studio-from-a-command-prompt/53299917)
 
 ## Update 5th Apr 2019
+
 Code now looks for a VS2019 install and prefers that over a VS2017 install.  
+
+## Update 13th April 2020
+
+[See latest blogpost on upgrading to .NET Core 3](/2020/04/13/NET-Core-Single-Executable-Console-Application). I also fixed a bug where if the file path contains a space it wouldn't run.
