@@ -98,7 +98,3 @@ This is very useful to make Vim commands mostly navigation feel more responsive 
 Learning new Vim commands is a never ending journey of frustration and happiness.
 
 Good luck to us all!!!!
-
-a
-b
-c
