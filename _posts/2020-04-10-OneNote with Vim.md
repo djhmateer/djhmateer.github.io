@@ -52,9 +52,9 @@ To turn off these bindings which survives a restart I've commented out the apps 
 
 ### What doesn't work in vim_ahk
 
-. repeat last command. I use this after doing a `dd` to delete a line  
-J join [behaves strangely](https://github.com/rcmdnk/vim_ahk/issues/46)
-{ navigate by paragraph
+. repeat last command. I use this after doing a `dd` to delete a line    
+J join [behaves strangely - it is fixed now!](https://github.com/rcmdnk/vim_ahk/issues/46)  
+{ navigate by paragraph  
 
 ## Map CapsLock to Escape Key
 
@@ -73,8 +73,8 @@ Ctrl Page Up - previous page
 Ctrl Alt n - create new page below current in tab bar  
 Ctrl M - open new OneNote window  
 
-Ctrl Alt 1 - make Heading 1,2 etc..
-Ctrl Alt 0 - make normal size text
+Ctrl Alt 1 - make Heading 1,2 etc..  
+Ctrl Alt 0 - make normal size text  
 
 ## Conclusion
 
