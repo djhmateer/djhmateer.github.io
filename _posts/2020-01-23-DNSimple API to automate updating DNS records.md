@@ -58,7 +58,7 @@ Lets create a test domain which won't be actually registered:
 
 Notice here the `AccountID` is 1297 and the new domain is: `asdf12345.net`
 
-[https://sandbox.dnsimple.com/a/1297/domains/asdf12345.net/records](https://sandbox.dnsimple.com/a/1297/domains/asdf12345.net/recordsA)
+https://sandbox.dnsimple.com/a/1297/domains/asdf12345.net/records
 
 And now lets try and create a new record using curl:
 
