@@ -4,7 +4,7 @@ title: Disk performance - CrystalDiskMark results
 description: 
 menu: review
 categories: SSD 
-published: false 
+published: true 
 comments: false     
 sitemap: false
 image: /assets/2020-04-10/22.jpg
