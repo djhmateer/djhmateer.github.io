@@ -29,19 +29,19 @@ This got me curious as to performance differences between modern day drives and 
 
 [Good article on Amazon about disks](https://www.amazon.co.uk/ospublishing/story/e3f3d5b1-09de-4652-b163-fa9a308bad33/ref=sxin_7?pd_rd_w=PLPJM&pf_rd_p=832a297b-927a-4f4b-9373-25187b5b678b&pf_rd_r=C7PE83186DNWGFZGX8X7&pd_rd_r=0dd0fa8c-8e58-4018-a6d8-a7d911fcecb7&pd_rd_wg=woWXU&qid=1587060816&cv_ct_pg=search&cv_ct_wn=osp-single-source&ascsubtag=amzn1.osa.e3f3d5b1-09de-4652-b163-fa9a308bad33.A1F83G8C2ARO7P.en_GB&linkCode=oas&cv_ct_id=amzn1.osa.e3f3d5b1-09de-4652-b163-fa9a308bad33.A1F83G8C2ARO7P.en_GB&tag=pcmagukonsite00-21&cv_ct_cx=ssd)
 
-## Old HDD - 10 years
+## HDD - 10 year
 
 ![alt text](/assets/2020-04-19/1.jpg "Old Disk perf"){:width="800px"}  
 
 From around the 2010 era of an Apple MacBook Pro.
 
-## Internal HDD - 8 years
+## HDD - 8 years
 
 ![alt text](/assets/2020-04-19/2.jpg "8 year old"){:width="800px"}  
 
-Came with my XPS17 (had dual ones of this drive)
+Came with my XPS17 laptop (had dual ones of this drive)
 
-## Internal HDD - 5 years
+## HDD - 5 years
 
 ![alt text](/assets/2020-04-19/4.jpg "2 years old"){:width="668px"}  
 
