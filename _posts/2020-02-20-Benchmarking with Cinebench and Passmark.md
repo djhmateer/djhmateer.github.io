@@ -99,13 +99,13 @@ So in total, a doubling a power (roughly) for a modern day system.
 
 ## Other Benchmarks
 
-[cpubenchmark.net](https://www.cpubenchmark.net/) is good for seeing specific CPU's with the [entire list of cpus](https://www.cpubenchmark.net/CPU_mega_page.html)  
+[CpuBenchmark.net](https://www.cpubenchmark.net/) is good for seeing specific CPU's with the [entire list of cpus](https://www.cpubenchmark.net/CPU_mega_page.html)  
 
 [SPECviewperf 13](https://www.spec.org/gwpg/gpc.static/vp13info.html) is for measuring graphics based performance.  
 
 [Crystal Disk Mark](https://crystalmark.info/en/software/crystaldiskmark/) for testing disks.  
 
-[userbenchmark.com](https://userbenchmark.com) looks to [be flawed](https://www.tomshardware.com/uk/news/userbenchmark-benchmark-change-criticism-amd-intel,40032.html)  
+[UserBenchmark.com](https://userbenchmark.com) looks to [be flawed](https://www.tomshardware.com/uk/news/userbenchmark-benchmark-change-criticism-amd-intel,40032.html)  
 
 [ExtremeOverclocking.com](https://files.extremeoverclocking.com/browse.php?c=1) including download link for: CPU-z (CPU info)  
 
