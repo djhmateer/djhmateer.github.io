@@ -55,6 +55,13 @@ Came with 3 year old Lenovo E560 laptop.
 
 Notice it is 5 times the speed of the best HDD's I have!
 
+## Converter
+
+Around 14 year old motherboard
+NVMe drive - M.2 connector plugged into £13 pound adapter to PCIe*3 or 2 converter
+
+around 1600 MB/s
+
 ## SSD - M.2 NVMe
 
 ![alt text](/assets/2020-04-19/5.jpg "Desktop"){:width="666px"}  
