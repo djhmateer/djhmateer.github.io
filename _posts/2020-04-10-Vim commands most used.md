@@ -75,11 +75,13 @@ ctrl v, I, move cursor, x   - inserts
 I - insert at beginning of line
 
 2dd - delete 2 lines
-
-:w - write (I have autosave enabled on VSCode)
-:q - quit (I never seem to need it)
-
 ```
+
+- da" - **D**elete **A**round double quotes
+- di] - **D**elete **I**nside square brackets
+- dap - **D**elete **A**round **P**aragraph
+
+[These commmands and highlighting style from VimTricks](https://vimtricks.substack.com/) 
 
 ## Other lists
 
