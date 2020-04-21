@@ -10,7 +10,7 @@ sitemap: false
 image: /assets/2020-04-10/22.jpg
 ---
 
-I needed reinstall Win10 on my spare laptop that I'd stolen the SSD out of and had a 10 year old hard disk sitting around.
+I needed to reinstall Win10 on my spare laptop that I'd stolen the SSD out of and had a 10 year old hard disk sitting around.
 
 Seriously bad idea!
 
@@ -18,7 +18,7 @@ It took all day to install Windows 10 and updates (compared to an hour or so I'd
 
 This got me curious as to performance differences between modern day drives and older drives.
 
-[CrystalDiskInfo](https://crystalmark.info/en/download/) is good for the information, and [CrystalDiskMark - scroll down page](https://crystalmark.info/en/download/) gives a good rough idea of benchmark speed.
+[CrystalDiskInfo](https://crystalmark.info/en/download/) is good for the information, and [CrystalDiskMark - scroll down page](https://crystalmark.info/en/download/) gives a good idea of benchmark speed. [Reviewers on Amazon commonly use this tool](https://www.amazon.co.uk/gp/customer-reviews/R10MQS63PSXP2K/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8&ASIN=B07LGF54XR)
 
 - HDD  
     - SATA - Serial ATA bus
@@ -57,10 +57,12 @@ Came with 3 year old Lenovo E560 laptop.
 
 Notice it is 5 times the speed of the best HDD's I have!
 
-## Converter
+## PCI Express to M.2 NVMe
 
 Around 14 year old motherboard
 NVMe drive - M.2 connector plugged into £13 pound adapter to PCIe*3 or 2 converter
+
+[Glotrends PCIE NVMe Adapter Card PCIE GEN3 Full Speed for PC Desktop](https://www.amazon.co.uk/gp/product/B07FMM9G35/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1)
 
 around 1600 MB/s
 
