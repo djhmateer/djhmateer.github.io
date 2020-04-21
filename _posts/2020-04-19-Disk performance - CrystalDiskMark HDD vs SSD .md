@@ -59,12 +59,11 @@ Notice it is 5 times the speed of the best HDD's I have!
 
 ## PCI Express to M.2 NVMe
 
-Around 14 year old motherboard
-NVMe drive - M.2 connector plugged into £13 pound adapter to PCIe*3 or 2 converter
+If you've an old desktop, even a 14 year old motherboard (as my good friend has done) you can put in an M.2 NVMe drive using a PCI Express adapter. The motherboard didn't support *3 lanes, but even so with *2 lanes he was getting an impressive 1600 MB/s
 
 [Glotrends PCIE NVMe Adapter Card PCIE GEN3 Full Speed for PC Desktop](https://www.amazon.co.uk/gp/product/B07FMM9G35/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1)
 
-around 1600 MB/s
+So this is a better option than using an SATA SSD.
 
 ## SSD - M.2 NVMe
 
@@ -72,18 +71,14 @@ around 1600 MB/s
 
 Wow - this is insanely fast compared to my SATA SSD
 
+## Workload Consideration
+
+Large database workload
+
+M.2 NVMe - 1TB. Indexes 
+SATA SSD - 2TB
+HDD - 8TB - Main storage
+
 ## Conclusion
 
 It makes a massive difference having a good drive in your machine! Always run your system drive from an SSD these days, and use HDDs for storage.
-
-
-as
-dasdfasdf "asdf" asd asdfasdf     
-asdf
-asdffas
-df
-asdfasdfasdf
-asdf
-
-asdfasdf
-asdfasdf
