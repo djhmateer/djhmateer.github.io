@@ -7,15 +7,18 @@ categories: C#
 published: true 
 comments: true     
 sitemap: true
-image: /assets/2020-04-10/22.jpg
+image: /assets/2020-04-10/forget_me_not.jpg
 ---
 
-![alt text](/assets/2020-04-10/22.jpg ".NET Core Console Application"){:width="742px"}  
+![alt text](/assets/2020-04-10/forget_me_not.jpg "Small .NET Core exe"){:width="500"}  
+
 I have a simple .NET Core Console Application
 
 We can now make a single .EXE runnable Console Application file in .NET Core 3
 
 Whooooo!!!
+
+![alt text](/assets/2020-04-10/dotnetcore_console_application.jpg ".NET Core Console Application"){:width="742px"}  
 
 Here is my [Open Source project which looks in your current directory and opens up the .sln file in Visual Studio](https://github.com/djhmateer/OpenVSSolution). It is a tool I use every day [for the last few years](/2018/11/14/Open-visual-studio-from-command-line)
 
@@ -29,7 +32,7 @@ Lets bring it up to the [latest version of .NET Core 3.1](https://dotnet.microso
 dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true
 ```
 
-![alt text](/assets/2020-04-10/20.jpg "Single file exe"){:width="600px"}  
+![alt text](/assets/2020-04-10/single_file_exe.jpg "Single file exe"){:width="600px"}  
 
 Wow this is a large exe for essentially a very simple app, lets make it smaller:
 
@@ -53,7 +56,7 @@ Lets run publish again and see if the trimmed exe is smaller:
 dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true
 ```
 
-![alt text](/assets/2020-04-10/21.jpg "Smaller exe"){:width="600px"}  
+![alt text](/assets/2020-04-10/single_file_exe_smaller.jpg "Smaller exe"){:width="600px"}  
 
 Better!
 
