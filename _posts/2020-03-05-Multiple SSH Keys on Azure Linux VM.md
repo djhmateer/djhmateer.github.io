@@ -130,7 +130,7 @@ Give minimum permissions to get rid of the error. [More information](https://sup
 
 ## Config file for an Alias
 
-in `c:\Users\djhma\.ssh\config` I have this alias setup:
+in a new text file called config `c:\Users\djhma\.ssh\config` I have this alias setup:
 
 ```bash
 Host blc
@@ -139,6 +139,8 @@ Host blc
     User dave
     HostName hmsoftware.uk
 ```
+
+After installing a newer version of Git for Windows this file was deleted.
 
 Notice here I'm linking to a domain name which my [build script updates the DNS record automatically](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu).
 
