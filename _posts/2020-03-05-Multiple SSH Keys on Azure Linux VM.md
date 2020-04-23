@@ -130,7 +130,7 @@ Give minimum permissions to get rid of the error. [More information](https://sup
 
 ## Config file for an Alias
 
-in a new text file called config `c:\Users\djhma\.ssh\config` I have this alias setup:
+In a new text file called config `c:\Users\djhma\.ssh\config` I have this alias setup:
 
 ```bash
 Host blc
@@ -140,7 +140,7 @@ Host blc
     HostName hmsoftware.uk
 ```
 
-After installing a newer version of Git for Windows this file was deleted.
+Strangely after installing a newer version of Git for Windows this file was deleted, so I recreated it fine.
 
 Notice here I'm linking to a domain name which my [build script updates the DNS record automatically](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu).
 
@@ -148,7 +148,7 @@ Notice here I'm linking to a domain name which my [build script updates the DNS 
 
 ![alt text](/assets/2020-01-09/81.jpg "Setting permissions"){:width="500px"}  
 
-Set permissions on this file too, then I simply have to type:
+You may have to set permissions on this file as above, then simply type:
 
 ```bash
 ssh blc
