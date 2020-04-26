@@ -16,19 +16,23 @@ If we follow the [functional paradigm](/2019/01/11/Learning-Functional-Programmi
 
 Here I give an overview of Value Types, Reference types and immutability.  
 
-## Benefits of avoiding mutation 
+## Benefits of avoiding mutation
+
 - [Code is easier to read, easier to write, less bugs](https://www.rubypigeon.com/posts/avoid-mutation-functional-style-in-ruby/) ie easier to reason about
 - Performance through concurrency
 
 The options discussed in the book are:
+
 - Immutability by convention (but mutation can creep in!)
 - Define immutable objects in C# (required some extra work in defining constructors)
 - Write data objects in F#
 
 ## 1. Value Types
+
 Variables of [value types](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/value-types) directly contain the data:  
-  - simple types: bool, byte, char, decimal, int etc...  
-  - structs (eg Point), enum
+
+- simple types: bool, byte, char, decimal, int etc...  
+- structs (eg Point), enum
 
 ```cs
 // Value types
@@ -44,12 +48,15 @@ void Update(int j)
 WriteLine(i); // 42
 ```
 
+Value types are non-nullable by default, so if you want an `int` to be nullable you have to declare it as `int?`
+
 ## 2. Reference Types
+
 Variables of [reference type](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/reference-types) store references to their data eg:
- - class
- - object
- - string
- etc..
+
+- class
+- object
+- string
 
 ```cs
 public class Thing
@@ -59,23 +66,48 @@ public class Thing
 
 var q = new Thing { Name = "test1" };
 UpdateThing(q);
-// A function with side effects 
+// A function with side effects
 void UpdateThing(Thing r)
 {
-    // q and r reference the same object 
+    // q and r reference the same object
     r.Name = "test2";
 }
 WriteLine(q.Name); // test2
 ```  
 
+### Null
+
+Reference types are nullable ie
+
+```cs
+Thing u = null;
+
+if (u.Name == "Dave") return;
+```
+
+This compiles but gives us the `System.NullReferenceException` at runtime.
+
+In C#8 we got [Nullable and non-nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references) and can turn this on by setting Nullable
+
+```xml
+<PropertyGroup>
+  <OutputType>Exe</OutputType>
+  <Nullable>enable</Nullable>
+</PropertyGroup>
+```
+
+This means we get compiler warnings now. I use this as standard in all my projects.
+
 ## 3. String - Reference type but behaves like a Value Type
+
 ```cs
 var aa = "test1";
 UpdateString(aa);
 void UpdateString(string bb) => bb = "test2";
 WriteLine(aa); // test1
 ```
-Strings are not value types since they can be huge.   
+
+Strings are not value types since they can be huge.
 
 Value types are stored on the stack which is 1MB for 32-bit and 4MB for 64-bit, so you'd incur many [penalties for doing this](https://stackoverflow.com/a/636935/26086).  
 
@@ -86,7 +118,9 @@ It matters whether an object is a value or a reference type but the rest is [an 
 [String vs string](https://stackoverflow.com/a/215422/26086) - string is an alias for System.String and can be used interchangeably. R# suggests to use the alias string.
 
 ## 4. Immutable Data Object - Reference type
+
 To enforce immutability on our Data Object / Custom Type / Anemic Object, which is a reference type, we can make the public property read only ie no set.
+
 ```cs
 public class Person
 {
@@ -110,7 +144,6 @@ WriteLine(s); // test1, 45
 WriteLine(u); // test2, 45
 ```
 
-This has been a brief look at `Value types` (eg int), `Reference types` (eg custom classes) and making `Immutable Objects`.   
+This has been a brief look at `Value types` (eg int), `Reference types` (eg custom classes) and making `Immutable Objects`.
 
 Have a look at my [series on leaning FP in C#](/2019/01/11/Learning-Functional-Programming-in-C-Sharp)
-
