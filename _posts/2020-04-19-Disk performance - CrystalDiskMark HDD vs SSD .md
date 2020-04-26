@@ -71,6 +71,8 @@ So this is a better option than using an SATA SSD.
 
 Wow - this is insanely fast compared to my SATA SSD
 
+[Here is the latest Crucial SSD release giving an idea of where we are today](https://www.tomshardware.com/uk/news/crucial-p5-m2-nvme-ssds-fastest)
+
 ## Workload Consideration
 
 Large database workload
