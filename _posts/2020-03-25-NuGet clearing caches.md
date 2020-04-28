@@ -48,15 +48,15 @@ As a side note - the `packages` folder should not be checked into source control
 
 ## Resetting the repo
 
-This will [clean out everything](https://stackoverflow.com/a/64966/26086) resetting back to a clean state.
-
--d is directories
--x is remove untracked files not in gitignore
--f is force
+This will [clean out everything not in the repository eg bin/obj/packages folders](https://stackoverflow.com/a/64966/26086) resetting back to a clean state. **Be careful**
 
 ```bash
  git clean -xfd
 ```
+
+- d is directories
+- x is remove untracked files not in gitignore
+- f is force
 
 ## DotNetCore
 
