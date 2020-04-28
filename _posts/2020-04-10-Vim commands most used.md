@@ -84,6 +84,10 @@ I - insert at beginning of line
 
 [These commmands and highlighting style from VimTricks](https://vimtricks.substack.com/) 
 
+## VSCodeVim
+
+[VSCodeVim Roadmap](https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md) has shows what commands are implemented in my favourite text editor!
+
 ## Other lists
 
 [Greg Hewgill on Stack Overflow](https://stackoverflow.com/a/5400978/26086)
