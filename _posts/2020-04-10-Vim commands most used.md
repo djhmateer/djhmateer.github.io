@@ -41,6 +41,7 @@ v - visual mode (for copying)
 
 ci( - change inside ()
 di( - delete inside ()
+yi( - yank inside ()
 
 dt" - delete up to "
 
