@@ -106,3 +106,5 @@ It all depends on your scenario. I'm a software developer and run a 256MB NVMe a
 It makes a massive difference having a good drive in your machine!
 
 Always run your system drive from an SSD, and use HDDs cheap storage.
+
+Great follow up comments and more detail on [https://reddit/r/buildapc](https://www.reddit.com/r/buildapc/comments/gasgle/disk_performance_hdd_vs_ssd_sata_vs_m2_nvme_a/)
