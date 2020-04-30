@@ -95,6 +95,12 @@ It all depends on your scenario. I'm a software developer and run a 256MB NVMe a
 
 [See this stackoverflow thread for upgrading MacBook Pros to faster disks in detail](https://apple.stackexchange.com/questions/287644/do-macbooks-support-nvme-ssd-drives-via-the-use-of-a-sintech-adapter)
 
+## UserBenchMarks and CPUs
+
+[https://www.userbenchmark.com/](https://www.userbenchmark.com/) shows how other peoples similar systems compare. Nice!
+
+[I wrote an article on CPUs and overall performance using Cinebench and Passmark](https://davemateer.com/2020/02/20/Benchmarking-with-Cinebench-and-Passmark) which gives good relative system performance comparisons.
+
 ## Conclusion
 
 It makes a massive difference having a good drive in your machine!
