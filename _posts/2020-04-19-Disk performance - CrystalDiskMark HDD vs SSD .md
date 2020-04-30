@@ -7,7 +7,7 @@ categories: SSD
 published: true 
 comments: true     
 sitemap: true
-image: /assets/2020-04-10/22.jpg
+image: /assets/2020-04-19/5.jpg
 ---
 
 I needed to reinstall Win10 on my spare laptop that I'd stolen the SSD out of and had a 10 year old hard disk sitting around.
