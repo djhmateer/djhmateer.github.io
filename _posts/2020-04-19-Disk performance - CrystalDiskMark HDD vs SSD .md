@@ -2,11 +2,11 @@
 layout: post
 title: HDD vs SSD SATA vs M2 NVMe - CrystalDiskMark results summary
 description: Using an old HDD is a seriously bad idea! Disk Performance review of an HDD / SSD / SSD M.2 NVMe
-menu: review
+#menu: review
 categories: SSD 
 published: true 
-comments: false     
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2020-04-10/22.jpg
 ---
 
