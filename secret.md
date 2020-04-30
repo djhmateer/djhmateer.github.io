@@ -1,8 +1,8 @@
 ---
 layout: page
-title: All Posts
+title: Secret page 
 menu: review
-permalink: /allPosts/
+# permalink: /allPosts/
 published: true
 sitemap: false
 ---
