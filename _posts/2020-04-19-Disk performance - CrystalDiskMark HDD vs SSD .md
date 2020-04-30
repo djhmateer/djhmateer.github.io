@@ -91,6 +91,10 @@ It all depends on your scenario. I'm a software developer and run a 256MB NVMe a
 
 [Linus Tech Tips on YouTube](https://www.youtube.com/user/LinusTechTips/featured) is an excellent resource. Search for SSD / HDD on there to find out the latest tech. [Linustechtrip forums](https://linustechtips.com/main/forum/38-storage-devices/) and a great deep dive resource.
 
+## TRIM / SMART / DeepSleep
+
+[See this stackoverflow thread for upgrading MacBook Pros to faster disks in detail](https://apple.stackexchange.com/questions/287644/do-macbooks-support-nvme-ssd-drives-via-the-use-of-a-sintech-adapter)
+
 ## Conclusion
 
 It makes a massive difference having a good drive in your machine!
