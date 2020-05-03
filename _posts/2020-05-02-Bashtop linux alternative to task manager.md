@@ -46,6 +46,12 @@ To reset the Total Upload and Download counts, [aristocratos](https://github.com
 
 ![alt text](/assets/2020-04-28/bashtop-options.jpg "Bashtop options"){:width="400px"}  
 
+## Fonts
+
+If you have squares in your graphs like I do [try this fix to get the correct fonts](https://github.com/aksakalli/gtop/issues/21) which will then look much prettier:
+
+![alt text](/assets/2020-04-28/bashtop-nice-font.jpg "Bashtop nice font!")
+
 ## Conclusion
 
 As a quick overview on the server this is invaluable!
