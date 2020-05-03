@@ -38,7 +38,7 @@ Useful shortcut keys are:
 
 Looking at current inbound traffic for my broken link checker - 21 Mbps
 
-CPU usage is interesting here and I'm exploring why I've got 1 core 100% utilised, when ideally my code should use all resources. [I'm not sure if the relative %age is a bug or feature](https://github.com/aristocratos/bashtop/issues/86)
+CPU usage is interesting here and I'm exploring why I've got 1 core 100% utilised, when ideally my code should use all resources. [I'm not sure if the relative %age is a bug or feature](https://github.com/aristocratos/bashtop/issues/86). It is a feature!! Which can now be flipped to show per core %age - very useful feature from @aristocratos
 
 Using `f - filter` to filter the Web process I'm interested in. I prefer the non filtered screen to give an overview of the server.
 
