@@ -30,7 +30,7 @@ So this project has way more going on than the .NET port [PuppeteerSharp docs](h
 
 ## npm
 
-[npm - originally Node Package Manager](https://www.npmjs.com/) is installed along with Node.js [https://nodejs.org/en/](https://nodejs.org/en/)  Currently version of Node.js is 12.16.3 LTS and npm is 6.9.0
+[npm - originally Node Package Manager](https://www.npmjs.com/) is installed along with Node.js [https://nodejs.org/en/](https://nodejs.org/en/)  Currently version of Node.js is 12.16.3 LTS and npm is 6.9.0. [Node supports modern language features](https://kangax.github.io/compat-table/es6/)
 
 ```bash
 npm -v # show version
@@ -66,7 +66,7 @@ Lots of sites use Node.js https://youteam.co.uk/blog/top-companies-that-used-nod
 
 ## JavaScript
 
-[JavaScript versions](https://www.w3schools.com/js/js_versions.asp)
+[JavaScript versions](https://www.w3schools.com/js/js_versions.asp) and [compatibility table](https://kangax.github.io/compat-table/es2016plus/)
 
 - ES1 - 1997
 - ES5 aka ECMAScript 2009
@@ -75,10 +75,10 @@ Lots of sites use Node.js https://youteam.co.uk/blog/top-companies-that-used-nod
   - const
   - arrow functions
   - js classes
-- ES7 Chrome68 (May 2018)
+- ES8 ECMAScript 2017
+  - Async functions
 
-Arrow Functions
-A lambda (anonymous function).. goes to
+Arrow Functions and Async functions are used a lot in Puppeteer
 
 const puppeteer = require('puppeteer');
 
@@ -200,6 +200,8 @@ version 2.0.3
 506,000 downloads
 
 ## Chromium vs Chrome
+
+[https://www.howtogeek.com/202825/what%E2%80%99s-the-difference-between-chromium-and-chrome/](https://www.howtogeek.com/202825/what%E2%80%99s-the-difference-between-chromium-and-chrome/)
 
 [https://en.wikipedia.org/wiki/Chromium_(web_browser)](https://en.wikipedia.org/wiki/Chromium_(web_browser))  Chromium is an open source project from Google. Google uses the code to make Chrome which has more features than Chromium.
 

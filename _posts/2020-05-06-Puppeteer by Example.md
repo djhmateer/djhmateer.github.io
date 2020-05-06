@@ -12,8 +12,7 @@ image: /assets/2020-04-28/bashtop-screenshot.jpg
 
 ![alt text](/assets/2020-04-28/bashtop-screenshot.jpg "Bashtop screenshot")
 
-I'm writing a broken link checker and wanted to explore the use of an automated browser strategy like: [Puppeteer](https://pptr.dev/) 
-
+I'm writing a broken link checker and wanted to explore the use of an automated browser strategy like: [Puppeteer](https://pptr.dev/)
 
 [Part 1 - Using Puppeteer by example is my next article in this series](/Using-puppeteer)
 [Part 2 - This article](/Using-puppeteer)
@@ -27,6 +26,7 @@ Navigate to https://example.com and save a screenshot
 ```js
 const puppeteer = require('puppeteer');
 
+// arrow functions came in ES6
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -36,8 +36,29 @@ const puppeteer = require('puppeteer');
 })();
 ```
  
-Starting from v3.0.0 of Puppeteer (we are on 3.0.2)
+Starting from v3.0.0 of Puppeteer (we are on 3.0.2) we rely on [Node 10.18.1](https://nodejs.org/en/blog/release/v10.18.1/) which was released on 9th Jan 2020. Node.js I have installed is 12.16.3 LTS
 
+## Example 2
+
+- Using headless: false to see the browser in real time which is very useful for debugging
+- Setting defaultViewport so can see everything
+- Rewriting as an async function for more clarity
+
+```js
+const puppeteer = require('puppeteer');
+
+// async functions came in ES8 - ECMAScript 2017
+async function doSomething() {
+  // to see the whole screen and view it
+  const browser = await puppeteer.launch({ defaultViewport: null, headless: false });
+  const page = await browser.newPage();
+  await page.goto('https://davemateer.com');
+  // defaults to 800*600 screenshot
+  await page.screenshot({ path: 'example.png' });
+  await browser.close();
+}
+doSomething();
+```
 
 
 ## Puppeteer Performance
