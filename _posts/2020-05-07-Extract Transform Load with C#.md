@@ -124,6 +124,18 @@ public class Actor
 
 These load scripts are very good as can rebuild on any machine with a clone from source control. This is a very simple load script with no thought towards insert performance. [I could use SQLBulkCopy and FastMember](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) if Dapper isn't fast enough. Using `.AsParallel()` above didn't produce any gains, and actually hurt performance sometimes.
 
+## Reloading of Dataset
+
+The ability to totally recreate the db from the 'source of truth' is so important. Basiclly using Visual Studio DB project to create the schema, then the ETL package to populate the tables is super simple.
+
+## Unit Tests
+
+I write xunit paramertarised tests for the functions that do the checking. Easy to do when you're in C#
+
+## Errors and Logging
+
+Try Catch and log out to serilog. Often I'll use a railway oriented style of - ie the data has to go through all the checks before allowed into the db. If it goes off on a branch line, it is not allowed into the db, it must go to the errors table.
+
 ## Querying with SQL
 
 SQL great once the data is loaded to answer some of the easier questions.
@@ -132,8 +144,6 @@ SQL great once the data is loaded to answer some of the easier questions.
 - group by
 - group by having
 - put in left join pipeline strategy
-
-## Querying with C#
 
 I find that my functional set based SQL skills wane over time and it is easier to start thinking of a problem in an iterative manner first (ie get it working first, then work on performance later)
 
