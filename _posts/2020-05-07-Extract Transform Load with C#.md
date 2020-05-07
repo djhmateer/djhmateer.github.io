@@ -133,11 +133,8 @@ public class Util
 {
     public static IDbConnection GetOpenConnection()
     {
-        //var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ThinkBooksConnectionString"].ConnectionString);
         var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true");
         connection.Open();
-        //MiniProfiler.Settings.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
-        //return new ProfiledDbConnection(connection, MiniProfiler.Current);
         return connection;
     }
 }
@@ -145,6 +142,8 @@ public class Util
 ```
 
 These load scripts are very good as can rebuild on any machine with a clone from source control. This is a very simple load script with no thought towards insert performance. [I could use SQLBulkCopy and FastMember](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) if Dapper isn't fast enough. Using `.AsParallel()` above didn't produce any gains, and actually hurt performance sometimes.
+
+[There is a MiniProfiler for Consoleapps](https://miniprofiler.com/dotnet/ConsoleDotNetCore) which looks useful if you want to see performance and good logging.
 
 ## Reloading of Dataset
 
