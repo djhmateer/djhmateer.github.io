@@ -10,14 +10,16 @@ sitemap: false
 image: /assets/2020-04-28/bashtop-screenshot.jpg 
 ---
 
-![alt text](/assets/2020-04-28/bashtop-screenshot.jpg "Bashtop screenshot")
+<!-- ![alt text](/assets/2020-04-28/bashtop-screenshot.jpg "Bashtop screenshot") -->
 
 I'm writing a broken link checker and wanted to explore the use of an automated browser strategy like: [Puppeteer](https://pptr.dev/)
 
-[Part 1 - Using Puppeteer by example is my next article in this series](/Using-puppeteer)
-[Part 2 - This article](/Using-puppeteer)
+1. [Puppeteer for the C# Guy](/2020/05/06/Puppeteer-and-JavaScript-for-the-C-guy)
+2. [Puppeteer by Example](/2020/05/06/Puppeteer-by-Example) - this post
 
-[Puppeteer - https://pptr.dev](https://pptr.dev/)
+[Sample code]()
+
+[Puppeteer - https://pptr.dev](https://pptr.dev/) documentation
 
 ## Example 1
 
