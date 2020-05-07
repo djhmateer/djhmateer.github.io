@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Extract Transform Load with C# 
-description: Extract Transform Load CSV's into MSSQL with C#, Dapper and CSVHelper.
+title: Extract Transform Load with C# - Beginners Guide
+description: Extract Transform Load CSV's into MSSQL with C#, Dapper, Serilog and CSVHelper.
 menu: review
-categories: Dapper ETL CSVHelper
+categories: Dapper ETL CSVHelper Serilog
 published: true 
 comments: false
 sitemap: false
@@ -14,16 +14,15 @@ image: /assets/2020-03-01/dbdiag.png
 
 Many times in my career I've worked on Extract Transform Load (ETL) projects. Often they have grown organically through stored procedures, take a hours to run and are fragile.
 
-Here are a few questions my university friend challenged me to answer on an IMDB dataset. I decided to focus on the **veracity of the answers over speed** as ultimately that was ususallly the big unknown - Is the ETL package actually doing the right thing?
+Here are a few questions my university friend challenged me to answer on an IMDB dataset. I decided to focus on the **veracity of the answers over speed** as ultimately that was usually the big unknown - Is the ETL package actually doing the right thing?
 
-[Source code for this article is here]() and the [IMDB dataset came from here](https://relational.fit.cvut.cz/dataset/IMDb)
+[Source code, data and anwsers for this article is here]() and the [IMDB dataset was extracted from here](https://relational.fit.cvut.cz/dataset/IMDb)
 
 ## Sample Questions
 
-- How many female actors are listed in the dataset supplied?
-- List the movie titles and number of directors involved for movies with more
-than 6 directors
-- Number of movies directed by Spielberg
+- 1.How many female actors are listed in the dataset supplied?
+- 2.The number of female actors and the number of male actors as a single quer
+- 3.The movie titles and number of directors involved for movies with more than 6 directors
 
 ## Strategy
 
@@ -168,6 +167,17 @@ These load scripts are very good as can rebuild on any machine with a clone from
 
 The ability to totally recreate the db from the 'source of truth' is so important. Basiclly using Visual Studio DB project to create the schema, then the ETL package to populate the tables is super simple.
 
+## Serilog Logging
+
+[Serilog configuration](https://github.com/serilog/serilog/wiki/Configuration-Basics)
+
+[Preserving Object Structure - @Destructuring](https://github.com/serilog/serilog/wiki/Structured-Data#preserving-object-structure) is useful:
+
+```cs
+
+```
+
+
 ## Unit Tests
 
 I write xunit paramertarised tests for the functions that do the checking. Easy to do when you're in C#
@@ -175,6 +185,14 @@ I write xunit paramertarised tests for the functions that do the checking. Easy 
 ## Errors and Logging
 
 Try Catch and log out to serilog. Often I'll use a railway oriented style of - ie the data has to go through all the checks before allowed into the db. If it goes off on a branch line, it is not allowed into the db, it must go to the errors table.
+
+## CSVHelper Errors
+
+If you have problmes in the source of truth then have to be able to trap them.
+
+[How to dump out problem rows in the CSV which cannot be read](https://github.com/JoshClose/CsvHelper/issues/803)
+
+This strategy helps us get any issues that CSVHelper may have eg malformed rows
 
 ## Querying with SQL
 
