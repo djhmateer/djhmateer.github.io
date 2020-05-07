@@ -139,6 +139,25 @@ public class Util
     }
 }
 
+// snip
+public static bool IsSexACapitalMOrF(string s) => s == "M" || s == "F";
+
+[Theory]
+[InlineData("M", true)]
+[InlineData("F", true)]
+[InlineData("m", false)]
+[InlineData("f", false)]
+[InlineData("M ", false)]
+[InlineData(" M", false)]
+[InlineData("Male", false)]
+[InlineData("", false)]
+[InlineData(" ", false)]
+public static void IsSexACapitalMOrF_Tests(string s, bool expected)
+{
+    var result = IsSexACapitalMOrF(s);
+    Assert.Equal(expected, result);
+}
+
 ```
 
 These load scripts are very good as can rebuild on any machine with a clone from source control. This is a very simple load script with no thought towards insert performance. [I could use SQLBulkCopy and FastMember](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) if Dapper isn't fast enough. Using `.AsParallel()` above didn't produce any gains, and actually hurt performance sometimes.
