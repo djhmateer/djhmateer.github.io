@@ -1,38 +1,40 @@
 ---
 layout: post
-title: IMDB Challenge - ETL 
-description: 
+title: Extract Transform Load with C# 
+description: Extract Transform Load a CSV into MSSQL with C#, Dapper and CSVHelper.
 menu: review
-categories: WVD 
+categories: Dapper ETL
 published: true 
 comments: false
 sitemap: false
 image: /assets/2020-03-01/dbdiag.png
 ---
 
-![alt text](/assets/2020-03-01/dbdiag.png "DB Diagram"){:width="300px"}
+![alt text](/assets/2020-03-01/dbdiag.png "DB Diagram"){:width="500px"}
 
-Many times in my career I've worked on Extract Transform Load (ETL) solutions. Often they have grown organically through stored procedures, take a time (hours) to run, and are fragile.
+Many times in my career I've worked on Extract Transform Load (ETL) projects. Often they have grown organically through stored procedures, take a hours to run and are fragile.
 
-Here is an interesting challenge my friend gave me to answer 15 questions on a dataset. The challenge was originally set for a different database [Neo4J - a Graph Database](https://neo4j.com/), but I decided to use SQL Server and more focus on veracity of the answers over speed.
+Here are a few questions my university friend challenged me to answer on an IMDB dataset. I decided to use SQL Server and focus on **veracity of the answers over speed**.
 
-[Source code for this article is here]() and the [dataset originally came from here](https://relational.fit.cvut.cz/dataset/IMDb)
+[Source code for this article is here]() and the [IMDB dataset came from here](https://relational.fit.cvut.cz/dataset/IMDb)
 
-Coding challenges are excellent for learning as you inevitably find out the unexpected along the way eg `INSERT INTO tablename` can be written as `INSERT tablename` and `DELETE FROM tablename` can be written as `DELETE tablename`
+## Sample Questions
 
-## Questions
-
-asdf
-
-Question 12 - Shortest Path. This is a classic traversal problem that Graph datbases are suited to. [Here is my article on MSSQL's implementation of Graph functionality](/2020/04/03/MSSQL-Graph)
+- How many female actors are listed in the dataset supplied?
+- List the movie titles and number of directors involved for movies with more
+than 6 directors
+- Number of movies directed by Spielberg
 
 ## Strategy
 
-Git to source control data, SQL queries, C# importer and analyser, db diagram photo
-Analyse csv data with Excel
-Draw a rough DB diagram on paper to trial relationships
-SSMS with db diagrams to enter schema and Foreign Key constraints
+The 'source of truth' data is coming from CSV files so the first thing to do is protect these files and get them under source control.
+
+Then I analysed csv data with Excel and drew a rough DB diagram on paper to trial relationships
+
+I used SSMS with db diagrams to enter schema and Foreign Key constraints
+
 DB Project in Visual Studio to keep schema source controlled
+
 
 C# with [CsvHelper](https://joshclose.github.io/CsvHelper/) to load in the delimited text files (Extract)
 C# to analyse the data for anomalies and fix (Transform)
@@ -56,6 +58,8 @@ I used the same as the source even though I don't like it:
 
 Composite keys in link tables thoughts?
 Capitalisation of columns names
+
+I like source controlling the schema using Visual Studio DB Compare project
 
 ## ETL with C#
 
@@ -118,20 +122,20 @@ public class Actor
 
 ```
 
-These load scripts are very good as can rebuild on any machine with a clone from source control. This is a very simple load script with no thought towards insert performance. [I could use SQLBulkCopy and FastMember](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) if Dapper isn't fast enough. In fact in the [SQL Graph exploration I did]() the insert performance was much poorer than here. I explored using `.AsParallel()` and `Full blown SQL 2019 Developer edition` as a simple fix. Neither worked.
+These load scripts are very good as can rebuild on any machine with a clone from source control. This is a very simple load script with no thought towards insert performance. [I could use SQLBulkCopy and FastMember](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) if Dapper isn't fast enough. Using `.AsParallel()` above didn't produce any gains, and actually hurt performance sometimes.
 
 ## Querying with SQL
 
 SQL great once the data is loaded to answer some of the easier questions.
 
--count (1)
--group by
--group by having
--put in left join pipeline strategy
+- count (1)
+- group by
+- group by having
+- put in left join pipeline strategy
 
 ## Querying with C#
 
-C# is good for complex queries to understand the data and to get something working even though it will not be as performant.
+I find that my functional set based SQL skills wane over time and it is easier to start thinking of a problem in an iterative manner first (ie get it working first, then work on performance later)
 
 As we have the load scripts, can use these data structures and LINQ to analyse the data and answer hard questions.
 
