@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Extract Transform Load with C# 
-description: Extract Transform Load a CSV into MSSQL with C#, Dapper and CSVHelper.
+description: Extract Transform Load CSV's into MSSQL with C#, Dapper and CSVHelper.
 menu: review
-categories: Dapper ETL
+categories: Dapper ETL CSVHelper
 published: true 
 comments: false
 sitemap: false
@@ -14,7 +14,7 @@ image: /assets/2020-03-01/dbdiag.png
 
 Many times in my career I've worked on Extract Transform Load (ETL) projects. Often they have grown organically through stored procedures, take a hours to run and are fragile.
 
-Here are a few questions my university friend challenged me to answer on an IMDB dataset. I decided to use SQL Server and focus on **veracity of the answers over speed**.
+Here are a few questions my university friend challenged me to answer on an IMDB dataset. I decided to focus on the **veracity of the answers over speed** as ultimately that was ususallly the big unknown - Is the ETL package actually doing the right thing?
 
 [Source code for this article is here]() and the [IMDB dataset came from here](https://relational.fit.cvut.cz/dataset/IMDb)
 
@@ -29,37 +29,24 @@ than 6 directors
 
 The 'source of truth' data is coming from CSV files so the first thing to do is protect these files and get them under source control.
 
-Then I analysed csv data with Excel and drew a rough DB diagram on paper to trial relationships
+Then I analysed CSV data with Excel and drew a rough DB diagram on paper to trial the relationships
 
-I used SSMS with db diagrams to enter schema and Foreign Key constraints
+I used SSMS with db diagrams to enter the schema and simple 1 to many ie link table Foreign Key constraints
 
-DB Project in Visual Studio to keep schema source controlled
+I used a DB Project in Visual Studio to keep the schema source controlled
 
-
-C# with [CsvHelper](https://joshclose.github.io/CsvHelper/) to load in the delimited text files (Extract)
-C# to analyse the data for anomalies and fix (Transform)
-C# with [Dapper](https://github.com/StackExchange/Dapper) to insert (Load)
-SQL to answer questions
-C# to answer harder questions - clarity over speed, iterative code fine to start with
-
-## Initial Data Analysis with Excel
-
-Load from CSV (even though it is semicolon separated)
-
-get a feel for data - number of rows
-
-**show image of db diagram
+- C# with [CsvHelper](https://joshclose.github.io/CsvHelper/) to load in the delimited text files (Extract)
+- C# to analyse the data for anomalies and fix (Transform)
+- C# with [Dapper](https://github.com/StackExchange/Dapper) to insert (Load)
+- SQL to answer questions
+- C# to answer harder questions - clarity over speed, iterative code fine to start with
 
 ## DB Schema
 
-I used the same as the source even though I don't like it:
-
-[Link to my article on db naming](/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL)
+I used the same schema and naming convenction as the source even though I don't like it: [Link to my article on db naming](/2016/10/19/ASP.NET-MVC-Sort-Filter,-Page-using-SQL)
 
 Composite keys in link tables thoughts?
 Capitalisation of columns names
-
-I like source controlling the schema using Visual Studio DB Compare project
 
 ## ETL with C#
 
@@ -72,9 +59,27 @@ I like source controlling the schema using Visual Studio DB Compare project
     - using the handy object mapper
     - [Could use SQLBulkCopy and FastMember](https://github.com/djhmateer/TwitterFullImporter/blob/master/SQLBulkCopyDemo/Program.cs) if Dapper isn't fast enough
 
-Below is the Actors table load. [Full source code can be found here]()
+Below is the Actors table load.
 
 ```cs
+
+var sw = Stopwatch.StartNew()
+using var db = Util.GetOpenConnection();
+
+// A simple flag to switch on an off parts of the etl load (some took some time)
+bool writeToDb = true;
+if (writeToDb)
+{
+    // clear down db first in correct order
+    db.Execute("DELETE FROM MoviesToDirectors");
+    db.Execute("DELETE FROM Directors");
+    db.Execute("DELETE FROM RunningTimes");
+    db.Execute("DELETE FROM MoviesToActors");
+    db.Execute("DELETE FROM Ratings");
+    db.Execute("DELETE FROM Movies");
+    db.Execute("DELETE FROM Actors");
+}
+
 // 1.Extract Actors
 var actors = LoadActorsFromCsv();
 Console.WriteLine($"Total Actors imported from csv is {actors.Count}"); // 98,690
@@ -100,8 +105,12 @@ foreach (var actor in actors)
     // don't need INSERT INTO
     // don't need to specify column names
     // dapper will map column names from actor object
-    db.Execute(sql, actor);
+    if (writeToDb) db.Execute(sql, movie);
 }
+
+Console.WriteLine($"done in {sw.Elapsed.TotalSeconds}");
+
+// snip...
 
 private static List<Actor> LoadActorsFromCsv()
 {
@@ -118,6 +127,19 @@ public class Actor
     public string actorid { get; set; }
     public string name { get; set; }
     public string sex { get; set; }
+}
+
+public class Util
+{
+    public static IDbConnection GetOpenConnection()
+    {
+        //var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ThinkBooksConnectionString"].ConnectionString);
+        var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true");
+        connection.Open();
+        //MiniProfiler.Settings.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
+        //return new ProfiledDbConnection(connection, MiniProfiler.Current);
+        return connection;
+    }
 }
 
 ```
