@@ -82,6 +82,8 @@ I - insert at beginning of line
 - di] - **D**elete **I**nside square brackets
 - dap - **D**elete **A**round **P**aragraph
 
+- xp - **x**delete **p**aste to Swap 2 characters
+
 [These commmands and highlighting style from VimTricks](https://vimtricks.substack.com/) 
 
 ## VSCodeVim
