@@ -147,6 +147,9 @@ Selenium/WebDriver focuses on cross-browser automation Has been the industry sta
 
 Maybe I should be using TS instead of JS?
 
+[CodeWithDan on using TS without TS](https://www.dandoescode.com/blog/using-typescript-without-typescript/)
+
+
 [Goal of puppeteer is 100% TypeScript src directory](https://github.com/puppeteer/puppeteer/releases) 
 
 [TS Tutorial in VS Code](https://code.visualstudio.com/docs/typescript/typescript-tutorial)
