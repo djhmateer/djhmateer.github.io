@@ -4,7 +4,7 @@ title: Azure IaaS Blue Green Linux Webservers
 description: 
 menu: review
 categories: Azure IaaS 
-published: true 
+published: false 
 comments: false
 sitemap: false
 image: /assets/2019-04-05/1.jpg

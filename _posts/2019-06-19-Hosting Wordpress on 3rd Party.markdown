@@ -4,7 +4,7 @@ title: Hosting Wordpress on a 3rd Party
 description: 
 menu: review
 categories: Wordpress 
-published: true 
+published: false 
 comments: false
 sitemap: false
 image: /assets/2019-05-27/1.png

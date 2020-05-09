@@ -4,7 +4,7 @@ title: Startup nomenclature Accounting
 description: 
 menu: review
 categories: Accounting Startup 
-published: true 
+published: false 
 comments: false
 sitemap: false
 image: /assets/2019-07-18/1.jpg

@@ -4,7 +4,7 @@ title: How to get your first job in Programming
 description: 
 menu: review
 categories: Career 
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2019-08-05/1.jpg

@@ -4,7 +4,7 @@ title: Coding Challenges
 description: 
 menu: review
 categories: Challenge
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2020-02-03/20.jpg

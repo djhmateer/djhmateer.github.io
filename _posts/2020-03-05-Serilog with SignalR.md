@@ -4,7 +4,7 @@ title: Serilog with SignalR
 description: Setting up the excellent Serilog to work with SignalR on ASP.NET Core 3.1
 menu: review
 categories: Serilog SignalR
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2019-11-13/1.jpg

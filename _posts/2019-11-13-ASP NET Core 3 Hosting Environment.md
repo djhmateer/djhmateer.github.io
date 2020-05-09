@@ -4,7 +4,7 @@ title: ASP.NET Core 3 Hosting Environment
 description: 
 menu: review
 categories: ASP.NETCore3 
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2019-11-13/1.jpg

@@ -4,7 +4,7 @@ title: Make - Bootstrappers Handbook
 description: 
 menu: review
 categories: SaaS
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2019-10-15/1.jpg

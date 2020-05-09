@@ -4,7 +4,7 @@ title: .NET Core Workers as Services
 description: 
 menu: review
 categories: WorkerService 
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2019-11-13/3.jpg

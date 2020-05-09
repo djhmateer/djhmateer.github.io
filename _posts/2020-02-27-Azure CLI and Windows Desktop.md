@@ -4,7 +4,7 @@ title: Azure CLI and Windows Desktop
 description: 
 menu: review
 categories: Azure IaC WindowsDesktop 
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2020-02-03/40.jpg
