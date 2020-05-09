@@ -4,7 +4,7 @@ title: Puppeteer by example
 description: 
 menu: review
 categories: Puppeteer Testing
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2020-04-28/bashtop-screenshot.jpg 

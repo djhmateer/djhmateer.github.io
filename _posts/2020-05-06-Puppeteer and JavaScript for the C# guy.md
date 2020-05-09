@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Puppeteer JavaScript NPM NodeJS
-description: JavaScript for the C# guy
+title: Puppeteer and JavaScript for the C# Guy 
+description: 
 menu: review
 categories: Puppeteer Testing
-published: true 
+published: false 
 comments: false     
 sitemap: false
 image: /assets/2020-04-28/bashtop-screenshot.jpg 
@@ -16,7 +16,7 @@ I'm writing a broken link checker and wanted to explore the use of an automated 
 
 Puppeteer is written in Node.js and can only be called by JavaScript.
 
-1. [Puppeteer for the C# Guy](/2020/05/06/Puppeteer-and-JavaScript-for-the-C-guy) - this post
+1. [Puppeteer and JavaScript for the C# Guy](/2020/05/06/Puppeteer-and-JavaScript-for-the-C-guy) - this post
 2. [Puppeteer by Example](/2020/05/06/Puppeteer-by-Example)
 
 I've been using C# for many years, so here is my overview of 'Puppeteer and JS for the C# guy' post:
