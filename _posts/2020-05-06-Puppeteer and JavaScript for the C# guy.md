@@ -211,6 +211,10 @@ Here are some Node / JS / TS broken link checkers:
 
 [broken-link-checker](https://github.com/stevenvachon/broken-link-checker)
 
+## Web scraping with Node.js
+
+[youtube video](https://www.youtube.com/watch?v=dXjKh66BR2U)
+
 ## Conclusion
 
 asdf
