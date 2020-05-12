@@ -154,6 +154,8 @@ Actually it seemed to turn orange (the pending review text) after around 5 minut
 
 https://developer.chrome.com/apps/external_extensions
 
+[chrome.google.com/webstore/devconsole](https://chrome.google.com/webstore/devconsole/)  The developer dashboard
+
 **HERE - maybe have to submit it again with just the website and not the activeTab permission?** submitted
 
 ## From pluralsight continued
