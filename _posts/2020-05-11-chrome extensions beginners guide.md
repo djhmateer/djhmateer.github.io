@@ -3,67 +3,68 @@ layout: post
 title: Chrome Extensions - Beginners Guide
 description: 
 menu: review
-categories: 
+categories: Chrome 
 published: false 
 comments: false
 sitemap: false
 image: /assets/2020-03-01/dbdiag.png
 ---
 
-In this article we will go:
+This is a write up of *being curious* as to what Chrome Extension's are.
 
-- Start at the basics
-- Install first local 'hello world' extension
-- Explore what can be done
-- Make a useful extension
-- Deploy to Chrome Webstore
+I hope you enjoy.
 
 ## What is a Chrome Extension
 
 "Extensions are small software programs that customize the browsing experience. They enable users to tailor Chrome functionality and behavior to individual needs or preferences. They are built on web technologies such as HTML, JavaScript, and CSS." [source](https://developer.chrome.com/extensions)
 
-[developer.chrome.com/extensions](https://developer.chrome.com/extensions) is the home
+[developer.chrome.com/extensions](https://developer.chrome.com/extensions) is the documentation home and a good starting place.
 
 ## Chrome Web Store
 
-Extensions are available through the [Chrome Webstore](https://chrome.google.com/webstore/category/extensions)
+[Chrome Web Store](https://chrome.google.com/webstore/category/extensions) is where you find and install extensions. This is the only way to install extensions [except for a few edge cases](https://developer.chrome.com/apps/external_extensions)
+
+![alt text](/assets/2020-05-11/chrome-web-store.jpg "Chrome Web Store"){:width="500px"}
+
+You can see what you've got installed locally by going to `chrome://extensions/`
 
 ![alt text](/assets/2020-05-11/chrome-extension.jpg "Chrome Extensions"){:width="600px"}
 
-`chrome://extensions/` in chrome to see the extensions you currently have
+Not to be confused with apps `chrome://apps` which are [being deprecated](https://www.theverge.com/2020/1/15/21067907/google-chrome-apps-end-support-lune-windows-macos-linux)
 
-![alt text](/assets/2020-05-11/chrome-apps.jpg "Chrome Apps"){:width="600px"}
+![alt text](/assets/2020-05-11/chrome-apps.jpg "Chrome Apps"){:width="300px"}
 
-These are chrome apps which are [being deprecated](https://www.theverge.com/2020/1/15/21067907/google-chrome-apps-end-support-lune-windows-macos-linux)
+## Useful Extensions
 
-## Extensions I use 
+The [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) doesn't make it easy to order by the most downloaded or the most starred. I recommend using the [Firefox Add-Ons most popular](https://addons.mozilla.org/en-GB/firefox/search/?recommended=true&sort=users&type=extension) as they share [a common API and one can port to the other](https://extensionworkshop.com/documentation/develop/porting-a-google-chrome-extension/)
 
-[Google Search Keyboard Shortcuts](https://chrome.google.com/webstore/detail/google-search-keyboard-sh/iobmefdldoplhmonnnkchglfdeepnfhd)  - adds keyboard shortcuts to Google search results eg Tab, then Alt-Enter to open search result  in new page. Essential - I use this all the time.
+- [Google Search Keyboard Shortcuts](https://chrome.google.com/webstore/detail/google-search-keyboard-sh/iobmefdldoplhmonnnkchglfdeepnfhd)  - adds keyboard shortcuts to Google search results eg Tab, then Alt-Enter to open search result  in new page. Essential - I use this all the time.
 
-[LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd). Essential for password managing.
+- [LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd). Essential for password managing. [1Password or others are alternatives](https://www.wired.com/story/best-password-managers/)
 
-[uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm) seems like a good ad blocker for websites
+- [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm) and [GitHub source](https://github.com/gorhill/uBlock) is a [good wide spectrum blocker](https://github.com/gorhill/uBlock/wiki/Blocking-mode) for websites including filtering 'badware' - sites that put users at risk on installing adware etc..
 
-It seems like [AD Block](https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom) is very popular with 10m+ users and 195k starts. It looks to be around blocking ads on YouTube etc.. which I subscribe to.
+- [Open Graph Preview](https://chrome.google.com/webstore/detail/open-graph-preview/ehaigphokkgebnmdiicabhjhddkaekgh?hl=en) for testing if Twitter Card / Open Graph previews work
 
+- [Honey](https://chrome.google.com/webstore/detail/honey/bmnlcjabgnpnenekpadlanbbkooimhnj) for finding coupons. No idea if it works - am trying it. 10m+ users 155k stars.
 
-[Check My Links](https://chrome.google.com/webstore/detail/check-my-links/ojkcdipcgfaekbeaelaapakgnjflfglf) from: [pagemodified.com]() by https://twitter.com/chasers [The Source is on GitHub](https://github.com/PageModifiedOfficial/Check-My-Links)
+### Broken Link Checkers
 
-[Open Graph Preview](https://chrome.google.com/webstore/detail/open-graph-preview/ehaigphokkgebnmdiicabhjhddkaekgh?hl=en)
+This is the area I'm most interested in at the moment, so I focussed in on this domain to see if writing a Chrome Extension would be useful in my business.
 
-### Broken link checkers
+- [Check My Links](https://chrome.google.com/webstore/detail/check-my-links/ojkcdipcgfaekbeaelaapakgnjflfglf) from: [pagemodified.com](https://www.pagemodified.com) by [@chasers](https://twitter.com/chasers) with [The Source on GitHub](https://github.com/PageModifiedOfficial/Check-My-Links)
 
-This is the area I'm most interested in:
+- [Checkbot: SEO, Web Speed and Security Tester](https://chrome.google.com/webstore/detail/checkbot-seo-web-speed-se/dagohlmlhagincbfilmkadjgmdnkjinl) - excellent FAQ support site. Based in Edinburgh.
 
-[Checkbot: SEO, Web Speed and Security Tester](https://chrome.google.com/webstore/detail/checkbot-seo-web-speed-se/dagohlmlhagincbfilmkadjgmdnkjinl) - excellent FAQ support site. Based in Edinburgh.
+- [SEO Minion](https://chrome.google.com/webstore/detail/seo-minion/giihipjfimkajhlcilipnjeohabimjhi) - 100k+ users
 
-[SEO Minion](https://chrome.google.com/webstore/detail/seo-minion/giihipjfimkajhlcilipnjeohabimjhi) - 100k+ users
+- [Link Redirect Trace](https://chrome.google.com/webstore/detail/link-redirect-trace/nnpljppamoaalgkieeciijbcccohlpoh) - from linkresearchtools.com - 50k+ users
 
-[Link Redirect Trace](https://chrome.google.com/webstore/detail/link-redirect-trace/nnpljppamoaalgkieeciijbcccohlpoh) - from linkresearchtools.com - 50k+ users
+- [3 broken link checkers](https://chrome.google.com/webstore/search/broken%20link%20checker) - but 71, 16, 18 stars only. 30k+ users
 
-[3 broken link checkers](https://chrome.google.com/webstore/search/broken%20link%20checker) - but 71, 16, 18 stars only. 30k+ users
+## Develop a Chrome Extension
 
-## manifest.json
+manifest.json
 
 This instructs the browser
 
@@ -88,8 +89,6 @@ It is a full html page with css, sliders etc.. make it look great!
 Here they are using the [bulma.io](https://bulma.io/documentation/) css toolkit.
 
 The content policy is to block 3rd party js (unless defined in the manifest), so I guess that is why he is including the raw css for bulma.
-
-
 
 ## content_script/mask-process.js
 
@@ -344,20 +343,22 @@ https://developer.chrome.com/extensions/samples#search:
 
 - Download Images - doesn't seem to work in developer mode..?  selects all images though through a querySelectorAll('img')
 
-
-
-
 ## Can I use different languages to develop against it
 
-asdf
+[It looks like WebAssembly can work](https://stackoverflow.com/questions/49611290/using-webassembly-in-chrome-extension) but who knows if you could get it into the web store.
 
 ## Is my source code protected
 
-asdf
-
-![alt text](/assets/2020-03-01/dbdiag.png "DB Diagram"){:width="600px"}
+[No it doesn't look like it](https://crxextractor.com/) and google is apparently blocking code that is obfuscated.
 
 ## Conclusion
 
+I love the Chrome extensions I use daily [Google Search Keyboard Shortcuts](https://chrome.google.com/webstore/detail/google-search-keyboard-sh/iobmefdldoplhmonnnkchglfdeepnfhd), [LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd) and [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
 
-[developer.chrome.com/extensions/samples](https://developer.chrome.com/extensions/samples) - is a great start however the page takes 30s to load
+The biggest problem I have is pushing the extension to Google and [being at their mercy](https://news.ycombinator.com/item?id=23168874). My ventures are more suited to being on the server.
+
+So that ends my look at at Chrome Extensions for now.
+
+It is always good to have a *curious mind* as:
+
+> "Time spent on reconnaissance is seldom wasted." (Duke of Wellington, Waterloo)
