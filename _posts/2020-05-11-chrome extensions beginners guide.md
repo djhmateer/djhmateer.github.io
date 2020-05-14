@@ -28,9 +28,24 @@ In this article we will go:
 
 Extensions are available through the [Chrome Webstore](https://chrome.google.com/webstore/category/extensions)
 
-## Extensions I use / Commonly used ones
+![alt text](/assets/2020-05-11/chrome-extension.jpg "Chrome Extensions"){:width="600px"}
 
-[LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd)
+`chrome://extensions/` in chrome to see the extensions you currently have
+
+![alt text](/assets/2020-05-11/chrome-apps.jpg "Chrome Apps"){:width="600px"}
+
+These are chrome apps which are [being deprecated](https://www.theverge.com/2020/1/15/21067907/google-chrome-apps-end-support-lune-windows-macos-linux)
+
+## Extensions I use 
+
+[Google Search Keyboard Shortcuts](https://chrome.google.com/webstore/detail/google-search-keyboard-sh/iobmefdldoplhmonnnkchglfdeepnfhd)  - adds keyboard shortcuts to Google search results eg Tab, then Alt-Enter to open search result  in new page. Essential - I use this all the time.
+
+[LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd). Essential for password managing.
+
+[uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm) seems like a good ad blocker for websites
+
+It seems like [AD Block](https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom) is very popular with 10m+ users and 195k starts. It looks to be around blocking ads on YouTube etc.. which I subscribe to.
+
 
 [Check My Links](https://chrome.google.com/webstore/detail/check-my-links/ojkcdipcgfaekbeaelaapakgnjflfglf) from: [pagemodified.com]() by https://twitter.com/chasers [The Source is on GitHub](https://github.com/PageModifiedOfficial/Check-My-Links)
 
@@ -123,10 +138,13 @@ Ithen changed the permissions to:
 
 ```json
 {
-    "name": "Hello World DM",
+    "name": "Hello World simple example to davemateer.com",
     "version": "1.0",
-    "description": "A hello world application to prove workflow into the Chrome Web Store",
+    "description": "A hello world extension to prove workflow into the Chrome Web Store from the blog article on davemateer.com",
     "manifest_version": 2,
+    "icons": {
+      "128": "icon_128.png"
+    },
     "browser_action": {
         "default_title": "Hello World DM",
         "default_popup": "./popup/popup.html",
@@ -139,24 +157,18 @@ Ithen changed the permissions to:
         }
     ],
     "permissions": [
-        "activeTab",
         "https://davemateer.com/*"
     ]
 }
 ```
 
-The submission UI seemed buggy in that it didn't like both the permissions of activeTab and the davemateer.com website (said it was too broad). Maybe I had to do one or the other. It seemed to submit itself and is now in 
+The submission UI seemed buggy in that it didn't like both the permissions of activeTab and the davemateer.com website (said it was too broad). Maybe I had to do one or the other.
 
 ![alt text](/assets/2020-05-11/extension-pending-review.jpg "extension pending review"){:width="600px"}
 
-Actually it seemed to turn orange (the pending review text) after around 5 minutes. No emails received which I would have expected.
-
-
-https://developer.chrome.com/apps/external_extensions
+Actually it seemed to turn orange (the pending review text) after around 5 minutes. No emails received which I would have expected. It took about 18 hours to be reviewed and was rejected. I tried again with better icons, better description and a narrower permission of only my website instead of activeTab as well.
 
 [chrome.google.com/webstore/devconsole](https://chrome.google.com/webstore/devconsole/)  The developer dashboard
-
-**HERE - maybe have to submit it again with just the website and not the activeTab permission?** submitted
 
 ## From pluralsight continued
 
