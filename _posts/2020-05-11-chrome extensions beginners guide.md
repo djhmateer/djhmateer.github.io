@@ -2,7 +2,7 @@
 layout: post
 title: Chrome Extensions - Beginners Guide
 description: What is a Chrome Extension, what are my favourites and how to get started developing them. Opinions on Google's walled garden verification process.
-menu: review
+#menu: review
 categories: Chrome 
 published: true 
 comments: true
