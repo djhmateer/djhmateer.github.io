@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Chrome Extensions - Beginners Guide
-description: What is a Chrome Extension, what are my favourites and how to get started developing them. Opinions on Google's walled garden of extensions.
+description: What is a Chrome Extension, what are my favourites and how to get started developing them. Opinions on Google's walled garden verification process.
 menu: review
 categories: Chrome 
-published: false 
-comments: false
-sitemap: false
-image: /assets/2020-05-11/extension-demo.jpg
+published: true 
+comments: true
+sitemap: true
+image: /assets/2020-05-11/extension-hello.jpg
 ---
 
 This is a write up of *being curious* as to what Chrome Extension's are.
@@ -17,6 +17,10 @@ I hope you enjoy.
 ## What is a Chrome Extension
 
 "Extensions are small software programs that customize the browsing experience. They enable users to tailor Chrome functionality and behavior to individual needs or preferences. They are built on web technologies such as HTML, JavaScript, and CSS." [source](https://developer.chrome.com/extensions)
+
+![alt text](/assets/2020-05-11/extension-hello.jpg "Hello world"){:width="500px"}
+
+Extensions icons are in the top right of the Chrome window.
 
 ![alt text](/assets/2020-05-11/extension-demo.jpg "A Chrome Extension source code"){:width="700px"}
 
@@ -42,7 +46,9 @@ Not to be confused with apps `chrome://apps` which are [being deprecated](https:
 
 ## Useful Extensions
 
-The [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) doesn't make it easy to order by the most downloaded or the most starred. I recommend using the [Firefox Add-Ons most popular](https://addons.mozilla.org/en-GB/firefox/search/?recommended=true&sort=users&type=extension) as they share [a common API and one can port to the other](https://extensionworkshop.com/documentation/develop/porting-a-google-chrome-extension/)
+The [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) doesn't make it easy to order by the most downloaded or the most starred. 
+
+I recommend using the [Firefox Add-Ons most popular](https://addons.mozilla.org/en-GB/firefox/search/?recommended=true&sort=users&type=extension) as they share [a common API and one can port to the other](https://extensionworkshop.com/documentation/develop/porting-a-google-chrome-extension/)
 
 - [Google Search Keyboard Shortcuts](https://chrome.google.com/webstore/detail/google-search-keyboard-sh/iobmefdldoplhmonnnkchglfdeepnfhd)  - adds keyboard shortcuts to Google search results eg Tab, then Alt-Enter to open search result  in new page. Essential - I use this all the time.
 
@@ -64,19 +70,15 @@ This is the area I'm most interested in at the moment, so I focussed in on this 
 
 - [SEO Minion](https://chrome.google.com/webstore/detail/seo-minion/giihipjfimkajhlcilipnjeohabimjhi) - 100k+ users
 
-- [Link Redirect Trace](https://chrome.google.com/webstore/detail/link-redirect-trace/nnpljppamoaalgkieeciijbcccohlpoh) - from [linkresearchtools.com](linkresearchtools.com) - 50k+ users
+- [Link Redirect Trace](https://chrome.google.com/webstore/detail/link-redirect-trace/nnpljppamoaalgkieeciijbcccohlpoh) - from [linkresearchtools.com](https://linkresearchtools.com) - 50k+ users
 
 - [3 broken link checkers](https://chrome.google.com/webstore/search/broken%20link%20checker) - but 71, 16, 18 stars only. 30k+ users
 
 ## Develop a Chrome Extension- YouTube Video - Bears count
 
-Here are my recommended tutorial videos on developing extensions:
+[How To Make Chrome Extensions - YouTube](https://youtu.be/Ipa58NVGs_c) and [Source Code](https://github.com/shama/letswritecode/tree/master/how-to-make-chrome-extensions) is an excellent and in-depth introduction into Chrome extensions. I've included some of the highlights here with comments, mainly so if I forget this in the future, I came coma back to this article :-)
 
-[How To Make Chrome Extensions - YouTube](https://youtu.be/Ipa58NVGs_c) and [Source Code](https://github.com/shama/letswritecode/tree/master/how-to-make-chrome-extensions) is an excellent and in-depth introduction into Chrome extensions.
-
-![alt text](/assets/2020-05-11/chrome-extension-alert-box.jpg "Chrome Extension Alert Box"){:width="500px"}
-
-Here the demo extension puts up an alert box.
+Initially the extension puts up an alert box, then goes on to Count the word Bear on each webpage. It does this by passing messages between the extension and the page.
 
 ```js
 // popup.js
@@ -151,42 +153,29 @@ As you can see below, it worked!
 
 ![alt text](/assets/2020-05-11/count-bears-wikipedia.jpg "Count bears Wikipedia"){:width="400px"}
 
+1153 instances of the word Bear on the Wikipedia page about bears.
 
-![alt text](/assets/2020-05-11/count-bears-background.jpg "Count bears background"){:width="400px"}
+![alt text](/assets/2020-05-11/count-bears-background.jpg "Count bears background"){:width="700px"}
 
 After visiting 3 pages, the extension can list the number of bears on each page I visited using a background script.
 
-## Pluralsight Video - React out information
+## Pluralsight Video - Redact out information
 
-[Pluralsign Extending the Browser video](https://app.pluralsight.com/library/courses/play-by-play-extending-browser/table-of-contents)
+[Pluralsight Extending the Browser video](https://app.pluralsight.com/library/courses/play-by-play-extending-browser/table-of-contents) has an example on redacting out important information from the Azure Portal. 
 
 ![alt text](/assets/2020-05-11/extension-working.jpg "email being redacted out"){:width="300px"}
 
-[chrome web store](https://chrome.google.com/webstore/category/extensions) 
+Shown in here is my email address being redacted out.
 
-[source code on GitHub](https://github.com/clarkio/azure-mask) - interestingly it is not available on the chrome webstore because of a trademark infringement. Ah, the joys of walled gardens. Can download an unpacked version fine for local use.
+[source code on GitHub](https://github.com/clarkio/azure-mask) - interestingly it is not available on the chrome webstore because of a trademark infringement. Ah, the joys of walled gardens, which I'll get to below. Can download an unpacked version fine for local use.
 
-**lets call things popup, not popout as pluralsight guys do**
-
-I liked his folder structure but not the popup / popout naming confusion. So this is what I settled on [Source of extension-hello-world-dm](https://github.com/djhmateer/extension-hello-world-dm)  
-
-### html / css
-
-It is a full html page with css, sliders etc.. make it look great!
-
-![alt text](/assets/2020-05-11/extension-full-html.jpg "Extension full html"){:width="500px"}
-
-Here they are using the [bulma.io](https://bulma.io/documentation/) css toolkit.
-
-The content policy is to block 3rd party js (unless defined in the manifest), so I guess that is why he is including the raw css for bulma.
+I like to call popups, popups, not popouts as the authors do in this video.
 
 ## Publishing to Web Store
 
 Since [2004](https://stackoverflow.com/questions/36042764/html-code-to-install-an-google-chrome-extension-crx) Chrome has not supported installs of extensions from any other location.
 
-[It costs $5 to register](https://chrome.google.com/webstore/devconsole/register?hl=en-GB)
-
-[here are the faq guidelines](https://developer.chrome.com/webstore/faq#faq-listing-08)
+[It costs $5 to register](https://chrome.google.com/webstore/devconsole/register?hl=en-GB) and [here are the faq guidelines](https://developer.chrome.com/webstore/faq#faq-listing-08)
 
 ![alt text](/assets/2020-05-11/extension-review.jpg "extension review"){:width="300px"}
 
@@ -196,7 +185,7 @@ The submission UI seemed buggy in that it didn't like both the permissions of ac
 
 ![alt text](/assets/2020-05-11/extension-pending-review.jpg "extension pending review"){:width="600px"}
 
-Actually it seemed to turn orange (the pending review text) after around 5 minutes. No emails received which I would have expected. It took about 18 hours to be reviewed and was rejected. I tried again with better icons, better description and a narrower permission of only my website instead of activeTab as well. It was rejected again with the same message
+Actually it seemed to turn orange (the pending review text) after around 5 minutes. No emails received which I would have expected. It took about 18 hours to be reviewed and was rejected. I tried again with better icons, better description and a narrower permission of only my website instead of activeTab as well. It was rejected again with the same message. It seems this is an automated process, and I didn't want to push forward anymore.
 
 [chrome.google.com/webstore/devconsole](https://chrome.google.com/webstore/devconsole/)  The developer dashboard
 
@@ -220,7 +209,7 @@ I love the Chrome extensions I use daily:
 - [LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd) 
 - [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
 
-The biggest problem I have is pushing the extension to Google and [being at their mercy](https://news.ycombinator.com/item?id=23168874). My ventures are more suited to being on the server.
+The biggest problem I have on creating my own extensions is pushing to the Chrome Web Store and [being at their mercy](https://news.ycombinator.com/item?id=23168874). My ventures are more suited to being on a server.
 
 So that ends my look at at Chrome Extensions for now.
 
