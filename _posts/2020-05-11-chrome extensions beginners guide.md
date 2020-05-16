@@ -60,6 +60,30 @@ I recommend using the [Firefox Add-Ons most popular](https://addons.mozilla.org/
 
 - [Honey](https://chrome.google.com/webstore/detail/honey/bmnlcjabgnpnenekpadlanbbkooimhnj) for finding coupons. No idea if it works - am trying it. 10m+ users 155k stars.
 
+#### Update 16th May
+
+Thank you to everone who got back to me with their favourites, with some of them being:
+
+- [Refined-GitHub](https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechaddaejaokhf?hl=en)
+
+- [GitHub Dark Theme](https://chrome.google.com/webstore/detail/github-dark-theme/odkdlljoangmamjilkamahebpkgpeacp?hl=en)
+
+- [Super Dark Mode](https://chrome.google.com/webstore/detail/super-dark-mode/nlgphodeccebbcnkgmokeegopgpnjfkc?hl=en-GB)
+
+- [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en)
+
+- [I don't care about cookies](https://chrome.google.com/webstore/detail/i-dont-care-about-cookies/fihnjjcciajhdojfnbdddfaoknhalnja?hl=en)
+
+- [Disconnect](https://chrome.google.com/webstore/detail/disconnect/jeoacafpbcihiomhlakheieifhpjdfeo?hl=en) privacy ad blocker 
+
+- [Ghostery](https://chrome.google.com/webstore/detail/ghostery-%E2%80%93-privacy-ad-blo/mlomiejdfkolichcflejclcbmpeaniij?hl=en) privacy ad blocker
+
+- [Bitwarden](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb?hl=en) Free Password Manager
+
+- [Privacy badger](https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp) Stops sites tracking you
+
+And someone said 'My favourite [Chrome] extension is Firefox'!
+
 ### Broken Link Checkers
 
 This is the area I'm most interested in at the moment, so I focussed in on this domain to see if writing a Chrome Extension would be useful in my business.
