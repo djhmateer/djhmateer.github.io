@@ -12,12 +12,12 @@ image: /assets/2020-04-28/bashtop-screenshot.jpg
 
 <!-- ![alt text](/assets/2020-04-28/bashtop-screenshot.jpg "Bashtop screenshot") -->
 
-I'm writing a broken link checker and wanted to explore the use of an automated browser strategy like: [Puppeteer](https://pptr.dev/) or [Selenium webDriver](https://www.selenium.dev/) instead of raw Http calls from `HttpClient` in C#.
+I'm writing a broken link checker and wanted to explore the use of an automated browser strategy like: [Puppeteer](https://pptr.dev/) or [Selenium WebDriver](https://www.selenium.dev/) instead of raw Http calls from `HttpClient` in C#.
 
 Puppeteer is written in Node.js and can only be called by JavaScript.
 
-1. [Puppeteer and JavaScript for the C# Guy](/2020/05/06/Puppeteer-and-JavaScript-for-the-C-guy) - this post
-2. [Puppeteer by Example](/2020/05/06/Puppeteer-by-Example)
+1. [Puppeteer and JavaScript for the C# Guy](/2020/05/06/puppeteer-and-javascript-for-the-c-sharp-guy) - this post
+2. [Puppeteer by Example](/2020/05/06/puppeteer-by-example)
 
 I've been using C# for many years, so here is my overview of 'Puppeteer and JS for the C# guy' post:
 
@@ -47,9 +47,9 @@ npm i broken-link-checker -g # install globally, then can access from command li
 npm update # updates all packages
 ```
 
-`package-lock.json` is automatically generated for any operations when npm modifies node_modules or package.json
+`package-lock.json` is automatically generated for any operations when npm modifies node_modules or package.json. Can be deleted. Should be checked into source control.
 
-`node_modules` is where modules (packages) and their dependencies are kept
+`node_modules` is where modules (packages) and their dependencies are kept. Can be deleted. Should not be checked into source control.
 
 ### Other npm commands
 
@@ -84,6 +84,7 @@ Arrow Functions and Async functions are used a lot in Puppeteer
 ```js
 const puppeteer = require('puppeteer');
 
+// Immediately Invoked Functional Expression
 (async () => {
   console.log('start');
   const browser = await puppeteer.launch();
@@ -108,7 +109,7 @@ async function doSomething() {
 doSomething();
 ```
 
-## JavaScript and VS Code
+## JavaScript and VSCode
 
 [VS Code with NodeJS tutorial](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)
 
@@ -123,6 +124,7 @@ app.js
 var msg = 'Hello World';
 console.log(msg)
 ```
+j
 debugging
 
 - F9 to set breakpoint
@@ -147,14 +149,13 @@ Selenium/WebDriver focuses on cross-browser automation Has been the industry sta
 
 Maybe I should be using TS instead of JS?
 
-[CodeWithDan on using TS without TS](https://www.dandoescode.com/blog/using-typescript-without-typescript/)
+- [CodeWithDan on using TS without TS](https://www.dandoescode.com/blog/using-typescript-without-typescript/)
 
+- [Goal of puppeteer is 100% TypeScript src directory](https://github.com/puppeteer/puppeteer/releases) 
 
-[Goal of puppeteer is 100% TypeScript src directory](https://github.com/puppeteer/puppeteer/releases) 
+- [TS Tutorial in VS Code](https://code.visualstudio.com/docs/typescript/typescript-tutorial)
 
-[TS Tutorial in VS Code](https://code.visualstudio.com/docs/typescript/typescript-tutorial)
-
-[Simple crawling with TS](https://www.lewuathe.com/simple-crawling-with-puppeteer-in-typescript.html) but this is 3 years out of date
+- [Simple crawling with TS](https://www.lewuathe.com/simple-crawling-with-puppeteer-in-typescript.html) but this is 3 years out of date
 
 ## Functional (Web) Testing Frameworks
 
@@ -192,7 +193,7 @@ blcc project (in test/crawler)
 
 ## PuppeteerSharp
 
-There is a .NET port of the Node.JS Puppeteer API on [PpupeteerSharp](https://www.puppeteersharp.com/) and [GitHub Source](https://github.com/hardkoded/puppeteer-sharp)
+There is a .NET port of the Node.JS Puppeteer API on [PuppeteerSharp](https://www.puppeteersharp.com/) and [GitHub Source](https://github.com/hardkoded/puppeteer-sharp)
 
 - version 2.0.3
 - 20 days ago updated
@@ -201,9 +202,9 @@ It looks to be keeping good parity with Puppeteer
 
 ## Chromium vs Chrome
 
-[https://www.howtogeek.com/202825/what%E2%80%99s-the-difference-between-chromium-and-chrome/](https://www.howtogeek.com/202825/what%E2%80%99s-the-difference-between-chromium-and-chrome/)
+- [https://www.howtogeek.com/202825/what%E2%80%99s-the-difference-between-chromium-and-chrome/](https://www.howtogeek.com/202825/what%E2%80%99s-the-difference-between-chromium-and-chrome/)
 
-[https://en.wikipedia.org/wiki/Chromium_(web_browser)](https://en.wikipedia.org/wiki/Chromium_(web_browser))  Chromium is an open source project from Google. Google uses the code to make Chrome which has more features than Chromium.
+- [https://en.wikipedia.org/wiki/Chromium_(web_browser)](https://en.wikipedia.org/wiki/Chromium_(web_browser))  Chromium is an open source project from Google. Google uses the code to make Chrome which has more features than Chromium.
 
 ## Broken link checkers
 

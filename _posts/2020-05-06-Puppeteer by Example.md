@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Puppeteer by example
+title: Puppeteer by Example
 description: 
 menu: review
 categories: Puppeteer Testing
@@ -14,10 +14,10 @@ image: /assets/2020-04-28/bashtop-screenshot.jpg
 
 I'm writing a broken link checker and wanted to explore the use of an automated browser strategy like: [Puppeteer](https://pptr.dev/)
 
-1. [Puppeteer for the C# Guy](/2020/05/06/Puppeteer-and-JavaScript-for-the-C-guy)
-2. [Puppeteer by Example](/2020/05/06/Puppeteer-by-Example) - this post
+1. [Puppeteer and JavaScript for the C# Guy](/2020/05/06/puppeteer-and-javascript-for-the-c-sharp-guy) - intro
+2. [Puppeteer by Example](/2020/05/06/puppeteer-by-example) - this post
 
-[Sample code]()
+[Sample code]() - thing repository
 
 [Puppeteer - https://pptr.dev](https://pptr.dev/) documentation
 
@@ -41,7 +41,7 @@ const puppeteer = require('puppeteer');
 })();
 ```
 
-Starting from v3.0.0 of Puppeteer (we are on 3.0.2) we rely on [Node 10.18.1](https://nodejs.org/en/blog/release/v10.18.1/) which was released on 9th Jan 2020. Node.js I have installed is 12.16.3 LTS
+Starting from v3.0.0 of Puppeteer (we are on 3.0.4) we rely on [Node 10.18.1](https://nodejs.org/en/blog/release/v10.18.1/) which was released on 9th Jan 2020. Node.js I have installed is 12.16.3 LTS. Npm is 6.9.0
 
 ## 2 - Headless false
 
