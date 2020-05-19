@@ -157,6 +157,8 @@ Maybe I should be using TS instead of JS?
 
 - [Simple crawling with TS](https://www.lewuathe.com/simple-crawling-with-puppeteer-in-typescript.html) but this is 3 years out of date
 
+[Scraper using TS](https://github.com/srinivasreddy/companies-list/blob/master/src/companies.ts) 
+
 ## Functional (Web) Testing Frameworks
 
 - selenium-webdriver

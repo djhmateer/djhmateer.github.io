@@ -146,6 +146,73 @@ const puppeteer = require('puppeteer');
 
 ```
 
+## Get all a hrefs from the browser
+
+[TowardsDataScience article](https://towardsdatascience.com/quickly-extract-all-links-from-a-web-page-using-javascript-and-the-browser-console-49bb6f48127b)
+
+This is fun to run in the console window of the browser
+
+```js
+var x = document.querySelectorAll("a");
+var myarray = []
+for (var i=0; i<x.length; i++){
+var nametext = x[i].textContent;
+var cleantext = nametext.replace(/\s+/g, ' ').trim();
+var cleanlink = x[i].href;
+myarray.push([cleantext,cleanlink]);
+};
+function make_table() {
+    var table = '<table><thead><th>Name</th><th>Links</th></thead><tbody>';
+   for (var i=0; i<myarray.length; i++) {
+            table += '<tr><td>'+ myarray[i][0] + '</td><td>'+myarray[i][1]+'</td></tr>';
+    };
+    var w = window.open("");
+w.document.write(table); 
+}
+make_table()
+```
+
+and in puppeteer we can use the alias for querySelectorAll
+
+```js
+  // execute the JS in the context of the page to get all the links
+  const links = await page.evaluate(() =>
+    // let's just get all links and create an array from the resulting NodeList
+    // Array.from(document.querySelectorAll("a")).map(anchor => [anchor.href, anchor.textContent])
+    Array.from(document.querySelectorAll('a')).map(a => a.href)
+  );
+
+  // alias for querySelectorAll
+  // https://github.com/puppeteer/puppeteer/blob/master/docs/api.md#pageevalselector-pagefunction-args
+  // https://stackoverflow.com/a/49492141/26086
+  const hrefs = await page.$$eval('a', as => as.map(a => a.href));
+  console.log(hrefs);
+```
+
+### PuppeteerSharp
+
+[PuppeteerSharp GetAllLinks](https://www.puppeteersharp.com/examples/Page.EvaluateExpressionAsync.GetAllLinks.html)
+
+```cs
+using (var browser = await Puppeteer.LaunchAsync(options))
+using (var page = await browser.NewPageAsync())
+{
+    await page.GoToAsync("http://www.google.com");
+    var jsSelectAllAnchors = @"Array.from(document.querySelectorAll('a')).map(a => a.href);";
+    var urls = await page.EvaluateExpressionAsync<string[]>(jsSelectAllAnchors);
+    foreach (string url in urls)
+    {
+        Console.WriteLine($"Url: {url}");
+    }
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadLine();
+}
+```
+
+
+
+
+
 ## Screenshots and the $function
 
 Visual regression testing
