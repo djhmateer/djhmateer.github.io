@@ -39,18 +39,18 @@ Some things we can control, other things we just have to be smart, so:
 
 > Don't Panic
 
-[Arthur C Clark](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic) said Douglas Adams' use of "don't panic" was perhaps the best advice that could be given to humanity.
+[Arthur C Clark](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic) said Douglas Adams' use of "Don't Panic" was perhaps the best advice that could be given to humanity.
 
 ## We are a working family
 
-- My wife has an 80% job at the university as a lecturer in Conservation Biology
+- My wife has an 80% job at university as a lecturer in Conservation Biology
 - I recently started my own company as a freelance/contract C# developer and to develop my own SaaS products
 - Daughter Mia is 5 and is in reception year at school
 - Son Henry is nearly 4 and was at nursery 4 days a week and with my wife staying home on Fridays.
 
 ![alt text](/assets/2020-05-21/kids-pools.jpg "Kids swimming pools"){:width="600px"}
 
-2 swimming pools at our house :-)
+2 swimming pools :-)
 
 We live in the South East of England in a small village, with a small garden, and good access to the outdoors.
 
