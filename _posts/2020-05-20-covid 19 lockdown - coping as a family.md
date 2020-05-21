@@ -1,18 +1,45 @@
 ---
 layout: post
-title: Covid19 Lockdown in the UK - coping as a family 
-description: 
+title: COVID-19 Lockdown in the UK - coping as a family 
+description: How we are coping as a young working family during lockdown
 menu: review
-categories: 
+categories: Covid-19
 published: false 
 comments: false
 sitemap: false
 image: /assets/2020-03-01/dbdiag.png
 ---
 
-Firstly - my thoughts are with the people who are on the front line, who are sick, and who have lost people to this pandemic.
+My thoughts are with the people who are on the front line, who are sick, and who have lost people to this pandemic.
 
-> Don't Panic!
+I'm writing this article to:
+
+- Help others with young kids who are working from home
+- Help ourselves retain perspective and to cope with the bad days
+- Gather data and make a decision on whether our kids should go back to school
+- Try to take something positive away from this horrible situation
+
+Scott Hanselman, developer, speaker and all round good guy who has kids, [tweeted this](https://twitter.com/shanselman/status/1252040170783641600?lang=en) on remote working during this time
+
+![alt text](/assets/2020-05-21/hanselman-tweet.jpg "Hanselman tweet"){:width="450px"}
+
+It was good to know other people are finding times tough. It helped me.
+
+## Data
+
+I like to keep up to date with what is really happning and not just sensationlist news. In the UK I keep an eye on:
+
+[coronavirus.data.gov.uk](https://coronavirus.data.gov.uk/) has charts on what is acutally happening
+
+![alt text](/assets/2020-05-21/deaths-in-uk.jpg "Deaths in UK"){:width="500px"}
+
+## Don't Panic
+
+> Don't Panic
+
+[Arthur C Clark](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic) said Douglas Adams' use of "don't panic" was perhaps the best advice that could be given to humanity.
+
+Makes me smile.
 
 ## We are a working family
 
@@ -22,12 +49,6 @@ Firstly - my thoughts are with the people who are on the front line, who are sic
 - Son Henry is 4 and was at nursery 4 days a week with my wife looking after him on a Friday.
 
 We live in the South East of England in a small village with good access to the outdoors for walks / runs.
-
-I'm writing this article to
-
-- Help others in a similar situation think about priorities
-- Help ourselves cope with the bad days
-- Try to take something positive away from this horrible situation
 
 ## Good Things
 
@@ -42,13 +63,12 @@ I'm writing this article to
 
 ## Bad Things
 
-- Much more moody
+- Me and the kids are much more moody
 
 - Not having enough time to focus on job
 - Not seeing friends
 
 - Kids not socialising
-- Kids getting very emotional (and me too)
 
 ## What we do
 
@@ -152,3 +172,6 @@ Next winter (flu season) may be difficult - so have to emotionally be ready.
 ## Conclusion
 
 Good luck to us all in keeping safe and well - physically and emotionally.
+
+> Don't Panic!
+
