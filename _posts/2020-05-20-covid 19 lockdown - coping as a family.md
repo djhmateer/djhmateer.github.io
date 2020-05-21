@@ -1,23 +1,23 @@
 ---
 layout: post
 title: COVID-19 Lockdown in the UK - coping as a family 
-description: How we are coping as a young working family during lockdown
+description: How we are coping as a young working family during lockdown. Don't Panic!
 menu: review
 categories: Covid-19
 published: false 
 comments: false
 sitemap: false
-image: /assets/2020-03-01/dbdiag.png
+image: /assets/2020-05-21/kids-pools.jpg
 ---
 
-My thoughts are with the people who are on the front line, who are sick, and who have lost people to this pandemic.
+My thoughts are with those who are on the front line, are sick, have financial hardships and have lost people to this pandemic.
 
 I'm writing this article to:
 
 - Help others with young kids who are working from home
 - Help ourselves retain perspective and to cope with the bad days
 - Gather data and make a decision on whether our kids should go back to school
-- Try to take something positive away from this horrible situation
+- Take the positive away from this horrible situation
 
 Scott Hanselman, developer, speaker and all round good guy who has kids, [tweeted this](https://twitter.com/shanselman/status/1252040170783641600?lang=en) on remote working during this time
 
@@ -25,93 +25,142 @@ Scott Hanselman, developer, speaker and all round good guy who has kids, [tweete
 
 It was good to know other people are finding times tough. It helped me.
 
-## Data
+## Keeping up to date with facts
 
-I like to keep up to date with what is really happning and not just sensationlist news. In the UK I keep an eye on:
+I like to keep up to date with what is really happening with [the COVID-19 pandemic](https://en.wikipedia.org/wiki/COVID-19_pandemic). In the UK I keep an eye on:
 
-[coronavirus.data.gov.uk](https://coronavirus.data.gov.uk/) has charts on what is acutally happening
+[coronavirus.data.gov.uk](https://coronavirus.data.gov.uk/) which has charts I trust (as much as possible)
 
 ![alt text](/assets/2020-05-21/deaths-in-uk.jpg "Deaths in UK"){:width="500px"}
 
 ## Don't Panic
 
+Some things we can control, other things we just have to be smart, so:
+
 > Don't Panic
 
 [Arthur C Clark](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic) said Douglas Adams' use of "don't panic" was perhaps the best advice that could be given to humanity.
 
-Makes me smile.
-
 ## We are a working family
 
 - My wife has an 80% job at the university as a lecturer in Conservation Biology
-- I recently started my own company as a freelancer C# developer to develop my own SaaS products
+- I recently started my own company as a freelance/contract C# developer and to develop my own SaaS products
 - Daughter Mia is 5 and is in reception year at school
-- Son Henry is 4 and was at nursery 4 days a week with my wife looking after him on a Friday.
+- Son Henry is nearly 4 and was at nursery 4 days a week and with my wife staying home on Fridays.
 
-We live in the South East of England in a small village with good access to the outdoors for walks / runs.
+![alt text](/assets/2020-05-21/kids-pools.jpg "Kids swimming pools"){:width="600px"}
+
+2 swimming pools at our house :-)
+
+We live in the South East of England in a small village, with a small garden, and good access to the outdoors.
 
 ## Good Things
 
 - Being outside with the kids more
-- Learning about flowers and plants (Seek app) and teaching the kids how to identify plants
 
-- Physically I feel better/more flexible as not sitting down for 8 hours per day
-- Doing more running (2 year niggle foot injury getting better)
+![alt text](/assets/2020-05-21/flowers-and-kids.jpg "Flowers and kids"){:width="600px"}
 
-- watching films with the kids on the coach (and they love it when I'm there)
-    - Shark Boy and Lava Girl (Netflix)
+Looks idyllic... just before a meltdown happened as it was 'too hot'.. all happy 2 minutes later.
+
+![alt text](/assets/2020-05-21/dave-and-kids.jpg "Dave and kids"){:width="600px"}
+
+Just being outside, messing around, eating watermelon, looking for beasties, looking at flowers, birds.. great fun. This will be one of my abiding good memories of the lockdown period - the unfettered access to time to just mess around. 
+
+- Learning about flowers and plants, with the [amazing Seek app](https://www.inaturalist.org/pages/seek_app) for iPhone or Android,  with me learning about plants and taking the kids along for the ride in my learning.
+
+- [Hoverfly Lagoons](https://hoverflylagoons.co.uk/hoverfly-lagoons-2020/), which is my wife's speciality.. she and Mia are posting videos on the website to encourage more people put lagoons in their garden and contribute to citizen science.
+
+- Physically I feel better/more flexible as not sitting down for 8 hours per day. We've done some [Joe Wicks](https://www.youtube.com/channel/UCAxW1XT0iEJo0TYlRfn6rYQ) and also [Cosmic Kids Yoga - Disco](https://www.youtube.com/watch?v=PSgZl8f5leU)
+
+- Doing more running (2 year niggle foot injury getting better). I like [Strava](https://www.strava.com/athletes/1120109).
+
+- Watching films with the kids on the couch (and they love it when I'm there)
+  - Shark Boy and Lava Girl (Netflix) is Mia's current favourite
+  - Tayo the Bus (Netflix) is Henry's favourite TV programme
+
+- We have been talking to our neighbours a lot more!
+
+- Lovely to see less traffic on the roads in front of our house
+
+- Clearer skies (no air traffic or cars creating smog)
+
+My wife has done loads in our tiny garden:
+
+- Growing loads more vegetables and flowers
+
+- Hung a rope swing from a branch (kids love it)
+
+- Build a sand pit (kids love it)
+
+- Hung 2 hammocks (for the kids)
+
+And we've:
+
+- Made a [Kids Spotify Playlist!](https://open.spotify.com/playlist/6K0nzmhCSZzintgnJGVhQn?si=ia--dGEfR2mbMqlIxbdDQw)
+
+Schooling has been great from Mia's teacher and I've really enjoyed teaching her about phonics, maths, reading lots of stories, and making up counting games. Also doing many jigsaw puzzles with the kids. So I'm learning how to be a better parent for sure.
 
 ## Bad Things
 
 - Me and the kids are much more moody
 
-- Not having enough time to focus on job
+- Not having enough time to focus on my business
+
 - Not seeing friends
 
-- Kids not socialising
+- Kids not socialising. It is heart-breaking to hear Mia say she is lonely and missing her friends. When we meet other kids by chance, the change in her is immediate.
 
 ## What we do
 
 - During the week we split 50% work and 50% looking after the kids
 
-- Go out for runs and record on Strava
+- Go out for runs
 
 - Go out for a walk before work
 
 - Have lie ins at the weekend (alternate days)
 
-- Meditate - Headspace app
+- Meditate - [Headspace app](https://www.headspace.com/)
 
-- Don't worry about spending on: Netflix, Amazon Prime, Disney+, Spotify... it keeps us happy
+- Don't worry about spending on: Netflix, Amazon Prime, Disney+, YouTube, Spotify... it keeps us happy
+
+![alt text](/assets/2020-05-21/red-green.jpg "The board where good/behaviour is noted"){:width="600px"}
+
+Mia got a yellow face on the board for not turning off the Kindle Fire this morning when asked to. This board is a great motivator to encourage good listening. It helps us reatin some sense of order, and hopefully to stop the kids going feral.
 
 ## Home office setup
 
-We've got a spare room so have converted it into a home office by putting in 2 tables. Our internet is pretty solid (I've put in my own master switch) and the router is coming straight out of that. It is directly below the home office so WiFi is fine from that single router. I've turned off auto channel switching as some deves were not transitioning well (my iPhone 7). So have 2 networks now - HomeNetwork and HomeNetwork5 (with 5 being the 5Ghz shorter range highter throughput network.)  Most devices use the 2.4GHz as seems to be stable.
+![alt text](/assets/2020-05-21/home-office.jpg "Home Office"){:width="800px"}
 
-Our network is around 40Mbps (Mbits/s) down and 12Mbps up through plus.net. No fibre in our village. But we do have FTTC.
+Spare room converted to home office.
+
+I've got a [QuietPC](https://www.quietpc.com/small-pcs) small form factor silent desktop PC hidden in the wicker basket, with all cabling hidden and duct-taped to the desk. I use the laptop when downstairs.
+
+Our internet connection is around 40Mbps down and 12Mbps up and fairly solid. I've put a lot of effort into making it as good as possible, which has paid off.
 
 - Have an office door to close!
 - We each have a desk in the office with screens and a desk ready to go.
-
-- It looks quite nice with plants, and has good music (a good amp). Good webcam and speakers I like for now. I've gone off using headphones and a mic as a decent webcam has an okay mic these days.
+- Monitors facing walls with natural light to the side (and a good curtain)
+- Plants to make it feel like a nice space to work in
+- Good speakers for music.
 
 ## Observations
 
-Some days suck! The kids drive me to breaking point. I start throwing things a bit. This is super unlike me, and I pride myself on being an ultra calm person. On some days, this lockdown, has pushed me very hard emotionally. just like the hardest times on expeditions.
+Some days suck!
 
-Burn out quote from @shanselman
+The kids drive me to breaking point. I've thrown a few things around which is very unlike me, as I pride myself on being an ultra calm person. On some days, this lockdown has pushed me very hard emotionally, just like the hardest times on expeditions.
 
-Getting outside helps with the kids.
+Getting outside usually always helps with the kids and me when this happens.
 
 When I work I
 
-- do not look at social media
-- do not look at emails
-- focus on whatever task it is for 4 hours.
+- Do not look at social media
+- Do not look at emails
+- Focus on whatever task it is until done.
 
 ## Looking after others
 
-I try and regulary keep in touch with loved ones.
+I try and regularly keep in touch with loved ones.
 
 ## Looking after ourselves
 
@@ -119,34 +168,39 @@ Sometimes it is great just to sit in front of the TV and do nothing!
 
 ## Alcohol
 
-Wine and beer is great, but it is very temping to drink loads. I'm generally happier not drinking usually and having some blow outs every now and again.
+Wine and beer are great, but it is very temping to drink loads. I'm generally happier not drinking and having some blow outs every now and again.
 
 ## Mood and coping with stuff
 
-To some degree this is like being on expedition with big highs (well not many) and big lows (yes quite a lot).
+To some degree this is like being on expedition with big highs (well not many) and big lows (yes quite a lot). So here are a few thoughts:
 
-- be kind to people (then wife cups of tea)
-    - help people on twitter
-    - help on so
-    - talk to people / reach out
-- be kind to yourself
-    - read books
-    - go running
+- Be kind to people (bring wife cups of tea)
+  - help people on Twitter / Reddit / Stackoverflow
+  - talk to people / reach out
+- Be kind to yourself
+  - Read books
+  - Go running
 
-## Post lockdown
+## Should we send our kids back to School / Nursery 
 
 It feels good to know and see other countries coming out of lockdown. The biggest things I'm looking forward to are:
 
 - School going back
 - Nursery going back
 
-However this is a massive worry, as what about the health of our kids. I'm reading daily on current scientific thinking trying not to read sensationalist news.
+However this is a massive worry, as what about the health of our kids.
 
-eg
+[From UK Research and Innovation's 11th May article](https://coronavirusexplained.ukri.org/en/article/und0008/) that children under the age of 18:
 
-- Work from home a lot more
+- Are statistically less likely to catch COVID-19
+- Their infections tend to be milder
+- Less likely to transmit / bring infections into the household
 
-Its lookig
+It has come to light today that our nursery are having all staff wear facemasks and the single allowed parent wont be allowed in. This sounds like a scary proposition for a child - akin to being dropped off at an asylum every day.
+
+## What I want to keep doing
+
+I would like to remember some of the good parts of lockdown, so for my future self I'd like to:
 
 - Every day have time to run / be outside
 - Pick up kids from school x days per week
@@ -158,20 +212,21 @@ Its lookig
 Have a free calendar is great!
 
 - Don't spend so much on convenience food
-    - its fun to cook own lunches
-    - Bread cook
-    - Omelettes
-    - Eggy bread (see website fave receipes)
+  - its fun to cook own lunches
+  - Bread cook
+  - Omelettes
+  - Eggy bread (see the amazing free [MySaffronApp](https://www.mysaffronapp.com/) for a great place to store your recipes)
 
-## Post Post lockdown
+![alt text](/assets/2020-05-21/saffronapp.jpg "Saffron App"){:width="500px"}
 
-Next winter (flu season) may be difficult - so have to emotionally be ready.
+## Positive Effects of COVID-19
 
-![alt text](/assets/2020-03-01/dbdiag.png "DB Diagram"){:width="600px"}
+[Everest visible from Kathmandu](https://twitter.com/NepaliTimes/status/1261159955895377921) due to the cleaner air.
+
+[British Medical Journal](https://www.bmj.com/content/369/bmj.m1785) - skies are bluer, fewer cars crashing, crime is falling and some other infectious diseases are fading from emergency departments.
 
 ## Conclusion
 
 Good luck to us all in keeping safe and well - physically and emotionally.
 
-> Don't Panic!
-
+Don't Panic!
