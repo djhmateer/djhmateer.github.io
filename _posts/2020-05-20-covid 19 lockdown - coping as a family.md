@@ -1,12 +1,12 @@
 ---
 layout: post
 title: COVID-19 Lockdown in the UK - coping as a family 
-description: How we are coping as a young working family during lockdown. Don't Panic!
-menu: review
-categories: Covid-19
-published: false 
-comments: false
-sitemap: false
+description: How we are coping as a young working family during lockdown. With 2 words - Don't Panic!
+#menu: review
+categories: COVID-19
+published: true 
+comments: true
+sitemap: true
 image: /assets/2020-05-21/kids-pools.jpg
 ---
 
@@ -17,7 +17,7 @@ I'm writing this article to:
 - Help others with young kids who are working from home
 - Help ourselves retain perspective and to cope with the bad days
 - Gather data and make a decision on whether our kids should go back to school
-- Take the positive away from this horrible situation
+- Take the positive away from this situation
 
 Scott Hanselman, developer, speaker and all round good guy who has kids, [tweeted this](https://twitter.com/shanselman/status/1252040170783641600?lang=en) on remote working during this time
 
@@ -98,7 +98,9 @@ And we've:
 
 - Made a [Kids Spotify Playlist!](https://open.spotify.com/playlist/6K0nzmhCSZzintgnJGVhQn?si=ia--dGEfR2mbMqlIxbdDQw)
 
-Schooling has been great from Mia's teacher and I've really enjoyed teaching her about phonics, maths, reading lots of stories, and making up counting games. Also doing many jigsaw puzzles with the kids. So I'm learning how to be a better parent for sure.
+![alt text](/assets/2020-05-21/home-school.jpg "Home school"){:width="500px"}
+
+We've had amazing support from the school with lots to do, and no pressure to do anything. I've enjoyed teaching Mia about phonics with [Geraldine the Giraffe](https://www.youtube.com/watch?v=OyrYDitif1o), maths, reading lots of stories, and making up counting games. Also doing many jigsaw puzzles with the kids. So I'm learning how to be a better parent for sure!
 
 ## Bad Things
 
@@ -112,7 +114,7 @@ Schooling has been great from Mia's teacher and I've really enjoyed teaching her
 
 ## What we do
 
-- During the week we split 50% work and 50% looking after the kids
+- During the week we split 50% work and 50% school / play with the kids
 
 - Go out for runs
 
@@ -172,11 +174,15 @@ Wine and beer are great, but it is very temping to drink loads. I'm generally ha
 
 ## Mood and coping with stuff
 
+![alt text](/assets/2020-05-21/spider.jpg "Spider"){:width="400px"}
+
+See the joy in exploring and finding things out (Mia wasn't scared!)
+
 To some degree this is like being on expedition with big highs (well not many) and big lows (yes quite a lot). So here are a few thoughts:
 
 - Be kind to people (bring wife cups of tea)
-  - help people on Twitter / Reddit / Stackoverflow
-  - talk to people / reach out
+  - Help people on Twitter / Reddit / [Stack Overflow](https://meta.stackoverflow.com/questions/321191/how-is-stack-overflow-the-site-spelled)
+  - Talk to people / reach out
 - Be kind to yourself
   - Read books
   - Go running
