@@ -1,6 +1,6 @@
 ---
 layout: post
-title: COVID-19 Lockdown in the UK - coping as a family 
+title: COVID-19 Lockdown and coping with a young family 
 description: How we are coping as a young working family during lockdown. With 2 words - Don't Panic!
 #menu: review
 categories: COVID-19
