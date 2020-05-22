@@ -204,6 +204,8 @@ However this is a massive worry, as what about the health of our kids.
 
 It has come to light today that our nursery are having all staff wear facemasks and the single allowed parent wont be allowed in. This sounds like a scary proposition for a child - akin to being dropped off at an asylum every day.
 
+[Article on 22nd May by Sage Committee](https://www.theguardian.com/education/2020/may/22/scientists-warn-1-june-too-early-schools-reopen-england-coronavirus-track-trace) suggesting the longer we wait, the safer it will be
+
 ## What I want to keep doing
 
 I would like to remember some of the good parts of lockdown, so for my future self I'd like to:
