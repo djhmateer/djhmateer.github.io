@@ -25,13 +25,21 @@ Scott Hanselman, developer, speaker and all round good guy who has kids, [tweete
 
 It was good to know other people are finding times tough. It helped me.
 
-## Keeping up to date with facts
+## Facts and Research
 
 I like to keep up to date with what is really happening with [the COVID-19 pandemic](https://en.wikipedia.org/wiki/COVID-19_pandemic). In the UK I keep an eye on:
 
 [coronavirus.data.gov.uk](https://coronavirus.data.gov.uk/) which has charts I trust (as much as possible)
 
 ![alt text](/assets/2020-05-21/deaths-in-uk.jpg "Deaths in UK"){:width="500px"}
+
+[Short term forecasts - academic updated around 18th May](https://mrc-ide.github.io/covid19-short-term-forecasts/index.html#introduction) This looks promising and fairly accurate so far.
+
+### School related
+
+[From UK Research and Innovation's 11th May article](https://coronavirusexplained.ukri.org/en/article/und0008/) about children under the age 18
+
+[Article on 22nd May by Sage Committee](https://www.theguardian.com/education/2020/may/22/scientists-warn-1-june-too-early-schools-reopen-england-coronavirus-track-trace) suggesting the longer we wait, the safer it will be
 
 ## Don't Panic
 
@@ -187,7 +195,7 @@ To some degree this is like being on expedition with big highs (well not many) a
   - Read books
   - Go running
 
-## Should we send our kids back to School / Nursery 
+## Should we send our kids back to School/Nursery
 
 It feels good to know and see other countries coming out of lockdown. The biggest things I'm looking forward to are:
 
