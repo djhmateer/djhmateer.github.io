@@ -13,11 +13,13 @@ I've always wanted to have a products business! Like many developers I really en
 
 This article is part of a series
 
-1 this one  
-2 [How to start freelancing / contracting / consulting](/2019/07/18/How-to-start-Freelancing-and-Contracting)  
-3 [Starting a SaaS company book reviews](/2019/07/18/Starting-a-SaaS-company-book-reviews)  
-4 [Startup company podcasts and people](/2019/07/26/Startup-company-podcasts-and-people)
-5 [Startup nomenclature]
+- this one  
+- [How to start freelancing / contracting / consulting](/2019/07/18/How-to-start-Freelancing-and-Contracting)  
+- [Starting a SaaS company book reviews](/2019/07/18/Starting-a-SaaS-company-book-reviews)  
+- [Startup company podcasts and people](/2019/07/26/Startup-company-podcasts-and-people)
+- [Startup nomenclature]
+- [Make Book]
+- [GitHub Curated list of Marketing for Engineers](https://github.com/LisaDziuba/Marketing-for-Engineers)
 
 I've worked for many companies over the last 20 years, and done consulting/freelancing. I've had 1 'product' where a company asked me to host their very old classic asp application, which I begrudgingly did. Over the next 6 years I gradually put the price up, and smiled every month, as I'd automated all the day-to-day work, and the biggest hassle was sending invoices every month.  
 

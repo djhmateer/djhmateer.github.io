@@ -35,6 +35,8 @@ I like to keep up to date with what is really happening with [the COVID-19 pande
 
 [Short term forecasts - academic updated around 18th May](https://mrc-ide.github.io/covid19-short-term-forecasts/index.html#introduction) This looks promising and fairly accurate so far.
 
+[BBC News Article - 24th May](https://www.bbc.co.uk/news/health-52758024) "If your risk of dying was very low in the first place, it still remains very low. As for children, the risk of dying from other things - cancer and accidents are the biggest cause of fatalities - is greater than their chance of dying if they are infected with coronavirus."
+
 ### School related
 
 [From UK Research and Innovation's 11th May article](https://coronavirusexplained.ukri.org/en/article/und0008/) about children under the age 18
