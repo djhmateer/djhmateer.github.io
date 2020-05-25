@@ -54,7 +54,7 @@ Some things we can control, other things we just have to be smart, so:
 - My wife has an 80% job at university as a lecturer in Conservation Biology
 - I recently started my own company as a freelance/contract C# developer and to develop my own SaaS products
 - Daughter Mia is 5 and is in reception year at school
-- Son Henry is nearly 4 and was at nursery 4 days a week and with my wife staying home on Fridays.
+- Son Henry is nearly 4 and was at nursery 4 days a week and with my wife staying home on Fridays
 
 ![alt text](/assets/2020-05-21/kids-pools.jpg "Kids swimming pools"){:width="600px"}
 
@@ -132,11 +132,11 @@ We've had amazing support from the school with lots to do, and no pressure to do
 
 - Meditate - [Headspace app](https://www.headspace.com/)
 
-- Don't worry about spending on: Netflix, Amazon Prime, Disney+, YouTube, Spotify... it keeps us happy
+- Don't worry about spending money on: Netflix, Amazon Prime, Disney+, YouTube, Spotify... it keeps us happy
 
 ![alt text](/assets/2020-05-21/red-green.jpg "The board where good/behaviour is noted"){:width="600px"}
 
-Mia got a yellow face on the board for not turning off the Kindle Fire this morning when asked to. This board is a great motivator to encourage good listening. It helps us reatin some sense of order, and hopefully to stop the kids going feral.
+Mia got a yellow face on the board for not turning off the Kindle Fire this morning when asked to. This board is a great motivator to encourage good listening. It helps us retain some sense of order, and hopefully to stop the kids going feral.
 
 ## Home office setup
 
@@ -225,11 +225,11 @@ I would like to remember some of the good parts of lockdown, so for my future se
 - Not do too much (in terms of clubs for kids)
 - Have time to do nothing with kids and myself
 
-Have a free calendar is great!
+Having a free calendar is great!
 
 - Don't spend so much on convenience food
-  - its fun to cook own lunches
-  - Bread cook
+  - It's fun to make our own fresh healthy lunches
+  - Baking our own bread
   - Omelettes
   - Eggy bread (see the amazing free [MySaffronApp](https://www.mysaffronapp.com/) for a great place to store your recipes)
 
