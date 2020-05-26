@@ -31,6 +31,8 @@ I like to keep up to date with what is really happening with [the COVID-19 pande
 
 [coronavirus.data.gov.uk](https://coronavirus.data.gov.uk/) which has charts I trust (as much as possible)
 
+[Google graphs - updated frequently](https://news.google.com/covid19/map?hl=en-GB&gl=GB&ceid=GB:en) See trends in different countries
+
 ![alt text](/assets/2020-05-21/deaths-in-uk.jpg "Deaths in UK"){:width="500px"}
 
 [Short term forecasts - academic updated around 18th May](https://mrc-ide.github.io/covid19-short-term-forecasts/index.html#introduction) This looks promising and fairly accurate so far.
