@@ -23,7 +23,7 @@ This page has 7 problems on it:
 
 <p><a href="/test2">test2</a> test 2 page</p>
 
-[A forgotton empty link using markdown]()  
+[A forgotten empty link using markdown]()  
 
 ## Good
 
