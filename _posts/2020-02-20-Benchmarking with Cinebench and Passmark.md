@@ -113,6 +113,14 @@ So in total, a doubling a power (roughly) for a modern day system.
 
 [GPU-Z](https://www.techpowerup.com/download/techpowerup-gpu-z/) for gpu temps and load  
 
+## Benchmark when choosing a PC 2020
+
+[Below links are from Coding horror 2020 building a small PC](https://blog.codinghorror.com/building-a-pc-part-ix-downsizing/#discourse-comments)
+
+[HW Monitor](https://www.cpuid.com/softwares/hwmonitor.html)
+
+[Core Temp](https://www.alcpu.com/CoreTemp/)
+
 ## Conclusion
 
 Older machines are more than powerful enough for my needs, however I will keep hardware fresh to keep learning and made sure lack of power never gets in my way.
