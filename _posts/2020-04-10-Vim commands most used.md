@@ -94,6 +94,8 @@ I - insert at beginning of line
 
 [Vmail for Gmail](https://github.com/danchoi/vmail)
 
+[Mutt](https://medium.com/@itsjefftong/mutt-gmail-59447a4bffef)
+
 ## Other lists
 
 [Greg Hewgill on Stack Overflow](https://stackoverflow.com/a/5400978/26086)
