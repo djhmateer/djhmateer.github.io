@@ -94,7 +94,7 @@ I - insert at beginning of line
 
 [Vmail for Gmail](https://github.com/danchoi/vmail)
 
-[Mutt](https://medium.com/@itsjefftong/mutt-gmail-59447a4bffef)
+[Mutt](https://medium.com/@itsjefftong/mutt-gmail-59447a4bffef) and [Reddit thread on setting up with Gmail too](https://www.reddit.com/r/vim/comments/3ruqh0/mail_and_vim/)
 
 ## Other lists
 
