@@ -90,6 +90,10 @@ I - insert at beginning of line
 
 [VSCodeVim Roadmap](https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md) has shows what commands are implemented in my favourite text editor!
 
+## Mail and Vim
+
+[Vmail for Gmail](https://github.com/danchoi/vmail)
+
 ## Other lists
 
 [Greg Hewgill on Stack Overflow](https://stackoverflow.com/a/5400978/26086)
