@@ -43,8 +43,6 @@ I mistakenly thought using some old phones would be a good idea. They didn't get
 
 [mobilerepeater.co.uk](https://www.mobilerepeater.co.uk/blogs/boost-signal/iphone-signal-booster-guide) looks like a good start for boosting a signal.
 
-[Specifically this one](https://www.mobilerepeater.co.uk/collections/all-mobileboosters/products/mr-4g-pro-kit-4g-data-ee) may be worth trying for fun.
-
 ## Links
 
 [SpeedTest.net](https://www.speedtest.net/) on the mobile phone gives a good idea of speed
