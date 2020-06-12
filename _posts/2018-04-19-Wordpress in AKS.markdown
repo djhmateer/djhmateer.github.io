@@ -12,24 +12,27 @@ sitemap: true
 This article details setting up a Wordpress instance in Azure Kubernetes Service (AKS). I will show you how to setup AKS then go step by step until we have a working Wordpress installation with SSL and appropriate redirects.
 
 ## Background
+
 We had an issue where an existing [Wordpress](https://wordpress.org/) installation was years out of date and could not be updated because it was running a version of Wordpress called [Project Nami](http://projectnami.org/). This meant that some plugins wouldn't work and therefore the entire application was not updated.  
 
-It had become very slow (5s to load the home page).   
+It had become very slow (5s to load the home page).
 
 ## What we considered
+
 We looked at many options including shared hosting, dedicated hosting, a custom VM, a VM running Docker, and orchestrated Docker using Kubernetes (commonly shortened to K8s).
 
 We ran a VM running Docker for many months as a test server - essentially a VM with Docker installed using docker-compose to run Wordpress and MySQL in different containers.
 
+## Why host in Docker and K8s
 
-## Why host in Docker and K8s?
 - Fully scripted and source controllable deployment
 - Easy to deploy to dev/test/live
 - Managed Linux machine on live
-- Security - easy to update 
+- Security - easy to update
 - Cost - higher density of applications on VMs
 
-## What are we using?
+## What are we using
+
 Azure Kubernetes Service (AKS)  
 Azure managed MySQL  
 A single node cluster with an Azure attached disk for persistence  
@@ -38,10 +41,10 @@ Nginx reverse proxy (includes enforcing https)
 Nginx server (enforces www)  
 
 ## Setting up the AKS Cluster
+
 I use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) tool to script all the building in Azure. At the time of writing the version is 2.0.33. 
 
-
-```
+```bash
 az account show
 
 az login
@@ -57,7 +60,7 @@ az aks create -n aks -g aksrg -c 1 -k 1.9.6
 # get aks versions and vm sizes
 az aks get-versions -l westeurope -o table
 az vm list-skus --location westeurope -o table
-``` 
+```
 
 ![ps](/assets/2018-04-24/cost.png)
 
@@ -72,9 +75,12 @@ The aks resource group has been created and an automatically created group which
 and the Worker (previously called Minion in K8s) VM is here:
 
 ![ps](/assets/2018-04-19/aks3.png)
+
 ## Dashboard
+
 I find the dashboard useful - mostly to see what is waiting to happen and if the cluster is ready. It's also a great way to look around and see how the different parts of Kubernetes fit together.
-```
+
+```bash
 # dashboard
 az aks browse -n aks -g aksrg
 
@@ -93,13 +99,15 @@ k config use-context aks
 k get po
 k get all
 ```
+
 [Install Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)  
 If you ever get unauthorised using kubectl, try deleting the folder C:\Users\yourname\\.kube
 
 ![ps](/assets/2018-04-19/dash.png)
 
 If you ever get strange permissions issues (I did after an upgrade of Kubernetes) run this script  
-```
+
+```yml
 # dashboard-admin.yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
@@ -117,13 +125,12 @@ subjects:
   namespace: kube-system
 ```
 
-
 My work network seems to drop the tunnel after a few minutes.
 ![ps](/assets/2018-04-19/port.png)
 
 Making a simple keepalive app to hit the site worked for me:
 
-```
+```cs
 static void Main()
 {
   while (true)
@@ -143,13 +150,14 @@ static void Main()
 // https://stackoverflow.com/a/44074296/26086
 dotnet publish -c Release -r win10-x64
 ```
+
 I linked the output of publish above to a ka alias, and instead of using kubectl I use k [Cmder aliases](/cmder/2018/01/30/Cmder-Shell.html)  
 
+## 0.Reverse Proxy
 
-## 0.Reverse Proxy 
 We are going to use [Nginx](https://github.com/kubernetes/ingress-nginx) as a reverse proxy to:
 
-- Allow multiple websites on this cluster    
+- Allow multiple websites on this cluster
 - Have a default backend
 - Enforce https when calling a website  
 - Enforce www (ie https://hoverflylagoons.co.uk will go to https://www.hoverflylagoons.co.uk)  
@@ -162,24 +170,27 @@ After upgrading my cluster and getting the error:
 > It seems the cluster it is running with Authorization enabled (like RBAC) and there is no permissions for the ingress controller. Please check the configuration
 
 Following the [instructions](https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md)
-```
+
+```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
 
 ```
+
 And I **don't** use any of the below:
 
-```
+```yml
 # namespace.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
   name: ingress-nginx
 ```
+
 Useful to put these following helper parts in their own namespace. Once these are setup they are rarely touched again - we can get on with deploying our own apps.
 
-```
+```yml
 # configmap.yaml
 kind: ConfigMap
 apiVersion: v1
@@ -202,8 +213,9 @@ metadata:
   namespace: ingress-nginx
 ```
 
+then
 
-```
+```yml
 # default-backend.yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -261,9 +273,10 @@ spec:
     app: default-http-backend
 
 ```
+
 So this has created a Service and a Deployment for the default-backend which will catch anything hitting this server which isn't recognised by a host header eg www.hoverflylagoons.co.uk. It also acts as a healthcheck endpoint for K8s to see if this node is alive.
 
-```
+```yml
 # ingress-nginx.yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -647,11 +660,12 @@ spec:
         - containerPort: 80
       imagePullSecrets:
       - name: davemazurecr
-      
 ```
-For simplicity I've used a single service principal (admin). [Here](https://thorsten-hans.com/how-to-use-a-private-azure-container-registry-with-kubernetes-9b86e67b93b6) are some thoughts and links on how to make it more secure.
+
+For simplicity I've used a single service principal (admin). [Here](https://thorsten-hans.com/how-to-use-private-azure-container-registry-with-kubernetes) are some thoughts and links on how to make it more secure.
 
 ## 4.HTTPS Manual Certificate Install
+
 All websites should use HTTPS now. DNSimple who I use, make it easy to reqest a LetsEncrypt cert manually, so I'll show this first, and how to wire it up. Manually installing certs is still normal in my day job. I'll show how to get K8s to auto install certs too.
 
 Taken from dnsimple - "In order to install a certificate, you need 3 elements: the primary certificate, the certificate private key and the intermediate certificates.
