@@ -161,7 +161,7 @@ These seem quite low level
 
 ## Extending the board
 
-There are 2 [click board sockets](https://www.mouser.co.uk/new/mikroelektronika/mikroelektronikaClick/) which [seems like a standard](https://www.mikroe.com/mikrobus)
+There are 2 [click board sockets](https://www.mouser.co.uk/new/mikroe/mikroelektronikaClick/) which [seems like a standard](https://www.mikroe.com/mikrobus)
 
 ![alt text](/assets/2019-08-05/5.png "Extending"){:width="600px"}
 
