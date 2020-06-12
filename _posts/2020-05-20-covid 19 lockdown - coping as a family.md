@@ -245,6 +245,8 @@ Having a free calendar is great!
 
 [British Medical Journal](https://www.bmj.com/content/369/bmj.m1785) - skies are bluer, fewer cars crashing, crime is falling and some other infectious diseases are fading from emergency departments.
 
+[VOX Article](https://www.vox.com/future-perfect/2020/6/9/21279258/coronavirus-pandemic-new-quarantine-habits) which [Barack Obama Tweeted](https://twitter.com/BarackObama): It’s too early to tell if it’s permanent, but the changes brought on by COVID-19 are forcing many of us to reflect on what really matters in our lives.
+
 ## Conclusion
 
 Good luck to us all in keeping safe and well - physically and emotionally.
