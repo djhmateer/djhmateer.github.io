@@ -49,6 +49,12 @@ I mistakenly thought using some old phones would be a good idea. They didn't get
 
 [OpenSignal](https://www.opensignal.com/) provide independent maps and data on signal coverage.
 
+## WiFi Calling
+
+**Update 19th June 2020** - As the signal in my house seems to be getting worse (perhaps on rainy days), I'm giving WiFi calling a shot on Three as they are the only ones to offer it on a pay as you go contract.
+
+The process has not been painless and transferring my old number has not worked, so have tried the form again and will see. Even downloading the app onto my phone I couldn't do a live chat to them (the app kept crashing). I tried calling their helpline on 333 over WiFi calling which seemed to work well (there is hope!). But couldn't seem to get anyone to answer.
+
 ## Conclusion
 
 Chatting to friends in the know there are some opinions (for the SE of England anyway)
