@@ -4,9 +4,9 @@ title: How to get your first job in Programming
 description: As an old programmer I've been asked a few times how I got started in the business. Passion, people, marketing yourself, talking to other programmers, twitter, linkedin, and Project Euler!
 menu: review
 categories: Career 
-published: false 
-comments: false     
-sitemap: false
+published: true 
+comments: true     
+sitemap: true
 image: /assets/2020-06-26/programmer.jpg
 ---
 
