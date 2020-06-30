@@ -80,7 +80,7 @@ This is running the azure-cli shell script.
 <!-- ![alt text](/assets/2020-06-30/low-memory.jpg "Low Memory"){:width="500px"} -->
 ![alt text](/assets/2020-06-30/low-memory.jpg "Low Memory")
 
-I've seen this every now and again when running a super low powered VM where is gets hung on doing apt-updates and running out of memory.
+I've seen this every now and again when running a super low powered VM where is gets hung on doing apt-updates and running out of memory. It never seems to recover. Just run the script again, or use a higher powered VM.
 
 ## Cloud-init
 
