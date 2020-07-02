@@ -53,32 +53,50 @@ These are the kinds of questions going through a potential employers mind as the
 - Good haircut
 - Lay off the garlic / booze sessions for a while...
 
-## CV / Resume
+## CV / Resume / Online Portfolio
 
 - [Something short is good](https://hmemcpy.com/cv.pdf)
 - What about a resume website on Github Pages? [Themeforest CV/Resume Templates](https://themeforest.net/category/site-templates/specialty-pages?sort=date&tags=resume,cv&term=resume#content) and [this one](https://preview.themeforest.net/item/porto-responsive-html5-template/full_screen_preview/4106987?_ga=2.48266853.2118312912.1568632778-1690105632.1568283525) seem interesting
+- Have a portfolio page that is fast and loads everything into a small space (ie not multiple pages), and works on mobile.
+
+> Having a portfolio that loads fast and can really throw everything in a small space makes a huge difference. This was a mistake I made first time around. In my first in-person interview, the only portfolio I had was on Heroku and they initially thought it didn’t work because it took so long to load(non - paid server spinning up after being idle). It also broke when they tested the mobile size. That being said, they seemed to like me and gave me a call the next day. (jm)
 
 ## Go to local user groups
 
-- This is a wonderful way to meet people and get your foot in the door. [meetup.com](https://meetup.com) is a good place to search for local groups.
+- This is a wonderful way to meet people and get your foot in the door
+- [meetup.com](https://meetup.com) is a good place to search for local groups.
 
-## Hard Skills
+## Hard Skills - Side Projects
 
 I've not talked about hard skills yet which may seem surprising, however so much is a about what I've talked about above and if you have a passion to learn then your current hard skills I'd say are less important.
 
 My most memorable interview was when the candidate said:
 
-> "I've got a demo a project I'm working on in my spare time, and I've bought it along on my laptop. Want to see it?"
+> "I've got a demo a project I'm working on in my spare time, and I've bought it along on my laptop. Want to see it?" (dh)
 
 He got the job!
 
 So having fun side projects shows you have passion for something.
+
+> "Start on some projects, that's where I felt like I learned the most by far" (jm)
+
+## Courses
+
+[Pluralsight](https://www.pluralsight.com/paths/html5) is a subscription based video library with consistent quality videos. Around $30USD per month I really rate it and have used it for many years. The the learning ASP.NET MVC videos have taught me so much
+
+[I've been told Udemy has some good content](https://www.udemy.com/) however they [still have piracy issues](https://twitter.com/troyhunt/status/1102905241027006464?lang=en) as far as I'm aware and have had for a number of years, so unfortunately I boycot them.
+
+[YouTube](https://www.youtube.com/watch?v=_uQrJ0TkZlc) is a great resource. This linked Python video has over 11million views.
 
 ## Fun programming challenges
 
 [Project Euler](https://projecteuler.net/archives) is a wonderful set of programming challenges. When I'm learning a new language I often go back to the first question and start again. Or if I'm trying a [new style of programming](/2018/09/20/Improve-Programming-using-Project-Euler)
 
 [https://codegolf.stackexchange.com/](https://codegolf.stackexchange.com/) is a interesting place to hang out too.
+
+[https://www.hackerrank.com/](https://www.hackerrank.com/) has good challenges.
+
+> "Even 15 mintutes a day of those challenges made me feel like I was improving" (JJ)
 
 ## Do you use GitHub
 
@@ -97,7 +115,7 @@ Answering others questions is a wonderful challenge
 - Follow people in your local area that look interesting
 - Follow industry leaders eg [@shanselman](https://twitter.com/shanselman) in C#, [@troyhunt](https://twitter.com/troyhunt) in security, [@ploeh](https://twitter.com/ploeh) for functional programming, [@nick_craver](https://twitter.com/Nick_Craver) for SO, [@stevejgordon](https://twitter.com/stevejgordon) for C#, [@mikehadlow](https://twitter.com/mikehadlow) for C#, [@richcampbell](https://twitter.com/richcampbell) and [@carlfranklin](https://twitter.com/carlfranklin) dotnetrocks [podcast](https://dotnetrocks.com/).
 
-- Ask politely for others to help in getting your first job eg look at these conversations: 
+- Ask politely for others to help in getting your first job eg look at these conversations:
 
 [https://twitter.com/hmemcpy/status/1163519415620476928](https://twitter.com/hmemcpy/status/1163519415620476928)
 
