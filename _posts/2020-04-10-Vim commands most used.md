@@ -15,7 +15,7 @@ image: /assets/2020-04-10/10.jpg
 
 [I recently found a way to use Vim with my favourite note taking application OneNote](/2020/04/10/OneNote-with-Vim) so I thought I'd revisit my favourite most used commands.
 
-```
+```bash
 CapsLock - mapped to escape
 
 h,j,k,l - move cursor
@@ -90,9 +90,29 @@ I - insert at beginning of line
 
 [VSCodeVim Roadmap](https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md) has shows what commands are implemented in my favourite text editor!
 
+## Vimium
+
+[Vimium Extension for Chrome and Firefox](https://vimium.github.io/)
+
+```bash
+j - scroll down
+k - scroll up
+gg - scroll to top of page
+G - scroll to bottom of page
+
+f - follow link in current tab
+F - follow link in new tab
+
+H - back
+
+? - help
+
+```
+
 ## Mail and Vim
 
 [Vmail for Gmail](https://github.com/danchoi/vmail)
+
 
 [Mutt](https://medium.com/@itsjefftong/mutt-gmail-59447a4bffef) and [Reddit thread on setting up with Gmail too](https://www.reddit.com/r/vim/comments/3ruqh0/mail_and_vim/)
 

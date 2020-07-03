@@ -125,10 +125,11 @@ Answering others questions is a wonderful challenge
 
 This could be a good resource and always worth trying. [I'm here](https://www.linkedin.com/in/dave-mateer-6274942/) if I can help.
 
-## Resources
+## Resources and other stories
 
-- Get good at googling!
+- Get good at googling (google is my mentor!)
 - [The Joel Test](https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/) written 20 years ago and still very relevant!
+- [Ela Mościcka - journey in software engienering](https://www.linkedin.com/pulse/my-journey-software-engineering-ela-mo%C5%9Bcicka/)
 
 Here is my cheeky son wishing you good luck on your adventures in programming!
 
