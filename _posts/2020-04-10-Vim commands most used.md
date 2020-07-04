@@ -34,8 +34,6 @@ dw - delete word
 u - undo
 <C - r> - redo
 
-
-
 i - insert text at cursor
 gg - go to top of document
 G - go to end of document
@@ -96,6 +94,11 @@ I - insert at beginning of line
 
 [VSCodeVim Roadmap](https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md) has shows what commands are implemented in my favourite text editor!
 
+```bash
+<C S e> - Explorer pane
+l or enter - back to editor pane
+```
+
 ## Vimium
 
 [Vimium Extension for Chrome and Firefox](https://vimium.github.io/)
@@ -111,8 +114,10 @@ F - follow link in new tab
 
 H - back
 
-? - help
+/ - search
+' - search on google serach page (puts cursor back into serach box)
 
+? - help
 ```
 
 ## Mail and Vim
