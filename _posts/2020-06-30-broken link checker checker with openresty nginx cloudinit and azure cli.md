@@ -1,28 +1,36 @@
 ---
 layout: post
 title: Broken Link Checker Checker 
-description: 
+description: Broken links in websites annoy me! This is a project to help test my broken link checker tool.. it is a checker checker. Useful to see request headers and edge cases.
 menu: review
 categories: nginx openresty azurecli 
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2020-06-26/programmer.jpg
+image: /assets/2020-06-30/crying.jpg
 ---
 
 ![alt text](/assets/2020-06-30/crying.jpg "Photo by Marcos Paulo Prado from unsplash"){:width="500px"}
-
-[Source code for this project](https://github.com/djhmateer/brokenlinkcheckerchecker)
 
 Broken links in websites annoy me.
 
 You come to a website and expect quality.
 
+I built a tool to help me check my broken link checker is working: [brokenlinkcheckerchecker.com](http://brokenlinkcheckerchecker.com).
+
+[Source code for this project](https://github.com/djhmateer/brokenlinkcheckerchecker)
+
+## Internal Links
+
 Internal links are easy to fix [like this one](/brokenurl) which will go to the sites 404 page. So when I realised this blog had lots of issues, I built a tool to crawl the site and find the broken links, look at the internal assets (css, js, pdf files etc..). My tool is very fast and does great highlighting of where the issues are eg:
 
-However I then expanded the tool to make sure the external links were there ie not a 404 error, or a network error (ie a mis-typed domain name). And this is where the edge cases started.
+## External Links
 
-I started a collection of edge case links which don't play as expected, and have put them in a [separate website](/). I use this website to check my Broken Link Checker.
+I expanded the tool to make sure the external links were there ie not a 404 error, or a network error (ie a mis-typed domain name). And this is where the edge cases started.
+
+The website contains external edge case links which don't play as expected, and have put them in a [brokenlinkcheckerchecker.com](http://brokenlinkcheckerchecker.com). I use this website to check my Broken Link Checker.
+
+
 
 ## Request Headers
 
@@ -68,6 +76,15 @@ I constantly rebuild my server every time I do updates
 - I use ssh keys so never need to remember passwords
 
 [github.com/djhmateer/brokenlinkcheckerchecker](https://github.com/djhmateer/brokenlinkcheckerchecker) is where all the source is.
+
+## Timings
+
+It takes under 3 minutes to build the infrastructure onto Azure ie creating Resource Groups, vnets, network rules, and creating the VM.
+
+It takes a further 2.5 minutes for the cloud-init scripts to pull install packages and configure the server and do a reboot. This depends on the power of the VM used.
+
+<!-- ![alt text](/assets/2020-06-30/blcc2.jpg "Website working"){:width="500px"} -->
+![alt text](/assets/2020-06-30/blcc2.jpg "Website working")
 
 ## Azure-CLI
 
