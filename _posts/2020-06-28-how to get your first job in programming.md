@@ -98,6 +98,9 @@ So having fun side projects shows you have passion for something.
 
 > "Even 15 mintutes a day of those challenges made me feel like I was improving" (JJ)
 
+[https://www.codewars.com/](https://www.codewars.com/)
+
+
 ## Do you use GitHub
 
 Being able to use Git is a super important skill these days.
@@ -128,6 +131,9 @@ This could be a good resource and always worth trying. [I'm here](https://www.li
 ## Resources and other stories
 
 - Get good at googling (google is my mentor!)
+- [https://www.codementor.io/](https://www.codementor.io/) looks interesting
+- [https://codeshare.io/](https://codeshare.io/) live share coding interview 
+
 - [The Joel Test](https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/) written 20 years ago and still very relevant!
 - [Ela Mościcka - journey in software engienering](https://www.linkedin.com/pulse/my-journey-software-engineering-ela-mo%C5%9Bcicka/)
 

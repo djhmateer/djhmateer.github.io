@@ -23,6 +23,7 @@ w - move forward by a word
 b - move back by a word
 { - move back by paragraph
 } - move forward by paragraph
+:n - go to line n
 
 o - start writing on next line
 x - delete character
@@ -31,6 +32,10 @@ cc - change whole line
 dw - delete word
 . - repeat last (useful for deleting a lot)
 u - undo
+<C - r> - redo
+
+
+
 i - insert text at cursor
 gg - go to top of document
 G - go to end of document
@@ -46,6 +51,7 @@ yi( - yank inside ()
 dt" - delete up to "
 
 rp - replace character with p
+R - replace mode
 
 J - join next line to this one
 ~ - capitalise
@@ -121,6 +127,8 @@ H - back
 [Greg Hewgill on Stack Overflow](https://stackoverflow.com/a/5400978/26086)
 
 [My post 3 years ago on Vim](/2018/02/21/VIM)
+
+[https://devhints.io/vim](https://devhints.io/vim)
 
 ## Windows Keyboard Repeat
 
