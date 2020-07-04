@@ -62,6 +62,18 @@ Better!
 
 [Scott Hanselman has a good post on this](https://www.hanselman.com/blog/MakingATinyNETCore30EntirelySelfcontainedSingleExecutable.aspx) but I couldn't get it working as he did with all config in the .csproj file.
 
+## 4th July 2020 Update
+
+After a strange error that I'm not sure why happened:
+
+"An assembly specified in the application dependencies manifest (d.deps.json) was not found:
+    package: 'runtimepack.Microsoft.NETCore.App.Runtime.win-x64', version: '3.1.3'
+    path: 'Microsoft.Win32.Registry.dll'"
+
+I recompiled the solution again using VS tooling which is nice:
+
+![alt text](/assets/2020-04-10/vs-publish.jpg "Publish from VS"){:width="600px"}  
+
 ## Conclusion
 
 It makes me very happy to be able to distribute a single .exe again for my console apps.
