@@ -56,11 +56,13 @@ I recommend using the [Firefox Add-Ons most popular](https://addons.mozilla.org/
 
 - [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm) and [GitHub source](https://github.com/gorhill/uBlock) is a [good wide spectrum blocker](https://github.com/gorhill/uBlock/wiki/Blocking-mode) for websites including filtering 'badware' - sites that put users at risk on installing adware etc..
 
+- [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) for vim shortcuts in Chrome and Firefox
+
 - [Open Graph Preview](https://chrome.google.com/webstore/detail/open-graph-preview/ehaigphokkgebnmdiicabhjhddkaekgh?hl=en) for testing if Twitter Card / Open Graph previews work
 
 - [Honey](https://chrome.google.com/webstore/detail/honey/bmnlcjabgnpnenekpadlanbbkooimhnj) for finding coupons. No idea if it works - am trying it. 10m+ users 155k stars.
 
-#### Update 16th May
+### Update 16th May
 
 Thank you to everone who got back to me with their favourites, with some of them being:
 
