@@ -238,6 +238,7 @@ I love the Chrome extensions I use daily:
 - [Google Search Keyboard Shortcuts](https://chrome.google.com/webstore/detail/google-search-keyboard-sh/iobmefdldoplhmonnnkchglfdeepnfhd)
 - [LastPass: Free Password Manager](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd) 
 - [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
+- [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
 
 The biggest problem I have on creating my own extensions is pushing to the Chrome Web Store and [being at their mercy](https://news.ycombinator.com/item?id=23168874). My ventures are more suited to being on a server.
 
