@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-permalink: /about/
+permalink: /about
 ---
 Dave lives near Brighton in England and works as a freelance .NET developer, mentor, and SaaS company entrepreneur.
 
@@ -9,9 +9,7 @@ Dave lives near Brighton in England and works as a freelance .NET developer, men
 
 ## Spring 2019
 
-Dave is speaking on Functional programming in C# including [Functional Brighton](https://www.meetup.com/Functional-Brighton/events/260140369/) where he will demo a Broken link checker written functionally. 
-
-<!-- [This is an example of a link which it should pickup!](https://www.meetup.com/Functional-Brighton/events/260140369/asdf/)   -->
+Dave is speaking on Functional programming in C# including [Functional Brighton](https://www.meetup.com/Functional-Brighton/events/260140369/) where he will demo a Broken link checker written functionally.
 
 ## DDD 2017, Microsoft, Reading
 
