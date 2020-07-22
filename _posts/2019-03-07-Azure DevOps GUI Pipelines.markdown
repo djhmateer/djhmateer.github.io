@@ -339,7 +339,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression
 
 ## Using a database
 
-SQL Server hosted on Azure 
+SQL Server hosted on Azure
 
 To get debug error messages on Test, use the environment variable:
 
@@ -361,4 +361,4 @@ PBI - Product Backlog Item
 
 We have looked at using the GUI for driving Azure DevOps.
 
-In the [next article we will look at driving the Pipeline from yml which is the recommended way]()
+In the [next article we will look at driving the Pipeline from yml which is the recommended way](/2019/03/21/Azure-DevOps-YAML-Pipelines)
