@@ -188,7 +188,15 @@ Is this way we can:
 
 ## Will this use multiple cores
 
+Yes, however it is way I used the Task's which can use multiple cores. Here is a [bashtop screenshot](/2020/05/02/Bashtop-linux-alternative-to-task-manager) of a crawler using Puppeteer (which takes a lot of resources to run as it is Chrome).
 
+![alt text](/assets/2020-07-22/bashtop1.jpg "A single Task"){:width="600px"}
+
+The crawler running 1 Task at a time
+
+![alt text](/assets/2020-07-22/bashtop2.jpg "A single Task"){:width="600px"}
+
+The crawler running 12 Tasks at a time, on an 8 core machine.
 
 ## DB Connections async all the way up
 
