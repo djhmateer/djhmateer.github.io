@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Concurrency with Async Await and Task
-description: 
+description: Asynchronous concurrency with async await and having multiple http connections. Controlling it with a list of Tasks.
 menu: review
 categories: Task Async Concurrency
 published: false 
@@ -9,7 +9,10 @@ comments: false
 sitemap: false
 image: /assets/2019-11-13/1.jpg
 ---
-I'm writing a broken link checker and need simultaneous http connections
+
+[![alt text](/assets/2020-07-22/runners.jpg "Photo by @slelham from Unsplash"){:width="600px"}](https://unsplash.com/@slelham)
+
+I'm writing a broken link checker and need simultaneous http connections, as 1 at a time is toooo slow :-)
 
 The 2 strategies I considered:
 
@@ -31,11 +34,15 @@ So I went with async await as I'm I/O bound with my http connections.
 Here are the salient parts of [Async programming with async and await - MS Docs](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/)
 
 - Code reads like a sequence of statements
-- But executes based on when a task completes
+- But the code path executes based on when a task completes
+
+> Async/await ... is not about threads. It's about suspending the execution awaiting for the result, and releasing resources for other code [source](https://stackoverflow.com/questions/25591848/async-await-multi-core)
+
+[C# under the hood async](https://www.markopapic.com/csharp-under-the-hood-async-await/) shows how the state machine works.
 
 ## Async Concurrency
 
-2 things happening together and not blocking the Main method. So there are not 2 threads.
+Let's code!
 
 ```cs
 static async Task Main(string[] args)
@@ -139,9 +146,7 @@ private static List<string> SetUpURLList() =>
 
 [Is async await concurrent](https://stackoverflow.com/a/7663734/26086) is a good question ie should I be worried about thread safety writing back to the downloadTasks? In this case no.
 
-Interestingly we can use Lists, Queues etc.. and don't need to use ConcurrentList, ConcurrentQueue in the async await world.
-
-I'm not passing a cancellation token (yet), and have commented out a line to add another task while still in the loop which works.
+Interestingly we can use `Lists`, `Queues` etc.. as behind the scenes it is all thread safe (the same thread!) just state machines and callbacks doing control flow.. We don't need to use `ConcurrentList` etc..
 
 I think this WhenAny solution is appropriate but [if there are too many tasks on the queue](https://devblogs.microsoft.com/pfxteam/processing-tasks-as-they-complete/) then it may not be. I'm going to limit the number of tasks for a different reason below.
 
@@ -160,12 +165,39 @@ else
 
 ## Limiting the tasks in a smarter manner
 
+We can use simple constructs to limit what goes into our downloadTask's list based on the baseUrl
+
+```cs
+// Dictionary of baseurl, number of items currently downloading,  we only want x connections per baseurl
+var dictionaryOfBaseUrlsCurrentlyRequesting = new Dictionary<string, int>();
+
+// then in the main program loop
+var numberOfConnectionsToBaseUrl = dictionaryOfBaseUrlsCurrentlyRequesting.GetOrCreateValue(urlProcessedBase, 1);
+
+if (numberOfConnectionsToBaseUrl <= maxConnectionsToBaseUrl && downloadTasks.Count <= maxDownloadTasks - 1)
+{
+    // add another task to downloadTasks
+}
+
+```
+
+Is this way we can:
+
+- Limit max number of connections to a domain to 6
+- Limit the max number of httpClient connections from the server to 200
+
+## Will this use multiple cores
 
 
 
-
-## Async all the way up
+## DB Connections async all the way up
 
 DB Connections are another I/O bound task where asynchronous concurrency is a good fit. Async await allows the thread not be blocked but must be async all the way.
 
 [Async await with Dapper article](/2018/01/18/Async-with-Dapper-and-Razor-Pages)
+
+## Summary
+
+> Asynchronous concurrency is a form of concurrency that does not require additional threads, and is an appropriate choice if you have I/O-bound code.
+
+For my I/O bound Http and DB calls async await concurrency is a good fit.
