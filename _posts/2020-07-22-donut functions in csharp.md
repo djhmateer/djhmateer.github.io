@@ -10,9 +10,11 @@ sitemap: false
 image: /assets/2020-07-22/donut.jpg
 ---
 
-![alt text](/assets/2020-07-22/donut.jpg "Photo by @acreativegangster from Unsplash"){:width="500px"}
+[![alt text](/assets/2020-07-22/donut.jpg "Photo by @acreativegangster from Unsplash"){:width="500px"}](https://unsplash.com/@acreativegangster)
 
 It's a good sign when you use something purely out of choice as it feels right, makes code cleaner (IMO) and easier to reason about.
+
+[Part 1 of my series on Functional Programming in C#](/2019/01/11/Learning-Functional-Programming-in-C-Sharp)
 
 I've got a function with does HttpRequests for my broken link checker. I've wrapped this function with a timer function so I can instrument it. This has proven to be super useful in keeping my functions small.
 
@@ -33,7 +35,7 @@ Essentially I'm aiming to:
 
 I find this helps to keep my code sane and helps to:
 
-> tame the ubiquitous beast of complexity
+> Tame the ubiquitous beast of complexity
 
 ## Timer Wrapper
 
@@ -57,7 +59,7 @@ public static (int, string) WithTimer(string input, Func<string, int> function)
     return (output, sw.ElapsedMilliseconds.ToString());
 }
 
-// Function that DoesSomething
+// Function
 public static int DoSomething(string input)
 {
     Thread.Sleep(500);
@@ -65,7 +67,9 @@ public static int DoSomething(string input)
 }
 ```
 
-## Async - real code
+The DoSomething function is easy to reason about, and is more testable with a simple input and output.
+
+## Timer Wrapper with Async
 
 Using the same principles here is some real code.
 
@@ -102,7 +106,15 @@ public static async Task<(RequestResult, string? html)>
 
 Here is a picture to show how the type signatures match up.
 
-![alt text](/assets/2020-07-22/signatures.jpg "Signatures"){:width="500px"}
+![alt text](/assets/2020-07-22/signatures.jpg "Signatures")
+
+I find this syntax hard to understand, so good indentation is important for me. This picture of how signatures match up helps. This is where C# gets messy and more functional languages like F# and Haskell are much more terse.
+
+[Async article on using Tasks to handle simultaneous http requests]()
+
+[Immutable Data objects / Smart Constructor / With strategy](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either#immutable-data-objects--smart-constructors)
+
+[The GetRequestResultAndHtml uses HttpCompletionOption](https://www.stevejgordon.co.uk/using-httpcompletionoption-responseheadersread-to-improve-httpclient-performance-dotnet) which has some interesting IDisposable needs, meaning this function does more that I'd like currently.
 
 ## TardisBank
 

@@ -10,15 +10,14 @@ sitemap: true
 image: /assets/2019-01-11/3.png
 ---
 
-![alt text](/assets/2019-01-11/3.png "The Orange book"){:width="300px"}
+[![alt text](/assets/2019-01-11/3.png "The Orange book"){:width="300px"}](https://www.manning.com/books/functional-programming-in-c-sharp)
 
-
-[Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is this article on how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
+[Part 1](/2019/01/11/Learning-Functional-Programming-in-C-Sharp) is how I started in FP in C# by learning LINQ and trying Project Euler puzzles.  
 [Part 2](/2018/09/20/Improve-Programming-using-Project-Euler) is a detailed look at the first Euler puzzle with [source for the first puzzle](https://github.com/djhmateer/FPInCSharpDemos) and [source code for the next 17 puzzles using Imperative and LINQ](https://davemateer.visualstudio.com/_git/Euler1)  
 [Part 3](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either) is making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext)  
-Notes Are my developer notes whilst working through the book (this article)
+[Notes](/2020/03/06/Orange-Book-Functional-Programming-in-C-Sharp) Is this article - my developer notes whilst working through the book
 
-[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  So in-depth that it took me 6 months to read the first 6 chapters, then a few years to write the blog post series linked above. 
+[Functional Programming in C# book](https://www.manning.com/books/functional-programming-in-c-sharp) is a very in depth book.  So in-depth that it took me 6 months to read the first 6 chapters, then a few years to write the blog post series linked above.
 
 I now routinely use FP concepts in my code and have never looked back.
 
