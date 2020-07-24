@@ -217,3 +217,6 @@ For my I/O bound Http and DB calls async await concurrency is a good fit.
 I love that I can treat the code as 'normal' without having to use multi-threading techniques and special collections which deal with locking.
 
 The secret sauce of async await gives us developers a huge amount of power!
+
+<br />
+<br />
