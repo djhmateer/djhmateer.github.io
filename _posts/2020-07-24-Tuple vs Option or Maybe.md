@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tuple desconstruction vs Option / Maybe / Either 
+title: Tuple deconstruction vs Option / Maybe / Either 
 description: 
 menu: review
 categories: Functional BrokenLinkChecker

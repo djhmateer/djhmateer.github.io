@@ -22,7 +22,7 @@ image: /assets/2019-01-11/6.jpg
 
 {% assign items = site.categories | sort %}
 {% for category in items %}
-  <h3>{{ category[0] }}</h3>
+  <h3 id="{{ category[0] }}">{{ category[0] }}</h3>
   <ul>
     {% for post in category[1] %}
       {% if post.menu != 'review' %}
