@@ -2,19 +2,19 @@
 layout: post
 title: Concurrency with Async Await and Task
 description: Asynchronous concurrency with async await and having multiple http connections. Controlling it with a list of Tasks.
-menu: review
-categories: Task Async Concurrency BrokenLinkChecker
-published: false 
-comments: false     
-sitemap: false
+#menu: review
+categories: Task C# Async Concurrency BrokenLinkChecker
+published: true 
+comments: true     
+sitemap: true
 image: /assets/2020-07-22/runners.jpg
 ---
 
 [![alt text](/assets/2020-07-22/runners.jpg "Photo by @slelham from Unsplash"){:width="700px"}](https://unsplash.com/@slelham)
 
-I'm writing a broken link checker and need simultaneous http connections, as 1 at a time is toooo slow :-)
+I'm [writing articles](/#BrokenLinkChecker) on developing a website broken link checker in C#. 
 
-The 2 strategies I considered:
+I need simultaneous http connections as 1 at a time is toooo slow :-) The 2 strategies considered were:
 
 - Multiple threads (synchronous concurrency)
 - Async await (asynchronous concurrency)
@@ -26,6 +26,8 @@ The 2 strategies I considered:
 > Asynchronous concurrency is a form of concurrency that does not require additional threads, and is an appropriate choice if you have I/O-bound code.
 
 So I went with async await as I'm I/O bound with my http connections whilst the crawler is working.
+
+This took my a while to get my head around, and a big thanks to [Tom Parslow](https://twitter.com/almostobsolete) for guidance.
 
 ## What is Async Await
 
