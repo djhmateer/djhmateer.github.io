@@ -24,8 +24,8 @@ The technique is called `Hole in the middle`, or `Donut` or more precisely is a 
 
 I've been using Functional style programming in C# for a few years, and you'll notice in the code samples below that:
 
-- I'm using Immutable data objects (more to follow on this) using the With construct. C#9 Data types not out yet.
-- I'm not using `Option` types, instead using C#8's nullability checking to help stop null ref exceptions
+- I'm using [Immutable data objects](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either#immutable-data-objects--smart-constructors) using the With construct as C#9 Data types not out yet.
+- I'm not using `Option` types, instead using C#8's null reference checking for safety.
 - I'm using tuples when there are 2 or 3 values to return
 
 Essentially I'm aiming to:
@@ -110,11 +110,19 @@ Here is a picture to show how the type signatures match up.
 
 I find this syntax hard to understand, so good indentation is important for me. This picture of how signatures match up helps. This is where C# gets messy and more functional languages like F# and Haskell are much more terse.
 
-[Async article on using Tasks to handle simultaneous http requests]()
+[Async article on using Tasks to handle simultaneous http requests](/2020/07/23/concurrency-async-await-and-task)
 
 [Immutable Data objects / Smart Constructor / With strategy](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either#immutable-data-objects--smart-constructors)
 
 [The GetRequestResultAndHtml uses HttpCompletionOption](https://www.stevejgordon.co.uk/using-httpcompletionoption-responseheadersread-to-improve-httpclient-performance-dotnet) which has some interesting IDisposable needs, meaning this function does more that I'd like currently.
+
+## Smart Contructor
+
+Here is the RequestResult class:
+
+```cs
+
+```
 
 ## TardisBank
 
