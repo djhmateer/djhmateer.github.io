@@ -1,6 +1,6 @@
 ---
 layout: post
-title: HttpClient
+title: HttpClient connection pooling
 description: 
 menu: review
 categories: HttpClient BrokenLinkChecker

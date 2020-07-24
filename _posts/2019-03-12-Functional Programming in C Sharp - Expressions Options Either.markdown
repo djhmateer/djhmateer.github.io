@@ -180,6 +180,47 @@ These act like [record types](https://fsharpforfunandprofit.com/posts/records/) 
 
 Why use the With to return a copy of an object when wanting to mutate it? [Good SO Question here](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
+## Update 2020 - 24th Jul
+
+I'm now using this concept a lot and generally have something like this:
+
+```cs
+public class RequestResult
+{
+    public Uri Uri { get; }
+    public HttpStatusCode? HttpStatusCode { get; }
+    public TimeSpan? TimeSpan { get; } // when just created can be a null timespan, or a blank link
+    public Exception? Exception { get; } // can be the exception for the initial call, or 2nd getting the content
+    public string? Message { get; } // eg Invalid Scheme 
+
+    public RequestResult(Uri uri, HttpStatusCode? httpStatusCode, TimeSpan? timeSpan = null, Exception? exception = null, string? message = null)
+    {
+        Uri = uri;
+        HttpStatusCode = httpStatusCode;
+        TimeSpan = timeSpan;
+        Exception = exception;
+        Message = message;
+    }
+
+    public RequestResult With(TimeSpan? timeSpan = null, Exception? exception = null, string? message = null) =>
+        new RequestResult(
+            Uri, // never change once created
+            HttpStatusCode, // never change once created
+            timeSpan ?? TimeSpan,
+            exception ?? Exception,
+            message ?? Message
+        );
+
+    public override string ToString() =>
+        $"requestResult: {Uri} {HttpStatusCode} " +
+        $"{(TimeSpan.HasValue ? TimeSpan.Value.TotalMilliseconds.ToString() : string.Empty)}ms " +
+        $"{Exception?.Message} {Exception?.InnerException?.Message} {Message}";
+}
+
+```
+
+This will get much simpler in C#9 [Records](https://anthonygiretti.com/2020/06/17/introducing-c-9-records/)
+
 ## Option type
 
 Many functional languages disallow null values, as null-references can introduce hard to find bugs. Option is a type safe alternative to null values [ref to a few words in this section](https://github.com/nlkl/Optional). As discussed above C#8 is [getting nullable and non-nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types) which should give similar safety.

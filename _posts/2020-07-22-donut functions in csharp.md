@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Hole in the middle - Donut Functions - Higher Order Function
-description: 
+title: Donut Functions - Hole in the middle - Higher Order Function
+description: Tame the ubiquitous beast of complexity. Donut function examples showing a timer and a db connection strategy.
 menu: review
 categories: Functional C# BrokenLinkChecker
 published: false 
@@ -12,9 +12,12 @@ image: /assets/2020-07-22/donut.jpg
 
 [![alt text](/assets/2020-07-22/donut.jpg "Photo by @acreativegangster from Unsplash"){:width="500px"}](https://unsplash.com/@acreativegangster)
 
+I'm [writing articles](/#BrokenLinkChecker) on developing a website broken link checker in C#. This is part of that series. Also
+[Part 1 of my series on Functional Programming in C#](/2019/01/11/Learning-Functional-Programming-in-C-Sharp).
+
 It's a good sign when you use something purely out of choice as it feels right, makes code cleaner (IMO) and easier to reason about.
 
-[Part 1 of my series on Functional Programming in C#](/2019/01/11/Learning-Functional-Programming-in-C-Sharp)
+## What is a Donut
 
 I've got a function with does HttpRequests for my broken link checker. I've wrapped this function with a timer function so I can instrument it. This has proven to be super useful in keeping my functions small.
 
@@ -30,10 +33,10 @@ I've been using Functional style programming in C# for a few years, and you'll n
 
 Essentially I'm aiming to:
 
-- Keeping functions small
-- Keeping everything immutable
+- Keep functions small (so easy to reason about)
+- Keep everything immutable (to prevent complexity)
 
-I find this helps to keep my code sane and helps to:
+ie:
 
 > Tame the ubiquitous beast of complexity
 
@@ -73,7 +76,9 @@ The DoSomething function is easy to reason about, and is more testable with a si
 
 Using the same principles here is some real code.
 
-My GetRequestResultAndHtml function takes 3 arguments - URI and HttpClient and URI. I am sharing a singleton of HttpClient across the lifetime of the request for [HttpClient connection pooling reasons](https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core)
+My GetRequestResultAndHtml function takes 3 arguments - `URI` and `HttpClient` and another `URI`.
+
+I am sharing a singleton of 'HttpClient' across the lifetime of the request for [HttpClient connection pooling reasons](https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core)
 
 ```cs
 // Calling code
@@ -108,23 +113,19 @@ Here is a picture to show how the type signatures match up.
 
 ![alt text](/assets/2020-07-22/signatures.jpg "Signatures")
 
-I find this syntax hard to understand, so good indentation is important for me. This picture of how signatures match up helps. This is where C# gets messy and more functional languages like F# and Haskell are much more terse.
+I find this picture helps and keeping to good indentation too.
 
-[Async article on using Tasks to handle simultaneous http requests](/2020/07/23/concurrency-async-await-and-task)
+This is where C# gets messy compared with more functional languages like F# and Haskell.
 
-[Immutable Data objects / Smart Constructor / With strategy](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either#immutable-data-objects--smart-constructors)
+[The GetRequestResultAndHtml uses HttpCompletionOption](https://www.stevejgordon.co.uk/using-httpcompletionoption-responseheadersread-to-improve-httpclient-performance-dotnet) which has interesting IDisposable needs meaning the above function does more that I'd like currently.
 
-[The GetRequestResultAndHtml uses HttpCompletionOption](https://www.stevejgordon.co.uk/using-httpcompletionoption-responseheadersread-to-improve-httpclient-performance-dotnet) which has some interesting IDisposable needs, meaning this function does more that I'd like currently.
+[Async article on using Tasks to handle simultaneous http requests](/2020/07/23/concurrency-async-await-and-task) dives into the above code exploring how I do the core of the broken link checker.
 
-## Smart Contructor
-
-Here is the RequestResult class:
-
-```cs
-
-```
+[Immutable Data objects / Smart Constructor / With strategy](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either#immutable-data-objects--smart-constructors) looks at how I implement the `RequestResult` above
 
 ## TardisBank
+
+Here is an example of using a Donut function to connect to the database.
 
 Interesting that some functions are not async yet return a Task eg ScheduleByAccount
 
@@ -154,8 +155,10 @@ public static Task<IEnumerable<Schedule>> ScheduleByAccount(string connectionStr
 }
 ```
 
-## DB Connection Wrapper
+## Conclusion
 
-![alt text](/assets/2019-11-13/32.jpg "Connection pool sharing")
-Shared connection for all that went to davemateer.com. New connections for google.co.uk and bbc.co.uk
+I regularly use Donut functions for timer instrumentation, even though it looks quite complex to begin with. In the long run it helps to:
 
+> Tame the ubiquitous beast of complexity
+
+Which is what I'm always trying to do....
