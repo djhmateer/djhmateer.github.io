@@ -7,10 +7,10 @@ categories: Task Async Concurrency
 published: false 
 comments: false     
 sitemap: false
-image: /assets/2019-11-13/1.jpg
+image: /assets/2020-07-22/runners.jpg
 ---
 
-[![alt text](/assets/2020-07-22/runners.jpg "Photo by @slelham from Unsplash"){:width="600px"}](https://unsplash.com/@slelham)
+[![alt text](/assets/2020-07-22/runners.jpg "Photo by @slelham from Unsplash"){:width="700px"}](https://unsplash.com/@slelham)
 
 I'm writing a broken link checker and need simultaneous http connections, as 1 at a time is toooo slow :-)
 
@@ -25,9 +25,8 @@ The 2 strategies I considered:
 
 > Asynchronous concurrency is a form of concurrency that does not require additional threads, and is an appropriate choice if you have I/O-bound code.
 
-[Good overview on SO](https://stackoverflow.com/a/29809054/26086) of when to use async await
+So I went with async await as I'm I/O bound with my http connections whilst the crawler is working.
 
-So I went with async await as I'm I/O bound with my http connections.
 
 ## What is Async Await
 
@@ -38,11 +37,13 @@ Here are the salient parts of [Async programming with async and await - MS Docs]
 
 > Async/await ... is not about threads. It's about suspending the execution awaiting for the result, and releasing resources for other code [source](https://stackoverflow.com/questions/25591848/async-await-multi-core)
 
-[C# under the hood async](https://www.markopapic.com/csharp-under-the-hood-async-await/) shows how the state machine works.
+[Async all the way down](https://stackoverflow.com/a/29809054/26086) I found to be a good explanation too.
+
+[C# under the hood async](https://www.markopapic.com/csharp-under-the-hood-async-await/) shows in detail how the underlying generated state machine works if you want to dive deeper.
 
 ## Async Concurrency
 
-Let's code!
+Show me some code....
 
 ```cs
 static async Task Main(string[] args)
@@ -82,7 +83,7 @@ static async Task<string> DoSomething(string whereCalledFrom)
 
 ![alt text](/assets/2020-01-09/10.jpg "Output from console"){:width="300px"}  
 
-Interestingly the DoSomethingB finished first above, yet we had to await the A task finishing first. We could use the Task.WhenAny() pattern to get the first completed task.
+Interestingly the DoSomethingB finished first above, yet we had to await the A task finishing first. We could use the Task.WhenAny() pattern (shown below) to get the first completed task.
 
 ## Using Task to get multiple connections
 
@@ -183,12 +184,12 @@ if (numberOfConnectionsToBaseUrl <= maxConnectionsToBaseUrl && downloadTasks.Cou
 
 Is this way we can:
 
-- Limit max number of connections to a domain to 6
+- Limit max number of connections to a baseurl domain to 6
 - Limit the max number of httpClient connections from the server to 200
 
 ## Will this use multiple cores
 
-Yes, however it is way I used the Task's which can use multiple cores. Here is a [bashtop screenshot](/2020/05/02/Bashtop-linux-alternative-to-task-manager) of a crawler using Puppeteer (which takes a lot of resources to run as it is Chrome).
+Yes, however it is way I used the Task's which can use multiple cores. Here is a [bashtop screenshot](/2020/05/02/Bashtop-linux-alternative-to-task-manager) of a crawler using [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) (which takes a lot of resources to run as it is Chrome).
 
 ![alt text](/assets/2020-07-22/bashtop1.jpg "A single Task"){:width="600px"}
 
@@ -200,12 +201,18 @@ The crawler running 12 Tasks at a time, on an 8 core machine.
 
 ## DB Connections async all the way up
 
-DB Connections are another I/O bound task where asynchronous concurrency is a good fit. Async await allows the thread not be blocked but must be async all the way.
+DB Connections are another I/O bound task where asynchronous concurrency is a good fit. Async await allows the thread not be blocked but must be async all the way. [The SO answer on async all the way up](https://stackoverflow.com/questions/29808915/why-use-async-await-all-the-way-down/29809054#29809054) is enlightening.
 
-[Async await with Dapper article](/2018/01/18/Async-with-Dapper-and-Razor-Pages)
+[Async await with Dapper article](/2018/01/18/Async-with-Dapper-and-Razor-Pages) showed my initial explorations of async a few years ago. I can't imagine not using async now for situations like this.
+
+Async has become the default for db work.
 
 ## Summary
 
 > Asynchronous concurrency is a form of concurrency that does not require additional threads, and is an appropriate choice if you have I/O-bound code.
 
 For my I/O bound Http and DB calls async await concurrency is a good fit.
+
+I love that I can treat the code as 'normal' without having to use multi-threading techniques and special collections which deal with locking.
+
+The secret sauce of async await gives us developers a huge amount of power!

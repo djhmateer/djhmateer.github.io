@@ -20,7 +20,7 @@ I've got a function with does HttpRequests for my broken link checker. I've wrap
 
 The technique is called `Hole in the middle`, or `Donut` or more precisely is a `Higher Order Function that encapsulates`
 
-[See the Orange Book - Functional Programming in C#](https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/258) for much more detail.
+[See the Orange Book - Functional Programming in C#](https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/260) for much more detail.
 
 I've been using Functional style programming in C# for a few years, and you'll notice in the code samples below that:
 
