@@ -27,7 +27,6 @@ The 2 strategies I considered:
 
 So I went with async await as I'm I/O bound with my http connections whilst the crawler is working.
 
-
 ## What is Async Await
 
 Here are the salient parts of [Async programming with async and await - MS Docs](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/)
