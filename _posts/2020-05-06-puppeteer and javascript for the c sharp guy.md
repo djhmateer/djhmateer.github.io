@@ -3,7 +3,7 @@ layout: post
 title: Puppeteer and JavaScript for the C# Guy 
 description: 
 menu: review
-categories: Puppeteer Testing
+categories: Puppeteer Testing BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false

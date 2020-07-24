@@ -3,7 +3,7 @@ layout: post
 title: HttpClient
 description: 
 menu: review
-categories: HttpClient
+categories: HttpClient BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false

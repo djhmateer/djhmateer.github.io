@@ -3,9 +3,9 @@ layout: post
 title: Broken Link Checker Checker 
 description: Broken links in websites annoy me! This is a project to help test my broken link checker tool.. it is a checker checker. Useful to see request headers and edge cases. Using OpenResty, Lua, Cloud-init and Azure-CLI.
 #menu: review
-categories: nginx openresty azurecli 
+categories: nginx OpenResty AzureCLI BrokenLinkChecker
 published: true 
-comments: false     
+comments: true     
 sitemap: true
 image: /assets/2020-06-30/crying.jpg
 ---

@@ -3,7 +3,7 @@ layout: post
 title: Concurrency with Async Await and Task
 description: Asynchronous concurrency with async await and having multiple http connections. Controlling it with a list of Tasks.
 menu: review
-categories: Task Async Concurrency
+categories: Task Async Concurrency BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false

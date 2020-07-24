@@ -3,7 +3,7 @@ layout: post
 title: IAsyncEnumerable try catch 
 description: 
 menu: review
-categories: IAsyncEnumerable 
+categories: IAsyncEnumerable BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false

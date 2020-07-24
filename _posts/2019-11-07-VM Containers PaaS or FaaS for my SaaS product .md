@@ -3,7 +3,7 @@ layout: post
 title:  Web Hosting Options in .NET Core3 - VM Containers PaaS or FaaS for my SaaS
 description: 
 menu: review
-categories: Infrastructure
+categories: Infrastructure BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false

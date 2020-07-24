@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Functional Programming in C# - Expressions, Option, Either
-description:  Making C# more functional by using abstractions. It has been preceeded by 2 articles on why I've got to here, and the background reasons behind trying functional programming in C#.
+description:  Making C# more functional by using abstractions. It has been preceded by 2 articles on why I've got to here, and the background reasons behind trying functional programming in C#.
 #menu: review
 categories: Functional C#
 published: true 
@@ -20,6 +20,7 @@ Part 3 is this article on making C# code more functional by using abstractions f
 [Notes](/2020/03/06/Orange-Book-Functional-Programming-in-C-Sharp) Are my developer notes whilst working through the book
 
 We are going to be looking at:  
+
 - Expressions / ternary operator
 - Pure functions
 - Immutable types
@@ -40,7 +41,8 @@ Immutability helps guide the functions towards being pure (no side effects)
 
 ## Index of Examples
 
-[Source code for this article is here](https://github.com/djhmateer/FPInCSharpDemos) and here are the examples demonstrating FP abstractions:    
+[Source code for this article is here](https://github.com/djhmateer/FPInCSharpDemos) and here are the examples demonstrating FP abstractions:
+
 - One(); // Pure functions
 - Two(); // Immutability, Smart Constructor
 - Three(); // Option type with None and Some
@@ -49,7 +51,7 @@ Immutability helps guide the functions towards being pure (no side effects)
 - Six(); // IEnumerable and Select (Functor)
 - Seven(); // Chaining Map
 - Eight(); // Bind
-- Nine(); // Bind chain 
+- Nine(); // Bind chain
 - Ten(); // IEnumerable and Extension methods chaining
 - Eleven(); // Either - Exception
 - Twelve(); // Either - Validation pipeline
@@ -171,6 +173,7 @@ class Person
     }
 }
 ```
+
 Interesting C#8 nullable / non-nullable reference types, same intent as `Option<T>` [discussed here](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types)  
 
 These act like [record types](https://fsharpforfunandprofit.com/posts/records/) or `data types` in other languages. Essentially can only be a finitie set of attributes. [good example using With](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
@@ -178,15 +181,17 @@ These act like [record types](https://fsharpforfunandprofit.com/posts/records/) 
 Why use the With to return a copy of an object when wanting to mutate it? [Good SO Question here](https://stackoverflow.com/questions/38575646/general-purpose-immutable-classes-in-c-sharp/38596298#38596298)  
 
 ## Option type
-Many functional languages disallow null values, as null-references can introduce hard to find bugs. Option is a type safe alternative to null values [ref to a few words in this section](https://github.com/nlkl/Optional). As discussed above C#8 is [getting nullable and non-nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types) which should give similar safety.   
 
-Pattern: Whenever I'm using a primitive type eg int, string.    
+Many functional languages disallow null values, as null-references can introduce hard to find bugs. Option is a type safe alternative to null values [ref to a few words in this section](https://github.com/nlkl/Optional). As discussed above C#8 is [getting nullable and non-nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/nullable-reference-types) which should give similar safety.
+
+Pattern: Whenever I'm using a primitive type eg int, string.
 
 Nulls wont ever leave C#. LanguageExt was created to help avoid nulls by using an Option.  
 
-[null article](https://templecoding.com/blog/2017/01/31/handling-nulls-in-csharp-the-right-way/)    
+[null article](https://templecoding.com/blog/2017/01/31/handling-nulls-in-csharp-the-right-way/)
 
 ### None / Some
+
 An `Option<T>` can be in one of two states. `Some` representing the presence of a value and `None` representing the lack of a value. Unlike null, an option type forces the user to check if a value is actually present, thereby mitigating many of the problems of null values.
 
 ```cs
@@ -204,6 +209,7 @@ static Option<string> GetHtmlThree(string url) =>
 ```
 
 ### Match
+
 ```cs
 // Option type with Match down to primitive type
 static void Four()
@@ -221,7 +227,9 @@ static void Four()
 ```
 
 ### Map
+
 We can `Match` down to a primitive type, or can stay in the elevated types and do logic using `Map`
+
 ```cs
 // Match and Map
 static void Five()
@@ -246,7 +254,8 @@ static Option<string> GetValue(bool hasValue) =>
     hasValue ? Some("Bob") : None;
 ```
 
-## Map and IEnumerable 
+## Map and IEnumerable
+
 Apply a function to the containers inner values, and take into account None. This is very similar to working with IEnumerable and running a `Select` over each item in the collection. 
 
 ```cs
@@ -268,6 +277,7 @@ static void Six()
 ```
 
 ### Option, Match, Map and Functors
+
 Allow us to stay in the elevated context of core functional types such as `Option<A>`, `Either<L, R>`, `Try<A>` etc.. We can consider `IEnumerable<T>` to be a core functional type as it abstracts away null checking, and does not mutate (ie always returns a new result).
 
 [Good examples at bottom of message](https://github.com/louthy/language-ext/issues/209) which are here too  
@@ -281,7 +291,9 @@ GetValue below may, or may not return a string. The function signature is 'hones
 The strategy is to try and work in the elevated level of abstraction to avoid: loops, null checks etc.. which are error prone. Why not abstract this away if we can?  
 
 ### Map chaining
+
 Lets see another example of using `Map` to stay in the elevated context and not have to worry about nulls. We want to apply multiple functions in the elevated context.  
+
 ```cs
 
 // Using Map (to avoid having to check for null at each stage)
@@ -307,6 +319,7 @@ static Option<string> GetHtml(string url)
 ```
 
 ## Bind
+
 Rather than having the do separate calls to Map, we can use Bind, which allows us to chain multiple functions together that all the return `Option`. Bind is like `Map` but can flatten two Option<T>'s together.. we don't want an `Option<Option<T>>`. `SelectMany` is Bind in LINQ, and can also be called `FlatMap` in other languages.    
 
 Example here is using Bind to compose 2 functions which return an `Option<string>`:  
@@ -331,6 +344,7 @@ static Option<string> MakeFullName(string firstName) =>
     Some($"{firstName} Bloggs");
 
 ```
+
 Another example of `Bind` on `Option<string>`:
 
 ```cs
@@ -364,11 +378,12 @@ static Option<string> PutOnHttps(string html) =>
 ```
 
 ## Collections / Method chaining in LINQ vs Bind  
+
 In my broken links checker example application, after getting the html from a page, I'm dealing with collections and have used extension method chaining.. is there a better way using Bind?
 
-Here is some exploratory code showing that we can stay in the elevated context by using IEnumerable<T> which handles nulls fine, and by using chained extension methods.  
+Here is some exploratory code showing that we can stay in the elevated context by using `IEnumerable<T>` which handles nulls fine, and by using chained extension methods.  
 
-Bind is for working with Option<T> and Either<L,R> (and more) but also supports IEnumerable<T> [more information](https://github.com/louthy/language-ext/issues/456)  
+Bind is for working with `Option<T>` and `Either<L,R>` (and more) but also supports `IEnumerable<T>` [more information](https://github.com/louthy/language-ext/issues/456)  
 
 ```cs
 // IEnumerable and Extension methods
@@ -414,7 +429,9 @@ static IEnumerable<string> GetListHrefs()
 ```
 
 ## Either - Exception handling
+
 Here we are using `Either` to return back the `Exception` or the valid result html `string`.
+
 ```cs
 // Either - Exception handling
 static void Eleven()
@@ -455,6 +472,7 @@ public static Either<Exception, string> GetHtmlE(string url)
 ```
 
 ## Either - Error Handling (Validation or Exception)
+
 Railway Oriented Programming
 
 ```cs
@@ -494,9 +512,11 @@ public class URLRejection
 ```
 
 ## Either type - Further abstractions Exceptions
+
 `Try<A>` or an `Exception<A>` are further abstractions over `Either`.
 
 ## Parameterised Unit Tests
+
 As functions get smaller and are easier to test, it is very useful to be able to test a lot of scenarios using parameters. I'm using `xunit` here:  
 
 ```cs
@@ -547,7 +567,8 @@ public static void GetURLType_Absolute_ReturnAbsolute(string input, URLType expe
 ```
 
 ## Summary
-As [louthy said in his post](https://github.com/louthy/language-ext/issues/209), it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.   
+
+As [louthy said in his post](https://github.com/louthy/language-ext/issues/209), it will take time to all sink in. It can take years to really master it. Most of the functionality in language-ext is there to help compose expressions.
 
 These 'basics' of FP in C# allow us to build applications which have:
 

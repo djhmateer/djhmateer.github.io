@@ -3,7 +3,7 @@ layout: post
 title: Nullale Reference Types in C#8
 description: 
 menu: review
-categories: C# 
+categories: C# BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false

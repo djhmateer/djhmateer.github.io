@@ -3,7 +3,7 @@ layout: post
 title: Immutable Objects List and IEnumerable 
 description: 
 menu: review
-categories: lists 
+categories: lists BrokenLinkChecker 
 published: false 
 comments: false
 sitemap: false

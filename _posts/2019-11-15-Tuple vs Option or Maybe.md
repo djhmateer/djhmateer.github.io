@@ -3,7 +3,7 @@ layout: post
 title: Tuple desconstruction vs Option / Maybe / Either 
 description: 
 menu: review
-categories: Functional 
+categories: Functional BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false

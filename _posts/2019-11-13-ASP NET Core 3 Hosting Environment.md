@@ -3,7 +3,7 @@ layout: post
 title: ASP.NET Core 3 Hosting Environment
 description: 
 menu: review
-categories: ASP.NETCore3 
+categories: ASP.NETCore3 BrokenLinkChecker 
 published: false 
 comments: false     
 sitemap: false

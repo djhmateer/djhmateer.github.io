@@ -3,7 +3,7 @@ layout: post
 title: Hole in the middle - Donut Functions - Higher Order Function
 description: 
 menu: review
-categories: Functional C#
+categories: Functional C# BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false
