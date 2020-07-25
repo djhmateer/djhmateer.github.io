@@ -123,6 +123,14 @@ This is where C# gets messy compared with more functional languages like F# and 
 
 [Immutable Data objects / Smart Constructor / With strategy](/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either#immutable-data-objects--smart-constructors) looks at how I implement the `RequestResult` above
 
+## DB Connection
+
+https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/264
+
+```cs
+
+```
+
 ## TardisBank
 
 Here is an example of using a Donut function to connect to the database.
@@ -161,4 +169,4 @@ I regularly use Donut functions for timer instrumentation, even though it looks 
 
 > Tame the ubiquitous beast of complexity
 
-Which is what I'm always trying to do....
+Which is always what I'm always trying to do....
