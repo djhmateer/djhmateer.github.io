@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Donut Functions - Hole in the middle - Higher Order Function
-description: Tame the ubiquitous beast of complexity. Donut function examples showing a timer and a db connection strategy.
+description: Tame the ubiquitous beast of complexity. Donut function examples showing a timer.
 menu: review
 categories: Functional C# BrokenLinkChecker
 published: false 
@@ -125,43 +125,8 @@ This is where C# gets messy compared with more functional languages like F# and 
 
 ## DB Connection
 
-https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/264
+This is another use of donut functions. I've started with timers like above, and now moving into experimenting with db connections.
 
-```cs
-
-```
-
-## TardisBank
-
-Here is an example of using a Donut function to connect to the database.
-
-Interesting that some functions are not async yet return a Task eg ScheduleByAccount
-
-https://github.com/TardisBank/TardisBank/blob/master/server/src/TardisBank.Api/Db.cs
-
-```cs
-// return a Task even though not async
-public static Task<IEnumerable<Schedule>> ScheduleByAccount(string connectionString, Account account)
-{
-    // local function which is async
-    async Task<IEnumerable<Schedule>> ConnectionFunction(IDbConnection conn)
-    {
-        var result = await conn.QueryAsync<Schedule>(@"SELECT
-            schedule_id as ScheduleId,
-            account_id as AccountId,
-            time_period as TimePeriod,
-            next_run as NextRun,
-            amount as Amount
-            FROM schedule
-            WHERE account_id = @AccountId", account);
-        return result;
-    }
-
-    var result2 =  WithConnection<IEnumerable<Schedule>>(connectionString, ConnectionFunction);
-
-    return result2;
-}
-```
 
 ## Conclusion
 
