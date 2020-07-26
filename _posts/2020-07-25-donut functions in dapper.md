@@ -10,46 +10,109 @@ sitemap: false
 image: /assets/2020-07-22/donut.jpg
 ---
 
-[![alt text](/assets/2020-07-22/donut.jpg "Photo by @acreativegangster from Unsplash"){:width="500px"}](https://unsplash.com/@acreativegangster)
+[![alt text](/assets/2020-07-26/night.jpg "Photo by @micahtindell from Unsplash"){:width="500px"}](https://unsplash.com/@micahtindell)
 
 I'm [writing articles](/#BrokenLinkChecker) on developing a website broken link checker in C#. This is part of that series.
 
-There is a [intro article on Donut functions]() using timers.
+There is a [intro article on Donut functions](/2020/07/22/donut-functions-in-csharp) using timers.
 
 ## Dapper
 
 For years I've been connecting to MSSQL static Utility helper method. [Here is a recent ETL article](https://davemateer.com/2020/05/07/Extract-Transform-Load-with-Csharp-Beginners-Guide)
 
-```cs
-using (var connection = Util.GetOpenConnection())
-{
-    IEnumerable<Actor> actors = connection.Query<Actor>("SELECT TOP 10 * FROM actors");
-}
+I like my functions to be short and it's annoying to write duplicate code in each function eg
 
-public class Util
+```cs
+public static void Main()
 {
-    public static IDbConnection GetOpenConnection()
+    var actors = GetActors();
+
+    foreach (var actor in actors)
     {
-        var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true");
-        connection.Open();
-        return connection;
+        Console.WriteLine(actor);
     }
 }
 
+public static IEnumerable<Actor> GetActors()
+{
+    using (var connection = GetOpenConnection())
+    {
+        return connection.Query<Actor>(
+            @"SELECT TOP 10 *
+            FROM Actors");
+    }
+}
+
+public static IDbConnection GetOpenConnection()
+{
+    var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true");
+    connection.Open();
+    return connection;
+}
+
+public class Actor
+{
+    public int actorid { get; set; }
+    public string name { get; set; }
+    public string sex { get; set; }
+
+    public override string ToString() => $"{actorid} {name} {sex}";
+}
 ```
+
+## Dapper Async
+
+Let's go [async all the way up](/2020/07/23/concurrency-async-await-and-task#db-connections-async-all-the-way-up)
+
+```cs
+public static async Task Main()
+{
+    Console.WriteLine("Program Async test");
+    var actors = await GetActorsAsync();
+
+    foreach (var actor in actors)  Console.WriteLine(actor); 
+}
+
+public static async Task<IEnumerable<Actor>> GetActorsAsync()
+{
+    using var connection = await GetOpenConnectionAsync();
+    return await connection.QueryAsync<Actor>(
+        @"SELECT TOP 10 *
+        FROM Actors");
+}
+
+public static async Task<IDbConnection> GetOpenConnectionAsync()
+{
+    var connection = new SqlConnection(ConnectionString);
+    await connection.OpenAsync();
+    return connection;
+}
+```
+
+## Non Async Donut
+
+see MPAsyncConsole ***HERE****
+
+https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/264
+
+## Async Donut
+
+asdf
+
 
 ## Miniprofiler
 
-I've used [Miniprofiler]() extensively to profile apps in production. To set it up
+I've used [Miniprofiler](https://miniprofiler.com/dotnet/) extensively to profile apps in production with the biggest usage being to find slow SQL queries. Here is a guide on setting it up and [my MPActors source on Github using ASP.NET Core 3.1](https://github.com/djhmateer/MPActors)
 
+[![alt text](/assets/2020-07-26/miniprofiler.jpg "miniprofiler on the MPActors projects"){:width="500px"}](https://github.com/djhmateer/MPActors)
 
+Click on the sql and you'll see the raw query
 
+[![alt text](/assets/2020-07-26/sql.jpg "Raw SQL"){:width="500px"}](/assets/2020-07-26/sql.jpg)
 
+I always find it tricky to setup Miniprofiler so will leave this [simple working example in the MPActors repo](https://github.com/djhmateer/MPActors) for my future self :-)
 
-
-
-
-https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/264
+`Microsoft.Data.SqlClient` or `System.Data.SqlClient`. We are using the older `System.Data.SqlClient`
 
 ```cs
 
