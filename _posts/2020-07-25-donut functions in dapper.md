@@ -87,13 +87,106 @@ public static async Task<IDbConnection> GetOpenConnectionAsync()
 
 ## Non Async Donut
 
-see MPAsyncConsole **HERE**
+Here is a stripped down version. Similar to the [orange book chapter 1](https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/264)
 
-https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/264
+```cs
+// Function
+public static IEnumerable<Actor> GetActors()
+    // calling a static function
+    // passing a multi line lambda (essentially another function) for the WithConnection to run
+    => WithConnection(conn =>
+    {
+       var result = conn.Query<Actor>(
+           @"SELECT TOP 10 *
+           FROM Actors");
+       return result;
+    });
+
+// Wrapper returns a generic T eg IEnumerable<Actor>
+// It takes as arguments: A Func takes an IDbConnection (which is what we make here) and returns a T of the same type
+public static T WithConnection<T>(
+    Func<IDbConnection, T> func)
+{
+    using var conn = new SqlConnection(ConnectionString);
+    conn.Open();
+    return func(conn);
+}
+```
+
+## Inject the connection string
+
+Let's pass through the connection string:
+
+```cs
+// Function 
+public static IEnumerable<Actor> GetActors(string connectionString)
+    => WithConnection(connectionString, conn =>
+    {
+       var result = conn.Query<Actor>(
+           @"SELECT TOP 10 *
+           FROM Actors");
+       return result;
+    });
+
+// Wrapper returns a generic T eg IEnumerable<Actor>
+// It takes as arguments: A Func takes an IDbConnection (which is what we make here) and returns a T of the same type
+public static T WithConnection<T>(
+    string connectionString,
+    Func<IDbConnection, T> func)
+{
+    using var conn = new SqlConnection(connectionString);
+
+    conn.Open();
+
+    return func(conn);
+}
+
+```
+
+Pure functions are nice with nothing hidden ie configuration. Which means that testing should be easier.
 
 ## Async Donut
 
-asdf
+```cs
+public static async Task Main()
+{
+    Console.WriteLine("Experimenting with a HOF for db connection and using statements");
+    Console.WriteLine("so don't have code duplication");
+    var actors = await GetActorsAsync(ConnectionString);
+
+    foreach (var actor in actors) Console.WriteLine(actor);
+}
+
+// Function
+public static async Task<IEnumerable<Actor>> GetActorsAsync(string connectionString)
+    => await WithConnection(connectionString, async conn =>
+    {
+       var result = await conn.QueryAsync<Actor>(
+           @"SELECT TOP 10 *
+           FROM Actors");
+       return result;
+    });
+
+// Wrapper returns a generic T eg IEnumerable<Actor>
+// It takes as arguments: A Func takes an IDbConnection (which is what we make here) and returns a T of the same type
+public static async Task<T> WithConnection<T>(
+    string connectionString,
+    Func<IDbConnection, Task<T>> func)
+{
+    await using var conn = new SqlConnection(connectionString);
+
+    await conn.OpenAsync();
+
+    return await func(conn);
+}
+
+```
+
+[TardisBank](https://github.com/TardisBank/TardisBank/blob/master/server/src/TardisBank.Api/Db.cs) uses a similar pattern.
+
+For me this is a step too far, and I find that it tricky to reason about. Especially if I should be using async on the conn.Open:
+
+[Dapper difference between conn.OpenAsync and conn.Open](https://stackoverflow.com/questions/46801943/difference-between-connection-openasync-and-connection-open-when-using-dapper-qu)
 
 ## Exception handling
 
