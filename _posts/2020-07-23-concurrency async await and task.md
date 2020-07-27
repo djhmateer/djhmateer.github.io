@@ -200,6 +200,15 @@ The crawler running 1 Task at a time
 
 The crawler running 12 Tasks at a time, on an 8 core machine.
 
+## There is no thread
+
+> IO tasks are not CPU bound and thus do not require a thread. The main point of async is to not block threads during IO bound tasks
+
+
+> There is actually someone doing the work in the background with I/O operations. It is not a thread but another dedicated hardware component doing its job
+
+[Stackoverflow answer and discussion](https://stackoverflow.com/questions/37419572/if-async-await-doesnt-create-any-additional-threads-then-how-does-it-make-appl)
+
 ## DB Connections async all the way up
 
 DB Connections are another I/O bound task where asynchronous concurrency is a good fit. Async await allows the thread not be blocked but must be async all the way. [The SO answer on async all the way up](https://stackoverflow.com/questions/29808915/why-use-async-await-all-the-way-down/29809054#29809054) is enlightening.
