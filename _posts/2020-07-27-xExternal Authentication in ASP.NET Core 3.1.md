@@ -3,7 +3,7 @@ layout: post
 title: External Authentication in ASP.NET Core 3.1 ie Google social login 
 description: 
 menu: review
-categories: Auth 
+categories: Auth BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false

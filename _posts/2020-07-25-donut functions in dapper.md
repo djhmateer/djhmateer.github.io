@@ -95,6 +95,14 @@ https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/26
 
 asdf
 
+## Exception handling
+
+asdf
+
+## Retrys and Fault Tolerance
+
+asdf
+Polly?
 
 ## Miniprofiler
 

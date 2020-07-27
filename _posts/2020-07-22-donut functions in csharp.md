@@ -125,7 +125,7 @@ This is where C# gets messy compared with more functional languages like F# and 
 
 ## DB Connection
 
-This is another use of donut functions. I've started with timers like above, and now moving into experimenting with db connections.
+This is another potential use of donut functions. I've started with timers like above, and now moving into experimenting with db connections.
 
 ## Conclusion
 
