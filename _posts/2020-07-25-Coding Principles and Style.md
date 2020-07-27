@@ -10,7 +10,7 @@ sitemap: false
 image: /assets/2020-02-03/40.jpg
 ---
 
-![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"}
+<!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
 
 Complexity is the beast we are always trying to tame
 Don't be afraid to learn new things if useful eg regex (if need speed), FP, Funcs and Tasks (have to know for async await concurrency)

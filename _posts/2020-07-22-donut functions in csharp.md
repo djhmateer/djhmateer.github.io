@@ -10,7 +10,7 @@ sitemap: false
 image: /assets/2020-07-22/donut.jpg
 ---
 
-[![alt text](/assets/2020-07-22/donut.jpg "Photo by @acreativegangster from Unsplash"){:width="500px"}](https://unsplash.com/@acreativegangster)
+[![alt text](/assets/2020-07-22/donut.jpg "Photo by @acreativegangster from Unsplash"){:width="600px"}](https://unsplash.com/@acreativegangster)
 
 I'm [writing articles](/#BrokenLinkChecker) on developing a website broken link checker in C#. This is part of that series. Also
 [Part 1 of my series on Functional Programming in C#](/2019/01/11/Learning-Functional-Programming-in-C-Sharp).
@@ -127,11 +127,10 @@ This is where C# gets messy compared with more functional languages like F# and 
 
 This is another use of donut functions. I've started with timers like above, and now moving into experimenting with db connections.
 
-
 ## Conclusion
 
 I regularly use Donut functions for timer instrumentation, even though it looks quite complex to begin with. In the long run it helps to:
 
 > Tame the ubiquitous beast of complexity
 
-Which is always what I'm always trying to do....
+Which is always what I'm always trying to do.

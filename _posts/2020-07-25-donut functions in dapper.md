@@ -10,7 +10,7 @@ sitemap: false
 image: /assets/2020-07-22/donut.jpg
 ---
 
-[![alt text](/assets/2020-07-26/night.jpg "Photo by @micahtindell from Unsplash"){:width="500px"}](https://unsplash.com/@micahtindell)
+[![alt text](/assets/2020-07-26/night.jpg "Photo by @micahtindell from Unsplash"){:width="600px"}](https://unsplash.com/@micahtindell)
 
 I'm [writing articles](/#BrokenLinkChecker) on developing a website broken link checker in C#. This is part of that series.
 
@@ -27,10 +27,7 @@ public static void Main()
 {
     var actors = GetActors();
 
-    foreach (var actor in actors)
-    {
-        Console.WriteLine(actor);
-    }
+    foreach (var actor in actors) Console.WriteLine(actor);
 }
 
 public static IEnumerable<Actor> GetActors()
@@ -45,7 +42,7 @@ public static IEnumerable<Actor> GetActors()
 
 public static IDbConnection GetOpenConnection()
 {
-    var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true");
+    var connection = new SqlConnection(ConnectionString);
     connection.Open();
     return connection;
 }
@@ -55,7 +52,6 @@ public class Actor
     public int actorid { get; set; }
     public string name { get; set; }
     public string sex { get; set; }
-
     public override string ToString() => $"{actorid} {name} {sex}";
 }
 ```
@@ -70,7 +66,7 @@ public static async Task Main()
     Console.WriteLine("Program Async test");
     var actors = await GetActorsAsync();
 
-    foreach (var actor in actors)  Console.WriteLine(actor); 
+    foreach (var actor in actors)  Console.WriteLine(actor);
 }
 
 public static async Task<IEnumerable<Actor>> GetActorsAsync()
@@ -91,7 +87,7 @@ public static async Task<IDbConnection> GetOpenConnectionAsync()
 
 ## Non Async Donut
 
-see MPAsyncConsole ***HERE****
+see MPAsyncConsole **HERE**
 
 https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/264
 
