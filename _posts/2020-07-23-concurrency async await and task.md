@@ -86,6 +86,35 @@ static async Task<string> DoSomething(string whereCalledFrom)
 
 Interestingly the DoSomethingB finished first above, yet we had to await the A task finishing first. We could use the Task.WhenAny() pattern (shown below) to get the first completed task.
 
+[There is a good diagram in this SO Answer](https://stackoverflow.com/a/29809107/26086)
+
+## Does every method need to be async await
+
+[Jon Skeet's answer on Stackoverflow](https://stackoverflow.com/a/15503860/26086):
+
+"Any async method where you have a single `await` expression awaiting a `Task` or `Task<T>`, right at the end of the method with no further processing, would be better off being written without using async/await"
+
+```cs
+string resultD = await MiddleLayer("D");
+
+// doesn't need to be async
+static Task<string> MiddleLayer(string whereCalledFrom)
+{
+    Console.WriteLine("Inside MiddleLater before DoSomething");
+    // don't need a state machine as not awaiting anything before
+    Task<string> result = DoSomething(whereCalledFrom);
+    return result;
+}
+
+static async Task<string> DoSomething(string whereCalledFrom)
+{
+    Console.WriteLine($"inside DoSomething called from {whereCalledFrom}");
+    await Task.Delay(5000);
+    Console.WriteLine($"done {whereCalledFrom}");
+    return $"result {whereCalledFrom}";
+}
+```
+
 ## Using Task to get multiple connections
 
 [This example comes from MS Docs](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/start-multiple-async-tasks-and-process-them-as-they-complete) on how to handle multiple http request using async await.

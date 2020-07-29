@@ -64,23 +64,26 @@ Let's go [async all the way up](/2020/07/23/concurrency-async-await-and-task#db-
 public static async Task Main()
 {
     Console.WriteLine("Program Async test");
-    var actors = await GetActorsAsync();
+    var actors = await GetActors();
 
     foreach (var actor in actors)  Console.WriteLine(actor);
 }
 
-public static async Task<IEnumerable<Actor>> GetActorsAsync()
+public static async Task<IEnumerable<Actor>> GetActors()
 {
-    using var connection = await GetOpenConnectionAsync();
+    using var connection = GetOpenConnection();
     return await connection.QueryAsync<Actor>(
         @"SELECT TOP 10 *
         FROM Actors");
 }
 
-public static async Task<IDbConnection> GetOpenConnectionAsync()
+// This could be async but would gain no advantage
+// https://stackoverflow.com/a/46802157/26086
+public static IDbConnection GetOpenConnection()
 {
     var connection = new SqlConnection(ConnectionString);
-    await connection.OpenAsync();
+    // don't need to connection.Open as Dapper will manage.
+    // https://stackoverflow.com/a/12629170/26086
     return connection;
 }
 ```
