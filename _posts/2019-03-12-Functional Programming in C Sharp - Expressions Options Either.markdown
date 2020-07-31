@@ -19,6 +19,10 @@ This article is on making *C# code more functional by using functional abstracti
 Part 3 is this article on making C# code more functional by using abstractions from the [excellent functional c# library](https://github.com/louthy/language-ext)  
 [Notes](/2020/03/06/Orange-Book-Functional-Programming-in-C-Sharp) Are my developer notes whilst working through the book
 
+### Update 31st July 2012
+
+[Here is a series of articles I'm writing on building an application functionally](/#BrokenLinkChecker)
+
 We are going to be looking at:  
 
 - Expressions / ternary operator
