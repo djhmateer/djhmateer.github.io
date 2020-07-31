@@ -5,7 +5,7 @@ description: Tame the ubiquitous beast of complexity. Donut function examples sh
 #menu: review
 categories: Functional C# BrokenLinkChecker
 published: true 
-comments: false     
+comments: true     
 sitemap: true
 image: /assets/2020-07-22/donut.jpg
 ---
