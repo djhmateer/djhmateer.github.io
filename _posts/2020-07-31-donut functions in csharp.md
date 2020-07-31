@@ -2,11 +2,11 @@
 layout: post
 title: Donut Functions - Hole in the middle - Higher Order Function
 description: Tame the ubiquitous beast of complexity. Donut function examples showing a timer.
-menu: review
+#menu: review
 categories: Functional C# BrokenLinkChecker
-published: false 
+published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2020-07-22/donut.jpg
 ---
 
@@ -78,7 +78,7 @@ Using the same principles here is some real code.
 
 My GetRequestResultAndHtml function takes 3 arguments - `URI` and `HttpClient` and another `URI`.
 
-I am sharing a singleton of 'HttpClient' across the lifetime of the request for [HttpClient connection pooling reasons](https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core)
+I am sharing a singleton of `HttpClient` across the lifetime of the request for [HttpClient connection pooling reasons](https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core)
 
 ```cs
 // Calling code
@@ -127,10 +127,14 @@ This is where C# gets messy compared with more functional languages like F# and 
 
 This is another potential use of donut functions. I've started with timers like above, and now moving into experimenting with db connections.
 
+Here is a good starting point: [orange book chapter 1](https://livebook.manning.com/book/functional-programming-in-c-sharp/chapter-1/264)
+
 ## Conclusion
 
 I regularly use Donut functions for timer instrumentation, even though it looks quite complex to begin with. In the long run it helps to:
 
 > Tame the ubiquitous beast of complexity
 
-Which is always what I'm always trying to do.
+Which is what I'm always trying to do.
+
+Good luck to all of us.

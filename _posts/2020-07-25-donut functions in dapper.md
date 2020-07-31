@@ -32,18 +32,18 @@ public static void Main()
 
 public static IEnumerable<Actor> GetActors()
 {
-    using (var connection = GetOpenConnection())
-    {
-        return connection.Query<Actor>(
-            @"SELECT TOP 10 *
-            FROM Actors");
-    }
+    // this line is duplicated in each function
+    using var connection = GetOpenConnection();
+    return connection.Query<Actor>(
+        @"SELECT TOP 10 *
+        FROM Actors");
 }
 
 public static IDbConnection GetOpenConnection()
 {
     var connection = new SqlConnection(ConnectionString);
-    connection.Open();
+    // Dont need as dapper will open
+    // connection.Open();
     return connection;
 }
 
@@ -56,14 +56,13 @@ public class Actor
 }
 ```
 
-## Dapper Async
+And [I really should use async all the way up](/2020/07/23/concurrency-async-await-and-task#db-connections-async-all-the-way-up) be using `async` these days.
 
-Let's go [async all the way up](/2020/07/23/concurrency-async-await-and-task#db-connections-async-all-the-way-up)
+## Dapper Async
 
 ```cs
 public static async Task Main()
 {
-    Console.WriteLine("Program Async test");
     var actors = await GetActors();
 
     foreach (var actor in actors)  Console.WriteLine(actor);
