@@ -190,14 +190,40 @@ For me this is a step too far, and I find that it tricky to reason about. Especi
 
 [Dapper difference between conn.OpenAsync and conn.Open](https://stackoverflow.com/questions/46801943/difference-between-connection-openasync-and-connection-open-when-using-dapper-qu)
 
-## Exception handling
+## Exception handling and Fault Tolerance
 
-asdf
+In general any sort of SQL exception in my application should bubbble up to the top level exception handler as it will be exceptional, unless it is fault tolerance handling:
 
-## Retrys and Fault Tolerance
+As I'm using SQL Azure, and sometimes it just wont be there (it does happen), I like to have automatic retries and use an excellent library called [Polly](https://github.com/App-vNext/Polly)
 
-asdf
-Polly?
+[https://hyr.mn/dapper-and-polly/](https://hyr.mn/dapper-and-polly) has a good tutorial where he uses an extension method.
+
+```cs
+public static async Task<IEnumerable<Actor>> GetTop10ActorsWithRetry(string connectionString)
+    => await WithConnection(connectionString, async x =>
+    {
+        // Using an extension method to call the polly retry code
+        var result = await x.QueryAsyncWithRetry<Actor>(
+            @"SELECT TOP 10 *
+            FROM Actors");
+        return result;
+    });
+```
+
+We can make the code more terse using our wrapper function. This means we don't need the extension methods.
+
+```cs
+public static async Task<T> WithConnection<T>(
+    string connectionString,
+    Func<IDbConnection, Task<T>> func)
+{
+    await using var conn = new SqlConnection(connectionString);
+    //return await func(conn);
+    return await DapperExtensions.RetryPolicy.ExecuteAsync(() => func(conn));
+}
+```
+
+[Poll-Samples](https://github.com/App-vNext/Polly-Samples)
 
 ## Miniprofiler
 
