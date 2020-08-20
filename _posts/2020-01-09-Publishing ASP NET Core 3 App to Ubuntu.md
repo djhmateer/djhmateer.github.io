@@ -27,6 +27,13 @@ Some questions I'm still working on are:
 
 As with all these things it is a gradual improvement of the process that is important.
 
+## Update 20th Aug 2020
+
+[az-kung-fu](https://github.com/Build5Nines/az-kung-fu) scripts are excellent along with the [blog post series](https://build5nines.com/az-kung-fu/). They helped me do fine tuning on the scripts below.
+
+[BrokenLinkCheckerChecker source](https://bitbucket.org/davemateer/brokenlinkcheckerchecker/src/master/infra/) has up to date deploy scripts and thinking.
+
+
 ## Azure CLI
 
 Below is my Azure CLI Bash script running under WSL using [Cmder as the shell](/2018/01/30/Cmder-Shell). This is for a current project in development that is hosted on a single Ubuntu VM (currenlty) with Nginx as a reverse proxy. Remember to get the [line endings correct ie set to Unix style LF](/2020/01/09/Line-endings-ignore-in-Git)

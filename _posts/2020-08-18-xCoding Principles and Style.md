@@ -56,6 +56,11 @@ I do like this clarity of naming.
 [Tardis Bank](https://github.com/TardisBank/TardisBank) has a simpler solution level naming which I prefer. Simpler is always what I strive for if possible. I would name the repo `tardis-bank` though.
 
 
+`TardisBank.UnitTests`
+`TardisBank.IntegrationTests`
+
+Nice clear naming.
+
 
 
 ## Examples of good code
