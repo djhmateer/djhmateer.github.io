@@ -33,6 +33,12 @@ As with all these things it is a gradual improvement of the process that is impo
 
 [BrokenLinkCheckerChecker source](https://bitbucket.org/davemateer/brokenlinkcheckerchecker/src/master/infra/) has up to date deploy scripts and thinking.
 
+I've now implemented
+
+- using a /secrets directory to keep in dnsimple token and SSH keys which I don't want in public repos
+- SSH keys for my 3 main machine
+- Wait for cloud-init to finish (and reboot) before switching over DNS to new VM
+- Automatic deletion of older resource groups
 
 ## Azure CLI
 
@@ -43,10 +49,18 @@ Below is my Azure CLI Bash script running under WSL using [Cmder as the shell](/
 So plain text generated passwords are not great, but this is fast and very useful to develop with. Potentially use SSH keys would be nicer as then wouldn't have to copy and paste the password every time.
 
 ```bash
-# infra.sh
 #!/bin/bash
+# Broken Link Checker Checker azure cli scipt
+# run from linux
+# eg WSL
+# make sure the line endings are LF ie unix style
+# if you get weird errors, this is probably the case
+# see here for a fix:  https://davemateer.com/2020/01/09/Line-endings-ignore-in-Git
+# run from the WSL side
+# sed -i 's/\r$//' *.sh
+# logging - could use the run.sh file here... but will output the private keys which am not keen on
 
-# activate debugging from here
+# activate script debugging from here
 set -x
 
 # generate a random suffix between 1 and 1000
@@ -55,19 +69,20 @@ int=$(shuf -i 1-1000 -n 1)
 # generate a 34 character password (normal, capitals and numbers)
 password=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c34)
 
-rg=DaveTEST${int}
-dnsname=davetest${int}
+rgprefix=BLCC
+rg=${rgprefix}${int}
+# don't put capitals in dns name below and it needs to be unique (ie not used in azure at the moment)
+dnsname=blcctest${int}
 adminusername=azureuser${int}
 adminpassword=${password}
 
-vmname=davetest
-
 region=westeurope
-vnet=vnet
-subnet=subnet
-publicIPName=publicIP
-nsgname=nsg
-nicName=nic
+vmname=blcctest${int}
+vnet=vnet${int}
+subnet=subnet${int}
+publicIPName=publicIP${int}
+nsgname=nsg${int}
+nicName=nic${int}
 # use current LTS Version of Ubuntu - 18.04.3 as of 8th Nov 2019
 image=UbuntuLTS
 
@@ -115,14 +130,14 @@ az network nsg rule create \
     --access allow
 
 # allow port 443
-az network nsg rule create \
-    --resource-group ${rg} \
-    --nsg-name ${nsgname} \
-    --name nsgGroupRuleWeb443 \
-    --protocol tcp \
-    --priority 1002 \
-    --destination-port-range 443 \
-    --access allow
+# az network nsg rule create \
+#     --resource-group ${rg} \
+#     --nsg-name ${nsgname} \
+#     --name nsgGroupRuleWeb443 \
+#     --protocol tcp \
+#     --priority 1002 \
+#     --destination-port-range 443 \
+#     --access allow
 
 # Create a virtual network card and associate with publicIP address and NSG
 az network nic create \
@@ -133,36 +148,76 @@ az network nic create \
     --public-ip-address ${publicIPName} \
     --network-security-group ${nsgname}
 
-# Create vm which runs the cloud init script to provision apache, php etc
+# Create vm which runs the cloud init script to provision 
 # Standard_DS1_v2 is the default
-# az vm list-sizes
 # https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/
 # https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general
 
-# username and password
-#az vm create \
-#    --resource-group ${rg} \
-#    --name ${vmname} \
-#    --location ${region} \
-#    --nics ${nicName} \
-#    --image ${image} \
-#    --admin-username ${adminusername} \
-#    --admin-password ${adminpassword} \
-#    --custom-data cloud-init.txt \
-#    --size Standard_B1ms
-
-# ssh keys
+# If one of my keys exist 
+filename="../secrets/sshkey-homelenovo.pub"
+if [ -f "$filename" ]; then
 az vm create \
     --resource-group ${rg} \
     --name ${vmname} \
     --location ${region} \
     --nics ${nicName} \
     --image ${image} \
-    --ssh-key-values sshkey-work.pub sshkey-homelenovo.pub sshkey-homedesktop.pub \
-    --custom-data cloud-init.txt \
-    --size Standard_B2s
+    --ssh-key-values ../secrets/sshkey-homelenovo.pub ../secrets/sshkey-work.pub ../secrets/sshkey-homedesktop.pub \
+    --custom-data cloud-init.yaml \
+    --size Standard_B1s # £5.65
+    #--size Standard_B2s # £22.63
 
-## patch DNS through to the new VM using DNSimple
+    #--size Standard_B1s # £5.65
+    # --size Standard_B1LS  # £2.82
+    # --size Standard_B1s # £5.65
+    # --size Standard_B1ms # £11.26
+    # --size Standard_B2s # £22.63
+    # --size Standard_B2ms # £45
+else
+# no ssh keys found so could use username and password or ssh-keys
+az vm create \
+    --resource-group ${rg} \
+    --name ${vmname} \
+    --location ${region} \
+    --nics ${nicName} \
+    --image ${image} \
+    --custom-data cloud-init.yaml \
+    --size Standard_B2ms \
+    --generate-ssh-keys 
+    # above means we will use a generated ssh key from this machine
+    #--admin-username ${adminusername} \
+    #--admin-password ${adminpassword}
+fi
+
+# wait until the VM has rebooted and showing the correct screen
+# ping this http://brokenlinkcheckerchecker.com/hascloudinitfinished.html
+# until it comes back with a 200 (twice in a row as it will be there just before a reboot)
+positiveresult="cloud-init has finished!"
+
+while :
+do
+    curlresult="$(curl http://${dnsname}.westeurope.cloudapp.azure.com/hascloudinitfinished.html)"
+    if [[ $curlresult = $positiveresult ]]; then
+        echo "1st good result!"
+        
+        curlresult2="$(curl http://${dnsname}.westeurope.cloudapp.azure.com/hascloudinitfinished.html)"
+
+        if [[ $curlresult2 = $positiveresult ]]; then
+            echo "2nd good result!"
+            break # out of the do.. onto dns updates
+        else
+            # strange situation where we got a 200 just before reboot, so wait 60s then continue
+            sleep 60s
+            break
+        fi
+        
+    else
+        echo "not finished, sleeping"
+        sleep 9s
+    fi
+done
+
+# generate dns here.. had trouble doing inside next if statement
 generate_post_data()
 {
   cat <<EOF
@@ -173,15 +228,50 @@ generate_post_data()
 EOF
 }
 
-curl  -H 'Authorization: Bearer XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' \
-      -H 'Accept: application/json' \
-      -H 'Content-Type: application/json' \
-      -X PATCH \
-      -d "$(generate_post_data)" \
-      https://api.dnsimple.com/v2/63829/zones/hmsoftware.uk/records/17539400
+### patch DNS through to the new VM only if the token file exist
+filename=../secrets/dnsimpletoken.txt
+if [ -f "$filename" ]; then
+    echo "dnsimpletoken.txt file found"
 
-echo -e "\nssh -o StrictHostKeyChecking=no ${adminusername}@${dnsname}.westeurope.cloudapp.azure.com\n${adminpassword}"
-# echo -e "\n${dnsname}.westeurope.cloudapp.azure.com\nssh ${adminusername}@${dnsname}.westeurope.cloudapp.azure.com\n${adminpassword}" & > infra.txt
+    # get the first and only line
+    token=$(head -n 1 $filename)
+    echo "token is $token"
+
+    # update DNS
+    # brokenlinkcheckerchecker.com
+    curl https://api.dnsimple.com/v2/63829/zones/brokenlinkcheckerchecker.com/records/18912164 -H "Authorization: Bearer ${token}" -H "Accept: application/json" -H "Content-Type: application/json" -X PATCH -d "$(generate_post_data)" 
+
+    # www.brokenlinkcheckerchecker.com
+    curl https://api.dnsimple.com/v2/63829/zones/brokenlinkcheckerchecker.com/records/18987716 -H "Authorization: Bearer ${token}" -H "Accept: application/json" -H "Content-Type: application/json" -X PATCH -d "$(generate_post_data)" 
+
+    # dnet.brokenlinkcheckerchecker.com
+    curl https://api.dnsimple.com/v2/63829/zones/brokenlinkcheckerchecker.com/records/19726646 -H "Authorization: Bearer ${token}" -H "Accept: application/json" -H "Content-Type: application/json" -X PATCH -d "$(generate_post_data)" 
+
+    # delete old resource groups
+    # https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-query-azure-resources-using-the-azure-cli/ba-p/360147
+
+    # getting all groups with the rgprefix eg BLCCTEST
+    groupstodel=$(az group list --query "[?contains(name, '${rgprefix}')]".name --output tsv)
+
+    for rgtodel in $groupstodel
+    do
+        if [ "$rgtodel" = "$rg" ]; then  
+            echo "not deleting $rgtodel as have just created it"
+        else
+            #  Delete the old group(s)
+	        az group delete \
+                    --name $rgtodel \
+                    --no-wait \
+                    --yes
+        fi
+    done
+fi
+
+# # -o is skip are you sure about ssh keys
+echo -e "\nssh -o StrictHostKeyChecking=no dave@${dnsname}.westeurope.cloudapp.azure.com\n"
+
+# make it easy to connect to the vm from windows by creating a bat file
+echo -e "\nssh -o StrictHostKeyChecking=no dave@${dnsname}.westeurope.cloudapp.azure.com\n" > ../a.bat
 ```
 
 ![alt text](/assets/2019-11-13/4.jpg "What the script creates")
@@ -194,9 +284,95 @@ Be careful if switching between Azure subscriptions midway through deployments -
 
 This is a python based library which runs commands after the machine builds. It is patched in from the Azure CLI script above.
 
-cloud-init.txt
+cloud-init.yaml
 
-```bash
+```yml
+#cloud-config
+
+# /var/log/cloud-init-output.log for debugging this script
+
+# openresty nginx logs in /usr/local/openresty/nginx/logs/error.log and access.log
+# nginx conf in /usr/local/openresty/nginx/conf
+# to restart openresty after a conf update: sudo systemctl restart openresty
+
+package_upgrade: true
+runcmd:
+  # install dotnet
+  - wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+  - sudo dpkg -i packages-microsoft-prod.deb
+  - sudo add-apt-repository universe -y
+  - sudo apt-get update -y
+  - sudo apt-get install apt-transport-https -y
+  - sudo apt-get update -
+
+  # need the sdk as we'll be compiling
+  - sudo apt-get install dotnet-sdk-3.1 -y
+
+  # openresty (nginx)
+  - wget -qO - https://openresty.org/package/pubkey.gpg | sudo apt-key add -
+  - sudo apt-get -y install software-properties-common
+  - sudo add-apt-repository -y "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main"
+  - sudo apt-get update -y
+
+  # the below registers openresty with systemd systemctl
+  - sudo apt-get install openresty -y
+
+  # a nice shortcut sym link
+  - sudo ln -s /usr/local/openresty/nginx/ /home/dave/nginx
+
+  # a nice restart command for openresty
+  - cd /home/dave
+  - echo "sudo systemctl restart openresty" > s.sh
+  - sudo chmod 777 s.sh
+
+  - cd /home/dave
+
+  - sudo git clone https://davemateer@bitbucket.org/davemateer/brokenlinkcheckerchecker.git blccsource
+
+  # copy the nginx.conf
+  - cd /usr/local/openresty/nginx/conf
+  - sudo mv nginx.conf nginxOLD.txt
+  - sudo cp /home/dave/blccsource/infra/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+
+  # copy all the html
+  # -a preserves file attributes
+  - sudo cp -a /home/dave/blccsource/html/. /usr/local/openresty/nginx/html/.
+
+  # build the dnet part of the site
+  - cd /home/dave/blccsource/dnet/dnet
+  - sudo dotnet publish --configuration Release
+  - cd bin/Release/netcoreapp3.1/publish
+  - sudo mkdir /usr/local/openresty/nginx/html/dnet
+  - sudo cp -a * /usr/local/openresty/nginx/html/dnet/.
+
+  - sudo chown -R www-data:www-data /usr/local/openresty/nginx/html/dnet
+  - sudo chmod -R 777 /usr/local/openresty/nginx/html/dnet
+
+  # keep kestrel alive
+  - cd /home/dave/blccsource/infra
+  - sudo cp kestrel-blcc.service /etc/systemd/system/kestrel-blcc.service
+  - sudo systemctl enable kestrel-blcc.service
+  - sudo systemctl start kestrel-blcc.service
+
+#
+# Bashtop
+#
+  - echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+  - sudo wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+  - sudo apt update -y
+  - sudo apt install bashtop -y
+
+# make a quick test page to signify that the server is ready to go
+  - cd /usr/local/openresty/nginx/html
+  - echo "cloud-init has finished!" > hascloudinitfinished.html
+
+# OS updates need a reboot
+  - sudo reboot now
+```
+
+and here is an older version using a secret key for a different project
+
+```yml
 #cloud-config
 
 package_upgrade: true
