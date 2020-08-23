@@ -51,17 +51,15 @@ I do like this clarity of naming.
 
 [Naming of Git repositories](https://stackoverflow.com/questions/11947587/is-there-a-naming-convention-for-git-repositories) would be something like `tennis-bookings` if we followed convention. [Trending C# repos on GH](https://github.com/trending/c%23?since=monthly) seems to follow this somewhat.
 
+
 ![alt text](/assets/2020-08-17/solution-naming-tardis.jpg "Naming a solution")
 
 [Tardis Bank](https://github.com/TardisBank/TardisBank) has a simpler solution level naming which I prefer. Simpler is always what I strive for if possible. I would name the repo `tardis-bank` though.
 
-
-`TardisBank.UnitTests`
-`TardisBank.IntegrationTests`
+- `TardisBank.UnitTests`
+- `TardisBank.IntegrationTests`
 
 Nice clear naming.
-
-
 
 ## Examples of good code
 
