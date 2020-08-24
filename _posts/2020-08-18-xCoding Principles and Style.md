@@ -51,7 +51,6 @@ I do like this clarity of naming.
 
 [Naming of Git repositories](https://stackoverflow.com/questions/11947587/is-there-a-naming-convention-for-git-repositories) would be something like `tennis-bookings` if we followed convention. [Trending C# repos on GH](https://github.com/trending/c%23?since=monthly) seems to follow this somewhat.
 
-
 ![alt text](/assets/2020-08-17/solution-naming-tardis.jpg "Naming a solution")
 
 [Tardis Bank](https://github.com/TardisBank/TardisBank) has a simpler solution level naming which I prefer. Simpler is always what I strive for if possible. I would name the repo `tardis-bank` though.
@@ -61,6 +60,34 @@ I do like this clarity of naming.
 
 Nice clear naming.
 
+## Exceptions and nameof
+
+nameof useful so that if I rename hour, then the string in the Exception will be renamed too
+
+```cs
+public PitchData(int hour, Dictionary<int, bool> pitchAvailability)
+{
+    if (hour < 0 || hour > 23)
+        throw new ArgumentOutOfRangeException(nameof(hour));
+
+    if (pitchAvailability == null)
+        throw new ArgumentNullException(nameof(pitchAvailability));
+
+    // etc..
+}
+
+public async Task<SendResponse> Send(SendRequest request)
+{
+    if (string.IsNullOrEmpty(request.Body))
+        throw new ArgumentException("The request must contain a body");
+
+    return new SendResponse { IsSuccess = true, StatusCode = 200 };
+}
+// code above inspired by Steve Gordon's course
+```
+
+[Good SO Question on try catch usages](https://stackoverflow.com/questions/14973642/how-using-try-catch-for-exception-handling-is-best-practice) as there are some intricacies.
+
 ## Examples of good code
 
 Mikes code
@@ -68,12 +95,6 @@ Mikes code
 Sepura
 
 CPD
-
-```cs
-
-
-```
-
 
 ## Spacing
 
