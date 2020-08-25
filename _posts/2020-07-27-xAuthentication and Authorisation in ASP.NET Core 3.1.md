@@ -11,6 +11,18 @@ image: /assets/2019-11-13/3.jpg
 ---
 I'm developing a SaaS based product, and need `Authentication` (who you are) and `Authorisation` (what you're allowed to do) in my app.
 
+## Update 25th Aug 2020
+
+This below article was written in Feb 2020 and remained non-published. The reason for this was that for my use case it felt overly complex.
+
+[I followed this article up with a 3rd Party External Authentication article]()
+
+[Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great 2nd June 2020 tutorial on how to scaffold out, then only use the relevant bit. This is a very well written article covering some of what is here, and adding in a very neat way of not having to maintain all the scaffolded code.
+
+6 months later and I'm considering [Custom Authentication and Authorisation]() ie only impelmenting what I need.
+
+## Into
+
 [Identity on ASP.NET Core](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) gives us:
 
 - Local Login with details stored in my database
