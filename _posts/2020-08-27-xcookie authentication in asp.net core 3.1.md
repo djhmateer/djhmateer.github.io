@@ -98,12 +98,13 @@ asdf
 ## Features
 
 - Login form
-- redirect to login form if try to access a secure page
-- Can redirect back to secure page 
+- redirect to login form if try to access any secured page
+- Can redirect back to secured page on successful login
 - says hello@exmple.com and logout button
 - has a remember me button
 - remember me works when browser is closed and re-opened
 - cookie expires after x days
+- NormalUser and Admin role
 
 - anti forgery token.. csrf?
 
