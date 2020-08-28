@@ -93,6 +93,17 @@ app.UseCookiePolicy(cookiePolicyOptions);
 asdf
 
 
+## Serilog Logging
+
+[Setting up serilog in ASP.NET Core 3](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/)]
+
+For me this cleans up the code as don't need the injected in ILogger everywhere.
+
+[Using Seq to view the logs is useful too](https://docs.datalust.co/docs/getting-started-with-docker)
+
+```bash
+docker run --name seq -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest
+```
 
 
 ## Features
