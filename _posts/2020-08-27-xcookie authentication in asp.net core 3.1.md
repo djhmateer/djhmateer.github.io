@@ -12,16 +12,16 @@ image: /assets/2020-02-03/40.jpg
 
 <!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
 
-
 I've used MS Identity in a number of projects, and have found that:
 
-- you've got to scaffold out all of the pages to make any ui changes
+- You've got to scaffold out all of the pages to make any ui changes
 - It is good that can handle 3rd party providers
 - It is quite verbose and configurable
+- There is a lot in there I don't need
 
 [Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great tutorial on how to scaffold out, then only use the relevant bit.
 
-[Around Feb 2020]() I wrote articles on Authentication and Authorisation in .NET Core 3.1, and never got around to publishing them. They felt complex and not quite right for my use case.
+[Around Feb 2020]() I wrote articles on Authentication and Authorisation in .NET Core 3.1, and never published them. They felt complex and not quite right for my use case.
 
 My use case is fairly simple as a user can be
 
@@ -30,10 +30,6 @@ My use case is fairly simple as a user can be
 - Logged in as an Admin Role
 
 There are parts of the site
-
-- /
-- /member/1 - private just for that member
-- /admin - just for admin
 
 And I just want regular cookie based authentication for now - no 3rd party authentication providers.
 
@@ -71,56 +67,47 @@ From the [MS Cookie Example](https://github.com/dotnet/AspNetCore.Docs/tree/mast
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CookieDave.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CookieDave.Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    @*<partial name="_LoginPartial" />*@
+<!-- etc -->
 
-                    <ul class="navbar-nav">
-                        @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                        </li>
-                        <li class="nav-item">
-                            <form class="form-inline" asp-area="" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                            </form>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Account/Register">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Account/Login">Login</a>
-                        </li>
+@if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+    </li>
+    <li class="nav-item">
+        <form class="form-inline" asp-area="" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/Account/Login">Login</a>
+    </li>
 
-                    }
-                    </ul>
+}
+</ul>
 
 ```
 
-and add in the service
+add in the service
 
 ```cs
+// startup.cs
 services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 ```
+
+## Account/Login.cshtml
+
+
+
+## Tag helpers
+
+[Tag Helpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-3.1)
 
 ## Cookie config options
 
