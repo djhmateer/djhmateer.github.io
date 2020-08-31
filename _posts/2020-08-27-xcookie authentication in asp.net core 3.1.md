@@ -103,6 +103,37 @@ services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 ## Account/Login.cshtml
 
+oasdf
+
+## Scripts
+
+REnderSection
+
+```html
+<!-- _Layout.cshtml -->
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
+```
+
+Lets just hard code the jquery referencers which are currently in `/Shared/_ValidationScriptsPartial.cshtml` into the `/Admin/Login.cshtml` page
+
+```html
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+@*@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}*@
+
+```
+
 
 
 ## Tag helpers
