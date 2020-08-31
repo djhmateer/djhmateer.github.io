@@ -105,9 +105,30 @@ services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 oasdf
 
-## Scripts
 
-REnderSection
+
+## Tag helpers
+
+[Tag Helpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-3.1)
+
+Some of the tag helpers provide no value to me, so I always prefer simplicity if I can:
+
+```html
+<!-- asp-page is a tag helper -->
+<a class="nav-link text-dark" asp-page="/Privacy">Privacy</a>
+
+<!-- generated so I use this -->
+<a class="nav-link text-dark" href="/Privacy">Privacy</a>
+
+<!-- very useful to allow for smart caching -->
+ <script src="~/js/site.js" asp-append-version="true"></script>
+```
+
+[SO Tag Helpers](https://stackoverflow.com/tags/tag-helpers/info)
+
+## RenderSection
+
+[Generally we want to load js at the bottom of the page](https://stackoverflow.com/questions/2105327/should-jquery-code-go-in-header-or-footer) so the browser can render the text and images as quickly as possible. Caveat empor here for a multitude of reasons.
 
 ```html
 <!-- _Layout.cshtml -->
@@ -116,29 +137,22 @@ REnderSection
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 
+<!-- if there is any extra js eg jquery.validate.min.js on the login screen then load it here -->
 @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>
 ```
 
-Lets just hard code the jquery referencers which are currently in `/Shared/_ValidationScriptsPartial.cshtml` into the `/Admin/Login.cshtml` page
+This used to be in `/Shared/_ValidationScriptsPartial.cshtml` but I've deleted that file and prefer to show directly the script reference in the files that I need them in:
 
 ```html
-<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-
-@*@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}*@
-
+<!-- login.cshtml -->
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
 ```
-
-
-
-## Tag helpers
-
-[Tag Helpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-3.1)
 
 ## Cookie config options
 
