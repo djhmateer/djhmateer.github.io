@@ -105,7 +105,53 @@ services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 oasdf
 
+## Account/Logout.cshtml
 
+```cs
+public async Task<IActionResult> OnPost()
+{
+    Log.Information($"User {User.Identity.Name} logged out");
+
+    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+    // Does a 302Found GET request to the current page
+    return RedirectToPage();
+}
+```
+
+and the html
+
+```html
+<!-- this wont work - will produce a 400 -->
+<form class="form-inline" action="/Account/Logout" method="post">
+    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+</form>
+
+<!-- this will work as using the tag helper which generates the anti forgery token -->
+<form class="form-inline" asp-page="/Account/Logout" method="post">
+    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+</form>
+
+```
+
+The `asp-page` tag helper inside the form [Does this](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-3.1) which includes generating the Request Verification Token.
+
+<!-- ![alt text](/assets/2020-08-27/400.jpg "400 error missing antiforgery"){:width="600px"} -->
+![alt text](/assets/2020-08-29/400.jpg "400 error missing antiforgery"){:width="700px"}
+
+To see this detailed logging (I'm using Serilog here) use these settings:
+
+```cs
+ public static void Main(string[] args)
+ {
+     Log.Logger = new LoggerConfiguration()
+         // Comment this out to see detailed aspnetcore logging 
+         //.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+         .Enrich.FromLogContext()
+         .WriteTo.Console()
+```
+
+asdf 
 
 ## Tag helpers
 
@@ -289,6 +335,25 @@ For me this cleans up the code as don't need the injected in ILogger everywhere.
 ```bash
 docker run --name seq -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest
 ```
+
+## Authorize
+
+Using the Authorize attribute on a PageModel class ensures that the user is Logged In.
+
+```cs
+  [Authorize]
+    public class UserRoleNeededModel : PageModel
+    {
+        public void OnGet()
+        {
+        }
+    }
+```
+
+AllowAnonymousAttribute
+
+
+[**HERE](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-3.1)
 
 
 ## Features
