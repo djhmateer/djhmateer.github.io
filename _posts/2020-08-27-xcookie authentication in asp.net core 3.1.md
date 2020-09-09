@@ -468,6 +468,8 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+[Joydip article](https://www.red-gate.com/simple-talk/dotnet/c-programming/policy-based-authorization-in-asp-net-core-a-deep-dive/)
+
 [Ziyad article](http://www.ziyad.info/en/articles/24-Role_Based_Folder_Authorization)
 
 ## Features
