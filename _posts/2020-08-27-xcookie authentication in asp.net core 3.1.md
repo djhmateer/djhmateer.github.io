@@ -337,9 +337,10 @@ docker run --name seq -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest
 
 From the language used [here](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/secure-data?view=aspnetcore-3.1) we will have 3 security 'Groups'
 
-- Registered users.. in User Role 
-- Managers.. Manager Role
+- Registered users. User Role
 - Admins.. Admin Role
+
+### Authorization Attributes
 
 Using the Authorize attribute on a PageModel class ensures that the user is Logged In.
 
@@ -368,17 +369,106 @@ services.AddAuthorization(options =>
    public class LoginModel : PageModel
 ```
 
+However to avoid cluttering with attributes I prefer the following conventions:
+
+### Authorization Conventions with Razor Pages
+
+[MS Docs - Razor Pages authorization conventions](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/razor-pages-authorization?view=aspnetcore-3.1)
+
+```cs
+// all pages need an authenticated user by default
+services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
+
+// allow pages here 
+services.AddRazorPages(x =>
+{
+    x.Conventions.AllowAnonymousToPage("/");
+    x.Conventions.AllowAnonymousToPage("/Login");
+});
+```
+
 ## Roles
 
 ```cs
-[Authorize(Roles = "Administrator")]
-
+[Authorize(Roles = "Admin")]
 ```
 
-So how do we simply give a user a role?
+Without using the complexity of MS Identity, how could we create simple Roles
 
-**herE - looking at samples in https://github.com/dotnet/AspNetCore.Docs.git 
+- User (ie authenticated / logged in)
+- Admin (this can be a bool IsAdmin flag in the database)
 
+Essentially when we make our user we want to know whether she `IsAdmin`:
+
+```cs
+public class ApplicationUser
+{
+    public string Email { get; set; }
+    public string FullName { get; set; }
+    public bool IsAdmin { get; set; }
+}
+```
+
+All we need is included in [MS Docs - This sample for simple Authenticaion](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/cookie/samples/3.x/CookieSample/Pages/Account/Login.cshtml.cs) which includes a list of `Claim`
+
+A simple bit of logic to set the correct claim and we have Roles working in our sample.
+
+```cs
+var claims = new List<Claim>
+{
+    new Claim(ClaimTypes.Name, user.Email),
+    new Claim("FullName", user.FullName),
+    new Claim(ClaimTypes.Role,  user.IsAdmin ? "Admin" : "User"),
+};
+```
+
+If you don't get the correct role, you're redirect to to AccessDenied:
+
+![alt text](/assets/2020-08-29/access-denied.jpg "Access denied"){:width="600px"}
+
+### Policy Based Authorisation - Razor Pages Conventions
+
+[MS Docs - Policy based authorization](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-3.1)
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+    services.AddAuthorization(options =>
+    {
+        // all authenticated users are in the role of User.
+        //options.AddPolicy("User", p => p.RequireRole("User"));
+        options.AddPolicy("Admin", p => p.RequireRole("Admin"));
+
+        // has to be authenticated to view a page by default
+        options.FallbackPolicy = new AuthorizationPolicyBuilder()
+            .RequireAuthenticatedUser()
+            .Build();
+    });
+
+    // allow pages here
+    services.AddRazorPages(x =>
+    {
+        x.Conventions.AllowAnonymousToPage("/Index");
+        x.Conventions.AllowAnonymousToPage("/Account/Login");
+        x.Conventions.AllowAnonymousToPage("/Account/Logout");
+
+        // all authenticated users have the User role so this is not needed
+        //x.Conventions.AuthorizePage("/UserRoleNeeded", "User");
+        x.Conventions.AuthorizePage("/AdminRoleNeeded", "Admin");
+    });
+
+    services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+}
+```
+
+[Ziyad article](http://www.ziyad.info/en/articles/24-Role_Based_Folder_Authorization)
 
 ## Features
 
