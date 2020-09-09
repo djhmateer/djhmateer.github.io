@@ -239,7 +239,6 @@ And this is what the payload is:
 
 [How does cookie authentication work](https://stackoverflow.com/a/32218069/26086)
 
-
 ## .AspNetCore.Cookies
 
 asdf
@@ -256,10 +255,6 @@ X-CSRF - Cross Site Request Forgery
 services.AddAntiforgery(options => options.Cookie.Name = "X-CSRF-TOKEN-DAVE");
 ```
 
-## Authorize
-
-`Authorize` attribute on a class
-
 ## Persistent Cookies
 
 [Persistent Cookies](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1#persistent-cookies) for the Remember Me feature.
@@ -275,7 +270,6 @@ var authProperties = new AuthenticationProperties
     // lifetime of the authentication ticket) or session-based.
 };
 ```
-
 
 ## Scaffolding
 
@@ -315,10 +309,7 @@ dotnet ef database update --context AuthenticationDave.Web.Data.ApplicationDbCon
 
 So this took some work to get going properly - multiple db contexts, multiple connection strings. DbUpdate to run migrations. It shouldn't be this complex (for my use case).
 
-
-
 ## ReturnUrl
-
 
 I'm a fan on null checking `<nullable>enable</nullable>` [Nullable Reference Types](https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references) and [Whats new in C#8](/2020/07/24/Whats-new-in-C-8)
 
@@ -338,22 +329,55 @@ docker run --name seq -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest
 
 ## Authorize
 
+[MS Docs - Inntroduction to Authorisation](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-3.1)
+
+- Simple Role model
+- More complex Policy based model
+- [A better way to handle authorisation - Jon P Smith](https://www.thereformedprogrammer.net/a-better-way-to-handle-asp-net-core-authorization-six-months-on/)
+
+From the language used [here](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/secure-data?view=aspnetcore-3.1) we will have 3 security 'Groups'
+
+- Registered users.. in User Role 
+- Managers.. Manager Role
+- Admins.. Admin Role
+
 Using the Authorize attribute on a PageModel class ensures that the user is Logged In.
 
 ```cs
-  [Authorize]
-    public class UserRoleNeededModel : PageModel
+[Authorize]
+public class UserRoleNeededModel : PageModel
+{
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
+}
 ```
 
-AllowAnonymousAttribute
+Or more securely this code in startup requires that all pages be Authorized unless `AllowAnonymous` attribute is applied.
 
+```cs
+services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
 
-[**HERE](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-3.1)
+// remember to put on login and index pages and any pages you want anoymous users to see!
+[AllowAnonymous]
+   public class LoginModel : PageModel
+```
+
+## Roles
+
+```cs
+[Authorize(Roles = "Administrator")]
+
+```
+
+So how do we simply give a user a role?
+
+**herE - looking at samples in https://github.com/dotnet/AspNetCore.Docs.git 
 
 
 ## Features
