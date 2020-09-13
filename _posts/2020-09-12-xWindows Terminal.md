@@ -12,6 +12,10 @@ image: /assets/2020-02-03/40.jpg
 
 <!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
 
+[Scott Hanselman on YouTube .NET Oxford - Termminals](https://www.youtube.com/watch?v=B4VYjxzx2us&feature=emb_logo)
+
+I'm using the new terminal for Linux - specifically for doing AZ CLI deployments. It works just fine. For Windows side terminal I'm still on cmder for now.
+
 - Set default terminal to Ubuntu
 - Set fontsize smaller
 - Set starting directory 
@@ -67,8 +71,15 @@ https://youtubewithsubtitle.inadram.com/posts/NCRHRvf7hmg/
 
 ```bash
 # ~/.bash_aliases
+alias cdd='cd /mnt/c/dev'
+alias cdl='cd /mnt/c/dev/test'
+#alias p='git add . & git commit -m "auto commit" & git push'
 
+#alias ls='ls -lat'
+alias gs='git status'
 
+alias e='explorer.exe .'
 
+alias c='code.exe .'
 ```
 
