@@ -22,9 +22,6 @@ todo
 
 https://youtubewithsubtitle.inadram.com/posts/NCRHRvf7hmg/
 
-
-
-
 ```yml
     "$schema": "https://aka.ms/terminal-profiles-schema",
 
@@ -42,5 +39,36 @@ https://youtubewithsubtitle.inadram.com/posts/NCRHRvf7hmg/
             // "startingDirectory": "//wsl$/Ubuntu/mnt",
             "startingDirectory": "c:/dev/test",
             "fontSize": 9
-
  ```
+
+ What I like so far:
+
+ - Copy and paste works
+ - History works ie can scroll backwards to see what happened
+ - Bashtop renders properly
+
+## Launchy
+
+```bash
+# Drop into windows explorer address bar to open UWP applications
+%windir%\explorer.exe shell:::{4234d49b-0245-4df3-b780-3893943456e1} 
+
+# view details, sort by long name (screenshot below)
+
+# right click create shortcut
+
+# put in c:/sharedTools/links  and updated catalog in launchy to *.lnk
+
+```
+
+![alt text](/assets/2020-09-13/uwp-apps.jpg "Finding UWP apps"){:width="600px"}
+
+## Aliases .bashrc
+
+```bash
+# ~/.bash_aliases
+
+
+
+```
+
