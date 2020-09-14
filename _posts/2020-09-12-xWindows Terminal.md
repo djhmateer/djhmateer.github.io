@@ -14,7 +14,11 @@ image: /assets/2020-02-03/40.jpg
 
 [Scott Hanselman on YouTube .NET Oxford - Termminals](https://www.youtube.com/watch?v=B4VYjxzx2us&feature=emb_logo)
 
-I'm using the new terminal for Linux - specifically for doing AZ CLI deployments. It works just fine. For Windows side terminal I'm still on cmder for now.
+I'm using the new Windows Terminal 
+- for Linux - specifically for doing AZ CLI deployments
+- ssh'ing into VM's as the rendering is better for bashtop
+
+It works just fine. For Windows side terminal I'm still on cmder for now.
 
 - Set default terminal to Ubuntu
 - Set fontsize smaller
@@ -24,7 +28,6 @@ todo
   put in all my handy shortcuts I use in cmder?
   launch terminal from launchy?
 
-https://youtubewithsubtitle.inadram.com/posts/NCRHRvf7hmg/
 
 ```yml
     "$schema": "https://aka.ms/terminal-profiles-schema",
