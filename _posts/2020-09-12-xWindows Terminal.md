@@ -14,19 +14,18 @@ image: /assets/2020-02-03/40.jpg
 
 [Scott Hanselman on YouTube .NET Oxford - Termminals](https://www.youtube.com/watch?v=B4VYjxzx2us&feature=emb_logo)
 
-I'm using the new Windows Terminal 
+I'm using the new [Windows Terminal](https://github.com/microsoft/terminal)
+
 - for Linux - specifically for doing AZ CLI deployments
 - ssh'ing into VM's as the rendering is better for bashtop
 
-It works just fine. For Windows side terminal I'm still on cmder for now.
+It works just fine. For Windows side terminal I'm still on [cmder](https://cmder.net/) for now as I've got nice shortcuts setup and it works.
+
+## Configuring
 
 - Set default terminal to Ubuntu
 - Set fontsize smaller
 - Set starting directory 
-
-todo
-  put in all my handy shortcuts I use in cmder?
-  launch terminal from launchy?
 
 
 ```yml
@@ -50,9 +49,9 @@ todo
 
  What I like so far:
 
- - Copy and paste works
- - History works ie can scroll backwards to see what happened
- - Bashtop renders properly
+- Copy and paste works
+- History works ie can scroll backwards to see what happened
+- Bashtop renders properly
 
 ## Launchy
 
@@ -65,7 +64,6 @@ todo
 # right click create shortcut
 
 # put in c:/sharedTools/links  and updated catalog in launchy to *.lnk
-
 ```
 
 ![alt text](/assets/2020-09-13/uwp-apps.jpg "Finding UWP apps"){:width="600px"}
