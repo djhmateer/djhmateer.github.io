@@ -12,7 +12,25 @@ image: /assets/2020-02-03/40.jpg
 
 <!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
 
-I've used MS Identity in a number of projects, and have found that:
+I've used [ASP.NET (Core) Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) in a number of projects for over a decade of development and have always found complexity.
+
+Recently I have made time to think about identity in more detail for my SaaS company. This is the first blog post where I will cover:
+
+- Why Cookie (Forms based) Authentication
+- Simple Role based Authorisation
+- Serilog logging to help debugging using Kestrel
+- Deploy to Azure VM using AZ CLI
+- Login / Logout
+- Remember me
+- Forget password
+
+[Source code here](https://github.com/djhmateer/cookie-dave)
+
+The second blog post will be on persistance.
+
+## Introduction
+
+[This Twitter thread](https://twitter.com/ReactiveRich/status/1305281794229645313) sums it up...Identity is hard! And ASP.NET hasn't a great answer, so some people
 
 - You've got to scaffold out all of the pages to make any ui changes
 - It is good that can handle 3rd party providers
@@ -23,10 +41,43 @@ I've used MS Identity in a number of projects, and have found that:
 
 [Around Feb 2020]() I wrote articles on Authentication and Authorisation in .NET Core 3.1, and never published them. They felt complex and not quite right for my use case.
 
+## Why Forms Authentication
+
+My use case is a SaaS products (I make tools to make sure websites are working). I'm also not using JWT tokens (yet) as don't need them.
+
+For internal corporate sites I have always gone for Windows AD authentication if available.
+
+## Why not 3rd party Authentication
+
+eg Google authentication - I don't use them.
+
+Use a Password manager to keep all my passwords
+
+It is simple to implement, and as a SaaS business owner I want things to work well (In the early days of Stackover most of their support tickets were on identity)
+
+Tie in with Troy Hunt's HIBP API - so can direct people to pit of success to use good passwords.
+
+## Nomenclature
+
+User - Maria Rodriguez, Admin Admin
+
+Email - maria.rodriguez@contoso.com, admin@contoso.com
+
+Role - Normal, Admin
+
+
+Identity - Is Microsoft.AspNetCore.Identity.UI that supports login functionality. Manage users, passwords, pofile data, roles, claims, token, email confirmation and more.
+
+Authentication - user provides credentials that are then compared to those stored in a db ie determining the user's identity.
+
+Authorisation - what the user is allosed to do
+
+## Stuff
+
 My use case is fairly simple as a user can be
 
 - Not logged in
-- Logged in as a User Role
+- Logged in as a Normal Role
 - Logged in as an Admin Role
 
 There are parts of the site
