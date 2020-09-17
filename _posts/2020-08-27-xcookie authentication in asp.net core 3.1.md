@@ -486,7 +486,4 @@ public void ConfigureServices(IServiceCollection services)
 
 - anti forgery token.. csrf?
 
-
-
-
 [Bug in generated and sample code C#8 Nullable ref types - returnUrl field is required](https://github.com/dotnet/AspNetCore.Docs/issues/17145)
