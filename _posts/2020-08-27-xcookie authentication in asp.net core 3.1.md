@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cookie Authentication in ASP.NET Core 3.1
+title: ASP.NET Security - Cookie Authentication in ASP.NET Core 3.1
 description: 
 menu: review
 categories: authentication 
@@ -12,24 +12,35 @@ image: /assets/2020-02-03/40.jpg
 
 <!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
 
-I've used [ASP.NET (Core) Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) for over a decade.
+I've used [ASP.NET (Core) Security and Identity](https://docs.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-3.1) for over a decade.
 
-Recently I made time to think about identity in more detail for my SaaS company. This is the first blog post where I will cover:
+Recently I made time to think about security in more detail for my SaaS company. I've got a very basic set of requirements, so I want a simple implementation.
 
+This is the first blog post where I will cover:
+
+- Nomenclature
 - Why Cookie (Forms based) Authentication
+- Simplest possible (no roles)
 - Simple Role based Authorisation (including identity states, and on hold states)
 - Serilog logging to help debugging using Kestrel
 - Deploy to Azure VM using AZ CLI
-- Login / Logout
+- Login / Logout forms
+- Redirect to login form if try to access any secured page then return URL
 - Remember me
-- Forget password
-- Exception handling
+- cookie expires after x days
+- enable lock out to prevent brute force
+- Forget password form
+- anti forgery token.. csrf?
 
-[Source code here](https://github.com/djhmateer/cookie-dave)
+[Source code here](https://github.com/djhmateer/cookie-dave) and a [Scaffolded out sample here](https://github.com/djhmateer/authentication-dave)
 
-The second blog post will be on persistance.
-Then making sure passwords are good with HIBP API
-Then alternatives?
+
+- The hext blog post will cover testing
+- The second blog post will be on persistance.
+- Then making sure passwords are good with HIBP API
+- Then alternatives?
+
+Really, all the users care about is... get security out of my way, and let me into the app!
 
 ## Introduction
 
@@ -42,15 +53,30 @@ Then alternatives?
 
 [Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great tutorial on how to scaffold out, then only use the relevant bit.
 
-[Around Feb 2020]() I wrote articles on Authentication and Authorisation in .NET Core 3.1, and never published them. They felt complex and not quite right for my use case.
+[In Feb 2020]() I wrote articles on using the standard Authentication and Authorisation in ASP.NET Core 3.1, and never published them. They felt overly complex for me.
 
-## Why Forms Authentication
+## Nomenclature
+
+- Security - How to keep the application secure and the correct user sees the correct data
+
+- Identity - Is Microsoft.AspNetCore.Identity.UI that supports login functionality. Manage users, passwords, pofile data, roles, claims, token, email confirmation and more.
+
+- Authentication - user provides credentials that are then compared to those stored in a db ie determining the user's identity.
+
+- Authorisation - what the user is allowed to do
+
+
+- User - Maria Rodriguez, Admin Admin
+
+- Email - maria.rodriguez@contoso.com, admin@contoso.com
+
+- Role - Normal, Admin
+
+## Why Cookie Forms Authentication
 
 My use case is a SaaS products (I make tools to make sure websites are working). I'm also not using JWT tokens (yet) as don't need them.
 
 For internal corporate sites I have always gone for Windows AD authentication if available.
-
-## Why not 3rd party Authentication
 
 eg Google authentication - I don't use them.
 
@@ -58,34 +84,7 @@ Use a Password manager to keep all my passwords
 
 It is simple to implement, and as a SaaS business owner I want things to work well (In the early days of Stackover most of their support tickets were on identity)
 
-## Nomenclature
-
-User - Maria Rodriguez, Admin Admin
-
-Email - maria.rodriguez@contoso.com, admin@contoso.com
-
-Role - Normal, Admin
-
-
-Identity - Is Microsoft.AspNetCore.Identity.UI that supports login functionality. Manage users, passwords, pofile data, roles, claims, token, email confirmation and more.
-
-Authentication - user provides credentials that are then compared to those stored in a db ie determining the user's identity.
-
-Authorisation - what the user is allosed to do
-
-## Stuff
-
-My use case is fairly simple as a user can be
-
-- Not logged in
-- Logged in as a Normal Role
-- Logged in as an Admin Role
-
-There are parts of the site
-
-And I just want regular cookie based authentication for now - no 3rd party authentication providers.
-
-## Simplest Possible Cookie Auth
+## Simplest Possible Cookie Auth (no roles)
 
 [Cookie authentication without Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1)
 
@@ -252,30 +251,22 @@ This used to be in `/Shared/_ValidationScriptsPartial.cshtml` but I've deleted t
 }
 ```
 
-## Cookie config options
+## Setup Cookie Authentication
 
 We can add in config options to the cookie service like:
 
 ```cs
-services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-        .AddCookie(x => x.AccessDeniedPath = "/Account/AccessDenied");
+// ConfigureServices method
+services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
 ```
-
-## Cookie Policy Middleware
 
 As we're not using OAuth2 we can set the cookie same-site attribute to strict
 
 ```cs
-// Cookie same-site attribute
-var cookiePolicyOptions = new CookiePolicyOptions
-{
-    MinimumSameSitePolicy = SameSiteMode.Strict,
-};
-app.UseCookiePolicy(cookiePolicyOptions);
+// Configure method
+app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Strict });
 
 ```
-
-## What cookies are created
 
 `chrome://settings/cookies/detail?site=localhost` useful command in chrome
 
@@ -291,10 +282,8 @@ And this is what the payload is:
 
 [How does cookie authentication work](https://stackoverflow.com/a/32218069/26086)
 
-## .AspNetCore.Cookies
-
-asdf
- **HERE** - dive into what this cookie means
+![alt text](/assets/2020-08-29/cookie-remember.jpg "2 week expire remember me")
+2 Week expiration - remember me has been ticked and the browser will remember the user for 2 weeks through machine restarts / server restarts and browswer restarts.
 
 ## .AspNetCore.Antiforgery
 
@@ -365,7 +354,7 @@ So this took some work to get going properly - multiple db contexts, multiple co
 
 I'm a fan on null checking `<nullable>enable</nullable>` [Nullable Reference Types](https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references) and [Whats new in C#8](/2020/07/24/Whats-new-in-C-8)
 
-Lets start with the feature of 
+[Bug in generated and sample code C#8 Nullable ref types - returnUrl field is required](https://github.com/dotnet/AspNetCore.Docs/issues/17145)
 
 ## Serilog Logging
 
@@ -524,18 +513,12 @@ public void ConfigureServices(IServiceCollection services)
 
 [Ziyad article](http://www.ziyad.info/en/articles/24-Role_Based_Folder_Authorization)
 
-## Features
+## RBAC
 
-- Login form
-- redirect to login form if try to access any secured page
-- Can redirect back to secured page on successful login
-- says hello@exmple.com and logout button
-- has a remember me button
-- remember me works when browser is closed and re-opened
-- cookie expires after x days
-- NormalUser and Admin role
-- enable lock out to prevent brute force
+[User Roles and Permissions on Drupal](https://www.drupal.org/drupalorg/docs/user-accounts/user-roles-and-permissions)
 
-- anti forgery token.. csrf?
+- Anonymous user
+- Email Unverified User
+- Authenticated User
+- Admin
 
-[Bug in generated and sample code C#8 Nullable ref types - returnUrl field is required](https://github.com/dotnet/AspNetCore.Docs/issues/17145)
