@@ -12,21 +12,24 @@ image: /assets/2020-02-03/40.jpg
 
 <!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
 
-I've used [ASP.NET (Core) Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) in a number of projects for over a decade of development and have always found complexity.
+I've used [ASP.NET (Core) Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) for over a decade.
 
-Recently I have made time to think about identity in more detail for my SaaS company. This is the first blog post where I will cover:
+Recently I made time to think about identity in more detail for my SaaS company. This is the first blog post where I will cover:
 
 - Why Cookie (Forms based) Authentication
-- Simple Role based Authorisation
+- Simple Role based Authorisation (including identity states, and on hold states)
 - Serilog logging to help debugging using Kestrel
 - Deploy to Azure VM using AZ CLI
 - Login / Logout
 - Remember me
 - Forget password
+- Exception handling
 
 [Source code here](https://github.com/djhmateer/cookie-dave)
 
 The second blog post will be on persistance.
+Then making sure passwords are good with HIBP API
+Then alternatives?
 
 ## Introduction
 
@@ -54,8 +57,6 @@ eg Google authentication - I don't use them.
 Use a Password manager to keep all my passwords
 
 It is simple to implement, and as a SaaS business owner I want things to work well (In the early days of Stackover most of their support tickets were on identity)
-
-Tie in with Troy Hunt's HIBP API - so can direct people to pit of success to use good passwords.
 
 ## Nomenclature
 
