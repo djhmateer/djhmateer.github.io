@@ -14,6 +14,8 @@ image: /assets/2020-02-03/40.jpg
 
 I've used [ASP.NET (Core) Security and Identity](https://docs.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-3.1) for over a decade.
 
+[This Twitter thread](https://twitter.com/ReactiveRich/status/1305281794229645313) sums it up...Identity is hard! And ASP.NET hasn't a great answer, so some people
+
 Recently I made time to think about security in more detail for my SaaS company. I've got a very basic set of requirements, so I want a simple implementation.
 
 This is the first blog post where I will cover:
@@ -29,12 +31,11 @@ This is the first blog post where I will cover:
 - Remember me
 - cookie expires after x days
 - enable lock out to prevent brute force
-- Forget password form
 - anti forgery token.. csrf?
 
 [Source code here](https://github.com/djhmateer/cookie-dave) and a [Scaffolded out sample here](https://github.com/djhmateer/authentication-dave)
 
-
+- next post will have Register, Forget password forms
 - The hext blog post will cover testing
 - The second blog post will be on persistance.
 - Then making sure passwords are good with HIBP API
@@ -42,35 +43,29 @@ This is the first blog post where I will cover:
 
 Really, all the users care about is... get security out of my way, and let me into the app!
 
-## Introduction
-
-[This Twitter thread](https://twitter.com/ReactiveRich/status/1305281794229645313) sums it up...Identity is hard! And ASP.NET hasn't a great answer, so some people
-
-- You've got to scaffold out all of the pages to make any ui changes
-- It is good that can handle 3rd party providers
-- It is quite verbose and configurable
-- There is a lot in there I don't need
-
-[Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great tutorial on how to scaffold out, then only use the relevant bit.
-
-[In Feb 2020]() I wrote articles on using the standard Authentication and Authorisation in ASP.NET Core 3.1, and never published them. They felt overly complex for me.
-
 ## Nomenclature
 
 - Security - How to keep the application secure and the correct user sees the correct data
 
 - Identity - Is Microsoft.AspNetCore.Identity.UI that supports login functionality. Manage users, passwords, pofile data, roles, claims, token, email confirmation and more.
 
+
 - Authentication - user provides credentials that are then compared to those stored in a db ie determining the user's identity.
 
 - Authorisation - what the user is allowed to do
 
+In my application I'm using these terms:
 
-- User - Maria Rodriguez, Admin Admin
+- User - email, roleID, password hash, isEmailVerified
 
-- Email - maria.rodriguez@contoso.com, admin@contoso.com
+So a user has to have a verified email. They can only have 1 Role:
 
-- Role - Normal, Admin
+- Policy - a Policy can have multiple Roles eg Tier2Policy contains all of Tier1 and Tier2 Roles.
+
+- Role - Tier1 (my free tier, but need to be a successfully registered and active account), Tier2 (paid tier, need to be successfully registered), Admin
+
+I can protect each page with a Role.
+
 
 ## Why Cookie Forms Authentication
 
@@ -522,3 +517,8 @@ public void ConfigureServices(IServiceCollection services)
 - Authenticated User
 - Admin
 
+## Other Links
+
+[Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great tutorial on how to scaffold out, then only use the relevant bit.
+
+[In Feb 2020]() I wrote articles on using the standard Authentication and Authorisation in ASP.NET Core 3.1, and never published them. They felt overly complex for me.
