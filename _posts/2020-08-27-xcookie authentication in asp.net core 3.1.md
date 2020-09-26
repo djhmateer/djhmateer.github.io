@@ -14,356 +14,75 @@ image: /assets/2020-02-03/40.jpg
 
 I've used [ASP.NET (Core) Security and Identity](https://docs.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-3.1) for over a decade.
 
-[This Twitter thread](https://twitter.com/ReactiveRich/status/1305281794229645313) sums it up...Identity is hard! And ASP.NET hasn't a great answer, so some people
+[This Twitter thread](https://twitter.com/ReactiveRich/status/1305281794229645313) sums it up...Identity is hard! And ASP.NET hasn't a great answer (IMO)
 
-Recently I made time to think about security in more detail for my SaaS company. I've got a very basic set of requirements, so I want a simple implementation.
+I made time to think about security in more detail for my SaaS company. I've got a basic set of requirements, so I want a simple implementation.
 
 This is the first blog post where I will cover:
 
 - Nomenclature
 - Why Cookie (Forms based) Authentication
-- Simplest possible (no roles)
-- Simple Role based Authorisation (including identity states, and on hold states)
-- Serilog logging to help debugging using Kestrel
-- Deploy to Azure VM using AZ CLI
+- Simple Authorisation (no Roles)
+- Role based Authorisation
 - Login / Logout forms
-- Redirect to login form if try to access any secured page then return URL
 - Remember me
-- cookie expires after x days
-- enable lock out to prevent brute force
-- anti forgery token.. csrf?
+- Redirect to login form if try to access any secured page then return URL
 
-[Source code here](https://github.com/djhmateer/cookie-dave) and a [Scaffolded out sample here](https://github.com/djhmateer/authentication-dave)
-
-- next post will have Register, Forget password forms
-- The hext blog post will cover testing
-- The second blog post will be on persistance.
-- Then making sure passwords are good with HIBP API
-- Then alternatives?
-
-Really, all the users care about is... get security out of my way, and let me into the app!
+[Source code here](https://github.com/djhmateer/cookie-dave) and a [Scaffolded out ASP.NET Core default identity sample is here](https://github.com/djhmateer/authentication-dave)
 
 ## Nomenclature
+
+In my application I'm using these terms:
+
+- User - email, ???, password hash, isEmailVerified
+
+- Role
+  - Tier1 (my free tier, but need to be a successfully registered and active account)
+  - Tier2 (paid tier, need to be successfully registered)
+  - Admin (me)
+
+A User can have multple Roles.
 
 - Security - How to keep the application secure and the correct user sees the correct data
 
 - Identity - Is Microsoft.AspNetCore.Identity.UI that supports login functionality. Manage users, passwords, pofile data, roles, claims, token, email confirmation and more.
 
-
 - Authentication - user provides credentials that are then compared to those stored in a db ie determining the user's identity.
 
-- Authorisation - what the user is allowed to do
+- Authorisation - what the user is allowed to do (ie the Roles they have)
 
-In my application I'm using these terms:
+## Cookie Forms Authentication
 
-- User - email, roleID, password hash, isEmailVerified
-
-So a user has to have a verified email. They can only have 1 Role:
-
-- Policy - a Policy can have multiple Roles eg Tier2Policy contains all of Tier1 and Tier2 Roles.
-
-- Role - Tier1 (my free tier, but need to be a successfully registered and active account), Tier2 (paid tier, need to be successfully registered), Admin
-
-I can protect each page with a Role.
-
-
-## Why Cookie Forms Authentication
-
-My use case is a SaaS products (I make tools to make sure websites are working). I'm also not using JWT tokens (yet) as don't need them.
-
-For internal corporate sites I have always gone for Windows AD authentication if available.
-
-eg Google authentication - I don't use them.
+My use case is a SaaS products (I make tools to make sure websites are working). I'm not using JWT tokens (yet) as my app is light on JavaScript.
 
 Use a Password manager to keep all my passwords
 
 It is simple to implement, and as a SaaS business owner I want things to work well (In the early days of Stackover most of their support tickets were on identity)
 
-## Simplest Possible Cookie Auth (no roles)
+[Cookie authentication without Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1) which links to a good  [sample project in ASP.NET Docs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples/3.x/CookieSample)
 
-[Cookie authentication without Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1)
-
-[Sample code in ASP.NET Docs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples/3.x/CookieSample)
-
-```cs
-// in configureservices method
-services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-        .AddCookie();
-
-// in configure method
-app.UseAuthentication();
-```
-
-add in 
-
-```cs
-// ApplicationUser.cs
-
-// Pages/Account/Login.cshtml
-
-// Extensions/UrlHelperExtensions.cs
-
-```
-
-## Login top menu bar
-
-From the [MS Cookie Example](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples/3.x/CookieSample)
-
-```html
-@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
-<!DOCTYPE html>
-<html lang="en">
-<!-- etc -->
-
-@if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Account/Login">Login</a>
-    </li>
-
-}
-</ul>
-
-```
-
-add in the service
-
-```cs
-// startup.cs
-services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-```
-
-## Account/Login.cshtml
-
-oasdf
-
-## Account/Logout.cshtml
-
-```cs
-public async Task<IActionResult> OnPost()
-{
-    Log.Information($"User {User.Identity.Name} logged out");
-
-    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-    // Does a 302Found GET request to the current page
-    return RedirectToPage();
-}
-```
-
-and the html
-
-```html
-<!-- this wont work - will produce a 400 -->
-<form class="form-inline" action="/Account/Logout" method="post">
-    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-</form>
-
-<!-- this will work as using the tag helper which generates the anti forgery token -->
-<form class="form-inline" asp-page="/Account/Logout" method="post">
-    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-</form>
-
-```
-
-The `asp-page` tag helper inside the form [Does this](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-3.1) which includes generating the Request Verification Token.
-
-<!-- ![alt text](/assets/2020-08-27/400.jpg "400 error missing antiforgery"){:width="600px"} -->
-![alt text](/assets/2020-08-29/400.jpg "400 error missing antiforgery"){:width="700px"}
-
-To see this detailed logging (I'm using Serilog here) use these settings:
-
-```cs
- public static void Main(string[] args)
- {
-     Log.Logger = new LoggerConfiguration()
-         // Comment this out to see detailed aspnetcore logging 
-         //.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-         .Enrich.FromLogContext()
-         .WriteTo.Console()
-```
-
-asdf 
-
-## Tag helpers
-
-[Tag Helpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-3.1)
-
-Some of the tag helpers provide no value to me, so I always prefer simplicity if I can:
-
-```html
-<!-- asp-page is a tag helper -->
-<a class="nav-link text-dark" asp-page="/Privacy">Privacy</a>
-
-<!-- generated so I use this -->
-<a class="nav-link text-dark" href="/Privacy">Privacy</a>
-
-<!-- very useful to allow for smart caching -->
- <script src="~/js/site.js" asp-append-version="true"></script>
-```
-
-[SO Tag Helpers](https://stackoverflow.com/tags/tag-helpers/info)
-
-## RenderSection
-
-[Generally we want to load js at the bottom of the page](https://stackoverflow.com/questions/2105327/should-jquery-code-go-in-header-or-footer) so the browser can render the text and images as quickly as possible. Caveat empor here for a multitude of reasons.
-
-```html
-<!-- _Layout.cshtml -->
-
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-
-<!-- if there is any extra js eg jquery.validate.min.js on the login screen then load it here -->
-@await RenderSectionAsync("Scripts", required: false)
-
-</body>
-</html>
-```
-
-This used to be in `/Shared/_ValidationScriptsPartial.cshtml` but I've deleted that file and prefer to show directly the script reference in the files that I need them in:
-
-```html
-<!-- login.cshtml -->
-@section Scripts {
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}
-```
-
-## Setup Cookie Authentication
-
-We can add in config options to the cookie service like:
+Essentially start with a blank ASP.NET Core Razor pages project, then can add in config options
 
 ```cs
 // ConfigureServices method
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
-```
 
-As we're not using OAuth2 we can set the cookie same-site attribute to strict
-
-```cs
-// Configure method
+app.UseAuthentication();
+app.UseAuthorization();
+// As we're not using OAuth2 we can set the cookie same-site attribute to strict
 app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Strict });
 
 ```
 
-`chrome://settings/cookies/detail?site=localhost` useful command in chrome
-
-In Chrome click on the i next to localhost, then view cookies.
-
-<!-- ![alt text](/assets/2020-08-29/cookies.jpg "Cookies"){:width="600px"} -->
-![alt text](/assets/2020-08-29/cookies.jpg "Cookies")
-
-And this is what the payload is:
-
-![alt text](/assets/2020-08-29/cookie-normal.jpg "Inside the cookie")
+Then we need to patch in the login form etc.. copy it from [here]()
 
 
-[How does cookie authentication work](https://stackoverflow.com/a/32218069/26086)
 
-![alt text](/assets/2020-08-29/cookie-remember.jpg "2 week expire remember me")
-2 Week expiration - remember me has been ticked and the browser will remember the user for 2 weeks through machine restarts / server restarts and browswer restarts.
 
-## .AspNetCore.Antiforgery
 
-X-CSRF - Cross Site Request Forgery
 
-[Prevent Cross-Site Request Forgery](https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-3.1)
 
-```cs
-// startup.cs - renaming .AspNetCore.Antiforgery.xxx token
-services.AddAntiforgery(options => options.Cookie.Name = "X-CSRF-TOKEN-DAVE");
-```
-
-## Persistent Cookies
-
-[Persistent Cookies](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1#persistent-cookies) for the Remember Me feature.
-
-```cs
-// login.cshtml.cs
-var authProperties = new AuthenticationProperties
-{
-    IsPersistent = true,
-    // Whether the authentication session is persisted across 
-    // multiple requests. When used with cookies, controls
-    // whether the cookie's lifetime is absolute (matching the
-    // lifetime of the authentication ticket) or session-based.
-};
-```
-
-## Scaffolding
-
-[Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great tutorial on how to scaffold out, then only use the relevant bit.
-
-Project is [authentication-dave]() 
-
-```bash
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
-dotnet add package Microsoft.AspNetCore.Identity.UI
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add package Microsoft.EntityFrameworkCore.Tools
-
-# dotnet tool install -g dotnet-aspnet-codegenerator
-dotnet tool update -g dotnet-aspnet-codegenerator
-
-# to see the list of file you can scaffold
-dotnet aspnet-codegenerator identity -lf
-
-# scaffold only the Register page
-# creates IdentityHostingStartup.cs
-#  need to delete services.AddDefaultIdentity from Startup.cs
-dotnet aspnet-codegenerator identity -dc TestApp.Data.ApplicationDbContext --files "Account.Register"
-
-# scaffold all the pages
-dotnet aspnet-codegenerator identity -dc TestApp.Data.ApplicationDbContext
-
-#
-dotnet tool update --global dotnet-ef
-
-# multiple db contexts have been created so need to specify which one
-dotnet ef migrations add DMInitialCreate --context AuthenticationDave.Web.Data.ApplicationDbContext
-dotnet ef database update --context AuthenticationDave.Web.Data.ApplicationDbContext
-```
-
-So this took some work to get going properly - multiple db contexts, multiple connection strings. DbUpdate to run migrations. It shouldn't be this complex (for my use case).
-
-## ReturnUrl
-
-I'm a fan on null checking `<nullable>enable</nullable>` [Nullable Reference Types](https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references) and [Whats new in C#8](/2020/07/24/Whats-new-in-C-8)
-
-[Bug in generated and sample code C#8 Nullable ref types - returnUrl field is required](https://github.com/dotnet/AspNetCore.Docs/issues/17145)
-
-## Serilog Logging
-
-[Setting up serilog in ASP.NET Core 3](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/)]
-
-For me this cleans up the code as don't need the injected in ILogger everywhere.
-
-[Using Seq to view the logs is useful too](https://docs.datalust.co/docs/getting-started-with-docker)
-
-```bash
-docker run --name seq -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest
-```
-
-## Authorize
+## Authorization
 
 [MS Docs - Inntroduction to Authorisation](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-3.1)
 
@@ -522,3 +241,301 @@ public void ConfigureServices(IServiceCollection services)
 [Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great tutorial on how to scaffold out, then only use the relevant bit.
 
 [In Feb 2020]() I wrote articles on using the standard Authentication and Authorisation in ASP.NET Core 3.1, and never published them. They felt overly complex for me.
+
+
+- next post will have Register, Forget password forms
+- The hext blog post will cover testing
+- The second blog post will be on persistance.
+- Then making sure passwords are good with HIBP API
+- Then alternatives?
+- Deploy to Azure VM using AZ CLI
+- enable lock out to prevent brute force
+- anti forgery token.. csrf?
+- cookie expires after x days
+
+
+Really, all the users care about is... get security out of my way, and let me into the app!
+
+## Policy Based Auth
+
+This is nice as can define everything in the startup
+ and have a fallback
+
+but it is another concept..
+
+
+```cs
+  public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(AtLeastTier1, p => p.RequireRole(Tier1Role, Tier2Role, AdminRole));
+
+                options.AddPolicy(AtLeastTier2, p => p.RequireRole(Tier2Role, AdminRole));
+
+                options.AddPolicy(AdminOnly, p => p.RequireRole(AdminRole));
+
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                    // user has to be authenticated to view a page by default
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
+
+            // set all page Policy rules
+            services.AddRazorPages(x =>
+            {
+                x.Conventions.AllowAnonymousToPage("/Index");
+                x.Conventions.AllowAnonymousToPage("/Anonymous");
+                x.Conventions.AllowAnonymousToPage("/ThrowException");
+                x.Conventions.AllowAnonymousToPage("/Error");
+                x.Conventions.AllowAnonymousToPage("/Account/Login");
+                x.Conventions.AllowAnonymousToPage("/Account/Logout");
+
+                x.Conventions.AuthorizePage("/Tier1RoleNeeded", AtLeastTier1);
+                //x.Conventions.AuthorizePage("/Crawl", AtLeastTier1);
+
+                x.Conventions.AuthorizePage("/Tier2RoleNeeded", AtLeastTier2);
+
+                x.Conventions.AuthorizePage("/AdminRoleNeeded", AdminOnly);
+            });
+
+            services.AddHttpContextAccessor();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
+
+            app.UseStaticFiles();
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Strict });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+            });
+        }
+    }
+
+        public class CDRole
+    {
+        public const string Tier1Role = "Tier1Role";
+        public const string Tier1AndTier2Role = "Tier1Role,Tier2Role";
+        public const string Tier2Role = "Tier2Role";
+        public const string AdminRole = "AdminRole";
+    }
+
+    public class CDPolicy
+    {
+        public const string AtLeastTier1 = "AtLeastTier1";
+        public const string AtLeastTier2 = "AtLeastTier2";
+        public const string AdminOnly = "AdminOnly";
+    }
+
+```
+
+## STuff
+and the html
+
+```html
+<!-- this wont work - will produce a 400 -->
+<form class="form-inline" action="/Account/Logout" method="post">
+    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+</form>
+
+<!-- this will work as using the tag helper which generates the anti forgery token -->
+<form class="form-inline" asp-page="/Account/Logout" method="post">
+    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+</form>
+
+```
+
+The `asp-page` tag helper inside the form [Does this](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-3.1) which includes generating the Request Verification Token.
+
+<!-- ![alt text](/assets/2020-08-27/400.jpg "400 error missing antiforgery"){:width="600px"} -->
+![alt text](/assets/2020-08-29/400.jpg "400 error missing antiforgery"){:width="700px"}
+
+To see this detailed logging (I'm using Serilog here) use these settings:
+
+```cs
+ public static void Main(string[] args)
+ {
+     Log.Logger = new LoggerConfiguration()
+         // Comment this out to see detailed aspnetcore logging 
+         //.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+         .Enrich.FromLogContext()
+         .WriteTo.Console()
+```
+
+asdf 
+
+## Tag helpers
+
+[Tag Helpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-3.1)
+
+Some of the tag helpers provide no value to me, so I always prefer simplicity if I can:
+
+```html
+<!-- asp-page is a tag helper -->
+<a class="nav-link text-dark" asp-page="/Privacy">Privacy</a>
+
+<!-- generated so I use this -->
+<a class="nav-link text-dark" href="/Privacy">Privacy</a>
+
+<!-- very useful to allow for smart caching -->
+ <script src="~/js/site.js" asp-append-version="true"></script>
+```
+
+[SO Tag Helpers](https://stackoverflow.com/tags/tag-helpers/info)
+
+## RenderSection
+
+[Generally we want to load js at the bottom of the page](https://stackoverflow.com/questions/2105327/should-jquery-code-go-in-header-or-footer) so the browser can render the text and images as quickly as possible. Caveat empor here for a multitude of reasons.
+
+```html
+<!-- _Layout.cshtml -->
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<!-- if there is any extra js eg jquery.validate.min.js on the login screen then load it here -->
+@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
+```
+
+This used to be in `/Shared/_ValidationScriptsPartial.cshtml` but I've deleted that file and prefer to show directly the script reference in the files that I need them in:
+
+```html
+<!-- login.cshtml -->
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+```
+## .AspNetCore.Antiforgery
+
+X-CSRF - Cross Site Request Forgery
+
+[Prevent Cross-Site Request Forgery](https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-3.1)
+
+```cs
+// startup.cs - renaming .AspNetCore.Antiforgery.xxx token
+services.AddAntiforgery(options => options.Cookie.Name = "X-CSRF-TOKEN-DAVE");
+```
+
+## Persistent Cookies
+
+[Persistent Cookies](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1#persistent-cookies) for the Remember Me feature.
+
+```cs
+// login.cshtml.cs
+var authProperties = new AuthenticationProperties
+{
+    IsPersistent = true,
+    // Whether the authentication session is persisted across 
+    // multiple requests. When used with cookies, controls
+    // whether the cookie's lifetime is absolute (matching the
+    // lifetime of the authentication ticket) or session-based.
+};
+```
+
+## Scaffolding
+
+[Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great tutorial on how to scaffold out, then only use the relevant bit.
+
+Project is [authentication-dave]() 
+
+```bash
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+dotnet add package Microsoft.AspNetCore.Identity.UI
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+# dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
+
+# to see the list of file you can scaffold
+dotnet aspnet-codegenerator identity -lf
+
+# scaffold only the Register page
+# creates IdentityHostingStartup.cs
+#  need to delete services.AddDefaultIdentity from Startup.cs
+dotnet aspnet-codegenerator identity -dc TestApp.Data.ApplicationDbContext --files "Account.Register"
+
+# scaffold all the pages
+dotnet aspnet-codegenerator identity -dc TestApp.Data.ApplicationDbContext
+
+#
+dotnet tool update --global dotnet-ef
+
+# multiple db contexts have been created so need to specify which one
+dotnet ef migrations add DMInitialCreate --context AuthenticationDave.Web.Data.ApplicationDbContext
+dotnet ef database update --context AuthenticationDave.Web.Data.ApplicationDbContext
+```
+
+So this took some work to get going properly - multiple db contexts, multiple connection strings. DbUpdate to run migrations. It shouldn't be this complex (for my use case).
+
+## ReturnUrl
+
+I'm a fan on null checking `<nullable>enable</nullable>` [Nullable Reference Types](https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references) and [Whats new in C#8](/2020/07/24/Whats-new-in-C-8)
+
+[Bug in generated and sample code C#8 Nullable ref types - returnUrl field is required](https://github.com/dotnet/AspNetCore.Docs/issues/17145)
+
+## Serilog Logging
+
+[Setting up serilog in ASP.NET Core 3](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/)]
+
+For me this cleans up the code as don't need the injected in ILogger everywhere.
+
+[Using Seq to view the logs is useful too](https://docs.datalust.co/docs/getting-started-with-docker)
+
+```bash
+docker run --name seq -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest
+```
+
+
+
+`chrome://settings/cookies/detail?site=localhost` useful command in chrome
+
+In Chrome click on the i next to localhost, then view cookies.
+
+<!-- ![alt text](/assets/2020-08-29/cookies.jpg "Cookies"){:width="600px"} -->
+![alt text](/assets/2020-08-29/cookies.jpg "Cookies")
+
+And this is what the payload is:
+
+![alt text](/assets/2020-08-29/cookie-normal.jpg "Inside the cookie")
+
+[How does cookie authentication work](https://stackoverflow.com/a/32218069/26086)
+
+![alt text](/assets/2020-08-29/cookie-remember.jpg "2 week expire remember me")
+2 Week expiration - remember me has been ticked and the browser will remember the user for 2 weeks through machine restarts / server restarts and browswer restarts.
+
