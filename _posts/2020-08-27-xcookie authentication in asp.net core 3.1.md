@@ -28,7 +28,7 @@ This is the first blog post where I will cover:
 - Remember me
 - Redirect to login form if try to access any secured page then return URL
 
-[Source code here](https://github.com/djhmateer/cookie-dave) and a [Scaffolded out ASP.NET Core default identity sample is here](https://github.com/djhmateer/authentication-dave)
+[Part 1 Source code - OnlyAuthentication](https://github.com/djhmateer/only-authentication) then [Part 2 Role Based Source code here](https://github.com/djhmateer/cookie-dave) and a [Scaffolded out ASP.NET Core default identity sample is here](https://github.com/djhmateer/authentication-dave)
 
 ## Nomenclature
 
@@ -40,6 +40,7 @@ In my application I'm using these terms:
   - Tier1 (my free tier, but need to be a successfully registered and active account)
   - Tier2 (paid tier, need to be successfully registered)
   - Admin (me)
+  - FeatureFlagA (an easy way to turn on features some some users)
 
 A User can have multple Roles.
 
@@ -51,7 +52,7 @@ A User can have multple Roles.
 
 - Authorisation - what the user is allowed to do (ie the Roles they have)
 
-## Cookie Forms Authentication
+## Part 1 - Cookie Forms Authentication
 
 My use case is a SaaS products (I make tools to make sure websites are working). I'm not using JWT tokens (yet) as my app is light on JavaScript.
 
@@ -74,7 +75,174 @@ app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMo
 
 ```
 
-Then we need to patch in the login form etc.. copy it from [here]()
+Then we need to patch in the login form etc.. copy it from [here](https://github.com/djhmateer/authentication-dave/tree/master/AuthenticationDave.Web/Areas/Identity/Pages/Account). 
+
+I'm a fan of Serilog and using Kestrel when developing so I can see an output like this:
+
+<!-- ![alt text](/assets/2020-08-29/login.jpg "Login and viewing log files"){:width="600px"} -->
+![alt text](/assets/2020-08-29/login.jpg "Login and viewing log files")
+
+Also in the source I've simplified the pages - not using the in built logger, nor _validationscriptspartial... lot of tweaks to make it all more obvious.
+
+### Authorization Attribute
+
+Using the Authorize attribute on a PageModel class ensures that the user is Logged In. 
+
+```cs
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace OnlyAuthentication.Web.Pages
+{
+    [Authorize]
+    public class PrivacyModel : PageModel
+    {
+        public void OnGet()
+        {
+        }
+    }
+}
+```
+
+This makes sure that someone has to be logged in to view the privacy page
+
+## Part 2 - Role based Authorization
+
+[MS Docs - Introduction to Authorisation](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-3.1)
+
+[Part 2 Role Based Source code here](https://github.com/djhmateer/cookie-dave)
+
+- Role
+  - Tier1 (my free tier, but need to be a successfully registered and active account)
+  - Tier2 (paid tier, need to be successfully registered)
+  - Admin (me)
+
+![alt text](/assets/2020-08-29/login2.jpg "Login")
+
+All pages now have optional Role protection
+
+```cs
+using CookieDave.Web.Data;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using static CookieDave.Web.Data.CDRole;
+
+namespace CookieDave.Web.Pages
+{
+    // Which strongly typed CDRoles are needed to view this page
+    [AuthorizeRoles(Tier1, Tier2, Admin)]
+    public class Tier1RoleNeeded : PageModel
+    {
+        public void OnGet()
+        {
+        }
+    }
+}
+
+// https://stackoverflow.com/a/24182340/26086
+public class AuthorizeRolesAttribute : AuthorizeAttribute
+{
+    public AuthorizeRolesAttribute(params string[] roles) => Roles = string.Join(",", roles);
+}
+
+static class CDRole
+{
+    public const string Tier1 = "Tier1";
+    public const string Tier2 = "Tier2";
+    public const string Admin = "Admin";
+}
+```
+
+And to programatically see the Role Claims we can:
+
+```cs
+using System.Security.Claims;
+using CookieDave.Web.Data;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using static CookieDave.Web.Data.CDRole;
+
+namespace CookieDave.Web.Pages
+{
+    [AuthorizeRoles(Tier1, Tier2, Admin)]
+    public class CrawlModel : PageModel
+    {
+        public string? Message { get; set; }
+
+        public void OnGet()
+        {
+            var roleClaims = User.FindAll(ClaimTypes.Role);
+
+            Message = "Role claims are: ";
+            foreach (var claim in roleClaims)
+            {
+                // Tier1, Tier2, Admin etc...
+                Message += claim.Value + " ";
+            }
+        }
+    }
+}
+
+```
+
+## Part 3 - Testing
+
+To aid in simplicity I've intentionally left
+
+- Anonymous browsing enabled by default
+- Attribute based Role based Authorization on each page
+
+I like this as it leaves the code much less cluttered, but we have to be careful as the defaults are open on each page, so lets put tests on
+
+[Integration Testing ASP.NET Core Applications:l Best Practices](https://app.pluralsight.com/library/courses/integration-testing-asp-dot-net-core-applications-best-practices/table-of-contents) by Steve Gordon is an excellent Pluralsight course, and I'm using some of the strategies discussed there.
+
+I've got [another blog post on ASP.NET Core Web Testing]() which goes into more detail, but essentially we need to
+
+- Create a new xUnit project
+- Add `Microsoft.AspNetCore.Mvc.Testing` nuget
+- Change the .csproj Sdk to Microsoft.NET.Sdk.Web
+- Add in xunit.runner.json: shadowCopy: false
+- Reference the web project
+
+An in Memory
+
+```cs
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Xunit;
+
+namespace CookieDave.Web.IntegrationTests
+{
+    public class HealthCheckTests : IClassFixture<WebApplicationFactory<Startup>>
+    {
+        private readonly HttpClient _httpClient;
+
+        public HealthCheckTests(WebApplicationFactory<Startup> factory)
+        {
+            _httpClient = factory.CreateDefaultClient();
+        }
+
+        [Fact]
+        public async Task HealthCheck_ReturnsOk()
+        {
+            var response = await _httpClient.GetAsync("/healthcheck");
+
+            //Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            response.EnsureSuccessStatusCode();
+        }
+    }
+}
+
+```
+
+Class Fixture - An xUnit feature used to create, set up and teardown a shared test class instance, used across all test methods defined in the test class.
+
+Normally xUnit creates a new instance of a test class for each test method. When using a Class Fixture a Single shared instance is created ie setup (creating the test server)
+
+ie this is faster that creating a new server for each tast method.
+
+WebApplicationFactory - AspNetCore.Mvc.Testing library - bootstraps an application using an in-memory test server
+
+So no real networking layer - fast!
 
 
 
@@ -82,32 +250,58 @@ Then we need to patch in the login form etc.. copy it from [here]()
 
 
 
-## Authorization
 
-[MS Docs - Inntroduction to Authorisation](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-3.1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - Simple Role model
-- More complex Policy based model
 - [A better way to handle authorisation - Jon P Smith](https://www.thereformedprogrammer.net/a-better-way-to-handle-asp-net-core-authorization-six-months-on/)
 
 From the language used [here](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/secure-data?view=aspnetcore-3.1) we will have 3 security 'Groups'
 
 - Registered users. User Role
 - Admins.. Admin Role
-
-### Authorization Attributes
-
-Using the Authorize attribute on a PageModel class ensures that the user is Logged In.
-
-```cs
-[Authorize]
-public class UserRoleNeededModel : PageModel
-{
-    public void OnGet()
-    {
-    }
-}
-```
 
 Or more securely this code in startup requires that all pages be Authorized unless `AllowAnonymous` attribute is applied.
 
