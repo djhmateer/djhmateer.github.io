@@ -202,9 +202,11 @@ In summary I'm testing:
 - AuthenticationTests - all pages requiring authentication should give a 302Redirect to /account/login
 - Pages/Tier1NeededTests - If logged user has Role of Tier1, Tier2 or Admin then they should be able to view
 - Pages/Tier2NeededTests - If logged user has Role of Tier2 or Admin then they should be able to view
+- Enquiry - Post Form testing a XSS Antiforgery token.. it should work
 
+## Part 4 - Persistence (Database)
 
-## Part 4 - Database
+It has been so worthwhile not having persistence whilst understanding my needs for Identity (Parts 1 - 3 above). It has made the code much easier to reason about and learn how it works.
 
 
 
