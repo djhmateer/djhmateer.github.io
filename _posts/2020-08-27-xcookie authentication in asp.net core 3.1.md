@@ -40,7 +40,6 @@ In my application I'm using these terms:
   - Tier1 (my free tier, but need to be a successfully registered and active account)
   - Tier2 (paid tier, need to be successfully registered)
   - Admin (me)
-  - FeatureFlagA (an easy way to turn on features some some users)
 
 A User can have multple Roles.
 
@@ -97,9 +96,7 @@ namespace OnlyAuthentication.Web.Pages
     [Authorize]
     public class PrivacyModel : PageModel
     {
-        public void OnGet()
-        {
-        }
+        public void OnGet() { }
     }
 }
 ```
@@ -132,9 +129,7 @@ namespace CookieDave.Web.Pages
     [AuthorizeRoles(Tier1, Tier2, Admin)]
     public class Tier1RoleNeeded : PageModel
     {
-        public void OnGet()
-        {
-        }
+        public void OnGet() { }
     }
 }
 
@@ -183,6 +178,8 @@ namespace CookieDave.Web.Pages
 
 ```
 
+Currently I only need one Role which makes it simpler!
+
 ## Part 3 - Testing
 
 To aid in simplicity I've intentionally left
@@ -192,57 +189,24 @@ To aid in simplicity I've intentionally left
 
 I like this as it leaves the code much less cluttered, but we have to be careful as the defaults are open on each page, so lets put tests on
 
-[Integration Testing ASP.NET Core Applications:l Best Practices](https://app.pluralsight.com/library/courses/integration-testing-asp-dot-net-core-applications-best-practices/table-of-contents) by Steve Gordon is an excellent Pluralsight course, and I'm using some of the strategies discussed there.
+[Integration Testing ASP.NET Core Applications: Best Practices](https://app.pluralsight.com/library/courses/integration-testing-asp-dot-net-core-applications-best-practices/table-of-contents) by Steve Gordon is an excellent Pluralsight course, and I'm using the strategies discussed there.
 
-I've got [another blog post on ASP.NET Core Web Testing]() which goes into more detail, but essentially we need to
+I've got [another blog post on ASP.NET Core Web Testing]() which goes into more detail on the testing here.
 
-- Create a new xUnit project
-- Add `Microsoft.AspNetCore.Mvc.Testing` nuget
-- Change the .csproj Sdk to Microsoft.NET.Sdk.Web
-- Add in xunit.runner.json: shadowCopy: false
-- Reference the web project
+In summary I'm testing:
 
-An in Memory
+- HealthCheckTests - /healthcheck responds with a 200, not redireted, and no caching
+- Pages/HomePageTests - should give a 200 and an H1 with "Welcome to CookieDave"
+- GeneralPageTests  - all anonymous pages work, not redirected, correct media type text/html
+- ErrorTests - /nothere page should give a status code of 404 and a friendly custom message
+- AuthenticationTests - all pages requiring authentication should give a 302Redirect to /account/login
+- Pages/Tier1NeededTests - If logged user has Role of Tier1, Tier2 or Admin then they should be able to view
+- Pages/Tier2NeededTests - If logged user has Role of Tier2 or Admin then they should be able to view
 
-```cs
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Xunit;
 
-namespace CookieDave.Web.IntegrationTests
-{
-    public class HealthCheckTests : IClassFixture<WebApplicationFactory<Startup>>
-    {
-        private readonly HttpClient _httpClient;
+## Part 4 - Database
 
-        public HealthCheckTests(WebApplicationFactory<Startup> factory)
-        {
-            _httpClient = factory.CreateDefaultClient();
-        }
 
-        [Fact]
-        public async Task HealthCheck_ReturnsOk()
-        {
-            var response = await _httpClient.GetAsync("/healthcheck");
-
-            //Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            response.EnsureSuccessStatusCode();
-        }
-    }
-}
-
-```
-
-Class Fixture - An xUnit feature used to create, set up and teardown a shared test class instance, used across all test methods defined in the test class.
-
-Normally xUnit creates a new instance of a test class for each test method. When using a Class Fixture a Single shared instance is created ie setup (creating the test server)
-
-ie this is faster that creating a new server for each tast method.
-
-WebApplicationFactory - AspNetCore.Mvc.Testing library - bootstraps an application using an in-memory test server
-
-So no real networking layer - fast!
 
 
 
@@ -733,3 +697,5 @@ And this is what the payload is:
 ![alt text](/assets/2020-08-29/cookie-remember.jpg "2 week expire remember me")
 2 Week expiration - remember me has been ticked and the browser will remember the user for 2 weeks through machine restarts / server restarts and browswer restarts.
 
+
+https://app.pluralsight.com/library/courses/authentication-authorization-aspnet-core/table-of-contents
