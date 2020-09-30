@@ -84,6 +84,9 @@ public async Task<SendResponse> Send(SendRequest request)
     return new SendResponse { IsSuccess = true, StatusCode = 200 };
 }
 // code above inspired by Steve Gordon's course
+
+
+throw new AppliationException("something logical is wrong eg id not found in db")
 ```
 
 [Good SO Question on try catch usages](https://stackoverflow.com/questions/14973642/how-using-try-catch-for-exception-handling-is-best-practice) as there are some intricacies.
