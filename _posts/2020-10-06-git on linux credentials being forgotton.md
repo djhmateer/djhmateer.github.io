@@ -27,10 +27,10 @@ I'm using 2FA and have to use Personal Access Tokens to write access my repos:
 
 ```bash
 # default timeout of 15minutes
-git config credential.helper cache
+git config --global credential.helper cache
 
 # stores on disk
-git config credential.helper store
+git config --global credential.helper store
 ```
 
 Hope this helps (and for my future self too)!
