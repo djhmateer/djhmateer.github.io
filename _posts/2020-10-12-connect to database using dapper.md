@@ -13,7 +13,7 @@ image: /assets/2020-10-12/db.jpg
 <!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
 [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin)
 
-Here are a 3 ways of connecting to a database through [Dapper](https://github.com/StackExchange/Dapper) with ASP.NET.
+Here are a 3 ways of connecting to a database through [Dapper](https://github.com/StackExchange/Dapper) with ASP.NET Core 3.1
 
 If your preferred ~~religion~~ strategy isn't here, don't worry, there are many ways of doing it.. probably all good, and if it works for you, then that's what matters.
 
@@ -120,7 +120,7 @@ Which is nice as we can use an [Expression Body Method](https://docs.microsoft.c
 
 However it is somewhat non-idiomatic and the call stack can become confusing.
 
-[A more in depth look at Donut Functions in Dapper, Polly and Miniprofiler discussed here](/2020/07/25/donut-functions-in-dapper)
+[A more in depth look at Donut Functions in Dapper, Polly and Miniprofiler discussed here](/2020/08/25/donut-functions-in-dapper)
 
 ## Do I really need the using
 
