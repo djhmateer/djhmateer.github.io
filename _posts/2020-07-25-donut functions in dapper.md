@@ -2,19 +2,21 @@
 layout: post
 title: Donut Functions - Hole in the middle - Higher Order Function in Dapper
 description: Tame the ubiquitous beast of complexity. Donut function examples showing a timer and a db connection strategy.
-menu: review
+#menu: review
 categories: Functional C# BrokenLinkChecker
-published: false 
-comments: false     
-sitemap: false
-image: /assets/2020-07-22/donut.jpg
+published: true 
+comments: true     
+sitemap: true
+image: /assets/2020-07-26/night.jpg
 ---
 
 [![alt text](/assets/2020-07-26/night.jpg "Photo by @micahtindell from Unsplash"){:width="600px"}](https://unsplash.com/@micahtindell)
 
 I'm [writing articles](/#BrokenLinkChecker) on developing a website broken link checker in C#. This is part of that series.
 
-There is a [intro article on Donut functions](/2020/07/22/donut-functions-in-csharp) using timers.
+There is a [intro article on Donut Functions](/2020/07/31/donut-functions-in-csharp) using timers, which caused come controvosy (see comments at the bottom).
+
+TL;DR - [I don't Use This Strategy](/2020/10/12/connect-to-database-using-dapper)
 
 ## Dapper
 
@@ -223,7 +225,7 @@ public static async Task<T> WithConnection<T>(
 }
 ```
 
-[Poll-Samples](https://github.com/App-vNext/Polly-Samples)
+[Polly-Samples](https://github.com/App-vNext/Polly-Samples)
 
 ## Miniprofiler
 
@@ -239,45 +241,10 @@ I always find it tricky to setup Miniprofiler so will leave this [simple working
 
 `Microsoft.Data.SqlClient` or `System.Data.SqlClient`. We are using the older `System.Data.SqlClient`
 
-```cs
+## Conclusion
 
-```
+You can use Donut / Wrapper / Higher Order Functions in C# to connect with Dapper, however I'm choosing not to in my current project.. just because it adds a bit too much complexity for hardly any gain (IMO).
 
-## TardisBank
+I've since written an [article on using Dapper with Postgres](/2020/10/12/connect-to-database-using-dapper) where I use the non-HOF strategy.
 
-Here is an example of using a Donut function to connect to the database.
-
-Interesting that some functions are not async yet return a Task eg ScheduleByAccount
-
-https://github.com/TardisBank/TardisBank/blob/master/server/src/TardisBank.Api/Db.cs
-
-```cs
-// return a Task even though not async
-public static Task<IEnumerable<Schedule>> ScheduleByAccount(string connectionString, Account account)
-{
-    // local function which is async
-    async Task<IEnumerable<Schedule>> ConnectionFunction(IDbConnection conn)
-    {
-        var result = await conn.QueryAsync<Schedule>(@"SELECT
-            schedule_id as ScheduleId,
-            account_id as AccountId,
-            time_period as TimePeriod,
-            next_run as NextRun,
-            amount as Amount
-            FROM schedule
-            WHERE account_id = @AccountId", account);
-        return result;
-    }
-
-    var result2 =  WithConnection<IEnumerable<Schedule>>(connectionString, ConnectionFunction);
-
-    return result2;
-}
-```
-
-
-
-
-
-
-
+Hope this helps :-)

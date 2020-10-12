@@ -3,7 +3,7 @@ layout: post
 title: Git on Linux Credentials being forgotton 
 description: If your git session forgets your credentials after 15 minutes on Linux then it could be that you're using the cache instead of the store (for good reasons)
 #menu: review
-categories: git 
+categories: Git 
 published: true 
 comments: true     
 sitemap: true

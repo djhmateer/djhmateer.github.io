@@ -3,7 +3,7 @@ layout: post
 title: Wordpress install on VM using cloud-init 
 description: How to install Wordpress on a single VM using automated Azure CLI and Cloud-init
 #menu: review
-categories: wordpress cloud-init
+categories: Wordpress cloud-init
 published: true 
 comments: true     
 sitemap: true
