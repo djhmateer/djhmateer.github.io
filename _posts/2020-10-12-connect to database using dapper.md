@@ -54,7 +54,7 @@ Okay it works, however....
 
 ## 2. Async/Await
 
-[I always use async await for Db connections now](/2020/07/23/concurrency-async-await-and-task/db-connections-async-all-the-way-up) so here is a simple awaitable strategy for ASP.NET Core 3.
+[I always use async await for Db connections now](/2020/07/23/concurrency-async-await-and-task#db-connections-async-all-the-way-up) so here is a simple awaitable strategy for ASP.NET Core 3.
 
 ```cs
 public IList<Thing>? Things { get; set; }
