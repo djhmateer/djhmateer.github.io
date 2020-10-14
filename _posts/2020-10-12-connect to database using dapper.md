@@ -268,6 +268,12 @@ The razor view looks like this:
 
 [My MPActors](https://github.com/djhmateer/MPActors) source has some example of post-polly thinking (where I didn't need all of polly).
 
+## Profiling
+
+[Miniprofiler has a provider for Postgres](https://www.nuget.org/packages/MiniProfiler.Providers.PostgreSql/) 
+
+[There is a naming gotcha](https://stackoverflow.com/questions/32201437/dapper-ambiguous-extension-methods) if you get compile errors like `the call is ambiguous between the following methods or properties:`
+
 ## Conclusion
 
 [Source is here - PostgresCookieDave](https://github.com/djhmateer/postgres-cookie-dave) and thanks to Rob Conery [PostgreSQL for those Who Can't Even](https://rob.conery.io/2020/01/24/postgresql-for-those-who-cant-even-part-1/)
