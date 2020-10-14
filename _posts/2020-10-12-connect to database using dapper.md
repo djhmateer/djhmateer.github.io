@@ -264,6 +264,12 @@ The razor view looks like this:
 
 ```
 
+## Loggging and Fault Tolerance
+
+[My MPActors](https://github.com/djhmateer/MPActors) source has some example of post-polly thinking (where I didn't need all of polly).
+
+## Conclusion
+
 [Source is here - PostgresCookieDave](https://github.com/djhmateer/postgres-cookie-dave) and thanks to Rob Conery [PostgreSQL for those Who Can't Even](https://rob.conery.io/2020/01/24/postgresql-for-those-who-cant-even-part-1/)
 
 This is my thinking for my particular use case.
