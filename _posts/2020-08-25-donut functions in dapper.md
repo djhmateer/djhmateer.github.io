@@ -3,7 +3,7 @@ layout: post
 title: Donut Functions - Hole in the middle - Higher Order Function in Dapper
 description: Tame the ubiquitous beast of complexity. Donut function examples showing a timer and a db connection strategy.
 #menu: review
-categories: Functional C# BrokenLinkChecker
+categories: Functional C# BrokenLinkChecker MiniProfiler
 published: true 
 comments: true     
 sitemap: true
