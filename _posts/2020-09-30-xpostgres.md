@@ -3,7 +3,7 @@ layout: post
 title: Postgres 
 description: 
 menu: review
-categories: Postgres 
+categories: Postgres BrokenLinkChecker 
 published: false 
 comments: false     
 sitemap: false

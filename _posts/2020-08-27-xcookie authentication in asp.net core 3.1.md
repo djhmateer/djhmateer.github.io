@@ -3,7 +3,7 @@ layout: post
 title: ASP.NET Security - Cookie Authentication in ASP.NET Core 3.1
 description: 
 menu: review
-categories: authentication 
+categories: Authentication BrokenLinkChecker
 published: false 
 comments: false     
 sitemap: false
@@ -207,6 +207,8 @@ In summary I'm testing:
 ## Part 4 - Persistence (Database)
 
 It has been so worthwhile not having persistence whilst understanding my needs for Identity (Parts 1 - 3 above). It has made the code much easier to reason about and learn how it works.
+
+[Storing passwords in a database](/2020/10/14/storing-passwords-in-a-database) is a big topic so I've split it out into another article.
 
 
 

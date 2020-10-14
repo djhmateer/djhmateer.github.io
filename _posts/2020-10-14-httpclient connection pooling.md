@@ -1,14 +1,16 @@
 ---
 layout: post
 title: HttpClient connection pooling
-description: 
-menu: review
+description: HttpClient connection pooling in .NET Core 3.1 - keep it simple and consume few resoures with excellent performance.
+#menu: review
 categories: HttpClient BrokenLinkChecker
-published: false 
-comments: false     
-sitemap: false
-image: /assets/2019-11-13/1.jpg
+published: true 
+comments: true     
+sitemap: true
+image: /assets/2020-10-14/gull.jpg
 ---
+
+[![alt text](/assets/2020-10-14/gull.jpg "Gull from @Iamni_bht on Unsplash")](https://unsplash.com/@imani_bht)
 
 I'm writing a broken link checker website and want to make sure the code consumes as few resources as possible and can take a large amount of load (http requests!)
 
@@ -105,7 +107,7 @@ netstat -ano | grep "216.58" | wc -l
 
 [From this blog on streaming](https://josefottosson.se/you-are-probably-still-using-httpclient-wrong-and-it-is-destabilizing-your-software/) 
 
-dont want to use
+We dont want to use this.
 
 ```cs
 // NO!
@@ -116,129 +118,6 @@ var result = await httpClient.GetStringAsync(GitHubConstants.RepositoriesPath).C
 return JsonConvert.DeserializeObject<List<GitHubRepositoryDto>>(result);
 ```
 
+## Conclusion
 
-
-
-## DELETE BELOW?
-
-
-## Connection Lifetime 120s
-
-```cs
-static async Task Main(string[] args)
-{
-    var ips = await Dns.GetHostAddressesAsync("www.google.com");
-
-    foreach (var ipAddress in ips)
-    {
-        Console.WriteLine(ipAddress.MapToIPv4().ToString());
-    }
-
-    var socketsHandler = new SocketsHttpHandler
-    {
-        PooledConnectionLifetime = TimeSpan.FromMinutes(10),
-        PooledConnectionIdleTimeout = TimeSpan.FromMinutes(5),
-        MaxConnectionsPerServer = 10
-    };
-
-    var client = new HttpClient(socketsHandler);
-
-    //We can see, that in this case, only 1 connection is opened to the remote endpoint.
-    //After each request, that connection is returned to the pool and is therefore
-    //available for re-use when the next request is issued.
-    for (var i = 0; i < 5; i++)
-    {
-        _ = await client.GetAsync("https://www.google.com");
-        await Task.Delay(TimeSpan.FromSeconds(2));
-    }
-
-    Console.WriteLine("Press a key to exit...");
-    Console.ReadKey();
-}
-```
-
-"We can see, that in this case, only 1 connection is opened to the remote endpoint. After each request, that connection is returned to the pool and is therefore available for re-use when the next request is issued."
-
-![alt text](/assets/2019-11-13/31.jpg "1 Connection Used")
-
-## Connection Lifetime 1s
-
-```cs
-static async Task Main(string[] args)
-{
-    var ips = await Dns.GetHostAddressesAsync("www.google.com");
-
-    foreach (var ipAddress in ips)
-    {
-        Console.WriteLine(ipAddress.MapToIPv4().ToString());
-    }
-
-    var socketsHandler = new SocketsHttpHandler
-    {
-        PooledConnectionLifetime = TimeSpan.FromSeconds(1),
-        PooledConnectionIdleTimeout = TimeSpan.FromSeconds(1),
-        MaxConnectionsPerServer = 10
-    };
-
-    var client = new HttpClient(socketsHandler);
-
-    for (var i = 0; i < 5; i++)
-    {
-        _ = await client.GetAsync("https://www.google.com");
-        await Task.Delay(TimeSpan.FromSeconds(2));
-    }
-
-    Console.WriteLine("Press a key to exit...");
-    Console.ReadKey();
-}
-```
-
-We can see, 5 connections are opened to the remote endpoint.
-
-![alt text](/assets/2019-11-13/30.jpg "5 Connections Used")
-
-## Max Connections
-
-```cs
-static async Task Main(string[] args)
-{
-    var ips = await Dns.GetHostAddressesAsync("www.google.com");
-
-    foreach (var ipAddress in ips)
-    {
-        Console.WriteLine(ipAddress.MapToIPv4().ToString());
-    }
-
-    var socketsHandler = new SocketsHttpHandler
-    {
-        PooledConnectionLifetime = TimeSpan.FromSeconds(60),
-        PooledConnectionIdleTimeout = TimeSpan.FromMinutes(20),
-        MaxConnectionsPerServer = 10
-    };
-
-    var client = new HttpClient(socketsHandler);
-
-    var sw = Stopwatch.StartNew();
-
-    var tasks = Enumerable.Range(0, 200).Select(i => client.GetAsync("https://www.google.com"));
-
-    await Task.WhenAll(tasks);
-
-    sw.Stop();
-
-    Console.WriteLine($"{sw.ElapsedMilliseconds}ms taken for 200 requests");
-
-    Console.WriteLine("Press a key to exit...");
-    Console.ReadKey();
-
-}
-```
-
-2 MaxConnectionsPerServer - took 5.8s
-10 Connections used in parallel - took 1.3 secs for 200 requests
-
-![alt text](/assets/2019-11-13/32.jpg "10 Connections Used")
-
-If we comment out MaxConnectionsPerServer, it will use 200 connections which takes longer (1.9s), as it is not Pooling. **need to look into this more**
-
-
+Keep it simple and use connection pooling!

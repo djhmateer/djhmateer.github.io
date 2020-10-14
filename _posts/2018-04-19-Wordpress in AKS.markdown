@@ -7,6 +7,11 @@ comments: true
 redirect_from: wordpress/2018/05/31/Wordpress-in-AKS.html 
 sitemap: true
 ---
+
+## update 14th Oct 2020
+
+[Wordpress install on VM using cloud-init](/2020/10/05/wordpress-install-on-VM-using-cloud-init) is how I do things now. I highly recommend this approach and not using K8s unless you really need it.
+
 **update 25th Jan 2019 I don't recommend this way of deploying Wordpress purely because it is complex and I've found using Azure PaaS to be good. See [Azure Hosting Wordpress Article](/2018/06/18/Azure-Hosting-Wordpress-Win-Linux-Docker)**
 
 This article details setting up a Wordpress instance in Azure Kubernetes Service (AKS). I will show you how to setup AKS then go step by step until we have a working Wordpress installation with SSL and appropriate redirects.
