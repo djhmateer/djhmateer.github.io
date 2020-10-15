@@ -16,18 +16,11 @@ This is a follow on article from [Cookie Authentication in ASP.NET Core](/2020/0
 
 [Source code for this article in password-postgres](https://github.com/djhmateer/password-postgres)
 
+[Storing Passwords in .NET article](https://medium.com/dealeron-dev/storing-passwords-in-net-core-3de29a3da4d2) is where I ~~purloined~~ borrowed a lot of the thinking here. [TardisBank](https://github.com/TardisBank/TardisBank/blob/master/server/src/TardisBank.Api/Password.cs) inspired the source code.
+
 Essentially all I need to do is 'hash' the password the user gives in the registration page then store it in the db.
 
 Then when a user logs in we 'hash' that and compare it to the one in the db.
-
-`System.Security.Cryptography`
-
-`RNGCryptoServiceProvider`
-
-
-```cs
-
-```
 
 ## Hashing
 
@@ -48,14 +41,26 @@ The salt is stored along with the hash int he db ie password + salt
 
 ## Implementations
 
-Bcrypt
-PBKDF2
+[How to securely has passwords on Security Stackexchange](https://security.stackexchange.com/questions/211/how-to-securely-hash-passwords) has a great write up. The TL;DR is to use:
 
+- Bcrypt
+- PBKDF2
 
+PBKDF2 is what ASP.NET Core Identity uses under the hood [PasswordHasher in MS Identity](https://github.com/dotnet/aspnetcore/blob/master/src/Identity/Extensions.Core/src/PasswordHasher.cs) so I'm going to implement exactly that (with only the bits I need)
 
-## What does MS Identity use under the hood
+## Source
 
-[PasswordHasher in MS Identity](https://github.com/dotnet/aspnetcore/blob/bfec2c14be1e65f7dd361a43950d4c848ad0cd35/src/Identity/Extensions.Core/src/PasswordHasher.cs)
+```cs
+
+```
+
+So stored password hash may be:
+
+`10000.4QtTb7jPc272uy8MmoWBkw==.CNTvz9T6kHq2/Bo7K7MdJfRvgItamXGR3lUtXL1IgrI=`
+
+So we are using:
+
+"PBKDF2 (RFC 2898) algorithm supplied in the .NET Core runtime. It’s a battle tested algorithm that takes a password and runs it through a hash algorithm (we’re using SHA512) a set number of times which at the end produces a large blob of binary to use as a “key”. This process is referred to as key derivation. The implementation in .NET will automatically create a random salt for us of a specified size. "
 
 ## Links
 
@@ -64,3 +69,9 @@ PBKDF2
 [how to process passwords](https://dev.to/nathilia_pierce/how-to-process-passwords-as-a-software-developer-3dkh)
 
 [Troy Hunt - Encryption vs Hashing](https://www.troyhunt.com/we-didnt-encrypt-your-password-we-hashed-it-heres-what-that-means/)
+
+[Security Stackexchange - How to securely has passwords](https://security.stackexchange.com/questions/211/how-to-securely-hash-passwords)
+
+[password-hasing.net](https://password-hashing.net/)
+
+[.NET Implementation of Agron](https://github.com/mheyman/Isopoh.Cryptography.Argon2)
