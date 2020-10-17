@@ -1,6 +1,6 @@
 ---
 layout: post
-title: xunit testing complex objects 
+title: Integration testing of ASP.NET Core 3.1 
 description: 
 menu: review
 categories: xunit 
@@ -10,7 +10,9 @@ sitemap: false
 image: /assets/2020-02-03/40.jpg
 ---
 
-<!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
+<!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
+
+[Integration Testing ASP.NET Core Applications: Best Practices](https://app.pluralsight.com/library/courses/integration-testing-asp-dot-net-core-applications-best-practices/table-of-contents) by Steve Gordon is an excellent Pluralsight course, and I'm using the strategies discussed there.
 
 [Integration Tests](https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-3.1)
 
@@ -402,73 +404,6 @@ This is useful for the
 can inject a fake database
 can inject in custom connection strings, use environment etc...
 
-**am using it to set a different environment
-  eg Development, Testing, Release
-
-  
-```cs
-// using DI get inject IConfiguration to give us a connection string
-IConfiguration c;
-public DBCassiniModel(IConfiguration c) => this.c = c;
-
-public async Task OnGetAsync()
-{
-    var connectionString = c.GetConnectionString("Default");
-
-    var things = await Db.GetThings(connectionString);
-    Things = things.ToList();
-}
-
-```
-
-This is wired up to 
-
-appsettings.Development.json
-appsettings.Production.json
-
-
-Locally it knows which one to get from `launchSettings.json`: and the profile I run under. I prefer Kestrel to see all the log messages easily.
-
-```yml
-{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:64732",
-      "sslPort": 0
-    }
-  },
-  "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "CookieDave.Web (Development)": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "CookieDave.Web (Release)": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Release"
-      }
-    }
-  }
-}
-
-```
-
-So essentially I'm setting the `ASPNETCORE_ENVIRONMENT` variable.
 
 
 

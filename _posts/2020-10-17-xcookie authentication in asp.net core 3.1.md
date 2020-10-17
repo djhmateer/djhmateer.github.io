@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ASP.NET Security - Cookie Authentication in ASP.NET Core 3.1
+title: Cookie Authentication in ASP.NET Core 3.1
 description: 
 menu: review
 categories: Authentication BrokenLinkChecker
@@ -10,7 +10,7 @@ sitemap: false
 image: /assets/2020-02-03/40.jpg
 ---
 
-<!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
+<!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
 I've used [ASP.NET (Core) Security and Identity](https://docs.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-3.1) for over a decade.
 
@@ -210,6 +210,7 @@ It has been so worthwhile not having persistence whilst understanding my needs f
 
 [Storing passwords in a database](/2020/10/14/storing-passwords-in-a-database) is a big topic so I've split it out into another article.
 
+[Configuration and Hosting Environments]() to get the correct connection strings etc.. for correct environments
 
 
 
