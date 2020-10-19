@@ -4,7 +4,7 @@ title: Postgres
 description: 
 menu: review
 categories: Postgres BrokenLinkChecker 
-published: false 
+published: true 
 comments: false     
 sitemap: false
 image: /assets/2020-02-03/40.jpg

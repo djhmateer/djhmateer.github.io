@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Integration testing of ASP.NET Core 3.1 
+title: Running Jekyll on WSL2 
 description: 
 menu: review
 categories: xunit 
-published: false 
+published: true 
 comments: false     
 sitemap: false
 image: /assets/2020-02-03/40.jpg
@@ -51,3 +51,9 @@ However I got a lot of errors like:
 ERROR:  Error installing zlib:
         ERROR: Failed to build gem native extension.
 extconf failed, exit code 1
+
+## VSCode - Remote WSL
+
+To easily view and edit files inside the WSL2
+
+[Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)

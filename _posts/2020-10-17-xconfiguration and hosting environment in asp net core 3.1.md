@@ -4,7 +4,7 @@ title: Configuration and Hosting Environment in ASP.NET Core 3.1
 description: 
 menu: review
 categories: Configuration ASP.NETCore BrokenLinkChecker 
-published: false 
+published: true 
 comments: false     
 sitemap: false
 image: /assets/2019-11-13/1.jpg

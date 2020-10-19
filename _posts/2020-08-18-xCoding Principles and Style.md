@@ -4,7 +4,7 @@ title: Coding principles and style  - Naming!
 description: 
 menu: review
 categories: Coding style BrokenLinkChecker
-published: false 
+published: true 
 comments: false     
 sitemap: false
 image: /assets/2020-02-03/40.jpg

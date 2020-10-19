@@ -4,7 +4,7 @@ title: Integration testing of ASP.NET Core 3.1
 description: 
 menu: review
 categories: xunit 
-published: false 
+published: true 
 comments: false     
 sitemap: false
 image: /assets/2020-02-03/40.jpg

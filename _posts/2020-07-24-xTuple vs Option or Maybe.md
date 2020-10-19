@@ -4,7 +4,7 @@ title: Tuple deconstruction vs Option / Maybe / Either
 description: 
 menu: review
 categories: Functional BrokenLinkChecker
-published: false 
+published: true 
 comments: false     
 sitemap: false
 image: /assets/2019-11-13/1.jpg
