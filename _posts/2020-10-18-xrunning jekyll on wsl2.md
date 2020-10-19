@@ -57,3 +57,11 @@ extconf failed, exit code 1
 To easily view and edit files inside the WSL2
 
 [Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+
+## Conclusion
+
+It is still fairly slow for me
+
+![alt text](/assets/2020-10-19/perf.jpg "Performance is still quite slow for me")]
+
+**todo - see what docker perf is like
