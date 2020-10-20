@@ -27,7 +27,7 @@ It works just fine. For Windows side terminal I'm still on [cmder](https://cmder
 <!-- ![alt text](/assets/2020-10-20/termianl.jpg "Terminal settings"){:width="600px"} -->
 Here is where you can edit the settings:
 
-![alt text](/assets/2020-10-20/terminal.jpg "Terminal settings")
+![alt text](/assets/2020-10-19/terminal.jpg "Terminal settings")
 
 - Set default terminal to Ubuntu
 
@@ -56,7 +56,7 @@ Here is where you can edit the settings:
 
 - Copy and paste works
 - History works ie can scroll backwards to see what happened
-- Bashtop renders properly
+- Bashtop renders properly.
 
 ## Launchy
 
@@ -75,7 +75,7 @@ I use [launchy]() and to get it to be able to open UWP apps:
 
 ![alt text](/assets/2020-09-13/uwp-apps.jpg "Finding UWP apps"){:width="600px"}
 
-## Aliases .bashrc
+## Aliases .bashrc (.bash_aliases)
 
 Create this file using `sudo vim ~/.bash_aliases`
 
@@ -83,10 +83,10 @@ Create this file using `sudo vim ~/.bash_aliases`
 alias cdd='cd ~/djhmateer.github.io'
 alias cdl='cd /mnt/c/dev/test'
 
-# alias p='git add . & git commit -m "auto commit" & git push'
-alias p='git add .'
+alias p='git add . && git commit -m "auto commit" && git push'
 
-#alias ls='ls -lat'
+alias ls='ls -lat'
+
 alias gs='git status'
 
 alias e='explorer.exe .'
@@ -97,4 +97,18 @@ alias js='bundle exec jekyll serve force_polling --livereload --unpublished'
 ```
 
 Restart the terminal for the changes to take effect.
+
+## Git branch and status
+
+https://askubuntu.com/questions/730754/how-do-i-show-the-git-branch-with-colours-in-bash-prompt
+
+asdf
+
+
+
+## Conclusion
+
+I'm starting to use [Windows Terminal](/2020/10/20/running-jekyll-on-wsl2) more and more, especially for [Jekyll](/2020/10/20/running-jekyll-on-wsl2)
+
+Give it a shot, you may like it!
 
