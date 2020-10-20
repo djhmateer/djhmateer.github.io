@@ -80,9 +80,11 @@ I use [launchy]() and to get it to be able to open UWP apps:
 Create this file using `sudo vim ~/.bash_aliases`
 
 ```bash
-alias cdd='cd ~/djhmateer.giohub.io'
+alias cdd='cd ~/djhmateer.github.io'
 alias cdl='cd /mnt/c/dev/test'
-alias p='git add . & git commit -m "auto commit" & git push'
+
+# alias p='git add . & git commit -m "auto commit" & git push'
+alias p='git add .'
 
 #alias ls='ls -lat'
 alias gs='git status'
@@ -90,6 +92,8 @@ alias gs='git status'
 alias e='explorer.exe .'
 
 alias c='code.exe .'
+
+alias js='bundle exec jekyll serve force_polling --livereload --unpublished'
 ```
 
 Restart the terminal for the changes to take effect.
