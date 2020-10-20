@@ -100,11 +100,7 @@ Restart the terminal for the changes to take effect.
 
 ## Git branch and status
 
-https://askubuntu.com/questions/730754/how-do-i-show-the-git-branch-with-colours-in-bash-prompt
-
-asdf
-
-
+I'd like to have bash show my branch name and status when inside a git repo. I've not found anything I like so far, so keeping it simple for now.
 
 ## Conclusion
 
