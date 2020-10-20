@@ -1,16 +1,19 @@
 ---
 layout: post
 title: Windows Terminal 
-description: 
-menu: review
-categories: shell 
+description: Running the new Windows Terminal and customising it using aliases
+#menu: review
+categories: terminal 
 published: true 
-comments: false     
-sitemap: false
-image: /assets/2020-02-03/40.jpg
+comments: true     
+sitemap: true 
+image: /assets/2020-10-19/term.jpg
 ---
 
-<!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
+<!-- ![alt text](/assets/2020-10-19/term.jpg "terminal screenshot"){:width="600px"} -->
+![alt text](/assets/2020-10-19/term.jpg "terminal screenshot")
+
+My Windows terminal running an alias `js` which is Jekyll Serve which starts up my blog locally.
 
 [Scott Hanselman on YouTube .NET Oxford - Terminals](https://www.youtube.com/watch?v=B4VYjxzx2us&feature=emb_logo) was where I first saw the new [Windows Terminal](https://github.com/microsoft/terminal) with Ubuntu.
 

@@ -14,7 +14,11 @@ image: /assets/2020-10-19/jekyll_island.jpg
 
 I've [written a lot about using Jekyll](/2019/07/28/Jekyll-Github-Pages) using Docker from Windows to get a good experience. However it can be slow to regenerate and update itself which is annoying.
 
-Here is my shot of running WSL2 and Jekyll. [Here are my brief notes on setting up WSL2 on Win 10](/2020/10/20/WSL2)
+[Here are my brief notes on setting up WSL2 on Win 10](/2020/10/20/WSL2)
+
+[Here is setting up the new Windows Terminal to connect to WSL2](/2020/10/20/windows-terminal)
+
+Below is my shot of running WSL2 and Jekyll. 
 
 > TL;DR - it works really well
 
