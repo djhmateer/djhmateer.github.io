@@ -68,4 +68,4 @@ It is still fairly slow for me
 
 ## Conclusion
 
-It is also annyoing for me saving assets to WSL from Windows side.
+It is also annyoing for me saving assets to WSL from Windows side..
