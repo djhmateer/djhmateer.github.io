@@ -3,7 +3,7 @@ layout: post
 title: Windows Terminal 
 description: Running the new Windows Terminal and customising it using aliases
 #menu: review
-categories: terminal 
+categories: Terminal 
 published: true 
 comments: true     
 sitemap: true 
