@@ -14,7 +14,7 @@ image: /assets/2020-10-14/gull.jpg
 
 I'm writing a broken link checker website and want to make sure the code consumes as few resources as possible and can take a large amount of load (http requests!)
 
-From [HTTPClient Connection pooling in .NET Core > 2.1](https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core):
+From [Steve Gordon's excellent article HTTPClient Connection pooling in .NET Core > 2.1](https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core):
 
 > HttpClient in .NET Core (since 2.1) performs connection pooling and lifetime management of those connections. This supports the use of a single HttpClient instance which reduces the chances of socket exhaustion whilst ensuring connections re-connect periodically to reflect DNS changes.
 
@@ -22,9 +22,11 @@ I did think I was going to have to use [IHttpClientFactory](/IHttpClientFactory)
 
 ## Connection Pooling
 
-The SocketsHttpHandler establishes a pool of connections for each unique endpoint which your application makes an outbound HTTP request to via HttpClient. On the first request to an endpoint, when no existing connections exist, a new HTTP connection will be established and used for the request. Once that request completes, the connection is left open and is returned into the pool.
+"The SocketsHttpHandler establishes a pool of connections for each unique endpoint which your application makes an outbound HTTP request to via HttpClient. On the first request to an endpoint, when no existing connections exist, a new HTTP connection will be established and used for the request. Once that request completes, the connection is left open and is returned into the pool.
 
-Subsequent requests to the same endpoint will attempt to locate an available connection from the pool. If there are no free connections and the connection limit for that endpoint has not been reached, a new connection will be established. Once the connection limit is reached, requests are held in a queue, until a connection is free to send them.
+Subsequent requests to the same endpoint will attempt to locate an available connection from the pool. If there are no free connections and the connection limit for that endpoint has not been reached, a new connection will be established. Once the connection limit is reached, requests are held in a queue, until a connection is free to send them."
+
+I blatently ~~stole~~ borrowed this excellent description from Steve Gordon (I think!)
 
 ## Real life
 
