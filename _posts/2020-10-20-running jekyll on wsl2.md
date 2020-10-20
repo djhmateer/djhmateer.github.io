@@ -16,11 +16,11 @@ I've [written a lot about using Jekyll](/2019/07/28/Jekyll-Github-Pages) using D
 
 Here is my shot of running WSL2 and Jekyll. [Here are my brief notes on setting up WSL2 on Win 10](/2020/10/20/WSL2)
 
-TL;DR - it works really well!!
+> TL;DR - it works really well
 
 [Dylan Beattie's article](https://dylanbeattie.net/2020/05/19/jekyll-on-wsl2.html) and this [Medium article](https://medium.com/@hjgraca/using-wsl2-visual-studio-code-for-jekyll-blogging-on-windows-10-99489deb4650) helped me along the way.
 
-However I got errors like this following along with the medium article. I'm running 
+However I got errors like this following along with the Medium article:
 
 ```bash
 ERROR:  Error installing zlib:
