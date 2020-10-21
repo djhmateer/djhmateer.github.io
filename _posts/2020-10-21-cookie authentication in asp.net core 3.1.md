@@ -186,7 +186,7 @@ namespace CookieDave.Web.Pages
 
 ```
 
-I to how I give a different user a Cliam, look inside of `Login.cshtml.cs` file
+To see how I give a different user a Cliam, look inside of `Login.cshtml.cs` file
 
 ```cs
  public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
@@ -259,9 +259,11 @@ I to how I give a different user a Cliam, look inside of `Login.cshtml.cs` file
 
 Currently I only need one Role per User.
 
-If you don't get the correct Role, you're redirect to to AccessDenied:
+If you don't get the correct Role, you're redirected to to AccessDenied:
 
 ![alt text](/assets/2020-08-29/access-denied.jpg "Access denied"){:width="800px"}
+
+This [can be changed to another page](https://stackoverflow.com/a/39252027/26086) but I've kept with the convention.
 
 
 ## Part 3 - Testing
