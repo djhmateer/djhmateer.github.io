@@ -65,7 +65,7 @@ My use case is a SaaS products (I make tools to make sure websites are working).
 
 Use a Password manager to keep all my passwords
 
-It is simple to implement, and as a SaaS business owner I want things to work well (In the early days of Stackover most of their support tickets were on identity)
+It is simple to implement, and as a SaaS business owner I want things to work well (In the early days of Stackoverflow most of their support tickets were on identity)
 
 [Cookie authentication without Identity on MS Docs](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1) which links to a good  [sample project in ASP.NET Docs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples/3.x/CookieSample)
 
@@ -111,15 +111,19 @@ namespace OnlyAuthentication.Web.Pages
 
 This makes sure that someone has to be logged in to view the privacy page
 
+So that is it - we can new ensure that a User is logged in before they can see a page.
+
 ## Part 2 - Role based Authorization
 
 [MS Docs - Introduction to Authorisation](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-3.1)
 
 [Part 2 Role Based Source code here](https://github.com/djhmateer/cookie-dave)
 
+For my final application I want to have something like this:
+
 - Role
-  - Tier1 (my free tier, but need to be a successfully registered and active account)
-  - Tier2 (paid tier, need to be successfully registered)
+  - Tier1 (my free tier, but need to be a successfully registered and logged in)
+  - Tier2 (paid tier)
   - Admin (me)
 
 ![alt text](/assets/2020-08-29/login2.jpg "Login")
@@ -133,7 +137,7 @@ using static CookieDave.Web.Data.CDRole;
 
 namespace CookieDave.Web.Pages
 {
-    // Which strongly typed CDRoles are needed to view this page
+    // Strongly typed Roles are needed to view this page
     [AuthorizeRoles(Tier1, Tier2, Admin)]
     public class Tier1RoleNeeded : PageModel
     {
@@ -186,7 +190,7 @@ namespace CookieDave.Web.Pages
 
 ```
 
-To see how I give a different user a Cliam, look inside of `Login.cshtml.cs` file
+To see how I give a different user a Cliam, look inside of `Login.cshtml.cs` file which will look something like:
 
 ```cs
  public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
@@ -316,6 +320,6 @@ Testing becomes more intersting too with persistence - [much more detail here - 
 
 I've got 4 more articles coming delving into Testing, Configuration, Storing Passwords, and Razor Pages.
 
-Learning how to do a simple Cookie based Identity based site with just the parts I need feels really freeing. I've now got great tests, great certainty on my apps security, and a very simple codebase anyone can understand.
+Learning how to do a simple Cookie based Identity based site with just the parts I need feels really freeing. I've now got great tests, great certainty on my apps security, and a simple codebase.
 
 
