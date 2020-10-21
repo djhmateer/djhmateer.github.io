@@ -89,6 +89,10 @@ Then put it in my Quick Access:
 
 ![alt text](/assets/2020-10-19/quick.jpg "Quick access")]
 
+# Shortcuts in .bash_aliases
+
+[Windows Terminal blog post](/2020/10/20/windows-terminal) where I drive things from now, includes all my useful alias shortcuts.
+
 
 ## Mount a disk
 
