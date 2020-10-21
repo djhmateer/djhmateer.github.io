@@ -71,11 +71,11 @@ To easily view and edit files inside WSL2
 
 ## Performance
 
-Perf went from 35seconds to 10seconds 
+Perf went from 35 seconds to 10 seconds 
 
 ![alt text](/assets/2020-10-19/perf.jpg "Performance is still quite slow for me")]
 
-After my laptop was left for a while this went down to around 7seconds.
+After my laptop was left for a while this went down to around **7 seconds - wow!**
 
 ## Windows Explorer 
 
@@ -89,7 +89,7 @@ Then put it in my Quick Access:
 
 ![alt text](/assets/2020-10-19/quick.jpg "Quick access")]
 
-# Shortcuts in .bash_aliases
+## Shortcuts in .bash_aliases
 
 [Windows Terminal blog post](/2020/10/20/windows-terminal) where I drive things from now, includes all my useful alias shortcuts.
 
