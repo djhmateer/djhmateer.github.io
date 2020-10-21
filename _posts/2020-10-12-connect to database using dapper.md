@@ -148,35 +148,7 @@ So it will probably work for a reasonable traffic site, however [yes you probabl
 
 ## ASP.NET Core Configuration - Connection Strings
 
-I would like separate db connection strings for:
-
-- Dev
-- Running tests locally and on build server
-- Prod
-
-The easiest way is to use `Environment Variables` ie appsettings.json. [MS Doc - ASP.NET Core Configuration](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1)
-
-```yaml
-# appsettings.json
-{
-  "AllowedHosts": "*"
-}
-
-# appsettings.Development.json
-{
-  "ConnectionStrings": {
-    "Default": "Host=localhost;Username=alice;Password=letmein2;Database=postgrescookiedave"
-  }
-}
-
-# appsettings.Production.json
-{
-  "ConnectionStrings": {
-    "Default": "Host=localhost;Username=bob;Password=letmein3;Database=postgrescookiedave",
-  }
-}
-
-```
+[Configuration and Hosting Environment](/2020/10/21/xconfiguration-and-hosting-environment-in-asp-net-core-3.1) - this always seems to be trip me up, so I've written a separate article on it.
 
 ## Final Result
 

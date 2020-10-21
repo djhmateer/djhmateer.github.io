@@ -34,22 +34,20 @@ This is the first blog post where I will cover:
 
 In my application I'm using these terms:
 
-- User - email, ???, password hash, isEmailVerified
+- User - email, role_id, password_hash, verified
 
 - Role
   - Tier1 (my free tier, but need to be a successfully registered and active account)
   - Tier2 (paid tier, need to be successfully registered)
   - Admin (me)
 
-A User can have multple Roles.
-
 - Security - How to keep the application secure and the correct user sees the correct data
 
-- Identity - Is Microsoft.AspNetCore.Identity.UI that supports login functionality. Manage users, passwords, pofile data, roles, claims, token, email confirmation and more.
+- Identity - ie Microsoft.AspNetCore.Identity.UI that supports login functionality. Manage users, passwords, pofile data, roles, claims, token, email confirmation and more.
 
-- Authentication - user provides credentials that are then compared to those stored in a db ie determining the user's identity.
+- Authentication - User provides credentials that are then compared to those stored in a db ie determining the user's identity.
 
-- Authorisation - what the user is allowed to do (ie the Roles they have)
+- Authorisation - What the user is allowed to do (ie the Role they have)
 
 ## Part 1 - Cookie Forms Authentication
 
@@ -178,9 +176,11 @@ namespace CookieDave.Web.Pages
 
 ```
 
-Currently I only need one Role which makes it simpler!
+Currently I only need one Role per User.
 
 ## Part 3 - Testing
+
+I've got [a blog post in this series on ASP.NET Core Web Testing](/2020/10/21/x2integration-testing-of-asp.net-core-3.1) which goes into more detail on the testing here.
 
 To aid in simplicity I've intentionally left
 
@@ -191,7 +191,6 @@ I like this as it leaves the code much less cluttered, but we have to be careful
 
 [Integration Testing ASP.NET Core Applications: Best Practices](https://app.pluralsight.com/library/courses/integration-testing-asp-dot-net-core-applications-best-practices/table-of-contents) by Steve Gordon is an excellent Pluralsight course, and I'm using the strategies discussed there.
 
-I've got [another blog post on ASP.NET Core Web Testing]() which goes into more detail on the testing here.
 
 In summary I'm testing:
 
@@ -212,7 +211,7 @@ It has been so worthwhile not having persistence whilst understanding my needs f
 
 [Configuration and Hosting Environments]() to get the correct connection strings etc.. for correct environments
 
-
+Testing becomes more intersting too with persistence - [much more detail here - ASP.NET Core Web Testing](/2020/10/21/x2integration-testing-of-asp.net-core-3.1)
 
 <hr />
 ******************************************STOP
