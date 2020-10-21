@@ -86,17 +86,22 @@ Create this file using `sudo vim ~/.bash_aliases`
 alias cdd='cd ~/djhmateer.github.io'
 alias cdl='cd /mnt/c/dev/test'
 
-alias p='git add . && git commit -m "auto commit" && git push'
+alias p='git add . && git commit -m "auto" && git push'
+alias gs='git status'
+alias gp='git pull'
 
 alias ls='ls -lat'
 
-alias gs='git status'
-
 alias e='explorer.exe .'
-
-alias c='code.exe .'
+alias c='code .'
 
 alias js='bundle exec jekyll serve force_polling --livereload --unpublished'
+# https://uly.me/run-jekyll-in-background/
+alias jsu='bundle exec jekyll serve force_polling --livereload --unpublished > /dev/null 2>&1 &'
+
+alias gj='ps -ef | grep jekyll'
+
+alias up='sudo apt update && sudo apt upgrade -y'
 ```
 
 Restart the terminal for the changes to take effect.
