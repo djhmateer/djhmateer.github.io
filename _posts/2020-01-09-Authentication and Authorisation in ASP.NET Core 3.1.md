@@ -2,26 +2,29 @@
 layout: post
 title: Identity - Authentication and Authorisation in ASP.NET Core 3.1 
 description: Setting up Authentication and Authorisation using the inbuilt Identity in ASP.NET Core 3.1. Scaffolding out the source.
-menu: review
-categories: Auth BrokenLinkChecker
+#menu: review
+categories: Authentication Authorisation BrokenLinkChecker
 published: true 
-comments: false     
-sitemap: false
-image: /assets/2019-11-13/3.jpg
+comments: true     
+sitemap: true
+image: /assets/2020-01-09/40.jpg
 ---
 I'm developing a SaaS based product, and need `Authentication` (who you are) and `Authorisation` (what you're allowed to do) in my app.
 
+## Update 21st Oct 2020
+
+Please consider [reading my follow up article on Cookie Authentication](/2020/10/21/cookie-authentication-in-asp.net-core-3.1) where I talk about why I don't use the techniques mentioned here.
+
+
 ## Update 25th Aug 2020
 
-This below article was written in Feb 2020 and remained non-published. The reason for this was that for my use case it felt overly complex.
+This below article was written in early 2020 and remained non-published. The reason for this was that for my use case it felt overly complex.
 
-[I followed this article up with a 3rd Party External Authentication article]()
+[I followed this article up with a 3rd Party External Authentication article](/2020/01/10/External-Authentication-in-ASP.NET-Core-3.1)
 
 [Andrew Lock](https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/) has a great 2nd June 2020 tutorial on how to scaffold out, then only use the relevant bit. This is a very well written article covering some of what is here, and adding in a very neat way of not having to maintain all the scaffolded code.
 
-6 months later and I'm considering [Custom Authentication and Authorisation]() ie only impelmenting what I need.
-
-## Into
+## Intro
 
 [Identity on ASP.NET Core](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio) gives us:
 
@@ -409,4 +412,4 @@ But log showing errors coming in before the app starts up
 
 ## Conclusion
 
-It takes some work but there is good authentication and authorisation out of the box with ASP.NET Core. [Lets get Google auth working as should be more easier for the user..I hope](/2020/02/03/External-Authentication-in-ASP.NET-Core-3.1)
+It takes some work but there is good authentication and authorisation out of the box with ASP.NET Core. [Lets get Google auth working as should be more easier for the user..I hope](/2020/01/10/External-Authentication-in-ASP.NET-Core-3.1)

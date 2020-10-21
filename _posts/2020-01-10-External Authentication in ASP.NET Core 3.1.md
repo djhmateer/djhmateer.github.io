@@ -1,16 +1,22 @@
 ---
 layout: post
 title: External Authentication in ASP.NET Core 3.1 ie Google social login 
-description: 
-menu: review
+description: Using Google social login with ASP.NET Core 3.1 - not fully implemented.
+#menu: review
 categories: Auth BrokenLinkChecker
 published: true 
-comments: false     
-sitemap: false
+comments: true     
+sitemap: true
 image: /assets/2019-11-13/3.jpg
 ---
 
-Lets patch in Google social login into an ASP.NET Core 3.1 Web Application. [This follows on from my previous article on straight up Authentication and Authorisation using username and password](/2020/01/25/Authentication-and-Authorisation-in-ASP.NET-Core-3.1) and I've found it harder that it should be IMHO.
+## Update 21st Oct 2020
+
+I ended up not implementing this opting for [Cookie based Authentication](/2020/10/21/cookie-authentication-in-asp.net-core-3.1) only. Implemented well, this is much better for my use case.
+
+## Intro
+
+Lets patch in Google social login into an ASP.NET Core 3.1 Web Application. [This follows on from my previous article on straight up Authentication and Authorisation using username and password](/2020/01/09/Authentication-and-Authorisation-in-ASP.NET-Core-3.1) and I've found it harder that it should be IMHO.
 
 ## External Authentication Provider - Google
 
@@ -82,9 +88,11 @@ services.Configure<IdentityOptions>(options =>
 
 ```
 
-
 Below is trying to sign in using debug mode on localhost
 
-![alt text](/assets/2020-02-03/01.jpg "Couldn't sign you in"){:width="400px"}  
+![alt text](/assets/2020-02-03/1.jpg "Couldn't sign you in"){:width="600px"}  
 
+## Conclusion
+
+I didn't end up going any further with this, but have published the article for reference.
 
