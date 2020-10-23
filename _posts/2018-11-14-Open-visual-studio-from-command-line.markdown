@@ -1,14 +1,29 @@
 ---
 layout: post
 title:  Open Visual Studio Solution from Command Line
-categories: C# 
+description: Open Visual Studio from the command line - including running it from WSL2 Ubuntu.
+categories: C# OpenVSSolution WSL2
 published: true 
 comments: true
 redirect_from: coding/2018/11/14/Open-visual-studio-from-command-line.html 
 sitemap: true
+image: /assets/2018-11-07/ubuntu.jpg
 ---
 
-**13th April 2020** Update [See latest post on upgrading to .NET Core 3](/2020/04/13/NET-Core-Single-Executable-Console-Application) which makes a lot of this article historical.
+## Update 23rd Oct 2020
+
+[Windows Terminal](/2020/10/20/windows-terminal) running Ubuntu is where I launch Visual Studio from now using this tool which I call `d.exe` short for DevEnv.
+
+
+[OpenVSSolution source is here](https://github.com/djhmateer/OpenVSSolution) with a download exe link [here](https://github.com/djhmateer/OpenVSSolution/releases).
+
+![alt text](/assets/2018-11-07/ubuntu.jpg "Ubuntu")
+
+## 13th April 2020
+
+[See latest post on upgrading to .NET Core 3](/2020/04/13/NET-Core-Single-Executable-Console-Application) which makes a lot of this article historical.
+
+## Intro
 
 I like to drive my Windows 10 development machine from the command line using the [Cmder Shell](/cmder/2018/01/30/Cmder-Shell.html):
 

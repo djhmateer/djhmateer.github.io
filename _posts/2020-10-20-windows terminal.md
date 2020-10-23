@@ -102,6 +102,8 @@ alias jsu='bundle exec jekyll serve force_polling --livereload --unpublished > /
 alias gj='ps -ef | grep jekyll'
 
 alias up='sudo apt update && sudo apt upgrade -y'
+
+alias d='/mnt/c/sharedtools/OpenVSSolution/d.exe'
 ```
 
 Restart the terminal for the changes to take effect.
