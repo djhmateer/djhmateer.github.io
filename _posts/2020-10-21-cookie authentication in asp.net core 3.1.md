@@ -320,6 +320,6 @@ Testing becomes more intersting too with persistence - [much more detail here - 
 
 I've got 4 more articles coming delving into Testing, Configuration, Storing Passwords, and Razor Pages.
 
-Learning how to do a simple Cookie based Identity based site with just the parts I need feels really freeing. I've now got great tests, great certainty on my apps security, and a simple codebase.
+Learning how to do a simple Cookie based Identity based site with just the parts I need feels really freeing. I've now got great tests, great certainty on my apps security, and a simple codebase..
 
 
