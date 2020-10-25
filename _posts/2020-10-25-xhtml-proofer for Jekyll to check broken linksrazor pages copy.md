@@ -34,7 +34,9 @@ sudo bundle update
 htmlproofer --allow_hash_href --empty_alt_ignore --assume_extension ./_site
 ```
 
-output here is:
+## Results
+
+The output for me
 
 ```html
 - ./_site/2016/10/16/Why-Blog.html
@@ -56,8 +58,26 @@ output here is:
 
 
 ```bash
-
-
 bundle exec htmlproofer --allow_hash_href --alt_ignore ./_site &> links.log
-
 ```
+
+## Errors
+ 
+On my Ubuntu 20 machine the script seems to fail with a Ruby runtime error:
+
+```ruby
+htmlproofer 3.16.0 | Error:  HTML-Proofer found 96 failures!
+Traceback (most recent call last):
+        10: from /usr/local/bin/htmlproofer:23:in `<main>'
+         9: from /usr/local/bin/htmlproofer:23:in `load'
+         8: from /var/lib/gems/2.7.0/gems/html-proofer-3.16.0/bin/htmlproofer:11:in `<top (required)>'
+         7: from /var/lib/gems/2.7.0/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
+         6: from /var/lib/gems/2.7.0/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
+         5: from /var/lib/gems/2.7.0/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
+         4: from /var/lib/gems/2.7.0/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
+         3: from /var/lib/gems/2.7.0/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
+         2: from /var/lib/gems/2.7.0/gems/html-proofer-3.16.0/bin/htmlproofer:109:in `block (2 levels) in <top (required)>'
+         1: from /var/lib/gems/2.7.0/gems/html-proofer-3.16.0/lib/html-proofer/runner.rb:51:in `run'
+/var/lib/gems/2.7.0/gems/html-proofer-3.16.0/lib/html-proofer/runner.rb:176:in `print_failed_tests': \e[31mHTML-Proofer found 96 failures!\e[0m (RuntimeError)
+```
+
