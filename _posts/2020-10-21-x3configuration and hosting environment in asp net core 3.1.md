@@ -18,6 +18,10 @@ Here I'm going to describe a stragegy that suits me, and is simple.
 
 [ASP.NET Core Configuration MS Docs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-4.1)
 
+[Steve Gordon's Configuration and Options in .NET Core and ASP.NET Core Apps Pluralsight](https://app.pluralsight.com/library/courses/dotnet-core-aspnet-core-configuration-options/table-of-contents)
+
+[Steve Talks Code article and video](http://stevetalkscode.co.uk/category/functional-programming)
+
 [I'm using Password Postgres sample project](https://github.com/djhmateer/password-postgres) to demonstrate how I setup configration.
 
 [TardisBank source](https://github.com/TardisBank/TardisBank) has heavily influened this code - thank you!
