@@ -90,7 +90,8 @@ alias p='git add . && git commit -m "auto" && git push'
 alias gs='git status'
 alias gp='git pull'
 
-alias ls='ls -lat'
+# default colours are not good for me (green backgrounds for directories)
+alias ls='ls -lat --color=auto'
 
 alias e='explorer.exe .'
 alias c='code .'
@@ -108,13 +109,40 @@ alias d='/mnt/c/sharedtools/OpenVSSolution/d.exe'
 
 Restart the terminal for the changes to take effect.
 
+## Useful commands
+
+ctrl r - Reverse search for commands types in shell
+
+## Colours
+
+![alt text](/assets/2020-10-19/colours.jpg "Great colours!")
+
+[Hanselmans article](https://www.hanselman.com/blog/setting-up-a-shiny-development-environment-within-linux-on-windows-10) describes setting up [dircolors-solarized](https://github.com/seebi/dircolors-solarized) which I did.
+
+Essentially clone the dircolors-solarized repo into your home directory, copy any of the `dircolors*` files to ~, and rename `dircolors.256dark` to `.dircolors`
+
+## Launching Visual Studio from Linux
+
+This is launching Visual Studio Windows side, but using the ability of WSL2 to launch Windows applications:
+
+![alt text](/assets/2020-10-19/vs.jpg "Launch visual studio from linux")
+
+I usually have multiple WSL2 Terminal's open all the time for:
+
+- Navigating between different VS Solutions (quite often I'll have a few reference projects and my own one open)
+- Use d.exe to [launch Visual Studio from the current directory](/2018/11/14/Open-visual-studio-from-command-line)
+- p to Push doing an auto commit the current repo
+- jup - Jekyyll Up Process - run my blog locally and return to command line (ie run invisibly)
+
+
+
 ## Git branch and status
 
 I'd like to have bash show my branch name and status when inside a git repo. I've not found anything I like so far, so keeping it simple for now.
 
 ## Conclusion
 
-I'm starting to use [Windows Terminal](/2020/10/20/running-jekyll-on-wsl2) more and more, especially for [Jekyll](/2020/10/20/running-jekyll-on-wsl2)
+I'm starting to use [Windows Terminal](/2020/10/20/running-jekyll-on-wsl2) ~~more and more~~ all the time instead of my old favourite terminal [cmder](/2018/01/30/Cmder-Shell), especially for [Jekyll](/2020/10/20/running-jekyll-on-wsl2)
 
 Give it a shot, you may like it!
 

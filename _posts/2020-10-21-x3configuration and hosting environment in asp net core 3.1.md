@@ -12,66 +12,128 @@ image: /assets/2019-11-13/1.jpg
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
-Managing configurations eg connection strings for: Dev / Test / Prod is very important as you don't want to mix them up!
+Managing configurations eg connection strings for: Development / Test / Production is very important.
+
+Here I'm going to describe a stragegy that suits me, and is simple.
 
 [ASP.NET Core Configuration MS Docs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-4.1)
 
 [I'm using Password Postgres sample project](https://github.com/djhmateer/password-postgres) to demonstrate how I setup configration.
 
+[TardisBank source](https://github.com/TardisBank/TardisBank) has heavily influened this code - thank you!
+
+[Integration Testing ASP.NET Core Applications: Best Practices](https://app.pluralsight.com/library/courses/integration-testing-asp-dot-net-core-applications-best-practices/table-of-contents) by Steve Gordon is an excellent Pluralsight course, and I'm using some of the strategies discussed there.
 
 ## Summary
 
-- Hosting Environments: Development, Production
-  db connection string picked up from appsettings.Development.json, appsettings.Production.json
-
+- Hosting Environments: Development, Test, Production
 - Build configuration: Debug, Release
-
-## DeveloperExceptions
-
-This is turned on in `Startup.cs`:
-
-```cs
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-    if (env.IsDevelopment())
-    {
-        Log.Information("Hosting Environment is Developer, displaying Developer Exception pages");
-        app.UseDeveloperExceptionPage();
-    }
-    else
-    {
-        Log.Information("Hosting Environment is non Developer, show friendly messages"); 
-        app.UseExceptionHandler("/Error");
-    }
-// ...
-```
-
-
-![alt text](/assets/2020-10-21/dev.jpg "Dev exception"){:width="800px"}
-<!-- ![alt text](/assets/2020-10-21/dev.jpg "Dev exception") -->
-
-Notice nice log messages from kestrel, then when we click on ThrowException:
-
-I pressed ctrl-F5 ie run in non-debug Release mode, but I'm still in Development hosting environment
-
-![alt text](/assets/2020-10-21/ex.jpg "The exception"){:width="800px"}
-
-The exception showing the source line number (12), file ThrowException.cshtml.cs and the stack trace. We don't want to show this unfriendly error to end users.
 
 ## Hosting Environment on Development
 
-Locally it knows which one to get from `launchSettings.json`: and the profile I run under. I prefer Kestrel to see all the log messages easily.
+Lets imagine we are running in `launchSettings.json` Development Hosting Environment.
 
-These settings allow me to run in Production mode locally (even though the db connection string will be wrong)
+This means that `IConfiguration` will read from our `appsettings.Development.json` file.
 
-We could just type in an enivornment variable:
+[GetConnectionString MS Docs](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.configurationextensions.getconnectionstring?view=dotnet-plat-ext-3.1) is a handy shortcut:
 
-- export ASPNETCORE_ENVIRONMENT=Development
-- export ASPNETCORE_ENVIRONMENT=Production
+```cs
+public class DBTestModel : PageModel
+{
+    private readonly IConfiguration c;
+    public string? ConnectionString { get; set; }
+    public IList<Employee>? Employees { get; set; }
 
-These are overridden by Properties/launchsettings.json:
+    public DBTestModel(IConfiguration c) => this.c = c;
+
+    public async Task OnGetAsync()
+    {
+        var connectionString = c.GetConnectionString("Default");
+        //var connectionString = c.GetSection("ConnectionStrings")["Default"];
+        ConnectionString = connectionString;
+
+        var employees = await Db.GetEmployees(connectionString);
+        Employees = employees.ToList();
+    }
+}
+```
+
+## Making it simpler by not using IConfiguration
+
+I'm liking this way of getting configuration:
+
+```cs
+public class DBTestModel : PageModel
+{
+    public string? ConnectionString { get; set; }
+    public IList<Employee>? Employees { get; set; }
+
+    public async Task OnGetAsync()
+    {
+        var connectionString = AppConfiguration.LoadFromEnvironment().ConnectionString;
+        ConnectionString = connectionString;
+
+        var employees = await Db.GetEmployees(connectionString);
+        Employees = employees.ToList();
+    }
+}
+
+```
+
+and the AppConfiguration class is:
+
+```cs
+public class AppConfiguration
+{
+    public string ConnectionString { get; }
+
+    private AppConfiguration( string connectionString) => 
+        ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
+
+    public static AppConfiguration LoadFromEnvironment()
+    {
+        // This reads the ASPNETCORE_ENVIRONMENT flag from the system
+
+        // set on production server via the dot net run command
+        // set on development via the launchSettings.json file
+        // set in IntegrationTests project via CustomWebApplicationFactory so use the fast WebApplicationFactory
+        // set on UnitTest projects via the TestBase
+        var aspnetcore = "ASPNETCORE_ENVIRONMENT";
+        var env = Environment.GetEnvironmentVariable(aspnetcore);
+
+        string connectionString;
+        switch (env)
+        {
+            case "Development":
+            case "Test":
+                connectionString = new ConfigurationBuilder().AddJsonFile("appsettings.Development.json")
+                    .Build().GetConnectionString("Default");
+                break;
+            case "Production":
+                connectionString = new ConfigurationBuilder().AddJsonFile("appsettings.Production.json")
+                    .Build().GetConnectionString("Default");
+                break;
+            default:
+                throw new ArgumentException($"Expected {nameof(aspnetcore)} to be Development, Test or Production and it is {env}");
+        }
+
+        return new AppConfiguration(connectionString);
+    }
+}
+```
+
+I like that my page code behinds are simpler as I don't need to do constructor based DI to get the configuration.
+
+
+## Kestrel
+
+<!-- ![alt text](/assets/2020-10-12/kestrel.jpg "Kestrel"){:width="800px"} -->
+![alt text](/assets/2020-10-12/kestrel.jpg "Kestrel")
+
+Running in self hosted Kestrel instead of IIS Express, defining the enviornment in launchsettings.json settings:
 
 ```yml
+# launchsettings.json
 {
   "profiles": {
     "CookieDave.Web (Development)": {
@@ -95,40 +157,13 @@ These are overridden by Properties/launchsettings.json:
 
 ```
 
-So essentially I'm setting the `ASPNETCORE_ENVIRONMENT` variable.
-
 ![alt text](/assets/2020-10-21/ex2.jpg "The exception in Production Hosting Environment"){:width="800px"}
 
-Here is the same exception displayed in the Production Hosting Environment showing as a friendly error message. Notice I've put in some extra info whilst I fully understand the configuration system:
+So I can easily flip to the Production Hosting Environment showing as a friendly error message. Notice I've put in some extra info whilst I fully understand the configuration system:
 
-```cs
- public class ErrorModel : PageModel
- {
-     public string? Message { get; set; }
-     public string? OriginalPath { get; set; }
+## Hosting Environment on Production Server
 
-     public void OnGet()
-     {
-         var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-
-         OriginalPath = exceptionHandlerPathFeature.Path;
-         Exception exception = exceptionHandlerPathFeature.Error;
-
-         Message = "Message: " + exceptionHandlerPathFeature.Error.Message;
-         Message += ", InnerException.Message: " + exceptionHandlerPathFeature.Error.InnerException?.Message;
-         Message += ", Type: " + exception.GetType();
-     }
- }
-
-```
-I'll turn off this detail when I go to production.
-
-
-## Hosting Environment on Production
-
-Standard Hosting Environment names: Development, Staging, Production (according to _ValidationScriptsPartial)
-
-On Production I set the ASPNETCORE_ENVIRONMENT to Production when starting the app
+On the Production Server I set the ASPNETCORE_ENVIRONMENT to Production when starting the app. I'm using an Ubuntu 18 LTS machine with the latest .NET Core installed
 
 ```bash
 # kestrel.service
@@ -145,7 +180,7 @@ RestartSec=9
 KillSignal=SIGINT
 SyslogIdentifier=dotnet-kestrel.Web
 User=www-data
-# Set the Hosting Environment to prouduction - app get read this.
+# Set the Hosting Environment to Production - app get read this.
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
 
@@ -153,27 +188,37 @@ Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
 WantedBy=multi-user.target
 ```
 
-So it gets the connection string on Production from the appsettings.Production.json file
+## Configuration in Startup.cs
+
+I've kept the original injected way of switching between environments here:
 
 ```cs
-public DBTestModel(IConfiguration c) => this.c = c;
-
-public async Task OnGetAsync()
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
-    // use this on startup.cs to display correct error pages
-    // defined on server as Production
-    // defined on dev machine in launchsettings.json as Development
-    var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-    EnvironmentString = environment;
-
-    // using IConfiguration to get the connection string
-    var connectionString = c.GetConnectionString("Default");
-    ConnectionString = connectionString;
-
-    var employees = await Db.GetEmployees(connectionString);
-    Employees = employees.ToList();
-}
+    if (env.IsDevelopment())
+    {
+        Log.Information("Hosting Environment is Developer, displaying Developer Exception pages");
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        Log.Information("Hosting Environment is non Developer, show friendly messages"); 
+        app.UseExceptionHandler("/Error");
+    }
+// ...
 ```
+
+![alt text](/assets/2020-10-21/dev.jpg "Dev exception"){:width="800px"}
+<!-- ![alt text](/assets/2020-10-21/dev.jpg "Dev exception") -->
+
+Notice nice log messages from kestrel, then when we click on ThrowException:
+
+I pressed ctrl-F5 ie run in non-debug Release mode, but I'm still in Development hosting environment
+
+![alt text](/assets/2020-10-21/ex.jpg "The exception"){:width="800px"}
+
+The exception showing the source line number (12), file ThrowException.cshtml.cs and the stack trace. We don't want to show this unfriendly error to end users.
+
 
 ## Build Configuration
 
@@ -183,7 +228,68 @@ On production the build server runs this command to use a Release build configur
 sudo dotnet publish --configuration Release
 ```
 
-## Tests
+This is the Build Configuration, and not the Hosting Environment.
+
+This has caught me so many times!
+
+## Unit Tests
+
+I've got a separate blog post coming on Unit/Integration testing, but here are the bits pertinant to configuration.
+
+I'm defining Unit Tests here as testing my service classes eg Db.cs class, which hits a database live.
+
+```cs
+ public class DbTests : TestsBase
+ {
+     private readonly string connectionString;
+     public DbTests() => connectionString = AppConfiguration.LoadFromEnvironment().ConnectionString;
+
+     [Fact]
+     public async Task ShouldBeAbleToInsertLogin()
+     {
+         var login = new Login
+         {
+             Email = $"{Guid.NewGuid().ToString()}@mailinator.com",
+             PasswordHash = Guid.NewGuid().ToString()
+         };
+
+         var returnedLogin = await Db.InsertLogin(connectionString, login);
+
+         Assert.Equal(login.Email, returnedLogin.Email);
+         Assert.Equal(login.PasswordHash, returnedLogin.PasswordHash);
+         Assert.True(returnedLogin.LoginId > 0);
+     }
+}
+
+public class TestsBase
+{
+    public TestsBase() => 
+        Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
+}
+```
+
+So the Unit tests get a connection string from the main .Web project by calling `LoadFromEnvironment` in our AppConfiguration class.
+
+The Unit tests know their `ASPNETCORE_ENVIRONMENT` variable is Test as we set it in a TestsBase class.
+
+
+## Integration Tests
+
+I'm defining Integration Tests as hitting the Website, albeit I'm using a WebApplicationFactory so that the testing is fast (and I don't have to spin up an acutal webserver and hit http endpoints)
+
+The trick is set the `ASPNETCORE_ENVIRONMENT` in CustomeWebApplicationFactory
+
+```cs
+public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
+{
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
+    }
+}
+```
+
+Then we don't need to worry about Shadowcopy=false trick, as we've doing a really simple configuration impmentation.
 
 
 ## Other configuration eg mail server settings
