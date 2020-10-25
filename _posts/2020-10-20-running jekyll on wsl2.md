@@ -45,10 +45,12 @@ sudo gem install bundler
 
 sudo apt-get install make gcc gpp build-essential zlib1g zlib1g-dev ruby-dev dh-autoreconf
 
+# if you get errors (as I've done), go back to the start and go through these commands again
 sudo gem install jekyll
 
 # inside jekyll repo
-sudo bundle install
+# maybe need sudo?
+bundle install
 
 # simple serve
 bundle exec jekyll serve
@@ -59,7 +61,7 @@ bundle exec jekyll serve
 bundle exec jekyll serve --livereload --unpublished --incremental
 ```
 
-I'm running Ubuntu 18.04.5 LTS which I found out by typing this into bash:
+I'm running Ubuntu 18.04.5 LTS and 20.04.1 LTS which I found out by typing this into bash:
 
 ```bash
 lsb_release -a
@@ -80,6 +82,8 @@ Perf went from 35 seconds to 10 seconds
 After my laptop was left for a while this went down to around **6 seconds**
 
 Then I noticed that `--incremental` works (whereas I had problems before on windows) so now down to **2.3s average**
+
+Then moving to my desktop (4790K desktop - 5 years oldish) am getting **1.5s average** it is amazing how fast it updates.
 
 ## Windows Explorer 
 
