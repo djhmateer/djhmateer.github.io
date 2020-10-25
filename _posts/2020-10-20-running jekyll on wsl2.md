@@ -53,8 +53,10 @@ sudo bundle install
 # simple serve
 bundle exec jekyll serve
 
-# I like to have reload working
-bundle exec jekyll serve force_polling --livereload --unpublished
+# I like to have reload working and used to need force_polling to work on windows filesystem
+# bundle exec jekyll serve force_polling --livereload --unpublished
+
+bundle exec jekyll serve --livereload --unpublished --incremental
 ```
 
 I'm running Ubuntu 18.04.5 LTS which I found out by typing this into bash:
@@ -75,7 +77,9 @@ Perf went from 35 seconds to 10 seconds
 
 ![alt text](/assets/2020-10-19/perf.jpg "Performance is still quite slow for me")]
 
-After my laptop was left for a while this went down to around **7 seconds - wow!**
+After my laptop was left for a while this went down to around **6 seconds**
+
+Then I noticed that `--incremental` works (whereas I had problems before on windows) so now down to **2.3s average**
 
 ## Windows Explorer 
 
