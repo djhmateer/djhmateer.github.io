@@ -58,17 +58,34 @@ The output for me
 
 
 ```bash
-bundle exec htmlproofer --allow_hash_href --alt_ignore ./_site &> links.log
+bundle exec htmlproofer --allow_hash_href --alt_ignore --assume_extension ./_site &> links.log
 ```
 
 ## Errors
  
-On my Ubuntu 20 machine the script seems to fail with a Ruby runtime error:
+On my Ubuntu 20.04.1 LTS machine the script seems to fail with a Ruby runtime error:
 
 ```ruby
-htmlproofer 3.16.0 | Error:  HTML-Proofer found 96 failures!
+- ./_site/about.html
+  *  External link https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL failed: got a time out (response code 0)
+htmlproofer 3.16.0 | Error:  HTML-Proofer found 90 failures!
 Traceback (most recent call last):
-        10: from /usr/local/bin/htmlproofer:23:in `<main>'
+        25: from /usr/local/bin/bundle:23:in `<main>'
+        24: from /usr/local/bin/bundle:23:in `load'
+        23: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/exe/bundle:34:in `<top (required)>'
+        22: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/friendly_errors.rb:123:in `with_friendly_errors'
+        21: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/exe/bundle:46:in `block in <top (required)>'
+        20: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/cli.rb:24:in `start'
+        19: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/vendor/thor/lib/thor/base.rb:476:in `start'
+        18: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/cli.rb:30:in `dispatch'
+        17: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/vendor/thor/lib/thor.rb:399:in `dispatch'
+        16: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+        15: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+        14: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/cli.rb:476:in `exec'
+        13: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/cli/exec.rb:28:in `run'
+        12: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/cli/exec.rb:63:in `kernel_load'
+        11: from /var/lib/gems/2.7.0/gems/bundler-2.1.4/lib/bundler/cli/exec.rb:63:in `load'
+        10: from /usr/local/bin/htmlproofer:23:in `<top (required)>'
          9: from /usr/local/bin/htmlproofer:23:in `load'
          8: from /var/lib/gems/2.7.0/gems/html-proofer-3.16.0/bin/htmlproofer:11:in `<top (required)>'
          7: from /var/lib/gems/2.7.0/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
@@ -78,6 +95,15 @@ Traceback (most recent call last):
          3: from /var/lib/gems/2.7.0/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
          2: from /var/lib/gems/2.7.0/gems/html-proofer-3.16.0/bin/htmlproofer:109:in `block (2 levels) in <top (required)>'
          1: from /var/lib/gems/2.7.0/gems/html-proofer-3.16.0/lib/html-proofer/runner.rb:51:in `run'
-/var/lib/gems/2.7.0/gems/html-proofer-3.16.0/lib/html-proofer/runner.rb:176:in `print_failed_tests': \e[31mHTML-Proofer found 96 failures!\e[0m (RuntimeError)
+/var/lib/gems/2.7.0/gems/html-proofer-3.16.0/lib/html-proofer/runner.rb:176:in `print_failed_tests': \e[31mHTML-Proofer found 90 failures!\e[0m (RuntimeError)
 ```
+
+As I'm not a Rubyist, but am interested in the results of this tool (I've written many broken link checkers), lets see if it works well from Docker side.
+
+## Docker
+
+[Html proofer in docker](https://hub.docker.com/r/klakegg/html-proofer)
+
+I tried running `sudo apt install docker.io` from WSL2, then tried installing from Windows side following [Docker Desktop WSL 2 backend]
+
 
