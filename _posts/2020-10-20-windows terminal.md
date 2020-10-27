@@ -96,9 +96,12 @@ alias ls='ls -lat --color=auto'
 alias e='explorer.exe .'
 alias c='code .'
 
-alias js='bundle exec jekyll serve --livereload --unpublished --incremental'
+alias js='bundle exec jekyll serve --livereload --unpublished'
+alias jsi='bundle exec jekyll serve --livereload --unpublished --incremental'
+
 # https://uly.me/run-jekyll-in-background/
-alias jsu='bundle exec jekyll serve --livereload --unpublished --incremental > /dev/null 2>&1 &'
+alias jsu='bundle exec jekyll serve --livereload --unpublished > /dev/null 2>&1 &'
+alias jsui='bundle exec jekyll serve --livereload --unpublished --incremental > /dev/null 2>&1 &'
 
 alias gj='ps -ef | grep jekyll'
 
