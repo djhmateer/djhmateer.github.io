@@ -39,11 +39,12 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 
 sudo apt install ruby-full
 
+sudo apt-get install make gcc gpp build-essential zlib1g zlib1g-dev ruby-dev dh-autoreconf
+
 sudo gem update
 
 sudo gem install bundler
 
-sudo apt-get install make gcc gpp build-essential zlib1g zlib1g-dev ruby-dev dh-autoreconf
 
 # if you get errors (as I've done), go back to the start and go through these commands again
 sudo gem install jekyll

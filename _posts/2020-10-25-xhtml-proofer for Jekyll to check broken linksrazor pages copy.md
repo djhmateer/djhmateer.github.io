@@ -27,12 +27,24 @@ sudo bundle update
 # I use the alias: jsu
 # 'bundle exec jekyll serve --livereload --unpublished > /dev/null 2>&1 &
 
+htmlproofer --allow_hash_href --empty_alt_ignore --assume_extension ./_site
+```
+
+## Comand Line Options
+
+Here are the ones that I've found useful:
+
+- --allow_hash_href  - ignore # internal links
+- --empty_alt_ignore  - I've got older blog posts with empty alt tags on images which I need to fix
+- --assume_extension  - allow extensionles urls (Jekyll3)
+- --disable_external - only does internal links
+- 
+
 # allow_hash_href -	ignores the href="#"
 # empty_alt_ignore - ignores images with empty alt tags
 # assume_extension - Automatically add extension (e.g. .html) to file paths, to allow extensionless URLs (as supported by Jekyll 3 and GitHub Pages)
 # --log_level: debug
-htmlproofer --allow_hash_href --empty_alt_ignore --assume_extension ./_site
-```
+
 
 ## Results
 
@@ -100,10 +112,25 @@ Traceback (most recent call last):
 
 As I'm not a Rubyist, but am interested in the results of this tool (I've written many broken link checkers), lets see if it works well from Docker side.
 
+Turns out I was running WSL1.
+
 ## Docker
 
 [Html proofer in docker](https://hub.docker.com/r/klakegg/html-proofer)
 
 I tried running `sudo apt install docker.io` from WSL2, then tried installing from Windows side following [Docker Desktop WSL 2 backend]
+
+```bash
+docker run --rm -it -v $(pwd):/src klakegg/html-proofer:3.16.0 --allow-hash-href --alt-ignore --assume_extension ./_site
+```
+
+And got a similar runtime error
+
+## Conclusion
+
+This is proving quite difficult to use and buggy on a few machines, and difficult to read the output.
+
+
+
 
 
