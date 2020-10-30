@@ -1,29 +1,34 @@
 ---
 layout: post
 title: Delete files from git history 
-description: 
-menu: review
+description: Deleting files from Git history on a public GitHub repo.
+#menu: review
 categories: Git 
 published: true 
-comments: false     
-sitemap: false
-image: /assets/2020-10-27/davemateer.jpg
+comments: true     
+sitemap: true
+image: /assets/2020-10-30/github.jpg
 ---
 
-<!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
+[![alt text](/assets/2020-10-30/github.jpg "Photo from @yancymin on Unsplash")](https://unsplash.com/@yancymin)
 
 Imagine you've checked in an API key into Git by accident and pushed it to a public Git repo.
 
 It happens!
 
-Lets fix it.
+Lets (try to) fix it.
+
+[GitHub docs on removing sensitive data from a repo](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/removing-sensitive-data-from-a-repository)
+
+[How to remove file from git repo](https://itextpdf.com/en/blog/technical-notes/how-completely-remove-file-git-repository)
 
 ## The Problem
 
+Using the GitHub we can demonstrate the problem:
 
 ![alt text](/assets/2020-10-30/historybutton.jpg "History butotn on Github")
 
-Pressing the history button on the file I know that had an API checked in brings up the commit history
+Pressing the history button on the file I know that had an API key checked in brings up the commit history
 
 ![alt text](/assets/2020-10-30/history.jpg "A commit a few days ago had the problem (it is fixed now)")
 
@@ -32,30 +37,29 @@ I don't really care about the history of this file, so lets delete the history
 
 ## BFG
 
-[BFG Repo Cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
+[BFG Repo Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) is a handy tool, however there is no `apt get` way to install it, so I did the following:
 
 ```bash
 # install java
 sudo apt install default-jre
 
-wget https://repo1.maven.org/maven2/com/madgag/bfg/1.13.0/bfg-1.13.0.jar
+# cd into the root of the repo you are working on
 
-# alias bfg is java -jar bfg.jar
+# download the jar 
+# c current dir, O is shell output 
+wget -cO - https://repo1.maven.org/maven2/com/madgag/bfg/1.13.0/bfg-1.13.0.jar > bfg.jar
 
+# many people alias bfg='java -jar bfg.jar'
 java -jar bfg.jar --delete-files Enquiry.cshtml.cs
-
-bfg --delete-files YOUR-FILE-WITH-SENSITIVE-DATA
 
 # strip out the unwanted dirty data
 git reflog expire --expire=now --all && git gc --prune=now --aggressive
 
 # I had to do a force
 git push --force
-
 ```
 
-## Did it work
-
+## It works (mostly) 
 
 ![alt text](/assets/2020-10-30/history2.jpg "It worked - history deleted")
 
@@ -65,39 +69,26 @@ Hmmmm but I can still see them from [this link](https://github.com/djhmateer/pas
 
 ![alt text](/assets/2020-10-30/history3.jpg "Why can I still link to it?")
 
-## Read the messages
+## Why can I still see it on GitHub
 
+However there is still a sneaky way to see the old commit, and for me the link was
 
-Found 139 objects to protect
-Found 3 commit-pointing refs : HEAD, refs/heads/main, refs/remotes/origin/main
+https://github.com/djhmateer/password-postgres/commits/a73f27214c3b56a6337aebde99b0ca38ca129de3/src/PasswordPostgres.Web/Pages/Enquiry.cshtml.cs
 
-Protected commits
------------------
+And I could still see the file
 
-These are your protected commits, and so their contents will NOT be altered:
+[This exaplains why](https://itextpdf.com/en/blog/technical-notes/how-completely-remove-file-git-repository) in Scenario 4.
 
- * commit 0887ec7a (protected by 'HEAD') - contains 1 dirty file :
-        - src/PasswordPostgres.Web/Pages/Enquiry.cshtml.cs (3.7 KB)
+## GitGuardian
 
-WARNING: The dirty content above may be removed from other commits, but as
-the *protected* commits still use it, it will STILL exist in your repository.
+[GitGuardian](https://github.com/GitGuardian) is an automated secrets detection and remediation service which should help stop secrets being checked in.
 
-Details of protected dirty content have been recorded here :
+After installing you can then view that status on the [Gitguardian Dashboard](https://dashboard.gitguardian.com/)
 
-/mnt/c/dev/test/password-postgres.bfg-report/2020-10-30/10-20-45/protected-dirt/
+## Conclusion
 
-If you *really* want this content gone, make a manual commit that removes it,
-and then run the BFG on a fresh copy of your repo.
+Be careful with secret keys.
 
+It is a real pain if you've checked in a key into a public repo on GitHub.
 
-So lets take a copy of the text and delete it.
-
-```bash
-
-git rm Enquiry.cshtml.cs
-
-sudo java -jar bfg.jar --delete-files Enquiry.cshtml.cs
-
-git reflog expire --expire=now --all && git gc --prune=now --aggressive
-
-```
+If it's your own project and you don't care about the history, delete everything and start again. By far the most secure and easiest way.
