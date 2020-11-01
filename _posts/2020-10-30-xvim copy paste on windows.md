@@ -25,7 +25,7 @@ Copy and Paste out of VS Code (eg to notepad) can be annoying.
 # add this to settings.json
 "vim.useSystemClipboard": true
 ```
-This is handy as Ctrl V is the visual block mode which I use. 
+This is handy as Ctrl V is the visual block mode which I use. Update - Ctrl Q works just fine for visual block mode.
 
 However sometimes Ctrl C V is handy.. so I'm trying out that as the default too:
 
