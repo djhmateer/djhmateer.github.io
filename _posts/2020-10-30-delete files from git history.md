@@ -26,7 +26,7 @@ Lets (try to) fix it.
 
 Using the GitHub we can demonstrate the problem:
 
-![alt text](/assets/2020-10-30/historybutton.jpg "History butotn on Github")
+![alt text](/assets/2020-10-30/historybutton.jpg "History button on Github")
 
 Pressing the history button on the file I know that had an API key checked in brings up the commit history
 
