@@ -175,8 +175,8 @@ verbs
 - arrange - order by
 - filter - where
 - group by
+- summerise - selecting group by data (always comes after a group by)
 - mutate - new column
-- summerise - selecting group by data
 - join
 - arrange (desc(Year))
 
