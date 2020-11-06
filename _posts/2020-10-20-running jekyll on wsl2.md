@@ -45,12 +45,10 @@ sudo gem update
 
 sudo gem install bundler
 
-
 # if you get errors (as I've done), go back to the start and go through these commands again
-sudo gem install jekyll
+#sudo gem install jekyll
 
 # inside jekyll repo
-# maybe need sudo?
 bundle install
 
 # simple serve
@@ -67,6 +65,18 @@ I'm running Ubuntu 18.04.5 LTS and 20.04.1 LTS which I found out by typing this 
 ```bash
 lsb_release -a
 ```
+
+## Error
+
+"/var/lib/gems/2.7.0/gems/pathutil-0.16.2/lib/pathutil.rb:502: warning: Using the last argument as keyword parameters is deprecated"
+
+I got this error using Ubuntu 20.04.1 LTS and my site wouldn't load from windows side browser.
+
+I ended up going back to 18.04.5 LTS which then worked. 
+
+![alt text](/assets/2020-10-19/term8.jpg "Worked on new Ubuntu-18.04")]
+
+Notice here I'm defaulting to the non-incremental build in 4.2s on my poweful desktop machine, as it is fast enough.
 
 ## VSCode - Remote WSL
 
