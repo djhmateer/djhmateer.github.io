@@ -17,9 +17,9 @@ image: /assets/2020-10-27/davemateer.jpg
 [r-project.org](https://www.r-project.org/) is a programming language that implements statistics and graphical techniques
 
 R is an implmentation of S combined with semantics inspired by Scheme.
-  S created in 1976
-  1991 Uni Auckland, began an alternative implementation of S
-  R - named for 2 authors Ross and Robert and a play on S
+  - S created in 1976
+  - 1991 Uni Auckland, began an alternative implementation of S
+  - R - named for 2 authors Ross and Robert and a play on S
 
 [wikipedia.org on R_(programming_language)](https://en.wikipedia.org/wiki/R_(programming_language))
 
@@ -27,16 +27,14 @@ R is an implmentation of S combined with semantics inspired by Scheme.
 
 Biology Scientists - analyse experimental data
 
-data wrangling 
-data analysis
-
-making charts to publish papers in journals
+- data wrangling 
+- data analysis
+- making charts to publish papers in journals
 
 
 ## Alternatives
 
-Excel
-SBSS
+Excel, SBSS
 
 Use R because it is
 
@@ -58,13 +56,13 @@ Download [R Studio](https://rstudio.com/products/rstudio/download/#download) - 1
 
 # Configuring R Studio
 
-![alt text](/assets/2020-11-06/settings.jpg "Configuring R Studio")
+![alt text](/assets/2020-11-06/settings.jpg "Configuring R Studio"){:width="400px"}
 
-I prefer to set my default directory to `c:\temp` so when working on different machines there is no communcation except from raw R files projects which will be in Git.
+I prefer to set my default directory to `c:\r` so when working on different machines there is no communcation except from raw R files projects which will be in Git.
 
 Whilst here
 
-- General - working folder as /r (or /temp)
+- General - working folder as c:\r
 - Code, Soft wrap R files tick
 - Code, vim keybindings
 - Panel layout, Console in top right
@@ -117,11 +115,11 @@ library(tidyverse)
 library(dplyr)
 ```
 
-![alt text](/assets/2020-11-06/binary.jpg "Compiling from source")
+![alt text](/assets/2020-11-06/binary.jpg "Compiling from source"){:width="600px"}
 
 then
 
-![alt text](/assets/2020-11-06/conflicts.jpg "Conflicts")
+![alt text](/assets/2020-11-06/conflicts.jpg "Conflicts"){:width="700px"}
 
 okay so we are good to go
 
