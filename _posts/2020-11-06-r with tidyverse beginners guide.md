@@ -23,6 +23,10 @@ R is an implmentation of S combined with semantics inspired by Scheme.
 
 [wikipedia.org on R_(programming_language)](https://en.wikipedia.org/wiki/R_(programming_language))
 
+## What are stats
+
+asd
+
 ## Why use R / Who uses R
 
 Biology Scientists - analyse experimental data
@@ -159,12 +163,6 @@ df_stuffcount <- read_csv("StuffCount.csv")
 The goal is to turn data into information, and information into insight
   Carly Fiorina
 
-Tidyverse is a collection of libraries:
-
-- Dplyr - wrangling data
-- Tidyr - tidying data
-- Ggplot2
-
 ## Wrangling data
 
 verbs
@@ -192,3 +190,22 @@ log file analysis
 server log analysis
 
 web scraping library?
+
+## Terms
+
+- R - language
+- R Studio
+
+- base R - no use of tidyverse
+
+- Tidyverse
+  - Dpylry - for wrangling data 
+  - Tidyr - tidying data
+  - Ggplot2 
+
+- Data Structures
+- Data frame - columns can be different types. eg like a table
+- Vector - 1d array
+- Matrix - 2d array
+- Array
+
