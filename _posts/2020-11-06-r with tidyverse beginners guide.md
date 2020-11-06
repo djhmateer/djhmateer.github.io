@@ -58,19 +58,17 @@ Download [R Studio](https://rstudio.com/products/rstudio/download/#download) - 1
 
 # Configuring R Studio
 
-
 ![alt text](/assets/2020-11-06/settings.jpg "Configuring R Studio")
 
 I prefer to set my default directory to `c:\temp` so when working on different machines there is no communcation except from raw R files projects which will be in Git.
 
 Whilst here
 
-- General - working folder as /temp
+- General - working folder as /r (or /temp)
 - Code, Soft wrap R files tick
 - Code, vim keybindings
 - Panel layout, Console in top right
 - Packages, change CRAN mirror to UK (London)
-
 
 ## Packages
 
@@ -90,6 +88,7 @@ By default is set to `~` and on my Windows machine this is a synced OneDrive fol
 .libPaths()
 
 install.packages("installr")
+library(installer)
 ```
 
 If you get an error:
@@ -105,16 +104,18 @@ If you get an error:
 PATH="${RTOOLS40_HOME}\usr\bin;${PATH}"
 ```
 
-Then install tidyverse using the dropdown: Tools, Install Packages, Tidyverse
+Then install tidyverse using the dropdown: Tools, Install Packages, Tidyverse or do the install.packages command below
 
 ```r
+# install on local machine
+install.packages("tidyverse")
+
 # bring in the tidyverse libraries
 library(tidyverse)
 
 # or could just bring in 
 library(dplyr)
 ```
-
 
 ![alt text](/assets/2020-11-06/binary.jpg "Compiling from source")
 
@@ -125,16 +126,71 @@ then
 okay so we are good to go
 
 
-
 # Keyboard shortcuts
 
-ctrl shift c - comment / uncomment
 ctrl enter - run
 
+ctrl shift c - comment / uncomment
 
+ctrl shift m - pipe %>% aka magrittr
+
+alt - assignment <- 
+
+
+## Useful code
+
+```r
+
+# clear R of all objects
+rm(list=ls())
+
+# bring in tidyverse library
+library(tidyverse)
+
+# load in csv into a new datafram
+df_stuffcount <- read_csv("StuffCount.csv")
+
+# Section 1 ####
+
+```
+
+## Pluralsight
+
+[Tidyverse: R Playbook](https://app.pluralsight.com/library/courses/tidyverse-r-playbook/table-of-contents)
+
+The goal is to turn data into information, and information into insight
+  Carly Fiorina
+
+Tidyverse is a collection of libraries:
+
+- Dplyr - wrangling data
+- Tidyr - tidying data
+- Ggplot2
+
+## Wrangling data
+
+verbs
+
+- select
+- arrange - order by
+- filter - where
+- group by
+- mutate - new column
+- summerise - selecting group by data
+- join
+- arrange (desc(Year))
+
+# R Markdown or R Notebooks
+
+
+spiral notebook icon
+
+ctrl shift k - compile to html
 
 ## R for a C# Application Buidler
 https://stackoverflow.com/questions/5664997/logfile-analysis-in-r
 
+log file analysis
+server log analysis
 
-  web scraping library
+web scraping library?
