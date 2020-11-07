@@ -138,6 +138,19 @@ I usually have multiple WSL2 Terminal's open all the time for:
 - jup - Jekyyll Up Process - run my blog locally and return to command line (ie run invisibly)
 
 
+## SSH Key
+
+To generate an SSH key:
+
+```bash
+# select defaults
+ssh-keygen
+
+# ~/.ssh/id.rsa.pub
+# rename to: sshkey-4790.pub
+```
+
+I take the public key and use it in my /secrets folder for projects. Even though it isn't a secret thats where I put it. I also share it between machines using OneDrive.
 
 ## Git branch and status
 
