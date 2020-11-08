@@ -14,6 +14,9 @@ image: /assets/2020-10-27/davemateer.jpg
 
 [Mailinator](https://www.mailinator.com/) can it help in testing web apps that need to deliver email?
 
+[Testing email](https://postmarkapp.com/support/article/1213-best-practices-for-testing-your-emails-through-postmark) so I'm not using mailinator anymore but forwarding to `devtest@mydomain.com` and `bouncetest@mydomain.com`
+
+
 ## What is Mailinator
 
 It is a public inbox, so I can send an email eg `davemateer@mailinator.com` and it will get there. You just put in a filter in their website to see your email
