@@ -66,7 +66,21 @@ I'm running Ubuntu 18.04.5 LTS and 20.04.1 LTS which I found out by typing this 
 lsb_release -a
 ```
 
-## Error
+## Error - site wont load
+
+Around the beginning on Nov 2020 I've noticed that sometime the site just wouldn't load from window side, but I could `curl` it from linux side.
+
+No idea why, but restarting this service, restarts WSL2 which works
+
+![alt text](/assets/2020-10-19/service.jpg "Restarting the service")]
+
+Or from a `cmd` prompt on Windows side (thanks [Stackoverflow](https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows))
+
+```cmd
+wsl --shutdown
+```
+
+## Error - pathutil
 
 "/var/lib/gems/2.7.0/gems/pathutil-0.16.2/lib/pathutil.rb:502: warning: Using the last argument as keyword parameters is deprecated"
 

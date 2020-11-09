@@ -298,6 +298,70 @@ Then we don't need to worry about Shadowcopy=false trick, as we've doing a reall
 
 ## Other configuration eg mail server settings
 
-We don't want live emails going out for Dev and Test.
+Email is an important part of any SaaS business. Very important! 
 
+I'm now using [Postmark](https://postmarkapp.com/) to deliver my outbound transactional email.
 
+[Postmark](/2020/11/08/xpostmark) is my write up in detail
+
+[SendGrid Unsupported Media Type](/2020/11/01/sendgrid-unsupported-media-type) I tried as have used it for years (and continue to)
+
+[Mailinator](/2020/10/27/xmailinator) was a useful service, but I'm not using it now (see postmark article for why)
+
+So where do I store my API Keys / Server Tokens / Secrets.
+
+As I'm using raw VM's and not using any secret storage, I've built a simple approach:
+
+<!-- ![alt text](/assets/2020-10-21/secrets.jpg "Secrets"){:width="800px"} -->
+![alt text](/assets/2020-10-21/secrets.jpg "Secrets")
+
+This folder is not checked into source control.
+
+![alt text](/assets/2020-10-21/secrets2.jpg "Secrets the details")
+
+There are simple text files for my API keys
+
+When my [Azure CLI script runs - here is a demo](https://github.com/djhmateer/password-postgres/blob/main/infra/infra.azcli), this is near the top
+
+```bash
+## search and replace the {{SENDGRID_API_KEY}} in cloud-init.yaml
+## which is stored in the projects secrets/ folder
+## which isn't checked into public source control (kept on OneDrive)
+## then make sure this new cloud-init-with-secrets.txt is in /secrets
+
+## Assuming if sendgridfilename exists, then postmark will too
+sendgridfilename="../secrets/sendgrid-passwordpostgres.txt"
+postmarkfilename="../secrets/postmark-passwordpostgres.txt"
+if [ -f "$sendgridfilename" ]; then
+  sendgridkey=$(cat "$sendgridfilename")
+  postmarkkey=$(cat "$postmarkfilename")
+
+  # this will overwrite without asking
+  cp cloud-init.yaml ../secrets/cloud-init-with-secrets.yaml
+
+  # replace
+  sed -i -e "s/{{SENDGRID_API_KEY}}/$sendgridkey/g" ../secrets/cloud-init-with-secrets.yaml
+  sed -i -e "s/{{POSTMARK_SERVER_TOKEN}}/$postmarkkey/g" ../secrets/cloud-init-with-secrets.yaml
+
+else
+  read -p "Sendgrid file not found, press any key to continue - do you really want to continue? (no infrastructure created yet)"
+fi
+
+```
+
+So this inserts keys into my cloud-init.yml file which is passed to the VM on creation, so the keys end up on the destination server without being checked into source control.
+
+```yml
+  # will use bash templating to insert this secret in
+  - echo "Creating secrets directory with api keys in"
+  - sudo mkdir /var/www/web/secrets
+  - cd /var/www/web
+  # todo work on these as was getting strange problems
+  - chmod -R 777 secrets
+  - cd secrets
+  # this is replaced when infra.azcli is run
+  - printf "{{SENDGRID_API_KEY}}" > sendgrid-passwordpostgres.txt
+  - printf "{{POSTMARK_SERVER_TOKEN}}" > postmark-passwordpostgres.txt
+```
+
+I like this simple solution.
