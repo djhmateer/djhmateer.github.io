@@ -5,7 +5,7 @@ description: Running Jekyll on WSL2 - performance gains and I love it
 #menu: review
 categories: Jekyll WSL2 
 published: true 
-comments: true     
+comments: false     
 sitemap: true
 image: /assets/2020-10-19/jekyll_island.jpg
 ---
