@@ -133,6 +133,9 @@ If you've got [Windows 10 Inside Preview Build 20211](https://blogs.windows.com/
 
 I don't have this build, so have stuck with the Windows explorer quick access way which seems to work for me.
 
+## VSCode and DevContainers
+
+[VS Code and DevContainers](https://martinpeck.com/blog/2020/11/05/building-jekyll-with-vscode-devcontainers/) by Martin Peck looks very interesting.
 
 ## Conclusion
 
