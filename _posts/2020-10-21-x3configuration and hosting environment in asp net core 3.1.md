@@ -365,3 +365,7 @@ So this inserts keys into my cloud-init.yml file which is passed to the VM on cr
 ```
 
 I like this simple solution.
+
+## Robots.txt
+
+[Hanselman article](https://www.hanselman.com/blog/using-the-aspnet-core-environment-feature-to-manage-development-vs-production-for-any-config-file-type)
