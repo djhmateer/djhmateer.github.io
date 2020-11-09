@@ -3,7 +3,7 @@ layout: post
 title: html-proofer - Finding broken links in Jekyll
 description: Finding broken links with html-proofer using Jekyll.
 #menu: review
-categories: BrokenLinkChecker
+categories: Jekyll BrokenLinkChecker
 published: true 
 comments: true     
 sitemap: true

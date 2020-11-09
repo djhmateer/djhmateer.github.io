@@ -3,7 +3,7 @@ layout: post
 title: Running Jekyll on WSL2 
 description: Running Jekyll on WSL2 - performance gains and I love it 
 #menu: review
-categories: Jekyll WSL2 
+categories: WSL2 Jekyll
 published: true 
 comments: false     
 sitemap: true

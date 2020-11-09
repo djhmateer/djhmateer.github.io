@@ -3,7 +3,7 @@ layout: post
 title: SendGrid Unsupported Media Type 415 
 description: UnsupportedMediaType - Http Status Code of 415 trying to send an email from a Linux box to SendGrid using their API. 
 #menu: review
-categories: Bash 
+categories: Email Bash 
 published: true 
 comments: true     
 sitemap: true
