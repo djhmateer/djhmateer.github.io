@@ -47,11 +47,20 @@ Use R because it is
 - Data visualisation
 
 implements a wide variety of stats and graphics techniques
-   linear and non-linear modelling
-   stats tests
-   time series analysis
-   classification
-    clustering
+   - linear and non-linear modelling
+   - stats tests
+   - time series analysis
+   - classification
+   - clustering
+
+## Use cases
+
+I've noticed that people who know Python / C# (or a high level language) tend to use that for the wrangling
+
+[Pandas](http://www.python-ds.com/python-data-wrangling) is a common Python library for wrangling
+
+For storage if you're comfortable with SQL often people store the data in Postgres / MySQL then chart with R. This means you can use SQL to get the data out of the db in the shape you want.
+
 
 ## What is Tidyverse
 
@@ -274,6 +283,11 @@ log file analysis
 server log analysis
 
 web scraping library?
+
+## RPostgreSQL
+
+[RPostgres](https://github.com/r-dbi/RPostgres#rpostgres) may be slightly faster than [RPostgreSQL]()
+
 
 ## Terms
 
