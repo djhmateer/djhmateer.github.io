@@ -318,15 +318,21 @@ d1 %>%
 
 ## Analysing data
 
-- View(dataframe) and sorting - [move view to different Quadrant](https://stackoverflow.com/questions/34916553/sending-rstudio-view-content-to-different-pane)
-- summary(dataframe)
+It's very important to understand the raw data and what it actually means.
+
+- Excel to view raw data, then export to csv
+
+- csv_import - does it work, and are the types it infers okay eg chr, dbl
+
+- summary(dataframe) to find the max,min, types
+
+- View(dataframe) and sorting - [move view to different Quadrant](https://stackoverflow.com/questions/34916553/sending-rstudio-view-content-to-different-pane) to see the max / min / obvious errors eg NA null parts too
 
 - Histogram of each variable to check for outliers and distribution (does it make sense)
 
-asdf
-
-
 ## Correcting data errors
+
+I would usually do it in Excel or a higher level language. Especially regarding whitespace, null and spurious non expected characters
 
 ```r
 # find the error
@@ -355,6 +361,7 @@ TLD$ALTITUDE <- recode(TLD$ALTITUDE, `2960` = 296)
 
 Because the raw data (and more importantly their residuals) may be skewed... so we can transform into a more normal (bell?) manner.
 
+We want an normal distribution of data so can run standard types of analysis on it
 
 
 
@@ -369,8 +376,6 @@ Visualise the data
 - Histogram (used to show distribution of variables eg Altitude)
 
 Very useful to see mistakes in the data eg Altitude of >1300m in the UK
-
-
 
 - Bar charts (used to compare variables)
 
@@ -400,6 +405,6 @@ For experimentation we have fixed factors (eg experiment type) and measurements
 
 - zero inflation - an excess of 0 data
 
-- Gaussian (normal) manner
-- Right skewed data (more data distributed to the left) of the histogram
+- Gaussian (normal) distribution of data - bell curve
+- Right skewed data (more data distributed to the left, so graph is skewed to the right ) of the histogram
 
