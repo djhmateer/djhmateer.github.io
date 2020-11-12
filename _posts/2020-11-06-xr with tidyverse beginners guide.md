@@ -266,10 +266,6 @@ hist(df_stuff$TREATMENT)
 
 ```
 
-## Ggplot
-
-[R cookbook for Graphs](http://www.cookbook-r.com/Graphs/)
-
 ## R Markdown or R Notebooks
 
 spiral notebook icon
@@ -281,20 +277,110 @@ https://stackoverflow.com/questions/5664997/logfile-analysis-in-r
 
 log file analysis
 server log analysis
-
 web scraping library?
 
-## RPostgreSQL
+I suspect the real benefit for people like me who know a General Purpose Language like C# and SQL, is that R can do easy good stats analysis, and show the data.
+
+## Postgres 
 
 [RPostgres](https://github.com/r-dbi/RPostgres#rpostgres) may be slightly faster than [RPostgreSQL]()
+
+Here is some sample code:
+
+```r
+library(RPostgreSQL)
+library(ggplot2)
+library(dplyr)
+library (hrbrthemes)
+library(ggrepel)
+library(ggridges)
+
+library(ggraph)
+library(igraph)
+library(RColorBrewer) 
+
+
+conn <- dbConnect("PostgreSQL",dbname='edincastle',host='1.2.3.4',port='5432',user='postgres',password='yourpasswordhere')
+
+
+d1 <- dbGetQuery(conn, "SELECT date_trunc('day',created_at) as daydate, count(*) as c
+                 FROM tweets_within1km
+                  where box = 'gnss'
+                 group by daydate")
+
+# line plot
+d1 %>% 
+  ggplot( aes(x=daydate, y=c)) +
+  geom_line(color="#69b3a2") +
+  ylim(0,175) +
+  theme_ipsum()
+```
+
+## Analysing data
+
+- View(dataframe) and sorting - [move view to different Quadrant](https://stackoverflow.com/questions/34916553/sending-rstudio-view-content-to-different-pane)
+- summary(dataframe)
+
+- Histogram of each variable to check for outliers and distribution (does it make sense)
+
+asdf
+
+
+## Correcting data errors
+
+```r
+# find the error
+# it is row 94 that has ALTITUDE 2960 instead of 296
+TLD %>% 
+  # this just puts in a row number
+  rownames_to_column() %>% 
+  filter(ALTITUDE > 1500)
+
+# 195 rows
+summary(TLD)
+TLD
+
+# can now fix with indexing
+TLD[94,5] <- 296
+
+# or more functional using tidyverse
+TLD <- TLD %>% 
+  mutate(ALTITUDE = if_else(ALTITUDE == 2960, 296, ALTITUDE))
+
+# OR
+TLD$ALTITUDE <- recode(TLD$ALTITUDE, `2960` = 296)
+```
+
+## Transforming data
+
+Because the raw data (and more importantly their residuals) may be skewed... so we can transform into a more normal (bell?) manner.
+
+
+
+
+## Ggplot
+
+[R cookbook for Graphs](http://www.cookbook-r.com/Graphs/)
+
+## Type of Charts
+
+Visualise the data
+
+- Histogram (used to show distribution of variables eg Altitude)
+
+Very useful to see mistakes in the data eg Altitude of >1300m in the UK
+
+
+
+- Bar charts (used to compare variables)
 
 
 ## Terms
 
 - R - language
-- R Studio
+- R Studio - IDE
 
-- base R - no use of tidyverse
+- base R - no use of Tidyverse
 
 - Tidyverse
   - Dpylry - for wrangling data 
@@ -306,4 +392,14 @@ web scraping library?
 - Vector - 1d array
 - Matrix - 2d array
 - Array
+
+For experimentation we have fixed factors (eg experiment type) and measurements
+
+- Variables - a measurement
+- Factor / Fixed Factor of the experiment eg a Treatment can be 1, 2 or 3 only
+
+- zero inflation - an excess of 0 data
+
+- Gaussian (normal) manner
+- Right skewed data (more data distributed to the left) of the histogram
 
