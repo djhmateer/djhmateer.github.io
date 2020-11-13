@@ -50,5 +50,10 @@ I use [VsVim by Jared Parsons](https://github.com/VsVim/VsVim)
 :set clipboard=unnamed
 ```
 
+I'm noticing a stutter / pause when doing x to delete lots of characters. I believe this is to do with the clipboard.
+
+## Azure Data Explorer
+
+This can use the same VsCodeVim vsix [see here](https://github.com/VSCodeVim/Vim/issues/2677#issuecomment-398183822)
 
 
