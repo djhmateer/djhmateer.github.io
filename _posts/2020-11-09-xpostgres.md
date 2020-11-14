@@ -224,8 +224,9 @@ I use IaaS to spin up and down VM's all the time when deploying code. Currently 
 
 [PGTune](https://pgtune.leopard.in.ua/#/) helps to tune Postgres for the server you are running on and workload.
 
-`C:\Program Files\PostgreSQL\12\data\postgresql.conf` is the data directory - edit this conf file and restart postgres service.
+`C:\Program Files\PostgreSQL\12\data\postgresql.conf` is the data directory - edit this conf file and restart postgres service. Remember to backup this file.
 
+This gave me the following, but I found the alter statements better as it showed me where the errors were.
 ```
 # DB Version: 12
 # OS Type: windows
@@ -237,6 +238,8 @@ I use IaaS to spin up and down VM's all the time when deploying code. Currently 
 max_connections = 40
 shared_buffers = 512MB
 effective_cache_size = 12GB
+
+# this didn't work - 1.9GB did
 maintenance_work_mem = 2GB
 checkpoint_completion_target = 0.9
 wal_buffers = 16MB
@@ -249,7 +252,6 @@ max_worker_processes = 8
 max_parallel_workers_per_gather = 4
 max_parallel_workers = 8
 max_parallel_maintenance_workers = 4
-
 ```
 
 ## Casting
