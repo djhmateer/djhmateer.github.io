@@ -224,6 +224,34 @@ I use IaaS to spin up and down VM's all the time when deploying code. Currently 
 
 [PGTune](https://pgtune.leopard.in.ua/#/) helps to tune Postgres for the server you are running on and workload.
 
+`C:\Program Files\PostgreSQL\12\data\postgresql.conf` is the data directory - edit this conf file and restart postgres service.
+
+```
+# DB Version: 12
+# OS Type: windows
+# DB Type: dw
+# Total Memory (RAM): 16 GB
+# CPUs num: 8
+# Data Storage: ssd
+
+max_connections = 40
+shared_buffers = 512MB
+effective_cache_size = 12GB
+maintenance_work_mem = 2GB
+checkpoint_completion_target = 0.9
+wal_buffers = 16MB
+default_statistics_target = 500
+random_page_cost = 1.1
+work_mem = 16930kB
+min_wal_size = 4GB
+max_wal_size = 16GB
+max_worker_processes = 8
+max_parallel_workers_per_gather = 4
+max_parallel_workers = 8
+max_parallel_maintenance_workers = 4
+
+```
+
 ## Casting
 
 This seems very powerful!
