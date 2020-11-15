@@ -292,32 +292,58 @@ I suspect the real benefit for people like me who know a General Purpose Languag
 Here is some sample code:
 
 ```r
-library(RPostgreSQL)
-library(ggplot2)
-library(dplyr)
-library (hrbrthemes)
-library(ggrepel)
-library(ggridges)
+# Install the latest RPostgres release from CRAN:
+# install.packages("RPostgres")
 
-library(ggraph)
-library(igraph)
-library(RColorBrewer) 
+library(DBI)
+library(tidyverse)
 
+# Connect to a specific postgres database i.e. Heroku
+con <- dbConnect(RPostgres::Postgres(),dbname = 'imdbr', 
+                 host = 'localhost',
+                 port = 5432, # or any other port specified by your DBA
+                 user = 'postgres',
+                 password = 'letmein')
 
-conn <- dbConnect("PostgreSQL",dbname='edincastle',host='1.2.3.4',port='5432',user='postgres',password='yourpasswordhere')
+# show all db tables
+dbListTables(con)
 
+# get entire table
+dbReadTable(con, "rating")
 
-d1 <- dbGetQuery(conn, "SELECT date_trunc('day',created_at) as daydate, count(*) as c
-                 FROM tweets_within1km
-                  where box = 'gnss'
-                 group by daydate")
+# send and fetch
+res <- dbSendQuery(con, "SELECT * FROM rating limit 100")
+dbFetch(res)
 
-# line plot
-d1 %>% 
-  ggplot( aes(x=daydate, y=c)) +
-  geom_line(color="#69b3a2") +
-  ylim(0,175) +
-  theme_ipsum()
+# does send and fetch
+df_ratings <- dbGetQuery(con, "SELECT * FROM rating limit 100")
+
+df_ratings
+
+summary(df_ratings)
+
+hist(df_ratings$average_rating)
+
+# lets flatten the data in the db into a new table for analysis
+# tconst, primary_title, start_year, genres, average_rating, num_votes
+# 
+# SELECT t.tconst, primary_title, start_year, genres, r.average_rating, r.num_votes
+# INTO TABLE thing
+# FROM title t
+# LEFT OUTER JOIN rating r on r.tconst = t.tconst
+# WHERE t.start_year < 2021
+
+df_thing <- dbGetQuery(con, "SELECT * FROM thing")
+# 487,254 rows (just movies which may may average_rating / num_votes)
+
+df_thing
+View(df_thing)
+
+hist(df_thing$average_rating)
+
+hist(df_thing$num_votes)
+
+hist(df_thing$start_year)
 ```
 
 ## Analysing data
