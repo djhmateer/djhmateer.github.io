@@ -285,7 +285,9 @@ I suspect the real benefit for people like me who know a General Purpose Languag
 
 ## Postgres 
 
-[RPostgres](https://github.com/r-dbi/RPostgres#rpostgres) may be slightly faster than [RPostgreSQL]()
+[RPostgres](https://github.com/r-dbi/RPostgres#rpostgres) is more up to date and has more GH stars, and may be slightly faster than [RPostgreSQL](https://github.com/tomoakin/RPostgreSQL)
+
+[DBI](https://dbi.r-dbi.org/) defines R's interfaces to databases. RPostgres implements this spec.
 
 Here is some sample code:
 
@@ -410,3 +412,7 @@ For experimentation we have fixed factors (eg experiment type) and measurements
 - Gaussian (normal) distribution of data - bell curve
 - Right skewed data (more data distributed to the left, so graph is skewed to the right ) of the histogram
 
+
+## Tutorials
+
+[Introduction to Spacial Data in R](https://data.cdrc.ac.uk/dataset/introduction-spatial-data-analysis-and-visualisation-r)

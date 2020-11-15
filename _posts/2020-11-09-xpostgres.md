@@ -78,6 +78,8 @@ then if the connection is successful you'll see
 
 ![alt text](/assets/2020-11-09/ads-logged-in.jpg "Azure Data Studio successful login"){:width="600px"}
 
+However I have encountered [a bug](https://github.com/microsoft/azuredatastudio-postgresql/issues/151) where `SELECT ... INTO is not allowed here` so had to revert to pgAdmin.
+
 ## SQL 
 
 The first thing to notice is you can't right click on the Databases and create a new db. But lets just do it all in SQL:
