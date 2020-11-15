@@ -85,6 +85,8 @@ Whilst here
 - Code, vim keybindings
 - Panel layout, Console in top right
 - Packages, change CRAN mirror to UK (London)
+- Appearance, Editor Theme, Pastel on Dark
+- Appearance, Editor font, Consolas
 
 ## R Packages
 
