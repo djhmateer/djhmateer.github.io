@@ -394,7 +394,6 @@ Because the raw data (and more importantly their residuals) may be skewed... so 
 We want an normal distribution of data so can run standard types of analysis on it
 
 
-
 ## Ggplot
 
 [R cookbook for Graphs](http://www.cookbook-r.com/Graphs/)
