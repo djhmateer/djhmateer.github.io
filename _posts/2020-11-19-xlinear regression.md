@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Statistics 
+title: Linear Regresssion 
 description: 
 menu: review
 categories: R Statistics
@@ -13,16 +13,18 @@ image: /assets/2020-10-27/davemateer.jpg
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
 
-- 1 What is R
-- 2 Tidying data
-- 3 Charting
-- 4 Regression
+[R and Tidyverse Beginners Guide](/2020/11/18/xr-with-tidyverse-beginners-guide) is my previous article to this
+
+This article in on Linear Regression.
+
+There may be articles in the future here on 
+
 - 5 Multiple Regression
 - 6 ANCOVA
 - 7 Generalised
 - 8 Mixed
 
-These are some notes on a Statistics course I'm doing which is geared towards biological scientists. The joy of finding things out and exploring something different..  
+Essentially these are findings on a Statistics course I did which is geared towards biological scientists. The joy of finding things out and exploring something different..  
 
 I wonder what practical use it can be for me as a SaaS owner
 

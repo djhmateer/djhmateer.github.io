@@ -12,6 +12,28 @@ image: /assets/2020-10-27/davemateer.jpg
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
+> Data Science:
+> Transforming your data into actionable insight.
+
+As a SaaS business owner this could be as simple as:
+
+- Making sure my servers are running
+- Keeping a close eye on application 4xx and 5xx webserver errors
+- Memory usage
+
+It could also be how to display reports well for example in my broken link checker product, how to display a large amount of data... and make ie easily actionable
+
+
+
+This article covers:
+
+- What is R
+- Tidying Data
+- Charting
+
+[Here is the next article covering Linear Regression](/2020/11/19/xlinear-regression)
+
+
 ## What is R
 
 [r-project.org](https://www.r-project.org/) is a programming language that implements statistics and graphical techniques
@@ -25,8 +47,14 @@ R is an implmentation of S combined with semantics inspired by Scheme.
 
 ## Why use R / Who uses R
 
-Biology Scientists - analyse experimental data
-Data Scientists - wrange data
+- Biology Scientists - analyse experimental data
+- Data Scientists - wrangle data
+
+I've noticed that people who know Python / C# (or a high level language) tend to use that for the wrangling
+
+[Pandas](http://www.python-ds.com/python-data-wrangling) is a common Python library for wrangling
+
+For storage if you're comfortable with SQL often people store the data in Postgres / MySQL then chart with R. This means you can use SQL to get the data out of the db in the shape you want.
 
 - Data Manipulation / [Data Wrangling](https://en.wikipedia.org/wiki/Data_wrangling) / Data Munging - transforming raw data into another formating with the intent of making it more appropriate. (Dplry package in Tidyverse) - pronounced dee plier
 - Tidying data ie changing it. (tidyr packacke in Tidyverse)
@@ -53,32 +81,24 @@ implements a wide variety of stats and graphics techniques
    - classification
    - clustering
 
-## Use cases
-
-I've noticed that people who know Python / C# (or a high level language) tend to use that for the wrangling
-
-[Pandas](http://www.python-ds.com/python-data-wrangling) is a common Python library for wrangling
-
-For storage if you're comfortable with SQL often people store the data in Postgres / MySQL then chart with R. This means you can use SQL to get the data out of the db in the shape you want.
-
-
 ## What is Tidyverse
 
 [Tidyverse](https://www.tidyverse.org/) is an opinionated collection of R packages.
 
-## R and R Studio
+## R and RStudio
 
 Download the latest version of R from [r-project.org](https://www.r-project.org/) - currently on 4.0.3 on 6th Nov 2020
 
-Download [R Studio](https://rstudio.com/products/rstudio/download/#download) - 1.3.1093 on 6th Nov 2020.
+Download [RStudio](https://rstudio.com/products/rstudio/download/#download) - 1.3.1093 on 6th Nov 2020.
 
-There is a [code run / snipper / viewer extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Ikuyadeu.r) which has 250k downloads.
 
 ![alt text](/assets/2020-11-06/settings.jpg "Configuring R Studio"){:width="400px"}
 
-I prefer to set my default directory to `c:\r` so when working on different machines there is no communcation except from raw R files projects which will be in Git.
+`Tools, Global Options` 
 
-Whilst here
+I prefer to set my default directory to `c:\r` so when working on different machines there is no communcation except from raw R files projects which will be in Git. The default user directory for me was linked to my OneDrive.
+
+Whilst here these are my preferences:
 
 - General - working folder as c:\r
 - Code, Soft wrap R files tick
@@ -87,6 +107,10 @@ Whilst here
 - Packages, change CRAN mirror to UK (London)
 - Appearance, Editor Theme, Pastel on Dark
 - Appearance, Editor font, Consolas
+
+![alt text](/assets/2020-11-06/rstudio.jpg "RStudio"){:width="800px"}
+
+My preferred RStudio setup
 
 ## R Packages
 
@@ -151,7 +175,7 @@ okay so we are good to go
 
 ## R Studio Keyboard shortcuts
 
-ctrl enter - run
+ctrl enter - run - This is by far my most used keyboard shortcut
 
 ctrl shift c - comment / uncomment
 
@@ -166,7 +190,7 @@ alt - assignment <-
 # clear R of all objects
 rm(list=ls())
 
-# install on local machine
+# install package on local machine
 install.packages("tidyverse")
 
 # bring in tidyverse library
@@ -179,15 +203,17 @@ df_stuffcount <- read_csv("StuffCount.csv")
 
 # useful to print all the df
 print.data.frame(.)
-
 ```
 
 ## Pluralsight
 
+[Data Science with R by Matthew Renze](https://app.pluralsight.com/library/courses/r-data-science/table-of-contents)
+
 [Tidyverse: R Playbook](https://app.pluralsight.com/library/courses/tidyverse-r-playbook/table-of-contents)
 
-The goal is to turn data into information, and information into insight
-  Carly Fiorina
+> The goal (of data science) is to turn data into information, and information into insight
+
+Carly Fiorina - former CEO of HP
 
 ## Reading data
 
@@ -196,7 +222,7 @@ The goal is to turn data into information, and information into insight
 eg read_csv()
 read_log() - web log files
 
-[Also lots of other sources](https://www.tidyverse.org/packages/#import) including: Postgres, httr (Web API's), rvest (web)
+[Also lots of other sources](https://www.tidyverse.org/packages/#import) including: Postgres, httr (Web API's), rvest (web) however as a developer I'm going to stick to 
 
 <!-- ![alt text](/assets/2020-11-06/show-files.jpg "Show files"){:width="700px"} -->
 ![alt text](/assets/2020-11-06/show-files.jpg "Show files")
@@ -265,17 +291,10 @@ View(df_stuff)
 # view a histogram of the vector (array of dbl's)
 # this part of base R and not tidyverse
 hist(df_stuff$TREATMENT)
-
 ```
 
-## R Markdown or R Notebooks
-
-spiral notebook icon
-
-ctrl shift k - compile to html
-
 ## R for a C# Application Buidler
-https://stackoverflow.com/questions/5664997/logfile-analysis-in-r
+[Logfile Analysis in R](https://stackoverflow.com/questions/5664997/logfile-analysis-in-r)
 
 log file analysis
 server log analysis
@@ -298,10 +317,9 @@ Here is some sample code:
 library(DBI)
 library(tidyverse)
 
-# Connect to a specific postgres database i.e. Heroku
 con <- dbConnect(RPostgres::Postgres(),dbname = 'imdbr', 
                  host = 'localhost',
-                 port = 5432, # or any other port specified by your DBA
+                 port = 5432,
                  user = 'postgres',
                  password = 'letmein')
 
@@ -315,35 +333,13 @@ dbReadTable(con, "rating")
 res <- dbSendQuery(con, "SELECT * FROM rating limit 100")
 dbFetch(res)
 
-# does send and fetch
+# does send and fetch together - handy
 df_ratings <- dbGetQuery(con, "SELECT * FROM rating limit 100")
-
 df_ratings
 
 summary(df_ratings)
 
 hist(df_ratings$average_rating)
-
-# lets flatten the data in the db into a new table for analysis
-# tconst, primary_title, start_year, genres, average_rating, num_votes
-# 
-# SELECT t.tconst, primary_title, start_year, genres, r.average_rating, r.num_votes
-# INTO TABLE thing
-# FROM title t
-# LEFT OUTER JOIN rating r on r.tconst = t.tconst
-# WHERE t.start_year < 2021
-
-df_thing <- dbGetQuery(con, "SELECT * FROM thing")
-# 487,254 rows (just movies which may may average_rating / num_votes)
-
-df_thing
-View(df_thing)
-
-hist(df_thing$average_rating)
-
-hist(df_thing$num_votes)
-
-hist(df_thing$start_year)
 ```
 
 ## Analysing data
