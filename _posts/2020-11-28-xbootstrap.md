@@ -10,22 +10,33 @@ sitemap: false
 image: /assets/2020-10-27/davemateer.jpg
 ---
 
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
+
+Custom CSS on this page [here](https://jreel.github.io/per-page-custom-css-in-jekyll/)
+
+[css to remove previous style](https://stackoverflow.com/questions/15901030/reset-remove-css-styles-for-element-only)
 
 This is part of a frontend series of posts with the first being 
 
 - [HTML]() where I look at the raw starting points.
 - [Bootstrap](#) this article
-- [ASP.NET 5]() is the following article on how this server side framework can help in serving
+- [ASP.NET 5 Razor Pages]() is the following article on how this server side framework can help in serving content
+
+This frontend series follows on from my backend series of creating a SaaS product
+
+- Cookie authentication
+- Integration testing
+- Configuration
+- Storing passwords in a db
 
 [Bootstrap: Getting Started](https://app.pluralsight.com/library/courses/bootstrap-getting-started/table-of-contents) from June 2020 is a good Pluralsight course.
 
 Should we be using Bootstrap now in 2020 or is it 'old tech'. I'm developing a SaaS company with many products and want my products to look good!
 
 Millions of websites use it.
-
 
 ## What is Bootstrap
 
@@ -52,7 +63,6 @@ Which are the same versions that were in ASP.NET Core 3.1 Razor Pages.
 
 [![alt text](/assets/2020-11-26/file-new.jpg "File new project Razor Pages"){:width="800px"}](/assets/2020-11-26/file-new.jpg)
 
-
 ## Building Blocks
 
 - Grid Layout system - Most sites have a similar structure. position elements in a responsive table like system so looks good on any device
@@ -74,7 +84,6 @@ There are also .map files for development.
 - js/bootstrap.min.js (62k)
 - js/boostrap-budle.min.js (83k) - also contains Popper.js
 
-
 ## Live Server Extension
 
 Live Server (8.4m downloads) For VS Code. 
@@ -82,7 +91,6 @@ Live Server (8.4m downloads) For VS Code.
 [![alt text](/assets/2020-11-28/pie.jpg "Pie"){:width="800px"}](/assets/2020-11-28/pie.jpg)
 
 Essentially click on the bottom right botton `Go Live` in VS Code, then [http://127.0.0.1:5500](http://127.0.0.1:5500) will give a live version.
-
 
 ## Viewport
 
@@ -100,16 +108,17 @@ Essentially click on the bottom right botton `Go Live` in VS Code, then [http://
 </head>
 ```
 
-
 ## Button
 
 ```html
 <a type="button" href="shoppingbasket.html" class="btn btn-success"> Add to basket </a>
 ```
 
+<!-- [![alt text](/assets/2020-11-28/button-success.gif "Pie"){:width="800px"}](/assets/2020-11-28/pie.jpg) -->
+[![alt text](/assets/2020-11-28/button-success.gif "Pie")](/assets/2020-11-28/button-success.gif)
+[![alt text](/assets/2020-11-28/button-success2.gif "Pie")](/assets/2020-11-28/button-success.gif)
+
 <a type="button" href="shoppingbasket.html" class="btn btn-success"> Add to basket </a>
-
-
 
 ## Alternative Libraries / CSS Frameworks
 
