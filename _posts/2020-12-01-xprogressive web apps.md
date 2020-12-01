@@ -138,6 +138,8 @@ create in the wwwroot folder
 
 The Service Worker makes caching easy and defines some rules for if content is not available.
 
+As I don't want my site to be available offline, I'm not using the Service worker... it seems to work, but ***check it**** test on all devices.
+
 
 ## Banner to 'Add to Homescreen'
 
