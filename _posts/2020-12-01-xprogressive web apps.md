@@ -147,3 +147,14 @@ As I don't want my site to be available offline, I'm not using the Service worke
 
 So it will not work on Chrome / Firebox on iOS.
 
+## Adding PWA to Stores
+
+[Can a PWA be published to the App Store or Play Store](https://stackoverflow.com/questions/58689785/can-a-pwa-app-be-published-to-app-store-and-play-store)
+
+Looks like Apple App Store, a probable no. Google store yes using Trusted Web Activity.
+
+## iOS
+
+[2018 announcement](https://medium.com/@firt/progressive-web-apps-on-ios-are-here-d00430dee3a7) 
+
+[2020 iOS 14 Changes](https://firt.dev/ios-14/)
