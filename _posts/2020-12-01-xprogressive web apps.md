@@ -16,8 +16,9 @@ image: /assets/2020-10-27/davemateer.jpg
 
 I've got a website I'm building for a client where they need to:
 
-- View it well on their phones (mostly iPhone 7+)
+- View it well on their phones (mostly Apples and all iPhone 7+)
 - Have a button on their homescreen to take them to the 'app'
+- Have as much screen real estate as possible
 - Login with a username/password
 
 It is somewhat of an 'internal app', and so will be not be wanting to be found on an App Store, nor have many thousands of downloads. Initially it will be used by 10's of people.
@@ -32,6 +33,12 @@ Rather than make a full blown native app, lets see what a PWA can do.
 
 It is a specification.
 
+[https://web.dev/progressive-web-apps/](https://web.dev/progressive-web-apps/)
+
+## Where is it available
+
+Desktop browsers - Chrome (Windows)
+
 > Creates a middle ground between a website and a mobile app.
 
 > Can be accessed from the home screen (of a phone)
@@ -45,6 +52,86 @@ And more detail [from freecodecamp](https://www.freecodecamp.org/news/build-a-pw
 - Access the camera
 - Get push notifications (not iOS)
 - Background sync
+
+## Why
+
+Although there are benefits, I've found no canonical example of a good PWA without a backing App in a store too.
+
+I wonder if this is just a user perception of how to install Apps.
+
+## Stores and PWA Launchers
+
+Google Play Store - can publish launchers using Trusted Web Activities
+
+Microsoft Store Windows Apps
+
+PWA Hybrid Packages - serivce workers wont be responsible for serving files.
+ and need to publish the files in teh app store??
+
+App Store
+https://stackoverflow.com/questions/58689785/can-a-pwa-app-be-published-to-app-store-and-play-store
+
+
+Why is this so hard?????
+
+## Hybrid Apps
+
+
+Uses a native packager like 
+
+[Cordova](https://cordova.apache.org/) eg [ionic framework](https://ionicframework.com/) is a front end now in Vue which can target iOS.
+
+[Capacitor](https://capacitorjs.com/) web native apps.. cross platform iOS, Android, PWA. Build by the ionic team
+
+
+***HERE***
+https://www.pwabuilder.com/generate
+
+
+
+
+## How to test a PWA
+
+Use Chrome, Developer Tools, Lighthouse:
+
+[![alt text](/assets/2020-12-02/lighthouse.jpg "Lighthouse"){:width="500px"}](/assets/2020-12-02/lighthouse.jpg)
+
+If the PWA has a + it is installable
+
+## Real life PWAs
+
+[https://twitter.com/](https://twitter.com/)
+
+[https://m.uber.com/looking](https://m.uber.com/looking) Uber. For users on low-end devices and not supported by native client. App is tine (50k) enabling it to load on 2G network.
+
+[https://www.pinterest.co.uk/](https://www.pinterest.co.uk/)
+
+[https://www.trivago.co.uk/](https://www.trivago.co.uk/)
+
+[https://open.spotify.com/](https://open.spotify.com/) - the PWA is better than the App (on Windows) in my opinion as can see more on the screen.
+
+[https://web.dev/what-are-pwas/](https://web.dev/what-are-pwas/)
+
+## iOS Phone Install
+
+Using safari
+
+
+
+## Desktop Install
+
+
+[![alt text](/assets/2020-12-02/chrome-install.jpg "Chrome install"){:width="500px"}](/assets/2020-12-02/chrome-install.jpg)
+
+Can install the PWA by clicking the + in Chrome
+
+[![alt text](/assets/2020-12-02/win10.jpg "Installed on Win10"){:width="500px"}](/assets/2020-12-02/win10.jpg)
+
+Then we have a nicely installed 'app' on desktop
+
+[![alt text](/assets/2020-12-02/search.jpg "Can search for the app"){:width="500px"}](/assets/2020-12-02/search.jpg)
+
+Can search for it in Windows Search
 
 ## Demo
 
