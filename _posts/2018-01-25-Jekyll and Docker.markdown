@@ -113,7 +113,7 @@ If you do changes to your **_config.yml** file restart the docker container (ctr
 - open my [shell](http://cmder.net/) in c:\dev\djhmateer.github.io
 - git pull (I have [an alias](/cmder/2018/01/30/Cmder-Shell.html) - gp)
 - docker-compose up
-- edit or create new markdown post files in c:\dev\djhmateer.github.io\_posts directory
+- edit or create new markdown post files in c:\dev\djhmateer.github.io\\_posts directory
 - magically watch as the browser updates (I've got autosave turned on in VSCode) 
 - git commit -am "changes" then push (I have [an alias](/cmder/2018/01/30/Cmder-Shell.html) - p)
 
