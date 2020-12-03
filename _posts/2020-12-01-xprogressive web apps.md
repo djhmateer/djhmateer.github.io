@@ -33,11 +33,25 @@ Rather than make a full blown native app, lets see what a PWA can do.
 
 It is a specification.
 
+[Nov 2020 PWA Dichotomy article](https://medium.com/javascript-in-plain-english/making-a-pwa-with-literally-1-line-of-code-106a0e9405c8)
+
+[Building coronovirus.app](https://medium.com/javascript-in-plain-english/building-a-pwa-was-our-best-idea-ever-b7b233726b41) 
+
+Google and Nvidia are moving away from the Apple App Store [news](https://9to5google.com/2020/11/19/stadia-will-be-playable-on-ios-via-safari-in-the-coming-weeks/)
+
+
 [https://web.dev/progressive-web-apps/](https://web.dev/progressive-web-apps/)
 
 ## Where is it available
 
-Desktop browsers - Chrome (Windows)
+Only on these OS/Browser configurations:
+
+- Windows+Chrome
+- Windows+Edge
+- MacOS+Chrome
+- iOS+Safari
+- Android+Chrome
+- Android+Samsung Internet
 
 > Creates a middle ground between a website and a mobile app.
 
@@ -84,8 +98,11 @@ Uses a native packager like
 [Capacitor](https://capacitorjs.com/) web native apps.. cross platform iOS, Android, PWA. Build by the ionic team
 
 
-***HERE***
-https://www.pwabuilder.com/generate
+## PWA Builder Helpers
+
+o[https://progressier.com/](https://progressier.com/) with the [announcement on Reddit PWA](https://www.reddit.com/r/PWA/comments/k3pf0f/i_built_a_tool_that_makes_building_a_pwa_much/)
+
+[https://www.pwabuilder.com/generate](https://www.pwabuilder.com/generate)
 
 
 
@@ -101,6 +118,8 @@ If the PWA has a + it is installable
 ## Real life PWAs
 
 [https://twitter.com/](https://twitter.com/)
+
+[https://app.starbucks.com/](https://app.starbucks.com/)
 
 [https://m.uber.com/looking](https://m.uber.com/looking) Uber. For users on low-end devices and not supported by native client. App is tine (50k) enabling it to load on 2G network.
 
