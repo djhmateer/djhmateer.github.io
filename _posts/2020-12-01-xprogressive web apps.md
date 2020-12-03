@@ -16,12 +16,11 @@ image: /assets/2020-10-27/davemateer.jpg
 
 I've got a website I'm building for a client where they need to:
 
-- View it well on their phones (mostly Apples and all iPhone 7+)
+- View it well on their phones (minimum iPhone 7's+)
 - Have a button on their homescreen to take them to the 'app'
-- Have as much screen real estate as possible
 - Login with a username/password
 
-It is somewhat of an 'internal app', and so will be not be wanting to be found on an App Store, nor have many thousands of downloads. Initially it will be used by 10's of people.
+It is somewhat of an 'internal app' with people being emailled instructions on how to use it.
 
 Rather than make a full blown native app, lets see what a PWA can do.
 
@@ -31,7 +30,7 @@ Rather than make a full blown native app, lets see what a PWA can do.
 
 ## What is a PWA
 
-It is a specification.
+It is basically a normal website with a with a few added bits. [Wikipedia PWA](https://en.wikipedia.org/wiki/Progressive_web_application)
 
 [Nov 2020 PWA Dichotomy article](https://medium.com/javascript-in-plain-english/making-a-pwa-with-literally-1-line-of-code-106a0e9405c8)
 
@@ -39,12 +38,11 @@ It is a specification.
 
 Google and Nvidia are moving away from the Apple App Store [news](https://9to5google.com/2020/11/19/stadia-will-be-playable-on-ios-via-safari-in-the-coming-weeks/)
 
-
 [https://web.dev/progressive-web-apps/](https://web.dev/progressive-web-apps/)
 
 ## Where is it available
 
-Only on these OS/Browser configurations:
+Only on these OS/Browser configurations have PWA's fully working.
 
 - Windows+Chrome
 - Windows+Edge
@@ -52,6 +50,8 @@ Only on these OS/Browser configurations:
 - iOS+Safari
 - Android+Chrome
 - Android+Samsung Internet
+
+## What does it do?
 
 > Creates a middle ground between a website and a mobile app.
 
@@ -67,45 +67,18 @@ And more detail [from freecodecamp](https://www.freecodecamp.org/news/build-a-pw
 - Get push notifications (not iOS)
 - Background sync
 
-## Why
-
-Although there are benefits, I've found no canonical example of a good PWA without a backing App in a store too.
-
-I wonder if this is just a user perception of how to install Apps.
-
-## Stores and PWA Launchers
-
-Google Play Store - can publish launchers using Trusted Web Activities
-
-Microsoft Store Windows Apps
-
-PWA Hybrid Packages - serivce workers wont be responsible for serving files.
- and need to publish the files in teh app store??
-
-App Store
-https://stackoverflow.com/questions/58689785/can-a-pwa-app-be-published-to-app-store-and-play-store
-
-
-Why is this so hard?????
-
-## Hybrid Apps
-
-
-Uses a native packager like 
-
-[Cordova](https://cordova.apache.org/) eg [ionic framework](https://ionicframework.com/) is a front end now in Vue which can target iOS.
-
-[Capacitor](https://capacitorjs.com/) web native apps.. cross platform iOS, Android, PWA. Build by the ionic team
-
-
 ## PWA Builder Helpers
 
-o[https://progressier.com/](https://progressier.com/) with the [announcement on Reddit PWA](https://www.reddit.com/r/PWA/comments/k3pf0f/i_built_a_tool_that_makes_building_a_pwa_much/)
+[https://progressier.com/](https://progressier.com/) with the [announcement on Reddit PWA](https://www.reddit.com/r/PWA/comments/k3pf0f/i_built_a_tool_that_makes_building_a_pwa_much/)
 
-[https://www.pwabuilder.com/generate](https://www.pwabuilder.com/generate)
+[![alt text](/assets/2020-12-02/ios.png "ios"){:width="300px"}](/assets/2020-12-02/ios.png)
+
+Their [https://coronavirus.app/map](https://coronavirus.app/map) install which is slick.
 
 
+[https://www.pwabuilder.com/generate](https://www.pwabuilder.com/generate) - not quite as slick
 
+[realfavicongenerator.net/favicon_checker](https://realfavicongenerator.net/favicon_checker) is good to check.
 
 ## How to test a PWA
 
@@ -115,7 +88,7 @@ Use Chrome, Developer Tools, Lighthouse:
 
 If the PWA has a + it is installable
 
-## Real life PWAs
+## Example PWAs
 
 [https://twitter.com/](https://twitter.com/)
 
@@ -238,7 +211,6 @@ create in the wwwroot folder
 
 ## Checking
 
-[realfavicongenerator.net/favicon_checker](https://realfavicongenerator.net/favicon_checker) is good to check.
 
 ## Service Worker
 
