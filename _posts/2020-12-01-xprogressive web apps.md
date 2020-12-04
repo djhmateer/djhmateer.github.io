@@ -14,16 +14,6 @@ image: /assets/2020-10-27/davemateer.jpg
 
 <!-- [![alt text](/assets/2020-11-26/file-new.jpg "File new project Razor Pages"){:width="800px"}](/assets/2020-11-26/file-new.jpg) -->
 
-I've got a website I'm building for a client where they need to:
-
-- View it well on their phones (minimum iPhone 7's+)
-- Have a button on their homescreen to take them to the 'app'
-- Login with a username/password
-
-It is somewhat of an 'internal app' with people being emailled instructions on how to use it.
-
-Rather than make a full blown native app, lets see what a PWA can do.
-
 [pwa-dave-test source code](https://github.com/djhmateer/pwa-dave-test) for this article
 
 [https://pwadavetest.azurewebsites.net/](https://pwadavetest.azurewebsites.net/) live test site of demo code above
@@ -31,6 +21,8 @@ Rather than make a full blown native app, lets see what a PWA can do.
 ## What is a PWA
 
 It is basically a normal website with a with a few added bits. [Wikipedia PWA](https://en.wikipedia.org/wiki/Progressive_web_application)
+
+[Websites that took all the right vitamins](https://web.dev/progressive-web-apps/) accoring to Google!
 
 [Nov 2020 PWA Dichotomy article](https://medium.com/javascript-in-plain-english/making-a-pwa-with-literally-1-line-of-code-106a0e9405c8)
 
@@ -51,17 +43,18 @@ Only on these OS/Browser configurations have PWA's fully working.
 - Android+Chrome
 - Android+Samsung Internet
 
-## What does it do?
+If you use Firefox on Windows for example (as I do) then you can't install a PWA this way. 
+
+However my biggest use case for a PWA is on my iPhone, and even that is just to have a buton to launch it.
+
+## What does it do
 
 > Creates a middle ground between a website and a mobile app.
-
 > Can be accessed from the home screen (of a phone)
 
-[credit](https://superpwa.com/)
+[credit](https://superpwa.com/) and more detail [from freecodecamp](https://www.freecodecamp.org/news/build-a-pwa-from-scratch-with-html-css-and-javascript/) on features:
 
-And more detail [from freecodecamp](https://www.freecodecamp.org/news/build-a-pwa-from-scratch-with-html-css-and-javascript/)
-
-- Install it on a mobile home screen
+- Install it on a mobile home screen (this is what I want!)
 - Access it when offline
 - Access the camera
 - Get push notifications (not iOS)
@@ -69,18 +62,35 @@ And more detail [from freecodecamp](https://www.freecodecamp.org/news/build-a-pw
 
 ## PWA Builder Helpers
 
-[https://progressier.com/](https://progressier.com/) with the [announcement on Reddit PWA](https://www.reddit.com/r/PWA/comments/k3pf0f/i_built_a_tool_that_makes_building_a_pwa_much/)
-
 [![alt text](/assets/2020-12-02/ios.png "ios"){:width="300px"}](/assets/2020-12-02/ios.png)
 
-Their [https://coronavirus.app/map](https://coronavirus.app/map) install which is slick.
+[https://coronavirus.app/map](https://coronavirus.app/map) install is slick.
 
+
+[https://progressier.com/](https://progressier.com/) with the [announcement on Reddit PWA](https://www.reddit.com/r/PWA/comments/k3pf0f/i_built_a_tool_that_makes_building_a_pwa_much/)
+
+**HERE**
+
+
+[https://github.com/docluv/add-to-homescreen](https://github.com/docluv/add-to-homescreen) Add to homescreen looks good
+
+
+[https://pwastarter.love2dev.com/](https://pwastarter.love2dev.com/) generates assets too - couldn't get it to work well.
+
+
+
+
+
+[https://www.pwabuilder.com/](https://www.pwabuilder.com/) ** dont use  OLD** tests the PWA
 
 [https://www.pwabuilder.com/generate](https://www.pwabuilder.com/generate) - not quite as slick
 
 [realfavicongenerator.net/favicon_checker](https://realfavicongenerator.net/favicon_checker) is good to check.
 
+
 ## How to test a PWA
+
+And to know if the website is a PWA. It is difficult to tell unless you know what you're looking for.
 
 Use Chrome, Developer Tools, Lighthouse:
 
@@ -89,6 +99,8 @@ Use Chrome, Developer Tools, Lighthouse:
 If the PWA has a + it is installable
 
 ## Example PWAs
+
+[https://squoosh.app/](https://squoosh.app/) - useful image editing
 
 [https://twitter.com/](https://twitter.com/)
 
@@ -210,6 +222,8 @@ create in the wwwroot folder
 ```
 
 ## Checking
+
+[https://developers.google.com/speed/pagespeed/insights/](https://developers.google.com/speed/pagespeed/insights/) - like lighthouse but for web
 
 
 ## Service Worker
