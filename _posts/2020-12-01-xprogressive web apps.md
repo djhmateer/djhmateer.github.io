@@ -60,7 +60,7 @@ However my biggest use case for a PWA is on my iPhone, and even that is just to 
 - Get push notifications (not iOS)
 - Background sync
 
-## PWA Builder Helpers
+## Progressier - PWA Builder Helpers
 
 [![alt text](/assets/2020-12-02/ios.png "ios"){:width="300px"}](/assets/2020-12-02/ios.png)
 
