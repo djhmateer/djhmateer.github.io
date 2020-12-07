@@ -7,45 +7,54 @@ categories: PWA FrontEnd
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2020-10-27/davemateer.jpg
+image: /assets/2020-12-02/ios2.png
 ---
 
-<!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
+[![alt text](/assets/2020-12-02/ios2.png "PWA"){:width="300px"}](/assets/2020-12-02/ios2.png)
 
-<!-- [![alt text](/assets/2020-11-26/file-new.jpg "File new project Razor Pages"){:width="800px"}](/assets/2020-11-26/file-new.jpg) -->
-
-[pwa-dave-test source code](https://github.com/djhmateer/pwa-dave-test) for this article
-
-[https://pwadavetest.azurewebsites.net/](https://pwadavetest.azurewebsites.net/) live test site of demo code above
+[https://coronavirus.app/map](https://coronavirus.app/map) is a great example of a Progressive Web App (PWA) here prompting to install on an iPhone 7.
 
 ## What is a PWA
 
-It is basically a normal website with a with a few added bits. [Wikipedia PWA](https://en.wikipedia.org/wiki/Progressive_web_application)
+It is a website [that took all the right vitamins - google](https://web.dev/progressive-web-apps/)  and [Wikipedia](https://en.wikipedia.org/wiki/Progressive_web_application) page
 
-[Websites that took all the right vitamins](https://web.dev/progressive-web-apps/) accoring to Google!
+The story of creating the coronovirus app [Nov 2020 article](https://medium.com/javascript-in-plain-english/making-a-pwa-with-literally-1-line-of-code-106a0e9405c8) sums up PWA's well:
 
-[Nov 2020 PWA Dichotomy article](https://medium.com/javascript-in-plain-english/making-a-pwa-with-literally-1-line-of-code-106a0e9405c8)
+> It is *ridiculously easy* to get started and *incredibly painful* to go all the way
 
-[Building coronovirus.app](https://medium.com/javascript-in-plain-english/building-a-pwa-was-our-best-idea-ever-b7b233726b41) 
+They seem have done a good job finding all the edge cases, and have setup [progressier.com](https://progressier.com/) as a service to help others.
 
-Google and Nvidia are moving away from the Apple App Store [news](https://9to5google.com/2020/11/19/stadia-will-be-playable-on-ios-via-safari-in-the-coming-weeks/)
+## When to use a PWA vs App
 
-[https://web.dev/progressive-web-apps/](https://web.dev/progressive-web-apps/)
+Good question!
+
+A large subject with lots of articles eg [here](https://www.mobiloud.com/blog/progressive-web-apps-vs-native-apps)
+
+Unquestionably PWAs are:
+
+- Cheaper to develop
+- Cheaper to maintain over time
+- Lighter weight (less to install)
+- Don't have to pay Apple/Google
+- Less well known than apps
+- Not quite as integrated eg push notifications on iOS [more info](https://love2dev.com/pwa/ios/)
+
+If you have an app which is really a website, then maybe a PWA is a good fit.
 
 ## Where is it available
 
-Only on these OS/Browser configurations have PWA's fully working.
+PWA's are only fully available as of 7th Dec 2020 on these OS/Browser configurations
 
 - Windows+Chrome
 - Windows+Edge
 - MacOS+Chrome
 - iOS+Safari
 - Android+Chrome
-- Android+Samsung Internet
+- Android+Firefox(?)
 
-If you use Firefox on Windows for example (as I do) then you can't install a PWA this way. 
+If you use Firefox on Windows for example (as I do) then you can't install a PWA this way.
 
-However my biggest use case for a PWA is on my iPhone, and even that is just to have a buton to launch it.
+However my biggest use case for a PWA is on my iPhone, and even that is just to have a buton to launch it. I was using Chrome as my default browser on the phone, but had to use Safari to install the PWA.
 
 ## What does it do
 
@@ -59,6 +68,65 @@ However my biggest use case for a PWA is on my iPhone, and even that is just to 
 - Access the camera
 - Get push notifications (not iOS)
 - Background sync
+
+For me the biggest feature is having it available as a button on the home screen of my phone, and having an inuitive way for users to install the app.
+
+## How to test a PWA
+
+And to know if the website is a PWA. It is difficult to tell unless you know what you're looking for.
+
+<!-- [![alt text](/assets/2020-12-02/lighthouse.jpg "Lighthouse"){:width="500px"}](/assets/2020-12-02/lighthouse.jpg) -->
+[![alt text](/assets/2020-12-02/chrome-plus.jpg "Chrome install"){:width="500px"}](/assets/2020-12-02/chrome-plus.jpg)
+
+If the site is a PWA has a + it is installable
+
+## Example PWAs
+
+Here are some of the PWA's I've found and like. Number 1 has to go to Spotify where I prefer the PWA to the Metro app on Windows 10 as you can see more on the screen.
+
+[https://open.spotify.com/](https://open.spotify.com/) - the PWA is better than the App (on Windows) in my opinion as can see more on the screen.
+
+[https://mdn.github.io/pwa-examples/a2hs/](https://mdn.github.io/pwa-examples/a2hs/) Mozilla a2hs demo (only works in Chrome on Win 10)
+
+[https://coronavirus.app/map](https://coronavirus.app/map) 
+
+[https://squoosh.app/](https://squoosh.app/) - useful image editing
+
+[https://twitter.com/](https://twitter.com/)
+
+[https://app.starbucks.com/](https://app.starbucks.com/)
+
+[https://m.uber.com/looking](https://m.uber.com/looking) Uber. For users on low-end devices and not supported by native client. App is tine (50k) enabling it to load on 2G network.
+
+[https://www.pinterest.co.uk/](https://www.pinterest.co.uk/)
+
+[https://www.trivago.co.uk/](https://www.trivago.co.uk/)
+
+
+[https://web.dev/what-are-pwas/](https://web.dev/what-are-pwas/)
+
+## A2HS - Add to Home Screen
+
+[Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Add_to_home_screen) 
+
+[Google in-app install expereience](https://web.dev/customize-install/)
+
+
+Chrome [requires these criterial](https://web.dev/install-criteria/#criteria) before the + icon will display.
+
+## Desktop Install
+
+[![alt text](/assets/2020-12-02/chrome-install.jpg "Chrome install"){:width="500px"}](/assets/2020-12-02/chrome-install.jpg)
+
+Can install the PWA by clicking the + in Chrome
+
+[![alt text](/assets/2020-12-02/win10.jpg "Installed on Win10"){:width="500px"}](/assets/2020-12-02/win10.jpg)
+
+Then we have a nicely installed 'app' on desktop
+
+[![alt text](/assets/2020-12-02/search.jpg "Can search for the app"){:width="500px"}](/assets/2020-12-02/search.jpg)
+
+Can search for it in Windows Search
 
 ## Progressier - PWA Builder Helpers
 
@@ -87,63 +155,15 @@ However my biggest use case for a PWA is on my iPhone, and even that is just to 
 
 [realfavicongenerator.net/favicon_checker](https://realfavicongenerator.net/favicon_checker) is good to check.
 
-
-## How to test a PWA
-
-And to know if the website is a PWA. It is difficult to tell unless you know what you're looking for.
-
-Use Chrome, Developer Tools, Lighthouse:
-
-[![alt text](/assets/2020-12-02/lighthouse.jpg "Lighthouse"){:width="500px"}](/assets/2020-12-02/lighthouse.jpg)
-
-If the PWA has a + it is installable
-
-## Example PWAs
-
-[https://squoosh.app/](https://squoosh.app/) - useful image editing
-
-[https://twitter.com/](https://twitter.com/)
-
-[https://app.starbucks.com/](https://app.starbucks.com/)
-
-[https://m.uber.com/looking](https://m.uber.com/looking) Uber. For users on low-end devices and not supported by native client. App is tine (50k) enabling it to load on 2G network.
-
-[https://www.pinterest.co.uk/](https://www.pinterest.co.uk/)
-
-[https://www.trivago.co.uk/](https://www.trivago.co.uk/)
-
-[https://open.spotify.com/](https://open.spotify.com/) - the PWA is better than the App (on Windows) in my opinion as can see more on the screen.
-
-[https://web.dev/what-are-pwas/](https://web.dev/what-are-pwas/)
-
-## iOS Phone Install
-
-Using safari
-
-
-
-## Desktop Install
-
-
-[![alt text](/assets/2020-12-02/chrome-install.jpg "Chrome install"){:width="500px"}](/assets/2020-12-02/chrome-install.jpg)
-
-Can install the PWA by clicking the + in Chrome
-
-[![alt text](/assets/2020-12-02/win10.jpg "Installed on Win10"){:width="500px"}](/assets/2020-12-02/win10.jpg)
-
-Then we have a nicely installed 'app' on desktop
-
-[![alt text](/assets/2020-12-02/search.jpg "Can search for the app"){:width="500px"}](/assets/2020-12-02/search.jpg)
-
-Can search for it in Windows Search
-
-## Demo
+## Demo from Scratch
 
 Lets make a free website that has cookie based authentication 
 
 - Add to homescreen (iOS)
 - Does a password mananger work
 - Can the PWA cookie survive (as will be annoying to have to login every time)
+
+[Chrome requires a service worker](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Add_to_home_screen)
 
 ## manifest.json
 
@@ -250,3 +270,13 @@ Looks like Apple App Store, a probable no. Google store yes using Trusted Web Ac
 [2018 announcement](https://medium.com/@firt/progressive-web-apps-on-ios-are-here-d00430dee3a7) 
 
 [2020 iOS 14 Changes](https://firt.dev/ios-14/)
+
+## Resources
+
+
+[pwa-dave-test source code](https://github.com/djhmateer/pwa-dave-test) for this article
+
+[https://pwadavetest.azurewebsites.net/](https://pwadavetest.azurewebsites.net/) live test site of demo code above
+Google and Nvidia are moving away from the Apple App Store [news](https://9to5google.com/2020/11/19/stadia-will-be-playable-on-ios-via-safari-in-the-coming-weeks/)
+
+[https://web.dev/progressive-web-apps/](https://web.dev/progressive-web-apps/)
