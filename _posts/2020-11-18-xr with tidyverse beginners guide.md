@@ -172,7 +172,6 @@ then
 
 okay so we are good to go
 
-
 ## R Studio Keyboard shortcuts
 
 ctrl enter - run - This is by far my most used keyboard shortcut
@@ -181,8 +180,7 @@ ctrl shift c - comment / uncomment
 
 ctrl shift m - pipe %>% aka magrittr
 
-alt - assignment <- 
-
+alt - assignment <-
 
 ## R Useful code
 
