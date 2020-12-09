@@ -24,40 +24,6 @@ The story of creating the coronovirus app [Nov 2020 article](https://medium.com/
 
 They seem have done a good job finding all the edge cases, and have setup [progressier.com](https://progressier.com/) as a service to help others.
 
-## When to use a PWA vs App
-
-Good question!
-
-A large subject with lots of articles eg [here](https://www.mobiloud.com/blog/progressive-web-apps-vs-native-apps)
-
-Unquestionably PWAs are:
-
-- Cheaper to develop
-- Cheaper to maintain over time
-- Lighter weight (less to install)
-- Don't have to pay Apple/Google
-- Less well known than apps
-- Not quite as integrated eg push notifications on iOS [more info](https://love2dev.com/pwa/ios/)
-
-If you have an app which is really a website, then maybe a PWA is a good fit.
-
-## Where is it available
-
-PWA's are only fully available as of 7th Dec 2020 on these OS/Browser configurations
-
-- Windows+Chrome
-- Windows+Edge
-- MacOS+Chrome
-- iOS+Safari
-- Android+Chrome
-- Android+Firefox(?)
-
-If you use Firefox on Windows for example (as I do) then you can't install a PWA this way.
-
-However my biggest use case for a PWA is on my iPhone, and even that is just to have a buton to launch it. I was using Chrome as my default browser on the phone, but had to use Safari to install the PWA.
-
-## What do they do
-
 > Creates a middle ground between a website and a mobile app.
 > Can be accessed from the home screen (of a phone)
 
@@ -76,6 +42,38 @@ How to know if a website is a PWA? It is difficult to tell unless you know what 
 [![alt text](/assets/2020-12-02/chrome-install.jpg "Chrome install"){:width="500px"}](/assets/2020-12-02/chrome-install.jpg)
 
 On Chrome - the site is a PWA if it has a + on the address bar
+
+## Where is it available
+
+PWA's are only fully available as of 7th Dec 2020 on these OS/Browser configurations
+
+- Windows+Chrome
+- Windows+Edge
+- MacOS+Chrome
+- iOS+Safari
+- Android+Chrome
+- Android+Firefox(?)
+
+If you use Firefox on Windows for example (as I do) then you can't install a PWA this way.
+
+However my biggest use case for a PWA is on my iPhone, and even that is just to have a buton to launch it. I was using Chrome as my default browser on the phone, but had to use Safari to install the PWA.
+
+## When to use a PWA vs App
+
+Good question!
+
+A large subject with lots of articles eg [here](https://www.mobiloud.com/blog/progressive-web-apps-vs-native-apps)
+
+Unquestionably PWAs are:
+
+- Cheaper to develop
+- Cheaper to maintain over time
+- Lighter weight (less to install)
+- Don't have to pay Apple/Google
+- Less well known than apps
+- Not quite as integrated eg push notifications on iOS [more info](https://love2dev.com/pwa/ios/)
+
+If you have an app which is really a website, then maybe a PWA is a good fit.
 
 ## Example PWAs
 
@@ -101,6 +99,8 @@ Here are some of the PWA's I've found and like. Number 1 has to go to Spotify wh
 
 [https://web.dev/what-are-pwas/](https://web.dev/what-are-pwas/)
 
+[awesome-pwa](https://github.com/hemanth/awesome-pwa) - is a full list of examples and many other resources.
+
 ## A2HS - Add to Home Screen
 
 This is the biggest feature I want for my PWA, so lets dig into it and get the simplest possible thing working first.
@@ -118,15 +118,85 @@ Chrome [requires these criterial](https://web.dev/install-criteria/#criteria) be
 
 ## Demo from Scratch
 
+Generate icons and a web manifest [PWA Manifest Generator](https://www.simicart.com/manifest-generator.html/) - this just generated 4 icons. Fine
+
+[PWA Splash Screen](https://itnext.io/pwa-splash-screen-and-icon-generator-a74ebb8a130) using Puppeteer under the hood looks far more robust
+
+**HERE exploring icons etc..**
+
+```json
+{
+  "name": "Portal PWA Test",
+  "short_name": "Portal",
+  "description": "This is a test application",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}
+
+```
+
+asdf
+
+```bash
+
+sudo npm install -g npm@latest
+
+
+# this needs node >= 10.12.0 (ideally we are on 14.15.1 this is LTS)
+sudo npm install --global pwa-asset-generator
+
+# hmmm I'm on 
+# node 8.10.0
+# npm 6.14.9
+
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+
+
+pwa-asset-generatator logo.
+
+```
+
+
+
+
+
 [Demo using Progressier]() is an easier way to get started. However you need to pay for custom branding, and I'd much rather the simplicity of being in charge of the experience. Specifically when looking at js errors whilst using ad=blockers, and working with designers keeping things simple is paramount.
 
 Lets make a free website on Azure and test the simplest possible implementation
 
 - Add to homescreen (A2HS) on iPhone7 and Chrome desktop
 
-[Mads Kristensen](https://github.com/madskristensen/WebEssentials.AspNetCore.ServiceWorker) wrote a nice service worker plugin which includes a simple tutorial on getting a PWA working.
+[Mads Kristensen - WebEssentials.AspNetCore.ServiceWorker](https://github.com/madskristensen/WebEssentials.AspNetCore.ServiceWorker) wrote a nice service worker plugin which includes a simple tutorial on getting a PWA working.
+
+[PWA-Starter from the Microsoft Edge team](https://github.com/pwa-builder/pwa-starter)
 
 Even though I don't need a service worker yet, [chrome requires a service worker](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Add_to_home_screen) to kick off the A2HS + install button.
+
+Kicking off from scratch I found quite hard [c2experience](https://www.c2experience.com/blog/how-to-turn-your-website-into-a-pwa-with-code-examples) sums it up well.
 
 ## Generate images and site.webmanifest
 
@@ -158,8 +228,9 @@ Then it generates a sample `site.webmanifest` which I'll rename to `manifest.jso
 
 images linked from site.webmanifest
 
-- android-chrome-192x192.png
+- android-chrome-192x192.png (have to have this size)
 - android-chrome-384x384.png
+- android-chrome-512x512.png (have to have this size)
 
 ```json
 {
