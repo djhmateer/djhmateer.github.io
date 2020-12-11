@@ -83,6 +83,9 @@ Here are some of the PWA's I've found and like. Number 1 has to go to Spotify wh
 
 [https://open.spotify.com/](https://open.spotify.com/) - the PWA is better than the App (on Windows) in my opinion as can see more on the screen.
 
+[https://app.ft.com/](https://app.ft.com/)
+
+
 [https://mdn.github.io/pwa-examples/a2hs/](https://mdn.github.io/pwa-examples/a2hs/) Mozilla Fox A2HS demo 
 
 [https://coronavirus.app/map](https://coronavirus.app/map)
@@ -407,6 +410,45 @@ links
 applenewss://domain.path/url
 facetime-audio://phone-or-email
 
+[Designing a PWA - Maxamillion](https://app.pluralsight.com/library/courses/designing-progressive-web-apps/table-of-contents)
+
+```bash
+npm install serve
+
+npx serve
+
+```
+
+- name - other places in the OS
+- short_name - for the icon (10-12 chars max)
+- theme_color - iOS not supported
+- display - use standalone - iOS supports this and browser only
+
+
+updates - need to reinstall the app to get new icon
+
+
+Apple is not using the icons from the app.webmanifest
+- preloading icon to stop safari issues
+
+### Splash screens
+
+A lot of work to do for Apple devices, and these are the options:
+
+-pwa-asset-generator - its good as I can use an svg to create all the pngs
+- PWACompact - doing it all client side. 
+
+
+
+Browsing out of scope - eg download a document?
+
+## custom install
+
+[https://airhorner.com/](https://airhorner.com/)
+
+[https://github.com/pwa-builder/pwa-install](https://github.com/pwa-builder/pwa-install) - Web Component.. but probably not good for ios.
+
+Maybe just best to have a custom screen to show how to install
 
 
 
