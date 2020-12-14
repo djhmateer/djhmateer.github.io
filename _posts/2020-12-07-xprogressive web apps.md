@@ -16,7 +16,9 @@ image: /assets/2020-12-02/ios2.png
 
 ## What is a PWA
 
-It is a website [that took all the right vitamins - Google](https://web.dev/progressive-web-apps/)  and [Wikipedia](https://en.wikipedia.org/wiki/Progressive_web_application) page
+It is a website that allows a mobile like experience without having to install a native app from a store.
+
+It is a website [that took all the right vitamins - Google](https://web.dev/progressive-web-apps/) and [Wikipedia](https://en.wikipedia.org/wiki/Progressive_web_application) page
 
 The story of creating the coronovirus app [Nov 2020 article](https://medium.com/javascript-in-plain-english/making-a-pwa-with-literally-1-line-of-code-106a0e9405c8) sums up PWA's well:
 
@@ -30,9 +32,9 @@ They seem have done a good job finding all the edge cases, and have setup [progr
 [Quote](https://superpwa.com/) and more detail [from freecodecamp](https://www.freecodecamp.org/news/build-a-pwa-from-scratch-with-html-css-and-javascript/) on features:
 
 - Install it on a mobile home screen (this is what I want!)
-- Access it when offline
-- Access the camera
 - Get push notifications (not iOS)
+- Access it when offline
+- Access the camera / geolocation
 - Background sync
 
 For me the biggest feature is having it available as a button on the home screen of my phone, and having an inuitive way for users to install the app.
@@ -123,9 +125,11 @@ Chrome [requires these criterial](https://web.dev/install-criteria/#criteria) be
 
 ## Generate Images
 
-[Onder Ceylan's blog post](https://itnext.io/pwa-splash-screen-and-icon-generator-a74ebb8a130) gives great detail on
+There are a few tools around - I prefer to use pwa-asset-generator as it essentially just gives a bunch of links (for apple) making it simple.
 
 [PWA Asset Generator](https://github.com/onderceylan/pwa-asset-generator) helps generate icons, and splash screens. Then generates the html and manifest.json sections.
+
+[Onder Ceylan's blog post](https://itnext.io/pwa-splash-screen-and-icon-generator-a74ebb8a130) gives great detail on
 
 ```bash
 npm install --global pwa-asset-generator
@@ -474,6 +478,28 @@ Then we have a nicely installed 'app' on desktop
 
 Can search for it in Windows Search
 
+## Add PWA to Stores
+
+[Mac Firtman article and video](https://firt.dev/pwa-stores/) - yes it is possible to add PWA's to stores. Especially the Google Play Store. However for the App Store (which I'm most interested in), you still need to essentially deploy all the assets to the Store, so can't update quickly.
+
+And stores, and for public apps.
+
+### App Store advantages
+
+-acquire new users
+-simplify how users will find our app (ie users don't understand how to install theapp)
+-stop business discussions ie businesses just want a native app... but they are talking about the 
+store
+-add additional features eg push notifications on iOS (for enterprise apps)
+-use app stores business model
+-replace a native app (as complicated to ship updates.)
+
+### Why PWA better
+
+-immediate install <1MB 
+-transparent apps
+-can share session with browser (ie can login)
+
 
 ## PWA Builder Helpers
 
@@ -503,6 +529,17 @@ Can search for it in Windows Search
 [realfavicongenerator.net/favicon_checker](https://realfavicongenerator.net/favicon_checker) is good to check.
 
 [https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Installable_PWAs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Installable_PWAs)
+
+
+## Links
+
+[https://www.udemy.com/course/progressive-web-app-pwa-the-complete-guide/](https://www.udemy.com/course/progressive-web-app-pwa-the-complete-guide/)
+
+[https://github.com/GoogleChromeLabs/pwa-wp](https://github.com/GoogleChromeLabs/pwa-wp)
+
+[https://www.reddit.com/r/PWA/](https://www.reddit.com/r/PWA/)
+
+[https://developers.google.com/web/tools/workbox](https://developers.google.com/web/tools/workbox) workbox from Chrome Team - caching strategies with a PWA.
 
 
 
