@@ -74,6 +74,7 @@ npm install --global pwa-asset-generator
 # cd wwwroot
 # Take park photo and generate an index file and manifest
 # saving image assets into a folder
+# use a square image at least 512x512 - possibly a png or svg better?
 npx pwa-asset-generator park.jpg ./assets -i index-template.html -m manifest.json --favicon --mstile
 
 ```
@@ -93,15 +94,24 @@ This has some suggestions, but we are targeting modern browsers, so can safely i
 
 ## Index.html
 
-Here is a working `_Layout.cshtml` of mine:
+Here is a working `_Layout.cshtml` with annotations.
+
+I'm being focussed on what matters to me. I recommend these courses which go into depth:
+
+[Pluralsight 2 - Designing PWAs](https://app.pluralsight.com/library/courses/designing-progressive-web-apps/table-of-contents) and [Pluralsight 3 - Advanced PWAs](https://app.pluralsight.com/library/courses/advanced-progressive-web-apps/table-of-contents)
 
 ```html
 
 
 ```
 
+## A2HS
 
+[pwa-install](https://github.com/pwa-builder/pwa-install) web component provides a helper
 
+[https://progressier.com/](https://progressier.com/) is very good especially with tne animated icon for iOS. However it does introduce a lot of complexity behind a commercial offering.
+
+[https://pwadavetest.azurewebsites.net/](https://pwadavetest.azurewebsites.net/) is a working test version of progressier
 
 ## Service Worker
 
