@@ -27,14 +27,13 @@ Technically we will focus
 - Fully populated manifest.json file (scoring high on lighthouse)
 - Focus on the best possible and lightest weight html with all meta tags for iOS
 
-
 ## PWA Asset Generator
 
 [PWA Asset Generator](https://www.npmjs.com/package/pwa-asset-generator)
 
 I'm using Razor Pages on .NET 5, deploying to an Azure App Service (Windows). Out of the box it is not a PWA, so lets make one.
 
-Firstly we need to create a `manifest.json` file: [here is a good start on web.dev](https://web.dev/add-manifest/#create)
+Firstly we need to create a `manifest.json` file: [here is a good description on web.dev](https://web.dev/add-manifest/#create)
 
 ```json
 {
@@ -58,7 +57,8 @@ Firstly we need to create a `manifest.json` file: [here is a good start on web.d
   "start_url": "/",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "scope": "/"
 }
 ```
 
@@ -88,6 +88,8 @@ This will:
 ## Checker
 
 [realfavicongenerator.net/favicon_checker](https://realfavicongenerator.net/favicon_checker)
+
+This has some suggestions, but we are targeting modern browsers, so can safely ignore some.
 
 ## Index.html
 
