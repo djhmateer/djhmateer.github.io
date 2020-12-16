@@ -14,11 +14,10 @@ image: /assets/2020-12-02/ios2.png
 
 [See my PWA Beginnering Guide article for background](/)
 
-Here we will be a PWA from scratch with the following features:
+Here we will build a PWA from scratch with the following features:
 
 - Offline page displayed when offline
 - Splash screen images for iOS and others
-- All icons sizes
 - Add to Home Screen instructions (A2HS)
 - Make a lightweight fast loading site
 
@@ -26,14 +25,13 @@ Technically we will focus
 
 - Fully populated manifest.json file (scoring high on lighthouse)
 - Focus on the best possible and lightest weight html with all meta tags for iOS
+- Have minimal javascript focussing on server side rendered
 
-## PWA Asset Generator
-
-[pwastarter.love2dev.com](https://pwastarter.love2dev.com/) - has good commenting of which icons do what. And puts a lot into the manifest file. Useful.
-
-[PWA Asset Generator](https://www.npmjs.com/package/pwa-asset-generator)
+## Create your blank site
 
 I'm using Razor Pages on .NET 5, deploying to an Azure App Service (Windows). Out of the box it is not a PWA, so lets make one.
+
+## Manifest.json
 
 Firstly we need to create a `manifest.json` file: [here is a good description on web.dev](https://web.dev/add-manifest/#create)
 
@@ -64,9 +62,15 @@ Firstly we need to create a `manifest.json` file: [here is a good description on
 }
 ```
 
-Add a blank `index-template.html` file
+## Create images
 
-Then add a starting image (in this case park.jpg)
+Because the different browsers have different implmentations, we need a number of different image sizes.
+
+[PWA Asset Generator](https://www.npmjs.com/package/pwa-asset-generator) is an automated tool to created all the images
+
+Add a blank `index-template.html` file so we can then copy the relevant bits into our `Shared\_Layout.cshtml` file
+
+Choose your starting logo (in this case epark.jpg)
 
 ```bash
 # On a Windows machihe I had issues from the WSL side
@@ -77,8 +81,9 @@ npm install --global pwa-asset-generator
 # Take park photo and generate an index file and manifest
 # saving image assets into a folder
 # use a square image at least 512x512 - possibly a png or svg better?
-npx pwa-asset-generator park.jpg ./assets -i index-template.html -m manifest.json --favicon --mstile
-
+# there is padding here optionally
+# https://github.com/onderceylan/pwa-asset-generator
+npx pwa-asset-generator epark.jpg ./assets -i index-template.html -m manifest.json --favicon --background dimgrey --padding "0"
 ```
 
 This will:
@@ -87,12 +92,6 @@ This will:
 - update `index-template.html` with `<meta>` links to appropriate images for iOS
 - update `manifest.json` with the 2 required images for Android - 192x192 and 512x512
 - create a favicon
-
-## Checker
-
-[realfavicongenerator.net/favicon_checker](https://realfavicongenerator.net/favicon_checker)
-
-This has some suggestions, but we are targeting modern browsers, so can safely ignore some.
 
 ## Index.html
 
@@ -107,23 +106,33 @@ I'm being focussed on what matters to me. I recommend these courses which go int
 
 ```
 
-## A2HS
-
-[pwa-install](https://github.com/pwa-builder/pwa-install) web component provides a helper
-
-[https://progressier.com/](https://progressier.com/) is very good especially with tne animated icon for iOS. However it does introduce a lot of complexity behind a commercial offering.
-
-[https://pwadavetest.azurewebsites.net/](https://pwadavetest.azurewebsites.net/) is a working test version of progressier
-
 ## Service Worker
 
+In the `<head>` of my html I have a:
+
+```html
+<!-- the webpage's js file which will load the service worker -->
+<script src="/script.js" asp-append-version="true" defer></script>
+```
+
+which loads:
+
 ```js
-// script.js
+// https://web.dev/offline-fallback-page/#registering-the-service-worker
+// register the service worker once the page has loaded
 window.addEventListener('load', () => {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js');
+        console.log("registered service-worker.js");
     }
 });
+```
+
+and then the `service-worker.js`.
+
+The concept is that we want to cache only the `offline.html` page that gets served on failing navigation requests, and to let the browser handle all other cases.
+
+```js
 
 // service-worker.js
 /*
@@ -213,8 +222,54 @@ self.addEventListener("fetch", (event) => {
     // were no service worker involvement.
 });
 
-
 ```
+
+install event
+activate event
+fetch event runs a lot
+
+## Chrome open dev tools automatically
+
+To keep the dev tools open all the time, launch Chrome from the command line:
+
+```bash
+cd C:\Program Files\Google\Chrome\Application
+Chrome --auto-open-devtools-for-tabs
+```
+
+## service workers
+
+[How to unregister](https://love2dev.com/blog/how-to-uninstall-a-service-worker/)
+
+[chrome://serviceworker-internals/](chrome://serviceworker-internals/)
+
+Service workers are used by sites that are not PWA's.
+
+
+**HERE** https://developers.google.com/web/fundamentals/primers/service-workers
+
+
+
+`https://developers.google.com/sw.js`
+
+
+## Offline fallback page
+
+As seen above we now have an offline.html page.
+
+[Source code on web.dev is here](https://web.dev/offline-fallback-page/#the-offline-fallback-page)
+
+Interestinly we need to cache all resources required by your offline page, so they inline styles and js.
+
+
+## A2HS
+
+[pwa-install](https://github.com/pwa-builder/pwa-install) web component provides a helper
+
+[https://progressier.com/](https://progressier.com/) is very good especially with tne animated icon for iOS. However it does introduce a lot of complexity behind a commercial offering.
+
+[https://pwadavetest.azurewebsites.net/](https://pwadavetest.azurewebsites.net/) is a working test version of progressier
+
 
 ## URL Capture
 
@@ -237,3 +292,7 @@ Home Screen Shortcuts (Android) or Web Clips (Apple)
   - store rules
   - singleton
     - url capture
+
+## Links
+
+[pwastarter.love2dev.com](https://pwastarter.love2dev.com/) - has good commenting of which icons do what. And puts a lot into the manifest file. Useful.

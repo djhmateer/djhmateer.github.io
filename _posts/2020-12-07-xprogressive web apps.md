@@ -548,3 +548,9 @@ ublock origin is causing js errors
 it's good for iPhone users!!!!
 remove cookies and service worker to get back prompt
  check reddit again
+
+## Checker
+
+[realfavicongenerator.net/favicon_checker](https://realfavicongenerator.net/favicon_checker)
+
+This has some suggestions, but we are targeting modern browsers, so can safely ignore some.
