@@ -84,6 +84,19 @@ npm install --global pwa-asset-generator
 # there is padding here optionally
 # https://github.com/onderceylan/pwa-asset-generator
 npx pwa-asset-generator epark.jpg ./assets -i index-template.html -m manifest.json --favicon --background dimgrey --padding "0"
+
+
+# generate transparent favicon with no padding (so that Windows Chrome icon is as big as possible)
+npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json --opaque false --icon-only --favicon --type png --padding "0"
+
+# overwrite 2 manifest icons and apple-icon-180.png with a background colour
+#'npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json --background "#696969" --icon-only --padding "0"
+
+# maybe we want the apple-icon-180.png to have a background
+
+# generate all files except the favicon with the default padding of 10
+# so that phone icons have a border (which looks good)
+npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json --background "#696969" 
 ```
 
 This will:
@@ -92,6 +105,10 @@ This will:
 - update `index-template.html` with `<meta>` links to appropriate images for iOS
 - update `manifest.json` with the 2 required images for Android - 192x192 and 512x512
 - create a favicon
+
+[attribute for santa](https://www.flaticon.com/authors/freepik)
+
+Maskable icons are generated for android ie the manifest-icon-192.png files. [https://maskable.app/](https://maskable.app/) to check 
 
 ## Index.html
 
@@ -238,6 +255,10 @@ Chrome --auto-open-devtools-for-tabs
 ```
 
 ## service workers
+
+The core feature discussed in this tutorial is the ability to intercept and handle network requests, including programmatically managing a cache of responsesk
+
+`chrome://serviceworker-internals`
 
 [How to unregister](https://love2dev.com/blog/how-to-uninstall-a-service-worker/)
 
