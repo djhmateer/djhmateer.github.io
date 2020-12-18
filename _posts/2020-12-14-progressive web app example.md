@@ -12,28 +12,27 @@ image: /assets/2020-12-02/ios2.png
 
 <!-- [![alt text](/assets/2020-12-02/ios2.png "PWA"){:width="300px"}](/assets/2020-12-02/ios2.png) -->
 
-[See my PWA Beginnering Guide article for background](/)
-
 Here we will build a PWA from scratch with the following features:
 
-- Offline page displayed when offline
-- Splash screen images for iOS and others
+- Offline page displayed when offline (ServiceWorker)
+- Splash screen images for iOS and others (manifest.json and meta tags)
 - Add to Home Screen instructions (A2HS)
-- Make a lightweight fast loading site
+- Lightweight fast loading site (minimal css and VanillaJS)
+- Commenting all the tags
 
-Technically we will focus
+[Source project portal-pwa-test on Github](https://github.com/djhmateer/portal-pwa-test)
 
-- Fully populated manifest.json file (scoring high on lighthouse)
-- Focus on the best possible and lightest weight html with all meta tags for iOS
-- Have minimal javascript focussing on server side rendered
+[Live demo portalpwatest.azurewebsites.net](https://portalpwatest.azurewebsites.net/) - try installing from your browser, phone, try testing offline, checkout lighthouse
 
 ## Create your blank site
 
-I'm using Razor Pages on .NET 5, deploying to an Azure App Service (Windows). Out of the box it is not a PWA, so lets make one.
+I'm using Razor Pages on .NET 5, deploying to an Azure App Service (Windows), purely as that is what U'm comfortable with. It doesn't matter what back end tech you use.
 
 ## Manifest.json
 
-Firstly we need to create a `manifest.json` file: [here is a good description on web.dev](https://web.dev/add-manifest/#create)
+Firstly we need to create a `manifest.json` in our webroot: [here is a good description on web.dev](https://web.dev/add-manifest/#create)
+
+Don't worry about the "icons" below we will overwrite these below.
 
 ```json
 {
@@ -64,38 +63,35 @@ Firstly we need to create a `manifest.json` file: [here is a good description on
 
 ## Create images
 
-Because the different browsers have different implmentations, we need a number of different image sizes.
+Because different OS/browsers have different implementations, we need a number of different image sizes to make a PWA work.
 
 [PWA Asset Generator](https://www.npmjs.com/package/pwa-asset-generator) is an automated tool to created all the images
 
 Add a blank `index-template.html` file so we can then copy the relevant bits into our `Shared\_Layout.cshtml` file
 
-Choose your starting logo (in this case epark.jpg)
+Choose your starting logo (in this case epark.jpg). A SVG image is ideal, although anything bigger than 512*512 and square should be fine.
 
 ```bash
-# On a Windows machihe I had issues from the WSL side
-# works fine from windows side
+# On a Windows machihe I had issues with the generator from the WSL2 side. Works fine from cmd.
 npm install --global pwa-asset-generator
+
+# 4.0.1 on the 18th Dec 2020
+npm list -g --depth=0
+
+npm update pwa-asset-generator
 
 # cd wwwroot
 # Take park photo and generate an index file and manifest
 # saving image assets into a folder
 # use a square image at least 512x512 - possibly a png or svg better?
-# there is padding here optionally
-# https://github.com/onderceylan/pwa-asset-generator
-npx pwa-asset-generator epark.jpg ./assets -i index-template.html -m manifest.json --favicon --background dimgrey --padding "0"
-
+# there is a default padding of 10
+#npx pwa-asset-generator epark.jpg ./assets -i index-template.html -m manifest.json --favicon --background dimgrey --padding "0"
 
 # generate transparent favicon with no padding (so that Windows Chrome icon is as big as possible)
 npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json --opaque false --icon-only --favicon --type png --padding "0"
 
 # overwrite 2 manifest icons and apple-icon-180.png with a background colour
-#'npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json --background "#696969" --icon-only --padding "0"
-
-# maybe we want the apple-icon-180.png to have a background
-
-# generate all files except the favicon with the default padding of 10
-# so that phone icons have a border (which looks good)
+# have a default 10 padding so that phone icons have a border (which looks good)
 npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json --background "#696969" 
 ```
 
@@ -104,11 +100,10 @@ This will:
 - create 29 different images in the assets folder
 - update `index-template.html` with `<meta>` links to appropriate images for iOS
 - update `manifest.json` with the 2 required images for Android - 192x192 and 512x512
-- create a favicon
+- create a favicon.png
 
-[attribute for santa](https://www.flaticon.com/authors/freepik)
 
-Maskable icons are generated for android ie the manifest-icon-192.png files. [https://maskable.app/](https://maskable.app/) to check 
+Maskable icons are generated for android ie the manifest-icon-192.png files. [https://maskable.app/](https://maskable.app/). This is a good thing....google around for more info!
 
 ## Index.html
 
@@ -282,7 +277,6 @@ As seen above we now have an offline.html page.
 
 Interestinly we need to cache all resources required by your offline page, so they inline styles and js.
 
-
 ## A2HS
 
 [pwa-install](https://github.com/pwa-builder/pwa-install) web component provides a helper
@@ -291,10 +285,15 @@ Interestinly we need to cache all resources required by your offline page, so th
 
 [https://pwadavetest.azurewebsites.net/](https://pwadavetest.azurewebsites.net/) is a working test version of progressier
 
-
 ## URL Capture
 
 Will not work on iOS with a browser installation.
+
+## Lighthouse
+
+[![alt text](/assets/2020-12-02/lighthouse2.jpg "PWA"){:width="600px"}](/assets/2020-12-02/lighthouse2.jpg)
+
+Run lighthouse in Incognito. As I'm running Bootstrap 4, I'm getting opportunities to Eliminate render-blocking resources when loading the css. bootstrap.min.css is 148k. Bootstrap 5 is 20.7k
 
 ## Other installation
 
