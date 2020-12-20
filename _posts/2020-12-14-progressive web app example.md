@@ -14,11 +14,10 @@ image: /assets/2020-12-02/ios2.png
 
 Here we will build a PWA from scratch with the following features:
 
-- Offline page displayed when offline (ServiceWorker)
+- Add to Home Screen prompt (A2HS) for iOS
 - Splash screen images for iOS and others (manifest.json and meta tags)
-- Add to Home Screen instructions (A2HS)
-- Lightweight fast loading site (minimal css and VanillaJS)
-- Commenting all the tags
+- Offline page displayed when lost connection (ServiceWorker)
+- Lightweight fast loading site (Bootstrap CSS and VanillaJS)
 
 [Source project portal-pwa-test on Github](https://github.com/djhmateer/portal-pwa-test)
 
@@ -65,7 +64,7 @@ Don't worry about the "icons" below we will overwrite these below.
 
 Because different OS/browsers have different implementations, we need a number of different image sizes to make a PWA work.
 
-[PWA Asset Generator](https://www.npmjs.com/package/pwa-asset-generator) is an automated tool to created all the images
+[PWA Asset Generator](https://github.com/onderceylan/pwa-asset-generator) is an automated tool to created all the images
 
 Add a blank `index-template.html` file so we can then copy the relevant bits into our `Shared\_Layout.cshtml` file
 
@@ -78,7 +77,7 @@ npm install --global pwa-asset-generator
 # 4.0.1 on the 18th Dec 2020
 npm list -g --depth=0
 
-npm update pwa-asset-generator
+npm update -g pwa-asset-generator
 
 # cd wwwroot
 # Take park photo and generate an index file and manifest
@@ -88,7 +87,8 @@ npm update pwa-asset-generator
 #npx pwa-asset-generator epark.jpg ./assets -i index-template.html -m manifest.json --favicon --background dimgrey --padding "0"
 
 # generate transparent favicon with no padding (so that Windows Chrome icon is as big as possible)
-npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json --opaque false --icon-only --favicon --type png --padding "0"
+npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json 
+  --opaque false --icon-only --favicon --type png --padding "0"
 
 # overwrite 2 manifest icons and apple-icon-180.png with a background colour
 # have a default 10 padding so that phone icons have a border (which looks good)
@@ -102,8 +102,17 @@ This will:
 - update `manifest.json` with the 2 required images for Android - 192x192 and 512x512
 - create a favicon.png
 
-
 Maskable icons are generated for android ie the manifest-icon-192.png files. [https://maskable.app/](https://maskable.app/). This is a good thing....google around for more info!
+
+As the file names are the same each time chrome will try to cache the assets `chrome://settings/clearBrowserData` to clear the cached images or use a cache busting strategy like:
+
+```html
+<link rel="icon" type="image/png" sizes="196x196" href="assets/favicon-196.png" asp-append-version="true">
+```
+
+Or increment the directory eg ./assets19
+
+[Issue 318 on pwa-asset-generator](https://github.com/onderceylan/pwa-asset-generator/issues/318)
 
 ## Index.html
 
