@@ -68,10 +68,15 @@ Because different OS/browsers have different implementations, we need a number o
 
 Add a blank `index-template.html` file so we can then copy the relevant bits into our `Shared\_Layout.cshtml` file
 
-Choose your starting logo (in this case epark.jpg). A SVG image is ideal, although anything bigger than 512*512 and square should be fine.
+Choose your starting logo (in this case santa-claus.svg). An SVG image is ideal, although anything bigger than 512*512 and square should be fine.
 
 ```bash
+# I'm using the 14.15.1 LTS version of Node which has NPM version of 6.14.10
+# update npm if a patch available
+npm install npm@latest -g
+
 # On a Windows machihe I had issues with the generator from the WSL2 side. Works fine from cmd.
+# https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md more info here
 npm install --global pwa-asset-generator
 
 # 4.0.1 on the 18th Dec 2020
@@ -81,38 +86,29 @@ npm update -g pwa-asset-generator
 
 # cd wwwroot
 # Take park photo and generate an index file and manifest
-# saving image assets into a folder
+# saving image assets into a folder I'm incrementing a suffix to bust caches
+# https://github.com/onderceylan/pwa-asset-generator/issues/318#issuecomment-748856292
 # use a square image at least 512x512 - possibly a png or svg better?
 # there is a default padding of 10
 #npx pwa-asset-generator epark.jpg ./assets -i index-template.html -m manifest.json --favicon --background dimgrey --padding "0"
 
 # generate transparent favicon with no padding (so that Windows Chrome icon is as big as possible)
-npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json 
-  --opaque false --icon-only --favicon --type png --padding "0"
+npx pwa-asset-generator santa-claus.svg ./assets24 -i index-template.html -m manifest.json 
+    --opaque false --icon-only --favicon --type png --padding "0"
 
 # overwrite 2 manifest icons and apple-icon-180.png with a background colour
 # have a default 10 padding so that phone icons have a border (which looks good)
-npx pwa-asset-generator santa-claus.svg ./assets -i index-template.html -m manifest.json --background "#696969" 
+npx pwa-asset-generator santa-claus.svg ./assets24 -i index-template.html -m manifest.json --background "#696969" 
 ```
 
 This will:
 
-- create 29 different images in the assets folder
+- create 29 different images in the assetsx folder
 - update `index-template.html` with `<meta>` links to appropriate images for iOS
 - update `manifest.json` with the 2 required images for Android - 192x192 and 512x512
 - create a favicon.png
 
 Maskable icons are generated for android ie the manifest-icon-192.png files. [https://maskable.app/](https://maskable.app/). This is a good thing....google around for more info!
-
-As the file names are the same each time chrome will try to cache the assets `chrome://settings/clearBrowserData` to clear the cached images or use a cache busting strategy like:
-
-```html
-<link rel="icon" type="image/png" sizes="196x196" href="assets/favicon-196.png" asp-append-version="true">
-```
-
-Or increment the directory eg ./assets19
-
-[Issue 318 on pwa-asset-generator](https://github.com/onderceylan/pwa-asset-generator/issues/318)
 
 ## Index.html
 
@@ -129,7 +125,9 @@ I'm being focussed on what matters to me. I recommend these courses which go int
 
 ## Service Worker
 
-In the `<head>` of my html I have a:
+"A service worker is a type of web worker. It's essentially a JavaScript file that runs separately from the main browser thread, intercepting network requests, caching or retrieving resources from the cache, and delivering push messages." [source](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker#:~:text=A%20service%20worker%20is%20a,cache%2C%20and%20delivering%20push%20messages.)
+
+To link up my Service Worker, in the `<head>` of my html I have:
 
 ```html
 <!-- the webpage's js file which will load the service worker -->
@@ -151,118 +149,9 @@ window.addEventListener('load', () => {
 
 and then the `service-worker.js`.
 
-The concept is that we want to cache only the `offline.html` page that gets served on failing navigation requests, and to let the browser handle all other cases.
+The concept is that we want to cache only the `offline.html` page that gets served on failing navigation requests, and to let the browser handle all other cases. To allow a PWA to be installable in Chrome we need a sw registered.
 
-```js
-
-// service-worker.js
-/*
-Copyright 2015, 2019, 2020 Google LLC. All Rights Reserved.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
-
-// Incrementing OFFLINE_VERSION will kick off the install event and force
-// previously cached resources to be updated from the network.
-const OFFLINE_VERSION = 1;
-const CACHE_NAME = "offline";
-// Customize this with a different URL if needed.
-const OFFLINE_URL = "offline.html";
-
-self.addEventListener("install", (event) => {
-    event.waitUntil(
-        (async () => {
-            const cache = await caches.open(CACHE_NAME);
-            // Setting {cache: 'reload'} in the new request will ensure that the
-            // response isn't fulfilled from the HTTP cache; i.e., it will be from
-            // the network.
-            await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
-        })()
-    );
-    // Force the waiting service worker to become the active service worker.
-    self.skipWaiting();
-});
-
-self.addEventListener("activate", (event) => {
-    event.waitUntil(
-        (async () => {
-            // Enable navigation preload if it's supported.
-            // See https://developers.google.com/web/updates/2017/02/navigation-preload
-            if ("navigationPreload" in self.registration) {
-                await self.registration.navigationPreload.enable();
-            }
-        })()
-    );
-
-    // Tell the active service worker to take control of the page immediately.
-    self.clients.claim();
-});
-
-self.addEventListener("fetch", (event) => {
-    // We only want to call event.respondWith() if this is a navigation request
-    // for an HTML page.
-    if (event.request.mode === "navigate") {
-        event.respondWith(
-            (async () => {
-                try {
-                    // First, try to use the navigation preload response if it's supported.
-                    const preloadResponse = await event.preloadResponse;
-                    if (preloadResponse) {
-                        return preloadResponse;
-                    }
-
-                    // Always try the network first.
-                    const networkResponse = await fetch(event.request);
-                    return networkResponse;
-                } catch (error) {
-                    // catch is only triggered if an exception is thrown, which is likely
-                    // due to a network error.
-                    // If fetch() returns a valid HTTP response with a response code in
-                    // the 4xx or 5xx range, the catch() will NOT be called.
-                    console.log("Fetch failed; returning offline page instead.", error);
-
-                    const cache = await caches.open(CACHE_NAME);
-                    const cachedResponse = await cache.match(OFFLINE_URL);
-                    return cachedResponse;
-                }
-            })()
-        );
-    }
-
-    // If our if() condition is false, then this fetch handler won't intercept the
-    // request. If there are any other fetch handlers registered, they will get a
-    // chance to call event.respondWith(). If no fetch handlers call
-    // event.respondWith(), the request will be handled by the browser as if there
-    // were no service worker involvement.
-});
-
-```
-
-install event
-activate event
-fetch event runs a lot
-
-## Chrome open dev tools automatically
-
-To keep the dev tools open all the time, launch Chrome from the command line:
-
-```bash
-cd C:\Program Files\Google\Chrome\Application
-Chrome --auto-open-devtools-for-tabs
-```
-
-## service workers
-
-The core feature discussed in this tutorial is the ability to intercept and handle network requests, including programmatically managing a cache of responsesk
-
-`chrome://serviceworker-internals`
+I'm going try as hard as possible to make a lightweight app with as little caching as possible, to avoid issues in production
 
 [How to unregister](https://love2dev.com/blog/how-to-uninstall-a-service-worker/)
 
@@ -270,25 +159,47 @@ The core feature discussed in this tutorial is the ability to intercept and hand
 
 Service workers are used by sites that are not PWA's.
 
-
 **HERE** https://developers.google.com/web/fundamentals/primers/service-workers
-
-
 
 `https://developers.google.com/sw.js`
 
-
-## Offline fallback page
-
-As seen above we now have an offline.html page.
-
-[Source code on web.dev is here](https://web.dev/offline-fallback-page/#the-offline-fallback-page)
-
-Interestinly we need to cache all resources required by your offline page, so they inline styles and js.
-
 ## A2HS
 
-[pwa-install](https://github.com/pwa-builder/pwa-install) web component provides a helper
+My primary use case for a PWA is on Apple iPhones (>7) to give a quick way into my portal website. To allow my users the best possible experience I want to help them 'install the app icon' onto the home screen.
+
+This is a pain if you're on Apple as it is a few non-untuitive button presses. Will some nice banners, I think it should be fairly simple.
+
+A2HS is a thorny subject, as most people don't want to be bothered by popups.
+
+[https://web.dev/customize-install/](https://web.dev/customize-install/) 
+
+[https://web.dev/promote-install/](https://web.dev/promote-install/)
+
+[https://www.netguru.com/codestories/pwa-ios](https://www.netguru.com/codestories/pwa-ios)
+
+
+[https://github.com/macap/hodl](https://github.com/macap/hodl) and his live app [here](https://hodl-63c3a.firebaseapp.com/)
+
+```js
+
+
+```
+
+To see the console.log output in Safari on an iPhone, you have to connect your phone to a mac then and [follows these lifewire instructions](https://www.lifewire.com/activate-the-debug-console-in-safari-445798) 
+
+Then you should see this:
+
+<!-- [![alt text](/assets/2020-12-02/mac.png "PWA"){:width="600px"}](/assets/2020-12-02/mac.png) -->
+<!-- [![alt text](/assets/2020-12-02/mac.png "PWA"){:width="600px"}](/assets/2020-12-02/mac.png) -->
+
+<p align="center">
+    <img src="/assets/2020-12-02/mac.png" alt="Mac">
+</p>
+
+So this is great, we can now catch when we want an iOS banner to appear.
+
+
+
 
 [https://progressier.com/](https://progressier.com/) is very good especially with tne animated icon for iOS. However it does introduce a lot of complexity behind a commercial offering.
 
@@ -303,6 +214,15 @@ Will not work on iOS with a browser installation.
 [![alt text](/assets/2020-12-02/lighthouse2.jpg "PWA"){:width="600px"}](/assets/2020-12-02/lighthouse2.jpg)
 
 Run lighthouse in Incognito. As I'm running Bootstrap 4, I'm getting opportunities to Eliminate render-blocking resources when loading the css. bootstrap.min.css is 148k. Bootstrap 5 is 20.7k
+
+## Chrome open dev tools automatically
+
+To keep the dev tools open all the time, launch Chrome from the command line:
+
+```bash
+cd C:\Program Files\Google\Chrome\Application
+Chrome --auto-open-devtools-for-tabs
+```
 
 ## Other installation
 
@@ -321,7 +241,3 @@ Home Screen Shortcuts (Android) or Web Clips (Apple)
   - store rules
   - singleton
     - url capture
-
-## Links
-
-[pwastarter.love2dev.com](https://pwastarter.love2dev.com/) - has good commenting of which icons do what. And puts a lot into the manifest file. Useful.
