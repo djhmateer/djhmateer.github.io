@@ -189,21 +189,27 @@ To see the console.log output in Safari on an iPhone, you have to connect your p
 
 Then you should see this:
 
-<!-- [![alt text](/assets/2020-12-02/mac.png "PWA"){:width="600px"}](/assets/2020-12-02/mac.png) -->
-<!-- [![alt text](/assets/2020-12-02/mac.png "PWA"){:width="600px"}](/assets/2020-12-02/mac.png) -->
-
 <p align="center">
     <img src="/assets/2020-12-02/mac.png" alt="Mac">
 </p>
 
 So this is great, we can now catch when we want an iOS banner to appear.
 
-
-
+Alterntively, [dump console.out to html](https://stackoverflow.com/questions/20256760/javascript-console-log-to-html)
 
 [https://progressier.com/](https://progressier.com/) is very good especially with tne animated icon for iOS. However it does introduce a lot of complexity behind a commercial offering.
 
 [https://pwadavetest.azurewebsites.net/](https://pwadavetest.azurewebsites.net/) is a working test version of progressier
+
+### Paths to test
+
+Happy paths
+
+iPhone7 Safari not installed
+iPhone7 Safari installed
+
+Windows Chrome not installed
+Windows Chrome installed
 
 ## URL Capture
 
