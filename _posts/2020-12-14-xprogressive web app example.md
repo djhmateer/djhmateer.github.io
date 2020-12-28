@@ -64,7 +64,7 @@ Don't worry about the "icons" below we will overwrite these below.
 
 Because different OS/browsers have different implementations, we need a number of different image sizes to make a PWA work.
 
-[PWA Asset Generator](https://github.com/onderceylan/pwa-asset-generator) is an automated tool to created all the images
+[PWA Asset Generator](https://github.com/onderceylan/pwa-asset-generator) is an automated tool to created all the images. [It may be that we can simplify using svgs](https://news.ycombinator.com/item?id=25520655) instead of lots of apple images.
 
 Add a blank `index-template.html` file so we can then copy the relevant bits into our `Shared\_Layout.cshtml` file
 

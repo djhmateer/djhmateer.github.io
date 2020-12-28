@@ -20,6 +20,7 @@ This is part of a frontend series of posts:
 - [Bootstrap](#) this article
 - [ASP.NET 5 Razor Pages]() is the following article on how this server side framework can help in serving content
 - [Progressive Web Apps - PWAs]() how to make your site easy to get to on a phone
+- [Progressive Web Apps - Example](/2020/12/14/progressive-web-app-example) An example of how to do a PWA
 
 This frontend series follows on from my backend series of creating a SaaS product
 
@@ -52,7 +53,7 @@ Help to 'bootstrap' your development
 
 Out of the box a new ASP.NET 5 Razor Pages Website uses:
 
-- Bootstrap 4.3.1 and [getbootstrap.com](https://getbootstrap.com/) is on 4.5.3 as of 28th Nov 2020
+- Bootstrap 4.3.1 and [getbootstrap.com](https://getbootstrap.com/) is on ~~4.5.3 as of 28th Nov 2020~~ 5.0.0-beta1 as of 28th Dec 2020
 - Jquery 3.5.1
 - Jquery-validation 1.17.0 
 - Jquery-validation-unobtrusive 3.2.11
@@ -297,6 +298,11 @@ to leave space use `offset-md-6`
 
 ## Alternative Libraries / CSS Frameworks
 
-Bootstrap 4 - 
-CSS Flexbox
-CSS Grid
+[Top 36 options in 2020](https://classpert.com/blog/top-bootstrap-alternatives)
+
+- Bootstrap 5 is looking good with being very lightweight
+- [TailwindCSS](https://tailwindcss.com/) v2.0 as of 28th Dec 2020. With [TailwindUI](https://tailwindui.com/) being the commercial componenets
+
+
+- CSS Flexbox ?
+- CSS Grid ?
