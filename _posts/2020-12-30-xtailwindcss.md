@@ -25,14 +25,18 @@ This follows on from the following articles
 
 I build SaaS products, so need some sort of front UI strategy that is:
 
-- professional
-- easy to change
-- modern / lightweight
-- don't need to worry about legacy browsers
+- Professional
+- Easy to change
+- Modern / lightweight
+- Don't need to worry about legacy browsers
 
 Also I'm a back end developer, so something with prebuilt presets to help me with colours, components etc..
 
-"Give you professional looking results even if you're not a designer" - [Designing with TailwindCSS videos](https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR)
+"Give you professional looking results even if you're not a designer" - [Designing with TailwindCSS videos](https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR) - sold!
+
+[my-tailwind-project](https://github.com/djhmateer/my-tailwind-project) on GitHub is the sample code for this article.
+
+[designing-with-tailwindcss](https://github.com/tailwindlabs/designing-with-tailwindcss) is the source code that the tailwind author uses in his [videos](https://www.youtube.com/playlist?list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR)
 
 ## Setup and Install
 
@@ -71,7 +75,6 @@ module.exports = {
     plugins: [
         require('tailwindcss'),
         require('autoprefixer')
-
     ]
 }
 ```
@@ -111,14 +114,14 @@ As a side note I use WSL2 on Windows and got slow npm build times of: 31s, 46s, 
 
 Once I changed to the correct filesystem: `\\wsl$\Ubuntu-18.04\home\dave\dev\my-tailwind-project` the build time was about 3s.
 
-create `public/indx.html`
+create `public/index.html`
 
 ```html
 <!doctype html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/build/tailwind.css">
 </head>
 <body>
@@ -134,7 +137,7 @@ It works - we have built our own CSS and rendered it.
 
 [![alt text](/assets/2020-12-30/hello-world2.jpg "Hello World2")](/assets/2020-12-30/hello-world2.jpg)
 
-Interestingly `tailwind.css` is 3.9MB - yikes. we certainly need to minify, and hopefully tree-shake.
+Interestingly `tailwind.css` is 3.9MB - yikes. we certainly need to minify, and hopefully tree-shake (spoiler - [PurgeCSS](https://purgecss.com/)).
 
 ## VS Code with Live Reload
 
@@ -145,17 +148,16 @@ Interestingly `tailwind.css` is 3.9MB - yikes. we certainly need to minify, and 
     "liveServer.settings.root": "/public"
 }
 ```
-
 ## .gitignore
 
-So a npm project just needs this in the gitignore so far:
+So a npm project just needs this in the `.gitignore` so far:
 
 ```bash
 # ignore compiled css
 /public/build/tailwind.css
 
 # ignore node_modules 
-/node_module
+/node_modules
 ```
 
 ## Publish to Azure
@@ -178,13 +180,11 @@ By default it created a free website in the centralus region. There is an advanc
 
 So this is interesting - 3.9MB of resources, yet only 317kB transferred. It was gzip encoded. Firefox gave slightly different sizes..and the server was quite slow. Interesting.
 
-## Using tailwind
+## Designing with Tailwind CSS
 
 [Second video](https://www.youtube.com/watch?v=Ybybd3GCNn4&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=2)
 
-
-
-
+[source](https://github.com/tailwindlabs/designing-with-tailwindcss) from the author with nice images for the tutorials.
 
 
 
@@ -207,7 +207,7 @@ npm is the package manager
 
 Tailwind is a PostCSS plugin
 
-PostCSS may already be built in eg Laravel, next.js, vue cli
+PostCSS may already be built in eg Laravel, [Next.js](https://nextjs.org/), vue cli
 
 This will take the tailwind directives and insert the correct CSS.
 
