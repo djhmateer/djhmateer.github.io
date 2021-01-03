@@ -131,11 +131,11 @@ create `public/index.html`
 ```
 
 <!-- [![alt text](/assets/2020-12-30/hello-world.jpg "Hello World"){:width="300px"}](/assets/2020-12-30/hello-world.jpg) -->
-[![alt text](/assets/2020-12-30/hello-world.jpg "Hello World")](/assets/2020-12-30/hello-world.jpg)
+[![Hello World](/assets/2020-12-30/hello-world.jpg "Hello World")](/assets/2020-12-30/hello-world.jpg)
 
 It works - we have built our own CSS and rendered it.
 
-[![alt text](/assets/2020-12-30/hello-world2.jpg "Hello World2")](/assets/2020-12-30/hello-world2.jpg)
+[![Hello World2](/assets/2020-12-30/hello-world2.jpg "Hello World2")](/assets/2020-12-30/hello-world2.jpg)
 
 Interestingly `tailwind.css` is 3.9MB - yikes. we certainly need to minify, and hopefully tree-shake (spoiler - [PurgeCSS](https://purgecss.com/)).
 
@@ -166,17 +166,17 @@ Lets actually publish our site to a free Azure App Service, using the handy exte
 
 Sign in, create a new Web App Service (I used .NET 5)
 
-[![alt text](/assets/2020-12-30/options.jpg "Options")](/assets/2020-12-30/options.jpg)
+[![Options](/assets/2020-12-30/options.jpg "Options")](/assets/2020-12-30/options.jpg)
 
 Deploy the public folder (right click on the project to set the folder)
 
 [https://mytailwindproject.azurewebsites.net](https://mytailwindproject.azurewebsites.net)
 
-[![alt text](/assets/2020-12-30/mytailwindproject.jpg "Going live")](/assets/2020-12-30/mytailwindproject.jpg)
+[![Going live](/assets/2020-12-30/mytailwindproject.jpg "Going live")](/assets/2020-12-30/mytailwindproject.jpg)
 
 By default it created a free website in the centralus region. There is an advanced option, but I prefer to script it, or use the GUI to get the naming convention I want.
 
-[![alt text](/assets/2020-12-30/azure.jpg "Large assets")](/assets/2020-12-30/azure.jpg)
+[![Large assets](/assets/2020-12-30/azure.jpg "Large assets")](/assets/2020-12-30/azure.jpg)
 
 So this is interesting - 3.9MB of resources, yet only 317kB transferred. It was gzip encoded. Firefox gave slightly different sizes..and the server was quite slow. Interesting.
 
@@ -187,6 +187,85 @@ So this is interesting - 3.9MB of resources, yet only 317kB transferred. It was 
 [source](https://github.com/tailwindlabs/designing-with-tailwindcss) from the author with nice images for the tutorials.
 
 
+As a non designer I'm curious as to what it takes to have a beautiful aesthetic on web design:
+
+- Background colours
+- Padding (x and y) of divs (containers)
+- Heights of images
+- Margins of images
+- Rounded images
+- Shadows on images
+
+[![Splash page](/assets/2020-12-30/splash.jpg "Splash"){:width="300px"}](/assets/2020-12-30/splash.jpg)
+
+There is a lot of design on this splash page to make it appealing, and I love that:
+
+```html
+<!-- bg is background, 100 is always the lightest. A Utility Class -->
+<body class="bg-gray-100">
+  <!-- p is padding, 0 to 64 -->
+  <!-- px is horizontal ie from the left, py is vertical from the top -->
+  <div class="px-8 py-12">
+    <!-- height of image -->
+    <img class="h-10" src="img/logo.svg" alt="Workation">
+    <!-- margin top of big image -->
+    <!-- rounded border radius and shadow -->
+    <img class="mt-6 rounded-lg shadow-xl" src="img/beach-work.jpg" alt="Woman workcationing on the beach">
+
+    <!-- margin top of the text-->
+    <!-- text size -->
+    <!-- font weight -->
+    <!-- font colour - usually don't use pure black -->
+    <!-- leading (line height) -->
+    <h1 class="mt-6 text-2xl font-bold text-gray-900 leading-tight">
+      You can work from anywhere.
+      <span class="text-indigo-500">Take advantage of it.</span>
+    </h1>
+
+    <p class="mt-2 text-gray-600">
+      Workation helps you find work-friendly rentals in beautiful locations so can you enjoy some nice weather even when
+      you are not on vacation
+    </p>
+
+    <div class="mt-4">
+      <!-- we're not submitting a form so don't need a 'button'-->
+      <!-- links are inline elements by default so can' add padding to them properly, 
+      so need inline-block -->
+
+      <!-- tracking is typographical term for letter spacing -->
+      <a href="#"
+        class="inline-block px-5 py-3 rounded-lg shadow-lg bg-indigo-500 text-white uppercase tracking-wider font-semibold text-sm">Book
+        your escape</a>
+    </div>
+  </div>
+</body>
+
+```
+
+## Responsive
+
+4 deafult breakpoints
+
+- sm small breakpoint (> 640px)
+- md > 768px
+- lg > 1024px
+- xl > 1280px
+
+can prefex any utility to only apply to those screen sizes eg `sm:bg-green-500`
+this means green will start at minwidth of small.
+
+```html
+<body class="bg-gray-100 sm:bg-green-500 md:bg-red-500 lg:bg-yellow-500 xl:bg-pink-500">
+```
+
+So here we are designing for < sm, sm, and md
+
+For lg ie > 1024 we are thinking of 2 separate columns with the right holding the working image, so will turn off the image in the current container.
+
+As we need side by side, we need a flex
+
+**HERE** - does the old code with Tailwind CSS 2.0
+   why doesn't it go side by side?
 
 
 
@@ -221,6 +300,19 @@ PostCSS can be a replacement for Sass (or other CSS preprocessors)
 ## Resources
 
 [awesome-tailwindcss](https://github.com/aniftyco/awesome-tailwindcss)
+
+
+https://news.ycombinator.com/item?id=22422873
+
+Designing with Tailwind CSS: Setting up Tailwind and PostCSS
+
+https://adamwathan.me/
+
+https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+
+https://www.reddit.com/r/tailwindcss/
+
+
 
 ## Tutorials
 
