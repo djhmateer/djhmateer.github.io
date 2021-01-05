@@ -38,7 +38,9 @@ Also I'm a back end developer, so something with prebuilt presets to help me wit
 
 [designing-with-tailwindcss](https://github.com/tailwindlabs/designing-with-tailwindcss) is the source code that the tailwind author uses in his [videos](https://www.youtube.com/playlist?list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR)
 
-## Setup and Install
+## Setup and Install (Video 1)
+
+[video 1](https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=1&t=16s)
 
 Lets do a simple plain site [https://tailwindcss.com/docs/installation](https://tailwindcss.com/docs/installation)
 
@@ -561,6 +563,66 @@ Very nice. He also talks about adding a 72 in spacing too.
 
 [video 8](https://www.youtube.com/watch?v=bhoDwo24K5Q&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=8)
 
+Minified the whole CSS is around 400kB, and Gzipped over the wire it is around 66kB (tailwind1.x)
+Just Gzipped and not minified I saw 511kB (tailwind 2 on the 5th Jan 2021)
+
+[Purgecss](https://purgecss.com/) is a tool to remove unused CSS.
+
+Purgcss is available as a [Postcss plugin](https://purgecss.com/plugins/postcss.html#installation)
+
+```bash
+npm install @fullhuman/postcss-purgecss
+
+```
+
+VS Code - Ctrl P to search files in the command pallette
+
+Need to include any file that contains html in our project
+
+Purgecss just uses regex to find tokens in the html (ie class names)
+
+```js
+module.exports = {
+    plugins: [
+        require('tailwindcss'),
+        require('autoprefixer'),
+        process.env.NODE_ENV === 'production' && require('@fullhuman/postcss-purgecss')({
+            content: [
+                './public/index.html'
+            ],
+            defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+        })
+    ]
+}
+```
+
+[Filesize VS Code extension](https://marketplace.visualstudio.com/items?itemName=mkxml.vscode-filesize) to show to filesize.
+
+So now I've got 17kB and Gzipped at 4.77kB. Not minified yet.
+
+As it takes some time, we flag it to only run Purge on a production build
+
+How to set NODE_ENV?
+
+[Looks like PurgeCSS is included under the hood now](https://tailwindcss.com/docs/optimizing-for-production)
+
+```js
+// tailwind.config.js
+module.exports = {
+  purge: [
+    './src/**/*.html',
+  ],
+
+```
+
+This only runs when NODE_ENV is set to production
+
+```bash
+export NODE_ENV=production
+npm run build
+export NODE_ENV=development
+```
+9.6 kB now (not minified) and 3.1 kB Gzipped
 
 
 
