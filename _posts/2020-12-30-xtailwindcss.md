@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TailwindCSS
+title: Tailwind CSS
 description: 
 menu: review
 categories: CSS 
@@ -32,7 +32,7 @@ I build SaaS products, so need some sort of front UI strategy that is:
 
 Also I'm a back end developer, so something with prebuilt presets to help me with colours, components etc..
 
-"Give you professional looking results even if you're not a designer" - [Designing with TailwindCSS videos](https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR) - sold!
+"Give you professional looking results even if you're not a designer" - [Designing with Tailwind CSS videos](https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR) - sold!
 
 [my-tailwind-project](https://github.com/djhmateer/my-tailwind-project) on GitHub is the sample code for this article.
 
@@ -44,9 +44,9 @@ Also I'm a back end developer, so something with prebuilt presets to help me wit
 
 Lets do a simple plain site [https://tailwindcss.com/docs/installation](https://tailwindcss.com/docs/installation)
 
-And lets use VS Code (as that is what people seem to be using, and VS 2019 doesn't seem to be there)
+And lets use [VS Code](https://code.visualstudio.com/) (as that is what people seem to be using, and VS 2019 doesn't seem to be there)
 
-To get tailwindcss and it's dependencies lets use npm.
+To get Tailwind CSS and it's dependencies lets use [npm](https://www.npmjs.com/). I use Ubuntu on WSL2 with Windows 10.
 
 ```bash
 # I'm using the 14.15.1 LTS version of Node which has NPM version of 6.14.10
@@ -67,10 +67,9 @@ npm install tailwindcss postcss-cli autoprefixer
 # creates an empty tailwind.config.js file
 # for customising tailwind
 npx tailwind init
-
 ```
 
-create `postcss.config.js`
+create `postcss.config.js` in the root of the project.
 
 ```js
 module.exports = {
@@ -83,16 +82,15 @@ module.exports = {
 
 create `css/tailwind.css`
 
-tailwind works by looking for custom markers and replacing them with generated code:
+Tailwind CSS works by looking for custom markers and replacing them with generated code:
 
 ```css
-/* this is a tailwind directive with parameter of base */
+/* A tailwind directive with parameter of base */
 @tailwind base;
-/* these markers will be replaced with css by the postcss javascript compiler */
-/* will replace with all base, component and utility css classes */
+/* These markers will be replaced with css by the postcss javascript compiler */
+/* Will replace with all base, component and utility css classes */
 @tailwind components;
 @tailwind utilities;
-
 ```
 
 update `package.json` to have a build step
@@ -107,10 +105,9 @@ then run it
 
 ```bash
 npm run build
-
 ```
 
-Which then generates `public/build/tailwind.css'
+Which generates `public/build/tailwind.css`
 
 As a side note I use WSL2 on Windows and got slow npm build times of: 31s, 46s, 35s, 23s etc..
 
@@ -132,18 +129,16 @@ create `public/index.html`
 </html>
 ```
 
+Notice the many different classes on the h1
+
 <!-- [![alt text](/assets/2020-12-30/hello-world.jpg "Hello World"){:width="300px"}](/assets/2020-12-30/hello-world.jpg) -->
 [![Hello World](/assets/2020-12-30/hello-world.jpg "Hello World")](/assets/2020-12-30/hello-world.jpg)
 
 It works - we have built our own CSS and rendered it.
 
-[![Hello World2](/assets/2020-12-30/hello-world2.jpg "Hello World2")](/assets/2020-12-30/hello-world2.jpg)
-
-Interestingly `tailwind.css` is 3.9MB - yikes. we certainly need to minify, and hopefully tree-shake (spoiler - [PurgeCSS](https://purgecss.com/)).
-
 ## VS Code with Live Reload
 
-`.vscode/settings.json` create this file, so that when the live reload server started up the URL will be `http://127.0.0.1:5501/index.html`
+`.vscode/settings.json` create this file, so that when the [live server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) started up the URL will be `http://127.0.0.1:5501/index.html`
 
 ```json
 {
@@ -177,10 +172,6 @@ Deploy the public folder (right click on the project to set the folder)
 [![Going live](/assets/2020-12-30/mytailwindproject.jpg "Going live")](/assets/2020-12-30/mytailwindproject.jpg)
 
 By default it created a free website in the centralus region. There is an advanced option, but I prefer to script it, or use the GUI to get the naming convention I want.
-
-[![Large assets](/assets/2020-12-30/azure.jpg "Large assets")](/assets/2020-12-30/azure.jpg)
-
-So this is interesting - 3.9MB of resources, yet only 317kB transferred. It was gzip encoded. Firefox gave slightly different sizes..and the server was quite slow. Interesting.
 
 ## Designing with Tailwind CSS (Video 2)
 
@@ -349,7 +340,7 @@ And here it is:
 
 [![Splash XL](/assets/2020-12-30/splashxl.jpg "Splash XL")](/assets/2020-12-30/splashxl.jpg)
 
-Side by side using flex box. 4 different screen sizes the splash page is optinised for.
+Side by side using flex box. 4 different screen sizes the splash page is optimised for.
 
 ## Hover focus and active states (Video 4)
 
@@ -476,7 +467,7 @@ However we will still be duplicating the html structure. But we will be using so
 
 [![Cards](/assets/2020-12-30/cards.jpg "Cards"){:width="400px"}](/assets/2020-12-30/cards.jpg)
 
-There is nice 1,2,3 column rendering of the cards
+There is nice 1,2,3 column rendering of the cards which show the popular destinations above.
 
 ```html
 <!-- cards -->
@@ -528,7 +519,7 @@ We could scaffold the entire file like above and edit directly, but this is hard
 
 Or could use a default minimal config file (like we are doing)
 
-eg logo-blue.svg which is a colour which doesn't come with tailwind by default.
+eg logo-blue.svg which has a blue colour which doesn't come with tailwind by default.
 
 
 ```js
@@ -593,7 +584,25 @@ VS Code - Ctrl P to search files in the command pallette
 
 [![Filesize](/assets/2020-12-30/filesize.jpg "Filesize"){:width="600px"}](/assets/2020-12-30/filesize.jpg)
 
-[Filesize VS Code extension](https://marketplace.visualstudio.com/items?itemName=mkxml.vscode-filesize) to show to filesize.
+[Filesize VS Code extension](https://marketplace.visualstudio.com/items?itemName=mkxml.vscode-filesize) is very handy to show to filesize.
+
+### Minify with CSSNano
+
+[CSS Nano](https://github.com/cssnano/cssnano)
+
+[tutorial](https://dev.to/estevanmaito/have-only-30-seconds-and-want-to-create-a-tailwind-css-project-i-got-you-pge)
+
+```bash
+npm i cssnano
+```
+Here are the results of my CSS after being purged, then minified with CSSNano, then released onto a prod server and inspected in dev tools.
+
+- none 20 kB
+- minify 10 kB 
+- gzipped 3.6 kB  (5.7 kB with none)
+
+Very impressive to get the CSS size down to virtually nothing.
+
 
 ## Designing with Tailwind CSS - structuring a Basic Card (Section 2 - Video 9)
 
@@ -610,7 +619,7 @@ Intereting his strategy is to get the data on the screen first in a simple conta
 
 Could add to body tag
 
-- class="antialiased` - looks better on modern monitors
+- class="antialiased" - looks better on modern monitors
 - text-gray-900 - almost black
 
 Title
@@ -637,9 +646,88 @@ Content (stars)
 - wrap in a span for text-gray-600 and text-sm
 - wrap in a span for colour text-teal-600 font-semibold 
 
-## Working with SVG Icons
+## Working with SVG Icons - Video 11
 
-[Heroicons](https://heroicons.com/)
+[tailwindcss resources](https://tailwindcss.com/resources)
+
+[Heroicons](https://heroicons.com/) - by the masters of Tailwind CSS!
+
+[entypo.com](http://www.entypo.com/) - but the dropbox download link is broken.
+
+[https://jakearchibald.github.io/svgomg/](https://jakearchibald.github.io/svgomg/) to make an svg smaller. Take out whitespace etc..
+
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+</svg>
+```
+
+Must be square icons.
+
+- fill-current
+- colour eg text-red-500
+
+Here is the vue.js implementation of stars
+
+```html
+<svg v-for="i in 5" :key="i" :class="i <= property.rating ? 'text-teal-500' : 'text-gray-400'" class="h-4 w-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8.133 20.333c-1.147.628-2.488-.387-2.269-1.718l.739-4.488-3.13-3.178c-.927-.943-.415-2.585.867-2.78l4.324-.654 1.934-4.083a1.536 1.536 0 0 1 2.804 0l1.934 4.083 4.324.655c1.282.194 1.794 1.836.866 2.78l-3.129 3.177.739 4.488c.219 1.331-1.122 2.346-2.269 1.718L12 18.214l-3.867 2.119z" fill-rule="evenodd"/>
+</svg>
+```
+Using Tailwinds height and width utilities instead of the svg one.
+
+Flex box to get side by side
+
+Notice another class attribute - a dynamic one for colour.
+
+items-center to center the items vertically against the (based on 34 reviews text)
+
+<!-- [![House](/assets/2020-12-30/house.jpg "House"){:width="400px"}](/assets/2020-12-30/house.jpg) -->
+[![House](/assets/2020-12-30/house.jpg "House")](/assets/2020-12-30/house.jpg)
+
+The end result - which is looking professional
+
+## Designing a Badge - Video 12
+
+Span by default is inline so we need inline-block class
+
+- rounded-full
+- uppercase
+- semi-bold
+- tracking-wide
+- items-centered or items-baseline
+
+
+## Cropping and Positioning Images - Video 13
+
+- object-contain (will center without distorting)
+- object-top (always will see top)
+
+IE11 will not support this. If need to support then use a div with a bg image.
+
+```html
+<!-- <div class="h-48 bg-cover bg-center" :style="{ backgroundImage: `url('${property.imageUrl}')`}"></div> -->
+<img class="h-48 w-full object-cover" :src="property.imageUrl" :alt="property.imageAlt">
+```
+
+## Locking an Image to a Fixed Aspect Ratio - Video 14
+
+Using a CSS Trick with % based padding.
+
+To get the image to keep its aspect ratio no matter how big the card gets by surrounding it with a div.
+
+## Depth with Shadows and Layers - Video 15
+
+Simplest way is to use shadows.
+
+Make the text kind of appear on top.
+
+Using negative margins.
+
+[![Depth](/assets/2020-12-30/depth.jpg "Depth")](/assets/2020-12-30/depth.jpg)
+
+Very impressive design!
 
 
 
