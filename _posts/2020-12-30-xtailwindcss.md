@@ -566,51 +566,17 @@ Very nice. He also talks about adding a 72 in spacing too.
 Minified the whole CSS is around 400kB, and Gzipped over the wire it is around 66kB (tailwind1.x)
 Just Gzipped and not minified I saw 511kB (tailwind 2 on the 5th Jan 2021)
 
-[Purgecss](https://purgecss.com/) is a tool to remove unused CSS.
+[Purgecss](https://purgecss.com/) is a tool to remove unused CSS by using regex to find tokens in the html (ie class names)
 
-Purgcss is available as a [Postcss plugin](https://purgecss.com/plugins/postcss.html#installation)
+[PurgeCSS is included under the hood now with tailwindcss2.x](https://tailwindcss.com/docs/optimizing-for-production)
 
-```bash
-npm install @fullhuman/postcss-purgecss
-
-```
-
-VS Code - Ctrl P to search files in the command pallette
-
-Need to include any file that contains html in our project
-
-Purgecss just uses regex to find tokens in the html (ie class names)
-
-```js
-module.exports = {
-    plugins: [
-        require('tailwindcss'),
-        require('autoprefixer'),
-        process.env.NODE_ENV === 'production' && require('@fullhuman/postcss-purgecss')({
-            content: [
-                './public/index.html'
-            ],
-            defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
-        })
-    ]
-}
-```
-
-[Filesize VS Code extension](https://marketplace.visualstudio.com/items?itemName=mkxml.vscode-filesize) to show to filesize.
-
-So now I've got 17kB and Gzipped at 4.77kB. Not minified yet.
-
-As it takes some time, we flag it to only run Purge on a production build
-
-How to set NODE_ENV?
-
-[Looks like PurgeCSS is included under the hood now](https://tailwindcss.com/docs/optimizing-for-production)
+To turn it on you need to tell purseCSS where all your files are that contain html.
 
 ```js
 // tailwind.config.js
 module.exports = {
   purge: [
-    './src/**/*.html',
+    './public/**/*.html',
   ],
 
 ```
@@ -622,7 +588,59 @@ export NODE_ENV=production
 npm run build
 export NODE_ENV=development
 ```
-9.6 kB now (not minified) and 3.1 kB Gzipped
+
+VS Code - Ctrl P to search files in the command pallette
+
+[![Filesize](/assets/2020-12-30/filesize.jpg "Filesize"){:width="600px"}](/assets/2020-12-30/filesize.jpg)
+
+[Filesize VS Code extension](https://marketplace.visualstudio.com/items?itemName=mkxml.vscode-filesize) to show to filesize.
+
+## Designing with Tailwind CSS - structuring a Basic Card (Section 2 - Video 9)
+
+[Video 9](https://www.youtube.com/watch?v=1OUbP0rGFNs&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=9)
+
+Intereting his strategy is to get the data on the screen first in a simple container (to centre things)
+
+- bg colour
+- padding (usually put inside own div)
+- border radius ie rounded-lg on a background
+- border radiuns - overflow-hidden
+
+## Making Text Content Feel Designed - Video 10
+
+Could add to body tag
+
+- class="antialiased` - looks better on modern monitors
+- text-gray-900 - almost black
+
+Title
+
+- font-bold, font-semi-bold
+- text-lg, text-xl play with different sizes
+
+Content (beds)
+
+- deemphasize text-gray-600 compared to title
+- text-sm, text-xs uppercase fone-semibold tracking-wide or tracking-widest... good trick for small text
+- lines between wrapped text.. he likes top margins better eg mt-1
+- line height eg leading-none, leading-tight
+- truncate text using truncate.. for many cards to make sure they are all the same height
+
+Content (/wk)
+
+- deemphasize text-gray-600 text-sm
+- eyebrow treatment (put 3 BEDS) above title
+
+Content (stars)
+
+- space above text eg mt-2, mt-4
+- wrap in a span for text-gray-600 and text-sm
+- wrap in a span for colour text-teal-600 font-semibold 
+
+## Working with SVG Icons
+
+[Heroicons](https://heroicons.com/)
+
 
 
 
