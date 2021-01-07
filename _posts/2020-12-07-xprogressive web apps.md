@@ -480,7 +480,7 @@ Can search for it in Windows Search
 
 ## Add PWA to Stores
 
-[Mac Firtman article and video](https://firt.dev/pwa-stores/) - yes it is possible to add PWA's to stores. Especially the Google Play Store. However for the App Store (which I'm most interested in), you still need to essentially deploy all the assets to the Store, so can't update quickly.
+[Max Firtman article and video](https://firt.dev/pwa-stores/) - yes it is possible to add PWA's to stores. Especially the Google Play Store. However for the App Store (which I'm most interested in), you still need to essentially deploy all the assets to the Store, so can't update quickly.
 
 And stores, and for public apps.
 

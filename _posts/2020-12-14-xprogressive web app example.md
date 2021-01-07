@@ -17,7 +17,7 @@ Here we will build a PWA from scratch with the following features:
 - Add to Home Screen prompt (A2HS) for iOS
 - Splash screen images for iOS and others (manifest.json and meta tags)
 - Offline page displayed when lost connection (ServiceWorker)
-- Lightweight fast loading site (Bootstrap CSS and VanillaJS)
+- Lightweight site (Bootstrap CSS and VanillaJS) with no external PWA dependencies
 
 [Source project portal-pwa-test on Github](https://github.com/djhmateer/portal-pwa-test)
 
@@ -25,7 +25,7 @@ Here we will build a PWA from scratch with the following features:
 
 ## Create your blank site
 
-I'm using Razor Pages on .NET 5, deploying to an Azure App Service (Windows), purely as that is what U'm comfortable with. It doesn't matter what back end tech you use.
+I'm using Razor Pages on .NET 5, deploying to an Azure App Service (Windows), purely as that is what I'm comfortable with. It doesn't matter what back end you use.
 
 ## Manifest.json
 
@@ -96,7 +96,8 @@ npm update -g pwa-asset-generator
 npx pwa-asset-generator santa-claus.svg ./assets24 -i index-template.html -m manifest.json 
     --opaque false --icon-only --favicon --type png --padding "0"
 
-# overwrite 2 manifest icons and apple-icon-180.png with a background colour
+# But I only want favicon-196.png to be transparent and with no padding so
+# overwrite 2 manifest icons and apple-icon-180.png with a background colour (gray)
 # have a default 10 padding so that phone icons have a border (which looks good)
 npx pwa-asset-generator santa-claus.svg ./assets24 -i index-template.html -m manifest.json --background "#696969" 
 ```
