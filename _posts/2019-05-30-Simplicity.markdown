@@ -13,6 +13,8 @@ image: /assets/2019-05-27/1.png
 A discussion on 
 [Hacker news post on Solid Principles: A Software Developer's Framework to Robust, Maintainable Code](https://news.ycombinator.com/item?id=19955467) struck a real chord, specifically around: **simplicity**
 
+[Another discussion on 45 years in the software industry](https://news.ycombinator.com/item?id=25658216)
+
 As programmers our jobs are to understand problems, investigate and write solution. 
 
 Just as in writing, it takes a long time to write something elegant:  [Blaise Pascal](https://en.wikiquote.org/wiki/Blaise_Pascal) the 15th Century mathematician, logician, physicist and theologian is attributed with [first saying](https://quoteinvestigator.com/2012/04/28/shorter-letter/):
