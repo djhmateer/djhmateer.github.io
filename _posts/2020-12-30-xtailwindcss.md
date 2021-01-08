@@ -49,12 +49,12 @@ And lets use [VS Code](https://code.visualstudio.com/) (as that is what people s
 To get Tailwind CSS and it's dependencies lets use [npm](https://www.npmjs.com/). I use Ubuntu on WSL2 with Windows 10.
 
 ```bash
-# I'm using the 14.15.1 LTS version of Node which has NPM version of 6.14.10
-# 30th Dec 2020
+# I'm using the ~~14.15.1~~ 14.15.4 LTS version of Node which has NPM version of ~~6.14.10~~ 6.14.11 8th Jan 2021
 node --version
 npm --version
-# update npm if a patch available
-sudo npm install npm@latest -g
+
+# update npm if a patch available (cli will tell you when a patch is available)
+sudo npm install -g npm
 
 # create an empty package.json file
 npm init -y
@@ -550,14 +550,14 @@ and on a button:
 Very nice. He also talks about adding a 72 in spacing too.
 
 
-## Optimising for Production with Purgecss (Video 8)
+## Optimising for Production with PurgeCSS (Video 8)
 
 [video 8](https://www.youtube.com/watch?v=bhoDwo24K5Q&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=8)
 
 Minified the whole CSS is around 400kB, and Gzipped over the wire it is around 66kB (tailwind1.x)
 Just Gzipped and not minified I saw 511kB (tailwind 2 on the 5th Jan 2021)
 
-[Purgecss](https://purgecss.com/) is a tool to remove unused CSS by using regex to find tokens in the html (ie class names)
+[PurgeCSS](https://purgecss.com/) is a tool to remove unused CSS by using regex to find tokens in the html (ie class names)
 
 [PurgeCSS is included under the hood now with tailwindcss2.x](https://tailwindcss.com/docs/optimizing-for-production)
 
@@ -595,14 +595,30 @@ VS Code - Ctrl P to search files in the command pallette
 ```bash
 npm i cssnano
 ```
+Then patch into the postcss pipeline `postcss.config.js`
+
+```js
+module.exports = {
+    plugins: [
+        require('tailwindcss'),
+        require('autoprefixer'),
+        // minification
+        // require('cssnano')({
+        //     preset: 'default',
+        //   }),
+    ]
+}
+
+```
+I keep it commented out in development.
+
 Here are the results of my CSS after being purged, then minified with CSSNano, then released onto a prod server and inspected in dev tools.
 
 - none 20 kB
 - minify 10 kB 
 - gzipped 3.6 kB  (5.7 kB with none)
 
-Very impressive to get the CSS size down to virtually nothing.
-
+Very impressive!
 
 ## Designing with Tailwind CSS - structuring a Basic Card (Section 2 - Video 9)
 
@@ -690,6 +706,8 @@ The end result - which is looking professional
 
 ## Designing a Badge - Video 12
 
+eg te NEW badge (shown in a screenshot below)
+
 Span by default is inline so we need inline-block class
 
 - rounded-full
@@ -729,6 +747,40 @@ Using negative margins.
 
 Very impressive design!
 
+## Building a Navbar Layout with Flexbox - Section 3 - Video 16
+
+[video](https://www.youtube.com/watch?v=ZT5vwF6Ooig&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=16)
+
+Start with the structure then add styling afterwards.
+
+Tailwind in a mobile first framework, so start with that size
+
+
+## Parts I will need
+
+Build:
+ - PurgeCSS to tree shake
+ - CSSNano for minification
+
+Splashscreen
+
+- Flexbox for mobile responsive (4 different sizes?)
+- bg-color (light gray?)
+- text sized, coloured, padded, spaced, font, capitals
+- buttons (all states)
+- images aspect ratio, rounded, shadows, centered
+
+Full site
+
+- Navbar
+- Dropdown menu
+- icons
+
+## Landing Page Design Ideas
+
+[tweet image](https://twitter.com/steveschoger/status/935541212626464770)
+
+[here too](https://twitter.com/i/events/935538902240198656)
 
 
 
@@ -778,6 +830,12 @@ https://www.reddit.com/r/tailwindcss/
 
 
 ## Tutorials
+
+[YouTube - tailwindlabs](https://www.youtube.com/tailwindlabs) Tailwind 2 and live streams
+
+[Book and videos to buy](https://refactoringui.com/book/) - Refactoring UI
+
+[cheatsheet](https://umeshmk.github.io/Tailwindcss-cheatsheet/)
 
 [https://www.freecodecamp.org/news/what-is-tailwind-css-and-how-can-i-add-it-to-my-website-or-react-app/](https://www.freecodecamp.org/news/what-is-tailwind-css-and-how-can-i-add-it-to-my-website-or-react-app/)
 
