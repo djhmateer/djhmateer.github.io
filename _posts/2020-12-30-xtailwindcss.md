@@ -19,7 +19,11 @@ This follows on from the following articles
 - Bootstrap
 - TailwindCSS (here)
 
-[tailwindcss.com](https://tailwindcss.com/) is a CSS framework. It is a PostCSS (CSS preprocessor) javascript plugin which looks for custom markers in a .css file, replacing them with css.
+[tailwindcss.com](https://tailwindcss.com/) is a utility first CSS framework. It is a PostCSS (CSS preprocessor) javascript plugin which looks for custom markers in a .css file, replacing them with css.
+
+It is lower level than [Bootstrap](https://getbootstrap.com/) or [Materialize](https://materializecss.com/) which [has a new fork](https://github.com/materializecss/materialize/issues/2)
+
+So you can tell a Bootstrap style and Materialize style, but not a Tailwind CSS style as it doesn't come with it's own components.
 
 [tailwindui.com](https://tailwindui.com/) is the commercial UI components.
 
@@ -36,7 +40,12 @@ Also I'm a back end developer, so something with prebuilt presets to help me wit
 
 [my-tailwind-project](https://github.com/djhmateer/my-tailwind-project) on GitHub is the sample code for this article.
 
-[designing-with-tailwindcss](https://github.com/tailwindlabs/designing-with-tailwindcss) is the source code that the tailwind author uses in his [videos](https://www.youtube.com/playlist?list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR)
+
+[YouTube videos series](https://www.youtube.com/playlist?list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR) by Adam Wathan (the author or Tailwind CSS)
+
+[Source designing-with-tailwindcss](https://github.com/tailwindlabs/designing-with-tailwindcss) is the source code that the tailwind author uses in his 
+
+[Tailwind CSS Docs](https://tailwindcss.com/docs/utility-first)
 
 ## Setup and Install (Video 1)
 
@@ -62,7 +71,7 @@ npm init -y
 # + tailwindcss@2.0.2
 # + autoprefixer@10.1.0
 # + postcss-cli@8.3.1
-npm install tailwindcss postcss-cli autoprefixer
+npm i tailwindcss postcss-cli autoprefixer
 
 # creates an empty tailwind.config.js file
 # for customising tailwind
@@ -827,11 +836,23 @@ https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 
 https://www.reddit.com/r/tailwindcss/
 
+[creative-tim Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation)
+
 
 
 ## Tutorials
 
+[Adam Wathan - Designing with Tailwind CSS](https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=1&t=4s) 
+
+[Big walkthough](https://www.youtube.com/watch?v=bxmDnn7lrnk&list=PL4cUxeGkcC9gpXORlEHjc5bgnIi5HEGh) - Net Ninja
+
 [YouTube - tailwindlabs](https://www.youtube.com/tailwindlabs) Tailwind 2 and live streams
+
+[Build a Gym using the tailwind starter kit](https://www.youtube.com/watch?v=mO3aXUgjnIE) Travesty Media
+
+[Excellent docs for Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/javascript/modals/small)
+
+
 
 [Book and videos to buy](https://refactoringui.com/book/) - Refactoring UI
 
