@@ -186,8 +186,11 @@ By default it created a free website in the centralus region. There is an advanc
 
 [Second video](https://www.youtube.com/watch?v=Ybybd3GCNn4&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=2)
 
-[source](https://github.com/tailwindlabs/designing-with-tailwindcss) from the author with nice images for the tutorials.
+[Source code](https://github.com/tailwindlabs/designing-with-tailwindcss) from the author with nice images for the tutorials.
 
+In VS Code type 
+- `doc` then tab for a html boiler plate snippet
+- `img` then tab for img snippet
 
 As a non designer I'm curious as to what it takes to have a beautiful aesthetic on web design:
 
@@ -821,6 +824,10 @@ This will take the tailwind directives and insert the correct CSS.
 
 PostCSS can be a replacement for Sass (or other CSS preprocessors)
 
+## Designing Tips
+
+[Landing Page thoughts](https://twitter.com/steveschoger/status/935541212626464770)
+
 ## Resources
 
 [awesome-tailwindcss](https://github.com/aniftyco/awesome-tailwindcss)
@@ -844,15 +851,17 @@ https://www.reddit.com/r/tailwindcss/
 
 [Adam Wathan - Designing with Tailwind CSS](https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=1&t=4s) 
 
-[Big walkthough](https://www.youtube.com/watch?v=bxmDnn7lrnk&list=PL4cUxeGkcC9gpXORlEHjc5bgnIi5HEGh) - Net Ninja
-
 [YouTube - tailwindlabs](https://www.youtube.com/tailwindlabs) Tailwind 2 and live streams
+
+
 
 [Build a Gym using the tailwind starter kit](https://www.youtube.com/watch?v=mO3aXUgjnIE) Travesty Media
 
 [Excellent docs for Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/javascript/modals/small)
 
 
+
+[YouTube - Net Ninjs](https://www.youtube.com/watch?v=bxmDnn7lrnk) - which starts with the  
 
 [Book and videos to buy](https://refactoringui.com/book/) - Refactoring UI
 
