@@ -188,9 +188,11 @@ By default it created a free website in the centralus region. There is an advanc
 
 [Source code](https://github.com/tailwindlabs/designing-with-tailwindcss) from the author with nice images for the tutorials.
 
-In VS Code type 
-- `doc` then tab for a html boiler plate snippet
-- `img` then tab for img snippet
+In VS Code for a snippet type ... then tab
+
+- `doc` html starter boiler plate
+- `img` img 
+- `a` a href
 
 As a non designer I'm curious as to what it takes to have a beautiful aesthetic on web design:
 
@@ -767,6 +769,44 @@ Start with the structure then add styling afterwards.
 
 Tailwind in a mobile first framework, so start with that size
 
+```html
+<body>
+    <!-- items-center is all about vertical aligment -->
+    <!-- px and py are padding to give neight and depth to the navbar-->
+    <header class="flex items-center justify-between px-4 py-3 bg-gray-900">
+        <!-- stuff on the left -->
+        <div>
+            <img class="h-8" src="/img/logo-inverted.svg" alt="Workation">
+        </div>
+        <!-- <div class="bg-gray-700 text-white">
+            Login
+        </div>
+ -->
+        <!-- stuff on the right eg hamburger-->
+        <div>
+            <button type="button" class="block text-gray-500 hover:text-white focus:text-white focus:outline-none">
+                <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd"
+                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 
+                        0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+</body>
+```
+
+[![Navbar](/assets/2020-12-30/navbar.jpg "Navbar")](/assets/2020-12-30/navbar.jpg)
+
+The result
+
+## Toggling the Navbar links on Mobile - Video 17
+
+
+- inline (default for a hrefs)
+- block (default for divs)
+
+
 
 ## Parts I will need
 
@@ -793,7 +833,6 @@ Full site
 [tweet image](https://twitter.com/steveschoger/status/935541212626464770)
 
 [here too](https://twitter.com/i/events/935538902240198656)
-
 
 
 ## CSS Preprocessors
@@ -844,8 +883,6 @@ https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 https://www.reddit.com/r/tailwindcss/
 
 [creative-tim Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation)
-
-
 
 ## Tutorials
 
