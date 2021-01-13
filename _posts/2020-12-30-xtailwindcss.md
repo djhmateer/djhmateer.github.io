@@ -255,7 +255,7 @@ There is a lot of design on this splash page to make it appealing, and I love th
 
 4 deafult breakpoints
 
-- sm small breakpoint (> 640px)
+- sm small breakpoint > 640px
 - md > 768px
 - lg > 1024px
 - xl > 1280px
@@ -280,6 +280,8 @@ As we need side by side, we need a flex
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <!-- stops favicon request https://stackoverflow.com/a/13416784/26086> -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <link rel="stylesheet" href="/build/tailwind.css">
 </head>
 <!-- different background colours on different viewport sizes-->
@@ -802,10 +804,106 @@ The result
 
 ## Toggling the Navbar links on Mobile - Video 17
 
+[video 17](https://www.youtube.com/watch?v=5mFGl566wc0&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=17)
 
-- inline (default for a hrefs)
+- inline (default for a hrefs so we make them block so they stack)
 - block (default for divs)
 
+JavaScript to toggle the menu, and to change the icon to an x.
+
+
+```html
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="/build/tailwind.css">
+</head>
+
+<body>
+    <!-- items-center is all about vertical aligment -->
+    <!-- px and py are padding to give neight and depth to the navbar-->
+    <header class="bg-gray-900">
+        <div class="flex items-center justify-between px-4 py-3">
+            <!-- stuff on the left -->
+            <div>
+                <img class="h-8" src="/img/logo-inverted.svg" alt="Workation">
+            </div>
+
+            <!-- stuff on the right eg hamburger-->
+            <!-- currently this is defaulting to open-->
+            <div>
+                <div type="button" onclick="toggleMenu()"
+                    class="block text-gray-500 hover:text-white focus:text-white focus:outline-none">
+                    <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                        <!-- hamburger 3 line icon -->
+                        <path class="toggle" fill-rule="evenodd"
+                            d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 
+                            6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+                        <!-- x defaulting to hidden -->
+                        <path class="toggle hidden" fill-rule="evenodd"
+                            d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0
+                             1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 
+                             4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- insted of py-4 (which does top and bottom padding) we specify manually -->
+        <nav class="toggle hidden px-2 pt-2 pb-4">
+            <!-- mt is margin top to give a bit of space between elements -->
+            <!-- nice hover gray background with rounded -->
+            <a href="#" class="block px-2 py-1 text-white font-semibold hover:bg-gray-800 rounded ">List your
+                property</a>
+            <a href="#" class="mt-1 block px-2 py-1 text-white font-semibold hover:bg-gray-800 rounded ">Trips</a>
+            <a href="#" class="mt-1 block px-2 py-1 text-white font-semibold hover:bg-gray-800 rounded ">Messages</a>
+        </nav>
+    </header>
+
+    <script>
+        // https://w3collective.com/responsive-navbar-tailwind-css/
+        function toggleMenu() {
+            // we've added a custom toggle class
+            const navToggle = document.getElementsByClassName("toggle");
+            for (let i = 0; i < navToggle.length; i++) {
+                navToggle.item(i).classList.toggle("hidden");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+
+```
+
+## Making the Navbar Responsive - Video 18
+
+[Video 18](https://www.youtube.com/watch?v=qrTsS3z8BAw&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=18)
+
+4 deafult breakpoints
+
+- sm small breakpoint > 640px
+- md > 768px
+- lg > 1024px
+- xl > 1280px
+
+Force block (ie to display) the links when > 640.
+Make a flexbox when sm.s
+
+[![Navbars](/assets/2020-12-30/navbars.jpg "Navbars"){:width="900px"}](/assets/2020-12-30/navbars.jpg)
+
+Hamburger menu < 640 and normal menu.
+
+## Styling a Drop Down Menu - Section 4 - Video 19
+
+[Video 19](https://www.youtube.com/watch?v=TQFW3AtrDw4&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=19)
+
+Buttons are inline by default
 
 
 ## Parts I will need
