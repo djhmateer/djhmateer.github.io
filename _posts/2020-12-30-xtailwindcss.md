@@ -967,6 +967,28 @@ PostCSS can be a replacement for Sass (or other CSS preprocessors)
 
 ## Resources
 
+[thread on Twitter](https://twitter.com/coderoflagos/status/1349006904790544388)
+
+[https://builtwithtailwind.com/](https://builtwithtailwind.com/)
+
+[Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation)
+
+[https://play.tailwindcss.com/](https://play.tailwindcss.com/) including dark mode
+
+[https://tailwindcomponents.com/](https://tailwindcomponents.com/)
+
+- [https://tailwindcomponents.com/component/responsive-footer-2](https://tailwindcomponents.com/component/responsive-footer-2) is quite good
+- [https://tailwindcomponents.com/component/simple-registersign-up-form](https://tailwindcomponents.com/component/simple-registersign-up-form) registration form
+- [https://tailwindcomponents.com/component/join-form](https://tailwindcomponents.com/component/join-form)
+
+[https://shuffle.dev/](https://shuffle.dev/) tailwind builder
+
+i[https://merakiui.com/#](https://merakiui.com/#) components - free
+
+[https://www.tailwindtoolbox.com/](https://www.tailwindtoolbox.com/) templates, components and resources
+
+
+
 [awesome-tailwindcss](https://github.com/aniftyco/awesome-tailwindcss)
 
 
@@ -980,7 +1002,6 @@ https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 
 https://www.reddit.com/r/tailwindcss/
 
-[creative-tim Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation)
 
 ## Tutorials
 
