@@ -117,6 +117,66 @@ It matters whether an object is a value or a reference type but the rest is [an 
 
 [String vs string](https://stackoverflow.com/a/215422/26086) - string is an alias for System.String and can be used interchangeably. R# suggests to use the alias string.
 
+
+## 3.5 Warning CS8618  Non-nullable property 'x' must contain a non-null value when exiting constructor.
+
+[Nullable reference types](https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references) MS Documentation
+
+This code will give a compiler warning (remember to set `<nullable>enable</nullable>` in project settings).
+
+```cs
+var person = new Person();
+
+class Person
+{
+    // to avoid warnings, we could set firstName to "" here as a default
+    // which would avoid FirstName being null
+    // which by using string we are saying the reference should not be null (C# 8 nullable ref type)
+    //public Person(int id = 0, string firstName = "")
+    //{
+    //    ID = id;
+    //    FirstName = firstName;
+    //}
+
+    // int (like all simple types eg bool, char, byte etc) is a value type, so directly contains the data
+    // non nullable by default
+    // so an int has an default value of 0 if not set
+    public int ID { get; set; }
+
+    // reference type ie stores references to their data
+    // reference types are nullable by default
+    // https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references
+    // to avoid warnings, if we don't use a ctor to explicitly set the string to something, must set to nullable string
+
+    // compiler warning 
+    // Warning CS8618  Non-nullable property 'FirstName' must contain a non-null value when exiting constructor.
+    // Consider declaring the property as nullable
+
+
+    // essentially we need to tell the compiler that FirstName could be null (or set it in the ctor)
+    public string FirstName { get; set; }
+}
+
+```
+
+## 3.6 Warning CS8602 Dereference of a possibly null reference.
+
+This compiles but gives a runtime error
+
+`Unhandled exception. System.NullReferenceException: Object reference not set to an instance of an object`
+
+With C# 8.0 nullable reference types there is a compiler warning
+
+```cs
+var person = new Person();
+person = null;
+
+if (person.FirstName == "Dave") Console.WriteLine("Dave");
+```
+
+
+
+
 ## 4. Immutable Data Object - Reference type
 
 To enforce immutability on our Data Object / Custom Type / Anemic Object, which is a reference type, we can make the public property read only ie no set.
