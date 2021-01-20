@@ -32,9 +32,6 @@ Still need to explicitly turn on nullable reference types.
   </PropertyGroup>
 ```
 
-
-
-
 This is an exploration of how 
 
 C# 8.0 Nullable Rerence Types
@@ -42,6 +39,54 @@ C# 8.0 Nullable Rerence Types
 Can help in our ASP.NET 5 Razor pages projects
 
 Can [C# 9.0 Records]() help too?
+
+## Display Actors
+
+```cs
+
+public class DBTestModel : PageModel
+{
+    // Required property
+    // the connection string will never be null
+    // there is a guard in LoadFromEnvironment
+    // so it will always be set to something even blank
+    public string ConnectionString { get; set; } = null!;
+
+    // Actors is always going to be a List, possibly empty, never null
+    public List<Actor> Actors { get; set; } = null!;
+
+    public async Task OnGetAsync()
+    {
+        var connectionString = AppConfiguration.LoadFromEnvironment().ConnectionString;
+        ConnectionString = connectionString;
+
+        var actors = await Db.GetActors(connectionString);
+        //var users = await Db.GetNoUsers(connectionString);
+
+        //foreach (var actor in actors.ToList())
+        //{
+        //    Log.Information($"{actor}");
+        //    var (id, name, sex) = actor; // record deconstruction
+        //}
+        Actors = actors.ToList();
+    }
+}
+
+// positional record
+// this is nice, but for ViewModels
+// I need a class to use Attributes that razor pages can pick up
+public record Actor(int ActorID, string Name, string Sex);
+
+
+//public class UserX
+//{
+//    public Guid UserId { get; set; }
+//    public string? UserName { get; set; }
+//}
+```
+
+
+## Login Form
 
 The source code for this is in RecordTest
 
@@ -60,7 +105,7 @@ public class LoginModelNRT : PageModel
     // https://stackoverflow.com/a/54973095/26086
     // so this will get rid of the warnings as we are happy we will never get dereferences on the front
     // ie we are happy the underlying framework will not produce null reference exceptions
-    public InputModel Input { get; set; } = default!;
+    public InputModel Input { get; set; } = null!;
     // there may not be a return url
     //public string? ReturnUrl { get; set; }
 
