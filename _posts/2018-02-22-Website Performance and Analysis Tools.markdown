@@ -26,9 +26,18 @@ Don't get stung :-) Here are some of my favourite tools for web perf and analyti
 
 [Builtwith.com](https://builtwith.com) - eg is this a wordpress site, what webserver etc..
 
-## Link Checking
+## Broken Link Checking
 
 [Deadlinkchecker.com](https://www.deadlinkchecker.com) This handles redirects well
+
+[Sitechecker.pro/tool/crawl-report/](https://sitechecker.pro/tool/crawl-report/) - Chrome plugin too
+
+## XML Sitemap Generator
+
+[https://www.xml-sitemaps.com/](https://www.xml-sitemaps.com/) 500 free page limit
+
+[https://pro-sitemaps.com/](https://pro-sitemaps.com/) The pro version of above
+
 
 ## Command line tools
 
@@ -63,4 +72,10 @@ Don't get stung :-) Here are some of my favourite tools for web perf and analyti
 
 [Guidelines](https://www.wuhcag.com/wcag-checklist/)
 
-[Lighthouse Chrome extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en)
+[Lighthouse Chrome extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) - this is included in Chrome devceloper extensions now (2021)
+
+## Domains and Registration
+
+[tld-list.com](https://tld-list.com/)  shows where to get cheap domain names  
+
+[Cloudflare](https://cloudflare.com) (not for .co.uk yet) as they charge wholesale if you move domain to them  
