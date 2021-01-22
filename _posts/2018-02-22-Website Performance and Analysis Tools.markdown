@@ -32,11 +32,20 @@ Don't get stung :-) Here are some of my favourite tools for web perf and analyti
 
 [Sitechecker.pro/tool/crawl-report/](https://sitechecker.pro/tool/crawl-report/) - Chrome plugin too
 
+[https://www.deadlinkchecker.com/](https://www.deadlinkchecker.com/)
+
+[https://ahrefs.com/broken-link-checker](https://ahrefs.com/broken-link-checker)
+
+[https://www.drlinkcheck.com/](https://www.drlinkcheck.com/)
+
 ## XML Sitemap Generator
 
 [https://www.xml-sitemaps.com/](https://www.xml-sitemaps.com/) 500 free page limit
 
 [https://pro-sitemaps.com/](https://pro-sitemaps.com/) The pro version of above
+
+
+[https://developers.google.com/search/docs/advanced/sitemaps/overview](https://developers.google.com/search/docs/advanced/sitemaps/overview) - What is a sitemap?
 
 
 ## Command line tools

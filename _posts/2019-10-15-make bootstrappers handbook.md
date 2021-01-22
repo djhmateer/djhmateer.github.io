@@ -39,6 +39,20 @@ Also what are your **passions**.
 - Who does it solve it for?
 - How easy to build/execute
 
+## xx strategy
+
+AndyB
+
+- headline 
+- looking at the competition for ideas of common workflows, features
+
+- user stories
+- user journeys diagram showing the logic ie flowmapp.com
+- wireframes clickable prototype eg invision 
+- designs
+- build
+
+
 ## Build
 
 I like to think about the headline of the product (Jeff Bezos - write the headline) to focus on building the MVP (Minimum Viable Product) which should work well.
