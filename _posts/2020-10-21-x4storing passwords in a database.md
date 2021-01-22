@@ -48,6 +48,7 @@ The salt is stored along with the hash int he db ie password + salt
 
 PBKDF2 is what ASP.NET Core Identity uses under the hood [PasswordHasher in MS Identity](https://github.com/dotnet/aspnetcore/blob/master/src/Identity/Extensions.Core/src/PasswordHasher.cs) so I'm going to implement exactly that (with only the bits I need)
 
+[Rob Conery - Deciding which hashing algorithm to use](https://bigmachine.io//blog/deciding-which-hashing-algorithm-to-use) digs deep.
 ## Source
 
 ```cs
