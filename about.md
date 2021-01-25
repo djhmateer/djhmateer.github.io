@@ -25,7 +25,7 @@ Dave did an interview on [Channel 9](https://channel9.msdn.com/events/DDD/DDD12-
 
 [![Screenshot](/assets/SkillsMatters2.png)]
 
-Refactoring towards testable code and happier developers - skillsmatter's video currently down https://skillsmatter.com/skillscasts/8181-lscc-talks-may
+Refactoring towards testable code and happier developers - [https://skillsmatter.com/skillscasts/8181-lscc-talks-may](https://skillsmatter.com/skillscasts/8181-lscc-talks-may)
 
 20min video of the talk on code quality
 
@@ -39,16 +39,16 @@ He will start at the beginning then get more detailed covering: formatting, comm
 
 [![Screenshot](/assets/SkillsMatters1.png)]
 
-30,000,000+ songs! Explore your favourite music with Spotify's JSON Web API, MVC5, Dapper and OAuth2 - skills matter video is down https://skillsmatter.com/skillscasts/6350-30m-plus-songs-explore-your-favorite-music-with-spotifys-json-web-api-mvc5-dapper-and-oauth2
+30,000,000+ songs! Explore your favourite music with Spotify's JSON Web API, MVC5, Dapper and OAuth2 [https://skillsmatter.com/skillscasts/6350-30m-plus-songs-explore-your-favorite-music-with-spotifys-json-web-api-mvc5-dapper-and-oauth2](https://skillsmatter.com/skillscasts/6350-30m-plus-songs-explore-your-favorite-music-with-spotifys-json-web-api-mvc5-dapper-and-oauth2)
 
 Challenge: "While coding at work I want to listen to great songs and albums that I know" - This live MVC5 site shows the most influential, seminal albums and great songs of different musical era's. Explore the lists, preview songs (without a Spotify account). Select what you like, then save this playlist to your Spotify account.
 
 I will start from basics and move quickly - how to explore a JSON API with .NET using GET, POST, PUT and DELETE
 
-Find Artists, Songs, Playlists and Users
-Display great images and Artist Wikipedia articles
-Create and follow playlists
-Learn about OAuth2 - its seems complicated from the outside… I'll show you how to do it.
+- Find Artists, Songs, Playlists and Users
+- Display great images and Artist Wikipedia articles
+- Create and follow playlists
+- Learn about OAuth2 - its seems complicated from the outside… I'll show you how to do it.
 
 Use MVC5 simply and close to the metal with Dapper as a high performance ORM.
 
