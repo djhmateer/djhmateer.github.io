@@ -95,6 +95,30 @@ I like links with the date in them so added this to the config file:
 
 [https://themes.gohugo.io/blonde/](https://themes.gohugo.io/blonde/) is the one I'm going to try as it uses [tailwindcss](https://tailwindcss.com/) which I'm a fan of.
 
+```bash
+git submodule add https://github.com/opera7133/Blonde.git themes/Blonde
+cd themes/Blonde
+npm install
+
+sudo npm install -g postcss postcss-cli
+sudo npm install -g autoprefixer
+
+# to update the submodule
+git submodule update --remote --merge
+```
+
+After doing this I got an error building the site:
+
+Error: Error building site: failed to render pages: render of "home" failed: "/home/dave/beer/hugo-quickstart/themes/Blonde/layouts/_default/list.html:8:32": execute of template failed: template: _default/list.html:8:32: executing "main" at <.Paginate>: error calling Paginate: 'pager size' must be a positive integer
+
+### Next theme
+
+[https://github.com/leonardofaria/bento](https://github.com/leonardofaria/bento)
+
+**HERE** not rendering quite right
+
+
+
 ## Hosting on Netlify
 
 [host on Netlify](https://gohugo.io/hosting-and-deployment/hosting-on-netlify/) 
