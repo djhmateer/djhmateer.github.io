@@ -31,6 +31,7 @@ The drivers I'm running are from Jan 18, 2021.
 Card should run at GPU Clock of 1010MHz
 
 
+.
 
 
 ## Fan Speed
