@@ -72,5 +72,7 @@ unplug then plug in the monitor
 watch on display settings 
 maybe hit ati settings too (right click in taskbar)
 
+.
+
 
 
