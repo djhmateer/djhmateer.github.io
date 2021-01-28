@@ -12,27 +12,31 @@ image: /assets/2020-10-27/davemateer.jpg
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
+Having a great development machine setup is important. I've been struggling with my graphics card and monitor setup to get it running at optimal capacity for many year, and frankly gave up.
+
+Here is the story of me somewhat fixing it
+
+And not wanting to touch it now.
+
+Having a great dispaly is so nice!
+
 
 ## Graphics Card AMD Radeon
 
-Looking on the sticker on the back I've got an [MSI R7970-2PMD3GD5/OC](https://www.msi.com/Graphics-Card/R79702PMD3GD5OC/Specification).
+Looking on the sticker on the back I've got an [MSI R7970-2PMD3GD5/OC](https://www.msi.com/Graphics-Card/R79702PMD3GD5OC/Specification)
 
-The GPU is an ATI Radeon R9 200 / HD 7970.
+The GPU is an ATI Radeon R9 200 / HD 7970 from around 2012.
 
 This can output at 4k ie:
 
 - 3840*2160
 - 60Hhz on the mini display port
 
-The drivers I'm running are from Jan 18, 2021.
+Strangely the specs sheets say the max resolution is lower, but I can run 4k fine. Possibly I've got a newer model.
 
-[From here](https://www.amd.com/en/support/graphics/amd-radeon-hd/amd-radeon-hd-7000-series/amd-radeon-hd-7970)
+The drivers I'm running are from Jan 18, 2021 [from here](https://www.amd.com/en/support/graphics/amd-radeon-hd/amd-radeon-hd-7000-series/amd-radeon-hd-7970)
 
-Card should run at GPU Clock of 1010MHz
-
-
-.
-
+Card should run at GPU Clock of 1010MHz, bit it does seem to throttle back 500MHz which is good.
 
 ## Fan Speed
 
@@ -57,5 +61,6 @@ This can operate at 3840*2160 at 60Hz on the Display port.
 - DisplayPort 1.1: 3840 x 2160 @ 30Hz
 - DisplayPort 1.2: 3840 x 2160 @ 60Hz
 
+I've foudn the biggest problem here 
 
 [![Demo site](/assets/2021-01-24/serve.jpg "demo"){:width="500px"}](/assets/2021-01-24/serve.jpg)
