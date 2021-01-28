@@ -12,11 +12,11 @@ image: /assets/2020-10-27/davemateer.jpg
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
-Having a great development machine setup is important. I've been struggling with my graphics card and monitor setup to get it running at optimal capacity for many year, and frankly gave up.
+Having a great development machine setup is important. I've been struggling with my graphics card and monitor setup to get it running at optimal capacity for many years, and frankly gave up.
 
 Here is the story of me somewhat fixing it
 
-And not wanting to touch it now.
+And not wanting to touch the setup 
 
 Having a great dispaly is so nice!
 
@@ -42,13 +42,16 @@ Card should run at GPU Clock of 1010MHz, bit it does seem to throttle back 500MH
 
 [MSI AFterburner](https://www.msi.com/Landing/afterburner) I use to control my fan speed which automatically ramps up and down too fast and is distracting in everyday use.
 
-[![Demo site](/assets/2021-01-27/throttled.jpg "throttled"){:width="500px"}](/assets/2021-01-27/throttled.jpg)
+[![Demo site](/assets/2021-01-27/fan.jpg "fan"){:width="500px"}](/assets/2021-01-27/fan.jpg)
+
+I've noticed that Furmark will run so hot - up to 97oC that my cooler can't keep up, then the GPU thermal throttles back to 500MHz. The only way to reset it I've found is to reboot.
 
 ## GPU Benchmarks
 
 [geeks3d](https://www.geeks3d.com/dlz/#gpu_benchmarks)
 
 This includes GPUz
+
 
 ## Philips BDM4037U
 
@@ -61,6 +64,13 @@ This can operate at 3840*2160 at 60Hz on the Display port.
 - DisplayPort 1.1: 3840 x 2160 @ 30Hz
 - DisplayPort 1.2: 3840 x 2160 @ 60Hz
 
-I've foudn the biggest problem here 
+I've found the biggest problem is that the montor is 'smart' and tries to figure what what is connected and therefore what to display. And the graphics card is 'smart' and does the same thing. So it is very hard to get 4k running at 60Hz
 
-[![Demo site](/assets/2021-01-24/serve.jpg "demo"){:width="500px"}](/assets/2021-01-24/serve.jpg)
+use the grey cable
+and the hdmi cable
+unplug then plug in the monitor
+watch on display settings 
+maybe hit ati settings too (right click in taskbar)
+
+
+
