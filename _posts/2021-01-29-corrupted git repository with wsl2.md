@@ -50,3 +50,7 @@ find .git/objects/ -type f -empty | xargs rm
 git fetch -p
 git fsck --full
 ```
+
+## Resources
+
+[hacker news](https://news.ycombinator.com/item?id=25612962)

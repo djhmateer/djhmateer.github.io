@@ -25,7 +25,9 @@ Having a great dispaly is so nice!
 
 Looking on the sticker on the back I've got an [MSI R7970-2PMD3GD5/OC](https://www.msi.com/Graphics-Card/R79702PMD3GD5OC/Specification)
 
-The GPU is an ATI Radeon R9 200 / HD 7970 from around 2012.
+[geeks3d](https://www.geeks3d.com/dlz/#gpu_benchmarks) includes GPUz which gives great information about the card.
+
+The GPU is an ATI Radeon R9 200 / HD 7970 from around 2013. [techpowerup.com specs](https://www.techpowerup.com/gpu-specs/msi-hd-7970-oc.b339). 2048 cores. 3GB RAM
 
 This can output at 4k ie:
 
@@ -48,12 +50,6 @@ Card should run at GPU Clock of 1010MHz, bit it does seem to throttle back 500MH
 
 I've noticed that Furmark will run so hot - up to 97oC that my cooler can't keep up, then the GPU thermal throttles back to 500MHz. The only way to reset it I've found is to reboot.
 
-## GPU Benchmarks
-
-[geeks3d](https://www.geeks3d.com/dlz/#gpu_benchmarks)
-
-This includes GPUz
-
 
 ## Philips BDM4037U
 
@@ -75,5 +71,12 @@ My tactics are:
 - unplug the power of the monitor then plug back in
 - watch on display settings 
 
+## CUDA
 
+[https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
+
+Installed Nsight for VS 2019
+Nsight monitor
+
+There are VS2019 samples in 
 
