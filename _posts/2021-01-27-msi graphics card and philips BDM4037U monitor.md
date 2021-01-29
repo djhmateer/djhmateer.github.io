@@ -42,6 +42,8 @@ Card should run at GPU Clock of 1010MHz, bit it does seem to throttle back 500MH
 
 [MSI AFterburner](https://www.msi.com/Landing/afterburner) I use to control my fan speed which automatically ramps up and down too fast and is distracting in everyday use.
 
+[![Demo site](/assets/2021-01-27/gamer.jpg "fan"){:width="500px"}](/assets/2021-01-27/gamer.jpg)
+
 [![Demo site](/assets/2021-01-27/fan.jpg "fan"){:width="500px"}](/assets/2021-01-27/fan.jpg)
 
 I've noticed that Furmark will run so hot - up to 97oC that my cooler can't keep up, then the GPU thermal throttles back to 500MHz. The only way to reset it I've found is to reboot.
@@ -66,13 +68,12 @@ This can operate at 3840*2160 at 60Hz on the Display port.
 
 I've found the biggest problem is that the montor is 'smart' and tries to figure what what is connected and therefore what to display. And the graphics card is 'smart' and does the same thing. So it is very hard to get 4k running at 60Hz
 
-use the grey cable
-and the hdmi cable
-unplug then plug in the monitor
-watch on display settings 
-maybe hit ati settings too (right click in taskbar)
+My tactics are:
 
-.
+- use the grey cable (ie a known good one)
+- and the hdmi cable I connected to another external monitor
+- unplug the power of the monitor then plug back in
+- watch on display settings 
 
 
 
