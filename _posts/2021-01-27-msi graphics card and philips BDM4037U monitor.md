@@ -78,5 +78,6 @@ My tactics are:
 Installed Nsight for VS 2019
 Nsight monitor
 
-There are VS2019 samples in 
+There are VS2019 samples in `c:\ProgramData\NVIDIA Corporation\CUDA Samples\v11.2`
+
 

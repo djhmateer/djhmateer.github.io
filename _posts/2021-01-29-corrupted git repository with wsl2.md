@@ -39,6 +39,10 @@ sudo apt install git
 
 okay now I'm at 2.30.0
 
+This didn't work
+
+
+
 
 ## Fix broken Git repo
 
