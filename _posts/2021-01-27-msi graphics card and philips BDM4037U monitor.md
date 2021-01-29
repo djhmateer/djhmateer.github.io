@@ -21,15 +21,22 @@ And not wanting to touch the setup
 Having a great dispaly is so nice!
 
 
-## Graphics Card AMD Radeon
+## Graphics Card MSI HD 7970 OC Radeon
 
 Looking on the sticker on the back I've got an [MSI R7970-2PMD3GD5/OC](https://www.msi.com/Graphics-Card/R79702PMD3GD5OC/Specification)
 
+The GPU is an MSI Radeon HD 7970 [techpowerup.com specs](https://www.techpowerup.com/gpu-specs/msi-hd-7970-oc.b339).
+
+- 2048 cores
+- 3GB Memory
+- 1010 MHz GPU clock
+- 9th Jan 2012 release
+
+[gpuzoo excellent specs](https://www.gpuzoo.com/GPU-AMD/Radeon_HD_7970_GHz_Edition.html)
+
 [geeks3d](https://www.geeks3d.com/dlz/#gpu_benchmarks) includes GPUz which gives great information about the card.
 
-The GPU is an ATI Radeon R9 200 / HD 7970 from around 2013. [techpowerup.com specs](https://www.techpowerup.com/gpu-specs/msi-hd-7970-oc.b339). 2048 cores. 3GB RAM
-
-This can output at 4k ie:
+It can output at 4k ie:
 
 - 3840*2160
 - 60Hhz on the mini display port
