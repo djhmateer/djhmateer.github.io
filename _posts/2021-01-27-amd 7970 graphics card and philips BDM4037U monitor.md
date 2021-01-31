@@ -29,7 +29,7 @@ I've got 2 of these cards which were bought back around April 2013 for Bitcoin m
 
 Looking on the sticker on the back I've got a: R7970 - 2PMD3GD5/OC
 
-On the front it is badged as a [MSI - Micro Star International](https://en.wikipedia.org/wiki/Micro-Star_International) card. MSI make cards based on Nvidia and AMD gpu chips.
+On the front it is badged as a [MSI - Micro Star International](https://en.wikipedia.org/wiki/Micro-Star_International) card. MSI make cards based on Nvidia and AMD gpu chips. [https://gpu.userbenchmark.com/](https://gpu.userbenchmark.com/) shows that Nvidia have double the number of cards that AMD have, and currently have a higher user rating. It is hard to get graphics cards just now (eg the AMD Radeon 6800 / 6900 XT and Nvidia 3080 and 3090)
 
 The card is based on the reference [AMD Radeon HD 7000 series - wikipedia article](https://en.wikipedia.org/wiki/Radeon_HD_7000_series) which is a family of GPU's developed by [AMD - Advanced Micro Devices](https://en.wikipedia.org/wiki/Advanced_Micro_Devices) and manufactured by TSMC around Q1 2012. [ATI was bought by AMD in 2006](https://en.wikipedia.org/wiki/ATI_Technologies) and is now a division of AMD. 
 
@@ -39,11 +39,11 @@ It uses the 28nm manufacturing process. By comparison the Nvidia GEFORCE RTX 309
 
 In the winter of 2011 this card sold for around $549.
 
-Many manufacturers (partners) used this design (reference design card) eg Club, Diamon, Gigabyte, HIS, Sapphire, PowerColor. All kept the 7970 in the product name. 
+[![Rig](/assets/2021-01-27/rig.jpg "rig"){:width="500px"}](/assets/2021-01-27/rig.jpg)
 
-AMD themselves rebranded this as the [R9 280X](https://www.techpowerup.com/gpu-specs/radeon-r9-280x.c2398) in late 2013 for $299.
+Many manufacturers (partners) used this design (reference design card) eg Club, Diamon, Gigabyte, HIS, Sapphire, PowerColor. All kept the 7970 in the product name. Except for AMD themselves who rebranded this as the [R9 280X](https://www.techpowerup.com/gpu-specs/radeon-r9-280x.c2398) in late 2013 for $299.
 
-In 2020 this is about a $60USD card on ebay. Apparently running at 1080p (1920 * 1080) is the way to go
+In 2020 this is about a $60USD card on ebay. Apparently running at 1080p (1920 * 1080) is the way to go. 
 
 [MSI R7970-2PMD3GD5/OC](https://www.msi.com/Graphics-Card/R79702PMD3GD5OC/Specification)
 
@@ -57,6 +57,7 @@ In 2020 this is about a $60USD card on ebay. Apparently running at 1080p (1920 *
 
 [techpowerup.com specs](https://www.techpowerup.com/gpu-specs/msi-hd-7970-oc.b339) are the most accurate.
 
+[![My card 7970](/assets/2021-01-27/outputs.jpg "7970"){:width="500px"}](/assets/2021-01-27/outputs.jpg)
 
 - 1 DVI Dual link DVI-I x 1
 - 1 HDMI version 1.4a
@@ -69,11 +70,18 @@ It can output at 4k ie:
 
 The drivers I'm running are from Jan 18, 2021 [from here](https://www.amd.com/en/support/graphics/amd-radeon-hd/amd-radeon-hd-7000-series/amd-radeon-hd-7970)
 
-Card can run at GPU Clock of 1010 MHz, 500MHz, then 300 MHz. If you exceed around 100o it will throttle back to 500 MHz.
+Card can run at GPU Clock of 1010 MHz, 500MHz, then 300 MHz. If you exceed around 100oC it will throttle back to 500 MHz.
 
 ## Fan Speed
 
-[![Rig](/assets/2021-01-27/rig.jpg "rig"){:width="500px"}](/assets/2021-01-27/rig.jpg)
+[![My card 7970](/assets/2021-01-27/inside.jpg "7970"){:width="500px"}](/assets/2021-01-27/inside.jpg)
+
+So - here is the my real issue with this card.
+
+It is loud.
+
+Screaming like a banshee loud under full load.
+
 
 [MSI Afterburner](https://www.msi.com/Landing/afterburner) I use to control my fan speed which automatically ramps up and down too quckly and is distracting in everyday use. I have noticed that my cases internal fans were not at max, so this helps cooling now, and the ramping up and down of the gpu fan isn't as pronounced.
 
@@ -82,8 +90,25 @@ Card can run at GPU Clock of 1010 MHz, 500MHz, then 300 MHz. If you exceed aroun
 
 When cranking the card hard eg [War Thunder](https://store.steampowered.com/app/236390/War_Thunder/) which is free to play, on 1080p at Max settings, I'm getting around 100fps.
 
+<!-- [![Demo site](/assets/2021-01-27/138.jpg "fan"){:width="800px"}](/assets/2021-01-27/138.jpg) -->
+[![Demo site](/assets/2021-01-27/138.jpg "fan")](/assets/2021-01-27/138.jpg)
 
-I've noticed that Furmark will run so hot - up to 97oC that my cooler can't keep up, then the GPU thermal throttles back to 500MHz. The only way to reset it I've found is to reboot.
+The game runs really well!
+
+
+[![Demo site](/assets/2021-01-27/91.jpg "fan")](/assets/2021-01-27/91.jpg)
+
+Fan going around 90%, temp hitting 97. Super loud. Not good.
+
+After around 100oC the card will thermally throttle to 500MHz clock speed, and I have to restart the machine to get back to full power.
+
+Under everyday load (I'm a developer) I'm throttling the card to 505MHz to keep the temps down and the fan speed down.
+
+## After market cooler
+
+[Arctic Accelero Xtreme 7970 Card Cooler](https://www.amazon.co.uk/Arctic-Cooling-Accelero-Xtreme-7970/dp/B0074VVK52)
+
+[https://www.arctic.de/en/ax3 - Arctic Accelero Xtreme III or IV](https://www.arctic.de/en/ax3) Maybe this newer cooler would help?
 
 
 ## Philips BDM4037U
