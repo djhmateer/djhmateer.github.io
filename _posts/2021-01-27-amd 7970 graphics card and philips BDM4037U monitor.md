@@ -102,6 +102,8 @@ Fan going around 90%, temp hitting 97. Super loud. Not good.
 
 After around 100oC the card will thermally throttle to 500MHz clock speed, and I have to restart the machine to get back to full power.
 
+[![Demo site](/assets/2021-01-27/throttled2.jpg "fan"){:width="700px"}](/assets/2021-01-27/throttled2.jpg)
+
 Under everyday load (I'm a developer) I'm throttling the card to 505MHz to keep the temps down and the fan speed down.
 
 ## After market cooler
