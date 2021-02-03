@@ -393,6 +393,16 @@ We need to register an AuthenticationHandler to use during testing
 
 ### Custom 404
 
+I think this strategy is good
+
+// https://khalidabuhakmeh.com/handle-http-status-codes-with-razor-pages
+// https://andrewlock.net/retrieving-the-path-that-generated-an-error-with-the-statuscodepages-middleware/
+// todo catch any non 404 on on the page side
+app.UseStatusCodePagesWithReExecute("/404", "?statusCode={0}");
+
+
+This works but had a glitch with /Dashboard/1 routing and sending back a return NotFound()
+
 https://joonasw.net/view/custom-error-pages
 
 Use this so doesn't interfere with Forbidden status code return.
