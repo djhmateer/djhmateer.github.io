@@ -211,8 +211,17 @@ Use class for the InputModel (ViewModel?) so that handy attributes work. eg
 
 When is ErrorMessage used?
 
-**next try a DTO maybe with a record
-a standard form?
+
+I am using NRTs in my new Razor Pages projects and using positional records eg:
+
+```cs
+public record Login(string Name)...
+
+public record LoginResult(int LoginID, string Name...)
+```
+
+Dapper works just fine hydrating the objects
+
 
 ## Not use for Razor?
 
