@@ -17,10 +17,13 @@ I wanted a static site generator which
 - Was open source
 - Had lots of support
 - Had a tailwindcss theme
-- Wasn't Jekyll (as I've use it for years and have found it good, but the eco-system make me nervous)
+- Wasn't Jekyll (as I've use it for years and have found it good, but the eco-system make me nervous as I'm not a rubyist.. and I wanted to explore something else)
 
-I'll probably use Netlify, even though I rate GitHub Pages really well. Its annoying to get multiple sites on one GH account, and also GHP is not for commercial projects. I am intersted in commercial project hosting.
+I'll probably use Netlify, even though I rate GitHub Pages (GHP) really well. Its annoying to get multiple sites on one GH account, and also GHP is not for commercial projects. I am intersted in commercial project hosting.
 
+So in summary this is the plan:
+
+- Hugo running on WSL2 on Win 10 for static site generation
 - GitHub for source code
 - Netlify for website hosting
 - Netlify for SSL?
@@ -55,6 +58,9 @@ git init
 # adds themes/ananke
 # submodule allows you to keep a git repo as a subdirectory of another git repo
 git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
+
+# updating all the submodules
+# git submodule update --remote --merge
 
 echo 'theme = "ananke"' >> config.toml
 
