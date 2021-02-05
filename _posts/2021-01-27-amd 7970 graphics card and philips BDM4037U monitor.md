@@ -126,6 +126,15 @@ This can operate at 3840*2160 at 60Hz on the Display port.
 
 I've found the biggest problem is that the montor is 'smart' and tries to figure what what is connected and therefore what to display. And the graphics card is 'smart' and does the same thing. So it is very hard to get 4k running at 60Hz
 
+
+### The System has detected a link failure
+
+**update** it also something to do with this error from the AMD driver
+
+[![Demo site](/assets/2021-01-27/error.jpg "error")](/assets/2021-01-27/error.jpg)
+
+From googling around it seems it is to do with the type of Display Port 1.2 cable. And it could be a driver issues problem.
+
 My tactics are:
 
 - use the grey cable (ie a known good one)
@@ -142,3 +151,11 @@ Cuda is limited to NVIDIA hardware. OpenCL is the best alternative on AMD.
 ## Youtube
 
 [2016 - Is the HD 7970 still worth buying](https://www.youtube.com/watch?v=rpXpA-xteAI)
+
+## Future
+
+So I do have annoying stability issues with this setup, however when it is working (and the kids don't bump into the computer), it does work beautifully.
+
+However this is not a smart way to go.
+
+I think I'll be going towards an NVidia card, water cooled potentially for less noise whilst gaming, and for the ability to do CUDA based programming.
