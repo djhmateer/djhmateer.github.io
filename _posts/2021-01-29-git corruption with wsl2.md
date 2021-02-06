@@ -1,22 +1,28 @@
 ---
 layout: post
 title: Git corruption with WSL2 
-description: 
-menu: review
-categories: git wsl2 
+description: Having a corrupt git repo is scary. For the last few days I've had this blog's git repo getting corrupted. There is an insiders build fix.
+#menu: review
+categories: Git WSL2 
 published: true 
 comments: false     
-sitemap: false
-image: /assets/2020-10-27/davemateer.jpg
+sitemap: true
+image: /assets/2021-01-27/corrupt.jpg
 ---
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
-Summary: There is a [fix on dev insider build](https://github.com/microsoft/WSL/issues/5895)
+[![Corrupt](/assets/2021-01-27/corrupt.jpg "Michael Dziedzic on Unsplash"){:width="600px"}](https://unsplash.com/@lazycreekimages)
+
+Having a corrupt git repo is scary.
+
+For the last few weeks I've had this blog's git repo getting randomly corrupted.
+
+Summary: There is a [fix on the Windows Dev Insider Build](https://github.com/microsoft/WSL/issues/5895)
 
 ## Error: object file is empty
 
-For the last few days I've had this blog's git repo getting corrupted with errors like:
+I've had this blog's git repo getting corrupted with errors like:
 
 ```bash
 error: object file .git/objects/79/cbddeb3c2e2e6cb41f301bdf1e10c0508066e3 is empty
@@ -57,6 +63,8 @@ git fsck --full
 ## Resources and a Fix!
 
 [Hacker news](https://news.ycombinator.com/item?id=25612962) discussion with a broken link which should be: [WSL issue on GH](https://github.com/microsoft/WSL/issues/5026)
+
+[Updated HN link](https://news.ycombinator.com/item?id=26045767) just in case there is any interesting future discussion.
 
 [Fix on dev insider build](https://github.com/microsoft/WSL/issues/5895) of insiders preview build 21292 in Mid Jan 2021 [21292 announcement](https://blogs.windows.com/windows-insider/2021/01/13/announcing-windows-10-insider-preview-build-21292/)
 
