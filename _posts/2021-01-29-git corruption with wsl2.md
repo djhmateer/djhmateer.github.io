@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Corrupted Git repository with WSL2 
+title: Git corruption with WSL2 
 description: 
 menu: review
 categories: git wsl2 
@@ -11,6 +11,8 @@ image: /assets/2020-10-27/davemateer.jpg
 ---
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
+
+Summary: There is a [fix on dev insider build](https://github.com/microsoft/WSL/issues/5895)
 
 ## Error: object file is empty
 
@@ -41,9 +43,6 @@ okay now I'm at 2.30.0
 
 This didn't work
 
-
-
-
 ## Fix broken Git repo
 
 [Stackoverflow answer](https://stackoverflow.com/a/31110176/26086)
@@ -55,6 +54,11 @@ git fetch -p
 git fsck --full
 ```
 
-## Resources
+## Resources and a Fix!
 
-[hacker news](https://news.ycombinator.com/item?id=25612962)
+[Hacker news](https://news.ycombinator.com/item?id=25612962) discussion with a broken link which should be: [WSL issue on GH](https://github.com/microsoft/WSL/issues/5026)
+
+[Fix on dev insider build](https://github.com/microsoft/WSL/issues/5895) of insiders preview build 21292 in Mid Jan 2021 [21292 announcement](https://blogs.windows.com/windows-insider/2021/01/13/announcing-windows-10-insider-preview-build-21292/)
+
+I can't confirm that it is fixed yet as don't want to run Dev insider build on my main machine yet.
+
