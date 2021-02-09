@@ -88,16 +88,10 @@ public record Actor(int ActorID, string Name, string Sex);
 
 ## Login Form
 
-The source code for this is in RecordTest
+The source code for this is in [RecordTest](https://github.com/djhmateer/record-test)
 
 ```cs
-// a page to test nullable ref types
-// with inbound form post
-// https://github.com/dotnet/aspnetcore/issues/22656
-// Scaffolding code for login needs more work from the team
-// nullable ref types more useful to us for own custom code
-
-public class LoginModelNRT : PageModel
+public class LoginModelNRTB : PageModel
 {
     [BindProperty]
     // there will never be an InputModel on get
@@ -106,93 +100,65 @@ public class LoginModelNRT : PageModel
     // so this will get rid of the warnings as we are happy we will never get dereferences on the front
     // ie we are happy the underlying framework will not produce null reference exceptions
     public InputModel Input { get; set; } = null!;
-    // there may not be a return url
-    //public string? ReturnUrl { get; set; }
 
-    //[TempData]
-    //// there may b
-    //public string? ErrorMessage { get; set; }
 
-    //public record InputModel
+    // 1. Original Class which works
+    //public class InputModel
     //{
-    //    [EmailAddress] public string Email { get; init; } = null!;
+    //    // don't need required as Email property is non nullable
+    //    //[Required]
+    //    // makes sure a regex fires to be in the correct email address form
+    //    [EmailAddress]
+    //    // there should always be an email posted, but maybe null if js validator doesn't fire
+    //    // we are happy the underlying framework handles it, 
+    //    public string Email { get; set; } = null!;
 
-    //    [DataType(DataType.Password)] public string Password { get; init; } = null!;
+    //    // When the property is called Password we don't need a [DataType(DataType.Password)]
+    //    //[DataType(DataType.Password)]
+    //    public string Password { get; set; } = null!;
 
     //    [Display(Name = "Remember me?")]
-    //    public bool RememberMe { get; init; }
+    //    public bool RememberMe { get; set; }
     //}
 
-    // positional record attribute not being picked up
-    //public record InputModel(
-    //    string Email,
-    //    [DataType(DataType.Password)] string PasswordB,
-    //    [Display(Name = "Remember me?")] bool RememberMe);
-
-    public class InputModel
+    // 2. Record which works
+    public record InputModel
     {
-        // https://docs.microsoft.com/en-us/dotnet/csharp/nullable-migration-strategies#late-initialized-properties-data-transfer-objects-and-nullability
+        [EmailAddress] 
+        public string Email { get; init; } = null!;
 
-        // can't use this ctor with razor pages
-        // InvalidOperationException: Could not create an instance of type
-        // Model bound complex types must not be abstract or value types and must have a parameterless constructor
-        //public InputModel(string email, string password)
-        //{
-        //    Email = email;
-        //    Password = password;
-        //}
-
-        // don't need required as it is non nullable
-        //[Required]
-        // makes sure a regex fires to be in the correct email address form
-        [EmailAddress]
-        // there should always be an email posted, but maybe null if js validator doesn't fire
-        // we are happy the underlying framework handles it, 
-        public string Email { get; set; } = null!;
-
-        // When the property is called password we don't need a [DataType(DataType.Password)]
-        //[DataType(DataType.Password)]
-        public string Password { get; set; } = null!;
+        [DataType(DataType.Password)]
+        public string PasswordB { get; init; } = null!;
 
         [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
+        public bool RememberMe { get; init; }
     }
 
-    // need nullable returnUrl to avoid https://github.com/dotnet/aspnetcore/issues/22656
-    // a front end error showing that the return field is required (which it isn't required, so it should be nullable)
-    public void OnGet(string? returnUrl = null)
+    // 3. Positional record attributes not being picked up
+    // https://stackoverflow.com/questions/66120831/positional-record-attributes-in-asp-net-core
+    // https://stackoverflow.com/questions/65934513/net-5-0-web-api-wont-work-with-record-featuring-required-properties
+    //public record InputModel(
+    //    string Email,
+    //    [property:DataType(DataType.Password)] string PasswordB,
+    //    [property:Display(Name = "Remember me?")] bool RememberMe);
+
+
+    public void OnGet() { }
+
+    public IActionResult OnPost()
     {
-        Log.Information(returnUrl);
-        // not sure when ErrorMessage is used
-        //if (!string.IsNullOrEmpty(ErrorMessage))
-        //{
-        //    ModelState.AddModelError(string.Empty, ErrorMessage);
-        //}
-
-        //ReturnUrl = returnUrl;
-    }
-
-    //public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
-    // Input property of type InputModel is bound because of the [BindProperty] attribute
-    public IActionResult OnPost(string? returnUrl = null)
-    {
-        //ReturnUrl = returnUrl;
-
         if (ModelState.IsValid)
         {
-            //var user = await AuthenticateUser(conn, Input.Email, Input.Password);
-            Log.Information($"{Input}");
-
-            //Log.Information($"User {user.Email} CDRole: {user.CDRole} logged in at {DateTime.UtcNow}");
-
-            // creates a 302 Found which then redirects to the resource
-            return LocalRedirect(returnUrl ?? "/");
+            // Input property of type InputModel is bound because of the [BindProperty] attribute
+            Log.Information($"Success! {Input}");
+            return LocalRedirect("/");
         }
 
-        // Something failed. Redisplay the form.
+        Log.Information($"Failure on ModelState validation {Input}");
         return Page();
     }
 }
+
 
 ```
 
@@ -202,25 +168,16 @@ Essentially I like using nullable reference types as it shows the intention of a
 - Same for password
 - Shows that returnUrl is nullable
 
-Use class for the InputModel (ViewModel?) so that handy attributes work. eg
+Use verbose full declaration for the InputModel so that handy attributes work. eg
 
 - Email address (gets the right regex on front and back end)
 - Password dont show
 - Display name
 
 
-When is ErrorMessage used?
+I am using NRTs in my new Razor Pages projects and using positional records when I don't need attributes.
 
-
-I am using NRTs in my new Razor Pages projects and using positional records eg:
-
-```cs
-public record Login(string Name)...
-
-public record LoginResult(int LoginID, string Name...)
-```
-
-Dapper works just fine hydrating the objects
+Dapper works just fine hydrating the objects.
 
 
 ## Not use for Razor?
