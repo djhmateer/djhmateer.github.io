@@ -18,7 +18,7 @@ Having a corrupt git repo is scary.
 
 For the last few weeks I've had this blog's git repo getting randomly corrupted.
 
-Summary: There is a [fix on the Windows Dev Insider Build](https://github.com/microsoft/WSL/issues/5895)
+Summary: There is a [fix on the Windows Dev Insider Build](https://github.com/microsoft/WSL/issues/5895) - 21292. I'm currently on stable build of 19042.804
 
 ## Error: object file is empty
 
@@ -61,6 +61,8 @@ git fsck --full
 ```
 
 ## Resources and a Fix!
+
+[Reddit discussion](https://www.reddit.com/r/bashonubuntuonwindows/comments/leqz8t/wsl2_corrupts_ext4_filesystem_fix_for_git/)
 
 [Hacker news](https://news.ycombinator.com/item?id=25612962) discussion with a broken link which should be: [WSL issue on GH](https://github.com/microsoft/WSL/issues/5026)
 
