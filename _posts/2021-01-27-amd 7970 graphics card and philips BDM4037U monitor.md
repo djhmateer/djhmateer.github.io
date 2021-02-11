@@ -14,9 +14,9 @@ image: /assets/2021-01-27/desktop.jpg
 
 Having a great development machine setup is important. 
 
-I've been struggling with my graphics card and monitor setup for years, and frankly gave up getting it running at optimal resolution and refresh rates.
+I've been struggling with my graphics card and monitor setup for years, and frankly gave up getting it running at optimal resolution and refresh rates. (4k - 3840 x 2160 at 60 Hz)
 
-Here is the story of me somewhat fixing it
+TL;DR - it's a Display Port 1.2 Cable problem.
 
 And learning more than I thought about the wonderful world of graphics cards.
 
@@ -43,7 +43,7 @@ In the winter of 2011 this card sold for around $549.
 
 Many manufacturers (partners) used this design (reference design card) eg Club, Diamon, Gigabyte, HIS, Sapphire, PowerColor. All kept the 7970 in the product name. Except for AMD themselves who rebranded this as the [R9 280X](https://www.techpowerup.com/gpu-specs/radeon-r9-280x.c2398) in late 2013 for $299.
 
-In 2020 this is about a $60USD card on ebay. Apparently running at 1080p (1920 * 1080) is the way to go. 
+In 2020 this is about a $60USD card on ebay. Apparently running at 1080p (1920 * 1080) is the way to go for games.
 
 [MSI R7970-2PMD3GD5/OC](https://www.msi.com/Graphics-Card/R79702PMD3GD5OC/Specification)
 
@@ -66,7 +66,7 @@ In 2020 this is about a $60USD card on ebay. Apparently running at 1080p (1920 *
 It can output at 4k ie:
 
 - 3840*2160
-- 60Hhz on the mini display port
+- 60 Hz on the mini display port
 
 The drivers I'm running are from Jan 18, 2021 [from here](https://www.amd.com/en/support/graphics/amd-radeon-hd/amd-radeon-hd-7000-series/amd-radeon-hd-7970)
 
@@ -129,18 +129,17 @@ I've found the biggest problem is that the montor is 'smart' and tries to figure
 
 ### The System has detected a link failure
 
-**update** it also something to do with this error from the AMD driver
-
 [![Demo site](/assets/2021-01-27/error.jpg "error")](/assets/2021-01-27/error.jpg)
 
-From googling around it seems it is to do with the type of Display Port 1.2 cable. And it could be a driver issues problem.
+From googling around it seems it is to do with the type of Display Port 1.2 cable. 
 
-My tactics are:
+I bought a few VESA Certified cables which seem to work much better:
 
-- use the grey cable (ie a known good one)
-- and the hdmi cable I connected to another external monitor
-- unplug the power of the monitor then plug back in
-- watch on display settings 
+[This cable works the best for me](https://www.amazon.co.uk/gp/product/B07H48BL1J/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1) as was a bit longer too.
+
+and 
+
+[This one](https://www.amazon.co.uk/gp/product/B0163LN18M/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&th=1) but only came in 1m length.
 
 I do sometimes get flickering (and a black screen) and have to waggle the cable around at the back of the graphics card.
 
