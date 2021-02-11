@@ -141,7 +141,17 @@ and
 
 [This one](https://www.amazon.co.uk/gp/product/B0163LN18M/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&th=1) but only came in 1m length.
 
-I do sometimes get flickering (and a black screen) and have to waggle the cable around at the back of the graphics card.
+I do sometimes get flickering (and a black screen) and have to waggle the cable around at the back of the graphics card. So it is probably something on the card, or the connection too.
+
+To 'kick' it into gear I:
+
+- launch AMD Radeom (red icon in taskbar)
+- open up display settings and press detect
+- power off and on the monitor
+- wiggle the cable at the back of the graphics card
+
+I have an identical cards
+
 
 ## CUDA
 
