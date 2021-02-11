@@ -150,8 +150,7 @@ To 'kick' it into gear I:
 - power off and on the monitor
 - wiggle the cable at the back of the graphics card
 
-I have an identical cards
-
+I have identical cards and both exhibit similar problems.
 
 ## CUDA
 
