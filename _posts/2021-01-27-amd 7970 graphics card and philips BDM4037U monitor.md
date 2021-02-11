@@ -167,3 +167,5 @@ So I do have annoying stability issues with this setup, however when it is worki
 However this is not a smart way to go.
 
 I think I'll be going towards an NVidia card, water cooled potentially for less noise whilst gaming, and for the ability to do CUDA based programming.
+
+Just not at the moment as [3060 / 3070]() are hard to come by in Feb 2021 due to supply issues.
