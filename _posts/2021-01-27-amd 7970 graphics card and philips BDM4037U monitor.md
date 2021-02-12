@@ -1,12 +1,12 @@
 ---
 layout: post
 title: MSI AMD 7970 Graphics Card and Philips BDM4037U monitor 
-description: 
-menu: review
+description: Having a great development machine setup is important. The story of mostly getting my monitor and graphics card playing well together.
+#menu: review
 categories: AMD 
 published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2021-01-27/desktop.jpg
 ---
 
@@ -20,7 +20,7 @@ TL;DR - it was helped be a better Mini Display Port to Display Port 1.2 Cable
 
 ## AMD Radeon HD 7970
 
-I've got 2 of these cards which were bought back around April 2013 for Bitcoin mining.
+I've got 2 of these cards which were bought back in April 2013 for Bitcoin mining.
 
 [![My card 7970](/assets/2021-01-27/msi.jpg "7970"){:width="550px"}](/assets/2021-01-27/msi.jpg)
 
@@ -73,11 +73,13 @@ Card can run at GPU Clock of 1010 MHz, 500MHz, then 300 MHz. If you exceed aroun
 
 [![My card 7970](/assets/2021-01-27/inside.jpg "7970"){:width="500px"}](/assets/2021-01-27/inside.jpg)
 
-So - here is the my real issue with this card.
+So - here is one of my 2 issues with this card.
 
 It is loud.
 
 Screaming like a banshee loud under full load.
+
+The other issue is cable wobblyness (see below)
 
 
 [MSI Afterburner](https://www.msi.com/Landing/afterburner) I use to control my fan speed which automatically ramps up and down too quckly and is distracting in everyday use. I have noticed that my cases internal fans were not at max, so this helps cooling now, and the ramping up and down of the gpu fan isn't as pronounced.
@@ -101,7 +103,7 @@ After around 100oC the card will thermally throttle to 500MHz clock speed, and I
 
 [![Demo site](/assets/2021-01-27/throttled2.jpg "fan"){:width="700px"}](/assets/2021-01-27/throttled2.jpg)
 
-Under everyday load (I'm a developer) I'm throttling the card to 505MHz to keep the temps down and the fan speed down.
+Under everyday load (I'm a developer) I'm tried throttling the card to 505MHz to keep the temps down.
 
 ## Cooler
 
@@ -116,7 +118,7 @@ There are aftermarket air coolers, but I bet they are noisy too
 
 ## Philips BDM4037U
 
-This can operate at 3840*2160 at 60Hz on the Display port.
+This monitor can operate at 3840*2160 at 60Hz on the Display port.
 
 [Monitor Manual](https://www.download.p4c.philips.com/files/b/bdm4037uw_00/bdm4037uw_00_dfu_eng.pdf)
 
@@ -127,9 +129,11 @@ This can operate at 3840*2160 at 60Hz on the Display port.
 
 ### The System has detected a link failure
 
+Quite often I'll get this message when connecting the monitor for the first time, or having waggled the cable.
+
 [![Demo site](/assets/2021-01-27/error.jpg "error")](/assets/2021-01-27/error.jpg)
 
-From googling around it seems it is to do with the type of Display Port 1.2 cable. 
+From googling around it is to do with the type of Display Port 1.2 cable. 
 
 I bought a few VESA Certified cables which seem to work much better:
 
@@ -139,7 +143,7 @@ and
 
 [This one](https://www.amazon.co.uk/gp/product/B0163LN18M/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&th=1) but only came in 1m length.
 
-I do sometimes get flickering (and a black screen) and have to waggle the cable around at the back of the graphics card. So it is probably something on the card, or the connection too.
+I do sometimes get flickering (and a black screen) and have to waggle the cable around at the back of the graphics card. So it is probably something on the card, or the connection.
 
 To 'kick' it into gear I:
 
@@ -162,8 +166,10 @@ Cuda is limited to NVIDIA hardware. OpenCL is the best alternative on AMD.
 
 So I do have annoying stability issues with this setup, however when it is working (and the kids don't bump into the computer), it does work beautifully.
 
-However this is not a smart way to go.
+It also screams like a banshee on full load.
 
 I think I'll be going towards an Nvidia card, water cooled potentially for less noise whilst gaming, and for the ability to do CUDA based programming.
 
 Just not at the moment as [Nvidia 3060 / 3070 / 3080 / 3090](https://www.reddit.com/r/nvidia/comments/lhkhvv/which_graphics_card/) are hard to come by in Feb 2021 due to supply issues.
+
+On the positive side - I love having a beautiful development machine which works!
