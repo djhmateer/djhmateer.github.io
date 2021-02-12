@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Hugo Static Site Generator
-description: Using Hugo on Windows WSL2 to deploy a site onto Netlify.
-menu: review
-categories: hugo 
+title: Hugo Static Site Generator on WSL2 to Netlify
+description: Beginners guide on how to get going. Using a TailwindCSS theme.
+#menu: review
+categories: Hugo 
 published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2021-01-24/hugo-logo-wide.svg
 ---
 
@@ -164,5 +164,18 @@ Images are in `public\images`
 And there is a handy YouTube shortcut
 
 ```
-[How to sterilise homebrew equipment](https://www.youtube.com/watch?v=vSoshc1ukGY
+[How to sterilise homebrew equipment](https://www.youtube.com/watch?v=vSoshc1ukGY)
 ```
+
+And here [is the result](https://homebrewbeer.netlify.app/2021/01/how-to-get-started-home-brewing-beer-beer-from-a-kit/)
+
+
+[![Beer](/assets/2021-01-24/beer.jpg "Posts"){:width="500px"}](/assets/2021-01-24/beer.jpg)
+
+## Summary
+
+Hugo seems to work well and is fast. 
+
+What I like is the simple installation of a binary. 
+
+I've yet to get into styling of the tailwindcss theme, but I've got just enough working to show people about home brewing beer!
