@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AMD 4790 Graphics Card and Philips BDM4037U monitor 
+title: MSI AMD 7970 Graphics Card and Philips BDM4037U monitor 
 description: 
 menu: review
 categories: AMD 
@@ -16,22 +16,19 @@ Having a great development machine setup is important.
 
 I've been struggling with my graphics card and monitor setup for years, and frankly gave up getting it running at optimal resolution and refresh rates. (4k - 3840 x 2160 at 60 Hz)
 
-TL;DR - it's a Display Port 1.2 Cable problem.
-
-And learning more than I thought about the wonderful world of graphics cards.
-
+TL;DR - it was helped be a better Mini Display Port to Display Port 1.2 Cable
 
 ## AMD Radeon HD 7970
 
 I've got 2 of these cards which were bought back around April 2013 for Bitcoin mining.
 
-[![My card 7970](/assets/2021-01-27/msi.jpg "7970"){:width="500px"}](/assets/2021-01-27/msi.jpg)
+[![My card 7970](/assets/2021-01-27/msi.jpg "7970"){:width="550px"}](/assets/2021-01-27/msi.jpg)
 
 Looking on the sticker on the back I've got a: R7970 - 2PMD3GD5/OC
 
-On the front it is badged as a [MSI - Micro Star International](https://en.wikipedia.org/wiki/Micro-Star_International) card. MSI make cards based on Nvidia and AMD gpu chips. [https://gpu.userbenchmark.com/](https://gpu.userbenchmark.com/) shows that Nvidia have double the number of cards that AMD have, and currently have a higher user rating. It is hard to get graphics cards just now (eg the AMD Radeon 6800 / 6900 XT and Nvidia 3080 and 3090)
+On the front it is badged as a [MSI](https://en.wikipedia.org/wiki/Micro-Star_International) card. MSI make cards based on Nvidia and AMD gpu chips. [https://gpu.userbenchmark.com/](https://gpu.userbenchmark.com/) shows that Nvidia have double the number of cards that AMD have, and currently have a higher user rating. It is hard to get graphics cards just now (eg the AMD Radeon 6800 / 6900 XT and Nvidia 3080 and 3090)
 
-The card is based on the reference [AMD Radeon HD 7000 series - wikipedia article](https://en.wikipedia.org/wiki/Radeon_HD_7000_series) which is a family of GPU's developed by [AMD - Advanced Micro Devices](https://en.wikipedia.org/wiki/Advanced_Micro_Devices) and manufactured by TSMC around Q1 2012. [ATI was bought by AMD in 2006](https://en.wikipedia.org/wiki/ATI_Technologies) and is now a division of AMD. 
+The card is based on the reference [AMD Radeon HD 7000 series - wikipedia article](https://en.wikipedia.org/wiki/Radeon_HD_7000_series) which is a family of GPU's developed by [AMD](https://en.wikipedia.org/wiki/Advanced_Micro_Devices) and manufactured by TSMC around Q1 2012. [ATI was bought by AMD in 2006](https://en.wikipedia.org/wiki/ATI_Technologies) and is now a division of AMD. 
 
 [Here is a reference card review](https://www.tweaktown.com/reviews/4510/amd_radeon_hd_7970_3gb_reference_video_card_review/index.html)
 
@@ -106,7 +103,11 @@ After around 100oC the card will thermally throttle to 500MHz clock speed, and I
 
 Under everyday load (I'm a developer) I'm throttling the card to 505MHz to keep the temps down and the fan speed down.
 
-## After market cooler
+## Cooler
+
+Water cooling GPU's is becoming more popular eg here is watercooling for the Nvidia Gefore RTX 2070 - [Watercooling any GPU for $72](https://www.youtube.com/watch?v=91zSzidwLx8)
+
+There are aftermarket air coolers, but I bet they are noisy too
 
 [Arctic Accelero Xtreme 7970 Card Cooler](https://www.amazon.co.uk/Arctic-Cooling-Accelero-Xtreme-7970/dp/B0074VVK52)
 
@@ -123,9 +124,6 @@ This can operate at 3840*2160 at 60Hz on the Display port.
 - HDMI 2.0: 3840 x 2160 @ 60Hz
 - DisplayPort 1.1: 3840 x 2160 @ 30Hz
 - DisplayPort 1.2: 3840 x 2160 @ 60Hz
-
-I've found the biggest problem is that the montor is 'smart' and tries to figure what what is connected and therefore what to display. And the graphics card is 'smart' and does the same thing. So it is very hard to get 4k running at 60Hz
-
 
 ### The System has detected a link failure
 
@@ -150,7 +148,7 @@ To 'kick' it into gear I:
 - power off and on the monitor
 - wiggle the cable at the back of the graphics card
 
-I have identical cards and both exhibit similar problems.
+I have 2 identical cards and both exhibit similar problems.
 
 ## CUDA
 
@@ -166,6 +164,6 @@ So I do have annoying stability issues with this setup, however when it is worki
 
 However this is not a smart way to go.
 
-I think I'll be going towards an NVidia card, water cooled potentially for less noise whilst gaming, and for the ability to do CUDA based programming.
+I think I'll be going towards an Nvidia card, water cooled potentially for less noise whilst gaming, and for the ability to do CUDA based programming.
 
-Just not at the moment as [3060 / 3070]() are hard to come by in Feb 2021 due to supply issues.
+Just not at the moment as [Nvidia 3060 / 3070 / 3080 / 3090](https://www.reddit.com/r/nvidia/comments/lhkhvv/which_graphics_card/) are hard to come by in Feb 2021 due to supply issues.
