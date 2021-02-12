@@ -154,13 +154,13 @@ To 'kick' it into gear I:
 
 I have 2 identical cards and both exhibit similar problems.
 
-## CUDA
+## Other related info
 
 Cuda is limited to NVIDIA hardware. OpenCL is the best alternative on AMD.
 
-## Youtube
-
 [2016 - Is the HD 7970 still worth buying](https://www.youtube.com/watch?v=rpXpA-xteAI)
+
+[Toms hardware - displayport vs hdmi](https://www.tomshardware.com/uk/features/displayport-vs-hdmi-better-for-gaming)
 
 ## Future
 
