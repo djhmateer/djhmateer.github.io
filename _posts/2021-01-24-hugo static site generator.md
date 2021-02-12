@@ -1,16 +1,16 @@
 ---
 layout: post
 title: Hugo Static Site Generator
-description: 
+description: Using Hugo on Windows WSL2 to deploy a site onto Netlify.
 menu: review
 categories: hugo 
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2020-10-27/davemateer.jpg
+image: /assets/2021-01-24/hugo-logo-wide.svg
 ---
 
-<!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
+[![Hugo](/assets/2021-01-24/hugo-logo-wide.svg "Hugo")](/assets//2020-10-12/hugo-logo-wide.svg)
 
 I wanted a static site generator which
 
@@ -26,9 +26,8 @@ So in summary this is the plan:
 - Hugo running on WSL2 on Win 10 for static site generation
 - GitHub for source code
 - Netlify for website hosting
-- Netlify for SSL?
-- DNSimple for domain host
-- Cloudflare do I need?
+- DNSimple for a new domain name
+- Netlify or Cloudflare for SSL for new domain name
 
 ## Install Hugo and create a blog post
 
@@ -81,7 +80,7 @@ draft: true
 ---
 ```
 
-draft: true will not publish so flip to trye
+draft: true will not publish so flip to true
 
 [![Demo site](/assets/2021-01-24/serve.jpg "demo"){:width="500px"}](/assets/2021-01-24/serve.jpg)
 
@@ -101,9 +100,23 @@ I like links with the date in them so added this to the config file:
 
 [https://themes.gohugo.io/blonde/](https://themes.gohugo.io/blonde/) is the one I'm going to try as it uses [tailwindcss](https://tailwindcss.com/) which I'm a fan of.
 
+[https://themes.gohugo.io/bento/](https://themes.gohugo.io/bento/) is Bento which I've ended up using.
+
 ```bash
 git submodule add https://github.com/opera7133/Blonde.git themes/Blonde
+
+git submodule add https://github.com/leonardofaria/bento.git themes/bento
+
+# if first time cloning your repo then need to get the submodules
+#git submodule update --init --recursive
+
 cd themes/Blonde
+cd themes/bento
+
+# install npm v 14 here https://github.com/nodesource/distributions/blob/master/README.md#deb
+# npm 6.14.11
+# if you get errors here try npm install -g npm@latest
+# npm - 7.5.3
 npm install
 
 sudo npm install -g postcss postcss-cli
@@ -113,17 +126,11 @@ sudo npm install -g autoprefixer
 git submodule update --remote --merge
 ```
 
-After doing this I got an error building the site:
+After doing this I got an error building the site with Blonde so gave up!
 
 Error: Error building site: failed to render pages: render of "home" failed: "/home/dave/beer/hugo-quickstart/themes/Blonde/layouts/_default/list.html:8:32": execute of template failed: template: _default/list.html:8:32: executing "main" at <.Paginate>: error calling Paginate: 'pager size' must be a positive integer
 
-### Next theme
-
-[https://github.com/leonardofaria/bento](https://github.com/leonardofaria/bento)
-
-**HERE** not rendering quite right
-
-
+Went with bento for now
 
 ## Hosting on Netlify
 
@@ -145,3 +152,17 @@ HUGO_ENABLEGITINFO = "true"
 ```
 
 I changed my site name to [https://homebrewbeer.netlify.app/](https://homebrewbeer.netlify.app/) in Netlify then updates the `config.toml` to recognise that name, then it works. Just push to GH and Netlify will pick regenerate and publish.
+
+## Images Videos and Posts
+
+Here is my first shot at where to put new posts `content/posts`
+
+[![New site from Git](/assets/2021-01-24/screen.jpg "Posts"){:width="500px"}](/assets/2021-01-24/screen.jpg)
+
+Images are in `public\images`
+
+And there is a handy YouTube shortcut
+
+```
+[How to sterilise homebrew equipment](https://www.youtube.com/watch?v=vSoshc1ukGY
+```
