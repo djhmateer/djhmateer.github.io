@@ -105,6 +105,11 @@ After around 100oC the card will thermally throttle to 500MHz clock speed, and I
 
 Under everyday load (I'm a developer) I'm tried throttling the card to 505MHz to keep the temps down.
 
+I also used [openhardwaremonitor.org](https://openhardwaremonitor.org/downloads/) to monitor other fans and temperatures on my system.
+
+[![Open hardware monitor](/assets/2021-01-27/open.jpg "open"){:width="700px"}](/assets/2021-01-27/open.jpg)
+
+
 ## Cooler
 
 Water cooling GPU's is becoming more popular eg here is watercooling for the Nvidia Geforce RTX 2070 - [Watercooling any GPU for $72](https://www.youtube.com/watch?v=91zSzidwLx8)
