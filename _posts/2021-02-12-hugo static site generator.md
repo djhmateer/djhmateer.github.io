@@ -93,7 +93,6 @@ I like links with the date in them so added this to the config file:
   posts = "/:year/:month/:title/"
 ```
 
-
 ## Themes
 
 [themes.gohugo.io](https://themes.gohugo.io/) is a good place to start.
@@ -130,7 +129,11 @@ After doing this I got an error building the site with Blonde so gave up!
 
 Error: Error building site: failed to render pages: render of "home" failed: "/home/dave/beer/hugo-quickstart/themes/Blonde/layouts/_default/list.html:8:32": execute of template failed: template: _default/list.html:8:32: executing "main" at <.Paginate>: error calling Paginate: 'pager size' must be a positive integer
 
-Went with bento for now
+### exampleSite
+
+I missed this important bit!
+
+Have a look in most of the themes and you'll see an exampleSite directory which is where you'll find a demo of how to setup this themes site.
 
 ## Hosting on Netlify
 
