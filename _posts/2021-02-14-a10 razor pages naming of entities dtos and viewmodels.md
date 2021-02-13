@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Razor Pages naming of entities DTOs and ViewModels
+title: 10. Razor Pages naming of entities DTOs and ViewModels
 description: 
 menu: review
 categories: RazorPages 

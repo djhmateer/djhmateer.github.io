@@ -25,7 +25,7 @@ I've recently started using [Postgres](https://www.postgresql.org/) and am using
 
 ## 1. Simplest
 
-Let's start with the simpest possible thing to get a db call working.
+Let's start with the simplest possible thing to get a db call working.
 
 ```cs
 using (var connection = new SqlConnection("
@@ -39,7 +39,7 @@ Server=(localdb)\\mssqllocaldb;Database=Test;Trusted_Connection=True;MultipleAct
 }
 ```
 
-which coulud be refined to
+which could be refined to
 
 ```cs
 var mssqlConnectionString = "Server=(localdb)\\mssqllocaldb;Database=Test;Trusted_Connection=True;MultipleActiveResultSets=true";
@@ -236,7 +236,7 @@ The razor view looks like this:
 
 ```
 
-## Loggging and Fault Tolerance
+## Logging and Fault Tolerance
 
 [My MPActors](https://github.com/djhmateer/MPActors) source has some example of post-polly thinking (where I didn't need all of polly).
 

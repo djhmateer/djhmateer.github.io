@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Coding principles and style  - Naming!
+title: 1. Solution Naming and coding principles
 description: 
 menu: review
 categories: Coding style BrokenLinkChecker

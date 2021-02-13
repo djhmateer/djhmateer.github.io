@@ -1,20 +1,46 @@
 ---
 layout: post
-title: Integration testing of ASP.NET Core 3.1 
+title: 4. Integration testing of ASP.NET Core 3.1 and .NET Core 5
 description: 
 menu: review
 categories: xunit 
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2020-02-03/40.jpg
+image: /assets/2021-02-13/test.jpg
+redirect_from: "/2020-10-21-x2integration testing of asp.net core 3.1"
 ---
 
-<!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
+[![alt text](/assets/2021-02-13/test.jpg "Tests!")](https://unsplash.com/@jeshoots)
+
+I started this article in Oct 2020 as a series in .NET Core Razor pages development:
+
+- [1. Solution naming and coding principles](/2021/02/13/a1-solution-naming-and-coding-principles)
+- [2. C# 9.0](/2020/11/11/c-sharp-9)
+- [3. Cookie Authentication in ASP.NET Core 3.1](/2020/10/21/cookie-authentication-in-asp.net-core-3.1)
+- *4. Integration testing
+- [5. Configuration and hosting environments in ASP.NET Core](/2021/02/13/a5-configuration-and-hosting-environment-in-asp-net-core)
+- [6. Connecting to a DB using Dapper](/2020/10/12/connect-to-database-using-dapper)
+- [7. Storing passwords in a database](/2021/02/13/a7-storing-passwords-in-a-database)
+- [8. Razor pages helpers scaffolding and serilog](/2021/02/13/a8-razor-pages-helpers-scaffolding-serilog)
+- [9. Razor nullable reference types](/2021/02/13/a9-razor-pages-nullable-reference-types)
+- [10. Razor pages naming of entities dtos and viewmodels](/2021/02/14/a10-razor-pages-naming-of-entities-dtos-and-viewmodels)
+
+- [Deployment using IaaS](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu) shows how I prefer to automate deployments
+
+I've got a front end series:
+
+- [1. HTML]() where I look at the raw starting points.
+- [2. Bootstrap](#) this article
+- [3. Progressive Web Apps - PWAs]() how to make your site easy to get to on a phone
+- [4. Progressive Web Apps - Example](/2020/12/14/progressive-web-app-example) An example of how to do a PW
+- [5. TailwindCSS]()
 
 [Integration Testing ASP.NET Core Applications: Best Practices](https://app.pluralsight.com/library/courses/integration-testing-asp-dot-net-core-applications-best-practices/table-of-contents) by Steve Gordon is an excellent Pluralsight course, and I'm using the strategies discussed there.
 
 [Integration Tests MD Docs](https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-3.1) is a great starting point
+
+Since writing this article I've used the techniques in production in multiple projects. I highly recommend checking this out.
 
 ## Setting up a Integration Tests project for Web App
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Storing passwords in a database 
+title: 7. Storing passwords in a database 
 description: 
 menu: review
 categories: Postgres 

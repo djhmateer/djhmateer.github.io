@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Razor Pages 
+title: 8 Razor Pages helpers scaffolding serilog
 description: 
 menu: review
 categories: RazorPages 
@@ -12,8 +12,6 @@ image: /assets/2020-02-03/40.jpg
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 ## Tag helpers
-
-2
 
 [Tag Helpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-3.1)
 

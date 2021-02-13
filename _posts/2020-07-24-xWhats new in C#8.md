@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Nullale Reference Types in C#8
+title: Nullable Reference Types in C#8
 description: 
 menu: review
 categories: C# BrokenLinkChecker

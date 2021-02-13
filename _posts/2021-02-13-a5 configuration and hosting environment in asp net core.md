@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Configuration and Hosting Environment in ASP.NET Core 3.1 
+title: 5. Configuration and Hosting Environment in ASP.NET Core
 description: 
 menu: review
 categories: Configuration ASP.NETCore BrokenLinkChecker 
