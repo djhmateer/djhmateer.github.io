@@ -163,9 +163,12 @@ I have 2 identical cards and both exhibit similar problems.
 
 Cuda is limited to Nvidia hardware. OpenCL is the best alternative on AMD.
 
+[DLSS](https://en.wikipedia.org/wiki/Deep_learning_super_sampling) is Nvidia only
+
 [2016 - Is the HD 7970 still worth buying](https://www.youtube.com/watch?v=rpXpA-xteAI)
 
 [Toms hardware - DisplayPort vs hdmi](https://www.tomshardware.com/uk/features/displayport-vs-hdmi-better-for-gaming)
+
 
 ## Future
 
