@@ -16,7 +16,7 @@ Having a great development machine setup is important.
 
 I've been struggling with my graphics card and monitor setup for years, and frankly gave up getting it running at optimal resolution and refresh rates. (4k - 3840 x 2160 at 60 Hz)
 
-TL;DR - it was helped be a better Mini Display Port to Display Port 1.2 Cable
+TL;DR - it helped to have a certified Mini Display Port to Display Port Cable
 
 ## AMD Radeon HD 7970
 
@@ -79,7 +79,7 @@ It is loud.
 
 Screaming like a banshee loud under full load.
 
-The other issue is cable wobblyness (see below)
+The other issue is cable wobbliness (see below)
 
 
 [MSI Afterburner](https://www.msi.com/Landing/afterburner) I use to control my fan speed which automatically ramps up and down too quckly and is distracting in everyday use. I have noticed that my cases internal fans were not at max, so this helps cooling now, and the ramping up and down of the gpu fan isn't as pronounced.
@@ -107,7 +107,7 @@ Under everyday load (I'm a developer) I'm tried throttling the card to 505MHz to
 
 ## Cooler
 
-Water cooling GPU's is becoming more popular eg here is watercooling for the Nvidia Gefore RTX 2070 - [Watercooling any GPU for $72](https://www.youtube.com/watch?v=91zSzidwLx8)
+Water cooling GPU's is becoming more popular eg here is watercooling for the Nvidia Geforce RTX 2070 - [Watercooling any GPU for $72](https://www.youtube.com/watch?v=91zSzidwLx8)
 
 There are aftermarket air coolers, but I bet they are noisy too
 
@@ -147,7 +147,7 @@ I do sometimes get flickering (and a black screen) and have to waggle the cable 
 
 To 'kick' it into gear I:
 
-- launch AMD Radeom (red icon in taskbar)
+- launch AMD Radeon (red icon in taskbar)
 - open up display settings and press detect
 - power off and on the monitor
 - wiggle the cable at the back of the graphics card
@@ -156,11 +156,11 @@ I have 2 identical cards and both exhibit similar problems.
 
 ## Other related info
 
-Cuda is limited to NVIDIA hardware. OpenCL is the best alternative on AMD.
+Cuda is limited to Nvidia hardware. OpenCL is the best alternative on AMD.
 
 [2016 - Is the HD 7970 still worth buying](https://www.youtube.com/watch?v=rpXpA-xteAI)
 
-[Toms hardware - displayport vs hdmi](https://www.tomshardware.com/uk/features/displayport-vs-hdmi-better-for-gaming)
+[Toms hardware - DisplayPort vs hdmi](https://www.tomshardware.com/uk/features/displayport-vs-hdmi-better-for-gaming)
 
 ## Future
 
