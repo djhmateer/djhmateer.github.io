@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lockdown 3 
+title: Winter Lockdown 
 description: Things to do with kids during lockdown and trying to keep sane as parents of a 4 and 6 year old.
 menu: review
 categories: lockdown
@@ -42,7 +42,7 @@ I hope some of these barely coherent ramblings may help and entertain.
 
 Having [Netflix](https://netflix.com) and [Amazon Prime video](https://www.primevideo.com/) has been great. We have an [Amazon Fire TV stick](https://www.amazon.co.uk/all-new-fire-tv-stick-with-alexa-voice-remote-includes-tv-controls-dolby-atmos-audio-2020-release/dp/B07ZZW3KJY/ref=sr_1_1?crid=1PKMU1LXNHBJG&dchild=1&keywords=fire+tv+stick&qid=1613298590&s=amazon-devices&sprefix=fore+tv%2Camazon-devices%2C187&sr=1-1) rather than using any smart tv features.
 
-Favourite films this week are: How to Train Your Dragon series, Cars 2, Harry Potter
+Current favourite films are: How to Train Your Dragon series, Cars 2, Harry Potter, Trolls 2
 
 
 ## Kids Kindle Fires
