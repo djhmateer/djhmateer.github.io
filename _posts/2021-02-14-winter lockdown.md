@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Winter Lockdown 
+title: Winter Lockdown with a young family
 description: Things to do with kids during lockdown and trying to keep sane as parents of a 4 and 6 year old.
 menu: review
 categories: lockdown
