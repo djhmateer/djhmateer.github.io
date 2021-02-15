@@ -40,6 +40,9 @@ Can help in our ASP.NET 5 Razor pages projects
 
 Can [C# 9.0 Records]() help too?
 
+
+[MS Documentation on DTOs](https://docs.microsoft.com/en-us/dotnet/csharp/nullable-migration-strategies#initialize-the-property-to-null)
+
 ## Display Actors
 
 ```cs
