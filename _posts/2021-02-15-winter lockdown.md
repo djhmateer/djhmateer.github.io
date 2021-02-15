@@ -2,7 +2,7 @@
 layout: post
 title: Winter Lockdown with a young family
 description: Things to do with kids during lockdown and trying to keep sane as parents of a 4 and 6 year old.
-menu: review
+#menu: review
 categories: COVID-19
 published: true 
 comments: false     
@@ -12,7 +12,6 @@ image: /assets/2021-02-14/balloon.jpg
 
 [![alt text](/assets/2021-02-14/balloon.jpg "There is blue sky up there...")](https://unsplash.com/@aweiland)
 
-<!-- [![[Games](/assets/2021-02-14/hero.jpg "Games"){:width="500px"}](/assets/2021-02-14/hero.jpg) -->
 
 We have good days.
 
@@ -22,7 +21,7 @@ This Winter 20/21 Lockdown in the UK has felt much harder than [the first Spring
 
 Here I'm writing about:
 
-- Fun things first that we do with our kids (Henry is 4, and Mia is 6). Please email me your favourites - davemateer@gmail.com 
+- Fun things first that we do with our kids (Henry is 4, and Mia is 6)
 - Home Schooling
 - Keeping sane
 
@@ -34,7 +33,7 @@ I hope some of these barely coherent ramblings may help and entertain.
 
 [My Little Pony](https://www.netflix.com/gb/title/70234440) on Netflix. Both kids adore this! Parents don't.
 
-[Super Wings](https://www.netflix.com/Kids/search?q=super%20wings&jbv=80196221) Henry likes
+[Super Wings](https://www.netflix.com/Kids/search?q=super%20wings&jbv=80196221) Henry loves
 
 [Pixels](https://www.amazon.co.uk/Pixels-Adam-Sandler/dp/B012TWNTFE/ref=sr_1_1?dchild=1&keywords=pixels&qid=1613298473&s=instant-video&sr=1-1) Henry loves
 
@@ -49,7 +48,7 @@ We've got 2 [Kindle Fire tablets](https://www.amazon.co.uk/Fire-7-Kids-Edition--
 
 We don't subscribe to [Amazon Kids plus](https://www.amazon.co.uk/ftu/home) and prefer to manage exactly what is on them:
 
-[![Manage](/assets/2021-02-14/manage.jpg "Manage"){:width="500px"}](/assets/2021-02-14/manage.jpg)
+[![Manage](/assets/2021-02-14/manage.jpg "Manage"){:width="600px"}](/assets/2021-02-14/manage.jpg)
 
 The top games at the moment are:
 
@@ -57,7 +56,7 @@ The top games at the moment are:
 
 [Paper Toss 2](https://www.amazon.co.uk/BNA-Apps-Paper-Toss-2/dp/B077KFC47K/ref=sr_1_1?dchild=1&keywords=paper+toss&qid=1613294028&s=mobile-apps&sr=1-1) - thanks for the recommendation Caio
 
-And bbc iPlayer is on them where they can watch
+And BBC iPlayer is on them where they can watch
 
 - Hey Duggie
 - Numberblocks
@@ -69,7 +68,7 @@ A big hit recently has been [Fantasy Retro Top Trumps](https://www.amazon.co.uk/
 
 [![Top trumps](/assets/2021-02-14/ttrumps.jpg "Top Trumps"){:width="500px"}](/assets/2021-02-14/ttrumps.jpg)
 
-Chess (Mia who is 6 knows how all the pieces move and likes it!)
+Chess (Mia who is 6 knows how all the pieces move and likes it!). She watched the end of the Queens Gambit with Ellie and was inspired to learn.
 
 [![Chess](/assets/2021-02-14/chess.jpg "Chess"){:width="500px"}](/assets/2021-02-14/chess.jpg)
 
@@ -87,11 +86,11 @@ Having a timetable seems to be good for everyone:
 Teachers at our school are being super supportive, and there is a lot of work we should be doing. Some days we do a lot, some days not. 
 
 > Home schooling is ...
-> Like drawing blood out of a stone
-> Othertimes it is lovely
+> Like drawing blood out of a stone...
+> Other times it is lovely
 
 
-sass, whining, tears, emotional, not wanting to do any school work, not wanting to be on the Teams calls... happens quite regularly (to the kids!)
+Sass, whining, tears, emotional, not wanting to do any school work, not wanting to be on the Teams calls... happens quite regularly (the kids)
 
 I've noticed that everyone is getting more used to it, so hopefully getting better.
 
@@ -228,7 +227,7 @@ Currently (13th Feb 2021) there are
 
 ## Brewing Beer - new hobby
 
-[![Beer](/assets/2021-02-14/beer.jpg "Ice"){:width="500px"}](/assets/2021-02-14/beer.jpg)
+[![Beer](/assets/2021-02-14/beer.jpg "Ice"){:width="600px"}](/assets/2021-02-14/beer.jpg)
 
 Everyone loves beer and I have lots of volunteers of people willing to help me drink it!
 
@@ -238,7 +237,7 @@ I've never tried brewing beer before. I wonder how hard can it be? As of writing
 
 ## Work
 
-[![Office](/assets/2021-02-14/office.jpg "Office"){:width="600px"}](/assets/2021-02-14/office.jpg)
+[![Office](/assets/2021-02-14/office.jpg "Office"){:width="700px"}](/assets/2021-02-14/office.jpg)
 
 Having a nice home office with plants, good monitors and keyboard.. all ready to go. You can see Ellie's mac keyboard on the desk to the left.
 
@@ -247,7 +246,6 @@ We split each day between mornings and afternoons, then the following day the re
 We agree a schedule each week and have a google shared calendar 
 
 In my job, I've been saying no to a lot of work as don't have any bandwidth. It is very nice not to be overloaded. Then have some breathing space when things go wrong with kids etc.. (moodyness)
-
 
 ## Nice Stuff
 
@@ -273,6 +271,8 @@ Having time to play, explore, and not be rushing around all the time.
 [![Ice](/assets/2021-02-14/ice.jpg "Ice"){:width="600px"}](/assets/2021-02-14/ice.jpg)
 
 The amount of joy gained from picking up ice, smashing it, jumping on it.. is not to be underestimated :-)
+
+[![Bye](/assets/2021-02-14/hero.jpg "Games"){:width="700px"}](/assets/2021-02-14/hero.jpg)
 
 Don't Panic!
 
