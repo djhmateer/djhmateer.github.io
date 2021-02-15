@@ -3,7 +3,7 @@ layout: post
 title: Winter Lockdown with a young family
 description: Things to do with kids during lockdown and trying to keep sane as parents of a 4 and 6 year old.
 menu: review
-categories: lockdown
+categories: COVID-19
 published: true 
 comments: false     
 sitemap: false
@@ -18,9 +18,7 @@ We have good days.
 
 We have bad days.
 
-This lockdown over winter in the UK has felt much harder.
-
-I wrote about [The first lockdown](/2020/05/20/covid-19-lockdown-coping-as-a-family) in May 2020 when it was Spring time. 
+This Winter 20/21 Lockdown in the UK has felt much harder than [the first Spring Lockdown](/2020/05/20/covid-19-lockdown-coping-as-a-family)
 
 Here I'm writing about:
 
