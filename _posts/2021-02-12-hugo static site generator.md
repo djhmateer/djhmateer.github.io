@@ -129,6 +129,33 @@ After doing this I got an error building the site with Blonde so gave up!
 
 Error: Error building site: failed to render pages: render of "home" failed: "/home/dave/beer/hugo-quickstart/themes/Blonde/layouts/_default/list.html:8:32": execute of template failed: template: _default/list.html:8:32: executing "main" at <.Paginate>: error calling Paginate: 'pager size' must be a positive integer
 
+### Git Submodule Issues
+
+[![Git](/assets/2021-01-24/sm.jpg "Submodule"){:width="500px"}](/assets/2021-01-24/sm.jpg)
+
+A strange issue with submodules.
+
+After a new clone of the repo
+
+```bash
+git clone https://github.com/djhmateer/hugo-quickstart.git
+
+git submodule update --init --recursive
+
+cd themes/bento
+
+npm init
+
+# all working now
+hugo serve
+```
+
+
+[![Git](/assets/2021-01-24/sm2.jpg "Submodule"){:width="500px"}](/assets/2021-01-24/sm2.jpg)
+
+Not quite sure why. [https://github.com/leonardofaria/bento](https://github.com/leonardofaria/bento) place to start looking perhaps.
+
+
 ### exampleSite
 
 I missed this important bit!
@@ -160,7 +187,7 @@ I changed my site name to [https://homebrewbeer.netlify.app/](https://homebrewbe
 
 Here is my first shot at where to put new posts `content/posts`
 
-[![New site from Git](/assets/2021-01-24/screen.jpg "Posts"){:width="500px"}](/assets/2021-01-24/screen.jpg)
+[![New siteyy from Git](/assets/2021-01-24/screen.jpg "Posts"){:width="500px"}](/assets/2021-01-24/screen.jpg)
 
 Images are in `public\images`
 
