@@ -41,7 +41,7 @@ Also I'm a back end developer, so something with prebuilt presets to help me wit
 [my-tailwind-project](https://github.com/djhmateer/my-tailwind-project) on GitHub is the sample code for this article.
 
 
-[YouTube videos series](https://www.youtube.com/playlist?list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR) by Adam Wathan (the author or Tailwind CSS)
+[YouTube videos series](https://www.youtube.com/playlist?list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR) by Adam Wathan (the author or Tailwind CSS). [A follow up - Feb 2021](https://www.youtube.com/watch?v=qYgogv4R8zg&list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofO0&index=2)
 
 [Source designing-with-tailwindcss](https://github.com/tailwindlabs/designing-with-tailwindcss) is the source code that the tailwind author uses in his 
 
@@ -71,22 +71,36 @@ npm init -y
 # + tailwindcss@2.0.2
 # + autoprefixer@10.1.0
 # + postcss-cli@8.3.1
-npm i tailwindcss postcss-cli autoprefixer
+#npm i tailwindcss postcss-cli autoprefixer
 
-# creates an empty tailwind.config.js file
-# for customising tailwind
-npx tailwind init
+# tailwindcss 2.0.3 (23rd Feb 2021)
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 ```
 
 create `postcss.config.js` in the root of the project.
 
 ```js
+// module.exports = {
+//     plugins: [
+//         require('tailwindcss'),
+//         require('autoprefixer')
+//     ]
+// }
+
 module.exports = {
-    plugins: [
-        require('tailwindcss'),
-        require('autoprefixer')
-    ]
-}
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    }
+  }
+
+```
+
+then
+
+```bash
+# creates tailwind.config.js
+npx tailwindcss init
 ```
 
 create `css/tailwind.css`
@@ -102,6 +116,24 @@ Tailwind CSS works by looking for custom markers and replacing them with generat
 @tailwind utilities;
 ```
 
+Put in the purge step
+
+```json
+// tailwind.config.js
+  module.exports = {
+   purge: [
+     './src/**/*.html',
+     './src/**/*.js',
+   ],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+      extend: {},
+    },
+    variants: {},
+    plugins: [],
+  }
+```
+
 update `package.json` to have a build step
 
 ```json
@@ -113,6 +145,9 @@ update `package.json` to have a build step
 then run it
 
 ```bash
+# remember the environment
+# export NODE_ENV=production
+# export NODE_ENV=development
 npm run build
 ```
 
