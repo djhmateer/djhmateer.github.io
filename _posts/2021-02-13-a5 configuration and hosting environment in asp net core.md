@@ -295,6 +295,12 @@ public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStar
 
 Then we don't need to worry about Shadowcopy=false trick, as we've doing a really simple configuration impmentation.
 
+## Configuration of Staging on Windows Server 2019
+
+[https://ifyoudo.net/how-to-setup-aspnetcore_environment-variable-on-an-iis-website](https://ifyoudo.net/how-to-setup-aspnetcore_environment-variable-on-an-iis-website)
+
+Essentially set the machine level ASPNETCORE_ENVIRONMENT to Staging.
+
 
 ## Other configuration eg mail server settings
 
