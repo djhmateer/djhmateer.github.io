@@ -297,7 +297,7 @@ Then we don't need to worry about Shadowcopy=false trick, as we've doing a reall
 
 ## Configuration of Staging on Windows Server 2019
 
-[https://ifyoudo.net/how-to-setup-aspnetcore_environment-variable-on-an-iis-website](https://ifyoudo.net/how-to-setup-aspnetcore_environment-variable-on-an-iis-website)
+[https://ifyoudo.net/how-to-setup-aspnetcore_environment-variable-on-an-iis-website](https://ifyoudo.net/how-to-setup-aspnetcore_environment-variable-on-an-iis-website)  and [https://stackoverflow.com/questions/31049152/publish-to-iis-setting-environment-variable](https://stackoverflow.com/questions/31049152/publish-to-iis-setting-environment-variable)
 
 Essentially set the machine level ASPNETCORE_ENVIRONMENT to Staging.
 
