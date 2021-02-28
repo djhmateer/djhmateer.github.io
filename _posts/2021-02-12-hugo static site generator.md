@@ -86,11 +86,11 @@ draft: true will not publish so flip to true
 
 Regenerate times are super fast.
 
-I like links with the date in them so added this to the config file:
+I like URL links with the date in them so added this to the config file:
 
 ```yml
 [permalinks]
-  posts = "/:year/:month/:title/"
+  posts = "/:year/:month/:day/:title/"
 ```
 
 ## Themes
