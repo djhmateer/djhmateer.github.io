@@ -10,7 +10,7 @@ sitemap: true
 image: /assets/2021-01-24/hugo-logo-wide.svg
 ---
 
-[![Hugo](/assets/2021-01-24/hugo-logo-wide.svg "Hugo")](/assets//2020-10-12/hugo-logo-wide.svg)
+[![Hugo](/assets/2021-01-24/hugo-logo-wide.svg "Hugo")](/assets/2021-01-24/hugo-logo-wide.svg)
 
 I wanted a static site generator which
 
@@ -197,7 +197,7 @@ And there is a handy YouTube shortcut
 [How to sterilise homebrew equipment](https://www.youtube.com/watch?v=vSoshc1ukGY)
 ```
 
-And here [is the result](https://homebrewbeer.netlify.app/2021/01/how-to-get-started-home-brewing-beer-beer-from-a-kit/)
+And here [is the result](https://homebrewbeer.netlify.app/2021/01/24/how-to-get-started-home-brewing-beer-woodfordes-wherry/)
 
 
 [![Beer](/assets/2021-01-24/beer.jpg "Posts"){:width="500px"}](/assets/2021-01-24/beer.jpg)
