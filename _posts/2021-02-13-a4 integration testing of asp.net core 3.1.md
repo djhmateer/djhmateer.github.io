@@ -25,6 +25,7 @@ I started this article in Oct 2020 as a series in .NET Core Razor pages developm
 - [8. Razor pages helpers scaffolding and serilog](/2021/02/13/a8-razor-pages-helpers-scaffolding-serilog)
 - [9. Razor nullable reference types](/2021/02/13/a9-razor-pages-nullable-reference-types)
 - [10. Razor pages naming of entities dtos and viewmodels](/2021/02/14/a10-razor-pages-naming-of-entities-dtos-and-viewmodels)
+- [11. Serilog](/2021/03/10/a11-serilog-logging-in-razor-pages)
 
 - [Deployment using IaaS](/2020/01/09/Publishing-ASP-NET-Core-3-App-to-Ubuntu) shows how I prefer to automate deployments
 
