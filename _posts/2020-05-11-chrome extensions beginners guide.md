@@ -62,6 +62,8 @@ I recommend using the [Firefox Add-Ons most popular](https://addons.mozilla.org/
 
 - [Honey](https://chrome.google.com/webstore/detail/honey/bmnlcjabgnpnenekpadlanbbkooimhnj) for finding coupons. No idea if it works - am trying it. 10m+ users 155k stars.
 
+- [https://www.fakespot.com/](https://www.fakespot.com/)
+
 ### Update 16th May
 
 Thank you to everone who got back to me with their favourites, with some of them being:
