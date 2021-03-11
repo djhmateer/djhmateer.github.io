@@ -182,7 +182,7 @@ I was supressing this before with LogEventLevel.Fatal
 
 [![noise](/assets/2021-03-10/noise.jpg "noise")](/assets/2021-03-10/noise.jpg)
 
-Default (nothing) is Information.
+Information (default)
 
 [![noise](/assets/2021-03-10/verbose.jpg "verbose")](/assets/2021-03-10/verbose.jpg)
 
@@ -192,11 +192,18 @@ The levels of logs are:
 
 - Verbose
 - Debug
-- Information
+- Information (default)
 - Warning
 - Error
 - Fatal
 
+[![warning](/assets/2021-03-10/warning.jpg "warningl")](/assets/2021-03-10/warning.jpg)
+
+`.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)` so we only see Warnings and above for AspNetCore logging.
+
+## Duplicates
+
+[SO Question I asked](https://stackoverflow.com/questions/66580124/duplicate-error-messages-with-serilog-asp-net-core)
 
 ## Filtering
 
