@@ -27,7 +27,6 @@ image: /assets/2021-03-11/cameras.jpg
 
 We've had an issue with one which didn't work correctly. It did nothing basically, and locked up.
 
-[https://www.youtube.com/watch?v=FgDs3wbLqAI](https://www.youtube.com/watch?v=FgDs3wbLqAI) Spotted Woodpecker, Badger and Fox
 
 This works via PIR
 
@@ -63,7 +62,6 @@ We sometime use an external battery
 Can use software to detect movement
 
 
-
 ## MyNatureWatch (rasp pi)
 
 [https://mynaturewatch.net/](https://mynaturewatch.net/)
@@ -74,8 +72,11 @@ This is a build it yourself kit.
 
 ## Videos
 
+[Spotted Woodpecker, Badger and Fox](https://www.youtube.com/watch?v=FgDs3wbLqAI)  Bushnell
 
-[https://www.youtube.com/watch?v=u-ED44lY21I](https://www.youtube.com/watch?v=u-ED44lY21I) Hoverfly larvae under ice. Sped up film
+[Trail cam +2 mouse](https://www.youtube.com/watch?v=koeEShowcvE) - 40cm / 16inches.. maybe the Browning with macro?
+
+[Hoverfly larvae under ice. Sped up film](https://www.youtube.com/watch?v=u-ED44lY21I) Hoverfly larvae under ice. Sped up film
 
 ## Articles
 
