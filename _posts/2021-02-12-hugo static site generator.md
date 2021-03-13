@@ -202,6 +202,10 @@ And here [is the result](https://homebrewbeer.netlify.app/2021/01/24/how-to-get-
 
 [![Beer](/assets/2021-01-24/beer.jpg "Posts"){:width="500px"}](/assets/2021-01-24/beer.jpg)
 
+## Other Information
+
+[https://pakstech.com/blog/introduction-to-hugo/](https://pakstech.com/blog/introduction-to-hugo/) Great 10 part series on Hugo
+
 ## Summary
 
 Hugo seems to work well and is fast. 
