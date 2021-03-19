@@ -230,7 +230,7 @@ public static void Main(string[] args)
 
 ## Other information
 
-[Setting up serilog in ASP.NET Core 3](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/)]
+[Setting up serilog in ASP.NET Core 3](https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/)
 
 For me this cleans up the code as don't need the injected in ILogger everywhere.
 
