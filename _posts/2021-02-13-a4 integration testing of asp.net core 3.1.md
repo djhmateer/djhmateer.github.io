@@ -36,6 +36,9 @@ I've got a front end series:
 - [3. Progressive Web Apps - PWAs]() how to make your site easy to get to on a phone
 - [4. Progressive Web Apps - Example](/2020/12/14/progressive-web-app-example) An example of how to do a PW
 - [5. TailwindCSS]()
+- [6. CSS]() Preprocessors, task runners - gulp. Autoprefixer
+- [7. JS]() Bundling, Minification, Tree shaking
+
 
 [Integration Testing ASP.NET Core Applications: Best Practices](https://app.pluralsight.com/library/courses/integration-testing-asp-dot-net-core-applications-best-practices/table-of-contents) by Steve Gordon is an excellent Pluralsight course, and I'm using the strategies discussed there.
 
