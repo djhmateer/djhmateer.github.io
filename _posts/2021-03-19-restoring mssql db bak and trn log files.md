@@ -97,31 +97,34 @@ SET @cmd = 'DIR /b "' + @backupPath + '"'
 INSERT INTO @fileList(backupFile) 
 EXEC master.sys.xp_cmdshell @cmd 
 
+-- dm commented out below
+-- when don't have a .bak nor .dif files in c:\temp
 -- 4 - Find latest full backup 
-SELECT @lastFullBackup = MAX(backupFile)  
-FROM @fileList  
-WHERE backupFile LIKE '%.BAK'  
-   AND backupFile LIKE @dbName + '%' 
+--SELECT @lastFullBackup = MAX(backupFile)  
+--FROM @fileList  
+--WHERE backupFile LIKE '%.BAK'  
+--   AND backupFile LIKE @dbName + '%' 
 
-SET @cmd = 'RESTORE DATABASE [' + @dbName + '] FROM DISK = '''  
-       + @backupPath + @lastFullBackup + ''' WITH NORECOVERY, REPLACE' 
-PRINT @cmd 
+--SET @cmd = 'RESTORE DATABASE [' + @dbName + '] FROM DISK = '''  
+--       + @backupPath + @lastFullBackup + ''' WITH NORECOVERY, REPLACE' 
+--PRINT @cmd 
+
 
 -- 4 - Find latest diff backup 
-SELECT @lastDiffBackup = MAX(backupFile)  
-FROM @fileList  
-WHERE backupFile LIKE '%.DIF'  
-   AND backupFile LIKE @dbName + '%' 
-   AND backupFile > @lastFullBackup 
+--SELECT @lastDiffBackup = MAX(backupFile)  
+--FROM @fileList  
+--WHERE backupFile LIKE '%.DIF'  
+--   AND backupFile LIKE @dbName + '%' 
+--   AND backupFile > @lastFullBackup 
 
--- check to make sure there is a diff backup 
-IF @lastDiffBackup IS NOT NULL 
-BEGIN 
-   SET @cmd = 'RESTORE DATABASE [' + @dbName + '] FROM DISK = '''  
-       + @backupPath + @lastDiffBackup + ''' WITH NORECOVERY' 
-   PRINT @cmd 
-   SET @lastFullBackup = @lastDiffBackup 
-END 
+---- check to make sure there is a diff backup 
+--IF @lastDiffBackup IS NOT NULL 
+--BEGIN 
+--   SET @cmd = 'RESTORE DATABASE [' + @dbName + '] FROM DISK = '''  
+--       + @backupPath + @lastDiffBackup + ''' WITH NORECOVERY' 
+--   PRINT @cmd 
+--   SET @lastFullBackup = @lastDiffBackup 
+--END 
 
 -- 5 - check for log backups 
 DECLARE backupFiles CURSOR FOR  
@@ -129,7 +132,7 @@ DECLARE backupFiles CURSOR FOR
    FROM @fileList 
    WHERE backupFile LIKE '%.TRN'  
    AND backupFile LIKE @dbName + '%' 
-   AND backupFile > @lastFullBackup 
+   --AND backupFile > @lastFullBackup 
 
 OPEN backupFiles  
 
@@ -150,6 +153,6 @@ CLOSE backupFiles
 DEALLOCATE backupFiles  
 
 -- 6 - put database in a useable state 
-SET @cmd = 'RESTORE DATABASE [' + @dbName + '] WITH RECOVERY' 
+SET @cmd = 'RESTORE DATABASE [' + @dbNewName + '] WITH RECOVERY' 
 PRINT @cmd 
 ```
