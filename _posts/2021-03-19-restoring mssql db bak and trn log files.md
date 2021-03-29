@@ -19,6 +19,8 @@ I had this strange error using the GUI trying to restore a .bak database and it'
 
 > "Unable to create restore plan due to break in the LSN chain."
 
+Update - it turns out it was because a secondary backup using [Veeam](https://www.veeam.com/) was creating a new transaction log backup which truncates the SQL logs causing a break in the chain with the native SQL backup.
+
 ## CMD line
 
 To dig in further I used:
