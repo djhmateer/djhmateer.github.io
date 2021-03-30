@@ -76,6 +76,8 @@ return await OnGetAsync(projectId, openEditBudgetModal: true);
 
 ```
 
+Don't like this as press F5 it will give a form error
+
 [Post Redirect Get](https://exceptionnotfound.net/implementing-post-redirect-get-in-asp-net-core-razor-pages/)
 
 This works well for a page I want to link to eg /SearchPRG?country=uk
