@@ -10,12 +10,13 @@ sitemap: false
 image: /assets/2020-02-03/40.jpg
 ---
 
-
-[![dev](/assets/2021-03-30/budget.jpg "dev")](/assets/2021-03-30/budget.jpg)
+Imagine you have a form which pulls in a BudgetAmount from a database, and want to update this field in Razor pages.
 
 [razor-pages-form-validation](https://github.com/djhmateer/razor-pages-form-validation) source sample code.
 
-Imagine you have a form which pulls in a BudgetAmount from a database, and I want to update this int field in Razor pages.
+<!-- [![Bitcoin logo](/assets/2021-02-19/bitcoin.svg "Bitcoin"){:width="500px"}](/assets/2021-02-19/bitcoin.svg) -->
+
+[![dev](/assets/2021-03-30/budget.jpg "dev"){:width="400px"}](/assets/2021-03-30/budget.jpg)
 
 ```html
 <div class="form-group">
@@ -64,9 +65,33 @@ When I've gone back to a form with errors, and press F5, I'll get this:
 
 I'm fine with this form like this as I never need to link to a pre-filled in form.
 
-## Passing value back to submitted for - eg modal window
+## Passing value back to submitted form - open modal window
 
 Imagine you've posted the form from a modal popup, and you need to tell the page to redisplay that modal.
+
+```cs
+[BindProperty]
+public string Message { get; set; }
+
+public bool OpenEditBudgetModal { get; set; }
+```
+
+and then some jQuery to click the button which originally opened the modal.
+
+```html
+<!-- when a modal popup has been posted, and a server side validation error occurs we want to redisplay the popup-->
+<!-- our page script.js has already loaded-->
+@if (Model.OpenEditBudgetModal)
+{
+    <script>
+    $(document).ready(function () {
+    $('#edit-budget').click();
+});
+</script>
+}
+
+```
+
 
 ## Other Strategies
 

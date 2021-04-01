@@ -129,6 +129,42 @@ public class AppConfiguration
 I like that my page code behinds are simpler as I don't need to do constructor based DI to get the configuration.
 
 
+## Update - Environment Variables
+
+For a different project using a Windows Server with IIS, I've used Environment Variables to store the production SQL Server Auth connection string.
+
+As the Web Server is on a separate vlan to the SQL Server, and not domain joined
+
+[MS Docs - authentication scenarios](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/authentication-in-sql-server#authentication-scenarios)
+
+A common scenario is to use SQL Server Authentication which means we need to deal with secrets.
+
+[MS Docs - secrets for prod](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-5.0&tabs=windows#safe-storage-of-app-secrets-in-development-in-aspnet-core:~:text=Secrets%20shouldn't%20be%20deployed%20with%20the,environment%20variables%20or%20Azure%20Key%20Vault)
+
+The recommended approach for production is to use
+
+- Environment Variables
+- Azure Data Vault (not appropriate for this project)
+
+
+<!-- ![alt text](/assets/2020-10-12/iis.jpg "Kestrel"){:width="800px"} -->
+![alt text](/assets/2020-10-12/iis.jpg "Kestrel")
+
+Then to access with code:
+
+
+```cs
+dbnameConnectionString = Environment.GetEnvironmentVariable("DBNameConnectionStringStaging")!;
+
+```
+
+I'm not storing production secrets anywhere I have easy access to. The Infrastructure team only have access to the prod webserver.
+
+So it is very hard to mix up db connection strings between dev / staging / prod.
+
+Much better!
+
+
 ## Kestrel
 
 <!-- ![alt text](/assets/2020-10-12/kestrel.jpg "Kestrel"){:width="800px"} -->
