@@ -1,16 +1,15 @@
 ---
 layout: post
-title: 12 Razor Pages form posting 
+title: 14 Business Logic
 description: 
 menu: review
-categories: Form 
+categories: C# 
 published: true 
 comments: false     
 sitemap: false
 image: /assets/2020-02-03/40.jpg
 ---
 
-Imagine you have a form which pulls in a BudgetAmount from a database, and want to update this field in Razor pages.
 
 [razor-pages-form-validation](https://github.com/djhmateer/razor-pages-form-validation) source sample code.
 
@@ -18,108 +17,37 @@ Imagine you have a form which pulls in a BudgetAmount from a database, and want 
 
 [![dev](/assets/2021-03-30/budget.jpg "dev"){:width="400px"}](/assets/2021-03-30/budget.jpg)
 
-```html
-<div class="form-group">
-    <label asp-for="BudgetAmount"></label>
-    <input asp-for="BudgetAmount" class="form-control"/>
-    <span asp-validation-for="BudgetAmount" class="text-danger"></span>
-</div>
-```
-and the code behind
+For smaller projects I'm using
 
-```cs
-public int BudgetAmount { get; set; }
+- Code behind in razor pages with as little logic in as possilbe.
+- Db.cs file with functional methods in that do all the logic
+- Unit tests which hit the functions in the Db file (integration tests hit http, unit tests are allowed to hit the db)
 
-public void OnGet()
-{
-    BudgetAmount = 123;
-}
+## Idempotency
 
-public async Task<IActionResult> OnPostAsync()
-{
-    // fake an error 
-    // the only time I get a form resubmission popup is when
-    // this error page is returned and I hit f5
-    ModelState.AddModelError(string.Empty, "Problem something wrong");
-    return Page();
-}
+For dates I inject in a nullable DateTime for testing
 
-```
+## Strategy
 
-I'm faking some sort of error which then returns the Page. However the existing budget amount is not remembered, but the message is
+- As few layers of abstraction as possible
 
-## BindProperty
+- As little code as possible - use all latest language features, as if I don't understand the syntax, can easily use Resharper to change (alt enter) to a more verbose
 
-This property allows model binding which fixes the problem
+- Create code which is as simple as possible
 
-[MS Docs](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-5.0&tabs=visual-studio#the-home-page) - see just above where this link takes you.
+I tend to write code in any way possible to get it working first. Then refactor.
 
+I'm usually finding out the data edge cases as I write code, and finding when it breaks. So taking my time with each 'screen', throwing away code all the time and keeping at it is important. Good simple code takes time. 
 
-[![dev](/assets/2021-03-30/budget2.jpg "dev")](/assets/2021-03-30/budget2.jpg)
+It is always worth the effort whilst writing the code rather than bug fixing in production.
 
-## Confirm Form Resubmission
+## Standard
 
-When I've gone back to a form with errors, and press F5, I'll get this:
+Keep code as close to language standard as possible
 
-[![dev](/assets/2021-03-30/resubmit.jpg "dev")](/assets/2021-03-30/resubmit.jpg)
+- linq
+- don't go overboard on 'Func<T>'
+- don't go overboard on generics
+- composition over inheritance
 
-I'm fine with this form like this as I never need to link to a pre-filled in form.
-
-## Passing value back to submitted form - open modal window
-
-Imagine you've posted the form from a modal popup, and you need to tell the page to redisplay that modal.
-
-```cs
-[BindProperty]
-public string Message { get; set; }
-
-public bool OpenEditBudgetModal { get; set; }
-```
-
-and then some jQuery to click the button which originally opened the modal.
-
-```html
-<!-- when a modal popup has been posted, and a server side validation error occurs we want to redisplay the popup-->
-<!-- our page script.js has already loaded-->
-@if (Model.OpenEditBudgetModal)
-{
-    <script>
-    $(document).ready(function () {
-    $('#edit-budget').click();
-});
-</script>
-}
-
-```
-
-
-## Other Strategies
-
-```cs
-// this is nice, but no modelbinding - would need to pass the new value to here
-return await OnGetAsync(projectId, openEditBudgetModal: true);
-
-```
-
-Don't like this as press F5 it will give a form error
-
-[Post Redirect Get](https://exceptionnotfound.net/implementing-post-redirect-get-in-asp-net-core-razor-pages/)
-
-This works well for a page I want to link to eg /SearchPRG?country=uk
-
-But is dangerous for other scenarios.
-
-## Multiple Forms - eg Modal popups and forms which do not include all properties 
-
-When you're only posting a few properties, the simplest thing is to just get the data again from the db and re-hydrate the missing values. 
-
-We don't want to overpost on forms.
-
-When submitting mutiple small forms on a page (I'm using modals) it is nice to handle each form separatetly
-
-[https://www.learnrazorpages.com/razor-pages/handler-methods#named-handler-methods](https://www.learnrazorpages.com/razor-pages/handler-methods#named-handler-methods)
-
-## Summary
-
-We can post a form and do server side validation and get the values back through model binding.
-
+Don't use DI if don't need to
