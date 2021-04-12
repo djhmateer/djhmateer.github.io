@@ -146,12 +146,9 @@ The recommended approach for production is to use
 - Environment Variables
 - Azure Data Vault (not appropriate for this project)
 
-
-<!-- ![alt text](/assets/2020-10-12/iis.jpg "Kestrel"){:width="800px"} -->
 ![alt text](/assets/2020-10-12/iis.jpg "Kestrel")
 
 Then to access with code:
-
 
 ```cs
 dbnameConnectionString = Environment.GetEnvironmentVariable("DBNameConnectionStringStaging")!;
@@ -163,6 +160,15 @@ I'm not storing production secrets anywhere I have easy access to. The Infrastru
 So it is very hard to mix up db connection strings between dev / staging / prod.
 
 Much better!
+
+## Escape connection string passwords
+
+For good practice remember to escape your connection strings so when you change your password to something secure with a semicolon in it, the parser doesn't get confused.
+
+```
+Server=DT2719MOD\instance;Database=abs2;User Id=TestUserLogon;Password='iloveachallenge;';
+```
+
 
 
 ## Kestrel
