@@ -227,6 +227,10 @@ public static void Main(string[] args)
 
 ```
 
+## Output of ASP.NET Logs from xUnit tests
+
+[Meziantou's blog](https://www.meziantou.net/how-to-get-asp-net-core-logs-in-the-output-of-xunit-tests.htm) 
+
 
 ## Other information
 
