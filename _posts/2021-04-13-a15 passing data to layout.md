@@ -44,7 +44,7 @@ Then in the `_Layout.cshtml` file
 @{int projectId = (int)ViewData["ProjectId"]; }
 ```
 
-## Using the ActionFilterAttribute
+## ActionFilterAttribute for passing _Layout data
 
 [How to set ViewBag properties for all Views without using a base class for Controllers?](https://stackoverflow.com/a/21130867)
 
