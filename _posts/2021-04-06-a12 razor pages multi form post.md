@@ -119,6 +119,12 @@ When submitting mutiple small forms on a page (I'm using modals) it is nice to h
 
 [https://www.learnrazorpages.com/razor-pages/handler-methods#named-handler-methods](https://www.learnrazorpages.com/razor-pages/handler-methods#named-handler-methods)
 
+## ModelState with multiple forms
+
+We'll have to handle errors more manually now:
+
+[https://stackoverflow.com/questions/48516547/how-to-implement-two-forms-with-separate-bindproperties-in-razor-pages](https://stackoverflow.com/questions/48516547/how-to-implement-two-forms-with-separate-bindproperties-in-razor-pages)
+
 ## Summary
 
 We can post a form and do server side validation and get the values back through model binding.
