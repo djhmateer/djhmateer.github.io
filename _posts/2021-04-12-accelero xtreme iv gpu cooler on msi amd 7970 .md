@@ -34,3 +34,12 @@ thermal paste
 [![Bitcoin logo](/assets/2021-04-12/cover.jpg "Bitcoin")](/assets/2021-04-12/cover.jpg)
 
 cover
+
+
+## Performance and Noise
+
+It is so much quieter!
+
+## Thermal Paste
+
+[https://www.amazon.co.uk/ARCTIC-MX-4-2019-Performance-Durability/dp/B07L9BDY3T/ref=sr_1_3?dchild=1&keywords=thermal%2Bpaste&qid=1618823683&sr=8-3&th=1](https://www.amazon.co.uk/ARCTIC-MX-4-2019-Performance-Durability/dp/B07L9BDY3T/ref=sr_1_3?dchild=1&keywords=thermal%2Bpaste&qid=1618823683&sr=8-3&th=1) have ordered more thermal paste

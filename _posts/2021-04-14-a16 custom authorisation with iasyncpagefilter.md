@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 16 - Custom Authorisation with IAsyncPageFilter  
+title: 16 Custom Authorisation with IAsyncPageFilter  
 description: 
 menu: review
 categories: Razor 
