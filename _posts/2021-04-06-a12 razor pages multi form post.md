@@ -121,9 +121,67 @@ When submitting mutiple small forms on a page (I'm using modals) it is nice to h
 
 ## ModelState with multiple forms
 
-We'll have to handle errors more manually now:
+We'll have to handle errors more manually now
 
-[https://stackoverflow.com/questions/48516547/how-to-implement-two-forms-with-separate-bindproperties-in-razor-pages](https://stackoverflow.com/questions/48516547/how-to-implement-two-forms-with-separate-bindproperties-in-razor-pages)
+[https://stackoverflow.com/a/54964930/26086](https://stackoverflow.com/a/54964930/26086) 
+
+This way works rather well, keeping javascript validations working too.
+
+```cs
+public bool OpenAddReviewModal { get; set; }
+public bool OpenAddDatesModal { get; set; }
+
+[BindProperty]
+public AddReviewModel AddReview { get; set; } = null!;
+[BindProperty]
+public AddDatesModel AddDates { get; set; } = null!;
+
+public class AddReviewModel
+{
+    [BindProperty]
+    [Required(ErrorMessage = "Please enter a review")]
+    public string ReviewText { get; set; } = null!;
+
+    public string[] Stars = { "5", "4", "3", "2", "1" };
+
+    [BindProperty]
+    [Required(ErrorMessage = "Please rate")]
+    public string OverallStar { get; set; } = null!;
+}
+
+public class AddDatesModel
+{
+    [BindProperty] 
+    public string FooStartDate { get; set; } = null!;
+    [BindProperty] 
+    public string FooEndDate { get; set; } = null!;
+}
+
+// OnGet..
+
+public async Task<IActionResult> OnPostAddReviewAsync(int projectId, int applicantId)
+{
+    // multiple form submit with ModelState validation
+    // keeping attributes so that javascript validators wired up too
+    // https://stackoverflow.com/a/54964930/26086
+    ModelState.Clear();
+    if (!TryValidateModel(AddReview, nameof(AddReview)))
+    {
+        await HydrateProperties(projectId, applicantId);
+
+        OpenAddReviewModal = true;
+
+        // failed validation
+        return Page();
+    }
+
+    // validation has passed
+    // save properties
+    return LocalRedirect($"/foo/{projectId}/{applicantId}");
+}
+
+```
+
 
 ## Summary
 
