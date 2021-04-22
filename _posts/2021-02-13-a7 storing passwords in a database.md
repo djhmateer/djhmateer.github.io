@@ -12,7 +12,7 @@ image: /assets/2020-02-03/40.jpg
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
-This is a follow on article from [Cookie Authentication in ASP.NET Core](/2020/08/27/cookie-authentication-in-asp.net-core-3.1) where I explain why I'm using a very simple cookie based strategy for Authentication and Authorisation and I'm not using all of `Microsoft.AspNetCore.Identity.*`
+This is a follow on article from [Cookie Authentication in ASP.NET Core](/2020/10/21/cookie-authentication-in-asp.net-core-3.1) where I explain why I'm using a very simple cookie based strategy for Authentication and Authorisation and I'm not using all of `Microsoft.AspNetCore.Identity.*`
 
 [Source code for this article in password-postgres](https://github.com/djhmateer/password-postgres)
 

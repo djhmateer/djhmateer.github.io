@@ -40,6 +40,12 @@ cover
 
 It is so much quieter!
 
-## Thermal Paste
+Partial success. The card isn't getting quite enough cooling. Even with fans at 100% I can overheat the card after a while of maximum usage. Even with the side off the case and case fans on max.
 
-[https://www.amazon.co.uk/ARCTIC-MX-4-2019-Performance-Durability/dp/B07L9BDY3T/ref=sr_1_3?dchild=1&keywords=thermal%2Bpaste&qid=1618823683&sr=8-3&th=1](https://www.amazon.co.uk/ARCTIC-MX-4-2019-Performance-Durability/dp/B07L9BDY3T/ref=sr_1_3?dchild=1&keywords=thermal%2Bpaste&qid=1618823683&sr=8-3&th=1) have ordered more thermal paste
+Time to try again, with:
+
+- More thermal paste [https://www.amazon.co.uk/ARCTIC-MX-4-2019-Performance-Durability/dp/B07L9BDY3T/ref=sr_1_3?dchild=1&keywords=thermal%2Bpaste&qid=1618823683&sr=8-3&th=1](https://www.amazon.co.uk/ARCTIC-MX-4-2019-Performance-Durability/dp/B07L9BDY3T/ref=sr_1_3?dchild=1&keywords=thermal%2Bpaste&qid=1618823683&sr=8-3&th=1)
+
+- Crank up the screws that go straight onto the dye
+
+
