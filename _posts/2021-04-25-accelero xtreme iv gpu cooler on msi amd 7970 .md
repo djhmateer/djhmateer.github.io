@@ -7,7 +7,7 @@ categories: GPU
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2020-04-12/card2.jpg
+image: /assets/2021-04-12/card2.jpg
 ---
 
 [![Accelero Xtreme IV](/assets/2021-04-12/card2.jpg "Accelero Xtreme IV")](/assets/2021-04-12/card2.jpg)
