@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Accelero Xtreme IV GPU Cooler on MSI AMD 7970   
-description: Cooling an MSI AMD 7970 GPU - taking an old very noisy card and having joyful near silence when working and gaming.
+description: Cooling an MSI AMD 7970 GPU which used to scream like a banshee. It was loud. The banshee is now silenced.
 #menu: review
 categories: GPU 
 published: true 
@@ -12,7 +12,7 @@ image: /assets/2020-04-12/card2.jpg
 
 [![Accelero Xtreme IV](/assets/2021-04-12/card2.jpg "Accelero Xtreme IV")](/assets/2021-04-12/card2.jpg)
 
-[My MSI AMD 7970 card](/2021/01/27/amd-7970-graphics-card-and-philips-BDM4037U-monitor) has been a mission to get working well
+[My MSI AMD 7970 card](/2021/01/27/amd-7970-graphics-card-and-philips-BDM4037U-monitor) used to scream like a banshee on full load. It was loud.
 
 [The Accelero Xtreme IV](https://www.arctic.de/en/ax4) GPU Cooler on [Amazon for £51](https://www.amazon.co.uk/gp/product/B00HHMJIIO/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1) is a great addition to it to get it working near silently.
 
