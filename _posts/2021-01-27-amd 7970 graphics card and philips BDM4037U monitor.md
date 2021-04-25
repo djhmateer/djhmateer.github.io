@@ -18,6 +18,8 @@ I've been struggling with my graphics card and monitor setup for years, and fran
 
 TL;DR - it helped to have a certified Mini Display Port to Display Port Cable
 
+TL;DR - also having a brace on my card with the [Accelero cooler](/2021/04/25/accelero-xtreme-iv-gpu-cooler-on-msi-amd-7970) helped demonstrating that I had loose connection.
+
 ## AMD Radeon HD 7970
 
 I've got 2 of these cards which were bought back in April 2013 for Bitcoin mining.
@@ -114,7 +116,7 @@ I also used [openhardwaremonitor.org](https://openhardwaremonitor.org/downloads/
 
 Water cooling GPU's is becoming more popular eg here is watercooling for the Nvidia Geforce RTX 2070 - [Watercooling any GPU for $72](https://www.youtube.com/watch?v=91zSzidwLx8)
 
-There are aftermarket air coolers, but I bet they are noisy too
+There are aftermarket air coolers. [I bought I Arctic Xtreme IV](/2021/04/25/accelero-xtreme-iv-gpu-cooler-on-msi-amd-7970) and it is works well and is quiet.
 
 [Arctic Accelero Xtreme 7970 Card Cooler](https://www.amazon.co.uk/Arctic-Cooling-Accelero-Xtreme-7970/dp/B0074VVK52)
 
