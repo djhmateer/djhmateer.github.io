@@ -2,7 +2,7 @@
 layout: post
 title: Accelero Xtreme IV GPU Cooler on MSI AMD 7970   
 description: Cooling an MSI AMD 7970 GPU - taking an old very noisy card and having joyful near silence when working and gaming.
-menu: review
+#menu: review
 categories: GPU 
 published: true 
 comments: false     
