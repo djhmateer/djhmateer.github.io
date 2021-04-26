@@ -79,6 +79,8 @@ With my case fans turned down temps rose up to 94 before I went to max again (th
 
 This is a success. 
 
+[Reddit/r/Amd discussion of article here](https://www.reddit.com/r/Amd/comments/my3c5w/cooling_an_msi_amd_7970_gpu_which_used_to_scream/_)
+
 My goal was to get noise down and to be able to play games on this rig without overheating it.
 
 
