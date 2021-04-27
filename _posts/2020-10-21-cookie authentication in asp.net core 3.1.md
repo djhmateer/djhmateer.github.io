@@ -71,6 +71,20 @@ Essentially start with a blank ASP.NET Core Razor pages project, then can add in
 
 ```cs
 // ConfigureServices method
+
+// persist cookies to disk so that if server restarts it can read them
+// and people wont have to login again if they have pressed remember me
+//https://stackoverflow.com/questions/56490525/asp-net-core-cookie-authentication-is-not-persistant
+// create a directory for keys if it doesn't exist
+// it'll be created in the root, beside the wwwroot directory
+var keysDirectoryName = "Keys";
+var keysDirectoryPath = Path.Combine(_hostEnvironment.ContentRootPath, keysDirectoryName);
+if (!Directory.Exists(keysDirectoryPath)) Directory.CreateDirectory(keysDirectoryPath);
+
+services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(keysDirectoryPath))
+    .SetApplicationName("CustomCookieAuthentication");
+
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
 
 app.UseAuthentication();
@@ -84,6 +98,8 @@ app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMo
 ```
 
 [SO Question on Chrome iPhone problem](https://stackoverflow.com/questions/67271669/user-identity-isauthenticated-asp-net-5-need-to-force-it-to-be-rechecked/67281097#67281097)
+
+[SO Question on persisting cookies on redeploy / server boot](https://stackoverflow.com/questions/56490525/asp-net-core-cookie-authentication-is-not-persistant)
 
 Then we need to patch in the login form etc.. copy it from [here](https://github.com/djhmateer/authentication-dave/tree/master/AuthenticationDave.Web/Areas/Identity/Pages/Account). 
 
