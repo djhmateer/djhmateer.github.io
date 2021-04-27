@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Cookie Authentication in ASP.NET Core 3.1
-description: Implementing cookie based authentication, claims based role authorisation in ASP.NET Core 3.1.
+title: Cookie Authentication in ASP.NET 5
+description: Implementing cookie based authentication, claims based role authorisation in ASP.NET 5
 #menu: review
 categories: Authentication BrokenLinkChecker
 published: true
@@ -75,10 +75,15 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
 
 app.UseAuthentication();
 app.UseAuthorization();
+// NO don't use Strict!
+// Had issues with iPhone Chrome not working
 // As we're not using OAuth2 we can set the cookie same-site attribute to strict
-app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Strict });
+//app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Strict });
+app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
 
 ```
+
+[SO Question on Chrome iPhone problem](https://stackoverflow.com/questions/67271669/user-identity-isauthenticated-asp-net-5-need-to-force-it-to-be-rechecked/67281097#67281097)
 
 Then we need to patch in the login form etc.. copy it from [here](https://github.com/djhmateer/authentication-dave/tree/master/AuthenticationDave.Web/Areas/Identity/Pages/Account). 
 
