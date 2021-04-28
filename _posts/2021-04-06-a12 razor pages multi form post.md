@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 12 Razor Pages form posting 
+title: 12 Razor Pages Multi form posting 
 description: 
 menu: review
 categories: Form 
@@ -126,6 +126,14 @@ We'll have to handle errors more manually now
 [https://stackoverflow.com/a/54964930/26086](https://stackoverflow.com/a/54964930/26086) 
 
 This way works rather well, keeping javascript validations working too.
+
+```html
+<form id="frm-change-password" asp-page-handler="changepassword" method="post">
+</form>
+
+```
+
+then
 
 ```cs
 public bool OpenAddReviewModal { get; set; }
