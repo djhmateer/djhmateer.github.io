@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 4. Integration testing of ASP.NET Core 3.1 and .NET Core 5
+title: 4. Integration testing of ASP.NET 3.1 and 5
 description: 
 menu: review
 categories: xunit 
@@ -332,6 +332,33 @@ public async Task ShouldBeAbleToInsertLogin()
     Assert.True(returnedLogin.LoginId > 0);
 }
 
+```
+
+## Debugging
+
+If an integration tests fails, it will respond with a 500. There are no log files with our internal webserver. 
+
+However you can debug in process ie put in break points in the web code.
+
+And you can output the http response which is in debug mode, so will give meaningful output
+
+```cs
+[Fact]
+public async Task Get_DashboardTests()
+{
+    var client = _factory
+        .WithWebHostBuilder(x => x.WithAuthorisedUserInRoleAndClientId(CDRole.ClientUser, 12345))
+        .CreateClient();
+
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Test");
+
+    var response = await client.GetAsync("/Dashboard/123");
+
+    // Useful for seeing the debug message if we get an error
+    output.WriteLine(await response.Content.ReadAsStringAsync());
+
+    response.AssertOk();
+}
 ```
 
 
