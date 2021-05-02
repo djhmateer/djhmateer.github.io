@@ -10,22 +10,30 @@ sitemap: false
 image: /assets/2020-02-03/40.jpg
 ---
 
-I love the simplicity of [Cookie based authentication](/2020/10/21/cookie-authentication-in-asp.net-core-3.1)
+[Cookie based authentication](/2020/10/21/cookie-authentication-in-asp.net-core-3.1) with email address and password for authentication is simple.
+
+If you can't 
+
 
 [Storing passwords in a database](/2021/02/13/a7-storing-passwords-in-a-database) properly is critical.
 
-So now we need to make sure our workflow is good:
+So now we need to make sure that the password the user sets is good. 
 
-## Setting / Registering a new user
+[https://www.ncsc.gov.uk/collection/passwords/updating-your-approach](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
 
-I'm generally making intranet applications, so the user is setup by back end admins. There is no concept of the user self registering.
+## Password Complexity
 
-## Complexity of Password
+- 8 characters or more
+- 1 Capital letter or more
+
+This is inline with the UK Government current guidelines.
+
+## Credential stuffing (password black list)
 
 We don't want our login form username password combination to be easily guessable.
 
-u: dave@hmsoftware.co.uk
-p: letmein
+- u: dave@hmsoftware.co.uk
+- p: letmein
 
 [Troy Hunt on Minimum Password Lengths](https://www.troyhunt.com/how-long-is-long-enough-minimum-password-lengths-by-the-worlds-top-sites/)
 
@@ -37,6 +45,7 @@ As we're getting admins to setup passwords initially, a nice little tool is [htt
 
 As soon as we allow users to set their own passwords we need to be much more vigilant.
 
+
 ## Lockout after x attempts
 
 A simple way is to lockout a user after x attempts.
@@ -44,6 +53,14 @@ A simple way is to lockout a user after x attempts.
 ## Geolocation
 
 If you know your site should only be accessed by people in the UK, then a simple geo-lookup on the IP is a simple win.
+
+## Help suggest a password - machine-generated password
+
+This is nice - generate some words (which haven't been compromised before)
+
+## Expire
+
+Don't expire passwords
 
 ## 2FA Lite
 
@@ -57,7 +74,9 @@ Link expires after x minutes
 
 I use one and have separate long passwords for each site I have to login to. I do not use 3rd Party Authentication eg Google, Facebook unless I have to.
 
+## Resources
 
+[https://www.metacompliance.com/blog/password-policy-best-practices-2021/](https://www.metacompliance.com/blog/password-policy-best-practices-2021/)
 
 
 
