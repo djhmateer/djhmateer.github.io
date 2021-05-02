@@ -12,14 +12,16 @@ image: /assets/2020-02-03/40.jpg
 
 [Cookie based authentication](/2020/10/21/cookie-authentication-in-asp.net-core-3.1) with email address and password for authentication is simple.
 
-If you can't 
+We should be using a password manager like [Bitwarden](https://bitwarden.com/), [1Password](https://1password.com/), [LastPass](https://www.lastpass.com/) etc.. to generate separate passwords for each site.
+
+However there are situations where we need to generate a password for a user, where we can't expect them to be using a password manager, nor MFA so we try and guide them towards being as secure as possible.
 
 
-[Storing passwords in a database](/2021/02/13/a7-storing-passwords-in-a-database) properly is critical.
+## Help suggest a password - machine-generated password
 
-So now we need to make sure that the password the user sets is good. 
+This is nice - generate some words (which haven't been compromised before)
 
-[https://www.ncsc.gov.uk/collection/passwords/updating-your-approach](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[https://github.com/glyph/horsephrase](https://github.com/glyph/horsephrase)
 
 ## Password Complexity
 
@@ -28,6 +30,8 @@ So now we need to make sure that the password the user sets is good.
 
 This is inline with the UK Government current guidelines.
 
+[Troy Hunt on Minimum Password Lengths](https://www.troyhunt.com/how-long-is-long-enough-minimum-password-lengths-by-the-worlds-top-sites/)
+
 ## Credential stuffing (password black list)
 
 We don't want our login form username password combination to be easily guessable.
@@ -35,7 +39,16 @@ We don't want our login form username password combination to be easily guessabl
 - u: dave@hmsoftware.co.uk
 - p: letmein
 
-[Troy Hunt on Minimum Password Lengths](https://www.troyhunt.com/how-long-is-long-enough-minimum-password-lengths-by-the-worlds-top-sites/)
+nor do we want any known username and password combinations to be used 
+
+- u: dave@hmsoftware.co.uk
+- p: mypasswordiuseoneverysite
+
+So lets check against known passwords
+
+[https://haveibeenpwned.com/Passwords](https://haveibeenpwned.com/Passwords)
+
+
 
 [https://haveibeenpwned.com/API/v3](https://haveibeenpwned.com/API/v3) which is now a paid service at $3.50pm.
 
@@ -53,10 +66,6 @@ A simple way is to lockout a user after x attempts.
 ## Geolocation
 
 If you know your site should only be accessed by people in the UK, then a simple geo-lookup on the IP is a simple win.
-
-## Help suggest a password - machine-generated password
-
-This is nice - generate some words (which haven't been compromised before)
 
 ## Expire
 
@@ -78,5 +87,8 @@ I use one and have separate long passwords for each site I have to login to. I d
 
 [https://www.metacompliance.com/blog/password-policy-best-practices-2021/](https://www.metacompliance.com/blog/password-policy-best-practices-2021/)
 
+[Storing passwords in a database](/2021/02/13/a7-storing-passwords-in-a-database) properly is critical.
 
+So now we need to make sure that the password the user sets is good. 
 
+[https://www.ncsc.gov.uk/collection/passwords/updating-your-approach](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
