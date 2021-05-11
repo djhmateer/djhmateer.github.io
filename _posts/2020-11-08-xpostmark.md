@@ -48,7 +48,7 @@ They have a test API key too.
 
 asdf
 
-## Hard Bounce and Suppresion List
+## Hard Bounce and Suppression List
 
 This is a hard bounce going to a supression list. This email doesn't exist on my domain, nor do a I have a catch all.
 
