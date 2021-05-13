@@ -27,3 +27,7 @@ Sending a message [https://github.com/jstedfast/MailKit#using-mailkit](https://g
 
 html email
 [https://stackoverflow.com/questions/41160536/how-to-send-html-message-via-mimekit-mailkit](https://stackoverflow.com/questions/41160536/how-to-send-html-message-via-mimekit-mailkit)
+
+## Papercut SMTP for Dev localhost
+
+[https://github.com/ChangemakerStudios/Papercut-SMTP](https://github.com/ChangemakerStudios/Papercut-SMTP)
