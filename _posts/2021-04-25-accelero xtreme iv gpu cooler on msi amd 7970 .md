@@ -10,6 +10,8 @@ sitemap: false
 image: /assets/2021-04-12/card2.jpg
 ---
 
+**Update 17th May 2021 After a month of working well the card started locking up with a solid colour on the screen. I've had to abandon this idea - don't know what went wrong**
+
 [![Accelero Xtreme IV](/assets/2021-04-12/card2.jpg "Accelero Xtreme IV")](/assets/2021-04-12/card2.jpg)
 
 [My MSI AMD 7970 card](/2021/01/27/amd-7970-graphics-card-and-philips-BDM4037U-monitor) used to scream like a banshee on full load. It was loud.
