@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 19 - Razor Pages drop down lists
+title: 20 - Email SMTP Outbound 
 description: 
 menu: review
 categories: Form 
@@ -31,3 +31,46 @@ html email
 ## Papercut SMTP for Dev localhost
 
 [https://github.com/ChangemakerStudios/Papercut-SMTP](https://github.com/ChangemakerStudios/Papercut-SMTP)
+
+## Sending Attachments with MailKit
+
+Here is how I send attachments:
+
+```cs
+byte[]? reportResults;
+
+taResults = await Db.GetTimesheetAnalysisReportByProjectId(proNetConn, projectId);
+
+await using var memoryStream = new MemoryStream();
+await using var streamWriter = new StreamWriter(memoryStream);
+await using var csvWriter = new CsvWriter(streamWriter, CultureInfo.InvariantCulture);
+
+await csvWriter.WriteRecordsAsync(taResults.OrderByDescending(x => x.TotalGrossAmount));
+await streamWriter.FlushAsync();
+
+reportResults = memoryStream.ToArray();
+
+if (command == "Send CSV to email")
+{
+    var email = new TSGEmail(
+        EmailAddress: profile.Email,
+        Subject: subject,
+        HtmlText: htmlText,
+        AttachmentByteArray: reportResults,
+        AttachmentFileName: subject + ".csv"
+    );
+
+    Email.Send(emailConfiguration, email);
+
+}
+else if (command == "Download CSV Report")
+{
+    //https://joshclose.github.io/CsvHelper/
+    //https://stackoverflow.com/questions/21093150/using-csvhelper-to-output-stream-to-browser
+
+    var memoryStream = new MemoryStream(reportResults);
+    return new FileStreamResult(memoryStream, "text/csv") { FileDownloadName = subject + ".csv" };
+}
+
+// Email.cs
+
