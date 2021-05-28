@@ -21,6 +21,9 @@ Many web apps need services which performs background task
 
 [https://app.pluralsight.com/library/courses/building-aspnet-core-hosted-services-net-core-worker-services/table-of-contents](https://app.pluralsight.com/library/courses/building-aspnet-core-hosted-services-net-core-worker-services/table-of-contents) I've taken a lot of information from this great video series by Steve Gordon.
 
+[https://github.com/djhmateer/BackgroundServiceTest](https://github.com/djhmateer/BackgroundServiceTest) is my test source code.
+
+
 ## 1. ASP.NET Core app with Background Service / Hosted Services
 
 BackgroundServices sits outside of the request pipeline.
