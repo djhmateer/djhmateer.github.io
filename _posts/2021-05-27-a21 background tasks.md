@@ -141,7 +141,14 @@ How to get this BackgroundService to do something hourly or daily once?
 
 There only ever 1 instance of this BackgroundService running. But it may stop due to the app pool recycling (after 20minutes usually on IIS)
 
+## Example 2 - no DI. Functional approach
 
+```cs
+
+```
+
+
+Source code is here on GitHub showing a very simple example of how I like to do configuration, Db access, no DI, Nullable Ref Types.
 
 
 
