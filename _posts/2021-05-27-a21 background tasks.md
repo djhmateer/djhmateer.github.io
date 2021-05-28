@@ -166,7 +166,7 @@ MaxMessagesInChannel = 100
 
 Accepting strings in the channel which will be the temp filename
 
-BoundedChannel just lets us limit the channel so it is possilbe that it is full. So this allows us to apply backpressure.
+BoundedChannel just lets us limit the channel so it is possible that it is full. So this allows us to apply backpressure.
 
 
 ### Writing to the channel
