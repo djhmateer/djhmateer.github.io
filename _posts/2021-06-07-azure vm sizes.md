@@ -20,7 +20,7 @@ Choosing an Azure VM Size for a new project is a minefield!
 [https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/](https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/) - search for GPU  - **good pages for Pricing!!**
 
 ## Bs-series - low to moderate workloads
-I use burstable VM's as I'm using doing low traffic web applications:
+I have used burstable VM's as I'm doing a lot of low traffic web applications:
 
 Xeon 2.3GHz
 
@@ -38,6 +38,9 @@ Xeon 2.3GHz
 Standard_A4m_v2 £113 (4vcpu and 32GB)
 
 Xeon 2.3GHz
+
+This may be the same old hardware as the B series.
+
 
 ## D2a - D96a v4
 
