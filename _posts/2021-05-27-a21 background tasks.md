@@ -15,20 +15,43 @@ image: /assets/2020-02-03/40.jpg
 
 Many web apps need services which performs background task
 
-- Alert checking every hour (interval based workload)
-- DB Maintenance every day
+- Run a task every day, at a certain time (recurring)
+- Alert checking every hour (recurring)
+- DB Maintenance every day (recurring)
 - Kick something off when a request is received (make a pdf, scan webpages, call python via REST?..) - (initiate work)
 
 [https://app.pluralsight.com/library/courses/building-aspnet-core-hosted-services-net-core-worker-services/table-of-contents](https://app.pluralsight.com/library/courses/building-aspnet-core-hosted-services-net-core-worker-services/table-of-contents) I've taken a lot of information from this great video series by Steve Gordon.
 
 [https://github.com/djhmateer/BackgroundServiceTest](https://github.com/djhmateer/BackgroundServiceTest) is my test source code.
 
+## Type of Background Jobs and logic
+
+[https://www.hangfire.io/overview.html](https://www.hangfire.io/overview.html)
+
+- Fire and forget (jobs executed only once and almost immediately)
+- Recurring (fired many times on a schedule)
+
+They use [cron scheduling](https://crontab.guru/#0_22_*_*_1-5) which is super powerful.
+
+Automatic retries:
+
+However I'm interested in what happens if the recurring time is missed eg if the task is due to run on a Wednesday at 13:00, and for some reason the webserver is down, what should it do?
+
+Manually kick off a job
+Also how to kick off a job manually? This is an initiate task.
+
+Exceptions:
+What if there is an SMTP exception?
+
+
 
 ## 1. ASP.NET Core app with Background Service / Hosted Services
 
-BackgroundServices sits outside of the request pipeline.
+BackgroundServices sits outside of the request pipeline but is in the same process.
 
 Each service is started as an async background Task.
+
+This is a great solution for simple tasks, as the deployment is the same ie just a web project.
 
 eg
 - polling for data from an external service
@@ -36,11 +59,11 @@ eg
 - performing data-intensive work
 
 
-[http://disq.us/p/2ewv38l](http://disq.us/p/2ewv38l) Steve Gordon suggesting start with this, then go to a Worker Service for  scale
+[http://disq.us/p/2ewv38l](http://disq.us/p/2ewv38l) Steve Gordon suggesting start with this, then go to a Worker Service for scale
 
 Background Service or IHostedService
 
-A background service in the same same process can be a good fit. Works best if not too intensive. An easier starting point as don't need to deploy something else. It just runs where the ASP.NET Core app runs. eg when you accept a request, but then process something in the background. Can do that quite simply with an in process queue or channel.
+A background service in the same process can be a good fit. Works best if not too intensive. An easier starting point as don't need to deploy something else. It just runs where the ASP.NET Core app runs. eg when you accept a request, but then process something in the background. Can do that quite simply with an in process queue or channel.
 
 
 Hosted services have been available since ASP.NET Core 2.1 and support doing background tasks outside of the normal request flow.

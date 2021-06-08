@@ -70,7 +70,7 @@ Xeon 2.3GHz - seems they can be many different kinds of processor
 -size Standard_B2s # £22.63 (4GB)
 -size Standard_B2ms # £45 (8GB)
 -size Standard_B4ms # £90 (16GB)
--size Standard_B8ms # £90 (8vcpu and 32GB)
+-size Standard_B8ms # £90 (8vcpu and 32GB) - I got an 8272CL at 2.6 GHz here.
 
 Next I'm going to only look at the most up to date hardware which is v4 (and v5 is in preview)
 
