@@ -15,14 +15,53 @@ image: /assets/2020-02-03/40.jpg
 
 Choosing an Azure VM Size for a new project is a minefield!
 
+Except it isn't. Here is the summary (June 2021) for a general purpose workload. ie webserver.
+
+- B-series for burstable low power (can reserve for 3 years)
+- Av2 series for low power (can't reserve)
+- Dav4 or Dasv4 for General purpose (AMD)
+- Dv4 or Dav4 for General purpose (Intel)
+- Ddv4 for 50% larger local storage and better disk IOPS
+
+The v5 Intel machines are in preview.
+
+The s means premium storage. eg Dav4 or Dasv4.
+
+You can have
+
+- Pay as you go
+- 1 year reserved
+- 3 year reserved
+- Spot pricing (if workload can tolerate interruptions - can receive notifications 30seconds in advance)
+
+
 [https://docs.microsoft.com/en-us/azure/virtual-machines/sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes)
 
-[https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/](https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/) - search for GPU  - **good pages for Pricing!!**
+A tactic I use is to see what is recommended on the home page of here:
 
-## Bs-series - low to moderate workloads
-I have used burstable VM's as I'm doing a lot of low traffic web applications:
+[https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general)
+
+Pricing here is good:
+
+[https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/](https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/) 
+
+## 1.General Purpose
+
+[https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general)
+
+## Av2 (General Purpose, cost-effective)
+Standard_A4m_v2 £113 (4vcpu and 32GB)
+
+No reserved instances.
 
 Xeon 2.3GHz
+
+This may be the same old hardware as the B series.
+
+## B-series (Burstable)
+I have used burstable VM's as I'm doing a lot of low traffic web applications:
+
+Xeon 2.3GHz - seems they can be many different kinds of processor
 
 -size Standard_B1s # £5.65
 -size Standard_B1LS  # £2.82
@@ -33,59 +72,48 @@ Xeon 2.3GHz
 -size Standard_B4ms # £90 (16GB)
 -size Standard_B8ms # £90 (8vcpu and 32GB)
 
+Next I'm going to only look at the most up to date hardware which is v4 (and v5 is in preview)
 
-## Av2 Standard
-Standard_A4m_v2 £113 (4vcpu and 32GB)
-
-Xeon 2.3GHz
-
-This may be the same old hardware as the B series.
-
-
-## D2a - D96a v4
-
-For production workloads
-
-AMD EPYC 7452 up 2.35 up to 3.35GHz
+## Dav4 and Dasv4 (Generable purpose production)
+AMD EPYC 7452 up 2.35 up to 3.35GHz (2020)
 
 Standard_D4a_v4 £104 (4vcpu and 16GB)
 
-what are the newest CPU's?
+
+## Dv4 (General purpose, balance CPU and memory)
+DSv4 - means premium storage
+
+Xeon 8272 (Cascade Lake 2019)
+
+Ddv4 series has better local disk IOPS
+
+## Dv5 (preview)
+Have requested access to this.
+
+Xeon 8370C (Ice Lake)
+
+## DCv2 - confidentiality series
+
+
+## 2.Compute Optimised
+
+[https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-compute](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-compute)
+
+## FSv2 (Compute Optimised, raw compute power)
+should be running 8272 (Cascade Lake 2019)
+
+Older was maybe Xeon 8168 (Skylake - 2017)
+[https://www.cpubenchmark.net/cpu.php?cpu=Intel+Xeon+Platinum+8168+%40+2.70GHz&id=3111](https://www.cpubenchmark.net/cpu.php?cpu=Intel+Xeon+Platinum+8168+%40+2.70GHz&id=3111) Score of 33503
+
+
+
 
 ## Spot
 
 
-
-
-
-
 I'm involved in a project which can use GPU's to do image detection. [https://github.com/djhmateer/osr4rights-tools/tree/main/faceSearchInfra](https://github.com/djhmateer/osr4rights-tools/tree/main/faceSearchInfra)
 
-The question is should we use GPU's as it brings a lot of complexity.
 
-In the end we are using CPU's as much as possible, however we do have the GPU working.
-
-
-
-### NCsv3-series Tesla V100 (2017) - recommended
-
-Standard_NC6s_v3
-
-1.5x faster - £2.28 per hour
-
-### NCas_T4_v3 - NVIDIA T4 GPUs (2018) - recommended
-
-$0.39 per hour
-Spot VM £0.09 per hour (look into 90% savings on spot instances)
-
-Standard_NC4as_T4_v3
-
-[https://docs.microsoft.com/en-us/azure/virtual-machines/nct4-v3-series](https://docs.microsoft.com/en-us/azure/virtual-machines/nct4-v3-series)
-
-```bash
-# to see why am getting NotAvailableForSubscription or not in location
-az vm list-skus --size Standard_NC4as_T4_v --all --output table
-```
 ## Errors
 
 If you get a bash error from the cli like:
@@ -98,7 +126,12 @@ To see more detail:
 az monitor activity-log list --correlation-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
+It is more than likely you don't have enough cores, or that you need to request that machine type.
 
 
 
 
+## Other info
+
+Bnehcmark
+[https://docs.microsoft.com/en-us/azure/virtual-machines/linux/compute-benchmark-scores](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/compute-benchmark-scores) Benchmark scores.
