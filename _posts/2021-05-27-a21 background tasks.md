@@ -39,10 +39,10 @@ However I'm interested in what happens if the recurring time is missed eg if the
 
 Manually kick off a job
 Also how to kick off a job manually? This is an initiate task.
+  can manually do it by setting lastRunEnd to a long time in past
 
 Exceptions:
-What if there is an SMTP exception?
-
+eg What if there is an SMTP exception?
 
 
 ## 1. ASP.NET Core app with Background Service / Hosted Services
@@ -218,11 +218,9 @@ IREsultProcessor is registered as Scoped in DI as it depends on other services (
 
 ## Exception handling
 
-What if an unhandled exception in the BackgrouService?
+What if an unhandled exception in the BackgroudService?
  need to shut it down gracefully
  and tell the Channel
-
-
 
 
 ## 2. Worker Service
