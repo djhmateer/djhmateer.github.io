@@ -33,15 +33,15 @@ Many web apps need services which performs background task
 
 They use [cron scheduling](https://crontab.guru/#0_22_*_*_1-5) which is super powerful.
 
-Automatic retries:
+### Automatic retries:
 
 However I'm interested in what happens if the recurring time is missed eg if the task is due to run on a Wednesday at 13:00, and for some reason the webserver is down, what should it do?
 
-Manually kick off a job
+### Manually kick off a job
 Also how to kick off a job manually? This is an initiate task.
   can manually do it by setting lastRunEnd to a long time in past
 
-Exceptions:
+### Exceptions:
 eg What if there is an SMTP exception?
 
 
@@ -167,7 +167,7 @@ How to get this BackgroundService to do something hourly or daily once?
 
 There only ever 1 instance of this BackgroundService running. But it may stop due to the app pool recycling (after 20minutes usually on IIS)
 
-## Example 2 - no DI. Functional approach
+## Example 2 - no DI. Functional approach with Exception Handling
 
 ```cs
 
