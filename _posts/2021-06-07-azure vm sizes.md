@@ -87,6 +87,9 @@ Xeon 8272 (Cascade Lake 2019)
 
 Ddv4 series has better local disk IOPS
 
+D16ds_v4 £590pm (16vcpu and 64GB RAM)
+
+
 ## Dv5 (preview)
 Have requested access to this.
 
