@@ -16,11 +16,7 @@ image: /assets/2020-02-03/40.jpg
 
 [https://github.com/spatial-intelligence/OSR4Rights](https://github.com/spatial-intelligence/OSR4Rights) source for the Python script that scans faces using the built VM above.
 
-[https://github.com/ageitgey/face_recognition](https://github.com/ageitgey/face_recognition) is the open source project the Python script uses.
-
-[https://github.com/ageitgey/face_recognition#identify-faces-in-pictures](https://github.com/ageitgey/face_recognition#identify-faces-in-pictures) and the technology used is this example of finding a known image ie recognising a person. 
-
-[Wiki of how to use](https://github.com/ageitgey/face_recognition/wiki/Calculating-Accuracy-as-a-Percentage)
+[Wiki of how to use face_recognition](https://github.com/ageitgey/face_recognition/wiki/Calculating-Accuracy-as-a-Percentage)
 
 
 ## Installing on a GPU
@@ -29,11 +25,41 @@ We could use docker, and indeed there is a docker compose file in the face_recog
 
 [https://sparkle-mdm.medium.com/python-real-time-facial-recognition-identification-with-cuda-enabled-4819844ffc80](https://sparkle-mdm.medium.com/python-real-time-facial-recognition-identification-with-cuda-enabled-4819844ffc80) digging into the libraries
 
-
-
 [https://github.com/ageitgey/face_recognition#deployment](https://github.com/ageitgey/face_recognition#deployment)
 
-There is a docker version here, but lets stick close to the metal for simplicity. We are automating everything so don't need docker.
+As you can see from the build script it is quite involved to install, and getting the correct versions of the libraries working is tricky.
+
+- [face_recognition](https://github.com/ageitgey/face_recognition) Python lib that we use to  [identify faces in pictures](https://github.com/ageitgey/face_recognition#identify-faces-in-pictures) which uses dlib
+- [dlib](http://dlib.net/) C++ toolkit containing machine learning algorithms
+- [NVIDIA-cuda-toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local)
+
+
+
+## Only spinning up when needed / Performance
+
+It is expensive keeping a GPU machine running all the time, so lets only spin one up when needed.
+
+[https://github.com/djhmateer/osr4rights-tools](https://github.com/djhmateer/osr4rights-tools) contains an Azure CLI script to bring up a vm ready to go. However compiling from source takes time - about 12 minutes.
+
+- Create Azure resources (some in parallel with no-wait) - 1:28
+- Run bash build script on VM
+
+## Creating an Image
+
+see next blog article
+
+
+# bash script
+
+[apt or apt-get](https://itsfoss.com/apt-vs-apt-get-difference/) go with the newer apt?
+
+## Nvtop
+
+Impossible to initialize nvidia nvml : Driver/library version mismatch
+
+This happened when I did an apt-get upgrade
+
+
 
 ## Testing
 
@@ -49,64 +75,11 @@ GPU doing fine, with 2 instances of the single threaded app working using 2 of t
 
 [https://github.com/ageitgey/face_recognition/wiki/Known-Face-Image-Datasets](https://github.com/ageitgey/face_recognition/wiki/Known-Face-Image-Datasets) - 2 in here
 
-- lfw (170MB)
-- asian face age dataset
-
-## Only spinning up when needed
-
-It is expensive keeping a GPU machine running all the time, so lets only spin one up when needed.
-
-[https://github.com/djhmateer/osr4rights-tools](https://github.com/djhmateer/osr4rights-tools) contains an Azure CLI script to bring up a vm ready to go. However compiling from source takes time - about 12 minutes.
-
-### Shared Image Gallery
-[https://docs.microsoft.com/en-us/azure/virtual-machines/shared-images-cli](https://docs.microsoft.com/en-us/azure/virtual-machines/shared-images-cli) Firstly we need a Shared Image Gallery
-
-```bash
-# create new resource group to hold Shared Image Gallery
-az group create --name myGalleryRG --location westeurope
-
-# sig is Shared Image Gallery
-az sig create --resource-group myGalleryRG --gallery-name myGallery
-```
-
-### Create an Image from a VM
-[https://docs.microsoft.com/en-us/azure/virtual-machines/image-version-vm-cli](https://docs.microsoft.com/en-us/azure/virtual-machines/image-version-vm-cli) - create an image from a VM
+- [http://vis-www.cs.umass.edu/lfw/](http://vis-www.cs.umass.edu/lfw/) lfw (170MB)
+- [http://afad-dataset.github.io/](http://afad-dataset.github.io/)asian face age dataset
+- [https://github.com/NVlabs/ffhq-dataset/](https://github.com/NVlabs/ffhq-dataset/)
 
 
-Image definition
-Image version
-
-```bash
-# show current VMs in subscription
-az vm list --output table
-
-# get the id of the VM
-az vm get-instance-view -g OSRFACESERACHGPU861 -n osrfacesearchgpu861vm --query id
-
-## create an image definition
-# they create a logical grouping for images
-az sig image-definition create \
-   --resource-group myGalleryRG \
-   --gallery-name myGallery \
-   --gallery-image-definition myImageDefinition \
-   --publisher myPublisher \
-   --offer myOffer \
-   --sku mySKU \
-   --os-type Linux \
-   --os-state specialized
-
-# create image version
-# this can take a while
-az sig image-version create \
-   --resource-group myGalleryRG \
-   --gallery-name myGallery \
-   --gallery-image-definition myImageDefinition \
-   --gallery-image-version 1.0.0 \
-   --target-regions "westeurope" \
-   --replica-count 1 \
-   --managed-image "/subscriptions/10cb0eb6-b1e9-40c6-b721-ee2a754f166c/resourceGroups/OSRFACESERACHGPU861/providers/Microsoft.Compute/virtualMachines/osrfacesearchgpu861vm"
-
-```
 
 ## Copying files from GPU server to local
 
