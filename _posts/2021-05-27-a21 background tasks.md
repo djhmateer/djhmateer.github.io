@@ -283,6 +283,9 @@ public class TestService : BackgroundService
 
 ## Coordinating between requests and hosted services (Channels)
 
+I am using this in production in [https://github.com/djhmateer/osr4rights-tools/tree/main/src](https://github.com/djhmateer/osr4rights-tools/tree/main/src)
+
+
 upload csv - Coordinating between Requests and hosted services
 
 file saved as temp file, then response to user

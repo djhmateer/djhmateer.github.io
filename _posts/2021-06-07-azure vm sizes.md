@@ -41,7 +41,7 @@ A tactic I use is to see what is recommended on the home page of here:
 
 [https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general)
 
-Pricing here is good:
+Pricing here is good: **best page**
 
 [https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/](https://azure.microsoft.com/en-gb/pricing/details/virtual-machines/linux/) 
 
