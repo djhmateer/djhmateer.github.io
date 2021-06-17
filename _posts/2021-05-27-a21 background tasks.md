@@ -26,7 +26,10 @@ Many web apps need services which performs background task
 
 ## Type of Background Jobs and logic
 
+Here are some existing libraries:
+
 [https://www.hangfire.io/overview.html](https://www.hangfire.io/overview.html)
+[https://github.com/jamesmh/coravel](https://github.com/jamesmh/coravel)
 
 - Fire and forget (jobs executed only once and almost immediately)
 - Recurring (fired many times on a schedule)
@@ -43,7 +46,6 @@ Also how to kick off a job manually? This is an initiate task.
 
 ### Exceptions:
 eg What if there is an SMTP exception?
-
 
 ## 1. ASP.NET Core app with Background Service / Hosted Services
 
@@ -169,121 +171,129 @@ There only ever 1 instance of this BackgroundService running. But it may stop du
 
 ## Example 2 - no DI. Functional approach with Exception Handling
 
+Here is part of my task scheduler code which can
+
+- Run a task every x seconds
+- Run a task every day once only after a certain time
+
 ```cs
-public class TestService : BackgroundService
-   {
-       protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-       {
-           await Task.Delay(2000, stoppingToken);
-           Log.Information("Started Background Service");
-           var connectionString = AppConfiguration.LoadFromEnvironment().ConnectionString;
+    public class TestService : BackgroundService
+    {
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            await Task.Delay(2000, stoppingToken);
+            Log.Information("Started Background Service");
+            var connectionString = AppConfiguration.LoadFromEnvironment().ConnectionString;
 
-           try
-           {
-               while (!stoppingToken.IsCancellationRequested)
-               {
-                   // Do we need to run BudgetAlert
-                   // lets assume it needs to run once every day
-                   //  and we start trying at a certain time.
+            try
+            {
+                while (!stoppingToken.IsCancellationRequested)
+                {
+                    //{
+                    //    // Task1 - Budget Alert
+                    //    // want it to run once per day at 0950 
+                    //    var taskId = 1;
+                    //    var (lastRunEnd, runEveryDayAfter) = await Db.GetTaskById(connectionString, taskId);
 
-                   // if webserver is down, it will pick up where left off, and try and do only 1 run
+                    //    var today = DateTime.Now.Date;
 
+                    //    // has the task run today already?
+                    //    if (lastRunEnd.Date == today) { }
+                    //    else
+                    //    {
+                    //        var todayWhenToRunTaskAfter = new DateTime(today.Year, today.Month, today.Day,
+                    //            runEveryDayAfter.Hour, runEveryDayAfter.Minute, runEveryDayAfter.Second);
 
-                   // testing task1
-                   // want it to run once every 5 minutes starting immediately
-                   // starting at 1330
-                   var (lastRunStart, lastRunEnd) = await Db.GetBudgetAlert(connectionString);
+                    //        // have we gone past the time when it should run today?
+                    //        bool shouldRun = DateTime.Now > todayWhenToRunTaskAfter;
 
-                   bool shouldRun = false;
-                   var frequencyInSeconds = 10;
+                    //        if (shouldRun)
+                    //        {
+                    //            await Db.UpdateTaskLastRunStartAndStatusIdToRunning(connectionString, taskId);
+                    //            var success = await Foo.Task1(stoppingToken);
 
-                   // happy path
-                   if (DateTime.Now > lastRunEnd.AddSeconds(frequencyInSeconds)) shouldRun = true;
+                    //            await Db.UpdateTaskLastRunEndAndStatusIdToCompletedOrException(connectionString, taskId, success);
+                    //        }
+                    //    }
+                    //}
 
-                   if (shouldRun)
-                   {
-                       Log.Information("Start task 1");
-                       await Db.UpdateBudgetAlertLastRunStart(connectionString);
-                       //await Task.Delay(10000, stoppingToken); // doing work, maybe sending emails
-                       await Foo.Bar(stoppingToken);
+                    {
+                        // Task 2 - continuous every 1 minute
+                        var taskId = 2;
+                        var (lastRunEnd, _) = await Db.GetTaskById(connectionString, taskId);
 
-                       Log.Information("End task 1");
-                       await Db.UpdateBudgetAlertLastRunEnd(connectionString);
-                   }
+                        var frequencyInSeconds = 60;
 
-                   // testing task2
-                   // **HERE** maybe we want this to start at 14:45:00 and run every minute at 00 seconds
-                   var (_, lastRunEndB) = await Db.GetBudgetAlertB(connectionString);
+                        bool shouldRun = DateTime.Now > lastRunEnd.AddSeconds(frequencyInSeconds);
 
-                   bool shouldRunB = false;
-                   var frequencyInSecondsB = 10;
+                        if (shouldRun)
+                        {
+                            await Db.UpdateTaskLastRunStartAndStatusIdToRunning(connectionString, taskId);
+                            var success = await Foo.Task2(stoppingToken);
 
-                   if (DateTime.Now > lastRunEndB.AddSeconds(frequencyInSecondsB)) shouldRunB = true;
+                            await Db.UpdateTaskLastRunEndAndStatusIdToCompletedOrException(connectionString, taskId, success);
+                        }
+                    }
 
-                   if (shouldRunB)
-                   {
-                       Log.Information("Start task 2");
-                       await Db.UpdateBudgetAlertLastRunStartB(connectionString);
-                       await Foo.BarB(stoppingToken);
+                    Log.Information("ping");
+                    await Task.Delay(5000, stoppingToken);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                Log.Warning("Operation cancelled - can happen when app is shutting down gracefully");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Exception");
+            }
+            Log.Warning("Background Service stopped");
+        }
+    }
 
-                       Log.Information("End task 2");
-                       await Db.UpdateBudgetAlertLastRunEndB(connectionString);
-                   }
+    public static class Foo
+    {
+        public static async Task<bool> Task1(CancellationToken stoppingToken)
+        {
+            try
+            {
+                Log.Information("Start task 1");
+                await Task.Delay(5000, stoppingToken);
+                Log.Information("End task 1");
+                //throw new ApplicationException("blow up - our system should be able to handle this and retry");
+            }
+            catch (Exception ex)
+            {
+                Log.Warning(ex, "Task1 task threw an exception, but we want it to retry the next time it is due to run");
+                return false;
+            }
+            return true;
+        }
 
-                   Log.Information("ping");
-                   await Task.Delay(5000, stoppingToken);
-               }
-           }
-           catch (OperationCanceledException)
-           {
-               Log.Warning("Operation cancelled - can happen when app is shutting down gracefully");
-           }
-           catch (Exception ex)
-           {
-               Log.Error(ex, "Exception");
-           }
-           Log.Warning("Background Service stopped");
-       }
-   }
-
-   public static class Foo
-   {
-       public static async Task Bar(CancellationToken stoppingToken)
-       {
-           try
-           {
-               await Task.Delay(5000, stoppingToken);
-               throw new ApplicationException("blow up - our system should be able to handle this and retry");
-               //throw new InvalidOperationException("Operation is not valid due to Bar being in a bad state");
-           }
-           catch (Exception ex)
-           {
-               Log.Warning(ex, "Bar task threw an exception, but we want it to retry the next time it is due to run");
-           }
-       }
-
-       public static async Task BarB(CancellationToken stoppingToken)
-       {
-           try
-           {
-               await Task.Delay(5000, stoppingToken);
-               throw new ApplicationException("blow upB - our system should be able to handle this and retry");
-               //throw new InvalidOperationException("Operation is not valid due to Bar being in a bad state");
-           }
-           catch (Exception ex)
-           {
-               Log.Warning(ex, "BarB task threw an exception, but we want it to retry the next time it is due to run");
-           }
-       }
-   }
-
+        public static async Task<bool> Task2(CancellationToken stoppingToken)
+        {
+            try
+            {
+                Log.Information("Start task 2");
+                await Task.Delay(5000, stoppingToken);
+                Log.Information("End task 2");
+                //throw new ApplicationException("blow upB - our system should be able to handle this and retry");
+            }
+            catch (Exception ex)
+            {
+                Log.Warning(ex, "Task2 task threw an exception, but we want it to retry the next time it is due to run");
+                return false;
+            }
+            return true;
+        }
+    }
 ```
 [https://github.com/djhmateer/BackgroundServiceTest](https://github.com/djhmateer/BackgroundServiceTest) Source code is here on GitHub showing a very simple example of how I like to do configuration, Db access, no DI, Nullable Ref Types.
 
 
 ## Coordinating between requests and hosted services (Channels)
 
-I am using this in production in [https://github.com/djhmateer/osr4rights-tools/tree/main/src](https://github.com/djhmateer/osr4rights-tools/tree/main/src)
+I am using this in production in [https://github.com/djhmateer/osr4rights-tools/tree/main/src](https://github.com/djhmateer/osr4rights-tools/tree/main/src) - see this for a good example of channels.
 
 
 upload csv - Coordinating between Requests and hosted services
@@ -308,9 +318,6 @@ Accepting strings in the channel which will be the temp filename
 BoundedChannel just lets us limit the channel so it is possible that it is full. So this allows us to apply backpressure.
 
 
-### Writing to the channel
-asdf
-
 ### Reading from the channel
 
 async streams (C#8) ie await foreach
@@ -329,7 +336,7 @@ What if an unhandled exception in the BackgroudService?
  and tell the Channel
 
 
-## 2. Worker Service
+## 2. Worker Service - this is for full microservice
 
 A new application template in .NET Core 3.0
 
@@ -337,17 +344,11 @@ Service Workers in 3.0 and IHostedService in 2.x are the same thin.g
 
 The BackgroundService you get in the worker template is an IHostedService.
 
-
 [https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-5.0&tabs=visual-studio](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-5.0&tabs=visual-studio)
 
 - Background task that runs on a timer
 - Queued background tasks that run sequentially
 
-## Timer
-
-Here is a task that runs every x minutes:
-
-And can reference methods of the web app
 
 ## How to run in production
 
@@ -360,12 +361,3 @@ Steve talks about this in his video
 Can run on Linux daemon - systemd. Including the .service file.
 Very nice way of writing a linux demoon in .NET to do background processing.. don't need a console app. 
 
-### Push work to background on web app
-
-Background Service
-
-## Previous
-
-Hangfire
-
-[https://github.com/jamesmh/coravel](https://github.com/jamesmh/coravel)
