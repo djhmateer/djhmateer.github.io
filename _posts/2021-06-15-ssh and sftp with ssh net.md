@@ -17,3 +17,9 @@ image: /assets/2020-02-03/40.jpg
 - SSH to a linux VM from C#
 - SFTP files to and from a linux VM
 - Stream stdout back to C# so can view what is happening
+
+## SSH to a linux vm
+
+```cs
+
+```
