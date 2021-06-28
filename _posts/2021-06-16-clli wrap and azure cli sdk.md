@@ -29,8 +29,11 @@ TL;DR - I'm using the Azure CLI as it
 
 Even though the SDK should be the best way to go.
 
+Tl;DR2 - I'm not using the Azure CLi
+
 
 ## 1.Azure SDK for .NET Preview (2020)
+
 [https://devblogs.microsoft.com/azure-sdk/introducing-new-previews-for-azure-management-libraries/](https://devblogs.microsoft.com/azure-sdk/introducing-new-previews-for-azure-management-libraries/) Introducing new previews for Azure Management Libraries
 
 [https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md) quickstart 
@@ -163,6 +166,14 @@ The code from jackma above is nice too as it
 [https://github.com/djhmateer/osr4rights-tools](https://github.com/djhmateer/osr4rights-tools) for full examples.
 
 ## 4.Bash - Azure CLI with CliWrap
+
+**not using this** due to
+
+- Permissions on the linux filesystem (had to give /var/www 777 permissions and hadn't dug into why)
+- Getting authenticated (had to do it manually and no easy way to see a good solution)
+- I don't need to run any scripts on the VM (as can do that another was using SSH)
+- Should be able to use a simpler .NET SDK
+
 
 [https://github.com/Tyrrrz/CliWrap](https://github.com/Tyrrrz/CliWrap) has 498k downloads
 
