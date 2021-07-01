@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Inject secrets to VM 
+title: Inject secrets to VM with az vm run-command
 description: 
 menu: review
 categories: Azure 
@@ -17,7 +17,7 @@ I use the Azure CLI to create VM's. I need to be able to pass secrets to it from
 - Have got 4 secret guids I need to inject write to a configuration file
 - Email secret for Postmark / Sendgrid
 
-## run-command to create a file on the vm
+## az vm run-command invoke
 
 A simple way to run a script on a remote vm
 
@@ -118,11 +118,17 @@ Log files from the run-command can be found:
 
 ## Azure VM Custom Script Extension
 
+[https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux)
+
+- Version 1 - `Microsoft.OSTCExtensions.CustomScriptForLinux`
+- Version 2 - `Microsoft.Azure.Extensions.CustomScript`
+
 Uses Azure VM Agent to download and run scripts on a VM. however it is somewhat heavyweight. It needs to be removed once run.
 
 ## az vm extension set
 
 [https://docs.microsoft.com/en-us/cli/azure/vm/extension?view=azure-cli-latest](https://docs.microsoft.com/en-us/cli/azure/vm/extension?view=azure-cli-latest)
+
 
 ## Key Vault
 asdf
