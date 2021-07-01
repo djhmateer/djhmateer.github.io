@@ -21,6 +21,8 @@ I use the Azure CLI to create VM's. I need to be able to pass secrets to it from
 
 A simple way to run a script on a remote vm
 
+[https://argonsys.com/microsoft-cloud/library/how-to-run-scripts-on-azure-virtual-machines-with-the-run-command/](https://argonsys.com/microsoft-cloud/library/how-to-run-scripts-on-azure-virtual-machines-with-the-run-command/)
+
 ```bash
 # creates /etc/systemd/system/kestrel-osr.service
 az vm run-command invoke \
@@ -111,6 +113,8 @@ Log files from the run-command can be found:
 # logs for stdout and stderr
 /var/lib/waagent/run-command/download/
 ```
+
+## cloud-init
 
 ## Azure VM Custom Script Extension
 
