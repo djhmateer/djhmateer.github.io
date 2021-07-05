@@ -86,6 +86,8 @@ finally
 
 My vm takes longer than 30s to come up, so I'm catching the timeout and have retry logic
 
+[https://github.com/Azure/azure-cli/issues/5275](https://github.com/Azure/azure-cli/issues/5275) there is talk about a raw vm copy which would be nice.
+
 ## Sftp files from vm ie Download
 
 ```cs
