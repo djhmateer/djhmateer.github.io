@@ -114,7 +114,11 @@ Log files from the run-command can be found:
 /var/lib/waagent/run-command/download/
 ```
 
+## ru
+
 ## cloud-init
+
+Have used this for years and is excellent. However if you don't need all the features and run-command is enough, then I prefer the simpler approach which requires less resources.
 
 ## Azure VM Custom Script Extension
 
