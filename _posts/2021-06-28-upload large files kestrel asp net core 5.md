@@ -78,3 +78,9 @@ services.Configure<FormOptions>(x =>
     x.MultipartHeadersLengthLimit = int.MaxValue;
 });
 ```
+
+## >2GB
+
+[https://www.syncfusion.com/forums/158274/err-connection-reset-when-uploading-large-files-on-azure](https://www.syncfusion.com/forums/158274/err-connection-reset-when-uploading-large-files-on-azure) I am getting a connection reset on >2GB files
+
+Maybe this link will help.

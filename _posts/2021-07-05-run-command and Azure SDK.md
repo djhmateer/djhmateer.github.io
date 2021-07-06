@@ -12,6 +12,10 @@ image: /assets/2019-11-13/1.jpg
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
+Very useful to run commands.
+
+I find `cloud-init` better when it is a long running command as can ssh onto the vm.
+
 [https://docs.microsoft.com/en-us/azure/virtual-machines/linux/run-command](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/run-command)
 
 `Azure.Identity` 1.4.0 (May 12, 2021)
@@ -42,5 +46,21 @@ var input = "sudo git clone https://github.com/spatial-intelligence/OSR4Rights f
 
 // run the command
 var foo = await virtualMachinesClient.StartRunCommandAsync(resourceGroupName, "vm", new RunCommandInput("RunShellScript") { Script = { input } });
+
+
+```
+
+and to run multiple commands:
+
+```cs
+var foo = await virtualMachinesClient.StartRunCommandAsync(resourceGroupName, "vm",
+        new RunCommandInput("RunShellScript")
+        {
+        Script =
+        {
+                input,
+                "chmod -R 777 /home/dave/facesearch"
+        }
+        });
 
 ```
