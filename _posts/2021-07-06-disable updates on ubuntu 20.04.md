@@ -33,3 +33,19 @@ APT::Periodic::Download-Upgradeable-Packages "0";
 APT::Periodic::AutocleanInterval "0";
 APT::Periodic::Unattended-Upgrade "1";
 ```
+
+Or here is another way to do it via code:
+
+```bash
+cd /home/dave
+
+cat <<EOT >> 20auto-upgrades
+APT::Periodic::Update-Package-Lists "0";
+APT::Periodic::Download-Upgradeable-Packages "0";
+APT::Periodic::AutocleanInterval "0";
+APT::Periodic::Unattended-Upgrade "1";
+EOT
+
+sudo cp /home/dave/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
+
+```
