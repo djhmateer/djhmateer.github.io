@@ -16,6 +16,14 @@ image: /assets/2019-11-13/1.jpg
 
 I have libraries which I need to keep on certain versions for GPU work. Any sort of automated update is a problem.
 
+In `/var/log/syslog` I noticed:
+
+> Starting Daily apt upgrade and clean activities...
+
+Just before problems started
+
+# Try 1
+
 ```bash
 # apt package log file
 /var/log/dpkg.log
@@ -48,4 +56,17 @@ EOT
 
 sudo cp /home/dave/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
 
+```
+
+## Try 2
+
+[https://superuser.com/questions/1327884/how-to-disable-daily-upgrade-and-clean-on-ubuntu-16-04](https://superuser.com/questions/1327884/how-to-disable-daily-upgrade-and-clean-on-ubuntu-16-04)
+
+```bash
+sudo apt-get remove unattended-upgrades -y
+
+sudo systemctl stop apt-daily.timer
+sudo systemctl disable apt-daily.timer
+sudo systemctl disable apt-daily.service
+sudo systemctl daemon-reload
 ```
