@@ -156,5 +156,63 @@ static void ShellDataReceived(object sender, Renci.SshNet.Common.ShellDataEventA
 
 Showing the concept of streaming the VM's stdout back to C#. Also waiting (Expecting) for something to happen ie a command prompt before sending a command to the vm.
 
+## Timeouts and Exceptions
+
+Notice the keepaliveinternal below. For long running jobs I was noticing in the syslog on the target machine an entry like:
+
+`session-4.scope succeeded`
+
+To stop this happening put in the keepalive
+
+```cs
+ using var client = new SshClient(host, username, password);
+// need this otherwise will timeout after 10 minutes or so
+client.KeepAliveInterval = TimeSpan.FromMinutes(1);
+try
+{
+    client.Connect();
+    //using var shellStream = client.CreateShellStream("Tail", 0, 0, 0, 0, 1024);
+    using var shellStream = client.CreateShellStream("Tail", 0, 0, 0, 0, 1024);
+    var counter = 0;
+    shellStream.DataReceived += async (o, e) =>
+    {
+        try
+        {
+            var responseFromVm = Encoding.UTF8.GetString(e.Data);
+            if (responseFromVm.Trim() == "") return;
+
+            Log.Information(responseFromVm);
+            // any errors in here would not be caught in the global exception handler
+            // too much at the end.. brought the app down.
+            //try
+            //{
+            //    await Db.InsertLog(connectionString, jobId, responseFromVm);
+            //}
+            //catch (SqlException ex)
+            //{
+            //    Log.Warning(ex, "SQL Exception");
+            //}
+
+            //await writer.WriteAsync(DateTime.Now + $" c: {counter} " + responseFromVm, cancellationToken);
+            // maybe we should wait for the writer in case it is full?
+            await writer.WriteAsync(DateTime.Now + $" c: {counter} " + responseFromVm, cancellationToken);
+            counter++;
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in datareceived...pausing for 1sec");
+
+            // no idea why sometimes get lots of errors
+            // try a pause?
+            await Task.Delay(1000, cancellationToken);
+        }
+    };
+
+```
+
+Notice also the try/catch inside the DataReceived lambda. I noticed that exceptions were not caught in the outer try catch, but I think are now being caught here okay. This seems interesting and needs further investigation.
+
+[https://github.com/sshnet/SSH.NET/tree/develop/src/Renci.SshNet.Tests](https://github.com/sshnet/SSH.NET/tree/develop/src/Renci.SshNet.Tests) dig here for more examples.
+
 
 
