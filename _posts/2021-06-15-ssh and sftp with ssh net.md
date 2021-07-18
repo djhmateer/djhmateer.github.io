@@ -156,7 +156,7 @@ static void ShellDataReceived(object sender, Renci.SshNet.Common.ShellDataEventA
 
 Showing the concept of streaming the VM's stdout back to C#. Also waiting (Expecting) for something to happen ie a command prompt before sending a command to the vm.
 
-## Timeouts and Exceptions
+## Timeouts and Exceptions and Async
 
 Notice the keepaliveinternal below. For long running jobs I was noticing in the syslog on the target machine an entry like:
 
@@ -195,6 +195,7 @@ try
 
             //await writer.WriteAsync(DateTime.Now + $" c: {counter} " + responseFromVm, cancellationToken);
             // maybe we should wait for the writer in case it is full?
+            // **DONT DO THIS**
             await writer.WriteAsync(DateTime.Now + $" c: {counter} " + responseFromVm, cancellationToken);
             counter++;
         }
@@ -210,9 +211,16 @@ try
 
 ```
 
+** NOT THIS**
 Notice also the try/catch inside the DataReceived lambda. I noticed that exceptions were not caught in the outer try catch, but I think are now being caught here okay. This seems interesting and needs further investigation.
 
 [https://github.com/sshnet/SSH.NET/tree/develop/src/Renci.SshNet.Tests](https://github.com/sshnet/SSH.NET/tree/develop/src/Renci.SshNet.Tests) dig here for more examples.
 
+This await in the lambda expression doesn't make sense. Making the state machine when I didn't need one, and many events coming back was causing the app to crash out.
 
 
+<!-- [![Bitcoin logo](/assets/2021-07-18/crash.jpg "crash"){:width="800px"}](/assets/2021-07-18/crash.jpg) -->
+[![Bitcoin logo](/assets/2021-07-18/crash.jpg "crash")](/assets/2021-07-18/crash_full.jpg)
+
+
+[https://stackoverflow.com/questions/12451609/how-to-await-raising-an-eventhandler-event](https://stackoverflow.com/questions/12451609/how-to-await-raising-an-eventhandler-event)

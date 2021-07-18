@@ -1,6 +1,6 @@
 ---
 layout: post
-title: HTML Email 
+# title: HTML Email 
 description: 
 menu: review
 categories: Email 
