@@ -176,51 +176,15 @@ try
     var counter = 0;
     shellStream.DataReceived += async (o, e) =>
     {
-        try
+        var responseFromVm = Encoding.UTF8.GetString(e.Data).Trim();
+        if (responseFromVm != "")
         {
-            var responseFromVm = Encoding.UTF8.GetString(e.Data);
-            if (responseFromVm.Trim() == "") return;
-
             Log.Information(responseFromVm);
-            // any errors in here would not be caught in the global exception handler
-            // too much at the end.. brought the app down.
-            //try
-            //{
-            //    await Db.InsertLog(connectionString, jobId, responseFromVm);
-            //}
-            //catch (SqlException ex)
-            //{
-            //    Log.Warning(ex, "SQL Exception");
-            //}
 
-            //await writer.WriteAsync(DateTime.Now + $" c: {counter} " + responseFromVm, cancellationToken);
-            // maybe we should wait for the writer in case it is full?
-            // **DONT DO THIS**
-            await writer.WriteAsync(DateTime.Now + $" c: {counter} " + responseFromVm, cancellationToken);
-            counter++;
-        }
-        catch (Exception ex)
-        {
-            Log.Error(ex, "Error in datareceived...pausing for 1sec");
-
-            // no idea why sometimes get lots of errors
-            // try a pause?
-            await Task.Delay(1000, cancellationToken);
-        }
+            var result = writer.TryWrite(DateTime.Now.ToLongTimeString() + " " + responseFromVm);
+            if (!result) Log.Error("can't write to channel");
     };
 
 ```
 
-** NOT THIS**
-Notice also the try/catch inside the DataReceived lambda. I noticed that exceptions were not caught in the outer try catch, but I think are now being caught here okay. This seems interesting and needs further investigation.
-
-[https://github.com/sshnet/SSH.NET/tree/develop/src/Renci.SshNet.Tests](https://github.com/sshnet/SSH.NET/tree/develop/src/Renci.SshNet.Tests) dig here for more examples.
-
-This await in the lambda expression doesn't make sense. Making the state machine when I didn't need one, and many events coming back was causing the app to crash out.
-
-
-<!-- [![Bitcoin logo](/assets/2021-07-18/crash.jpg "crash"){:width="800px"}](/assets/2021-07-18/crash.jpg) -->
-[![Bitcoin logo](/assets/2021-07-18/crash.jpg "crash")](/assets/2021-07-18/crash_full.jpg)
-
-
-[https://stackoverflow.com/questions/12451609/how-to-await-raising-an-eventhandler-event](https://stackoverflow.com/questions/12451609/how-to-await-raising-an-eventhandler-event)
+See my blog article [writing to a channel from an event]() for more detailed information
