@@ -209,7 +209,7 @@ namespace CookieDave.Web.Pages
 
 ```
 
-To see how I give a different user a Cliam, look inside of `Login.cshtml.cs` file which will look something like:
+To see how I give a different user a Claim, look inside of `Login.cshtml.cs` file which will look something like:
 
 ```cs
  public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
