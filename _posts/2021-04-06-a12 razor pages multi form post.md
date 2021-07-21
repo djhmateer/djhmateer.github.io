@@ -128,7 +128,7 @@ We'll have to handle errors more manually now
 This way works rather well, keeping javascript validations working too.
 
 ```html
-<form id="frm-change-password" asp-page-handler="changepassword" method="post">
+<form id="frm-change-password" asp-page-handler="addreview" method="post">
 </form>
 
 ```
