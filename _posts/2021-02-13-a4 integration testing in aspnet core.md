@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 4. Integration testing of ASP.NET 3.1 and 5
+title: 4. Integration testing in ASP.NET Core
 description: 
 menu: review
 categories: xunit 
@@ -52,7 +52,7 @@ Add new project, xunit.
 
 Add nuget package: `Microsoft.AspNetCore.Mvc.Testing` then update the other nuget packages too.
 
-In the `.csproj` file change build to .Web
+In the `.csproj` file change Project Sdk build to .Web
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -62,7 +62,7 @@ In the `.csproj` file change build to .Web
   </PropertyGroup>
 ```
 
-To disable shadowcopying which stops tests executing in a different directory from the build output. As we need the appsettings.json file to be placed alongside th e dll for db connection string.
+To disable shadowcopying which stops tests executing in a different directory from the build output. As we need the appsettings.json file to be placed alongside the dll for db connection string.
 
 `xunit.runner.json` add in and
 
@@ -234,7 +234,8 @@ public async Task Get_ReturnsPageWithExpectedH1AndTitle()
 }
 ```
 
-## Identity - Authenticaion and Authorisation
+## Identity - Authentication and Authorisation
+
 
 
 
@@ -300,6 +301,67 @@ public class AuthenticationTests : IClassFixture<WebApplicationFactory<Startup>>
 }
 
 ```
+
+# ASPNETCORE_ENVIRONMENT
+
+To hit pages that require a db connection we need an ASPNETCORE_ENVIRONMENT setting so that the webserver knows which db connection string to use.
+
+Create a new CustomWebApplicationFactory
+
+```cs
+public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
+{
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        //Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
+        Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
+    }
+}
+```
+
+Then wire up tests like this:
+
+```cs
+// Base CustomWebApplicationFactory class sets the ASPNETCORE_ENVIRONMENT to Test
+// so that pages that require a Db connection will not fail
+public class GeneralPageTests : IClassFixture<CustomWebApplicationFactory<Startup>>
+{
+    private readonly WebApplicationFactory<Startup> _factory;
+
+    public GeneralPageTests(CustomWebApplicationFactory<Startup> factory)
+    {
+        factory.ClientOptions.AllowAutoRedirect = false;
+        _factory = factory;
+    }
+
+    // should be only pages that don't need auth
+    public static IEnumerable<object[]> ValidUrls => new List<object[]>
+    {
+        new object[] {"/"},
+        new object[] {"/Index"},
+        new object[] {"/Privacy"},
+        //new object[] {"/Enquiry"}
+    };
+
+    [Theory]
+    [MemberData(nameof(ValidUrls))]
+    public async Task ValidUrls_ReturnSuccessAndExpectedContentType(string path)
+    {
+        var expected = new MediaTypeHeaderValue("text/html");
+
+        var client = _factory.CreateClient();
+        //var client = _factory.CreateDefaultClient();
+
+        var response = await client.GetAsync(path);
+
+        response.EnsureSuccessStatusCode();
+
+        Assert.Equal(expected.MediaType, response.Content.Headers.ContentType.MediaType);
+    }
+}
+
+```
+
 
 ## Displaying output using ITestOutputHelper
 

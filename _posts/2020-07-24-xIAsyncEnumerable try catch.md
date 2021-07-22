@@ -18,6 +18,9 @@ Trying to catch a top level exception from a SignalR Hub is tricky when you are 
 
 I found that an exception thrown shows up on the UI but is not logged by the ASP.NET Core 3 logger, in my case Serilog.
 
+**Update 22nd July 2021** A year after writing this first article, I now use a ChannelReader strategy instead. [https://github.com/djhmateer/osr4rights-tools/blob/main/src/OSR4Rights.Web/Hubs/OSRHub.cs](https://github.com/djhmateer/osr4rights-tools/blob/main/src/OSR4Rights.Web/Hubs/OSRHub.cs) It is a cleaner implementation.
+
+
 ```cs
 // SignalR Hub 
 public class CrawlHub : Hub
