@@ -38,11 +38,17 @@ Nice to be able to try out the system.
 
 ```
 
-## Testing
+## Testing with POSTMARK_API_TEST
+
+Useful to check the sanity of the code
+
+## Testing to a Sandbox
+
+I use this in dev to send an email but it stays in the sandbox on Postmark
+
 
 [Testing email](https://postmarkapp.com/support/article/1213-best-practices-for-testing-your-emails-through-postmark) so I'm not using mailinator anymore but forwarding to `devtest@mydomain.com` and `bouncetest@mydomain.com`
 
-They have a test API key too.
 
 ## Images
 

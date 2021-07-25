@@ -56,7 +56,7 @@ Starting again on a fresh project, here are the topics I'm thinking about during
 - Db naming - Log as table name (singular), LogId as PK (CamelCase) prefer Id, Seed Identity on PK. MSSQL. Also SQL lower case except table names eg select * from Log
 - Complexity - simplest thing possible to get it working. no 'future proof' as will probably change. speed is important in initial dev.
 - Performance - raw sql queries (usually blazing fast)
-- Db - Db project type for simple migrations. MSSQL vs Postgres - Hosted or not. Use identity seed (auto inc), no FK's to start with (speed of dev). Paper for drawing schema and putting sample data on. Default values eg 0. nvarchar(MAX), datetime2(7)
+- Db - Db project type for simple migrations. MSSQL vs Postgres - Hosted or not. Use identity seed (auto inc), no FK's to start with (speed of dev). Paper for drawing schema and putting sample data on. Default values eg 0, GETDATE(), types: nvarchar(MAX), datetime2(7)
 - Deployment - Dev / Test / Live. VS publish (intranet). Deploy to new VM each time (cloud). Disable updates. Pull from repo and build on prod machine.
 - Where to deploy - PaaS, IaaS, Docker, K8s. Azure . Corp Intranet
 - Nullable ref types turned on, records, async all the way up
@@ -72,7 +72,7 @@ Starting again on a fresh project, here are the topics I'm thinking about during
 - Authentication / Authorisation - Cookie based. Claims. Workflows. Simplicity
 - SignalR - Channels vs IAsyncEnumerable
 - BackgroundServices - OnDemand (queue), RunOncePerDayAfter, RunOncePerWeekAfter
-- Email outbound SMTP with Mailkit and Postmark. Papercut (dev), Catch all (test)
+- Email outbound SMTP with Mailkit and Postmark.Postmark Sandbox (dev), Papercut (smtp dev), Catch all (test)
 - Email2FA with code to email
 - Code Strategy - as simple as possible. Use all new features (R#) if is makes code more readable. Focus on data.
 - Pages with multiple forms
