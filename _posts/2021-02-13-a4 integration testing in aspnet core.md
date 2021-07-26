@@ -51,12 +51,19 @@ Since writing this article I've used the techniques in production in multiple pr
 Starting again on a fresh project, here are the topics I'm thinking about during the 'build' phase. So after I've done a Proof of Concept to test out if the technology works
 
 - Fixed price contracts
+- Proposal
+- Design phase
+- Business goals
+- User Stories
+- Clickable prototype
+- Meeting / communication with clients - weekly face to face
+
 - Dev setup - VS2019 (no previews), R#, WSL2 and Git on command line, OneNote to keep where I am
 - Solution naming eg OSR4Rights.Web, OSR4Rights.Web.IntegrationTests, url naming, directory naming - osr4rights-tools (github style)
 - Db naming - Log as table name (singular), LogId as PK (CamelCase) prefer Id, Seed Identity on PK. MSSQL. Also SQL lower case except table names eg select * from Log
 - Complexity - simplest thing possible to get it working. no 'future proof' as will probably change. speed is important in initial dev.
 - Performance - raw sql queries (usually blazing fast)
-- Db - Db project type for simple migrations. MSSQL vs Postgres - Hosted or not. Use identity seed (auto inc), no FK's to start with (speed of dev). Paper for drawing schema and putting sample data on. Default values eg 0, GETDATE(), types: nvarchar(MAX), datetime2(7)
+- Db - Db project type for simple migrations. MSSQL vs Postgres - Hosted or not. Use identity seed (auto inc), no FK's to start with (speed of dev). Paper for drawing schema and putting sample data on. Default values eg 0, GETUTCDATE(), types: nvarchar(MAX), datetime2(7). Store all dates in UTC
 - Deployment - Dev / Test / Live. VS publish (intranet). Deploy to new VM each time (cloud). Disable updates. Pull from repo and build on prod machine.
 - Where to deploy - PaaS, IaaS, Docker, K8s. Azure . Corp Intranet
 - Nullable ref types turned on, records, async all the way up
@@ -79,8 +86,8 @@ Starting again on a fresh project, here are the topics I'm thinking about during
 - Form with multiple buttons
 - DropDown lists
 - ModelState validation and javascript
+
 - Front end UI
-- Meeting / communication with clients - weekly face to face
 - HTTPS certificates - cloudflare
 - Monitoring - uptime robot (healthcheckdb), Azure alerts on spending
 - Documentation - Guidebook strategy
