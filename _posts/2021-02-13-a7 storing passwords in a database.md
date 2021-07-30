@@ -14,13 +14,15 @@ image: /assets/2020-02-03/40.jpg
 
 This is a follow on article from [Cookie Authentication in ASP.NET Core](/2020/10/21/cookie-authentication-in-asp.net-core-3.1) where I explain why I'm using a very simple cookie based strategy for Authentication and Authorisation and I'm not using all of `Microsoft.AspNetCore.Identity.*`
 
-[Source code for this article in password-postgres](https://github.com/djhmateer/password-postgres)
+[Source code for this article in password-postgres](https://github.com/djhmateer/password-postgres) and in [https://github.com/djhmateer/osr4rights-tools/tree/main/src/OSR4Rights.Web](https://github.com/djhmateer/osr4rights-tools/tree/main/src/OSR4Rights.Web)
 
-[Storing Passwords in .NET article](https://medium.com/dealeron-dev/storing-passwords-in-net-core-3de29a3da4d2) is where I ~~purloined~~ borrowed a lot of the thinking here. [TardisBank](https://github.com/TardisBank/TardisBank/blob/master/server/src/TardisBank.Api/Password.cs) inspired the source code.
+[Storing Passwords in .NET article](https://medium.com/dealeron-dev/storing-passwords-in-net-core-3de29a3da4d2) is where I borrowed a lot of the thinking here.
 
-Essentially all I need to do is 'hash' the password the user gives in the registration page then store it in the db.
+[TardisBank](https://github.com/TardisBank/TardisBank/blob/master/server/src/TardisBank.Api/Password.cs) inspired the source code.
 
-Then when a user logs in we 'hash' that and compare it to the one in the db.
+Essentially all I need to do is hash the password the user gives in the registration page then store it in the db.
+
+Then when a user logs in we hash that and compare it to the one in the db.
 
 ## Hashing
 
@@ -37,7 +39,7 @@ To avoid this a random bit of data is added when hashing called a 'salt'. The sa
 
 This means that even users with the same password will have unique hashes.
 
-The salt is stored along with the hash int he db ie password + salt
+The salt is stored along with the hash in the db ie password + salt
 
 ## Implementations
 
