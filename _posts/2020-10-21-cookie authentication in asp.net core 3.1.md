@@ -32,11 +32,13 @@ This is the first blog post where I will cover:
 
 [Part 2 Role Based Source code here](https://github.com/djhmateer/cookie-dave) 
 
-[Scaffolded out ASP.NET Core default identity sample is here](https://github.com/djhmateer/authentication-dave)
+[Scaffolded out ASP.NET Core default identity sample is here](https://github.com/djhmateer/authentication-dave) - MS Docs on how to scaffold page [here](https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-5.0&tabs=visual-studio#full)
 
 [Part 3 and 4 Source - Using Postgres](https://github.com/djhmateer/password-postgres/tree/main/src)
 
 [In Early 2020 I wrote articles on using the standard Authentication and Authorisation in ASP.NET Core 3.1](/2020/01/09/Authentication-and-Authorisation-in-ASP.NET-Core-3.1), and never published them. They felt overly complex for my needs. [Early 2020 External Authentication](/2020/01/10/External-Authentication-in-ASP.NET-Core-3.1) again not published as complex and I didn't need.
+
+[OSR4Rights open source project](https://github.com/djhmateer/osr4rights-tools) contains latest thoughts on identity - 31st July 2021.
 
 ## Nomenclature
 
@@ -178,7 +180,7 @@ static class CDRole
 }
 ```
 
-And to programatically see the Role Claims we can:
+And to programmatically see the Role Claims we can:
 
 ```cs
 using System.Security.Claims;
