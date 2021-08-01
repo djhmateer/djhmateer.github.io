@@ -12,17 +12,20 @@ image: /assets/2021-07-26/save.jpg
 
 <!-- [![alt text](/assets/2021-07-26/save.jpg "Turn auto build on save off")](/assets/2021-07-26/save.jpg) -->
 
+[Cookie Authentication in ASP.NET 5](2020/10/21/cookie-authentication-in-asp.net-core-3.1)
 
 In Razor Page you can't add the Authorize attribute to a separate handler
 
 ```cs
 public class FaceSearchModel : PageModel
 {
-   [BindProperty] 
-   public IFormFile Upload { get; set; } = null!;
-
    // Anonymous can do a get
+   public async Task<IActionResult> OnGetAsync()
+   {
+      return Page();
+   }
 
+   // **Wont work**
    // Only authorized users with the correct roles can post
    [Authorize(Roles = "Tier1, Tier2")]
    public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
@@ -32,7 +35,6 @@ public class FaceSearchModel : PageModel
        // etc...
    }
 }
-
 ```
 
 [https://github.com/dotnet/aspnetcore/issues/8737](https://github.com/dotnet/aspnetcore/issues/8737)
@@ -49,3 +51,5 @@ Options
 
 [docs](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/simple?view=aspnetcore-3.1&branch=pr-en-us-18879#authorize-attribute-and-razor-pages)
 
+
+[https://stackoverflow.com/questions/31464359/how-do-you-create-a-custom-authorizeattribute-in-asp-net-core?rq=1](https://stackoverflow.com/questions/31464359/how-do-you-create-a-custom-authorizeattribute-in-asp-net-core?rq=1)
