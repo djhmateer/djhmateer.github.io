@@ -12,7 +12,7 @@ image: /assets/2021-07-26/save.jpg
 
 <!-- [![alt text](/assets/2021-07-26/save.jpg "Turn auto build on save off")](/assets/2021-07-26/save.jpg) -->
 
-[Cookie Authentication in ASP.NET 5](2020/10/21/cookie-authentication-in-asp.net-core-3.1)
+[Cookie Authentication in ASP.NET 5](/2020/10/21/cookie-authentication-in-asp.net-core-3.1)
 
 In Razor Page you can't add the Authorize attribute to a separate handler
 
