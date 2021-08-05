@@ -10,10 +10,50 @@ sitemap: false
 image: /assets/2019-11-13/1.jpg
 ---
 
-
 I'm using Kestrel on Ubuntu 20.04 as an internet facing edge web server, using ASP.NET 5 with Razor Pages.
 
-I need to be able to handle large file uploads, which initially are zip files up to 500MB.
+I need to be able to handle large file uploads, which initially are zip files up to a few GB
+
+## Tus
+
+[https://tus.io/](https://tus.io/) Open Protocol for Resumable File Uploads. 
+
+
+## Tusdotnet
+
+[https://github.com/tusdotnet/tusdotnet](https://github.com/tusdotnet/tusdotnet) .NET server implementation of the Tus protocol for resumable file uploads.
+
+[https://tus.io/demo.html](https://tus.io/demo.html) Demo showing how a file can resume after a browser tab is closed:
+
+
+
+## Tus-js-client
+
+[https://github.com/tus/tus-js-client](https://github.com/tus/tus-js-client) A pure JavaScript client for the tus resumable upload protocol
+
+There is a nice html sample included in the project:
+
+
+```bash
+git clone https://github.com/tus/tus-js-client.git
+
+# gets all the node_modules
+npm install
+
+# creates dist folder (essentially tus.js)
+npm run build
+
+# run the demos\browser\index.html file
+```
+
+
+
+## Uppy
+
+[https://github.com/transloadit/uppy](https://github.com/transloadit/uppy) is build by the team at [https://transloadit.com/](https://transloadit.com/) 
+
+
+
 
 ## A Simple Upload form
 
@@ -57,8 +97,6 @@ public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken
 
     return RedirectToPage("UploadFailed");
 }
-
-
 ```
 
 ## Startup.cs
@@ -116,6 +154,20 @@ As we want a better file upload the cloudflare constraint should go away and it 
 [https://stackoverflow.com/questions/166221/how-can-i-upload-files-asynchronously-with-jquery](https://stackoverflow.com/questions/166221/how-can-i-upload-files-asynchronously-with-jquery) it is still a hard problem!
 
 
+
+
+
+
+
+
+
+
+## Historical
+
+Below are some of the older file upload strategies 
+
+
+
 ## jQuery-file-upload
 
 [https://github.com/blueimp/jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload)
@@ -123,7 +175,7 @@ As we want a better file upload the cloudflare constraint should go away and it 
 Can do processing on the client to give thumbnails
 Drag and drop
 
-[![alt text](/assets/2021-08-04/jquery.jpg "")](/assets/2021-08-04/jquery.jpg)
+[![alt text](/assets/2021-08-04/jquery.jpg "JQuery")](/assets/2021-08-04/jquery.jpg)
 
 [https://stackoverflow.com/questions/56905302/solved-blueimp-jquery-file-upload-doesnt-work-with-asp-net-core-razor-pages](https://stackoverflow.com/questions/56905302/solved-blueimp-jquery-file-upload-doesnt-work-with-asp-net-core-razor-pages) Razor Pages
 
