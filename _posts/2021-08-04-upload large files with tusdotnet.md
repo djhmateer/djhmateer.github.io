@@ -18,12 +18,21 @@ I need to be able to handle large file uploads, which initially are zip files up
 
 [https://tus.io/](https://tus.io/) Open Protocol for Resumable File Uploads. 
 
+[https://tus.io/demo.html](https://tus.io/demo.html) 
+
+Give user feedback on upload progress
+
+[![alt text](/assets/2021-08-04/demo.jpg "demo"){:width="650px"}](/assets/2021-08-04/demo.jpg)
+
+and then can resume even after the browser has been closed.
+
+[![alt text](/assets/2021-08-04/resume.jpg "resume"){:width="650px"}](/assets/2021-08-04/resume.jpg)
+
 
 ## Tusdotnet
 
 [https://github.com/tusdotnet/tusdotnet](https://github.com/tusdotnet/tusdotnet) .NET server implementation of the Tus protocol for resumable file uploads.
 
-[https://tus.io/demo.html](https://tus.io/demo.html) Demo showing how a file can resume after a browser tab is closed:
 
 
 
@@ -46,16 +55,40 @@ npm run build
 # run the demos\browser\index.html file
 ```
 
+## Test files
+
+To test the validity of the files, we need something to verify:
+
+[https://github.com/NVlabs/ffhq-dataset/](https://github.com/NVlabs/ffhq-dataset/) - Flickr-Faces-HQ Dataset. Has 70k images on Google Drive totally 2.56TB.
+
+I ended up making sample image zips up to 
+
+- 100MB was a limit (imposed by cloudflare)
+- 2GB was a limit (imposed by some filesystems)
+- 4GB 
+- 6GB seemed good too
+
+[https://github.com/ageitgey/face_recognition/wiki/Known-Face-Image-Datasets](https://github.com/ageitgey/face_recognition/wiki/Known-Face-Image-Datasets) - 2 in here
+
+- [http://vis-www.cs.umass.edu/lfw/](http://vis-www.cs.umass.edu/lfw/) lfw (170MB)
+- [http://afad-dataset.github.io/](http://afad-dataset.github.io/)asian face age dataset
+- [https://github.com/NVlabs/ffhq-dataset/](https://github.com/NVlabs/ffhq-dataset/)
 
 
-## Uppy
+## Manually Create large test files
 
-[https://github.com/transloadit/uppy](https://github.com/transloadit/uppy) is build by the team at [https://transloadit.com/](https://transloadit.com/) 
+[https://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system](https://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system)
 
+```bash
+dd if=/dev/zero of=1GB.test bs=1G count=1
+```
 
+Can be useful, but I prefer to have files I can sanity check.
 
 
 ## A Simple Upload form
+
+The simplest possible thing is always a great place to start, but having no user feedback is not a good experience.
 
 ```html
 <form method="post" enctype="multipart/form-data">
@@ -122,6 +155,12 @@ services.Configure<FormOptions>(x =>
 [https://www.syncfusion.com/forums/158274/err-connection-reset-when-uploading-large-files-on-azure](https://www.syncfusion.com/forums/158274/err-connection-reset-when-uploading-large-files-on-azure) I am getting a connection reset on >2GB files
 
 Maybe this link will help.
+
+## Uppy
+
+[https://github.com/transloadit/uppy](https://github.com/transloadit/uppy) is build by the team at [https://transloadit.com/](https://transloadit.com/) 
+
+
 
 ## Cloudflare
 
@@ -199,7 +238,7 @@ Firefox 4+ and Chrome 11+
 From the guys [https://github.com/23/resumable.js](https://github.com/23/resumable.js) at 23.
 
 ## Syncfusion
-o[https://www.syncfusion.com/aspnet-core-ui-controls/file-upload](https://www.syncfusion.com/aspnet-core-ui-controls/file-upload)
+[https://www.syncfusion.com/aspnet-core-ui-controls/file-upload](https://www.syncfusion.com/aspnet-core-ui-controls/file-upload)
 
 [https://www.syncfusion.com/sales/speciallicensingprograms](https://www.syncfusion.com/sales/speciallicensingprograms) - possible open source license?
 
