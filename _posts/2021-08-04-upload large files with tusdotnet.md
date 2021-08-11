@@ -28,6 +28,7 @@ and then can resume even after the browser has been closed.
 
 [![alt text](/assets/2021-08-04/resume.jpg "resume"){:width="650px"}](/assets/2021-08-04/resume.jpg)
 
+[https://github.com/transloadit/uppy](https://github.com/transloadit/uppy) is build by the team at [https://transloadit.com/](https://transloadit.com/) who wrote Tus.
 
 ## Tusdotnet
 
@@ -55,6 +56,24 @@ npm run build
 # run the demos\browser\index.html file
 ```
 
+<!-- [![alt text](/assets/2021-08-04/tustest.jpg "tustest"){:width="750px"}](/assets/2021-08-04/tustest.jpg) -->
+[![alt text](/assets/2021-08-04/tustest.jpg "tustest")](/assets/2021-08-04/tustest.jpg)
+
+Resume works fine with the sample server implementation
+
+[![alt text](/assets/2021-08-04/resume2.jpg "resume2")](/assets/2021-08-04/resume2.jpg)
+
+I had some issues with the server side implementation and resuming.
+
+[![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg)
+
+It uses local storage to remember previous uploads
+
+
+Razor Pages Source for this demo is [https://github.com/djhmateer/tus-test](https://github.com/djhmateer/tus-test)
+
+Remember to run npm.
+
 ## Test files
 
 To test the validity of the files, we need something to verify:
@@ -66,14 +85,7 @@ I ended up making sample image zips up to
 - 100MB was a limit (imposed by cloudflare)
 - 2GB was a limit (imposed by some filesystems)
 - 4GB 
-- 6GB seemed good too
-
-[https://github.com/ageitgey/face_recognition/wiki/Known-Face-Image-Datasets](https://github.com/ageitgey/face_recognition/wiki/Known-Face-Image-Datasets) - 2 in here
-
-- [http://vis-www.cs.umass.edu/lfw/](http://vis-www.cs.umass.edu/lfw/) lfw (170MB)
-- [http://afad-dataset.github.io/](http://afad-dataset.github.io/)asian face age dataset
-- [https://github.com/NVlabs/ffhq-dataset/](https://github.com/NVlabs/ffhq-dataset/)
-
+- 6GB 
 
 ## Manually Create large test files
 
@@ -150,26 +162,14 @@ services.Configure<FormOptions>(x =>
 });
 ```
 
-## >2GB
-
-[https://www.syncfusion.com/forums/158274/err-connection-reset-when-uploading-large-files-on-azure](https://www.syncfusion.com/forums/158274/err-connection-reset-when-uploading-large-files-on-azure) I am getting a connection reset on >2GB files
-
-Maybe this link will help.
-
-## Uppy
-
-[https://github.com/transloadit/uppy](https://github.com/transloadit/uppy) is build by the team at [https://transloadit.com/](https://transloadit.com/) 
-
-
-
-## Cloudflare
+## Cloudflare and Tus
 
 After switching on cloudflare for my project to do:
 
 - SSL Certificates automatically
 - 301 Redirects to Apex domain from www
 
-I noticed that my large file uploads were failing
+I noticed that my large file uploads were failing (on a simple pre Tus upload)
 
 [https://gridpane.com/kb/cloudflares-cdn-and-upload-limitations/](https://gridpane.com/kb/cloudflares-cdn-and-upload-limitations/) explained why - 100mb file upload limit
 
@@ -177,37 +177,18 @@ Uploading a 92Mb file worked fine, and 121Mb gave (sometimes)
 
 > 413 Request Entity too large cloudflare
 
-A 200Mb actually gave a blank screen in chrome and ()
+A 200Mb actually gave a blank screen in chrome and
 
 > ERR_CONNECTION_CLOSED
 
-## A better file uploader
-
-As we want a better file upload the cloudflare constraint should go away and it is much better to have a more solid file uploader. 
-
-- Chunked (to get around 100Mb Cloudlflare limit)
-- Resume/Retry on connection interruption
-- Progress indicator
-- Alleviate intermediate timeout issues in networks
-
-[https://stackoverflow.com/questions/166221/how-can-i-upload-files-asynchronously-with-jquery](https://stackoverflow.com/questions/166221/how-can-i-upload-files-asynchronously-with-jquery) it is still a hard problem!
-
-
-
-
-
-
-
-
+Interestingly I found that chunking which Tus supports gave strange errors through Cloudflare. So I turned off Cloudflare.
 
 
 ## Historical
 
-Below are some of the older file upload strategies 
+Below are some other file upload strategies 
 
-
-
-## jQuery-file-upload
+### jQuery-file-upload
 
 [https://github.com/blueimp/jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload)
 
@@ -218,9 +199,7 @@ Drag and drop
 
 [https://stackoverflow.com/questions/56905302/solved-blueimp-jquery-file-upload-doesnt-work-with-asp-net-core-razor-pages](https://stackoverflow.com/questions/56905302/solved-blueimp-jquery-file-upload-doesnt-work-with-asp-net-core-razor-pages) Razor Pages
 
-
-
-## Plupload
+### Plupload
 
 [https://www.plupload.com/](https://www.plupload.com/)
 
@@ -231,27 +210,22 @@ Not much seems to have been done over the last 5 years.
 Tried examples but couldn't get easily to work.
 
 
-## Resumable.js
+### Resumable.js
 
 Firefox 4+ and Chrome 11+
 
 From the guys [https://github.com/23/resumable.js](https://github.com/23/resumable.js) at 23.
 
-## Syncfusion
+### Syncfusion
 [https://www.syncfusion.com/aspnet-core-ui-controls/file-upload](https://www.syncfusion.com/aspnet-core-ui-controls/file-upload)
 
-[https://www.syncfusion.com/sales/speciallicensingprograms](https://www.syncfusion.com/sales/speciallicensingprograms) - possible open source license?
+[https://www.syncfusion.com/sales/speciallicensingprograms](https://www.syncfusion.com/sales/speciallicensingprograms) - possible open source license
 
-Looks like it will work.
-
-
-## Telerik
+### Telerik
 
 [https://docs.telerik.com/aspnet-core/html-helpers/editors/upload/chunk-upload](https://docs.telerik.com/aspnet-core/html-helpers/editors/upload/chunk-upload) 
 
 
-Seems to work , but expensive. 
-
-## Devexpress
+### Devexpress
 
 [https://demos.devexpress.com/ASPNetCore/Demo/FileUploader/ChunkUploading/](https://demos.devexpress.com/ASPNetCore/Demo/FileUploader/ChunkUploading/)

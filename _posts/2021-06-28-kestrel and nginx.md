@@ -52,6 +52,8 @@ sudo systemctl start kestrel-osr.service
 I'm using iptables as can't bind to port 80 on a non sudo user:
 [https://serverfault.com/questions/112795/how-to-run-a-server-on-port-80-as-a-normal-user-on-linux](https://serverfault.com/questions/112795/how-to-run-a-server-on-port-80-as-a-normal-user-on-linux)
 
+Big problems on restart of the server, have to rerun the iptables command. Also issues when doing an apt upgrade - I found that it caused issues where I couldn't get port 80 bound.
+
 
 ## Systemd
 
