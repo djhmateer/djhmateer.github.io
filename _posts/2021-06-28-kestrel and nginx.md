@@ -16,6 +16,10 @@ Let's setup Kestrel as an internet facing (edge) server
 
 I've used nginx in the past as a reverse proxy, but we don't officially need it anymore. So lets keep it simple and just use Kestrel.
 
+Update - I'm using Nginx again as I need it to handle SSL certs, redirects to apex domain, and more easily proxy to port 5000 as compared to strategy below.
+
+[https://github.com/djhmateer/tus-test](https://github.com/djhmateer/tus-test) is a good example.
+
 ## Setting up Kestrel
 
 Summary is:

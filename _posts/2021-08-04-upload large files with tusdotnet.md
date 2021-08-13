@@ -10,9 +10,16 @@ sitemap: false
 image: /assets/2019-11-13/1.jpg
 ---
 
-I'm using Kestrel on Ubuntu 20.04 as an internet facing edge web server, using ASP.NET 5 with Razor Pages.
+I'm using Kestrel on Ubuntu 20.04 as an internet facing edge web server, using ASP.NET 5 with Razor Pages. 
+
+Update - am using nginx as a reverse proxy now so can handle: redirect to apex, ssl cert, no iptables direct to port 5000. Detailed blog [here]()
+
 
 I need to be able to handle large file uploads, which initially are zip files up to a few GB
+
+[https://github.com/djhmateer/tus-test](https://github.com/djhmateer/tus-test) is a sample project
+
+[https://github.com/djhmateer/osr4rights-tools](https://github.com/djhmateer/osr4rights-tools) bigger project
 
 ## Tus
 
