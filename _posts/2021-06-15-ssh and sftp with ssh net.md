@@ -188,3 +188,7 @@ try
 ```
 
 See my blog article [writing to a channel from an event]() for more detailed information
+
+## Recovering from VM disappearning
+
+**put in code that checks

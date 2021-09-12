@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Upload large files with ASP NET 5 and Kestrel 
+title: Upload large files with TusDotNet
 description: 
 menu: review
 categories: Kestrel 
@@ -40,9 +40,6 @@ and then can resume even after the browser has been closed.
 ## Tusdotnet
 
 [https://github.com/tusdotnet/tusdotnet](https://github.com/tusdotnet/tusdotnet) .NET server implementation of the Tus protocol for resumable file uploads.
-
-
-
 
 ## Tus-js-client
 
@@ -189,6 +186,13 @@ A 200Mb actually gave a blank screen in chrome and
 > ERR_CONNECTION_CLOSED
 
 Interestingly I found that chunking which Tus supports gave strange errors through Cloudflare. So I turned off Cloudflare.
+
+## Tus Bugs
+
+When a successful file upload, why does it prompt if I upload that file again?
+
+don't have javascript popup as Chrome wont work if that window isn't in focus
+
 
 
 ## Historical

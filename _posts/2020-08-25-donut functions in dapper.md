@@ -194,6 +194,9 @@ For me this is a step too far, and I find that it tricky to reason about. Especi
 
 ## Exception handling and Fault Tolerance
 
+Please see [Dapper and Polly](/2021/08/29/dapper-and-polly) article from 29th Aug 2021.
+
+
 In general any sort of SQL exception in my application should bubbble up to the top level exception handler as it will be exceptional, unless it is fault tolerance handling:
 
 As I'm using SQL Azure, and sometimes it just wont be there (it does happen), I like to have automatic retries and use an excellent library called [Polly](https://github.com/App-vNext/Polly)

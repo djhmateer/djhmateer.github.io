@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 21 Hosted Services aka Background Services which perform Background Tasks
+title: 21 Hosted Services aka Background Services which perform Background Tasks and Channels
 description: 
 menu: review
 categories: HostedService 

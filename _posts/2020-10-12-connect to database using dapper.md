@@ -238,6 +238,9 @@ The razor view looks like this:
 
 ## Logging and Fault Tolerance
 
+Please see [Dapper and Polly](/2021/08/29/dapper-and-polly) article from 29th Aug 2021.
+
+
 [My MPActors](https://github.com/djhmateer/MPActors) source has some example of post-polly thinking (where I didn't need all of polly).
 
 ## Profiling
