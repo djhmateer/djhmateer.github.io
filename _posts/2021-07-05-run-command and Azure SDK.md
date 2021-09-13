@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Inject secrets to VM with az vm run-command
+title: Run command and Azure SDK 
 description: 
 menu: review
 categories: Azure 

@@ -155,6 +155,120 @@ There is much more detailed code including
 - nameof(Method) to make easier to control messages
 - try catch inside catch
 
+## Nested Try Catch
+
+lkj
+
+```cs
+try
+{
+    ZipFile.ExtractToDirectory(uploadedFileAndPath, zipExtractPath);
+}
+catch (Exception ex)
+{
+    Log.Information(ex, $"FS - Trying to delete the uploadedfileandpath {uploadedFileAndPath}");
+
+    try
+    {
+        System.IO.File.Delete(uploadedFileAndPath);
+
+        Log.Information($"FS - Successfully deleted uploadedfileandpath {uploadedFileAndPath}");
+    }
+    catch (Exception e)
+    {
+        Log.Warning(e, $"FS  - Failed to delete file");
+        // swallow exception and continue
+    }
+
+    return Page();
+}
+```
+
+## Throwing 
+
+```cs
+using var sftp = new SftpClient(host, username, password);
+try
+{
+    sftp.Connect();
+
+    // download html file from remote
+    {
+        string pathRemoteFile = "/home/dave/hatespeech/hate_speech_result.html";
+
+        // Path where the file should be saved once downloaded (locally)
+        //var path = Path.Combine(Environment.CurrentDirectory, "wwwroot/downloads");
+        var path = Path.Combine(Environment.CurrentDirectory, $"wwwroot/downloads/{jobId}");
+
+        // create a new directory for the job results
+        Directory.CreateDirectory(path);
+
+        var htmlFileName = "result.html";
+        var pathLocalFile = Path.Combine(path, htmlFileName);
+        Log.Information($"Local path is {pathLocalFile}");
+
+        using (Stream fileStream = File.OpenWrite(pathLocalFile))
+            sftp.DownloadFile(pathRemoteFile, fileStream);
+
+        sftp.DeleteFile(pathRemoteFile);
+
+        Log.Information($"Html downloaded to {pathLocalFile}");
+    }
+
+    // download csv file from remote 
+    {
+        string pathRemoteFile = "/home/dave/hatespeech/hate_speech_result.csv";
+
+        // Path where the file should be saved once downloaded (locally)
+        var path = Path.Combine(Environment.CurrentDirectory, $"wwwroot/downloads/{jobId}");
+
+        // create a new directory for the job results
+        //Directory.CreateDirectory(path);
+
+        var htmlFileName = "result.csv";
+        var pathLocalFile = Path.Combine(path, htmlFileName);
+        Log.Information($"Local path is {pathLocalFile}");
+
+        using (Stream fileStream = File.OpenWrite(pathLocalFile))
+            sftp.DownloadFile(pathRemoteFile, fileStream);
+
+        Log.Information($"Csv downloaded to {pathLocalFile}");
+
+        // instead of SSH'ing to box to remove files as we did in FaceSearchFileProcessingService
+        // we can use sftp as only have a single file to delete
+        sftp.DeleteFile(pathRemoteFile);
+
+        Log.Information($"HS Remote file deleted {pathRemoteFile}");
+    }
+}
+catch (Exception e)
+{
+    Log.Error(e, "HS Exception in SFTP download / delete");
+
+    // good
+    throw;
+
+    // bad
+    // re throwing caught exception changes stack information
+    // throw e
+
+    // bad 
+    // lose stack information
+    // throw new Exception("asdf");
+
+}
+finally
+{
+    // finally useful for disposing of resources
+    // https://stackoverflow.com/a/547806/26086
+    sftp.Disconnect();
+}
+
+```
+
+[https://stackoverflow.com/a/547806/26086](https://stackoverflow.com/a/547806/26086) showing catch and finally. Careful not to throw unexpectedly inside either
+
+
 ## Why
 
 Examples as to why my background service can legitimately fail:

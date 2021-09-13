@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Upload large files with TusDotNet
+title: Upload and Resume large files with TusDotNet
 description: 
 menu: review
 categories: Kestrel 
@@ -37,7 +37,7 @@ and then can resume even after the browser has been closed.
 
 [https://github.com/transloadit/uppy](https://github.com/transloadit/uppy) is build by the team at [https://transloadit.com/](https://transloadit.com/) who wrote Tus.
 
-## Tusdotnet
+## TusDotNet
 
 [https://github.com/tusdotnet/tusdotnet](https://github.com/tusdotnet/tusdotnet) .NET server implementation of the Tus protocol for resumable file uploads.
 
@@ -189,7 +189,7 @@ Interestingly I found that chunking which Tus supports gave strange errors throu
 
 ## Tus Bugs
 
-When a successful file upload, why does it prompt if I upload that file again?
+When a successful file upload, why does it prompt if I upload that file again? I found that it was the file permissions on the tusstore on my production server. [OSR4Rights-Tools](https://github.com/djhmateer/osr4rights-tools) has it implemented properly with the permissions set on VM build stage.
 
 don't have javascript popup as Chrome wont work if that window isn't in focus
 
