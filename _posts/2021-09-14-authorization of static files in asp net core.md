@@ -19,7 +19,7 @@ I have generated static files on the webserver like:
 - /downloads/90/results90.zip
 
 - /downloads/89/results.html
-- /downloads/89/results.csv
+- /downloads/89/results89.csv
 
 I want to check that the user is authenticated and authorised before they can download.
 
