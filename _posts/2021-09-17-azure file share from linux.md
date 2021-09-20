@@ -78,6 +78,10 @@ az storage account create \
     --kind StorageV2 \
     --sku Standard_LRS
 
+# --enable-large-file-share
+# --sku Standard_ZRS \
+
+
 shareName="osrshare"
 
 # create file share
@@ -91,7 +95,20 @@ az storage share-rm create \
     # --output none
 
 # 10GB quota
+
+# costs for tiers
+# https://azure.microsoft.com/en-gb/pricing/details/storage/files/
+
+# https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#storage-tiers
+
 # storage tiers - TransactionOptimized is default.. Hot and Cool are others
+
+# change the tier
+# az storage share-rm update \
+#     --resource-group $resourceGroupName \
+#     --storage-account $storageAccountName \
+#     --name $shareName \
+#     --access-tier "Cool"
 ```
 
 [https://azure.microsoft.com/en-gb/pricing/details/storage/files/](https://azure.microsoft.com/en-gb/pricing/details/storage/files/) useful for seeing costs
@@ -99,7 +116,7 @@ az storage share-rm create \
 [https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#storage-tiers](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#storage-tiers) more detailed planning information.
 
 
-### Mount File Share
+### Mount File Share 
 
 [https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-linux?tabs=smb311](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-linux?tabs=smb311)
 
@@ -115,66 +132,7 @@ Lets try on Ubuntu 20.04.3 LTS (GNU/Linux 5.8.0-1041-azure x86_64) which is this
 
 I should be able to use SMB 3.1.1 as we're on 18.04.5 LTS+
 
-install AZ CLI on Ubuntu [docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt) with
-
-```bash
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-# but how to do this from my deploymed VM?
-# https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli
-# look in bash scripts for osr4rights.. 
-az account login
-
-resourceGroupName="storage"
-storageAccountName="osrstorageaccount"
-
-# This command assumes you have logged in with az login
-# check connection
-# httpEndpoint=$(az storage account show \
-#     --resource-group $resourceGroupName \
-#     --name $storageAccountName \
-#     --query "primaryEndpoints.file" | tr -d '"')
-# smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))
-# fileHost=$(echo $smbPath | tr -d "/")
-
-# open firewall... do I need this?
-# nc -zvw3 $fileHost 445
-
-
-fileShareName="osrshare"
-mntRoot="/mount"
-mntPath="$mntRoot/$storageAccountName/$fileShareName"
-
-sudo mkdir -p $mntPath
-
-# sudo mkdir -p /osrshare
-
-
-# This command assumes you have logged in with az login
-httpEndpoint=$(az storage account show \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --query "primaryEndpoints.file" | tr -d '"')
-smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
-
-storageAccountKey=$(az storage account keys list \
-    --resource-group $resourceGroupName \
-    --account-name $storageAccountName \
-    --query "[0].value" | tr -d '"')
-
-#sudo mount -t cifs $smbPath $mntPath -o username=$storageAccountName,password=$storageAccountKey,serverino
-
-# allow all local users access to the share
-# https://unix.stackexchange.com/a/375523/278547
-# sudo mount -t cifs $smbPath $mntPath -o username=$storageAccountName,password=$storageAccountKey,serverino,noperm
-
-# sudo mount -t cifs $smbPath $mntPath -o username=osrstorageaccount,password=$storageAccountKey,serverino,noperm
-
-# useful to unmount
-#sudo umount -l /mount/osrstorageaccount/osrshare
-```
-
-## Production
+### Production
 
 This is what I use in production (password redacted)
 
