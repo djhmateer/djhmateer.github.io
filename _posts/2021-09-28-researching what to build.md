@@ -14,13 +14,57 @@ image: /assets/2019-11-13/1.jpg
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-08-29/error.jpg "error"){:width="500px"}](/assets/2021-08-29/error.jpg) -->
 
-## Introduction
+Time spent in reconnaissance is time never wasted
+
+Researching strategy for a company is hard. It is much easier to go back to programming! But building the product is a very small part of being a technical founder/entrepreneur
+
+
+I don't want to build something that nobody wants (to pay for)
+
+
+My strategy like programming, is to
+
+- Read deeply - what are the canonical books on technical startup companies?
+- Find people who have been successful and copy them
+- Write about it (on this blog) to help cement thinking and help others
+
+Essentially a journeyman / master way
+
+
+## Successful Tech Entrepreneurs - YouTube videos
 
 [Jason Cohen, Founder, WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) - 2013 talk.
 
 [Lessons learned bootstrapping a SaaS App - Nathan Barry](https://www.youtube.com/watch?v=hCRMzMnAb40) Convert Kit. $3m profit per year.
 
 [How Side Projects Lead to $60k MRR SaaS Business – Christopher Gimmer](https://www.youtube.com/watch?v=TlDGw6RglNA) - bootstrapbay to stocksnap.io to snappa. $60k MRR
+
+[pullreminders](https://www.youtube.com/watch?v=t_uSYaInXxk) has been acquired
+
+## Canonical Books
+
+asdf
+
+
+## Websites for info
+
+asdf
+
+## Websites for marketing etc.
+
+indiehackers
+
+hackernews
+producthunt
+reddit
+
+
+## Entrepreneurial meetups
+
+asdf
+
+
+
 
 ## Common Themes of Founders
 
@@ -35,6 +79,7 @@ image: /assets/2019-11-13/1.jpg
 - Marketing
 
 - Charge money
+
 - Teach
 
 
@@ -50,5 +95,3 @@ be patient - long game is food
 
 its all about customers
 
-
-## Recommended books / articles
