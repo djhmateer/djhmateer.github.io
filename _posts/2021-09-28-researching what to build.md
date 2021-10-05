@@ -33,7 +33,8 @@ Essentially a journeyman / master way
 
 ## Successful Tech Entrepreneurs - YouTube videos
 
-[Jason Cohen, Founder, WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) - 2013 talk.
+[Jason Cohen, Founder, WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) - 2013 talk. Building a cash machine.
+
 
 [Lessons learned bootstrapping a SaaS App - Nathan Barry](https://www.youtube.com/watch?v=hCRMzMnAb40) Convert Kit. $3m profit per year.
 
