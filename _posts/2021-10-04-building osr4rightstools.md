@@ -17,8 +17,11 @@ image: /assets/2019-11-13/1.jpg
 
 [osr4rightstools.org](https://osr4rightstools.org) is a set of open source tools for human rights investigators.
 
-I have built this site for [osr4rights.org](https://osr4rights.org/) who are an academinc research oganisation:
+I have built this site for [osr4rights.org](https://osr4rights.org/) who are an academic research oganisation:
 
 > "Using open source research to transform the discovery & documentation of Human Rights Violations."
+
+## Technical
+
 
 ## Human Rights Investigators
