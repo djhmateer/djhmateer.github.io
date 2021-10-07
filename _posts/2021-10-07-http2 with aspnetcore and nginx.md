@@ -3,7 +3,7 @@ layout: post
 title: HTTP/2 with AspNetCore and Nginx
 description: Implementing HTTP/2 with Nginx and Kestrel
 #menu: review
-categories: http2
+categories: HTTP/2
 published: true 
 comments: false     
 sitemap: false
