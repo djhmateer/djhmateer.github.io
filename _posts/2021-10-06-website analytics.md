@@ -66,6 +66,8 @@ The first site I am building for is [https://osr4rightstools.org](https://osr4ri
 - HateSpeech words processed
 - HateSpeech total VM usage
 
+- Total outbound emails
+
 
 ## Technical Dashboard
 
@@ -76,6 +78,9 @@ The first site I am building for is [https://osr4rightstools.org](https://osr4ri
 - Queue size over time
 
 - Number of Polly retries over time
+
+
+- User password reset lockouts over time
 
 
 - Application information logs download
