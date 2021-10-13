@@ -1,9 +1,9 @@
 ---
 layout: post
-# title: HTTP/2 with AspNetCore and Nginx
-description: Implementing HTTP/2 with Nginx and Kestrel
+title: CSS and Design for Developers 
+description: CSS
 menu: review
-categories: HTTP/2
+categories: CSS 
 published: false 
 comments: false     
 sitemap: false
@@ -30,7 +30,27 @@ recreate beautiful pages on the web for fun to flex CSS muscles
 
 [https://kentcdodds.com/blog/how-i-built-a-modern-website-in-2021](https://kentcdodds.com/blog/how-i-built-a-modern-website-in-2021)
 
+- html raw code design
+- css raw code design
+
+- Splash screen
+- Fonts
+- Buttons
+- Overall site design - can read text on Win, Mac, Phone,  full screen (for dashboard)
+- Login Page
+- Forms
+
+
+
+
+# Dashboards
+asdf
+
+
 ## Stuff
+
+[https://classpert.com/blog/top-bootstrap-alternatives](https://classpert.com/blog/top-bootstrap-alternatives) good list of bootstrap alternatives
+
 
 [https://roadmap.sh/frontend](https://roadmap.sh/frontend) good diagram
 
@@ -39,3 +59,11 @@ recreate beautiful pages on the web for fun to flex CSS muscles
 [Bootstrap](https://getbootstrap.com/) is the 10th most popular GitHub project
 
 ## JS Based CSS Framework
+
+Tailwind
+  and TailwindUI which are the commerical components
+  Nice and I used it in https://hmsoftware.co.uk/
+
+Materialize?
+
+[https://html5boilerplate.com/](https://html5boilerplate.com/) - really nice fonts and style.

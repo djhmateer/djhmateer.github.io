@@ -13,6 +13,8 @@ image: /assets/2020-10-12/db.jpg
 <!-- ![alt text](/assets/2020-02-03/41.jpg "Choosing an image"){:width="600px"} -->
 [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin)
 
+**Update 13th Oct 2021** Please see article on [Dapper and Polly](/2021/08/29/dapper-and-polly) where I implement retries, and use my latest preferred thinking on how to connect.
+
 Here are a 3 ways of connecting to a database through [Dapper](https://github.com/StackExchange/Dapper) with ASP.NET Core 3.1
 
 If your preferred ~~religion~~ strategy isn't here, don't worry, there are many ways of doing it.. probably all good, and if it works for you, then that's what matters.
