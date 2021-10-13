@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Dapper and Polly 
-description: 
+description: Make all your Dapper Queries resilient with retries using Polly.Contrib.WaitAndRetry - I use this everywhere now.
 #menu: review
-categories: dapper 
+categories: Dapper 
 published: true 
 comments: false     
 sitemap: false
