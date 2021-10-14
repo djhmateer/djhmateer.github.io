@@ -114,7 +114,7 @@ Older was maybe Xeon 8168 (Skylake - 2017)
 ## Spot
 
 
-I'm involved in a project which can use GPU's to do image detection. [https://github.com/djhmateer/osr4rights-tools/tree/main/faceSearchInfra](https://github.com/djhmateer/osr4rights-tools/tree/main/faceSearchInfra)
+I'm involved in a project which can use GPU's to do image detection. [https://github.com/osr4rightstools/osr4rights-tools/tree/main/faceSearchInfra](https://github.com/osr4rightstools/osr4rights-tools/tree/main/faceSearchInfra)
 
 
 ## Errors

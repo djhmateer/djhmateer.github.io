@@ -12,7 +12,7 @@ image: /assets/2020-02-03/40.jpg
 
 <!-- [![Bitcoin logo](/assets/2021-02-19/bitcoin.svg "Bitcoin"){:width="500px"}](/assets/2021-02-19/bitcoin.svg) -->
 
-[https://github.com/djhmateer/osr4rights-tools](https://github.com/djhmateer/osr4rights-tools) is a project where we spin up an Azure VM with a GPU to do face searching for Human Rights investigators. This source contains the Azure CLI build script, and Cloud init deployment script of the VM.
+[https://github.com/osr4rightstools/osr4rights-tools](https://github.com/osr4rightstools/osr4rights-tools) is a project where we spin up an Azure VM with a GPU to do face searching for Human Rights investigators. This source contains the Azure CLI build script, and Cloud init deployment script of the VM.
 
 [https://github.com/spatial-intelligence/OSR4Rights](https://github.com/spatial-intelligence/OSR4Rights) source for the Python script that scans faces using the built VM above.
 
@@ -39,7 +39,7 @@ As you can see from the build script it is quite involved to install, and gettin
 
 It is expensive keeping a GPU machine running all the time, so lets only spin one up when needed.
 
-[https://github.com/djhmateer/osr4rights-tools](https://github.com/djhmateer/osr4rights-tools) contains an Azure CLI script to bring up a vm ready to go. However compiling from source takes time - about 12 minutes.
+[https://github.com/osr4rightstools/osr4rights-tools](https://github.com/osr4rightstools/osr4rights-tools) contains an Azure CLI script to bring up a vm ready to go. However compiling from source takes time - about 12 minutes.
 
 - Create Azure resources (some in parallel with no-wait) - 1:28
 - Run bash build script on VM

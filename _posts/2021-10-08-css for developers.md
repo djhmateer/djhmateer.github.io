@@ -52,7 +52,6 @@ This is of more importance then 2 or 3.
 ```
 
 
-
 ### CSS Selectors
 
 > CSS is a design language which is used to style HTML elements

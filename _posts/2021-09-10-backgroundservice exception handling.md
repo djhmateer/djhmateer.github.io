@@ -148,7 +148,7 @@ public class Test2Service : BackgroundService
 
 ## Production 
 
-[OSR4Rights BackgroundServices](https://github.com/djhmateer/osr4rights-tools/tree/main/src/OSR4Rights.Web/BackgroundServices) an open source project I'm working on which uses these concepts.
+[OSR4Rights BackgroundServices](https://github.com/osr4rightstools/osr4rights-tools/tree/main/src/OSR4Rights.Web/BackgroundServices) an open source project I'm working on which uses these concepts.
 
 There is much more detailed code including
 

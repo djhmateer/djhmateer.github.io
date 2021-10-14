@@ -19,7 +19,7 @@ I need to be able to handle large file uploads, which initially are zip files up
 
 [https://github.com/djhmateer/tus-test](https://github.com/djhmateer/tus-test) is a sample project
 
-[https://github.com/djhmateer/osr4rights-tools](https://github.com/djhmateer/osr4rights-tools) bigger project
+[https://github.com/osr4rightstools/osr4rights-tools](https://github.com/osr4rightstools/osr4rights-tools) bigger project
 
 ## Tus
 
@@ -191,7 +191,7 @@ Interestingly I found that chunking which Tus supports gave strange errors throu
 
 ## Tus Bugs
 
-When a successful file upload, why does it prompt if I upload that file again? I found that it was the file permissions on the tusstore on my production server. [OSR4Rights-Tools](https://github.com/djhmateer/osr4rights-tools) has it implemented properly with the permissions set on VM build stage.
+When a successful file upload, why does it prompt if I upload that file again? I found that it was the file permissions on the tusstore on my production server. [OSR4Rights-Tools](https://github.com/osr4rightstools/osr4rights-tools) has it implemented properly with the permissions set on VM build stage.
 
 don't have javascript popup as Chrome wont work if that window isn't in focus
 

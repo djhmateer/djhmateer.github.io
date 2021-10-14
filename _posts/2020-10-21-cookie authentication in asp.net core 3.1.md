@@ -38,7 +38,7 @@ This is the first blog post where I will cover:
 
 [In Early 2020 I wrote articles on using the standard Authentication and Authorisation in ASP.NET Core 3.1](/2020/01/09/Authentication-and-Authorisation-in-ASP.NET-Core-3.1), and never published them. They felt overly complex for my needs. [Early 2020 External Authentication](/2020/01/10/External-Authentication-in-ASP.NET-Core-3.1) again not published as complex and I didn't need.
 
-[OSR4Rights open source project](https://github.com/djhmateer/osr4rights-tools) contains latest thoughts on identity - 31st July 2021.
+[OSR4Rights open source project](https://github.com/osr4rightstools/osr4rights-tools) contains latest thoughts on identity - 31st July 2021.
 
 ## Nomenclature
 

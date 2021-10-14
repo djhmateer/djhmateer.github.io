@@ -292,7 +292,7 @@ Here is part of my task scheduler code which can
 
 ## Coordinating between requests and hosted services (Channels)
 
-I am using this in production in [https://github.com/djhmateer/osr4rights-tools/tree/main/src](https://github.com/djhmateer/osr4rights-tools/tree/main/src) - see this for a good example of channels.
+I am using this in production in [https://github.com/osr4rightstools/osr4rights-tools/tree/main/src](https://github.com/osr4rightstools/osr4rights-tools/tree/main/src) - see this for a good example of channels.
 
 
 upload csv - Coordinating between Requests and hosted services

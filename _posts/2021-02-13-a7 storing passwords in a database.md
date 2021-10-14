@@ -14,7 +14,7 @@ image: /assets/2020-02-03/40.jpg
 
 This is a follow on article from [Cookie Authentication in ASP.NET Core](/2020/10/21/cookie-authentication-in-asp.net-core-3.1) where I explain why I'm using a very simple cookie based strategy for Authentication and Authorisation and I'm not using all of `Microsoft.AspNetCore.Identity.*`
 
-[Source code for this article in password-postgres](https://github.com/djhmateer/password-postgres) and in [https://github.com/djhmateer/osr4rights-tools/tree/main/src/OSR4Rights.Web](https://github.com/djhmateer/osr4rights-tools/tree/main/src/OSR4Rights.Web)
+[Source code for this article in password-postgres](https://github.com/djhmateer/password-postgres) and in [https://github.com/osr4rightstools/osr4rights-tools/tree/main/src/OSR4Rights.Web](https://github.com/osr4rightstools/osr4rights-tools/tree/main/src/OSR4Rights.Web)
 
 [Storing Passwords in .NET article](https://medium.com/dealeron-dev/storing-passwords-in-net-core-3de29a3da4d2) is where I borrowed a lot of the thinking here.
 

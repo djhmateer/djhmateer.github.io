@@ -14,7 +14,7 @@ image: /assets/2020-02-03/40.jpg
 
 I've built a VM that I'd like to recreate fairly quickly. It is all scripted using the Azure CLI, but the dependencies are brittle (ie I don't know when things may change on what it downloads), so I want an image of it.
 
-[https://github.com/djhmateer/osr4rights-tools](https://github.com/djhmateer/osr4rights-tools) contains an Azure CLI script to bring up a vm ready to go. However compiling from source takes time - about 12 minutes.
+[https://github.com/osr4rightstools/osr4rights-tools](https://github.com/osr4rightstools/osr4rights-tools) contains an Azure CLI script to bring up a vm ready to go. However compiling from source takes time - about 12 minutes.
 
 ### Shared Image Gallery
 [https://docs.microsoft.com/en-us/azure/virtual-machines/shared-images-cli](https://docs.microsoft.com/en-us/azure/virtual-machines/shared-images-cli) Firstly we need a Shared Image Gallery

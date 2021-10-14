@@ -19,7 +19,7 @@ image: /assets/2021-10-07/http2b.png
 
 I've implemented HTTP/2 on Nginx, and passes HTTP request version information request headers to Kestrel to allow me to capture the version for logging: 
 
-[https://github.com/djhmateer/osr4rights-tools/blob/main/infra/nginx.conf](https://github.com/djhmateer/osr4rights-tools/blob/main/infra/nginx.conf) repository contains all the code. This nginx conf file shows enabling http2, and forwarding the version.
+[https://github.com/osr4rightstools/osr4rights-tools/blob/main/infra/nginx.conf](https://github.com/osr4rightstools/osr4rights-tools/blob/main/infra/nginx.conf) repository contains all the code. This nginx conf file shows enabling http2, and forwarding the version.
 
 ## What is HTTP/2
 [Wikipedia](https://en.wikipedia.org/wiki/HTTP/2)

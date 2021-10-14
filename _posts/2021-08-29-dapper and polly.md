@@ -16,7 +16,7 @@ image: /assets/2021-08-29/kids.jpg
 
 I use the following retry strategy in all Dapper DB connection code.
 
-[Example source code from osr4rights](https://github.com/djhmateer/osr4rights-tools/blob/main/src/OSR4Rights.Web/DapperExtensions.cs). Please also see how I inject connection strings here.
+[Example source code from osr4rights](https://github.com/osr4rightstools/osr4rights-tools/blob/main/src/OSR4Rights.Web/DapperExtensions.cs). Please also see how I inject connection strings here.
 
 ```cs
 // Notice ExecuteAsyncWithRetry instead of ExecuteAsync
@@ -91,7 +91,7 @@ public static bool ShouldRetryOn(Win32Exception ex)
 
 Lets consider exceeding the DTU quota - the easier one to test! 
 
-Using multiple threads helped me trip the error. I was using a razor pages web app and the source is [here](https://github.com/djhmateer/osr4rights-tools/blob/main/src/OSR4Rights.Web/Pages/polly-test2.cshtml.cs).
+Using multiple threads helped me trip the error. I was using a razor pages web app and the source is [here](https://github.com/osr4rightstools/osr4rights-tools/blob/main/src/OSR4Rights.Web/Pages/polly-test2.cshtml.cs).
 
 ```cs
 [BindProperty]
@@ -132,7 +132,7 @@ public static void InsertLogNotAsync(string connectionString, int jobId, string 
 
 This code is a simplified version of [https://hyr.mn/dapper-and-polly/](https://hyr.mn/dapper-and-polly/) and [https://hyr.mn/Polly-wait-and-retry](https://hyr.mn/Polly-wait-and-retry). Thank you Ben, and please read his articles.
 
-[Source DapperExtensions.cs](https://github.com/djhmateer/osr4rights-tools/blob/main/src/OSR4Rights.Web/DapperExtensions.cs)
+[Source DapperExtensions.cs](https://github.com/osr4rightstools/osr4rights-tools/blob/main/src/OSR4Rights.Web/DapperExtensions.cs)
 
 ```cs
 public static class DapperExtensions
@@ -145,7 +145,7 @@ public static class DapperExtensions
     };
 
     // see Ben's article for the SqlServerTransientException code or
-    // https://github.com/djhmateer/osr4rights-tools/blob/main/src/OSR4Rights.Web/DapperExtensions.cs
+    // https://github.com/osr4rightstools/osr4rights-tools/blob/main/src/OSR4Rights.Web/DapperExtensions.cs
     private static readonly RetryPolicy RetryPolicy = Policy
          .Handle<SqlException>(SqlServerTransientExceptionDetector.ShouldRetryOn) // only transient SQL Exceptions which should be retried
                 .Or<TimeoutException>() // any sort of timeout exception should retry
@@ -177,7 +177,7 @@ So this is fine for the occasional blip in SQL Azure, but when a Db is totally o
 Not a good solution for load, but it is interesting, and for my use case where I never really expect this to happen, I'm happy. I do expect SQL Azure to blip every now and again (I measured it years ago to once every 500k queries), so this is really what the retry logic is for.
 
 
-[Full Source](https://github.com/djhmateer/osr4rights-tools/blob/main/src/OSR4Rights.Web/DapperExtensions.cs)
+[Full Source](https://github.com/osr4rightstools/osr4rights-tools/blob/main/src/OSR4Rights.Web/DapperExtensions.cs)
 
 ```cs
 // Non Async with jittered backoff and maxDelay ceiling
