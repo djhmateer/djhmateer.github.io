@@ -91,7 +91,7 @@ public static bool ShouldRetryOn(Win32Exception ex)
 
 Lets consider exceeding the DTU quota - the easier one to test! 
 
-Using multiple threads helped me trip the error. I was using a razor pages web app and the source is [here](https://github.com/osr4rightstools/osr4rights-tools/blob/main/src/OSR4Rights.Web/Pages/polly-test2.cshtml.cs).
+Using multiple threads helped me trip the error. I was using a razor pages web app and the source is [here](https://github.com/osr4rightstools/osr4rights-tools/blob/main/src/OSR4Rights.Web/old/polly-test2.cshtml.cs).
 
 ```cs
 [BindProperty]
