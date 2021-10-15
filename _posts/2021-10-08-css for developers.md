@@ -10,7 +10,7 @@ sitemap: false
 image: /assets/2021-10-07/http2b.png
 ---
 
-<!-- ## Introduction -->
+<!-- ## Introduction. -->
 
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-10-07/http2b.png "http2"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
