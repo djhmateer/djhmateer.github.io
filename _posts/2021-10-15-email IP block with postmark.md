@@ -9,14 +9,10 @@ comments: false
 sitemap: false
 image: /assets/2021-10-07/http2b.png
 ---
-
 <!-- ## Introduction. -->
 
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-10-07/http2b.png "http2"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
-
-
-## Postmark
 
 <!-- [![alt text](/assets/2021-10-15/postmark.jpg "postmark"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
 [![alt text](/assets/2021-10-15/postmark.jpg "postmark")](/assets/2021-10-15/postmark.jpg)
@@ -24,7 +20,8 @@ image: /assets/2021-10-07/http2b.png
 This is something you never want to see - your email being blocked! 
 
 
-I've found I can send an HTML email fine to that same address (with no links in it)
+I've found I can send an HTML email fine to that same address with no link in it through Postmark.
+
 
 
 Here is the offending problematic email (with a different To address)
@@ -38,6 +35,8 @@ Here is the offending problematic email (with a different To address)
 [https://postmarkapp.com/support/article/1158-how-to-fix-isp-blocks](https://postmarkapp.com/support/article/1158-how-to-fix-isp-blocks) 
 
 So from reading the above it looks as if the message was rejected probably due to a local policy.
+
+Interestingly Gmail wasn't blocked with the same email.
 
 
 ## Email Scanning / Barracuda
@@ -67,7 +66,7 @@ Well even after fixing the 302 redirect it still doesn't work
 
 ## Email Scanning / Microsoft
 
-I've noticed a similar behaviour from Microsoft (I suspect swansea.ac.uk use Office 365 for email).
+I've noticed a similar behaviour from Microsoft (I suspect `swansea.ac.uk` use Office 365 for email).
 
 Microsoft look at the mails then seem to do
 
@@ -80,13 +79,99 @@ It delivered emails nonetheless.
 
 ## Don't allow actions on GET
 
-I've since modified my code to have a button in which was recommended here: [https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/](https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/) article talks about this.
+[![alt text](/assets/2021-10-15/confirmation.jpg "email")](/assets/2021-10-15/confirmation.jpg)
 
-## Try Gmail as an email provider?
+I've since modified my code to have a POST button which was recommended here: [https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/](https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/).
 
-I tried copying the email and sending from my Work Gmail GUI which didn't bounce.
+## Try Gmail / Workspace (G Suite) 
+
+I tried copying the email and sending from my work Gmail GUI which didn't bounce.
+
+[![alt text](/assets/2021-10-15/gmail-block.jpg "email")](/assets/2021-10-15/gmail-block.jpg)
+
+This is an example of failed email bounce/block in the Gmail GUI.
+
 
 So perhaps Barracuda uses the reputation of the SMTP provider to allow emails to get through.
+
+### Setting up Gmail with C# Web App
+
+So this is tricky. Google have turned off 'Allow less secure apps' which would allow a simple username and password (for your gmail account!) to be used to send email. We must now using OAuth2, which is a good thing!
+
+
+
+[https://www.emailarchitect.net/easendmail/ex/c/20.aspx](https://www.emailarchitect.net/easendmail/ex/c/20.aspx)
+
+[https://console.developers.google.com/](https://console.developers.google.com/)
+
+- Create project
+- OAuth Consent screen
+- Create credentials (OAuth client id) - web application, redirect uri: https://localhost:5001/foo
+
+So I now have a ClientID and ClientSecret
+
+- Enable Gmail API
+- Edit scopes
+
+But I need to workflow on my webapp ie the redirect uri
+
+`Google.Apis.Auth.AspNetCore3` is a helper
+
+The ASP.NET Core 3 Auth extension library contains a Google-specific OpenIdConnect auth handler.
+Supports incremental auth, and an injectable IGoogleAuthProvider to supply Google credentials.
+
+It uses MS OpenID Connect.
+
+[https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#configure-your-application-to-use-google.apis.auth.aspnetcore3](https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#configure-your-application-to-use-google.apis.auth.aspnetcore3) following these instructions
+
+Here is a sample application:
+[https://github.com/googleapis/google-api-dotnet-client/tree/main/Src/Support/Google.Apis.Auth.AspNetCore3.IntegrationTests](https://github.com/googleapis/google-api-dotnet-client/tree/main/Src/Support/Google.Apis.Auth.AspNetCore3.IntegrationTests)
+
+
+
+**HERE**
+[https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#web-applications-asp.net-core-3](https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#web-applications-asp.net-core-3)
+
+`Google.Apis.Auth.AspNetCore3`
+
+did the google for Web Server Application, to get initial clientid and clientsecret
+
+redirect URI is: https://localhost:5001/signin-oidc
+
+signin-oicdc is important (it is hardcoded in the libraray and not one of my pages)
+
+new Razor Pages project
+
+
+`Google.Apis.Gmail.v1`
+
+
+GoogleApiException: Google.Apis.Requests.RequestError
+Request had insufficient authentication scopes. [403]
+Errors [
+Message[Insufficient Permission] Location[ - ] Reason[insufficientPermissions] Domain[global]
+]
+
+looking for labels
+
+add scopes in OAuthConsent screen
+
+okay I can see scopes of
+
+email, profile, openid.. but no label
+
+ah, I bet I have to refresh the token.
+
+to check the access token:
+
+
+[https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=](https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=)
+
+
+So the access_token expires in 3600s which is 1 hour
+
+
+
 
 
 [https://blog.elmah.io/how-to-send-emails-from-csharp-net-the-definitive-tutorial/](https://blog.elmah.io/how-to-send-emails-from-csharp-net-the-definitive-tutorial/)
@@ -95,4 +180,20 @@ So perhaps Barracuda uses the reputation of the SMTP provider to allow emails to
 [https://developers.google.com/gmail/api/quickstart/dotnet](https://developers.google.com/gmail/api/quickstart/dotnet)
 
 Create a Project and enable the API
+
+Got a `client_secret_XXXXXXXXX-xxxxxxxxxxxxxx.apps.googleusercontent.com.json` file
+
+Downloaded quickstart app from [https://github.com/googleworkspace/dotnet-samples/blob/master/gmail/GmailQuickstart/GmailQuickstart.cs](https://github.com/googleworkspace/dotnet-samples/blob/master/gmail/GmailQuickstart/GmailQuickstart.cs)
+
+Patched that into the app as `credentials.json` which allowed me to go through OAuth2 flow and get back
+
+`Google.Apis.Auth.OAuth2.Responses.TokenResponse-user` - a file.
+
+However this token will expire
+
+I seem to need a 
+
+ClientID
+ClientSecret
+
 
