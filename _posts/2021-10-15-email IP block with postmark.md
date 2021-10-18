@@ -20,7 +20,7 @@ image: /assets/2021-10-07/http2b.png
 This is something you never want to see - your email being blocked! 
 
 
-I've found I can send an HTML email fine to that same address with no link in it through Postmark.
+I've found I can send an HTML email fine to that same address with no link in it through Gmail GUI. 
 
 
 
@@ -51,7 +51,6 @@ I assume that `essex.ac.uk` use this service.
 .NET CLR 3.0.30729)"
 ```
 
-
 [https://ipinfo.io/](https://ipinfo.io/) - the tool I used to get information on an IP
 
 I used to have an email confirmation link like: 
@@ -63,6 +62,10 @@ which was doing a 302 direct to https (the link has since been fixed)
 I can only assume that this triggered a rule, and didn't allow the email to be delivered.
 
 Well even after fixing the 302 redirect it still doesn't work
+
+[https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/](https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/) article talks about this, with the simple workaround of having to put a button on the form eg.
+
+
 
 ## Email Scanning / Microsoft
 
