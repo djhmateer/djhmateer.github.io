@@ -13,19 +13,19 @@ image: /assets/2021-10-07/http2b.png
 <!-- [![alt text](/assets/2021-10-15/postmark.jpg "postmark"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
 <!-- [![alt text](/assets/2021-10-15/postmark.jpg "postmark")](/assets/2021-10-15/postmark.jpg) -->
 
-There are 3 ways to send emails from a webserver via G Suite / Gmail:
+There are 3 ways to send emails from a webserver via [Google Workspace](https://en.wikipedia.org/wiki/Google_Workspace) (formerly G Suite) / free Gmail:
 
-1. SMTP - Less Secure, Port 587, pass GSuite username and password directly
+1. SMTP - Less Secure, Port 587, pass username and password directly
 2. API using Service Account - 2 step OAuth2. (not for Gmail)
 3. API using 3 step OAuth2
 
-This is significantly more complicated than using a provider such as [Postmark]() which is a simple API key.
+Options 2 and 3 are significantly more complicated than using a provider such as [Postmark]() which is a simple API key.
 
-## Why send email through GSuite/Gmail
+## Why send email through Workspace/Gmail
 
 I've been having problems with emails being quarantined / rejected sending through Postmark to academic institutions, who I imagine have strict inbound email policies. 
 
-So I'm trying GSuite (and will try Office365 next) to see if emails get through.
+So I'm trying Workspace (and will try Office365 next) to see if emails get through.
 
 I'm not sending a lot of email either - mostly user login confirmations, password resets.
 
@@ -35,7 +35,9 @@ I'm not sending a lot of email either - mostly user login confirmations, passwor
 
 The easiest, not recommended, and least secure method.
 
-I've already signed up for G Suite / Google Workspace for the domain osr4rightstools.org, and have a single email: dave@osr4rightstools.org. I'm using the cheaper `Google Workspace Business Starter` rather than the default `Google Workspace Business Standard`. £4.14 per month.
+Google Workspace: 2,000 messages per day (500 for trial accounts). [more information](https://support.google.com/a/answer/166852#zippy=). Only after $100 spent etc will it go up to 2,000.
+
+I've already signed up for Google Workspace for the domain osr4rightstools.org, and have a single email: dave@osr4rightstools.org. I'm using the cheaper `Google Workspace Business Starter` rather than the default `Google Workspace Business Standard`. £4.14 per month.
 
 [https://admin.google.com/](https://admin.google.com/) Sign in with super administrator privileges for the domain eg osr4rightstools.org
 

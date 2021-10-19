@@ -44,11 +44,9 @@ Inbuilt without any extensions
 
 ### Extensions
 
+- [https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) Prettier - CSS formateer
 - HTML CSS Support - 7.5m downloads. I use this one to give intellisense for CSS names in html
 - HTMLHint - static code analysis for HTML. Useful
-- JS-CSS-HTML Formatter - CSS formatter. I use the inbuilt for HTML formatting
-  turn off formatting on save (I've got autosave on). use F1, Formatter Config, onSave: false,  
-
 
 
 ## Programming in CSS
@@ -66,12 +64,13 @@ This is of more importance then 2 or 3.
 ```
 
 - 2.Internal CSS (in the head)
+
 ```html
-	<style>
-		h1 {
-			color: blue;
-		}
-	</style>
+<style>
+    h1 {
+        color: blue;
+    }
+</style>
 ```
 
 - 3.External CSS
@@ -91,7 +90,7 @@ This is of more importance then 2 or 3.
 
 In order to style elements you first have to select them.
 
-- 1. Element
+- 1.Element
 
 ```css
 h1 {  
@@ -105,7 +104,7 @@ div {
 }
 ```
 
-- 2. Class
+- 2.Class
 
 ```html
 <div class='container'>  
@@ -120,7 +119,7 @@ css:
 }
 ```
 
-- 3. ID
+- 3.ID
 
 An ID can only be assigned to 1 element, where a class can be assigned to many
 
@@ -147,11 +146,11 @@ There are 2 types of font family names:
 
 
 ```html
-	<div class='container1'>
-		<h1 class='heading1'>
-			CSS is Coooooool!!!!
-		</h1>
-	</div>
+<div class='container1'>
+    <h1 class='heading1'>
+		CSS is Coooooool!!!!
+    </h1>
+</div>
 ```
 
 ```css
@@ -176,11 +175,11 @@ There are 2 types of font family names:
 <link rel="stylesheet" href="style.css">
 <!-- the bottom one always overwrites to previous one - cascading -->
 <!-- <style>
-			body {
-					background-color: black;
-					color: white;
-			}
-	</style> -->
+    body {
+    background-color: black;
+    color: white;
+    }
+</style> -->
 ```
 
 ## Vocabulary
@@ -213,7 +212,6 @@ h1 {
 Not all properties can take all of these value types.
 
 ## Selecting a subset
-
 
 ```css
 /* using the b selector all b elements will change */
@@ -327,7 +325,7 @@ html:
 ## Widths and Heights
 
 ```html
-<!-- inline elements by default -->
+<!-- elements that have default display value of inline -->
 <section id="inline">
     <span>inline</span>
     <a>inline</a>
@@ -335,7 +333,7 @@ html:
     <em>inline</em>
 </section>
 
-<!-- block level elements by default ie will always go to anohter line -->
+<!-- elements that have default display vlaue of block will always go to another line -->
 <section id="block">
     <div>block</div>
     <nav>nav</nav>
@@ -469,6 +467,532 @@ Very useful - screen grows, then so does the width of the bar. And relative to t
 
 ## Colours and Colour Types
 
+Predefined colour names - only 140 to choose from so not used professionally.
+
+```css
+.box {
+  /* predefined colour name */
+  background-color: black;
+  /* hex colour 
+    000 being the least colour intensity ie black
+   FFF being the most colour intense ie white
+
+   RGB ie 
+   F00 is red
+   0F0 is green
+   00F is blue
+   */
+
+  background-color: #fff;
+
+  /* 2 digits for every colour for more precision */
+  background-color: #0000ff;
+
+  /* rgb */
+  background-color: rgb(255, 0, 0);
+
+  /* rgb alpha */
+  /* tranparency / opacity - 1 being fully opaque */
+  /* 0.5 is 50% opqque */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+```
+
+[https://www.w3schools.com/cssref/css_colors.asp](https://www.w3schools.com/cssref/css_colors.asp) colour names
+
+[https://htmlcolorcodes.com/](https://htmlcolorcodes.com/) html colour codes
+
+[https://coolors.co/](https://coolors.co/) creating a perfect palette
+
+
+## CSS Padding
+
+```css
+.box {
+  background-color: lightgray;
+  width: 100px;
+  height: 100px;
+  /* essentially a background colour of gray with extra padding to make larger */
+  /* padding: 10px; */
+  /* padding: 10em; */
+  /* padding: 10%; */
+
+  /* 25 top and bottom, 10 left and right */
+  /* padding: 25px 10px; */
+  
+  /* top, right, bottom, left */
+  /* like a clock */
+  /* padding: 25px 10px 50px 0; */
+
+  padding: 10px;
+  /* makes the padding be included in the box ie will shrink rather than expand */
+  box-sizing:border-box;
+}
+
+.content {
+  background-color: white;
+  /* this is the span putting a padding around */
+  padding: 10px;
+  /* without this it will come out of the surrounding box */
+  box-sizing:border-box;
+}
+```
+and html
+
+```html
+<div class="parent">
+    <div class="box">
+        <span class="content">This is the span with content</span>
+    </div>
+</div> 
+```
+
+## CSS Borders
+asdf
+```css
+/* shorthand border */
+
+/* border-style: solid;
+border-color: lightgreen;
+border-width: 10px; */
+
+border:10px solid lightgreen
+```
+
+## CSS Margins
+asdf
+
+```css
+.parent {
+  /* have to set the backgroup colour of the parent */
+  /* so can see the margin of the box */
+  background-color: rgba(0,0,0,.3);
+}
+
+.box {
+  background-color: lightgray;
+  width: 100px;
+  height: 100px;
+
+  /* padding is a shorthand too */
+  padding: 10px;
+
+  /* the margin does not alter the width of size of the element */
+  margin:20px;
+  /* margin is a shorthand */
+  /* margin-top: 10px; */
+
+  /* box-sizing:border-box; */
+  border:10px solid lightgreen
+}
+
+.content {
+  background-color: white;
+  /* this is the span putting a padding around */
+  padding: 10px;
+  /* without this it will come out of the surrounding box */
+  box-sizing:border-box;
+}
+```
+
+[![alt text](/assets/2021-10-08/margin.jpg "inline")](/assets/2021-10-08/margin.jpg)
+
+## The Box Model
+
+borders, margins, padding, content
+
+[![alt text](/assets/2021-10-08/chrome.jpg "chrome")](/assets/2021-10-08/chrome.jpg)
+
+Can see the computed values in chrome.
+
+[![alt text](/assets/2021-10-08/2box.jpg "chrome")](/assets/2021-10-08/2box.jpg)
+
+margin is used to create space between sibling elements
+
+```css
+.box {
+  width: 100px;
+  height: 100px;
+  /* all these below affect the space an element takes up */
+
+  /* when we add padding it increases the size of the element - 120px now */
+  padding: 10px;
+
+  /* element grown again - 140px now */
+  border: 10px solid lightgreen;
+
+  /* the margin is spaced on the outside of the element, so wont make it bigger */
+  /* used to create spaces between sibling elements so they don't touch each other */
+
+  margin: 10px;
+  /* box-sizing: border-box; */
+}
+
+```
+
+## Visibility in CSS
+
+```css
+.hidden {
+  /* almost like never existed */
+  /* display: none; */
+
+  /* stays in flow of the document */
+  visibility: hidden;
+
+  /* different effects */
+  /* opacity: 0; */
+}
+```
+
+## Fonts
+
+font family
+font size
+font weight - bold, thin
+font style - italic, underline
+
+
+[https://fonts.google.com/?](https://fonts.google.com/?) some nice fonts
+
+[sans-serif](https://en.wikipedia.org/wiki/Sans-serif) letterform is one that does not have extending features (serifs) at the end of strokes. They are the most popular on computer screens.
+
+```css
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
+body {
+    background-color: #3D85C6;
+    color: rgba(0,0,0,.8);
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.font {
+  /* will prefer the left hand one if available */
+  /* font-family: 'Black Han Sans', arial, sans-serif;
+  font-size: 30px;
+  font-weight: 100;
+  font-weight: bold;
+  font-style: italic; */
+
+  font: italic bold 40px 'Black Han Sans', arial, sans-serif;
+}
+```
+html
+```html
+<body>
+    <div class="font">Hello World!</div>
+</body>
+```
+
+## Element Flow
+
+Inlne elements only take up the amount of space needed for the content inside stacking horizontally then wrapping
+
+[https://www.w3schools.com/html/html_blocks.asp](https://www.w3schools.com/html/html_blocks.asp)
+
+```css
+.inline {
+  background-color: slateblue;
+  color: white;
+  padding: 2px 5px;
+  /* make an inline element behave like a block */
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+.block {
+  /* border: 2px solid tomato; */
+  padding: 5px;
+}
+```
+```html
+<nav class="block">
+    <a class="inline" href="#">one</a>
+    <a class="inline" href="#">two</a>
+    <a class="inline" href="#">three</a>
+    <a class="inline" href="#">four</a>
+    <a class="inline" href="#">five</a>
+    <a class="inline" href="#">six</a>
+    <a class="inline" href="#">seven</a>
+    <a class="inline" href="#">eight</a>
+    <a class="inline" href="#">nine</a>
+    <a class="inline" href="#">ten</a>
+</nav>
+
+<section class="block">
+    <h2 class="block">Block Elements</h2>
+    <div class="box hidden block">
+        <p class="block">This is another block level element</p>
+        <p class="block">This is an <a class="inline">inline</a> within a block level element</p>
+        <p class="block">This is another block level element</p>
+    </div>
+    <p class="block">This is another block level element</p>
+</section>
+```
+
+[![alt text](/assets/2021-10-08/block.jpg "block")](/assets/2021-10-08/block.jpg)
+
+
+## CSS Float and CLear
+
+starting with block level elements and are stacked vertically
+
+float - remove from normal flow and put left or right
+clear property - determine how they will behave
+
+
+[![alt text](/assets/2021-10-08/float.jpg "block")](/assets/2021-10-08/float.jpg)
+
+
+```css
+.box {
+  height: 200px;
+  width: 200px;
+  /* float: left; */
+}
+.tomato {
+  float: left;
+  /* height: 220px; */
+  /* width: 50% */
+}
+.purple {
+  float: right;
+  /* width: 50%; */
+}
+.gold {
+  /* float: left; */
+  /* clear left means start on new line after any element that has float left declaration */
+  /* clear: left; */
+  clear: both;
+  /* width: 100%; */
+}
+.green {
+  /* float: left; */
+  /* clear: right; */
+  /* width: 100%; */
+}
+```
+with html
+```html
+<section>
+    <div class="box tomato"></div>
+    <div class="box purple"></div>
+    <div class="box gold"></div>
+    <div class="box green"></div>
+</section>
+```
+and here is a custom layout:
+
+[![alt text](/assets/2021-10-08/custom.jpg "block")](/assets/2021-10-08/custom.jpg)
+
+```css
+.box {
+  height: 200px;
+  width: 200px;
+  /* float: left; */
+}
+.tomato {
+  float: right;
+  height: 80px;
+  width: 80%
+}
+.purple {
+  float: left;
+  width: 20%;
+  height: 600px;
+}
+.gold {
+  /* float: left; */
+  /* clear left means start on new line after any element that has float left declaration */
+  /* clear: left; */
+  clear: right;
+  float:right;
+  width: 80%;
+  height: 440px;
+}
+.green {
+  float: right;
+  /* clear: right; */
+  width: 80%;
+  height: 80px;
+}
+
+/* as everything is floated away from normal flow, it breaks our background */
+.clearfix {
+  clear: both;
+}
+```
+ and html
+
+ ```html
+<body>
+    <h1>Floating Elements</h1>        
+    <!-- <img src="https://placeimg.com/400/400/animals"> -->
+    <section>
+        <div class="box tomato"></div>
+        <div class="box purple"></div>
+        <div class="box gold"></div>
+        <div class="box green"></div>
+        <div class="clearfix"></div>
+    </section>
+</body>
+ ```
+
+## Float layout challenge
+
+[![alt text](/assets/2021-10-08/challenge.jpg "block")](/assets/2021-10-08/challenge.jpg)
+
+```css
+/* flexbox */
+/* https://flexbox.help/ */
+/* div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+#header {
+  background: #44accf;
+  height: 50px;
+}
+
+#content {
+  background: #b7d84b;
+  width: 75%;
+  height: 400px;
+  float: left;
+}
+
+#navigation {
+  background: #e2a741;
+  width: 25%;
+  height: 400px;
+  float: right;
+}
+
+#footer {
+  background: #ee3e64;
+  width: 100%;
+  height: 50px;
+  clear:both;
+}
+
+```
+and html:
+
+```html
+<body>
+    <div id="header">Header</div>
+    <div id="content">Content</div>
+    <div id="navigation">Nav</div>
+    <div id="footer">Footer</div>
+</body>
+```
+
+This expands to 100% of the screen (with default margins of 8px)
+
+## Positional Property
+asdf
+
+all elements have a default position of `static` which is the order they appear in the document flow.
+
+[![alt text](/assets/2021-10-08/position.jpg "position")](/assets/2021-10-08/position.jpg)
+
+```css
+body {
+  padding-bottom: 100px;
+}
+
+.first {
+  /* can move the position relative to it's original postiion in the element flow  */
+  position: relative;
+  /* once we're moved away from position static (default) we can use top right bottom left as below */
+  top: -40px;
+  margin-bottom: -40px;
+}
+
+.second {
+  position: relative;
+}
+
+.ribbon {
+  /* can move position relative to box's containing block ie first ancester that is not static. ie could be relative. ie not in the natural flow*/
+  /* in this case everything is static, so positionaing to root element */
+  position:absolute;
+  top: 0px;
+  right: 20px;
+}
+
+.toplink {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+}
+```
+html
+
+[ https://www.w3schools.com/cssref/pr_class_position.asp]( https://www.w3schools.com/cssref/pr_class_position.asp)
+
+
+## Pseudo Classes / Elements
+
+```css
+/* pseudo class has 1 colon */
+/* ul li:first-child a {
+  color: tomato;
+}
+
+ul li:nth-child(even) a {
+  color: tomato;
+} */
+
+
+/* nice hover colour */
+ul li a:hover {
+  color: tomato;
+}
+
+/* pseudo element has 2 colons */
+ul a::before {
+  content: "-> ";
+}
+```
+
+## CSS Variables
+
+[https://scrimba.com/learn/cssvariables/why-learn-css-variables-intro-tutorial-cdmVpU8](https://scrimba.com/learn/cssvariables/why-learn-css-variables-intro-tutorial-cdmVpU8) another course on scrimba
+
+```css
+:root {
+    --red: #ff6f69;
+}
+
+#title {
+    color: var(--red);
+}
+
+.quote {
+    color: var(--red);
+}
+```
+
+No transpiling needed - ie no LESS and SAAS
+
+Have access to the DOM
+- Local scopes
+- Change with JavaScript
+- Ideal for responsiveness
+
+
+ 
 
 
 
@@ -506,9 +1030,9 @@ Very useful - screen grows, then so does the width of the bar. And relative to t
     background-color: lightcyan;  
     background-color: #eee;  
     background-color: #3D85C6;
-
     color: tomato; /* the colour of the text */
-    color: rgba(0,0,0,.8)
+    color: rgba(0,0,0,.8) /* 0.8 transparent */
+
 
     display: inline-block /* make inline elements be block like so width and height */
     display: block; /* ?? */
