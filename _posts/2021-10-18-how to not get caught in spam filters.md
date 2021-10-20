@@ -37,7 +37,16 @@ I could report not spam this, but a first time user wouldn't know to do this.
 
 [![alt text](/assets/2021-10-18/notspam.jpg "less")](/assets/2021-10-18/notspam.jpg)
 
-This was promising as wans't caught in spam filter, however it did in Outlook below
+This was promising as wasn't caught in spam filter.
+
+[![alt text](/assets/2021-10-18/signed.jpg "less")](/assets/2021-10-18/signed.jpg)
+
+Notice it was signed by Google so DKIM / DMARC not setup yet for the osr4rights.org domain
+
+[![alt text](/assets/2021-10-18/signed2.jpg "less")](/assets/2021-10-18/signed2.jpg)
+
+A day later when DKIM / DMARC had been setup.
+
 
 ## Outlook caught in Junk
 
@@ -45,11 +54,26 @@ This was promising as wans't caught in spam filter, however it did in Outlook be
 
 Outlook putting into junk folder
 
+Event with DKIM / DMARC on, it is still going to junk, and we can see the message headers:
+
+[![alt text](/assets/2021-10-18/source.jpg "less")](/assets/2021-10-18/source.jpg)
+
+We can analyse the headers via [https://toolbox.googleapps.com/apps/messageheader/analyzeheader](https://toolbox.googleapps.com/apps/messageheader/analyzeheader)
+
+
+[![alt text](/assets/2021-10-18/analyze.jpg "less")](/assets/2021-10-18/analyze.jpg)
+
+[https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/anti-spam-message-headers?view=o365-worldwide](https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/anti-spam-message-headers?view=o365-worldwide)
+
+[https://mha.azurewebsites.net/](https://mha.azurewebsites.net/) Microsoft header analyser.
+
+Thankfuly sending from the Gmail GUI to penhemingway@outlook.com gets put into the junk too - I now suspect it is down to the message content.
+
+
 
 ## Google Advice
 
 [https://support.google.com/mail/answer/81126?hl=en](https://support.google.com/mail/answer/81126?hl=en) official guidance and a good checklist
-
 
 [https://toolbox.googleapps.com/apps/checkmx/](https://toolbox.googleapps.com/apps/checkmx/) Handy MX checker
 
@@ -57,9 +81,31 @@ Outlook putting into junk folder
 
 [https://blogs-on-gmail.blogspot.com/2019/06/spamhandling.html](https://blogs-on-gmail.blogspot.com/2019/06/spamhandling.html)
 
-## Delete unnecessary TXT records
+## Content of the message
 
-Done this as was a warning.
+I've setup the server side ie 
+- SPF record
+- DKIM signing
+- DMARC record set to quarantine and reports coming directly to dave@
+- Mail delivery by Google Workspace so should be trusted
+
+So now we need to look at content
+
+
+
+
+
+
+
+
+## Server Side
+
+[https://toolbox.googleapps.com/apps/checkmx/](https://toolbox.googleapps.com/apps/checkmx/) Handy MX checker
+
+[https://mxtoolbox.com/](https://mxtoolbox.com/) - checks the dmarc policy
+sr4rights
+
+[https://hunter.io/email-verifier](https://hunter.io/email-verifier) - checks to see if an email address is valid. From this I'm turning off my catch all.
 
 ## SPF Record
 
@@ -71,7 +117,7 @@ Added a TXT record
 
 ## Setup DKIM 
 
-Domain Keys Identified Mail (DKIM)
+Domain Keys Identified Mail (DKIM) is to help prevent spoofing on outgoing messages.
 
 Need to wait 24-72 hours after setting up a Gmail account before can do this.
 
@@ -81,25 +127,63 @@ Need to wait 24-72 hours after setting up a Gmail account before can do this.
 
 [![alt text](/assets/2021-10-18/dkim.jpg "less")](/assets/2021-10-18/dkim.jpg)
 
+Essentially it is adding a TXT record to DNS.
+
 ## DMARC
 
-[https://support.google.com/a/answer/2466580?hl=en&ref_topic=2759254](https://support.google.com/a/answer/2466580?hl=en&ref_topic=2759254)
+[https://support.google.com/a/answer/2466580?hl=en&ref_topic=2759254](https://support.google.com/a/answer/2466580?hl=en&ref_topic=2759254) about DMARC.
 
 Domain-based Mesage Authentication, Reporting, and Conformance (DMARC) is a standard email authentication method.
 
 DMARC is always used with DKIM and SPF
 
-## Reverse DNS record
+[https://support.google.com/a/answer/10032674](https://support.google.com/a/answer/10032674) before you set up DMARC
 
-Verify the sending server PTR record.
+[https://toolbox.googleapps.com/apps/main/](https://toolbox.googleapps.com/apps/main/) google admin toolbox
 
-[https://intodns.com/](https://intodns.com/) - from here it looks like we don't need a reverse DNS for the webserver. It is purely for the SMTP server which is hosted by google. 
+### 1. Start with a Relaxed DMARC Policy
+
+Add a TXT record `_dmarc.osr4rightstools.org` with the policy:
+
+`v=DMARC1; p=none; rua=mailto:dmarc-reports@osr4rightstools.org`
+
+I need a catchall email 
+
+Every mail server that gets mail from your domain sends daily reports to dmarc-reports@osr4rightstools.org
+
+### 2. Quarantine messages
+
+[https://mxtoolbox.com/](https://mxtoolbox.com/) - checks the dmarc policy. From here I got:
+
+"This Warning indicates that the DMARC record for this domain is not currently protected against phishing and spoofing threats. To resolve this Warning you will need to set a Quarantine or Reject policy on the domain's DMARC record. Setting a Quarantine or Reject value will prevent fraudsters from spoofing the domain as mail servers will Quarantine or Reject messages that fail authentication tests.
+
+*Note: It is advised to not set a Quarantine or Reject policy until you have evaluated your DMARC reports to make sure you don't have any legitimate senders that have email delivery problems."
+
+So I'm not worried about this as have no legitimate senders from osr4rightstools.org apart from myself.
+
+`v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@osr4rightstools.org`
+
+### 3. Reject all unauthenticated messages
+
+`v=DMARC1; p=reject; rua=mailto:dmarc-reports@osr4rightstools.org`
+
+I've changed my record to mail reports to dave@osr4rightstools.org so I don't have a catch-all email, nor do I need another user dmarc-reports@ setup on Google Workspace.
 
 
 
-## Message-ID header
 
-We do have a message-id when sending through Workspace
+### Setting up a Catch-all 
+
+[https://support.google.com/a/answer/6297084#delivery&zippy=%2Cstep-create-or-edit-the-name-of-the-route%2Cstep-specify-what-happens-to-the-messages](https://support.google.com/a/answer/6297084#delivery&zippy=%2Cstep-create-or-edit-the-name-of-the-route%2Cstep-specify-what-happens-to-the-messages)
+
+
+[![alt text](/assets/2021-10-18/catchall.jpg "less")](/assets/2021-10-18/catchall.jpg)
+
+[https://admin.google.com/ac/apps/gmail/routing](https://admin.google.com/ac/apps/gmail/routing) go to admin.google.com, apps, gmail, routing (not default routing)
+
+
+
+
 
 ## Postmaster Tools
 
@@ -131,6 +215,21 @@ osr4rights.org - no unsafe content found (26th OCt 2020)
 
 
 
+
+
+## Delete unnecessary TXT records
+
+Done this as was a warning.
+
+## Reverse DNS record
+
+Verify the sending server PTR record.
+
+[https://intodns.com/](https://intodns.com/) - from here it looks like we don't need a reverse DNS for the webserver. It is purely for the SMTP server which is hosted by google. 
+
+## Message-ID header
+
+We do have a message-id when sending through Workspace
 
 
 

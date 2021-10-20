@@ -35,6 +35,7 @@ image: /assets/2021-10-07/http2b.png
 `Ctrl /` comment
 
 ### Snippets
+
 Inbuilt without any extensions
 
 - doc - gives document, but not the <!Doctype>
@@ -102,6 +103,14 @@ p {
 div {  
     margin: 10px;  
 }
+
+/* a CSS Rule is made up of a Selector, and property:value declarations */
+/* Selector is choosing the Element body */
+body {
+  /* color is the Property, red is the Value */
+  /* Declaration is the property value pair together */
+  color: red;
+}
 ```
 
 - 2.Class
@@ -119,7 +128,9 @@ css:
 }
 ```
 
-- 3.ID
+- 3.ID (suggest not to use)
+
+Makes simpler to use classes only for styling. Useful for JavaScript, and linking to a point in the page.
 
 An ID can only be assigned to 1 element, where a class can be assigned to many
 
@@ -495,6 +506,10 @@ Predefined colour names - only 140 to choose from so not used professionally.
   /* tranparency / opacity - 1 being fully opaque */
   /* 0.5 is 50% opqque */
   background-color: rgba(0, 0, 0, 0.5);
+
+
+  /* Hue, Saturation, Lightness */
+  background-color: hsl(240, 100%, 75%);
 }
 
 ```
@@ -512,6 +527,7 @@ Predefined colour names - only 140 to choose from so not used professionally.
 .box {
   background-color: lightgray;
   width: 100px;
+  /* its very rare to set height. for overflowing at the bottom */
   height: 100px;
   /* essentially a background colour of gray with extra padding to make larger */
   /* padding: 10px; */
@@ -1001,6 +1017,13 @@ Have access to the DOM
 ```css
 /* class */
 .container {
+  font-size: 36px;
+  colour: red;
+  background-color: black;
+  text-align:center;
+
+
+
     font-family: 'Courier New';  
 
     width: 500px;  
