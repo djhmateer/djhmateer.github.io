@@ -15,9 +15,14 @@ image: /assets/2021-10-07/http2b.png
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-10-07/http2b.png "http2"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
 
-I send user registration, password reset and job information from [https://osr4rightstools.org/](https://osr4rightstools.org/)
 
-I've had problems with emails going to the spam folder, or being blocked by the ISP [email IP block with Postmark]()
+## Intro
+
+I send user registration, password reset and website process information from [https://osr4rightstools.org/](https://osr4rightstools.org/)
+
+I've had problems with emails going to spam folders of users in Universities.
+
+[https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl](https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl) Good transactioanl emails should not generate Spam Complaints.
 
 ## GMail caught in Spam
 

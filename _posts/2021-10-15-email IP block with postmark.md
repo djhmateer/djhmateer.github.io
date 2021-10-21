@@ -43,7 +43,10 @@ Interestingly Gmail wasn't blocked with the same email.
 
 Looking at my logs I discovered some unknown IP's hitting the server directly after the email was sent. They came from [https://www.barracuda.com/](https://www.barracuda.com/).
 
-I assume that `essex.ac.uk` use this service.
+I assume that `essex.ac.uk` use this service. [https://www.essex.ac.uk/staff/it-services/email-quarantine](https://www.essex.ac.uk/staff/it-services/email-quarantine) yes they do. It hits Barracuda first. It wont notify the user unless they have setup a rule (and logged in to barracuda).
+
+[https://www.barracudacentral.org/lookups/lookup-reputation](https://www.barracudacentral.org/lookups/lookup-reputation) tool to check reputation, and to help classify.
+
 
 ```bash
 18.133.136.156 - - [15/Oct/2021:12:36:00 +0000] "GET /account/email-address-confirmation/fd788c4e-ccf4-4db3-b066-6354c9aff602 HTTP/1.0" 

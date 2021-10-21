@@ -45,16 +45,32 @@ Inbuilt without any extensions
 
 ### Extensions
 
-- [https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) Prettier - CSS formateer
+- [https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) Prettier - CSS formatter `Shift-Alt-F`
 - HTML CSS Support - 7.5m downloads. I use this one to give intellisense for CSS names in html
-- HTMLHint - static code analysis for HTML. Useful
+- HTMLHint - static code analysis for HTML (look in Problems window at bottom eg missing title in head) 
 
 
 ## Programming in CSS
 
-[https://www.freecodecamp.org/news/get-started-with-css-in-5-minutes-e0804813fc3e/](https://www.freecodecamp.org/news/get-started-with-css-in-5-minutes-e0804813fc3e/) is a great intro
+[https://www.freecodecamp.org/news/get-started-with-css-in-5-minutes-e0804813fc3e/](https://www.freecodecamp.org/news/get-started-with-css-in-5-minutes-e0804813fc3e/) is a great intro by Per Borgen the co-founder of scrimba.
 
-[https://scrimba.com/learn/introtocss/css-documents-the-cascade-c3vE7cg](https://scrimba.com/learn/introtocss/css-documents-the-cascade-c3vE7cg) interactive learning
+[https://scrimba.com/learn/introtocss/css-documents-the-cascade-c3vE7cg](https://scrimba.com/learn/introtocss/css-documents-the-cascade-c3vE7cg) by Per Borgen is a good css starting point.
+
+[https://scrimba.com/learn/htmlcss](https://scrimba.com/learn/htmlcss) HTML and CSS Crash Course by Kevin Powell is newer - includes FlexBox instead of floats. Opinions like - don't use ID's. Always give divs names. Use header main and footer. Do body first in CSS with margin: 0;
+start with html ie get elements right eg header, main, footer.. and what think divs are (with class names), then do css styling.
+
+text-align: center; for simple text eg on a header
+margin: 0 auto; to center a div
+
+floats - older
+flexbox - good
+cssgrid - even newer
+
+my mistakes:
+dont put commas in padding!
+
+Maybe next is [https://scrimba.com/learn/responsive](https://scrimba.com/learn/responsive)?
+
 
 - 1.Inline CSS
 
@@ -752,7 +768,9 @@ Inlne elements only take up the amount of space needed for the content inside st
 [![alt text](/assets/2021-10-08/block.jpg "block")](/assets/2021-10-08/block.jpg)
 
 
-## CSS Float and CLear
+## CSS Float and Clear
+
+This is the older way of making columns - see below for Flexbox.
 
 starting with block level elements and are stacked vertically
 
@@ -956,6 +974,50 @@ footer {
 html
 
 [ https://www.w3schools.com/cssref/pr_class_position.asp]( https://www.w3schools.com/cssref/pr_class_position.asp)
+
+
+## Flexbox
+
+This is our first layout tool
+
+By default when setting `display:flex` on an element, all the children will become columns.
+
+```html
+<div class="columns">
+						
+		<!-- column 1 -->
+		<div class="column">
+				<h3>HTML</h3>
+				<p>Magna fringilla urna porttitor rhoncus dolor purus. Malesuada bibendum arcu vitae elementum. Purus sit amet volutpat consequat. </p>
+		</div>
+							
+		<!-- column 2 -->
+		<div class="column">
+				<h3>CSS</h3>
+				<p>Magna fringilla urna porttitor rhoncus dolor purus. Malesuada bibendum arcu vitae elementum. Purus sit amet volutpat consequat. </p>
+		</div>
+							
+		<!-- column 3 -->
+		<div class="column">
+				<h3>And More!</h3>
+				<p>Magna fringilla urna porttitor rhoncus dolor purus. Malesuada bibendum arcu vitae elementum. Purus sit amet volutpat consequat. </p>
+		</div>
+							
+</div> <!-- / columns --> 
+```
+and css
+
+```css
+.columns {
+	width: 750px; 
+	display: flex;
+}
+
+.column {
+	margin:5px;
+}
+
+```
 
 
 ## Pseudo Classes / Elements
