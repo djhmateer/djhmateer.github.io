@@ -17,11 +17,11 @@ image: /assets/2021-10-07/http2b.png
 
 I send user registration, password reset and job information from [https://osr4rightstools.org/](https://osr4rightstools.org/)
 
-I've had many problems with emails going to spam folder, or being blocked by the ISP [email IP block with Postmark]()
-
-Here are some simple rules to make it less likely, and for your email to appear legitimate
+I've had problems with emails going to the spam folder, or being blocked by the ISP [email IP block with Postmark]()
 
 ## GMail caught in Spam
+
+Here was my initial email try which was caught in spam:
 
 [![alt text](/assets/2021-10-18/spam.jpg "less")](/assets/2021-10-18/spam.jpg)
 
@@ -37,7 +37,7 @@ I could report not spam this, but a first time user wouldn't know to do this.
 
 [![alt text](/assets/2021-10-18/notspam.jpg "less")](/assets/2021-10-18/notspam.jpg)
 
-This was promising as wasn't caught in spam filter.
+This was promising as wasn't caught in spam filter. However had no link in it.
 
 [![alt text](/assets/2021-10-18/signed.jpg "less")](/assets/2021-10-18/signed.jpg)
 
@@ -63,13 +63,21 @@ We can analyse the headers via [https://toolbox.googleapps.com/apps/messageheade
 
 [![alt text](/assets/2021-10-18/analyze.jpg "less")](/assets/2021-10-18/analyze.jpg)
 
+Which doesn't give us any clues.
+
 [https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/anti-spam-message-headers?view=o365-worldwide](https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/anti-spam-message-headers?view=o365-worldwide)
 
 [https://mha.azurewebsites.net/](https://mha.azurewebsites.net/) Microsoft header analyser.
 
-Thankfuly sending from the Gmail GUI to penhemingway@outlook.com gets put into the junk too - I now suspect it is down to the message content.
+Thankfuly sending from the Gmail GUI to penhemingway@outlook.com gets put into the junk too 
 
+[![alt text](/assets/2021-10-18/test11.jpg "less")](/assets/2021-10-18/test11.jpg)
 
+After setting up DKIM and DMARC this email got through to outlook.
+
+Interestingly the same email did not get through to an email on sussex.ac.uk (who use Office365)
+
+I now suspect it is down to the message content.
 
 ## Google Advice
 
@@ -91,11 +99,24 @@ I've setup the server side ie
 
 So now we need to look at content
 
+- Don't mix different types of content eg don't include content about promotions in purchase receipt messages
+- Make it not spammy and good content
+- Look good?
+
+Well my first email to a new user is their confirmation of email address.
+
+Rather than getting into the complexity of HTML email, I'd like to test with a plain text (it is html) email like this to get the content correct.
+
+[![alt text](/assets/2021-10-18/textemail.jpg "less")](/assets/2021-10-18/textemail.jpg)
+
+- This got to davemateer@gmail.com
+- Was reported junk to penhemingway@outlook.com
+- Was reported junk to xxx@sussex.ac.uk
 
 
+### HTML Content
 
-
-
+[https://github.com/leemunroe/responsive-html-email-template](https://github.com/leemunroe/responsive-html-email-template) I've used this template in the past.
 
 
 ## Server Side
@@ -174,8 +195,9 @@ I've changed my record to mail reports to dave@osr4rightstools.org so I don't ha
 
 ### Setting up a Catch-all 
 
-[https://support.google.com/a/answer/6297084#delivery&zippy=%2Cstep-create-or-edit-the-name-of-the-route%2Cstep-specify-what-happens-to-the-messages](https://support.google.com/a/answer/6297084#delivery&zippy=%2Cstep-create-or-edit-the-name-of-the-route%2Cstep-specify-what-happens-to-the-messages)
+I've decided not to setup a catch-all currently to follow best practise. 
 
+[https://support.google.com/a/answer/6297084#delivery&zippy=%2Cstep-create-or-edit-the-name-of-the-route%2Cstep-specify-what-happens-to-the-messages](https://support.google.com/a/answer/6297084#delivery&zippy=%2Cstep-create-or-edit-the-name-of-the-route%2Cstep-specify-what-happens-to-the-messages)
 
 [![alt text](/assets/2021-10-18/catchall.jpg "less")](/assets/2021-10-18/catchall.jpg)
 
@@ -189,6 +211,7 @@ I've changed my record to mail reports to dave@osr4rightstools.org so I don't ha
 
 [https://postmaster.google.com/](https://postmaster.google.com/) - see what the outbound spam rate. This will be interesting in the future seeing what emails are having problems being sent from osr4rightstools.org
 
+[https://stackoverflow.com/questions/63222298/google-postmaster-tools-no-data-to-display-message](https://stackoverflow.com/questions/63222298/google-postmaster-tools-no-data-to-display-message) however the tools are not well thought of.
 
 
 ## Who gets it right?
