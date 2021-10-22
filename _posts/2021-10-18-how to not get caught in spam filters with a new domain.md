@@ -18,11 +18,15 @@ image: /assets/2021-10-07/http2b.png
 
 ## Intro
 
-I send user registration, password reset and website process information from [https://osr4rightstools.org/](https://osr4rightstools.org/)
+I send user registration, password reset and website process information ie transactional emails, from [https://osr4rightstools.org/](https://osr4rightstools.org/)
 
-I've had problems with emails going to spam folders of users in Universities.
 
-[https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl](https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl) Good transactioanl emails should not generate Spam Complaints.
+[https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl](https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl) Good transactioanl emails should not generate spam complaints and should get there 100% of the time.
+
+I've had problems with emails going to spam folders of users in Universities (about 75% of new users from university accounts), 1 university blocked the email completely.
+
+
+
 
 ## GMail caught in Spam
 
