@@ -23,3 +23,8 @@ image: /assets/2021-10-07/http2b.png
 
 
 [https://htmlemail.io/inline/](https://htmlemail.io/inline/) - useful to check if it renders!
+
+## Product
+
+I used an email template from stripo as a baseline, and modified the underlying html.
+
