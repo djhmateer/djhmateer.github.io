@@ -18,21 +18,59 @@ image: /assets/2021-10-07/http2b.png
 
 ## Intro
 
-I send user registration, password reset and website process information ie transactional emails, from [https://osr4rightstools.org/](https://osr4rightstools.org/)
+I send user registration, password reset and website process information (transactional emails), from [osr4rightstools.org](https://osr4rightstools.org/)
 
 
-[https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl](https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl) Good transactioanl emails should not generate spam complaints and should get there 100% of the time.
+[postmarkapp.com](https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl) writes that good transactional emails should not generate spam complaints and should get there 100% of the time.
 
-I've had problems with emails going to spam folders of users in Universities (about 75% of new users from university accounts), 1 university blocked the email completely.
+I've had to work hard to make this happen.
 
-
-## Postmark
-
-[https://postmarkapp.com/guides/troubleshooting-email-delivery](https://postmarkapp.com/guides/troubleshooting-email-delivery)
+Have had problems with emails going to spam folders of users in Universities (about 75% of new users from university accounts), 1 university blocked the email completely.
 
 
+## TL;DR
 
-## GMail caught in Spam
+[Creating-html-emails](/2021/10/22/creating-html-emails) blog post describes how I made:
+
+[![alt text](/assets/2021-10-22/email.jpg "email")](/assets/2021-10-22/email.jpg)
+
+And below you can see my postmark settings:
+
+[![alt text](/assets/2021-10-18/postmark.jpg "postmark")](/assets/2021-10-18/postmark.jpg)
+
+This is pretty much it.
+
+[postmarkapp.com/guides/troubleshooting-email-delivery](https://postmarkapp.com/guides/troubleshooting-email-delivery) - this is an excellent guide which I've followed.
+
+## Reputation and learning
+
+I'm now prompting my users to mark as not spam.
+
+[![alt text](/assets/2021-10-18/please-check.jpg "check")](/assets/2021-10-18/please-check.jpg)
+
+
+[https://osr4rightstools.org/account/register-success](https://osr4rightstools.org/account/register-success)
+
+## Conclusion
+
+This takes time to gain reputation.
+
+But with a well crafted email and proper server side setup, it will work.
+
+Probably.
+
+
+
+## Inbound Email
+
+I use my DNSimple (DNS Provider) for email forwarding so help@osr4rightstools.org goes to my work email.
+
+
+## OLD Information
+
+Below is my foray into use Gmail for transactional emai processing which I reverted out of:
+
+## Gmail caught in Spam
 
 Here was my initial email try which was caught in spam:
 
@@ -46,7 +84,7 @@ Email is to: davemateer@gmail.com
 
 I could report not spam this, but a first time user wouldn't know to do this. 
 
-## GMail not Spam
+## Gmail not Spam
 
 [![alt text](/assets/2021-10-18/notspam.jpg "less")](/assets/2021-10-18/notspam.jpg)
 
@@ -59,6 +97,7 @@ Notice it was signed by Google so DKIM / DMARC not setup yet for the osr4rights.
 [![alt text](/assets/2021-10-18/signed2.jpg "less")](/assets/2021-10-18/signed2.jpg)
 
 A day later when DKIM / DMARC had been setup.
+
 
 
 ## Outlook caught in Junk
