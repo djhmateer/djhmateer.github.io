@@ -1,16 +1,14 @@
 ---
 layout: post
 title: Creating HTML Emails 
-description: Email
+description: HTML emails are a strange beast. You need to inline all the CSS, and there are edge cases (Outlook!) to take care of.
 #menu: review
 categories: Email 
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2021-10-07/http2b.png
+image: /assets/2021-10-22/email-cover.jpg
 ---
-
-<!-- ## Introduction. -->
 
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->

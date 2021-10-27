@@ -1,13 +1,13 @@
 ---
 layout: post
-# title: CSS and Design for Developers 
-description: Email
+title: Barracuda Email Block 
+description: Problems with transaction email being blocked by Barracuda 
 menu: review
-categories: CSS 
+categories: Email 
 published: false 
 comments: false     
 sitemap: false
-image: /assets/2021-10-07/http2b.png
+image: /assets/2021-10-15/postmark.jpg
 ---
 <!-- ## Introduction. -->
 
@@ -19,10 +19,9 @@ image: /assets/2021-10-07/http2b.png
 
 This is something you never want to see - your email being blocked! 
 
+This is some aggressive filtering.
 
 I've found I can send an HTML email fine to that same address with no link in it through Gmail GUI. 
-
-
 
 Here is the offending problematic email (with a different To address)
 
@@ -56,7 +55,7 @@ I assume that `essex.ac.uk` use this service. [https://www.essex.ac.uk/staff/it-
 
 [https://ipinfo.io/](https://ipinfo.io/) - the tool I used to get information on an IP
 
-I used to have an email confirmation link like: 
+I used to have a one click email confirmation GET link like: 
 
 ```http://osr4rightstools.org/account/email-address-confirmation/a9493b9b-5eb2-4043-a6c7-bf921df6c4f7```
 
@@ -66,28 +65,12 @@ I can only assume that this triggered a rule, and didn't allow the email to be d
 
 Well even after fixing the 302 redirect it still doesn't work
 
-[https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/](https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/) article talks about this, with the simple workaround of having to put a button on the form eg.
-
-
-
-## Email Scanning / Microsoft
-
-I've noticed a similar behaviour from Microsoft (I suspect `swansea.ac.uk` use Office 365 for email).
-
-Microsoft look at the mails then seem to do
-
-`GET /account/email-address-confirmation/ASDFASDFSADF`
-
-which gave a 404 error from my system as it expects a guid at the end, and MS gave their own string.
-
-It delivered emails nonetheless.
-
-
-## Don't allow actions on GET
+[https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/](https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/) article talks about this, with the simple workaround of having to put a button on the form, as having an action on a GET request is not normal. As causes problems as I've just found here.
 
 [![alt text](/assets/2021-10-15/confirmation.jpg "email")](/assets/2021-10-15/confirmation.jpg)
 
-I've since modified my code to have a POST button which was recommended here: [https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/](https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/).
+Have a button so the action happens on a POST.
+
 
 ## Try Gmail / Workspace (G Suite) 
 

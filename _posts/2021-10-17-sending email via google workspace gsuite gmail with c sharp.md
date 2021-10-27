@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: CSS and Design for Developers 
+title: Sending email via Google Workspace / Gmail with C#
 description: Email
 menu: review
 categories: Email 
@@ -27,9 +27,15 @@ I've been having problems with emails being quarantined / rejected sending throu
 
 So I'm trying Workspace (and will try Office365 next) to see if emails get through.
 
-I'm not sending a lot of email either - mostly user login confirmations, password resets.
+I'm not sending a lot of email either - mostly user login confirmations, password resets ie transactional email.
 
-[How not to get caught in email filters]() is where I discuss this problem from an email composition side.
+### TL;DR
+
+Postmark was working just fine. It was the content of my email. Sending via Google Workspace didn't make a difference.
+
+[How not to get caught in spam filters with a new domain](/2021/10/18/how-to-not-get-caught-in-spam-filters-with-a-new-domain) is where I discuss this problem.
+
+For reference I've published this information below.
 
 ## 1. SMTP
 
@@ -54,10 +60,8 @@ Enable Less Secure setting for users.
 
 Turn on less secure.
 
-Now
-
 ```cs
-  var m = new MimeMessage();
+var m = new MimeMessage();
 var fromAddress = "dave@osr4rightstools.org";
   m.From.Add(new MailboxAddress("Dave Mateer", fromAddress));
   //m.To.Add(new MailboxAddress("Dave (Gmail)", toEmailAddress));
@@ -87,13 +91,16 @@ var fromAddress = "dave@osr4rightstools.org";
 
       return true;
   }
-            
-
 ```
 
+## 2 and 3 Create a project in Google Cloud
 
+I never successfully got these approaches working, but they should.
 
-## Create a project in Google Cloud
+My main issues were the complexity of getting OAuth2 working, and it didn't feel like the correct tool for sending transactional email.
+
+2. API using Service Account - 2 step OAuth2. (not for Gmail)
+3. API using 3 step OAuth2
 
 [https://developers.google.com/gmail/api/quickstart/dotnet](https://developers.google.com/gmail/api/quickstart/dotnet) .NET Quickstart for the Gmail API which links to:
 
@@ -167,112 +174,10 @@ Now lets import the NuGet packages
 
 There is a [https://github.com/googleapis/google-api-dotnet-client/tree/main/Src/Support/Google.Apis.Auth.AspNetCore3.IntegrationTests](https://github.com/googleapis/google-api-dotnet-client/tree/main/Src/Support/Google.Apis.Auth.AspNetCore3.IntegrationTests) sample which uses Google Drive and Calendar APIs. But this includes code that walks us through the auth process.
 
-**problem - this is logging the app in.. hmmm***
+## Conclusion
 
+An interesting foray into the Google Workspaces, which I ultimately didn't need.
 
+I hope this may be of help to you.
 
-
-
-
-
-
-
-
-
-[https://www.emailarchitect.net/easendmail/ex/c/20.aspx](https://www.emailarchitect.net/easendmail/ex/c/20.aspx)
-
-[https://console.developers.google.com/](https://console.developers.google.com/)
-
-- Create project
-- OAuth Consent screen
-- Create credentials (OAuth client id) - web application, redirect uri: https://localhost:5001/foo
-
-So I now have a ClientID and ClientSecret
-
-- Enable Gmail API
-- Edit scopes
-
-But I need to workflow on my webapp ie the redirect uri
-
-`Google.Apis.Auth.AspNetCore2` is a helper
-
-The ASP.NET Core 3 Auth extension library contains a Google-specific OpenIdConnect auth handler.
-Supports incremental auth, and an injectable IGoogleAuthProvider to supply Google credentials.
-
-It uses MS OpenID Connect.
-
-[https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#configure-your-application-to-use-google.apis.auth.aspnetcore3](https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#configure-your-application-to-use-google.apis.auth.aspnetcore3) following these instructions
-
-Here is a sample application:
-[https://github.com/googleapis/google-api-dotnet-client/tree/main/Src/Support/Google.Apis.Auth.AspNetCore3.IntegrationTests](https://github.com/googleapis/google-api-dotnet-client/tree/main/Src/Support/Google.Apis.Auth.AspNetCore3.IntegrationTests)
-
-
-
-**HERE**
-[https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#web-applications-asp.net-core-3](https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth#web-applications-asp.net-core-3)
-
-`Google.Apis.Auth.AspNetCore3`
-
-did the google for Web Server Application, to get initial clientid and clientsecret
-
-redirect URI is: https://localhost:5001/signin-oidc
-
-signin-oicdc is important (it is hardcoded in the libraray and not one of my pages)
-
-new Razor Pages project
-
-
-`Google.Apis.Gmail.v1`
-
-
-GoogleApiException: Google.Apis.Requests.RequestError
-Request had insufficient authentication scopes. [403]
-Errors [
-Message[Insufficient Permission] Location[ - ] Reason[insufficientPermissions] Domain[global]
-]
-
-looking for labels
-
-add scopes in OAuthConsent screen
-
-okay I can see scopes of
-
-email, profile, openid.. but no label
-
-ah, I bet I have to refresh the token.
-
-to check the access token:
-
-
-[https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=](https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=)
-
-
-So the access_token expires in 3600s which is 1 hour
-
-
-
-
-
-[https://blog.elmah.io/how-to-send-emails-from-csharp-net-the-definitive-tutorial/](https://blog.elmah.io/how-to-send-emails-from-csharp-net-the-definitive-tutorial/)
-
-
-[https://developers.google.com/gmail/api/quickstart/dotnet](https://developers.google.com/gmail/api/quickstart/dotnet)
-
-Create a Project and enable the API
-
-Got a `client_secret_XXXXXXXXX-xxxxxxxxxxxxxx.apps.googleusercontent.com.json` file
-
-Downloaded quickstart app from [https://github.com/googleworkspace/dotnet-samples/blob/master/gmail/GmailQuickstart/GmailQuickstart.cs](https://github.com/googleworkspace/dotnet-samples/blob/master/gmail/GmailQuickstart/GmailQuickstart.cs)
-
-Patched that into the app as `credentials.json` which allowed me to go through OAuth2 flow and get back
-
-`Google.Apis.Auth.OAuth2.Responses.TokenResponse-user` - a file.
-
-However this token will expire
-
-I seem to need a 
-
-ClientID
-ClientSecret
-
-
+Or my future self!
