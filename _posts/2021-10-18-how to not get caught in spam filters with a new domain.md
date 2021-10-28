@@ -27,11 +27,13 @@ I still have problems with emails going to spam folders of new users in Universi
 
 [Creating-html-emails](/2021/10/22/creating-html-emails) describes how I made this registration email which passes filters
 
-[![alt text](/assets/2021-10-22/email.jpg "email"){:width="700px"}](/assets/2021-10-22/email.jpg)
+[![alt text](/assets/2021-10-22/email.jpg "email"){:width="800px"}](/assets/2021-10-22/email.jpg)
+<!-- [![alt text](/assets/2021-10-22/email.jpg "email")](/assets/2021-10-22/email.jpg) -->
 
 And here are my [Postmark](https://postmarkapp.com/) settings:
 
-[![alt text](/assets/2021-10-18/postmark.jpg "postmark"){:width="900px"}](/assets/2021-10-18/postmark.jpg)
+<!-- [![alt text](/assets/2021-10-18/postmark.jpg "postmark"){:width="900px"}](/assets/2021-10-18/postmark.jpg) -->
+[![alt text](/assets/2021-10-18/postmark.jpg "postmark")](/assets/2021-10-18/postmark.jpg)
 
 This is pretty much it.
 
