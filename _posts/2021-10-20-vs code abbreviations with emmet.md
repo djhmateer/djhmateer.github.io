@@ -17,7 +17,7 @@ image: /assets/2021-10-07/http2b.png
 
 [https://code.visualstudio.com/docs/editor/emmet](https://code.visualstudio.com/docs/editor/emmet)
 
-`!` Does html boiler plate!
+`!` Does html boiler plate! [https://www.youtube.com/watch?v=8MgpE2DTTKA](https://www.youtube.com/watch?v=8MgpE2DTTKA) from Travesty Media
 
 `Ctrl-Shift-P` Open command pallette
 
