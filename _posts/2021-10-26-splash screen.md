@@ -22,11 +22,9 @@ I've spent a lot of time learning about the beauty of back end code
 
 I do appreciate front end styling, but have never put time into it until now.
 
-
 So lets just do something.
 
 Art purely for fun!
-
 
 ## A Splash Screen
 
@@ -43,55 +41,49 @@ So lets learn how to make something in this style.
 <html>
 
 <head>
-	<meta charset="UTF-8" />
-
-	<title>Remix - Build Better Websites</title>
-
-	<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>Remix - Build Better Websites</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<header>
-		Remix logo
-		Dashboard
-		Github
+  <header>
+    Remix logo
+    Dashboard
+    Github
+  </header>
 
-	</header>
+ <main>
+   <div class="toptext">
+     After over a year of development, Remix v1.0 is around the corner, and it’s going open source
+   </div>
+   <div class="middletext">
+     After over a year of development, Remix v1.0 is around the corner, and it’s going open source
+   </div>
+   <div class="buttons">
+    <button>READ ABOUT THE FUND RAISE</button>
+    <button>GET NOTIFIED WHEN V1.0 SHIPS</button>
+   </div>
+  </main>
 
-	<main>
-
-		<div class="toptext">
-			After over a year of development, Remix v1.0 is around the corner, and it’s going open source
-		</div>
-
-		<div class="middletext">
-			After over a year of development, Remix v1.0 is around the corner, and it’s going open source
-		</div>
-
-		<div class="buttons">
-			<button>READ ABOUT THE FUND RAISE</button>
-			<button>GET NOTIFIED WHEN V1.0 SHIPS</button>
-		</div>
-
-	</main>
-
-	<footer>
-		Remix logo
-
-		GH logo
-		Twitter logo
-		YT logo
-	</footer>
-
+ <footer>
+   Remix logo
+   GH logo
+   Twitter logo
+   YT logo
+ </footer>
 </body>
-
 </html>
 ```
 Just put the raw text together
 
 ## Layout
 
-No lets try flexbox
+Lets try [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
+- Header (left position, and right, so 2 columns)
+- Footer (same as header)
+- Middle content is horizontally and vertically aligned
 
 Getting elements in the right place using margin and padding (either work fine)
 
