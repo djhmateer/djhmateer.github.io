@@ -6,7 +6,7 @@ description: HTML emails are a strange beast. You need to inline all the CSS, an
 categories: Email 
 published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2021-10-22/email-cover.jpg
 ---
 

@@ -1,42 +1,37 @@
 ---
 layout: post
-# title: CSS and Design for Developers 
-description: Email
-menu: review
+title: How to not get caught in spam filters with a new domain
+description: Describes how I made mistakes and what I did to fix them to get transactional email flowing past spam filters. Get the server side right, and have professional emails! And it should work. Probably. Fingers crossed.
+# menu: review
 categories: Email 
-published: false 
+published: true 
 comments: false     
-sitemap: false
-image: /assets/2021-10-07/http2b.png
+sitemap: true
+image: /assets/2021-10-22/email.jpg
 ---
-
-<!-- ## Introduction. -->
-
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-10-07/http2b.png "http2"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
 
-
 ## Intro
 
-I send user registration, password reset and website process information (transactional emails), from [osr4rightstools.org](https://osr4rightstools.org/)
+I send user registration, password reset and website process information (transactional emails), from [osr4rightstools.org](https://osr4rightstools.org/), which is a new domain.
 
 
-[postmarkapp.com](https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl) writes that good transactional emails should not generate spam complaints and should get there 100% of the time.
+[Postmarkapp.com](https://postmarkapp.com/blog/good-transactional-emails-should-not-generate-spam-compl) write that good transactional email should not generate spam complaints and should get there 100% of the time.
 
-I've had to work hard to make this happen.
+I've had to work to make this happen.
 
-Have had problems with emails going to spam folders of users in Universities (about 75% of new users from university accounts), 1 university blocked the email completely.
-
+I still have problems with emails going to spam folders of new users in Universities, and [1 University blocked the email completely](/2021/10/15/email-IP-block-barracuda).
 
 ## TL;DR
 
-[Creating-html-emails](/2021/10/22/creating-html-emails) blog post describes how I made:
+[Creating-html-emails](/2021/10/22/creating-html-emails) describes how I made this registration email which passes filters
 
-[![alt text](/assets/2021-10-22/email.jpg "email")](/assets/2021-10-22/email.jpg)
+[![alt text](/assets/2021-10-22/email.jpg "email"){:width="700px"}](/assets/2021-10-22/email.jpg)
 
-And below you can see my postmark settings:
+And here are my [Postmark](https://postmarkapp.com/) settings:
 
-[![alt text](/assets/2021-10-18/postmark.jpg "postmark")](/assets/2021-10-18/postmark.jpg)
+[![alt text](/assets/2021-10-18/postmark.jpg "postmark"){:width="900px"}](/assets/2021-10-18/postmark.jpg)
 
 This is pretty much it.
 
@@ -46,20 +41,38 @@ This is pretty much it.
 
 I'm now prompting my users to mark as not spam.
 
-[![alt text](/assets/2021-10-18/please-check.jpg "check")](/assets/2021-10-18/please-check.jpg)
-
+[![alt text](/assets/2021-10-18/please-check.jpg "check"){:width="900px"}](/assets/2021-10-18/please-check.jpg)
 
 [https://osr4rightstools.org/account/register-success](https://osr4rightstools.org/account/register-success)
 
+## Other email senders
+
+[sending-email-via-google-workspace-gsuite-gmail-with-c-sharp](/2021/10/17/sending-email-via-google-workspace-gsuite-gmail-with-c-sharp) shows how I setup Google Workspace to send transactional email from my site. I tried this as I thought my initial email IP block was the fault of the Postmark. It wasn't. It was the content of my email.
+
+Using Google Workspace to send transactional email is not a good fit, and as you can see in the article, it involved complexity.
+
+[SendGrid](https://sendgrid.com/), [SparkPost](https://sparkpost.com), [Mailgun](https://mailgun.com/), [Amazon SES](https://aws.amazon.com/ses/) and [Madrill](https://mailchimp.com/features/transactional-email/) are all alternatives to [Postmark](https://postmarkapp.com/)
+
+I'm sticking with Postmark as
+
+- Excellent customer service
+- Their product works fast
+- Good technical blog posts
+
+
+## Todo
+
+It helps to use the persons name in your email eg Dear Dave, which I may implement.
+
 ## Conclusion
 
-This takes time to gain reputation.
+It takes time to gain reputation.
 
 But with a well crafted email and proper server side setup, it will work.
 
 Probably.
 
-
+<!-- 
 
 ## Inbound Email
 
@@ -314,7 +327,7 @@ We do have a message-id when sending through Workspace
 [https://support.google.com/mail/answer/1366858?hl=en&expand=5](https://support.google.com/mail/answer/1366858?hl=en&expand=5)
 
 
-If you see a question mark next to the sender's name, the message isn't authenticated.
+If you see a question mark next to the sender's name, the message isn't authenticated. -->
 
 <!-- 
 "Services in Azure use IP addresses assigned by Azure and owned by Microsoft. These reverse DNS records (PTR records) must be created in the corresponding Microsoft-owned reverse DNS lookup zones"

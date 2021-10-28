@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Sending email via Google Workspace / Gmail with C#
-description: Email
-menu: review
+description: There are 3 ways to send emails from a webserver via Google Workspace
+# menu: review
 categories: Email 
-published: false 
+published: true 
 comments: false     
-sitemap: false
-image: /assets/2021-10-07/http2b.png
+sitemap: true
+image: /assets/2021-10-17/lesssecure.jpg
 ---
 
 <!-- [![alt text](/assets/2021-10-15/postmark.jpg "postmark"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
@@ -23,7 +23,7 @@ Options 2 and 3 are significantly more complicated than using a provider such as
 
 ## Why send email through Workspace/Gmail
 
-I've been having problems with emails being quarantined / rejected sending through Postmark to academic institutions, who I imagine have strict inbound email policies. 
+I've been [having problems with emails being quarantined / rejected sending through Postmark](/2021/10/15/email-IP-block-barracuda) to academic institutions, who I imagine have strict inbound email policies. 
 
 So I'm trying Workspace (and will try Office365 next) to see if emails get through.
 

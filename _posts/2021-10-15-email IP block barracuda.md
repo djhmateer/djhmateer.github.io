@@ -2,11 +2,11 @@
 layout: post
 title: Barracuda Email Block 
 description: Problems with transaction email being blocked by Barracuda 
-menu: review
+# menu: review
 categories: Email 
-published: false 
+published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2021-10-15/postmark.jpg
 ---
 <!-- ## Introduction. -->
@@ -15,17 +15,23 @@ image: /assets/2021-10-15/postmark.jpg
 <!-- [![alt text](/assets/2021-10-07/http2b.png "http2"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
 
 <!-- [![alt text](/assets/2021-10-15/postmark.jpg "postmark"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
-[![alt text](/assets/2021-10-15/postmark.jpg "postmark")](/assets/2021-10-15/postmark.jpg)
+[![alt text](/assets/2021-10-15/postmark.jpg "postmark"){:width="900px"}](/assets/2021-10-15/postmark.jpg)
 
-This is something you never want to see - your email being blocked! 
+This is something you never want to see - your email being blocked! It never got to the users in-box, nor spam folder, and if they've never setup Barracuda (more below), they have no idea the email was sent.
 
 This is some aggressive filtering.
+
+[how-to-not-get-caught-in-spam-filters-with-a-new-domain](2021/10/18/how-to-not-get-caught-in-spam-filters-with-a-new-domain) is my article documenting sending transactional emails. And [Barracuda](https://www.barracuda.com/) has been the most problematic.
+
+TL;DR - I fixed this problem mainly by having better content in the email.
+
+## Background
 
 I've found I can send an HTML email fine to that same address with no link in it through Gmail GUI. 
 
 Here is the offending problematic email (with a different To address)
 
-[![alt text](/assets/2021-10-15/email.jpg "email")](/assets/2021-10-15/email.jpg)
+[![alt text](/assets/2021-10-15/email.jpg "email"){:width="600px"}](/assets/2021-10-15/email.jpg)
 
 
 [https://postmarkapp.com/support/article/815-what-are-bounces-and-spam-complaints](https://postmarkapp.com/support/article/815-what-are-bounces-and-spam-complaints) 
@@ -67,22 +73,32 @@ Well even after fixing the 302 redirect it still doesn't work
 
 [https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/](https://wordtothewise.com/2013/07/barracuda-filters-clicking-all-links/) article talks about this, with the simple workaround of having to put a button on the form, as having an action on a GET request is not normal. As causes problems as I've just found here.
 
-[![alt text](/assets/2021-10-15/confirmation.jpg "email")](/assets/2021-10-15/confirmation.jpg)
+[![alt text](/assets/2021-10-15/confirmation.jpg "email"){:width="600px"}](/assets/2021-10-15/confirmation.jpg)
 
 Have a button so the action happens on a POST.
 
 
-## Try Gmail / Workspace (G Suite) 
+## Gmail
 
 I tried copying the email and sending from my work Gmail GUI which didn't bounce.
 
-[![alt text](/assets/2021-10-15/gmail-block.jpg "email")](/assets/2021-10-15/gmail-block.jpg)
+[![alt text](/assets/2021-10-15/gmail-block.jpg "email"){:width="800px"}](/assets/2021-10-15/gmail-block.jpg)
 
 This is an example of failed email bounce/block in the Gmail GUI.
 
 
 So perhaps Barracuda uses the reputation of the SMTP provider to allow emails to get through.
 
+## Conclusion
+
+Monitor your failures in email sending.
+
+Watch out for the Barracuda!
+
+Follow the advice in [how-to-not-get-caught-in-spam-filters-with-a-new-domain](/2021/10/18/how-to-not-get-caught-in-spam-filters-with-a-new-domain). Which simply says to setup your email seding properly and to have a professional emails.
+
+
+<!-- 
 ### Setting up Gmail with C# Web App
 
 So this is tricky. Google have turned off 'Allow less secure apps' which would allow a simple username and password (for your gmail account!) to be used to send email. We must now using OAuth2, which is a good thing!
@@ -183,6 +199,6 @@ However this token will expire
 I seem to need a 
 
 ClientID
-ClientSecret
+ClientSecret -->
 
 
