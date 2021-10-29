@@ -1,29 +1,16 @@
 ---
 layout: post
-title: R and Tidyverse beginners guide
-description: 
-menu: review
-categories: R 
+title: R and Tidyverse Beginners guide
+description: What is R, Tidying Data and Charting. A beginners guide to setting up.
+# menu: review
+categories: R Statistics
 published: true 
 comments: false     
-sitemap: false
-image: /assets/2020-10-27/davemateer.jpg
+sitemap: true
+image: /assets/2020-11-06/rstudio.jpg
 ---
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
-
-> Data Science:
-> Transforming your data into actionable insight.
-
-As a SaaS business owner this could be as simple as:
-
-- Making sure my servers are running
-- Keeping a close eye on application 4xx and 5xx webserver errors
-- Memory usage
-
-It could also be how to display reports well for example in my broken link checker product, how to display a large amount of data... and make ie easily actionable
-
-
 
 This article covers:
 
@@ -31,8 +18,7 @@ This article covers:
 - Tidying Data
 - Charting
 
-[Here is the next article covering Linear Regression](/2020/11/19/xlinear-regression)
-
+[The next article covers Linear Regression](/2020/11/19/linear-regression)
 
 ## What is R
 
@@ -174,13 +160,13 @@ okay so we are good to go
 
 ## R Studio Keyboard shortcuts
 
-ctrl enter - run - This is by far my most used keyboard shortcut
+`ctrl enter` - run - This is by far my most used keyboard shortcut
 
-ctrl shift c - comment / uncomment
+`ctrl shift c` - comment / uncomment
 
-ctrl shift m - pipe %>% aka magrittr
+`ctrl shift m` - pipe %>% aka magrittr
 
-alt - assignment <-
+`alt -` assignment <-
 
 ## R Useful code
 

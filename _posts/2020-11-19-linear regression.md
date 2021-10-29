@@ -1,34 +1,34 @@
 ---
 layout: post
-title: Linear Regresssion 
-description: 
-menu: review
+title: Linear Regresssion with R
+description: Using a straight line linear regression we will explore data, construct a model, diagnose and evaluate. Notes from a course.
+# menu: review
 categories: R Statistics
 published: true 
 comments: false     
-sitemap: false
-image: /assets/2020-10-27/davemateer.jpg
+sitemap: true
+# image: /assets/2020-10-27/davemateer.jpg
 ---
 
 <!-- [![alt text](/assets/2020-10-12/db.jpg "Db from Caspar Camille Rubin on Unsplash")](https://unsplash.com/@casparrubin) -->
 
 
-[R and Tidyverse Beginners Guide](/2020/11/18/xr-with-tidyverse-beginners-guide) is my previous article to this
+[R and Tidyverse Beginners Guide](/2020/11/18/r-with-tidyverse-beginners-guide) is my previous article.
 
-This article in on Linear Regression.
-
-There may be articles in the future here on 
-
-- 5 Multiple Regression
-- 6 ANCOVA
-- 7 Generalised
-- 8 Mixed
 
 Essentially these are findings on a Statistics course I did which is geared towards biological scientists. The joy of finding things out and exploring something different..  
 
-I wonder what practical use it can be for me as a SaaS owner
+These are my notes up to the point I got lost!
 
-Like any other discipline there are a lot of terms, which I'm going to try to define, and go slowly.
+There ~~may be~~ wont be articles in the future here on (an area I don't need to know about, but looks fascinating)
+
+- Multiple Regression
+- ANCOVA
+- Generalised
+- Mixed
+
+
+Like any other discipline there are a lot of terms, which I'm going to try to define, and will go through slowly.
 
 ## Univariate Linear Regression
 
@@ -39,9 +39,11 @@ So a univariate regression but we are looking at a bivariate data (also called b
 Science is about making imprecise measurements and asking questions / making hypothesis. So we need a way to help us quantifyably make sense of these measurements.
 
 
-[What is a Regression](https://www.investopedia.com/terms/r/regression.asp) - "Regression is a statistical method .. that attempts to determine the strength and character of the relationship between one dependent variable (usually denoted by Y) and a series of other variables (known as independent variables). "
+[What is a Regression](https://www.investopedia.com/terms/r/regression.asp)
 
-simple linear regression uses one independent variable to explain (or predict) the outcome of the dependent variable.
+> "Regression is a statistical method .. that attempts to determine the strength and character of the relationship between one dependent variable (usually denoted by Y) and a series of other variables (known as independent variables). "
+
+Simple linear regression uses one independent variable to explain (or predict) the outcome of the dependent variable.
 
 By using a straight best-fit line
 
@@ -54,10 +56,10 @@ eg What do we predict the temperature to be at sea level if we have some sample 
 
 ## Strategy
 
-- 1. Data exploring (plotting) and getting a feel for what the regressional values should be
-- 2. Model construction
-- 3. Model diagnostics
-- 4. Model evaluation
+1. Data exploring (plotting) and getting a feel for what the regressional values should be
+2. Model construction
+3. Model diagnostics
+4. Model evaluation
 
 ## 1. Data Exploring
 
@@ -110,7 +112,7 @@ Minimize the unexplained variation `residual variation` or residual distance
 
 The best fit line is the one which minimises the sums of the squared deviations from the line (so that negative numbers are taken out of the running)
 
-### c / Intercept C value of 50  and slope m
+### C / Intercept C value of 50  and slope m
 
 Let's do a sanity check regression straight line equation of the form `y = mx + c`
 
@@ -196,7 +198,7 @@ hist(lm_wba_1$residuals)
 
 4.cook's distance plot
 
-ADF Method - Augmented Dickey-Fuller test.. test teh null hypothesis
+ADF Method - Augmented Dickey-Fuller test.. test the null hypothesis
 
 
 ## 4.Model Evaluation
@@ -222,17 +224,19 @@ Airspeed       5.030      0.306   16.44 5.08e-08 ***
 
 The Coeffieients look good:
 
+```
 y = mx + c
 y = 5.030x + 47.988
+```
 
 y-intercept (c) - (Intercept) is in brackets - wingbeat amplitude
+
 slope (m) - is listed as Airspeed - slope is associated with a predictor so will take its name (univariate regression)
 
 The coefficients each have a [standard errori (SE)](https://en.wikipedia.org/wiki/Standard_error)
-**what does se mean here**?
 
-t-value - test statistic for the null hypothesis of a zero coefficient value
-p-value associated with this null hypothesis
+- t-value - test statistic for the null hypothesis of a zero coefficient value
+- p-value associated with this null hypothesis
 
 Our p-values are tiny, so we should reject the hypothesis that "no association between airspeed and wingbeat amplitude"
 
@@ -243,20 +247,13 @@ What is the confidence interval for the slope?
 confint(lm_wba_1)
 ```
 
-Write a sentence that 
-
-"The higher the airspeed, the greater the wingbeat amplitude" **consult paper
-
 F-statistic - this is a test of the whole regression, and is associated with the null hypothesis that the model does not predict the response.
 
 ANOVA - don't use this any more.
 
-## Creating a good figure
 
+## Conclusion
 
+This is as far as I got!
 
-fit - predicted y value
-lwr - lower 95% interval
-upr - upper 95% interval
-
-ggplot(df_newbird_preds,aes(x=Airspeed,y=fit))+geom_line()+geom_ribbon(aes(ymin =lwr,ymax =upr),alpha =0.25)+# this argument makes the CI transparentlabs(x="Airspeed (m/s)",y=expression("Wingbeat Amplitude(°)"))+theme_bw()
+Learning the terms and scientific strategies to analyse data essentially with a straight line fit was fascinating.

@@ -83,6 +83,15 @@ Lets try [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 - Header (left position, and right, so 2 columns)
 - Footer (same as header)
+
+I found it easy to do these as they are simply 2 columns
+
+Lets dig into how I got it working:
+
+
+
+
+
 - Middle content is horizontally and vertically aligned
 
 Getting elements in the right place using margin and padding (either work fine)
