@@ -19,6 +19,16 @@ image: /assets/2021-10-07/http2b.png
 
 `!` Does html boiler plate! [https://www.youtube.com/watch?v=8MgpE2DTTKA](https://www.youtube.com/watch?v=8MgpE2DTTKA) from Travesty Media
 
+`header.header` makes `<header class="header"></header>`
+
+`.header-content` makes `<div class='header-content'></div>`
+
+`img.logo` makes `<img src="" alt="" class="logo">`
+
+
+
+## Wrap
+
 `Ctrl-Shift-P` Open command pallette
 
 `wrap` emmet:wrap
