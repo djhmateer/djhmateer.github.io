@@ -17,6 +17,13 @@ image: /assets/2021-10-07/http2b.png
 
 [https://code.visualstudio.com/docs/editor/emmet](https://code.visualstudio.com/docs/editor/emmet)
 
+
+[https://cssguidelin.es/](https://cssguidelin.es/)
+
+[https://csswizardry.com/about/](https://csswizardry.com/about/) - he uses a system font
+
+
+
 ## Traversy Media
 
 [https://www.youtube.com/watch?v=8MgpE2DTTKA](https://www.youtube.com/watch?v=8MgpE2DTTKA) from Travesty Media - video background landing page (4th Jan 2021)
@@ -152,6 +159,15 @@ And overlay to make images darker so can see text
 ## Modal
 
 For the login pop up form
+
+
+
+
+## MS Page
+
+Font awesome for search icon, shopping cart icon
+
+
 
 
 ## Wrap
