@@ -52,6 +52,8 @@ image: /assets/2021-10-07/http2b.png
 
 `section.sub-header` makes `<section class="sub-header"></section>`
 
+`lorem40` makes `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime eos maiores sit labore autem perspiciatis hic itaque earum laboriosam commodi blanditiis, consequuntur voluptatibus adipisci libero voluptas obcaecati inventore. Rem, quos nobis? Similique aspernatur animi, eius sit repellendus molestiae autem expedita`
+
 ## Utility Classes
 
 btn will be an overall button utility class
@@ -139,8 +141,8 @@ iPhone 6/7/8  in Devtools, icone.
 
 When to use flexbox and when to use cssgrid?
 
-- Flexbox for simple single row or column
-- CSS Grid for more complex eg different widths of columns
+- Flexbox for simple single row or column - menus, inner elements..
+- CSS Grid for more complex eg different widths of columns.. things like cards
 
 
 Using 3 items.
@@ -159,8 +161,6 @@ And overlay to make images darker so can see text
 ## Modal
 
 For the login pop up form
-
-
 
 
 ## MS Page
