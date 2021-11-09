@@ -15,14 +15,13 @@ image: /assets/2021-10-07/http2b.png
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-10-07/http2b.png "http2"){:width="200px"}](/assets/2021-10-07/http2b.png) -->
 
-[https://code.visualstudio.com/docs/editor/emmet](https://code.visualstudio.com/docs/editor/emmet)
+[https://docs.emmet.io/abbreviations/syntax/](https://docs.emmet.io/abbreviations/syntax/) Emmet syntax
 
+[https://code.visualstudio.com/docs/editor/emmet](https://code.visualstudio.com/docs/editor/emmet)
 
 [https://cssguidelin.es/](https://cssguidelin.es/)
 
 [https://csswizardry.com/about/](https://csswizardry.com/about/) - he uses a system font
-
-
 
 ## Traversy Media
 
@@ -31,9 +30,11 @@ image: /assets/2021-10-07/http2b.png
 [https://www.youtube.com/watch?v=9OVLaEjY-Rc&list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU&index=58](https://www.youtube.com/watch?v=9OVLaEjY-Rc&list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU&index=58) Hulu landing page (15th Jul 2021)
 
 [https://www.youtube.com/watch?v=uKgn-To1C4Q](https://www.youtube.com/watch?v=uKgn-To1C4Q) Microsoft.com (11th Feb 2020)
+
+[https://www.youtube.com/watch?v=lvYnfMOUOJY&t=87s](https://www.youtube.com/watch?v=lvYnfMOUOJY&t=87s) Creative Agency
  
 
-`!` Does html boiler plate! 
+`!` which is short for `html:5` Does html boiler plate! 
 
 `link` makes `<link rel="stylesheet" href="">`
 
@@ -53,6 +54,14 @@ image: /assets/2021-10-07/http2b.png
 `section.sub-header` makes `<section class="sub-header"></section>`
 
 `lorem40` makes `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime eos maiores sit labore autem perspiciatis hic itaque earum laboriosam commodi blanditiis, consequuntur voluptatibus adipisci libero voluptas obcaecati inventore. Rem, quos nobis? Similique aspernatur animi, eius sit repellendus molestiae autem expedita`
+
+`.flex-child*10` makes 10 lines of `<div class="flex-child"></div>`
+
+`span*10>{hello}` makes 10 lines of `<span>hello</span>`
+
+`dib` makes `display: inline-block`
+
+`df` makes `display:
 
 ## Utility Classes
 
