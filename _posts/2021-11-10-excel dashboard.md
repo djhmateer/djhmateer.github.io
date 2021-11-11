@@ -14,21 +14,32 @@ image: /assets/2021-10-07/http2b.png
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "Thanks to Solen Feyissa on unsplash - https://unsplash.com/@solenfeyissa")](https://unsplash.com/@solenfeyissa) -->
 
+Interactive Dashboard with Excel
+
+> A dashboard is a visual display of the most important information needed to achieve 1 of more objectives, consolidated and arranged on a single screen so the information can be monitored at a glance.
+
+[Stephen Few quote](https://www.thedataschool.co.uk/dan-watt/dashboard-design-dashboard)
+
+With Excel we can make them interactive.
+
+In this blog post I walk through the excellent [MyOnlineTrainingHub YouTube - How to build Interactive Dashboards](https://www.youtube.com/watch?v=K74_FNnlIF8)
 
 Making dashboards is a skill.
 
-I'm fortunate in that I've got control over webservers, DB and storate, and can design my own log strategy.
+I'm fortunate in that I've got control over webservers, DB and storage, and can design my own log strategy.
 
 Like many recent projects, I'm favouring simplicity and have found that I can write sufficiently well to the OLTP DB with small to medium size projects. 
 
-- User dashboard
+### User dashboard
+
  - Who has logged in most recently
  - Who needs help using our system
  - Tools with most interest
  - Serach engines giving the most traffic (and what terms)
  - End of year reports
 
-- Developer / Devops dashboard
+### Developer / Devops dashboard
+
  - Email delivery problem
  - 500 errors
  - Critical Errors eg app pool recycle
@@ -57,7 +68,6 @@ Also lets explore to see if interactivity is easy to accomplish
 eg focus down on a date range of date eg todays 500 only
 
 
-[https://www.youtube.com/watch?v=K74_FNnlIF8](https://www.youtube.com/watch?v=K74_FNnlIF8)
 
 [https://www.myonlinetraininghub.com/workbook-downloads](https://www.myonlinetraininghub.com/workbook-downloads) downloads
 
@@ -161,9 +171,6 @@ I copied the data from SSMS and pasted in.
 [![alt text](/assets/2021-11-10/http.jpg "http")](/assets/2021-11-10/http.jpg)
 
 A format I used to save the data from a specific application. Notice the LoginId, Email and RoleName which comes from the application layer not the webserver.
-
-**TODO - figure out how to connect the sheet to SQL local then to live**
-
 
  Formatted the date column as:
 
@@ -398,6 +405,8 @@ todo - maybe Excel2019 does dynamic name ranges for charts? Or maybe there is a 
 
 It all works - very impressive. Notice that we are talking in FY's.
 
+See formatting below on how to get rid of gridlines, sheet tags etc.
+
 ## Updating the data
 
 Patch in the August data.
@@ -429,6 +438,7 @@ hold down ctrl, then use arrow keys to move something
 
 Rename slicers
 
+[![alt text](/assets/2021-11-10/options.jpg "options")](/assets/2021-11-10/options.jpg)
 
 View Tab, get rid of headings
 
