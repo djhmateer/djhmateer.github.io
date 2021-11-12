@@ -20,30 +20,23 @@ Here I make my own custom dashboard using the concepts learned from there.
 I'm fortunate in that I've got control over webservers, DB and storage, and can design my own log strategy.
 
 TODO
- - get live data
- - Use the dashboard and play with different parts of the data
  - share dashboard using Office365?
  - IP country and town lookups
 
 ## Summary
 
-Import Data - no Power Query needed
- - Local DB
- - Live Azure
-
-Excel Table
-PivotTable
-PivotChart
-Map Chart
-Slicer
-Dynamic Labelling
+We're going to be using
+- Live connection to Azure SQL with a readonly user
+- Excel Table to store data
+- PivotTable for each chart
+- PivotChart
+- Map Chart
+- Slicer
+- Dynamic Labelling
 
 ## Import Live Data
 
 [https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-excel](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-excel)
-
-
-### Azure
 
 Create a readonly user on Azure for safety. [SO](https://stackoverflow.com/questions/2777422/in-sql-azure-how-can-i-create-a-read-only-user)
 
@@ -127,7 +120,7 @@ Am trying to sort on `Count of WebLogId` but can't
 [https://www.contextures.com/excel-pivot-table-sorting.html](https://www.contextures.com/excel-pivot-table-sorting.html) gave me the clue
 
 
-[![alt text](/assets/2021-11-11/nosort.jpg "nosort")](/assets/2021-11-10/nosort.jpg)
+[![alt text](/assets/2021-11-11/sort.jpg "sort")](/assets/2021-11-10/sort.jpg)
 
 Sorted. Along with a value filter of top 10 only
 
@@ -137,9 +130,9 @@ Sorted. Along with a value filter of top 10 only
 
 What I'd like to do is drill into a day (eg yesterday) and see what that 500 error was.
 
-Porbably need a slicer, and a way to see the raw data
+Probably need a slicer, and a way to see the raw data
 
-## Raw Data
+## Exploring Data
 
 Right click
 
