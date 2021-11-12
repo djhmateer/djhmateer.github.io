@@ -78,7 +78,6 @@ Worksheet: Requests Pivot
 
 Months field has been created for us.
 
-
 ## Refreshing Data
 
 Data, Refresh All
@@ -104,6 +103,12 @@ My preference is now:
 - Data source - refresh on file open, background update is off (so once only for press refresh)
 
 Then I'm happy to press the Refresh All button.
+
+## Multiple Machines
+
+As expected the connection url and db name are stored in the worksheet, but the username and password is not.
+
+To run the dashboard on anohter machine, enter the username and password, and make sure the Azure SQL allows connections from that IP address (set Firewall Rule in Azure Portal).
 
 
 ## Top 10 Pages
