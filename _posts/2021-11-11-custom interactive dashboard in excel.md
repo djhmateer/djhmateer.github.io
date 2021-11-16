@@ -125,9 +125,13 @@ Am trying to sort on `Count of WebLogId` but can't
 [https://www.contextures.com/excel-pivot-table-sorting.html](https://www.contextures.com/excel-pivot-table-sorting.html) gave me the clue
 
 
+[![alt text](/assets/2021-11-11/sort2.jpg "sort2")](/assets/2021-11-10/sort2.jpg)
+
+Sort the PivotTable and PivotChart
+
 [![alt text](/assets/2021-11-11/sort.jpg "sort")](/assets/2021-11-10/sort.jpg)
 
-Sorted. Along with a value filter of top 10 only
+Value filter of top 10 only on Path.
 
 ## Columns in Bar chart
 
