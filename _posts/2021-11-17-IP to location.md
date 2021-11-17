@@ -223,9 +223,9 @@ In summary - there seems to be more information here. Except I'm not getting an 
 
 ## Implementing ip-api.com
 
-`http://ip-api.com/json/209.93.9.222`
+[https://ip-api.com/docs/api:json](https://ip-api.com/docs/api:json)
 
-gives:
+`http://ip-api.com/json/209.93.9.222` gives:
 
 ```json
 {
@@ -246,19 +246,129 @@ gives:
 }
 ```
 
-So, how
+However I want some more information, so following the docs [https://ip-api.com/docs/api:json](https://ip-api.com/docs/api:json)
 
-I could use source generators in .NET 6 for performance, but don't need that comlexity.
+```json
+{
+  "query": "209.93.9.222",
+  "status": "success",
+  "continent": "Europe",
+  "country": "United Kingdom",
+  "countryCode": "GB",
+  "regionName": "England",
+  "city": "Lewes",
+  "zip": "BN7",
+  "lat": 50.9027,
+  "lon": -0.0124,
+  "timezone": "Europe/London",
+  "isp": "British Telecommunications PLC",
+  "org": "INFONET Services Corporation",
+  "as": "AS6871 Plusnet",
+  "asname": "Plusnet",
+  "mobile": false,
+  "proxy": false,
+  "hosting": false
+}
+```
 
-- HttpWebRequest/Response
-- WebClient
-- HttpClient - newer. `System.Net.Http`
+Here is .NET6 script
 
+```cs
+// Get ips from db
+var ips = await Db.GetDistinctIPsFromWebLog(connectionString);
 
-Which fields do I want
+var client = new HttpClient();
 
-Generated number to save bandwidth
+// loop through all IPs to find info
+var i = 1;
+foreach (var ip in ips)
+{
+    Log.Information($"{i} - {ip} ");
 
+    // patch in ip into query and use shorthand field selector
+    var url = $"http://ip-api.com/json/{ip}?fields=22278139";
+
+    try
+    {
+        var ipAddressInfo = await client.GetFromJsonAsync<IPAddressInfo>(url);
+
+        if (ipAddressInfo?.status != "success")
+        {
+            Log.Error(ipAddressInfo?.message);
+            throw new ApplicationException("query fail");
+        }
+
+        // write info to db
+        await Db.InsertIPAddressInfo(connectionString, ipAddressInfo);
+
+        // allowed 45 requests per minute so delay
+        await Task.Delay(2000);
+        i++;
+
+    }
+    catch (Exception ex)
+    {
+        Log.Error(ex, "Caught Exception");
+        throw;
+    }
+}
+Log.Information("finished");
+
+// deserialize to this shape
+public class IPAddressInfo
+{
+    public string message { get; set; }
+    public string status { get; set; }
+    public string continent { get; set; }
+    public string country { get; set; }
+    public string countryCode { get; set; }
+    public string regionName { get; set; }
+    public string city { get; set; }
+    public string zip { get; set; }
+    public float lat { get; set; }
+    public float lon { get; set; }
+    public string timezone { get; set; }
+    public string isp { get; set; }
+    public string org { get; set; }
+    // as is a confusing name, so map to asx
+    [JsonPropertyName("as")]
+    public string asx { get; set; }
+    public string asname { get; set; }
+    public bool mobile { get; set; }
+    public bool proxy { get; set; }
+    public bool hosting { get; set; }
+    public string query { get; set; }
+}
+```
+
+- Lat and Long can be wildly inaccurate
+- All data can be very inaccurate, so take with a grain a salt 
+
+However this does give me some good information already
+
+- Country
+- See see universities logging in (that I expect to)
+
+## Excel
+
+To get data from multiple tables I found the easiest way was to create a brand new connection, advances, then do a sql query
+
+```sql
+select *
+from weblog w
+join IPAddressInfo ip
+on w.IPAddress = ip.IPAddress
+```
+
+This is an expensive query (joining on a nvarchar) but good enough for POC.
+
+To edit this query:
+
+Power query, advanced editor, then can edit the power query language.
+
+## Map
+
+The map type is not a pivotchart.
 
 
 ## Todo
