@@ -370,6 +370,12 @@ Power query, advanced editor, then can edit the power query language.
 
 The map type is not a pivotchart.
 
+I don't have Geographic and Stock Data types in Excel for some reason.
+
+[https://support.microsoft.com/en-us/office/create-a-map-chart-in-excel-f2cfed55-d622-42cd-8ec9-ec8a358b593b?ui=en-us&rs=en-us&ad=us](https://support.microsoft.com/en-us/office/create-a-map-chart-in-excel-f2cfed55-d622-42cd-8ec9-ec8a358b593b?ui=en-us&rs=en-us&ad=us) a good demo
+
+
+
 
 ## Todo
 
