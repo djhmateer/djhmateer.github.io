@@ -90,7 +90,6 @@ Untick enable background refresh - this means we have to only press refresh once
 
 If I auto refresh the Data source every minute, it works. However the PivotTable and PivotChart don't automatically update.
 
-
 [![alt text](/assets/2021-11-11/refresh2.jpg "refresh")](/assets/2021-11-10/refresh2.jpg)
 
 It works when I open the file, but not in real time from the data source which does update every minute.
@@ -109,6 +108,77 @@ Then I'm happy to press the Refresh All button.
 As expected the connection url and db name are stored in the worksheet, but the username and password is not.
 
 To run the dashboard on anohter machine, enter the username and password, and make sure the Azure SQL allows connections from that IP address (set Firewall Rule in Azure Portal).
+
+## Requests by Time Pivot
+
+On the Data Table worksheet, click Summerize with PivotTable in a new worksheet.
+
+`Ctrl z` after dragging DateTimeUtc onto Rows to undo the default grouping.
+
+[![alt text](/assets/2021-11-11/group.jpg "group")](/assets/2021-11-10/group.jpg)
+
+Group by Years, Months, Days.
+
+Set Number fields to use commas and no decimal places
+
+PivotChart - Line.
+
+Remove all field buttons (going to use slicers)
+
+[![alt text](/assets/2021-11-11/requests2.jpg "requests2")](/assets/2021-11-10/requests2.jpg)
+
+- Can see if any unusual spikes in total traffic
+- Explore 500 errors to see if important
+- 404 any problems
+- 302's (Redirect) are a sign that the app is being used
+
+## Daily by City
+
+[![alt text](/assets/2021-11-11/daily.jpg "daily")](/assets/2021-11-10/daily.jpg)
+
+- Can see any new users having difficulties by location
+
+
+## Slicers
+
+[![alt text](/assets/2021-11-11/slicer.jpg "slicer")](/assets/2021-11-10/slicer.jpg)
+
+- See just this months trending data
+- Filter by status code to see more clearly the problems
+
+## Average Request Time
+
+[![alt text](/assets/2021-11-11/av.jpg "average request time")](/assets/2021-11-10/av.jpg)
+
+- Performance of the webserver
+
+## Users
+
+[![alt text](/assets/2021-11-11/users.jpg "users")](/assets/2021-11-10/users.jpg)
+
+- Explore what users of the system have been doing
+
+This uses data now which is not in a normal webserver log
+
+
+## Hosting
+
+Save to [OneDrive](https://onedrive.live.com/) but it needs to be less than 25MB to view online
+
+Can't refresh data from the hosted file.
+
+Can view graphs fine.
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Top 10 Pages

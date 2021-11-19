@@ -19,86 +19,15 @@ As part of my dashboarding project I'd like to get an IP address location on the
 - Looks good!
 - See obvious hacking attempts
 
-## Maxmind
-
-[https://www.maxmind.com/en/geoip2-precision-demo](https://www.maxmind.com/en/geoip2-precision-demo) - good live demo
-
-- GeoIP2 Precision City Web Service
-- GeoIP2 City
-- GeoLite2 City
-
-[https://www.maxmind.com/en/geoip2-precision-services](https://www.maxmind.com/en/geoip2-precision-services)
-
-1000 requests per day on their [GeoLite2 Free Geolocation Data](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en) or can download the db.
-
-This is slightly less accurate than their paid product.
-
-[https://dev.maxmind.com/geoip/geolocate-an-ip/databases?lang=en](https://dev.maxmind.com/geoip/geolocate-an-ip/databases?lang=en) impressive they have packages for C#, Java, Node, PHP, Python and Ruby
-
-[https://maxmind.github.io/GeoIP2-dotnet/](https://maxmind.github.io/GeoIP2-dotnet/)
-
-`MaxMind.GeoIP2` has 5.2M downloads and updated 19th Nov 2020. 4.0.1
-
-GeoIP2 Precision offers 3 services: Insights, City, and Country. 
-GeoLite2 offers 2 services: City and Country
-
-[![alt text](/assets/2021-11-17/country.jpg "country")](/assets/2021-11-17/country.jpg)
-
-Showing the different names the UK has in different languages.
-
-[![alt text](/assets/2021-11-17/city.jpg "city")](/assets/2021-11-17/city.jpg)
-
-This query looks promising for my home dynamic IP of `209.93.9.222`
-
-- City - Lewes
-- MostSpecificSubdivision - East Sussex
-- Country.Name - United Kingdom
-- Country.IsoCode - GB
-- Continent - Europe
-- Location.Latitude - 50.9027
-- Location.Longitude - -0.0124
-- Location.AccuracyRadius - 5 (km?)
-- Traits.AutonomousSystemOrganization - British Telecommunications PLC
-
-What I'm not getting is accurate: SystemOrganization. It should be Plusnet.
-
-
-`139.59.78.248` is a random automated request for a page not there from India:
-
-- City - Bengaluru 
-- MostSpecificSubdivision - Karnataka 
-- Country.Name - India 
-- Country.IsoCode - IN
-- Continent - Asia 
-- Location.Latitude - 12.9634 
-- Location.Longitude - 77.5855 
-- Location.AccuracyRadius - 50 (km?)
-- Traits.AutonomousSystemOrganization - DIGITALOCEAN-ASN
-
-Not missing any data compared to [https://www.maxmind.com/en/geoip2-precision-demo](https://www.maxmind.com/en/geoip2-precision-demo)
-
-`5.188.62.214` is a automated posting IP from Russia:
-
-- City - 
-- MostSpecificSubdivision -
-- Country.Name - Russia 
-- Country.IsoCode - RU 
-- Continent - Europe 
-- Location.Latitude - 55.7386 
-- Location.Longitude - 37.6068 
-- Location.AccuracyRadius - 1000km
-- Traits.AutonomousSystemOrganization - Petersburg Internet Network 
-
-Not missing any data compared to [https://www.maxmind.com/en/geoip2-precision-demo](https://www.maxmind.com/en/geoip2-precision-demo)
-
-
 ## ip-api.com
 
-Free for non-commercial use. 45 requests per minute.
+This is what I'm using.
+
+Free for non-commercial use with a rate limit of 45 requests per minute
 
 [https://members.ip-api.com/#pricing](https://members.ip-api.com/#pricing)
 
-Lets take the same 3 IPs and see the difference:
+Lets take 3 IPs and see the difference:
 
 ### My home IP - UK
 
@@ -348,6 +277,78 @@ However this does give me some good information already
 
 - Country
 - See see universities logging in (that I expect to)
+
+## Maxmind
+
+[https://www.maxmind.com/en/geoip2-precision-demo](https://www.maxmind.com/en/geoip2-precision-demo) - good live demo
+
+- GeoIP2 Precision City Web Service
+- GeoIP2 City
+- GeoLite2 City
+
+[https://www.maxmind.com/en/geoip2-precision-services](https://www.maxmind.com/en/geoip2-precision-services)
+
+1000 requests per day on their [GeoLite2 Free Geolocation Data](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en) or can download the db.
+
+This is slightly less accurate than their paid product.
+
+[https://dev.maxmind.com/geoip/geolocate-an-ip/databases?lang=en](https://dev.maxmind.com/geoip/geolocate-an-ip/databases?lang=en) impressive they have packages for C#, Java, Node, PHP, Python and Ruby
+
+[https://maxmind.github.io/GeoIP2-dotnet/](https://maxmind.github.io/GeoIP2-dotnet/)
+
+`MaxMind.GeoIP2` has 5.2M downloads and updated 19th Nov 2020. 4.0.1
+
+GeoIP2 Precision offers 3 services: Insights, City, and Country. 
+GeoLite2 offers 2 services: City and Country
+
+[![alt text](/assets/2021-11-17/country.jpg "country")](/assets/2021-11-17/country.jpg)
+
+Showing the different names the UK has in different languages.
+
+[![alt text](/assets/2021-11-17/city.jpg "city")](/assets/2021-11-17/city.jpg)
+
+This query looks promising for my home dynamic IP of `209.93.9.222`
+
+- City - Lewes
+- MostSpecificSubdivision - East Sussex
+- Country.Name - United Kingdom
+- Country.IsoCode - GB
+- Continent - Europe
+- Location.Latitude - 50.9027
+- Location.Longitude - -0.0124
+- Location.AccuracyRadius - 5 (km?)
+- Traits.AutonomousSystemOrganization - British Telecommunications PLC
+
+What I'm not getting is accurate: SystemOrganization. It should be Plusnet.
+
+
+`139.59.78.248` is a random automated request for a page not there from India:
+
+- City - Bengaluru 
+- MostSpecificSubdivision - Karnataka 
+- Country.Name - India 
+- Country.IsoCode - IN
+- Continent - Asia 
+- Location.Latitude - 12.9634 
+- Location.Longitude - 77.5855 
+- Location.AccuracyRadius - 50 (km?)
+- Traits.AutonomousSystemOrganization - DIGITALOCEAN-ASN
+
+Not missing any data compared to [https://www.maxmind.com/en/geoip2-precision-demo](https://www.maxmind.com/en/geoip2-precision-demo)
+
+`5.188.62.214` is a automated posting IP from Russia:
+
+- City - 
+- MostSpecificSubdivision -
+- Country.Name - Russia 
+- Country.IsoCode - RU 
+- Continent - Europe 
+- Location.Latitude - 55.7386 
+- Location.Longitude - 37.6068 
+- Location.AccuracyRadius - 1000km
+- Traits.AutonomousSystemOrganization - Petersburg Internet Network 
+
+Not missing any data compared to [https://www.maxmind.com/en/geoip2-precision-demo](https://www.maxmind.com/en/geoip2-precision-demo)
 
 ## Excel
 

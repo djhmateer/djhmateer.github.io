@@ -35,7 +35,7 @@ Like many recent projects, I'm favouring simplicity and have found that I can wr
  - Who has logged in most recently
  - Who needs help using our system
  - Tools with most interest
- - Serach engines giving the most traffic (and what terms)
+ - Search engines giving the most traffic (and what terms)
  - End of year reports
 
 ### Developer / Devops dashboard
@@ -66,8 +66,6 @@ Making a good looking dashboard in CSS and HTML is tricky. Lets mock it out, and
 Also lets explore to see if interactivity is easy to accomplish
 
 eg focus down on a date range of date eg todays 500 only
-
-
 
 [https://www.myonlinetraininghub.com/workbook-downloads](https://www.myonlinetraininghub.com/workbook-downloads) downloads
 
