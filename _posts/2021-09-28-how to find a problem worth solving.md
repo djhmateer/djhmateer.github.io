@@ -20,16 +20,12 @@ validate/rank ideas
 
 get out of the building and talk to customers
   
-
-
-
 - Big market eg $bn
 - MRR
 
 - Not to end consumers eg B2C, B2B business
 - Not real time eg analytics, metrics, reports, monitoring, Finance, Project Mgt, Content
 - Not a marketplace eg etsy, amazon, kickstarter
-
 
 Researching strategy for a company is hard. It is much easier to go back to programming! But building the product is a very small part of being a technical founder/entrepreneur
 
@@ -65,7 +61,10 @@ asdf
 
 ## Websites for info
 
-asdf
+[https://www.indiehackers.com/products](https://www.indiehackers.com/products) The self reported venenue can be wildly misleading here.
+
+[https://www.indiehackers.com/podcast/234-justin-jackson](https://www.indiehackers.com/podcast/234-justin-jackson) choosing a market.. interviews are interesting. A podcasting publishing platform. 
+
 
 ## Websites for marketing etc.
 
