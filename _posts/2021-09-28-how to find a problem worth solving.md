@@ -43,6 +43,10 @@ My strategy like programming, is to
 
 [Jason Cohen, Founder, WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) - 2013 talk. Building a cash machine.
 
+[MicroConf 2021 - veed.io](https://www.youtube.com/watch?v=72DjfbJNh6M) - Video editing in the browser
+
+
+
 
 [Lessons learned bootstrapping a SaaS App - Nathan Barry](https://www.youtube.com/watch?v=hCRMzMnAb40) Convert Kit. $3m profit per year.
 
