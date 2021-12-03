@@ -38,7 +38,7 @@ Brainstorm ideas - I use paper and pencil so I can work in coffee shops / other 
 
 Is hard. Frustrating. Challenging. As a good programmer, do I want to be an entrepreneur? Solopreneur? Employ people?
 
-I'm on this path as it is hard. frustrating. challenging! Sitting at my kitchen table on a cold Wednesday morning in December listening to ZZ Top with limitless possibiliites in front on me (and my family). Exciting. When I'm sitting of my deathbed (hopefully not too soon!) I'll think of these adventures and hopefully all the people I've helped and inspired to be happy in the world.
+Sitting at my kitchen table on a cold Wednesday morning in December listening to ZZ Top with limitless possibiliites in front on me (and my family). Exciting. When I'm sitting of my deathbed (hopefully not too soon!) I'll think of these adventures and hopefully all the people I've helped and inspired to be happy in the world.
 
 Here are some steps in a successful company
 
@@ -166,8 +166,190 @@ A friend who owns companies has some ideas:
 - Amazon your own products
 - Become an investor
 
+[Microconf 2017 - Ben Orenstein](https://www.youtube.com/watch?v=n078RDNz6jY&t=12s)
+
+Vim guy
+
+8 min lighting talk on Ruby at a conf
+
+made a screencast making vim screencasts
+put on shopify for $9
+people started following on twitter
+
+emailled everyone from boston ruby group - released a product
+first email was transformative
+
+screencast $10k over time
+
+retired and its on youtube vim for rails developers
+
+1 - Teach
+how to pick a topic
+  what is something from 6 months ago that would have saved you time
+	what are people asking you about
+	what is something that you like, that bores other people eg billing and feelancing
+begin small
+  - co workers.. do a lunch and learn.. 8 miute talk 
+	eg on Docker
+	- lightning talks
+	- 60 minute google hangout
+	why
+	 build an authority
+	   get their email!
+	 get practice teaching
+	 do customer research
+	 ask them 
+	   what problems they have
+		 etc..
+
+2 - make an info product eg ebook
+  one copy to one stranger
+	small is beautiful!
+	 a docker crash course
+	 surviving your first week with docker
+	 docker for total beginners
+	 docker distilled
+	 docker for non programmers
+	 what I wish I'd know about docker when I'd started
+	 why docker sucks and what you should use instead
+40 page thing is fine
+recommend - get an airbnb
+ 4 to 5 days..!!
+  get groceries
+	goal: write chapter of ebook.. meaty one
+	    table of contents
+	sales page - maybe leanpub
+	   can pre sell
+
+
+Part 2 - if you've started.
+
+1. create a recurring reminder to run a price test every 6 months.
+   nothing he has done is better than changing pricing
+	  eg hide cheapest tier
+		  or try doubling it
+
+2. create an email course
+  eg land your dream rails job
+	  drip it out over 5 days
+		that converted 10% of people that signed up.. to premium product
+		2 weeks of setup
+
+3. integrate and partner
+   integrated with zapier
+	    then zap wrote a blog post about them
+			anohter great channel
+
+		supposed competitor - did a deal with 30% bundled together.
+		   $100k over 4 days
+			did big cross post deal
+
+4. Sell annual plans
+     2 months free
+		 day 86...am going to bill in 4 days
+		 end of FY - send email.. simplify.. annual plan.
+
+5. Put faces near things you want clicked
+     - like sign up for email
+		 - or buy now
+	   used to be https://upcase.com - now it is https://thoughtbot.com
+
+6. try a diving save
+   cancellation.. mostly people don't have time.
+	 so the day after cancel, email saying okay.
+	   how about an annual plan with a big discount, saying you'll have time, and you'll save money
+		 5% people say yes
+
+7. start a podcast
+   eg podcast editing service https://castos.com/podcast-editing-service/
+	  not a huge time
+		great
+		  people say yes to podcast interview requests
+			get them to tweet
+
+8. manually onboard customers
+    ie watch customers sign up live
+		 get them to sign up.
+		find out what is confusing them
+
+		email box - to get founder to email you to help onboard
+		https://calendly.com/ - automated schuling
+		80% success
+
+9. double down on things that work
+eg snappa
+ best performing blog post page was about free stock photos which drove people away from him
+ so he doubled down... so he build a free stock photo site.. which drove people back
+
+10. ask for help
+ the more successful they are the more friendly and willing to help
+
+[Drip 2014](https://www.youtube.com/watch?v=GLay7kksLtc&t=2s)
+
+Rob Walling started drip with [https://www.derrickreimer.com/](https://www.derrickreimer.com/)
+
+- Approach to idea validation
+- How to build launch list
+- Benefits of a slow launch
+- How good onboarding can make or break your launch
+
+Have a big launch list, and email 500 every month to come and join.
+
+
+
+[Drip - MicroConf 2015 Rob Walling](https://www.youtube.com/watch?v=7esNsHnqAvc)
+
+- How great marketing can make you fail faster
+- 3 things you need to order to grow
+- How to scale marketing
+
+Email and SMS marketing for ecommerce brands [https://www.drip.com/](https://www.drip.com/)
+
+- Build something people want (hard) - product market fit.
+- Find your position
+- Scale
+
+Keep employee count down, revenue up.
+
+They started with $50pm and $99pm
+
+If you dont have ROT numbers, go and figure out why people are churning. It means that it isn't the right product yet.
+
+ie only a £8k MRR.. they had 125 customers paying at least $49
+
+email to say please spare 15seconds on why you cancelled. was too expenside
+
+- lower price
+- build more features
+
+2/3 people don't want this.
+
+He then replied.. saying sorry to hear this..what could we do to charge this.. what features would be good.
+
+The filter these comments though your gut.. does it fit vision.. then talk to your mastermind (cofounder?)
+
+Build or Not?
+- Does it fit in my vision of the product?
+- Will this feature matter in 2 years
+- Will it grow the business?
+
+A few months of thinking about this.
+
+- Built a rules engines... in a few months.. then got to $11k MRR. So people wanted this rules engine. Ah - good product market fit.
+
+How to be different
+
+- Invent a category
+- Take a position in a category
+- Compare features
+
+
+
+
 
 ## Terminology
+
+Product market fit
 
 Revenue - aka Gross Sales, Turnover, Top Line. Is the total amount of income generated by the sale of goods and services related to the primary operations of the business
 
@@ -175,14 +357,27 @@ Profit - aka Net Income, Total Earnings
 
 Growth rate
  
-Churn
+Churn - frist 60 days take out.. they had 18%.. early days want it to be 10%
 
+Trial to Conversation rate - want to be between 40 and 60% as a rule
+
+## ROT
+
+ROT (Credit card up front)
+- Visit to Trial: 0.7%-2%... with low credit card eg 10-20bucks should be higher eg 1.5-2%
+- Trail to Paid: 40-60%
+- First 60/90 day churn: 20-40%
+- Post 60/90: 4-7%
 
 
 
 ## Informational Sites
 
 [https://getlatka.com/](https://getlatka.com/) - good financial information on SaaS companies. Need to pay to get more detail.
+
+## Podcasts
+
+[https://artofproductpodcast.com/](https://artofproductpodcast.com/) - benorenstein.com
 
 ## Types of Companies
 
@@ -196,10 +391,25 @@ Productised service
 	- no
 
 Product
-- SaaS ie web.. subscription model.
+[https://robwalling.com/2015/03/26/the-stairstep-approach-to-bootstrapping/](https://robwalling.com/2015/03/26/the-stairstep-approach-to-bootstrapping/) suggests a simple product first 
+
 - Sell one offs.. and sell consulting / enterprise 
 eg member communities
 training eg sell videos
+info product - can sell this faster
+
+
+- SaaS ie web.. subscription model - where you really want to be, but more comples
+
+## Numbers want to track
+
+Number of paying customers
+
+Number of trails
+ - can graph number of trials every day.
+
+Revenue per month
+
 
 
 
