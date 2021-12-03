@@ -146,6 +146,8 @@ Remove all field buttons (going to use slicers)
 - See just this months trending data
 - Filter by status code to see more clearly the problems
 
+To wire up slicer to more than 1 chart, right click on slicer, report connections, then select multiple charts.
+
 ## Average Request Time
 
 [![alt text](/assets/2021-11-11/av.jpg "average request time")](/assets/2021-11-10/av.jpg)

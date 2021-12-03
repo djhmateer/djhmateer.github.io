@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to find a problem worth solving - which market to go into
+title: How to find a problem worth solving ie which market to go into
 description: In which I come up with a strategy to find the next market for my company
 menu: review
 categories: business
@@ -17,22 +17,22 @@ image: /assets/2019-11-13/1.jpg
 
 I'm embarking on the journey of becoming an entrepreneur as:
 
-- have done ad-hoc consulting for 2 years (during covid) with 2 young kids and a wife with a full time academic job. Have earned not much money. But had the time to support everyone. Which has been great, but I'd like to remedy the money part.
-- have always wanted to be an entrepreneur
-- it is a challenge
-- want to provide for my family
+- Done ad-hoc consulting for 2 years (during covid) with 2 young kids and a wife with a full time academic job. Have earned not much money. But had the time to support everyone. Which has been great, but I'd like to remedy the money part.
+- Have always wanted to be an entrepreneur
+- It is a challenge and adventure
+- Want to provide for my family
 - I love the freedom of lifestyle of an entrepreneur
 
 My strategy like programming, is to
 
 - Research deeply - what are the canonical books on technical startup companies?
-- Find people who have been successful and copy them - youtube / podcasts
+- Find people who have been successful and copy them - youtube / podcasts / blogs
 - Write about it (on this blog) to help cement thinking and help others
 - Rank ideas
 - Landing page
-- get out of the building and talk to customers
+- Get out of the building and talk to customers
 
-brainstorm ideas - I use paper and pencil so I can work in coffee shops / other places to avoid distractions.
+Brainstorm ideas - I use paper and pencil so I can work in coffee shops / other places to avoid distractions. Also OneNote on my mobile phone to take notes whilst listening to a podcast out walking.
 
 ## Learning a new skill
 
@@ -60,19 +60,19 @@ When you get to the build company part, the job of a ceo/founder is:
 - pay bills
 - hire people
 
-## Successful Tech Entrepreneurs - YouTube videos
+## Successful Tech Entrepreneurs
+
+Like good programmers, I like to hear stories from people who have a proven track record.
 
 [Jason Cohen, Founder, WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) - 2013 talk.
 
-Like watching programmers with a successful track record, I like this video as he has a track record of continued success.
+His summary at this time (ie 2013) was
 
-His summary at this time was
-
-> **Predictable** acquision of customers
-> of **recurring** revenue
-> with **annual prepay**
-> in a **good market**
-> creates a **cash machine**
+> **Predictable** acquision of customers,
+> of **recurring** revenue,
+> with **annual prepay**,
+> in a **good market**,
+> creates a **cash machine**.
 
 My focus currently is analysing markets and finding a good fit for my company.
 
@@ -113,14 +113,100 @@ This was a nice podcast of a founder doing $8k MMR.
 
 Interesting she has gone back to free trial (1st Dec 2021) - maybe paid trial did not work.
 
-[Thomas Smale - FE International](https://open.spotify.com/episode/3gG5akcf8TlJ99t8PTt7Kb) 
+[Thomas Smale - FE International](https://podcast.ditchinghourly.com/episodes/thomas-smale-what-to-do-before-building-a-saas) 
 
-Fascinating podcast
+Fascinating podcast. Mergers and Acquisitions. 
+
+Advice on starting a SaaS
+
+- Be patient (if you're coming from freelancing). Is personal finance okay? 2 years until full time income
+- Build something you know about, and enjoy the segment. Are people willing to buy?
+- Be a student of the art and science of business.
+
+Scratch own itch. Maybe not a good idea. It must be commercially viable.
+
+How to see if an idea is viable?
+- Write content
+- Engage in communities - FB, Forums, Podcast (guest or own), Social Media, Videos make (youtube)
+- Landing page - we're building secret product x. Sign up on waitlist.. then wait to see if get traction
+
+maybe build a better version of something out there
+
+ie start to engage with market in simplest way..
+
+- Write content eg 50 articles, and maybe 1 will get traction
+- Engage in communities - podcasts, social media, youtube, blogs
+- Engage with market - I see this problem.. based on my observations..
+
+ie talk around the problems you see.
+
+- Chances are you will pivot with company
+
+okay now have an idea, and it seems like people may buy it. What now.
+
+- Keep producing content
+- Ship something (he said so sad to see people with products not released!)
+- Don't worry about branding, names. Make it functional 
+- Iterate on what paying people want.
+- May first 10 customers free, then 10 bucks?
+
+There is vast sums of money out there to buy good businesses. Eg tech engineers out of big companies wanting to buy an existing business for 100k-2m. It seems 3 or 4x Net Profit can sell a company for. With a track record. Already successful. So they can immediately start working on it (they don't want the initial risky part of entrepreneurism).
+
+Product - buyers want a good product which will be around in 10-50 years.
+
+Find similar companies in your area and read their blogs.
+
+[Entrepreneur x]()
+
+A friend who owns companies has some ideas:
+
+- What do you know how to market? Doesn't matter if it's competite vertical.. if have a new angle
+- Find an affiliate program for a similar product, then make sales
+- Use that knowledge to make your own product, or identify new opportunities -
+- Amazon your own products
+- Become an investor
+
+
+## Terminology
+
+Revenue - aka Gross Sales, Turnover, Top Line. Is the total amount of income generated by the sale of goods and services related to the primary operations of the business
+
+Profit - aka Net Income, Total Earnings
+
+Growth rate
+ 
+Churn
+
+
+
+
+## Informational Sites
+
+[https://getlatka.com/](https://getlatka.com/) - good financial information on SaaS companies. Need to pay to get more detail.
+
+## Types of Companies
+
+
+Customised Service (Consulting)
+ - More creative - a blank slate at the start of each
+
+
+Productised service
+  - Faster, Battle Tested, more bang for buck
+	- no
+
+Product
+- SaaS ie web.. subscription model.
+- Sell one offs.. and sell consulting / enterprise 
+eg member communities
+training eg sell videos
 
 
 
 
 
+
+## Old
 
 
 [Lessons learned bootstrapping a SaaS App - Nathan Barry](https://www.youtube.com/watch?v=hCRMzMnAb40) Convert Kit. $3m profit per year.
