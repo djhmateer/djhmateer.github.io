@@ -345,8 +345,84 @@ How to be different
 
 **here 22:35**
 
+[Ditching hourly - .NET Software Architecutal consultant](https://podcast.ditchinghourly.com/episodes/coaching-call-with-george-stocker)
+
+This is a very important role as 
+
+- Ask CEO's what problmes they have eg app doesn't work under load/scale (outages on a big day), data centres expensive, want to go into other markets but can't becuase of tech. Not resolving bugs fast enough, not putting in features fast enough.
+
+Why are the above bad? 
+
+- Losing confidence by investors
+- Customers can't buy product if site down
+- Brand damage
 
 
+This call cemented my thoughts that I don't want to head in this direction. Even though I can, and have the technical skills to do it.
+
+- Stressful working with teams showing them a different way
+- Deal with egos
+- Generally a consultant parachuting in quickly and wont be well liked
+- Fills me with dread
+
+This is fine for some people
+
+I liked his strategy of:
+
+- Stakeholder interview - what will team and business let you change. Talk to people who built system, and to customers of the system
+- Assessment/Audit - how does the system work?
+- Architecture analyse how to break apart - typically go towards event driven architectures
+
+Then propose
+
+- Stopgap fix
+- Longer term strategy ie fix well
+- Focos on 1 piece
+
+And his final marketing to a vertical like:
+
+> Dear Fintec CEO. Are you having problems with outages / regulation problems / slow release of new features
+
+He used [LinkedIn Sales navigator](https://www.linkedin.com/premium/products-v2/?intentType=FIND_LEADS&upsellOrderOrigin=guest_login_sales_nav) to find leads ie  fintec companies of a certain size.
+
+Verticals - who do I enjoying haning out with / talking to 
+
+- Fintech
+- Alcohol sales
+- AI
+
+between 50 and 250 size company
+tec team between 10 and 50
+
+
+[Ditching Hourly - Justin Jackson - Catching bigger waves](https://podcast.ditchinghourly.com/episodes/justin-jackson-catching-bigger-waves)
+
+transistor.fm co-founder
+
+
+look at things you are involved with
+  eg digital signage
+
+fundementals work on 
+  - write out them
+  - talk on podcasts
+
+
+get out and talk to people!
+look for conferences that people pay to go to
+
+courses are hard. but there is an underlying demand for
+ - raw skills eg PHP skills course.. [Adam Wathan](https://adamwathan.me/refactoring-to-collections/) refactoring to collections course. book + 4 hours video. $150k in 1 month. Made tailwindcss too!
+ - less for devs who are making products
+ - bust less for devs who want to learn marketing
+
+ Taylor Otwell - [laravel creator](https://en.wikipedia.org/wiki/Laravel)...
+ [https://forge.laravel.com/](https://forge.laravel.com/) up to $30kpm
+ 
+
+ Lots of PHP devs.. all incentivised to get better at their jobs. Companies are incentivised to make their devs better.
+
+[https://devmarketing.xyz/](https://devmarketing.xyz/) marketing for developers book/course
 
 ## Terminology
 
@@ -362,6 +438,14 @@ Churn - frist 60 days take out.. they had 18%.. early days want it to be 10%
 
 Trial to Conversation rate - want to be between 40 and 60% as a rule
 
+Survivor bias - don't copy successful people?
+
+Rolodex moment - what do I want to be know for? ie what vertical and specialisation do I want to be in.
+
+Disruptors - ie jetski companies (as opposed to large ship) that can move fast
+
+Survivorship bias - correlation "proves" causality. ie a company succeeds, but not becuase of the reasons the founders think. ie is a form of selection bias. Ie becuase the founders selected to do certain things the company succeeded. not necessarily true.
+
 ## ROT
 
 ROT (Credit card up front)
@@ -369,8 +453,6 @@ ROT (Credit card up front)
 - Trail to Paid: 40-60%
 - First 60/90 day churn: 20-40%
 - Post 60/90: 4-7%
-
-
 
 ## Informational Sites
 
@@ -382,8 +464,9 @@ ROT (Credit card up front)
 
 ## Types of Companies
 
+Consulting to advise (and possibly build)
 
-Customised Service (Consulting)
+Customised Service to build 
  - More creative - a blank slate at the start of each
 
 
@@ -410,6 +493,22 @@ Number of trails
  - can graph number of trials every day.
 
 Revenue per month
+
+
+## asdf
+
+[https://squareup.com/gb/en](https://squareup.com/gb/en) like stripe
+
+
+[shopify]()
+
+[netsuite]()
+
+[drip]()
+
+[convertkit]()
+
+## verticals
 
 
 
