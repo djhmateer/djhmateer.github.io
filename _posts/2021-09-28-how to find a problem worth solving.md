@@ -317,7 +317,7 @@ If you dont have ROT numbers, go and figure out why people are churning. It mean
 
 ie only a £8k MRR.. they had 125 customers paying at least $49
 
-email to say please spare 15seconds on why you cancelled. was too expenside
+email to say please spare 15seconds on why you cancelled. was too expensive
 
 - lower price
 - build more features
@@ -339,11 +339,66 @@ A few months of thinking about this.
 
 How to be different
 
-- Invent a category
-- Take a position in a category
-- Compare features
+- Take a position in a category... you are the xxx in the market eg wpengine is the fast wordpress host, drip is email marketing, close.io is CRM - turn your leads into revenue. eg make calls and send email sthrough app., baremetrics.com - metrics of stripe for subscriptions businesses.
 
-**here 22:35**
+- Compare features.. can confuse users
+
+He does a call every 2 weeks to his 'mastermind' course.
+
+"Lightweight marketing automation that doesn't suck"
+
+took 3 months.
+
+they A/B tested this really well
+
+Goal: $20k MRR after 6 months
+
+Same figures as below.. 
+he wanted 50% of people on inial list to convert
+
+needed 115 trials per month
+3/4 of signups at $49pm
+1/4 at $99pm
+9,200 targeted visitors per month
+
+
+build
+learn - positioning, marketing
+scale
+
+playbook
+
+step1 - collect email addresses.. even a list of 1000 or 2000 people
+ eg announce webinar, new features, product, blog posts
+
+step2 - ad retargetting eg pefect audience which is [https://sharpspring.com/ads/](https://sharpspring.com/ads/), adroll
+
+concentric marketing
+ - your audience..  2 blog post.. personal and on getdrip. aimed at audience.. not features.. spent 16 hours writing both posts, emailed 17k people.. then got quite a lot of trials. almost 200 trials then back to 100. 
+  then audio thing 4k to 5k listens
+
+ - friends/network audience - colleagues audience... **integrations**.. integration marketing
+    gumroad, kickofflabs, zapier, membermouse
+		also go on podcasts eg growth hacker, wpelevation, wheniuwrk, stunning, bootstrapped web
+
+
+ - cold audience (eg paid advertising).. harder to convert
+   publish blog article on drip blog every week. he doesn't do it himself. work tihgt with tehm to define headline.   
+	  also he cold emailled .. after he did an integration with them
+		google ads.. hard.. but works
+		all 10% on integrations above
+
+summary
+- Build something people want.. could get to $12k.. but hard
+- Position .. could get to $20k but hard
+- Sclae
+
+This is 10 years of working.
+
+Get to revenue very quickly!!!!
+jan-jun excruitiating... 2015 was necky. anxiety..
+
+
 
 [Ditching hourly - .NET Software Architecutal consultant](https://podcast.ditchinghourly.com/episodes/coaching-call-with-george-stocker)
 
@@ -357,13 +412,13 @@ Why are the above bad?
 - Customers can't buy product if site down
 - Brand damage
 
-
 This call cemented my thoughts that I don't want to head in this direction. Even though I can, and have the technical skills to do it.
 
 - Stressful working with teams showing them a different way
 - Deal with egos
 - Generally a consultant parachuting in quickly and wont be well liked
 - Fills me with dread
+- Much nicer to be building rather than fixing others 'mistakes' who are still there
 
 This is fine for some people
 
@@ -399,30 +454,142 @@ tec team between 10 and 50
 
 transistor.fm co-founder
 
-
 look at things you are involved with
   eg digital signage
 
-fundementals work on 
+fundementals work on, so can **catch a bigger wave**
   - write out them
   - talk on podcasts
-
 
 get out and talk to people!
 look for conferences that people pay to go to
 
-courses are hard. but there is an underlying demand for
- - raw skills eg PHP skills course.. [Adam Wathan](https://adamwathan.me/refactoring-to-collections/) refactoring to collections course. book + 4 hours video. $150k in 1 month. Made tailwindcss too!
- - less for devs who are making products
+Courses are hard. But there is an **underlying demand** for
+ - Raw skills eg PHP skills course.. [Adam Wathan](https://adamwathan.me/refactoring-to-collections/) refactoring to collections course. book + 4 hours video. $150k in 1 month. Made tailwindcss too!
+ - Less for devs who are making products (and want to learn marketing)
  - bust less for devs who want to learn marketing
 
- Taylor Otwell - [laravel creator](https://en.wikipedia.org/wiki/Laravel)...
- [https://forge.laravel.com/](https://forge.laravel.com/) up to $30kpm
- 
+Taylor Otwell - [Laravel creator](https://en.wikipedia.org/wiki/Laravel)...
 
- Lots of PHP devs.. all incentivised to get better at their jobs. Companies are incentivised to make their devs better.
+[https://forge.laravel.com/](https://forge.laravel.com/) up to $30kpm...is his first SaaS. Solo dev shop.
 
 [https://devmarketing.xyz/](https://devmarketing.xyz/) marketing for developers book/course
+
+
+If you have something people **want** 
+
+Observe evidence of demand (the story of car detailing). I **want to buy** or I've just bought...
+
+"How to start a podcast" is owned by bloggers and affiliates, so the best thing they did was to create an affiliate program that was 25% (generous) forever [https://transistor.fm/affiliates/](https://transistor.fm/affiliates/). The blogger puts on a link like [https://transistor.fm/?via=podcastinsights](https://transistor.fm/?via=podcastinsights)
+
+This channel 25% is their business.
+
+SEO
+Customer experience
+Reddit
+
+Play the **game of capitalism**
+
+- Enthusiasm
+- People you know
+- Resources you have
+- Exposure
+- Skills
+- Brand
+- Passionate about SEO.
+
+Okay so the people who have 'got there', what are the underlying structures that got them there?
+
+Look for something with a bigger wave? bigger momentum? ie what markets to go for?
+
+Learn the fundamentals.. be there every day.
+
+
+1.5m podcasts. Most are free and on anchor. Most have only 1 episode. Paid podcasting market leader is buzzsprout who have 80k, lipsync has 75k customers. fairly small category overall.
+
+Transistor is >$1mARR with a 4 person company. He is probably north of $250k per year (inferred)
+
+A lot of small businesses are barely above the watermark...if you're just getting a middling success you're not getting paid for the risk.
+
+He loves it.. and works less.
+
+
+[https://www.youtube.com/watch?v=tmwIpNsMCJ0&list=PLwcQbu9cKWcmE0W_UocaPTw1hmmHQlkxJ&index=5](https://www.youtube.com/watch?v=tmwIpNsMCJ0&list=PLwcQbu9cKWcmE0W_UocaPTw1hmmHQlkxJ&index=5)
+
+Omar Zenhom
+2019
+
+[https://webinarninja.com/affiliate-program/](https://webinarninja.com/affiliate-program/) affilite program earns 30%
+
+him and his wife
+
+16 remote team members
+0-14,000 customers
+
+interesting people met!
+
+#1 - no audience = no business
+ ie blog, youtube channel, email list.. something...
+ podcast - but it didn't move the needle. 46 episodes. didn't work, webinars
+ Then did a podcast - the $100MBA show. 1200 epidoes. 90million downloads.. 10 minutes episodes
+   120k daily listeners!
+
+#2 - webinars.. teach on video.. then run offers
+  first one was 10 people showing up
+	 he did loads
+
+	 then did diy webinar guide... 2 sales.
+
+*sometimes you need to create a bad product, to create a good one.
+
+#3 - always be profitable
+they pre-sold webinar ninja
+he had 3,000 people on his email list.
+In 48 hours he sold his first 150 spots (at $300 a time). He had the webinars, so people trusted him.
+  first 250 spots lifetime access... 60 days after deliver for refud
+	launched and it was full of bugs
+	he called.. and asked them for feedback!
+
+how get to 14k users
+
+
+### 4 Relationships are your biggest assett
+ half of the first 250 were from the conference
+
+some guy just helped him out..ny times best seller 
+
+selfless, helpful, kind... just want to be a friend and a good person.
+
+
+- make a list of 60 people
+- message 5 people a week... just for fun. Message/WhatsApp/Tweet
+- intro 1 person a week.. do you know...
+- do for 12 weeks
+
+ie be a connector to people.
+be in touch with people you like being in touch with.
+growing relationships is important.
+
+#5 This is suppoed to be hard
+it is a struggle!!!
+
+idea phase - nice.. sunny.. good feeling.. inspired!
+sweat.. sales not so good
+plateuing..eg 8k MRR.. a lot of companies stop here.
+now got to start doing other stuff... advice?...coach. don't be too proud... 
+
+There are lots of challenges.. and it always becomes different challenges
+ growth!!!
+
+
+ #6 Your difference is your power!
+ Teaching is nice.. that is their advantage.
+ he is in touch with what users want.. 500 webinars
+
+QandA
+ sold the 250 spots
+  they have become the biggest cheerleaders of the platform
+
 
 ## Terminology
 
@@ -497,6 +664,8 @@ Revenue per month
 
 ## asdf
 
+[https://transistor.fm/](https://transistor.fm/) podcasts
+
 [https://squareup.com/gb/en](https://squareup.com/gb/en) like stripe
 
 
@@ -506,12 +675,23 @@ Revenue per month
 
 [drip]()
 
-[convertkit]()
+[convertkit](https://convertkit.com/) - creator marketing platform
 
-## verticals
+[https://gumroad.com/](https://gumroad.com/)
+
+## verticals markets
+
+asdf
+
+## Communities
+
+[microconfconnect.slack.com](microconfconnect.slack.com)
 
 
 
+## Books
+
+[https://www.amazon.co.uk/Hard-Thing-About-Things-Building/dp/0062273205](https://www.amazon.co.uk/Hard-Thing-About-Things-Building/dp/0062273205) the hard thing about hard thigns, ben horowitz. [summary](https://www.getstoryshots.com/books/the-hard-thing-about-hard-things-summary/)
 
 
 
