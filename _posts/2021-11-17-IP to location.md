@@ -13,7 +13,7 @@ image: /assets/2021-10-07/http2b.png
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "Thanks to Solen Feyissa on unsplash - https://unsplash.com/@solenfeyissa")](https://unsplash.com/@solenfeyissa) -->
 
-As part of my dashboarding project I'd like to get an IP address location on the visitors to my websites so that
+As part of my [dashboarding project]() I'd like to get an IP address location on the visitors to my websites so that
 
 - Can see when legitimate users are having trouble with the site
 - Looks good!

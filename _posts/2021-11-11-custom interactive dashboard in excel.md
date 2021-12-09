@@ -13,9 +13,9 @@ image: /assets/2021-10-07/http2b.png
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "Thanks to Solen Feyissa on unsplash - https://unsplash.com/@solenfeyissa")](https://unsplash.com/@solenfeyissa) -->
 
-The [previous post on interactive dashboards]() walked through an example.
+The [previous post on excel dashboards]() walked through an example.
 
-Here I make my own custom dashboard using the concepts learned from there.
+Here I make my own custom Operations and Marketing dashboards using the concepts learned from there.
 
 I'm fortunate in that I've got control over webservers, DB and storage, and can design my own log strategy.
 

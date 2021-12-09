@@ -528,13 +528,13 @@ him and his wife
 
 interesting people met!
 
-#1 - no audience = no business
+### 1 - no audience = no business
  ie blog, youtube channel, email list.. something...
  podcast - but it didn't move the needle. 46 episodes. didn't work, webinars
  Then did a podcast - the $100MBA show. 1200 epidoes. 90million downloads.. 10 minutes episodes
    120k daily listeners!
 
-#2 - webinars.. teach on video.. then run offers
+### 2 - webinars.. teach on video.. then run offers
   first one was 10 people showing up
 	 he did loads
 
@@ -542,7 +542,7 @@ interesting people met!
 
 *sometimes you need to create a bad product, to create a good one.
 
-#3 - always be profitable
+### 3 - always be profitable
 they pre-sold webinar ninja
 he had 3,000 people on his email list.
 In 48 hours he sold his first 150 spots (at $300 a time). He had the webinars, so people trusted him.
@@ -560,7 +560,6 @@ some guy just helped him out..ny times best seller
 
 selfless, helpful, kind... just want to be a friend and a good person.
 
-
 - make a list of 60 people
 - message 5 people a week... just for fun. Message/WhatsApp/Tweet
 - intro 1 person a week.. do you know...
@@ -570,7 +569,7 @@ ie be a connector to people.
 be in touch with people you like being in touch with.
 growing relationships is important.
 
-#5 This is suppoed to be hard
+### 5 This is suppoed to be hard
 it is a struggle!!!
 
 idea phase - nice.. sunny.. good feeling.. inspired!
@@ -582,14 +581,13 @@ There are lots of challenges.. and it always becomes different challenges
  growth!!!
 
 
- #6 Your difference is your power!
+### 6 Your difference is your power!
  Teaching is nice.. that is their advantage.
  he is in touch with what users want.. 500 webinars
 
 QandA
  sold the 250 spots
   they have become the biggest cheerleaders of the platform
-
 
 ## Terminology
 
