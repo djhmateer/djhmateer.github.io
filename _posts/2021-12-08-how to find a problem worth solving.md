@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to find a problem worth solving ie which market to go into
+title: How to find a problem worth solving ie markets 
 description: In which I come up with a strategy to find the next market for my company
 menu: review
 categories: business
@@ -15,7 +15,7 @@ image: /assets/2019-11-13/1.jpg
 
 [previous blog on motivations]()
 
-I'm embarking on the journey of becoming an entrepreneur as:
+I'm embarking on the journey of pivoting my consulting company to becoming more entrepreneurial with products.
 
 - Done ad-hoc consulting for 2 years (during covid) with 2 young kids and a wife with a full time academic job. Have earned not much money. But had the time to support everyone. Which has been great, but I'd like to remedy the money part.
 - Have always wanted to be an entrepreneur
@@ -165,6 +165,8 @@ A friend who owns companies has some ideas:
 - Use that knowledge to make your own product, or identify new opportunities -
 - Amazon your own products
 - Become an investor
+
+> You can’t have a successful business without marketing, and that same marketing shapes the end product.
 
 [Microconf 2017 - Ben Orenstein](https://www.youtube.com/watch?v=n078RDNz6jY&t=12s)
 
@@ -569,7 +571,7 @@ ie be a connector to people.
 be in touch with people you like being in touch with.
 growing relationships is important.
 
-### 5 This is suppoed to be hard
+### 5 This is supposed to be hard
 it is a struggle!!!
 
 idea phase - nice.. sunny.. good feeling.. inspired!
@@ -588,6 +590,49 @@ There are lots of challenges.. and it always becomes different challenges
 QandA
  sold the 250 spots
   they have become the biggest cheerleaders of the platform
+
+
+
+[How to validate your idea and launch](https://www.youtube.com/watch?v=GLay7kksLtc) Rob Walling 2014
+
+- An approach to idea validation
+- How to build launch list
+- Benefits of a slow launch
+- Good onboarding
+
+Scrath own itch.. maybe not a good idea in general to do so eg
+
+- Bug tracker
+- CRM system
+- Project management suites
+
+**1. validate the market**
+
+problems to solve
+ what reach do I have? TSG, Human Rights, Qnrl gang, homebrew beer makers, runners
+
+Market first
+
+eg 10 people who will pay $99 per month.
+
+he emailed 17 people over 8 weeks
+
+Summary of Approach to Idea Validation
+
+- Start with problems
+- Niche down eg software saas first
+- Describe the value you will provide
+- Name a price
+- Hold idea loosely eg get feedback to be worth $99
+
+**2. build**
+put a landing page up first
+
+
+
+
+
+
 
 ## Terminology
 
@@ -610,6 +655,8 @@ Rolodex moment - what do I want to be know for? ie what vertical and specialisat
 Disruptors - ie jetski companies (as opposed to large ship) that can move fast
 
 Survivorship bias - correlation "proves" causality. ie a company succeeds, but not becuase of the reasons the founders think. ie is a form of selection bias. Ie becuase the founders selected to do certain things the company succeeded. not necessarily true.
+
+Launch list - emails / contacts to contact when ready to launch
 
 ## ROT
 
@@ -677,9 +724,15 @@ Revenue per month
 
 [https://gumroad.com/](https://gumroad.com/)
 
-## verticals markets
+## Vertical markets
 
-asdf
+recruitment
+
+[osr4rightstools.org](https://osr4rightstools.org) - Human Rights Investigators
+
+Agencies / Consulting - [https://community.partnerprograms.io/](https://community.partnerprograms.io/) community
+  connected to [https://app.partnerhub.app/](https://app.partnerhub.app/) somehow.
+
 
 ## Communities
 
