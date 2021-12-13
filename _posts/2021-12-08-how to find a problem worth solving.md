@@ -13,7 +13,9 @@ image: /assets/2019-11-13/1.jpg
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-08-29/error.jpg "error"){:width="500px"}](/assets/2021-08-29/error.jpg) -->
 
-[previous blog on motivations]()
+I’ve worked for many companies over the last 20 years, and done consulting/freelancing. I’ve had 1 ‘product’ where a company asked me to host their very old classic asp application, which I begrudgingly did. Over the next 6 years I gradually put the price up, and smiled every month, as I’d automated all the day-to-day work, and the biggest hassle was sending invoices every month.
+
+## Pivot
 
 I'm embarking on the journey of pivoting my consulting company to becoming more entrepreneurial with products.
 
@@ -25,7 +27,7 @@ I'm embarking on the journey of pivoting my consulting company to becoming more 
 
 My strategy like programming, is to
 
-- Research deeply - what are the canonical books on technical startup companies?
+- Research deeply - what are the canonical YouTube videos / books
 - Find people who have been successful and copy them - youtube / podcasts / blogs
 - Write about it (on this blog) to help cement thinking and help others
 - Rank ideas
@@ -40,25 +42,36 @@ Is hard. Frustrating. Challenging. As a good programmer, do I want to be an entr
 
 Sitting at my kitchen table on a cold Wednesday morning in December listening to ZZ Top with limitless possibiliites in front on me (and my family). Exciting. When I'm sitting of my deathbed (hopefully not too soon!) I'll think of these adventures and hopefully all the people I've helped and inspired to be happy in the world.
 
-Here are some steps in a successful company
+Below is a summary of the what I've found to be the best resources, and commonalities of successfull entrepreneurs.
 
-- Build product (up to 10-20k MRR) - maybe this is a good goal for a solopreneur to start with ie same salary level as a senior programming role.
-- Build business (0.5-1m ARR)
-- Build company
+TL;DR
 
-Building product
+- pain and suffering
+- marketing - getting out and speaking to a lot of people
+- pivoting on an idea
+- entrepreneurs seem alive and kind people, and inspired
 
-- Shipping features
-- Marketing copy
-- Closing sales
 
-Going fast in this segment is fine (veed.io quote). Tech debt is okay.
+## Validate the idea and launch
 
-When you get to the build company part, the job of a ceo/founder is:
+[Rob Walling 2014 on Drip getting to $7k](https://www.youtube.com/watch?v=GLay7kksLtc)
 
-- set vision and communicate
-- pay bills
-- hire people
+What this video is good at, is coming up with a strategy for the initial part of the SaaS based entprepreneurial process:
+
+- Validate an Idea - marketing!
+- Build
+- Slow Launch (with first customer, then next, then next)
+- Onboarding
+
+This 
+
+
+
+
+
+
+
+
 
 ## Successful Tech Entrepreneurs
 
@@ -817,3 +830,24 @@ be patient - long game is food
 
 its all about customers
 
+
+## Blah
+Here are some steps in a successful company
+
+- Build product (up to 10-20k MRR) - maybe this is a good goal for a solopreneur to start with ie same salary level as a senior programming role.
+- Build business (0.5-1m ARR)
+- Build company
+
+Building product
+
+- Shipping features
+- Marketing copy
+- Closing sales
+
+Going fast in this segment is fine (veed.io quote). Tech debt is okay.
+
+When you get to the build company part, the job of a ceo/founder is:
+
+- set vision and communicate
+- pay bills
+- hire people
