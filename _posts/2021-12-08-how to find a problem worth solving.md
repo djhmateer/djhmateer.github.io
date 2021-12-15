@@ -13,11 +13,127 @@ image: /assets/2019-11-13/1.jpg
 <!-- [![alt text](/assets/2021-08-04/local.jpg "local")](/assets/2021-08-04/local.jpg) -->
 <!-- [![alt text](/assets/2021-08-29/error.jpg "error"){:width="500px"}](/assets/2021-08-29/error.jpg) -->
 
-I’ve worked for many companies over the last 20 years, and done consulting/freelancing. I’ve had 1 ‘product’ where a company asked me to host their very old classic asp application, which I begrudgingly did. Over the next 6 years I gradually put the price up, and smiled every month, as I’d automated all the day-to-day work, and the biggest hassle was sending invoices every month.
+I’ve worked for many companies over the last 20 years as an IT pro, then a developer. Setting up 2 freelancing companies has been interesting, and I’ve had 1 ‘product’ where a company asked me to host their very old classic asp application, which I begrudgingly did. Over the next 6 years I gradually put the price up, and smiled every month, as I’d automated all the day-to-day work, and the biggest hassle was sending invoices every month.
+
+## Idea Validation the Market
+
+[Rob Walling 2014 on Drip getting to $7k](https://www.youtube.com/watch?v=GLay7kksLtc)
+
+What this video is good at, is coming up with a strategy for the initial part of the SaaS based entprepreneurial process:
+
+In fact most people launch multiple ideas over the years, so idea validation is important.
+
+
+What Markets do I have an audience in (reach) 
+
+- Small to medium sized companies
+- Education (Universities)
+- IT Hosting companies
+- IT service companies
+- .NET Developers
+
+[https://microconf.com/state-of-indie-saas](https://microconf.com/state-of-indie-saas) good report.
+ 45% of people developed the idea as a problem they had
+ 22% were a problem clients were having
+
+
+ But maybe don't know the market, so will have to cold call or email or letters
+
+To validate the market takes more than you and a few others. He tried with 17 letters, and Jason tried to with 40.
+
+- Are there enough people that want it
+- How can I find these people?
+
+**book of problems**  I use [Trello](https://trello.com)
+
+- Software developers are hard to keep
+- Blue collar short term recruitment companies need timesheet document signing to avoid disputes
+- Human Rights organisations needs document signing to avoid
+
+
+Which problems in which markets to pursue? This is discussed below by Jason Cohen, and I agree that I want to target a 
+
+- B2B market
+- a large market with plenty of room for a niche ie multi million dollar
+
+
+Initial Goal is to have 10 companies paying $99 per month. 
+
+signs were:
+ - mailchimp wasn't cutting it,aweber not cutting it etc.. ie unhappy with current product
+
+so there may be a niche 
+
+so he went for 17, and emailled 2 at a time
+
+### how to build launch list
+
+3400 on his list
+
+### slow launch
+
+built 5 months.. launched for 5 months 
+
+### onboarding
+
+
+## squadcast.fm
+
+[https://www.youtube.com/watch?v=s1EtZu7eBCg](https://www.youtube.com/watch?v=s1EtZu7eBCg)
+
+They love podcasts.
+
+$100k MRR
+
+Zach Moreno - business
+Rock - tech
+
+Active creator.. made own show. SF Audio drama
+
+A remote team. Need high quality audio quality.
+
+Record Studio Quality Podcasts from Anywhere
+
+4 years.
+
+2 years with day jobs
+3 years to $10k MRR
+4 years to $100k MRR
+4 years before paychecks
+
+**good advice**
+just focus on 1 thing eg remote recording
+  lots of startups fail trying to do too much
+
+be a professional founder
+ - economics, pricing
+Just in time learning
+ figuring out customer support (high touch..careful.. )
+JOMO - joy of missing out.. mantra of just being focussed
+
+host meetups, foster conversations
+ how to get involved in the community
+ listen to community
+
+show up everyday
+
+focus
+what are the goals
+ get money
+then invest in the business
+
+learn from the greats
+ eg podcasts...
+ eg pricing.. and go to experts
+  and implment
+
+**advisors
+
+speak at events!
 
 ## Pivot
 
-I'm embarking on the journey of pivoting my consulting company to becoming more entrepreneurial with products.
+I'm embarking on the journey of pivoting my consulting company to becoming more entrepreneurial
 
 - Done ad-hoc consulting for 2 years (during covid) with 2 young kids and a wife with a full time academic job. Have earned not much money. But had the time to support everyone. Which has been great, but I'd like to remedy the money part.
 - Have always wanted to be an entrepreneur
@@ -51,19 +167,6 @@ TL;DR
 - pivoting on an idea
 - entrepreneurs seem alive and kind people, and inspired
 
-
-## Validate the idea and launch
-
-[Rob Walling 2014 on Drip getting to $7k](https://www.youtube.com/watch?v=GLay7kksLtc)
-
-What this video is good at, is coming up with a strategy for the initial part of the SaaS based entprepreneurial process:
-
-- Validate an Idea - marketing!
-- Build
-- Slow Launch (with first customer, then next, then next)
-- Onboarding
-
-This 
 
 
 
