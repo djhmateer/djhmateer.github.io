@@ -131,6 +131,13 @@ learn from the greats
 
 speak at events!
 
+## storyfunnel
+
+it's all about the customer
+have a strategy
+mentors are good
+
+
 ## Pivot
 
 I'm embarking on the journey of pivoting my consulting company to becoming more entrepreneurial
