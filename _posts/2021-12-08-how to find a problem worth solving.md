@@ -176,10 +176,39 @@ TL;DR
 
 
 
+## Mentorship
 
 
+[https://www.youtube.com/watch?v=UHf1McFBm1k&t=131s](https://www.youtube.com/watch?v=UHf1McFBm1k&t=131s) John Knox
 
+@WindAddict
 
+Personal finance
+
+Benefit from letting go..
+ don't need to do it all yourself
+ try out other peoples ideas
+
+hard to find the right people
+ how to find successful bootstrap founders
+
+let it challenge you..
+ 
+learn about founders
+
+advisor shared... 0.25 to 1% of company
+ over a few years
+
+who are the experts in bootstrap SaaS companies
+
+seo
+
+hacker news
+indie hackers
+https://community.growthhackers.com/feed
+reddit
+
+https://microconf.com/remote - buy recordings?
 
 
 
