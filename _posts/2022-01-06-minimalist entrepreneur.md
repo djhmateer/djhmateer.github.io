@@ -71,15 +71,16 @@ I like this advice. Essentially we are starting with the customer first. and fin
 ### Where and with whom do I already spend my time, online and offline
 
 - Kingston running group
-- cask beer society
-- lewes home brew club
+- Cask beer society
+- Lewes home brew club
 - DH and MH haning out for beers and food
 - Academics
 - Human Rights Invetigators
 - Musicians
 - Friends drinking beer and going to breweries
 - ex Raleigh expedition
-- 
+- The Skiff People
+- Facebook contacts
 
 ### In what situations am I most authentically myself
 
@@ -94,7 +95,6 @@ I like this advice. Essentially we are starting with the customer first. and fin
 - parents at school
 - home brew club (some people don't listen well)
 
-
 Turn this list of *communities* into a list of online and offline locations, in which to spend more time learning and contributing
 
 - Facebook group
@@ -103,6 +103,8 @@ Turn this list of *communities* into a list of online and offline locations, in 
 - Instagram hashtag
 - Hackernews
 - Stack Overflow and Stack Exchange
+- Indie Hackers
+- LinkedIn
 
 Notable teachers in each area (mindful of costs)
 
@@ -124,6 +126,21 @@ Once you start contributing people will start to recognise you.
 - Teach everything you know
 - Create every day
 
-From here you'ldd start to see problems which need solving.
+From here you'd start to see problems which need solving.
 
 ### Picking the community
+
+solving what problems
+
+- Place utility - coffee wholesaler - eg getting coffee beans from Ecuador to SF
+- Form utility - coffee shop - coffee beans have changed form by being ground. Also a place utility if the coffee shop is closer to the customer than wholesaler. Many businesses are a combination.
+- Time utility - coffee shop sells croissants - make something slow go fast if it takes 3 days to make a croissant.
+- Possession utility - coffee shop buys own croissant making machine.
+
+
+Stories of successful businesses
+
+basecamp - project management software to solve their own internal problem
+
+tock - ticketing for reservations at restaurants 
+tock to go - 
