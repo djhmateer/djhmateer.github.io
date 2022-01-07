@@ -48,7 +48,6 @@ eg
 - B2B
 - 100 customers paying $100pm
 
-
 What is the product I want to sell to a customer?
 
 ## Community
@@ -57,7 +56,8 @@ I like this advice. Essentially we are starting with the customer first. and fin
 
 ### If I talk, who listens
 
-- programmers - .NET, Wordpress hosting, Jekyll blog
+- Programmers - .NET, Wordpress hosting, Jekyll blog
+- Tinkerers and explorers of software technology, infrasructure, 
 - infrastructure people
 - linux people
 - windows desktop (and WSL2 people)
@@ -130,7 +130,7 @@ From here you'd start to see problems which need solving.
 
 ### Picking the community
 
-solving what problems
+4 Types of Economic Utility are:
 
 - Place utility - coffee wholesaler - eg getting coffee beans from Ecuador to SF
 - Form utility - coffee shop - coffee beans have changed form by being ground. Also a place utility if the coffee shop is closer to the customer than wholesaler. Many businesses are a combination.
@@ -139,6 +139,11 @@ solving what problems
 
 
 Stories of successful businesses
+
+gumroad - a marketplace. Not where I want to be
+
+interesting to look at businesses inside of gumroad
+eg [https://twostraws.gumroad.com/](https://twostraws.gumroad.com/) - Paul Hudson who is an iOS developer. Parent company is Hudson Heavy Industries (great name). Seems like he is doing really well, but as a money making machine, I'd argue it is a hard market to be in.
 
 basecamp - project management software to solve their own internal problem
 
