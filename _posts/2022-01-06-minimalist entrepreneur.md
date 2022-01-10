@@ -35,7 +35,7 @@ A problem I've been struggling with is what problem to solve?
 
 I'm a software person, so I can build SaaS products, and love being a builder!
 
-## Profitability First
+## 1. Profitability First
 
 Being in a good Market
 
@@ -50,7 +50,7 @@ eg
 
 What is the product I want to sell to a customer?
 
-## Community
+## 2. Community
 
 I like this advice. Essentially we are starting with the customer first. and finding the right customers
 
@@ -64,9 +64,11 @@ I like this advice. Essentially we are starting with the customer first. and fin
 - vim people
 - bloggers
 
-- people needing tech advice
-- business owners eg Carey who need tec guidance
-- academic PI's eg Yvonne who need built
+- Local people in village needing tech advice
+- Business owners eg Carey who need tec guidance
+- Academic PI's eg Yvonne who need built
+
+- Freelancers - if people need help in .NET / Web back end.
 
 ### Where and with whom do I already spend my time, online and offline
 
@@ -98,13 +100,19 @@ I like this advice. Essentially we are starting with the customer first. and fin
 Turn this list of *communities* into a list of online and offline locations, in which to spend more time learning and contributing
 
 - Facebook group
-- Reddit community
+- Reddit community eg [https://www.reddit.com/r/csharp/](https://www.reddit.com/r/csharp/) has 189k devs on it.
 - Twitter hashtag
 - Instagram hashtag
 - Hackernews
-- Stack Overflow and Stack Exchange
+- Stack Overflow and Stack Exchange eg [https://stackoverflow.com/questions/tagged/c%23](https://stackoverflow.com/questions/tagged/c%23) gets a lot of questions.. every 5 minutes or so.
 - Indie Hackers
 - LinkedIn
+- Slack
+- Discord
+- Meetup
+- Local meetups eg [https://www.brightonfarm.com/](https://www.brightonfarm.com/)
+- Local groups eg [https://www.wiredsussex.com/](https://www.wiredsussex.com/)
+- Indie Hackers
 
 Notable teachers in each area (mindful of costs)
 
@@ -143,6 +151,7 @@ Stories of successful businesses
 gumroad - a marketplace. Not where I want to be
 
 interesting to look at businesses inside of gumroad
+
 eg [https://twostraws.gumroad.com/](https://twostraws.gumroad.com/) - Paul Hudson who is an iOS developer. Parent company is Hudson Heavy Industries (great name). Seems like he is doing really well, but as a money making machine, I'd argue it is a hard market to be in.
 
 basecamp - project management software to solve their own internal problem
