@@ -58,11 +58,11 @@ I like this advice. Essentially we are starting with the customer first. and fin
 
 - Programmers - .NET, Wordpress hosting, Jekyll blog
 - Tinkerers and explorers of software technology, infrasructure, 
-- infrastructure people
-- linux people
-- windows desktop (and WSL2 people)
-- vim people
-- bloggers
+- Infrastructure people
+- Linux people
+- Windows desktop (and WSL2 people)
+- Vim people
+- Bloggers
 
 - Local people in village needing tech advice
 - Business owners eg Carey who need tec guidance
@@ -118,11 +118,11 @@ Notable teachers in each area (mindful of costs)
 
 In person 
 
-- meetups
-- workshops
-- classes
-- speaker series
-- networking events
+- Meetups
+- Workshops
+- Classes
+- Speaker series
+- Networking events
 
 ### Contribute, Create, and Teach
 
