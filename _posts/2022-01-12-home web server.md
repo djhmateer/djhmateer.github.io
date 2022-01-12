@@ -116,3 +116,8 @@ Next steps are
 - Put it on the DMZ
 - Test SSL works ie port 443
 - Use a virtualization technology so can have many VM's on the box
+- Transfer over a production website and turn off Azure
+
+## Resources
+
+[https://mtlynch.io/building-a-vm-homelab/](https://mtlynch.io/building-a-vm-homelab/)
