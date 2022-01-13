@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Homelab Web Server 
-description: 
-menu: review
-categories: Home 
+description: Spinning up an Ubuntu Nginx webserver at home and using Dynamic DNS.
+#menu: review
+categories: DNS 
 published: true 
 comments: false     
-sitemap: false
-image: /assets/2021-12-21/desk.jpg
+sitemap: true
+image: /assets/2022-01-12/router.jpg
 ---
 
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->
@@ -16,15 +16,15 @@ image: /assets/2021-12-21/desk.jpg
 
 <!-- [![alt text](/assets/2021-12-21/desk.jpg "email")](/assets/2021-12-21/desk.jpg) -->
 
-Why run a homelab webserver at 'home'?
+Why run a homelab webserver?
 
-- Run a production website cheaper than running on the cloud
 - Spin up dev and test environments quickly eg for different projects I need versions of .NET, Python etc.
 - Leave them up and not incur cloud charges
+- Run a production website cheaper than running on the cloud
 
-In this article I'm going to do the simplest possible thing ie
+In this article I'm going to do the simplest possible thing
 
-- Ubuntu Server (no virtualisation) on bare metal
+- Ubuntu Server on bare metal (no virtualisation)
 - Nginx webserver
 - No DMZ
 - Dynamic DNS to keep a track of changing public IP address
@@ -41,7 +41,7 @@ I'm using the standard free Plusnet Hub One router.
 
 ## Ubuntu Server
 
-Am using a PC with 16GB of RAM and have a new 1TB M.2 SSD in it.
+Am using a spare PC (5 year old Intel i5) with 16GB of RAM and have a new 1TB M.2 SSD in it.
 
 To test the concept I put on [Ubuntu Server 20.04.3 LTS](https://ubuntu.com/download/server) including installing SSH Server.
 
@@ -99,7 +99,7 @@ After signing up on their website, my router can update their service when it's 
 
 [![alt text](/assets/2022-01-12/hopto.jpg "hopto")](/assets/2022-01-12/hopto.jpg)
 
-I can now access my webserver from this domain name which I chose from npip.com.
+I can now access my webserver from this domain name which I chose from [https://noip.com](https://noip.com)
 
 [![alt text](/assets/2022-01-12/dnsimple.jpg "dnsimple")](/assets/2022-01-12/dnsimple.jpg)
 
@@ -113,11 +113,8 @@ We have a working website live on the internet.
 
 Next steps are
 
-- Put it on the DMZ
-- Test SSL works ie port 443
-- Use a virtualization technology so can have many VM's on the box
+- Be more secure (DMZ / different subnet than main home network) 
+- Test SSL works ie port 443 (it works fine)
+- Use a hypervisor so can have many VM's on the box (article coming soon)
 - Transfer over a production website and turn off Azure
 
-## Resources
-
-[https://mtlynch.io/building-a-vm-homelab/](https://mtlynch.io/building-a-vm-homelab/)
