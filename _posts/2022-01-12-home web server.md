@@ -41,7 +41,7 @@ I'm using the standard free Plusnet Hub One router.
 
 ## Ubuntu Server
 
-Am using a spare PC (5 year old Intel i5) with 16GB of RAM and have a new 1TB M.2 SSD in it.
+Am using a 4 Core (8 hyperthreaded) Intel i5-6600 at 3.3GHz with 16GB of RAM and have a new 1TB M.2 SSD in it.
 
 To test the concept I put on [Ubuntu Server 20.04.3 LTS](https://ubuntu.com/download/server) including installing SSH Server.
 
