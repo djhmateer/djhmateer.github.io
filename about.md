@@ -19,7 +19,7 @@ Dave is speaking on Functional programming in C# including [Functional Brighton]
 
 Dave did an interview on [Channel 9](https://channel9.msdn.com/events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL) about streaming large amounts of data into SQL Server.
 
-<iframe src="https://channel9.msdn.com/Events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL/player" width="960" height="540" allowFullScreen frameBorder="0" title="Streaming Large Volumes of Data into SQL - Microsoft Channel 9 Video"></iframe>
+<!-- <iframe src="https://channel9.msdn.com/Events/DDD/DDD12-Developer-Day-2017/Streaming-Large-Volumes-of-Data-into-SQL/player" width="960" height="540" allowFullScreen frameBorder="0" title="Streaming Large Volumes of Data into SQL - Microsoft Channel 9 Video"></iframe> -->
 
 ## May 2016, London
 
