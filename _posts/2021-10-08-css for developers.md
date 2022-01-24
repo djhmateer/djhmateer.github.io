@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CSS and Design for Developers 
+title: xxxxxx CSS and Design for Developers 
 description: CSS
 menu: review
 categories: CSS 
@@ -20,7 +20,6 @@ image: /assets/2021-10-07/http2b.png
 
 > CSS is a design language which is used to style HTML elements
 
-
 ## VS Code
 
 [https://code.visualstudio.com/docs/languages/html](https://code.visualstudio.com/docs/languages/html)
@@ -32,6 +31,7 @@ image: /assets/2021-10-07/http2b.png
 ```
 
 `Shift+Alt+F` format code
+
 `Ctrl /` comment
 
 ### Snippets
@@ -50,7 +50,6 @@ Inbuilt without any extensions
 - HTMLHint - static code analysis for HTML (look in Problems window at bottom eg missing title in head) 
 
 
-
 ## Programming in CSS
 
 [https://www.freecodecamp.org/news/get-started-with-css-in-5-minutes-e0804813fc3e/](https://www.freecodecamp.org/news/get-started-with-css-in-5-minutes-e0804813fc3e/) is a great intro by Per Borgen the co-founder of scrimba.
@@ -58,20 +57,20 @@ Inbuilt without any extensions
 [https://scrimba.com/learn/introtocss/css-documents-the-cascade-c3vE7cg](https://scrimba.com/learn/introtocss/css-documents-the-cascade-c3vE7cg) by Per Borgen is a good css starting point.
 
 [https://scrimba.com/learn/htmlcss](https://scrimba.com/learn/htmlcss) HTML and CSS Crash Course by Kevin Powell is newer - includes FlexBox instead of floats. Opinions like - don't use ID's. Always give divs names. Use header main and footer. Do body first in CSS with margin: 0;
+
 start with html ie get elements right eg header, main, footer.. and what think divs are (with class names), then do css styling.
 
 text-align: center; for simple text eg on a header
+
 margin: 0 auto; to center a div
 
-floats - older
-flexbox - good
-cssgrid - even newer
+- floats - older
+- flexbox - good
+- cssgrid - even newer
 
-my mistakes:
-dont put commas in padding!
+my mistakes: dont put commas in padding!
 
 Maybe next is [https://scrimba.com/learn/responsive](https://scrimba.com/learn/responsive)?
-
 
 - 1.Inline CSS
 

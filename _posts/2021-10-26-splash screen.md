@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Splash Screen
+title: xxxxxx Splash Screen
 description: 
 menu: review
 categories: CSS 

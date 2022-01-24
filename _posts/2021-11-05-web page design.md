@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: Splash Screen
+title: xxxxx Web Page Design 
 description: 
 menu: review
 categories: CSS 
@@ -52,13 +52,13 @@ image: /assets/2021-10-07/http2b.png
 10 minute teardown - innovative product.
 
  
- ## Dislike
+## Dislike
 
  - Menu that stays at the top
  - Cards
  - Annoying CSS effects
 
- ## Pages
+## Pages
 
 about-us - pictures of people (make it personable?)
 
@@ -66,10 +66,9 @@ contact-us
 
 pricing - so it is simple
 
-## Table vs display vs FLexbox vs CSS Grid 
+## Table vs display vs Flexbox vs CSS Grid 
 
 table based layout - old school! with colspan. accessibility bad so should be used for data, and not layout.
-
 
 display: inline-block - for displaying stuff eg images inline
 
