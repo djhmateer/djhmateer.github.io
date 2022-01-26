@@ -259,11 +259,32 @@ Hamburger Menu
 ```
 
 ### Footer is Flex
+asdf
 
 ## Build OSR4RightsTools in Starbucks and Flex style
 
 Combine all I know so far and build out OSR4RightsTools
 
-focus on cementing knowledge
+### Layout
+
+- Put in correct text eg Menu, Titles, text
+- Focus on layout eg naming
+- Naming and CSS organisation
+
+- CSS menu do 
+
+get images - png transparent are great
+
+*go to MS tutorial next?
+- Put in correct elements eg input
+
+### Style
+
+Look at example sites
+
+- Capitalisation
+- Fonts, Colours, Size
+- Images make
+
 
 
