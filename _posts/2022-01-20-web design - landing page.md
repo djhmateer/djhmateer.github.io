@@ -228,6 +228,18 @@ Media Queries
 
 - Font gets smaller when < 960
 
+
+[![alt text](/assets/2022-01-25/star.jpg "star")](/assets/2022-01-25/star.jpg)
+
+Starbucks clone
+
+[![alt text](/assets/2022-01-25/starm.jpg "starm")](/assets/2022-01-25/starm.jpg)
+
+Hamburger Menu
+
+- All lines in CSS
+- Nice transitions
+
 ### Grid
 
 ```css
