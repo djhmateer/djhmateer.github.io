@@ -260,4 +260,10 @@ Hamburger Menu
 
 ### Footer is Flex
 
+## Build OSR4RightsTools in Starbucks and Flex style
+
+Combine all I know so far and build out OSR4RightsTools
+
+focus on cementing knowledge
+
 
