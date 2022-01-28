@@ -270,13 +270,15 @@ Combine all I know so far and build out OSR4RightsTools
 - Put in correct text eg Menu, Titles, text
 - Focus on layout eg naming
 - Naming and CSS organisation
-
 - CSS menu do 
 
 get images - png transparent are great
 
 *go to MS tutorial next?
-- Put in correct elements eg input
+
+- Fonts eg buttons fix
+- Fonts overall
+
 
 ### Style
 
