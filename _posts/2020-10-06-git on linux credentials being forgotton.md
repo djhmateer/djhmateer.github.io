@@ -34,3 +34,20 @@ git config --global credential.helper store
 ```
 
 Hope this helps (and for my future self too)!
+
+## Changing Stored Credentials
+
+[https://stackoverflow.com/questions/44246876/how-to-remove-cached-credentials-from-git](https://stackoverflow.com/questions/44246876/how-to-remove-cached-credentials-from-git)
+
+As I'm storing all passwords in the store (above) I can manually delete them from disk
+
+```
+cd ~
+sudo vim .git-credentials
+```
+
+Then the UI will prompt me for another password
+
+[https://stackoverflow.com/questions/39886995/how-to-access-bitbucket-using-app-password](https://stackoverflow.com/questions/39886995/how-to-access-bitbucket-using-app-password) this was BitBucket
+
+
