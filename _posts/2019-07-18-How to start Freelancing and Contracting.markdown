@@ -16,6 +16,8 @@ image: /assets/2019-05-27/1.png
 
 [Source](https://www.simplybusiness.co.uk/knowledge/articles/2016/05/difference-between-freelancer-and-contractor/)  
 
+- Consultant - A consultant is a person who is paid to provide professional or expert advice [source](https://www.thebalancesmb.com/what-is-the-difference-between-consulting-and-freelancing-845836)
+
 ## Sole Trader or Limited Company
 
 There is no legal difference (in the UK) as both are self-employed, and are responsible for registering with HMRC as self-employed, and completing a self assessment tax return each year. [Source](https://www.simplybusiness.co.uk/knowledge/articles/2016/05/difference-between-freelancer-and-contractor/)
