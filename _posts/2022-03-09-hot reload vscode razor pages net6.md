@@ -24,6 +24,12 @@ I found the easiest way to run Hot Reload was to not use Ctrl-F5, but to launch 
 # go into the Razor Pages Web project folder (usually 1 below solution level)
 cd WebApp
 dotnet watch
+
+# trying to only see the errors and not warnings
+# can't yet do with dotnet watch
+# this seems to work
+dotnet build /clp:ErrorsOnly
+
 ```
 
 Also I turn off autosave - File menu
