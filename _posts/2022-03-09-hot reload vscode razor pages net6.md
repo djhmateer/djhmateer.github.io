@@ -14,7 +14,7 @@ image: /assets/2022-03-09/vsc.jpg
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 [![alt text](/assets/2022-03-09/vsc.jpg "desktop")](/assets/2022-03-09/vsc.jpg)
 
-VS2022 was causing huge performance issues on a internal corp VM with big issues. So I switched to VS Code. I love Resharper so that's the reason I've resisted VSCode for .NET.
+VS2022 was causing huge performance issues (it was the razor pages editor see [reddit](https://www.reddit.com/r/dotnet/comments/qm9sf6/vs_2022_razor_editor_performance/)) on a internal corp VM with big issues. So I switched to VS Code. I love Resharper so that's the reason I've resisted VSCode for .NET.
 
 Using a .NET6 Razor Pages project and VS Code
 
