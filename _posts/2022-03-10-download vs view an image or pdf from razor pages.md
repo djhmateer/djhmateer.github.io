@@ -49,4 +49,6 @@ public IActionResult OnGet()
 } 
 ```
 
-The same concept works for `image/jpeg` and `image.png`
+The same concept works for `image/jpeg` and `image.png`.
+
+I use `application/octet-stream` which is a binary file, to download a zip file (not to view!)
