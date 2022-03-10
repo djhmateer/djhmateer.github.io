@@ -1,12 +1,12 @@
 ---
 layout: post
 title: Hot Reload with VSCode and Razor Pages in .NET6
-description: 
-menu: review
+description: Getting a hot reload working with razor pages in .NET6
+#menu: review
 categories: .net 
 published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2022-03-09/vsc.jpg 
 ---
 
@@ -27,7 +27,7 @@ dotnet watch
 
 # trying to only see the errors and not warnings
 # can't yet do with dotnet watch
-# this seems to work
+# this seems to work for build, but haven't figured out dotnet watch yet
 dotnet build /clp:ErrorsOnly
 
 ```
