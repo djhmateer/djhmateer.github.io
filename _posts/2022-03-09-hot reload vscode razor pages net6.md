@@ -3,7 +3,7 @@ layout: post
 title: Hot Reload with VSCode and Razor Pages in .NET6
 description: Getting a hot reload working with razor pages in .NET6
 #menu: review
-categories: .net 
+categories: .NET 
 published: true 
 comments: false     
 sitemap: true
