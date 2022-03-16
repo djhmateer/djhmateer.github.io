@@ -29,7 +29,8 @@ Then when a user logs in we hash that and compare it to the one in the db.
 Hash - a unique fingerprint
 
 MD5 / SHA1 - have been shown to be manipulable so don't use
-SHA256/SHA512 - both well tested
+SHA256/SHA512 - both well tested. These are SHA2
+SHA3-512 - MS doesn't implement this yet (16th March 2022). BouncyCastle does.
 
 ## Salting
 
