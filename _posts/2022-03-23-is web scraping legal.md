@@ -57,3 +57,11 @@ There are many commercial web scrapers out there (that scrape Twitter too)
 ## Code Scrapers
 
 [https://github.com/JustAnotherArchivist/snscrape](https://github.com/JustAnotherArchivist/snscrape)
+
+
+## Doing good
+
+
+[https://apify.com/web-scraping#benefit-humanity](https://apify.com/web-scraping#benefit-humanity)
+
+[https://brightinitiative.com/](https://brightinitiative.com/)
