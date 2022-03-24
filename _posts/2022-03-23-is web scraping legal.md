@@ -43,6 +43,10 @@ And here are 2 court cases [https://brightdata.com/legality-of-web-data-collecti
 [https://www.reddit.com/r/webscraping/comments/nb3a7t/is_scraping_twitter_commercially_legal/](https://www.reddit.com/r/webscraping/comments/nb3a7t/is_scraping_twitter_commercially_legal/)
 
 
+
+Please see my next article on the the technical challenges and commercial alternatives from getting public information from the web.
+
+
 ## Commercial Scrapers
 
 There are many commercial web scrapers out there (that scrape Twitter too)
