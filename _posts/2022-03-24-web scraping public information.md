@@ -38,8 +38,8 @@ Then later on there are checks where the hash is duplicated etc
 
 With some automation after manually 
 
-- creating a new roaw and entering the case number 
-- enter URL into a special link columnb 
+- Creating a new row and entering the case number 
+- Enter URL into a special link columnb 
 
 The automation does:
 
