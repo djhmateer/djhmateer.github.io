@@ -950,6 +950,13 @@ I run IaaS scripts to build up new VM's on a new deploy so it may be simple
 
 Base image is Ubuntu 20_04-lts on Azure. 20.04.4 on [Proxmox hypervisor](/2022/01/13/proxmox) in home lab.
 
+Script is in [source control]()
+
+```bash
+
+
+```
+
 Ubuntu 20.04 comes with Python3 pre-installed. Even after a `apt update and dist-upgrade` we only have 3.8.10. I believe I need 3.9
 
 Lets try the simplest possible thing which is not running a virtual enviornment on prod, but install it all by hand
@@ -960,14 +967,10 @@ Lets try the simplest possible thing which is not running a virtual enviornment 
 # 3.8.10 (installed)
 python3 -V
 
-# don't want this. skip to 3.10 
+# this is python 3.9.5 (May 2021)
 sudo apt install python3.9
 
-
-# then I ran my test program
-git clone https://github.com/djhmateer/3pytest
-
-# which should need the Requests module
+sudo add-apt-repository ppa:deadsnakes/ppa
 ```
 
 I couldn't figure out why it was working without me having to import the request module. It seems I had `2.22.0` of the Requests Module. Current latest is `2.27.1` (16th March 2022)
