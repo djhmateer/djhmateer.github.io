@@ -302,40 +302,7 @@ Add launch.json for vscode (see top of this page) to pass in the `--sheet='Test 
 
 There is a class which defines the column headers in the spreadsheet in `gworksheet.py`
 
-## New VM Build Script
 
-When building a new test VM here is my test scripts
-
-
-```bash
-sudo add-apt-repository ppa:deadsnakes/ppa -y
-sudo apt update -y
-sudo apt install python3.9 -y
-export PATH=/home/dave/.local/bin:$PATH
-sudo apt install python3-pip -y
-pip install --upgrade pip
-pip install --user pipenv
-
-sudo add-apt-repository ppa:savoury1/ffmpeg4 -y
-sudo apt update -y
-sudo apt install ffmpeg -y
-
-sudo apt install firefox -y
-
-# https://github.com/mozilla/geckodriver
-wget https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz
-tar -xvzf geckodriver*
-chmod +x geckodriver
-sudo mv geckodriver /usr/local/bin/
-
-# https://github.com/bellingcat/auto-archiver
-# need .env file
-# need google API key
-cd auto-archiver
-pipenv install
-pipenv run python auto_archive.py --sheet "Test Hashing"
-
-```
 
 ## Python Syntax and Flow
 
@@ -944,73 +911,36 @@ pipenv install requests
 pipenv run python main.py
 ```
 
+
 ## Running in production
 
-I run IaaS scripts to build up new VM's on a new deploy so it may be simple
+Am running Ubuntu 20.04.4 on [Proxmox hypervisor](/2022/01/13/proxmox) in home office lab.
 
-Base image is Ubuntu 20_04-lts on Azure. 20.04.4 on [Proxmox hypervisor](/2022/01/13/proxmox) in home lab.
+Script is in [source control - infra](https://github.com/djhmateer/auto-archiver/tree/main/infra)
 
-Script is in [source control]()
-
-```bash
-
-
-```
-
-Ubuntu 20.04 comes with Python3 pre-installed. Even after a `apt update and dist-upgrade` we only have 3.8.10. I believe I need 3.9
-
-Lets try the simplest possible thing which is not running a virtual enviornment on prod, but install it all by hand
-
-[Python 3.9 on Ubuntu 20](https://linuxize.com/post/how-to-install-python-3-9-on-ubuntu-20-04/)
+After restoring/buiding from a base image I can follow the instructions in `infra/server-build.sh`
 
 ```bash
-# 3.8.10 (installed)
-python3 -V
+#!/bin/sh
 
-# this is python 3.9.5 (May 2021)
-sudo apt install python3.9
+# Script to configure production server
+# Run the 3 commands below manually
 
-sudo add-apt-repository ppa:deadsnakes/ppa
+# git clone https://github.com/djhmateer/auto-archiver
+# sudo chmod +x ~/auto-archiver/infra/server-build.sh
+# ./auto-archiver/infra/server-build.sh
+
+# Use Filezilla to copy secrets - .env and service-account.json
+
+## Python
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt autoremove -y
+
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+
+# etc...
 ```
 
-I couldn't figure out why it was working without me having to import the request module. It seems I had `2.22.0` of the Requests Module. Current latest is `2.27.1` (16th March 2022)
+Then a new server is running after 4:20. This works well for deploying updated instances of the codebase. Takes 20 seconds for the cron job to start.
 
-
-```bash
-# look for 
-apt list --installed | grep request
-
-# python3-requests-unixsocket/focal,now 0.2.0-2 all [installed,automatic]
-# python3-requests/focal,now 2.22.0-2ubuntu1 all [installed,automatic]
-```
-
-lets install the latest version using pip
-
-hmm [advice is](https://linuxize.com/post/how-to-install-pip-on-ubuntu-20.04/)
-
-- when installing python modules globally use apt
-- use pip to install globally only if no deb packages available
-- prefer pip within a virtual environment only.
-
-
-```bash
-# install python 3.10.2
-sudo add-apt-repository ppa:deadsnakes/ppa
-
-sudo apt install python3.10
-
-sudo apt install python3-pip
-
-pip install requests
-# Requirement already satisfied: requests in /usr/lib/python3/dist-packages (2.22.0)
-```
-
-## OLD
-
-```bash
-# to stop having to type sudo password
-sudo visudo
-# add to end of file
-%username ALL=(ALL) NOPASSWD:ALL
-# ctrl O to write, ctrl x to exit
-```
