@@ -78,6 +78,9 @@ pipenv shell
 
 # run inside the virtual env
 pipenv run python main.py
+
+# update dependencies
+pipenv update
 ```
 
 Python program I used to print the version of the module I was using, and the Python interpreter version.
