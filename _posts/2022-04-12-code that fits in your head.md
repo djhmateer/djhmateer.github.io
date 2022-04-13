@@ -19,8 +19,8 @@ To help me be structured in learning from this book.
 
 Flicking thorugh the book purely for pleasure, the things which stick in my mind to try are:
 
-- turn on all error messages
 - take my time
+- turn on all error messages
 - play with the code base that comes with it
 - think about the rule of 6 or 7 things in head
 - do more tests
@@ -106,6 +106,33 @@ git commit --allow-empty -m "Initial commit"
 
 [![alt text](/assets/2022-04-12/api.jpg "desktop")](/assets/2022-04-12/api.jpg)
 
-Visual Studio, New ASP.NET Core Web API. 
+Visual Studio, New ASP.NET Core Web API (using .NET 3.1 for clarity along with book)
 
-Copy the `.gitignore` from somewhere. Or delete the git repo and let VS do it. Interestingly it also creates a `.gitattributes` which sets the default behaviour to automatically normalise line endings. Which in my case are windows.
+Copy the `.gitignore` from somewhere. Or delete the git repo and let VS do it (but this creates a master repo). Interestingly it also creates a `.gitattributes` which sets the default behaviour to automatically normalise line endings. Which in my case are windows.
+
+[Install .NET on Linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu) which is where I do builds from:
+
+```bash
+# build.sh
+#!/usr/bin/env bash
+dotnet build --configuration Release
+```
+
+So I'm building a .NET3.1 solution with .NET6 SDK.
+
+```bash
+# create new remote, after creating a new repo on gh
+git remote add origin https://github.com/djhmateer/dm-restaurant.git
+
+# -M shortcut for --move --force  https://errorsfixing.com/what-does-the-m-mean-in-git-branch-m-main/ as default branch is master
+# we don't need to do this as have done above
+# git branch -M main
+
+# set origin as the upstream remote 
+git push -u origin main
+```
+
+Continuous integration servers could be: TeamCity, Jenkins, Github etc. Appveyor
+
+### Turn on All Error Messages
+
