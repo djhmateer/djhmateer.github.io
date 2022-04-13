@@ -12,14 +12,13 @@ image: /assets/2022-03-10/view.jpg
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->
 
-Book notes from [Code That Fits in Your Head]() by Mark Seemann
-
-To help me be structured in learning from this book.
+Book notes from [Code That Fits in Your Head]() by Mark Seemann, to help me be structured in learning from this book. And remember the sailent points. An aide memoire.
 
 
 Flicking thorugh the book purely for pleasure, the things which stick in my mind to try are:
 
 - take my time
+- His code is nice. 
 - turn on all error messages
 - play with the code base that comes with it
 - think about the rule of 6 or 7 things in head
