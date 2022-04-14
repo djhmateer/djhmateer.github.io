@@ -1,95 +1,32 @@
 ---
 layout: post
-#title: Python - Bellingcat auto-archiver
-# description: Download vs View a PDF or Image from .NET6 Razor Pages with source code
-menu: review
+title: Updating Open Visual Studio utility to .NET 6 
+description: A small utility which opens visual studio from the command shell looking for a `.sln` file in the current directory. Updating to .NET6
+# menu: review
 categories: C#
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2022-03-10/view.jpg 
+image: /assets/2022-04-13/sc.jpg
 ---
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->
 
-[https://github.com/djhmateer/OpenVSSolution](https://github.com/djhmateer/OpenVSSolution) is a small utility of mine which opens visual studio from the command shell looking for a `.sln` file in the current directory. 
+[OpenVSSolution](https://github.com/djhmateer/OpenVSSolution) is a small utility of mine which opens Visual Studio:
 
-It was written in .NET Core 2, then 3.1, and now lets upgrade to 6.
+[![alt text](/assets/2022-04-13/sc.jpg "desktop")](/assets/2022-04-13/sc.jpg)
 
-## File Scoped Namespace
+Type `d` short for `devenv` into shell which opens Visual Studio with the `sln` file in the current directory.
 
-Using R# to suggest refactoring. [MS Docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-10.0/file-scoped-namespaces)
+It was written in [2018](/2018/11/14/Open-visual-studio-from-command-line) in .NET Core 2, then [3.1](/2020/04/13/NET-Core-Single-Executable-Console-Application) in 2020, and now lets upgrade to 6 in 2022!
 
-```cs
-// before
-namespace OpenVSSolution
-{
-    class Program
-    {
-        static void Main()
-        {
-            var currentPath = Directory.GetCurrentDirectory();
-```
-
-then:
-
-```cs
-// after
-namespace OpenVSSolution;
-
-class Program
-{
-    static void Main()
-    {
-        var currentPath = Directory.GetCurrentDirectory();
-
-```
-
-## Implicit Namespace
-
-
-## Implicit Usings
-
-I spun up a new .NET 6 console app to see the `.csproj` file
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <!--<RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>-->
-    <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>d</AssemblyName>
-    <!--<PublishTrimmed>true</PublishTrimmed>-->
-    <!-- added these to use new features -->
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-</Project>
-```
-
-then my usings went from
-
-```cs
-// old
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-
-// new
-using System.Diagnostics;
-```
 
 ## Top level statements
 
-[Top-level statements](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/program-structure/top-level-statements)
-
-Which means the entire app is:
+[Top-level statements](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/program-structure/top-level-statements) are great in getting rid on boilerplate code.  The entire app is now:
 
 ```c#
 using System.Diagnostics;
-
-// https://davemateer.com/coding/2018/11/08/Publish-dot-net-core-console-application.html for more information
 
 var currentPath = Directory.GetCurrentDirectory();
 
@@ -162,20 +99,19 @@ proc.StartInfo.Arguments = arguments;
 proc.Start();
 ```
 
-
 ## Deployment
 
-This works:
+[Single file deployment](https://docs.microsoft.com/en-us/dotnet/core/deploying/single-file/overview) you can use the GUI or CLI 
+
+[![alt text](/assets/2022-04-13/set.jpg "desktop")](/assets/2022-04-13/set.jpg)
+
+I used these settings to get a 14.5MB file which runs fast.
+
+The command line switches are something like below, but the GUI was good enough for now.
 
 ```bash
 # 60MB exe
-dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true
-```
-
-I did get an error:
-
-```bash
-# /usr/share/dotnet/sdk/6.0.202/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Sdk.targets(1110,5): warning NETSDK1179: One of '--self-contained' or '--no-self-contained' options are required when '--runtime' is used. [/mnt/c/dev/test/OpenVSSolution/OpenVSSolution/OpenVSSolution.csproj]
+dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true
 ```
 
 and I copied the exe into my `c:\sharedTools` directory which is in the Windows path.
