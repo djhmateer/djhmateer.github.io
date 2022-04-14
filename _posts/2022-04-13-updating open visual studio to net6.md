@@ -18,7 +18,7 @@ image: /assets/2022-04-13/sc.jpg
 
 Type `d` short for `devenv` into shell which opens Visual Studio with the `sln` file in the current directory.
 
-It was written in [2018](/2018/11/14/Open-visual-studio-from-command-line) in .NET Core 2, then [3.1](/2020/04/13/NET-Core-Single-Executable-Console-Application) in 2020, and now lets upgrade to 6 in 2022!
+It was written in [2018 Blog post](/2018/11/14/Open-visual-studio-from-command-line) in .NET Core 2, then [3.1](/2020/04/13/NET-Core-Single-Executable-Console-Application) in 2020, and now lets upgrade to 6 in 2022!
 
 
 ## Top level statements
@@ -29,9 +29,6 @@ It was written in [2018](/2018/11/14/Open-visual-studio-from-command-line) in .N
 using System.Diagnostics;
 
 var currentPath = Directory.GetCurrentDirectory();
-
-// To debug a certain sln file hard code in the path to test
-//var currentPath = @"c:\dev\test\dm-restaurant";
 
 // Get the most recently accessed solution file or return null if none
 var slnFile = new DirectoryInfo(currentPath).GetFiles()
