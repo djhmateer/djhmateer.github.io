@@ -1,18 +1,20 @@
 ---
 layout: post
-# title: Python - Bellingcat auto-archiver
-# description: Download vs View a PDF or Image from .NET6 Razor Pages with source code
-menu: review
+title: Is Web Scraping Legal? 
+description: Yes, web scraping is legal for a publicly available website. ie not behind a login. Personal information storage is different and comes under GDPR in the UK.
+# menu: review
 categories: Legal
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2022-03-10/view.jpg 
+image: /assets/2022-03-23/tos.jpg 
 ---
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->
 
 TL;DR - Yes, web scraping is legal for a publicly available website. ie not behind a login. Personal information storage is different and comes under GDPR in the UK.
+
+Update: 19th April 2022 [US appeals court reaffirms](https://news.ycombinator.com/item?id=31075396)
 
 
 ## Twitter
