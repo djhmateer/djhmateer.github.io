@@ -13,6 +13,36 @@ image: /assets/2020-10-19/term.jpg
 <!-- ![alt text](/assets/2020-10-19/term.jpg "terminal screenshot"){:width="600px"} -->
 ![alt text](/assets/2020-10-19/term.jpg "terminal screenshot")
 
+## Update 20th April 2022
+
+My Ubuntu 18.04 instance had an issue with apt where it wasn't udpating properly
+
+```bash
+apt update
+apt upgrade
+# something broken with apt and not updating
+# dpkg: error processing archive libpython3.9-minimal_3.9.12-1+bionic2_amd64.deb
+
+# didn't work fixing the broken install
+sudo apt -f install
+```
+
+Installed Ubuntu 20.04 on wsl using Windows Store.
+
+Using WSL Terminal, Settings. Can set the default instance now to 20.04 in the json file.
+
+Font Size 9
+
+Solarized Dark
+
+Starting directory not working yet [discussion](https://github.com/microsoft/WSL/issues/6995)
+
+Create .bashrc like below.
+
+
+
+## Intro
+
 My Windows terminal running an alias `js` which is Jekyll Serve which starts up my blog locally.
 
 [Scott Hanselman on YouTube .NET Oxford - Terminals](https://www.youtube.com/watch?v=B4VYjxzx2us&feature=emb_logo) was where I first saw the new [Windows Terminal](https://github.com/microsoft/terminal) with Ubuntu.
