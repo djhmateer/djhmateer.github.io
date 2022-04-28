@@ -39,6 +39,8 @@ print(sh.sheet1.get('A1'))
 
 [https://console.cloud.google.com/](https://console.cloud.google.com/)
 
+[https://admin.google.com/](https://admin.google.com/ac/accountchooser?continue=https://admin.google.com/) is used for Google Workspace accounts only
+
 ## Google Drive using Service Account
 
 [https://developers.google.com/drive/api/quickstart/python](https://developers.google.com/drive/api/quickstart/python)
@@ -46,6 +48,18 @@ print(sh.sheet1.get('A1'))
 I do have google drive API enabled already (for google spreadsheets)
 
 [https://blog.benjames.io/2020/09/13/authorise-your-python-google-drive-api-the-easy-way/](https://blog.benjames.io/2020/09/13/authorise-your-python-google-drive-api-the-easy-way/)
+
+
+## Share Google Drive files with your Service Account
+
+[![alt text](/assets/2022-04-28/share.jpg "desktop")](/assets/2022-04-28/share.jpg)
+
+[Share a folder with the service account](https://stackoverflow.com/questions/45492703/google-drive-api-oauth-and-service-account) eg `autoarchiverservice@auto-archiver-xxxxx.iam.gserviceaccount.com`
+
+This allows me to read my personal davemateer@gmail.com google drive files from the service account.
+
+Once I can see a shared folder_id I can then write inside that folder.
+
 
 ## Reading files from Google Drive
 
@@ -91,8 +105,6 @@ Code modified from [https://github.com/googleworkspace/python-samples/blob/maste
 
 Using [Google Drive Desktop](https://www.google.com/drive/download/) you can view all your files as a linked drive `G:` in Windows Explorer.
 
-Strange that the v3 API is only listing 5 files.
-
 ## Uploading a file
 
 [https://github.com/iterative/PyDrive2](https://github.com/iterative/PyDrive2) - could use this.
@@ -100,4 +112,10 @@ Strange that the v3 API is only listing 5 files.
 
 [https://developers.google.com/drive/api/guides/search-files](https://developers.google.com/drive/api/guides/search-files) API docs
 
+
+[https://github.com/googleworkspace/python-samples/tree/master/drive/driveapp](https://github.com/googleworkspace/python-samples/tree/master/drive/driveapp)
+
+```py
+
+```
 
