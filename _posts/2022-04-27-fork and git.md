@@ -68,17 +68,53 @@ git checkout main
 git merge upstream/main
 ```
 
+## Do a PR
+
+An an way to manually merge in changes from the upstream is to create a PR on my own fork.
+
+[![alt text](/assets/2022-04-27/ui.jpg "desktop")](/assets/2022-04-27/ui.jpg)
+
+Creating a PR into my own fork.
+
+[![alt text](/assets/2022-04-27/conflict.jpg "desktop")](/assets/2022-04-27/conflict.jpg)
+
+So we have a conflict - this is good as I want to review code coming into my fork.
+
+The instructions `use the command line` above say to
+
+```bash
+# create new branch bellingcat-main from my main branch
+git checkout -b bellingcat-main main
+
+# pull the main branch from bellingcat. Into my bellingcat-main
+git pull https://github.com/bellingcat/auto-archiver.git main
+
+# I now have merge conflicts and changes
+# Use VSCode like below to see the changes and merge
+```
+
+[![alt text](/assets/2022-04-27/vscode.jpg "desktop")](/assets/2022-04-27/vscode.jpg)
+
 I did the above and got conflicts. Lets use VS Code to resolve them. 
 
 ```bash
 git add .
-git commit -m "manually merged"
+git commit -m "merged"
 
-# push to my fork and check that my fork should be ahead of the upstream (and not behind)
-git push
+git checkout main
+git merge --no-ff bellingcat-main
+# this automatically closed the PR
+git push origin main
+
+# don't need to delete remote branch as the PR did it.
+#git push -d origin bellingcat-main
+
+# delete localy branch
+git branch -d bellingcat-main
+
 ```
 
-## Create a PR to the upstream
+## Create a PR to the upstream and manually do changes
 
 I would like to create a simple PR with a single change from my fork which has many changes. All working on the `main` branch.
 
@@ -103,7 +139,7 @@ git checkout -b foo
 # check if anything happened upstreawm
 git fetch upstream
 
-# 
+# foo branch is now the same as upstream/main
 git reset --hard upstream/main
 
 # same as -u
@@ -115,4 +151,17 @@ git commit -m "Updated wwww to www"
 git push
 
 # then create a PR from the foo branch
+```
+
+## Create a PR from main 
+
+Create a branch on my fork with some changes - want an easy way to see all changes.
+
+
+```bash
+git checkout -b bar
+
+# pull the main branch from bellingcat. Into my bellingcat-main
+git pull https://github.com/bellingcat/auto-archiver.git main
+
 ```
