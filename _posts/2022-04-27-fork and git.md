@@ -12,7 +12,6 @@ image: /assets/2022-04-13/sc.jpg
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->
 
-
 I'm working on [auto-archiver](https://github.com/bellingcat/auto-archiver) and have my own [fork](https://github.com/djhmateer/auto-archiver)
 
 Most projects I work on I'm the sole developer so generally work on the main (I prefer this to master now)
@@ -27,13 +26,13 @@ git commit --allow-empty -m "Initial commit"
 
 ```
 
-## Working on main and merging ie Syncing a fork
+## 1. Syncing my fork
 
 As a sanity check I always make a copy of the entire directory
 
-I did the initial fork from the GUI. To work from command line I have to add the `upstream` manually to my repo:
+I did the initial fork from the GUI. To work from command line I have to add the `upstream` manually to my repo to point to the orginal repository.
 
-[Configuring a remote for a forl](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-for-a-fork)
+[Configuring a remote for a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-for-a-fork)
 
 ```bash
 # origin  https://github.com/djhmateer/auto-archiver.git (fetch)
@@ -68,7 +67,7 @@ git checkout main
 git merge upstream/main
 ```
 
-## Do a PR
+## 2. Sync my fork using a PR
 
 An an way to manually merge in changes from the upstream is to create a PR on my own fork.
 
@@ -114,19 +113,17 @@ git branch -d bellingcat-main
 
 ```
 
-## Create a PR to the upstream and manually do changes
+## 3. Create a PR to the upstream and manually do changes
 
 I would like to create a simple PR with a single change from my fork which has many changes. All working on the `main` branch.
 
 [![alt text](/assets/2022-04-27/pr.jpg "desktop")](/assets/2022-04-27/pr.jpg)
 
-From my fork lets open a PR.
+From my fork lets contribute which will open a PR on the upstream.
 
 The file I want to create a PR for is
 
 [https://github.com/djhmateer/auto-archiver/blob/main/archivers/youtubedl_archiver.py](https://github.com/djhmateer/auto-archiver/blob/main/archivers/youtubedl_archiver.py)
-
-hmmm can I branch off the upstream/main ?
 
 [branch](https://stackoverflow.com/questions/38004838/git-how-to-ensure-new-branch-is-based-on-upstream-master)
 
@@ -139,10 +136,12 @@ git checkout -b foo
 # check if anything happened upstreawm
 git fetch upstream
 
-# foo branch is now the same as upstream/main
+# reset foo branch tracked files to the same as upstream/main
+# leave untracked files alone
 git reset --hard upstream/main
 
-# same as -u
+# push current foo branch to the origin remote ie my fork
+# set-upstream sets default remote branch to foo for current local foo branch
 git push --set-upstream origin foo 
 
 # do changes
@@ -153,15 +152,49 @@ git push
 # then create a PR from the foo branch
 ```
 
-## Create a PR from main 
+## 4. Create a PR from main 
 
 Create a branch on my fork with some changes - want an easy way to see all changes.
 
 
 ```bash
+# make sure upstream is setup
+# origin  https://github.com/djhmateer/auto-archiver.git (fetch)
+# origin  https://github.com/djhmateer/auto-archiver.git (push)
+git remote -v
+
+# configuring upstream remote for the fork
+git remote add upstream https://github.com/bellingcat/auto-archiver
+
+# create new local branch from local main
 git checkout -b bar
 
-# pull the main branch from bellingcat. Into my bellingcat-main
-git pull https://github.com/bellingcat/auto-archiver.git main
+# fetch (but don't do anythin) upstream changes
+git fetch upstream
 
+# reset bar branch tracked files to the same as upstream/main
+# leave untracked files alone
+git reset --hard upstream/main
+
+# push current bar branch to the origin remote ie my fork
+# set-upstream sets default remote branch to foo for current local foo branch
+git push --set-upstream origin bar 
+
+# use VSCode to see differences between main and bar (ie upstream/main)
+# only do changes in bar that I want
+
+# commit and push to origin
+
+# contribute from my fork ie make a PR on upstream original repository
+
+# delete branches on local and remote
 ```
+
+VSCode, Souce Control, Search and Compare,  + icon, Compare References, select the 2 branches
+
+[![alt text](/assets/2022-04-27/comp.jpg "desktop")](/assets/2022-04-27/comp.jpg)
+
+Open changes with working file icon is very useful.
+
+README.md (main) - README.md. So the RHS is the open file on the bar branch which is perfect as this is the branch we are working on, which we'll submit the PR from.
+
