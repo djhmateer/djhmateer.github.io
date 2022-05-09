@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: Updating Open Visual Studio utility to .NET 6 
+title: Fork and Git 
 # description: A small utility which opens visual studio from the command shell looking for a `.sln` file in the current directory. Updating to .NET6
 menu: review
 categories: git
@@ -26,7 +26,7 @@ git commit --allow-empty -m "Initial commit"
 
 ```
 
-## 1. Syncing my fork
+## 1. Syncing my fork auto-merge
 
 As a sanity check I always make a copy of the entire directory
 
@@ -67,7 +67,7 @@ git checkout main
 git merge upstream/main
 ```
 
-## 2. Sync my fork using a PR
+## 2. Sync my fork using a PR to manually review
 
 An an way to manually merge in changes from the upstream is to create a PR on my own fork.
 
@@ -152,7 +152,7 @@ git push
 # then create a PR from the foo branch
 ```
 
-## 4. Create a PR from main 
+## 4. Create new branch using VSCode and GitLens to review changes 
 
 Create a branch on my fork with some changes - want an easy way to see all changes.
 
@@ -169,7 +169,7 @@ git remote add upstream https://github.com/bellingcat/auto-archiver
 # create new local branch from local main
 git checkout -b bar
 
-# fetch (but don't do anythin) upstream changes
+# fetch (but don't do anything) upstream changes
 git fetch upstream
 
 # reset bar branch tracked files to the same as upstream/main
@@ -180,17 +180,22 @@ git reset --hard upstream/main
 # set-upstream sets default remote branch to foo for current local foo branch
 git push --set-upstream origin bar 
 
-# use VSCode to see differences between main and bar (ie upstream/main)
+# use VSCode GitLens (see below) to see differences between main and bar (ie upstream/main)
 # only do changes in bar that I want
 
 # commit and push to origin
 
 # contribute from my fork ie make a PR on upstream original repository
 
-# delete branches on local and remote
+# delete branches on local
+git branch -d foo
+
+# delete branch on remote (if needed)
+# keep branches from upstream for now
+git push origin --delete foo
 ```
 
-VSCode, Souce Control, Search and Compare,  + icon, Compare References, select the 2 branches
+VSCode (GitLens), Souce Control, Search and Compare,  + icon, Compare References, select the 2 branches
 
 [![alt text](/assets/2022-04-27/comp.jpg "desktop")](/assets/2022-04-27/comp.jpg)
 
