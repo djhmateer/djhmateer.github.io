@@ -16,17 +16,7 @@ I'm working on [auto-archiver](https://github.com/bellingcat/auto-archiver) and 
 
 Most projects I work on I'm the sole developer so generally work on the main (I prefer this to master now)
 
-
-```bash
-# machine default to main
-git config --global init.defaultBranch main
-
-# so can rewrite history before pushing to online Git service
-git commit --allow-empty -m "Initial commit"
-
-```
-
-## 1. Syncing my fork auto-merge
+## 1. Syncing my fork auto-merge with no PR
 
 As a sanity check I always make a copy of the entire directory
 
@@ -69,7 +59,9 @@ git merge upstream/main
 
 ## 2. Sync my fork using a PR to manually review
 
-An an way to manually merge in changes from the upstream is to create a PR on my own fork.
+**not sure if this is a good way**
+
+A way to manually merge in changes from the upstream is to create a PR on my own fork.
 
 [![alt text](/assets/2022-04-27/ui.jpg "desktop")](/assets/2022-04-27/ui.jpg)
 
