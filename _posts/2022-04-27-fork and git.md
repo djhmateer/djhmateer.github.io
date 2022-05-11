@@ -168,14 +168,15 @@ git fetch upstream
 # leave untracked files alone
 git reset --hard upstream/main
 
-# push current bar branch to the origin remote ie my fork
-# set-upstream sets default remote branch to foo for current local foo branch
-git push --set-upstream origin bar 
-
 # use VSCode GitLens (see below) to see differences between main and bar (ie upstream/main)
 # only do changes in bar that I want
 
 # commit and push to origin
+# the cli will prompt you to type
+# git push --set-upstream origin bar
+git push
+
+# Github will prompt you to do a PR
 
 # contribute from my fork ie make a PR on upstream original repository
 
