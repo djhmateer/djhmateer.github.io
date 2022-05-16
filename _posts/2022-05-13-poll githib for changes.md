@@ -12,7 +12,7 @@ image: /assets/2022-04-13/sc.jpg
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->
 
-I've using my proxmox virtual server for testing. Rather than rebuild VM every time I was to use this test server, lets poll github for changes to the repo.
+I've using my proxmox virtual server for testing. Rather than rebuild VM every time I want to use this test server, lets poll github for changes to the repo.
 
 [https://gist.github.com/grant-roy/49b2c19fa88dcffc46ab](https://gist.github.com/grant-roy/49b2c19fa88dcffc46ab) is where I got the base of the script I'm using
 
@@ -55,5 +55,5 @@ done
 
 
 
-[![alt text](/assets/2022-05-09/chrome.jpg "desktop")](/assets/2022-05-09/chrome.jpg)
+<!-- [![alt text](/assets/2022-05-09/chrome.jpg "desktop")](/assets/2022-05-09/chrome.jpg) -->
 
