@@ -3,7 +3,7 @@ layout: post
 title: Microconf London 
 description: Notes on the conference!
 # menu: review
-categories: entrepreneur
+categories: Entrepreneur
 published: true 
 comments: false     
 sitemap: true
