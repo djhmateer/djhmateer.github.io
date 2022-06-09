@@ -18,7 +18,7 @@ Idea Validation so that...
 
 Great... but show me a repeatable process of how to narrow down on markets which I may find a niche (and be happy and make money.
 
-Practise is everything... always keep shipping... and fail fast! Then do again.
+> Practise is everything... always keep shipping... and fail fast! Then do again.
 
 These are all great pieces of advice.. but the subtext is much harder.. about marketing too and getting good at that. So perhaps ship, market, fail fast!
 
@@ -64,8 +64,6 @@ Like Making Money.
 
 [Rob Walling 2014 on Drip getting to $7k](https://www.youtube.com/watch?v=GLay7kksLtc) What this video is good at, is coming up with a strategy for the initial part of the SaaS based entprepreneurial process:
 
-
-
 ## asdf
 
 Like programming I endeavour to learn from the best, and not make the mistakes everyone else has made. I am making those mistakes, but perhaps recovering more quickly as I realise that signs such as:
@@ -81,11 +79,11 @@ Like programming I endeavour to learn from the best, and not make the mistakes e
 
 [https://hotjar.atlassian.net/wiki/spaces/REC/pages/269942884/Hotjar+Core+Values](https://hotjar.atlassian.net/wiki/spaces/REC/pages/269942884/Hotjar+Core+Values) inspired from hotjar
 
-1.Put our customers at the heart of everything
-2.Be bold and move fast
-3.Work with respect
-4.Build trust with transparency
-5.Challenge ourselves to grow
+1. Put our customers at the heart of everything
+2. Be bold and move fast
+3. Work with respect
+4. Build trust with transparency
+5. Challenge ourselves to grow
 
 # Find Niches / Ideas
 
@@ -97,16 +95,17 @@ look at all people you know, then their work experience or hobby
 then talk to them.. what pains you in this
 then could this be solved with software?
 
-From [Jason's Cohoen Vide]()
+From [Jason's Cohens Video]()
 
-He got out there are contacted 40 people
+> Predictable acquision of customers, of recurring revenue, with annual prepay, in a good market, creates a cash machine
+
+He got out there are contacted 40 potential clients
 
 From [Pieters book]() Chapter 2
 
 - Solve your own problems
 - Start from the problem not the solution
 - Start small
-
 
 From [Shails book]():
 
@@ -115,18 +114,38 @@ From [Shails book]():
 - When am I most myself
 - who do I hang out with 
 
-then
- contribute ie help people
+## Concrete Examples
 
-So now we have a top x bunch of niches
+So here are a my current list of niches and problems which haven't been validated yet. I've put my favourites at the top, purely based on gut:
+
+- Traffic calming solution in my village. Customer: Parish Council, Problem it sovles: Calms Traffic, Software
+- Write a techcnial pdf/book on dot net examples. Customer: dotnet developers. Problem it solves: lack of worked proper examples. A great starting point for applications. Learn from the best in the business. 
+- Beer Labels. Customer: home brewers, micro breweries. Problem it solves: Having a great quality label for your beer is part of the drinking experience! 
+- Broken Link Checker. Customer: bloggers, webmasters. Problem it solves: Fixing up site and saying what is wrong.
+- auto-archiver: Customer: Human Rights Investigators and organisations. Problem it solves: manually having to go to facebook, twitter, youtube and extract images/video. Then save them securely then hash them.
+
+and some other ideas:
+
 
 ## Evaluate a niche
+
+Is there demand?
+ seomoz
+ competitors
 
 Is this a smart niche to be in?
 
 - Describe value (ie what problems does it solve)
 - For whom
 - How easy is it to get in touch with these people?
+
+Is the niche too broad?
+
+- Use Google Ad Words trick to see how much it costs
+- Use magazine full page article trick to see how much a full page advert costs ie >£5k is a problem
+
+Is this niche for me?
+- Do I want to be surrounded by these people?
 
 
 ## Doing
