@@ -14,43 +14,46 @@ image: /assets/2022-04-13/sc.jpg
 
 Idea Validation so that...
 
+I can start a self-funded/bootstrapped software company, which can lead to proper income. ie a cash-machine
+
+[The Ladders of Wealth Creation](https://nathanbarry.com/wealth-creation/) is a journey I'm on from employee, own service business, productised service with fixed price, recurring montly billing.. and towards selling products.
+
+
 > Find a small group of people and make them amazingly happy and you will make money.
 
-Great... but show me a repeatable process of how to narrow down on markets which I may find a niche (and be happy and make money.
+Great... but show me a repeatable process of how to narrow down on markets where I may find a niche 
 
 > Practise is everything... always keep shipping... and fail fast! Then do again.
 
 These are all great pieces of advice.. but the subtext is much harder.. about marketing too and getting good at that. So perhaps ship, market, fail fast!
 
 
-I find this to be one of the hardest parts of bootstrapping or entrepreneurism. There is so much to think about it becomes overwhelming, and the default is to fall into the trap of doing something comfortable such as programming up a proof of concept. 
+I find choosing and evaluating niches to be the hardest part of bootstrapping/entrepreneurism. There is so much to think about it becomes overwhelming, and the default is to fall into the trap of doing something comfortable eg programming.
 
-Common mistakes developer bootstrapper entrepreneurs make (and I've done all of these)
+Common mistakes developer bootstrapper entrepreneurs make (and I've done them all)
 
 - Starting with our own list of 'product ideas' (this isn't necessarly bad, but its about our customers not us)
 - Just start to code up a proof of concepts without any forethought for market, marketing, product market fit
 - Reading all the books and getting disheartened
 - Writing blog articles and not following though (writing methods really helps me though to condense my thinking)
-- Taking time to do markets, marketing
 
 To make you all feel better (and for my future self) I've started writing many blog articles since June 2019. 3 years of research, 1 proof of concept (yes I spent many months perhaps a year on this as a hobby project) where I eventually didn't really launch it. It's not all in vain as
 
-> Time in reconnaissance is seldom wasted (Duke of Wellington / Rommell / John Ridgway)
+> Time in reconnaissance is seldom wasted - Duke of Wellington / Rommell / John Ridgway
 
-Becoming a student of a subject, reading books, talking to others is all an important journey. For me it is as enjoying as learning an new programming language eg [Haskell](), [F#](), [Python]() or implementing new infrastructure eg [Proxmox](), [Azure CLI](), [Building machines](). 
+Becoming a student of a business ie reading books, talking to others is all an important journey. For me it is as enjoying as learning an new programming language eg [Haskell](), [F#](), [Python]() or implementing new infrastructure eg [Proxmox](), [Azure CLI](), [Building machines](). 
 
-> The joy of finding things out (Richard Feynman)
+> The joy of finding things out - Richard Feynman
 
 ## Blogging
 
-As of 9th June 2022 I've got around 125 unpublished blog articles. This is crazy! But I'm not worried as I like writing, and the focus at the moment is on evaluating a niche for making money. 
+As of 9th June 2022 I've got 125 unpublished blog articles. This is crazy! But I'm not worried as I like writing, and the focus at the moment is on evaluating a niche for making money. 
 
-Writing blog articles is cathartic, cements knowledge, is a wondering resource to look back on, and is my way of becoming calm about a subject which is overpowering.
+Writing blog articles is cathartic, cements knowledge, is a wondering resource to look back on, and is my way of becoming calm about a subject which is overwhelming.
 
 Like Making Money.
 
-
-# Most Influential Books and Videos
+## Influential Books and Videos
 
 [Make: Bootstrappers Handbook now called: The Indie Maker Handbook](https://readmake.com/) Pieter Levels. Founder of [Nomad List](https://nomadlist.com/), [Remote OK](https://remoteok.com/) words most visited remote work job board. Used to be called [makebook.io]() - serach for this in my email as I bought it.
 
@@ -60,24 +63,19 @@ Like Making Money.
 
 [The Minimalist Entrepreneur: How great founders do more with less](https://www.amazon.co.uk/Minimalist-Entrepreneur-Great-Founders-More/dp/034943140X) Sahil Lavingia founder of Gumroad. [My blog review - unpublished](/2022/01/06/minimalist-entrepreneur)
 
-[Jason Cohen WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) 2013. Predictable acquision of customers, of recurring revenue, with annual prepay, in a good market, creates a cash machine
+[Video - Jason Cohen WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) 2013. Predictable acquision of customers, of recurring revenue, with annual prepay, in a good market, creates a cash machine
 
-[Rob Walling 2014 on Drip getting to $7k](https://www.youtube.com/watch?v=GLay7kksLtc) What this video is good at, is coming up with a strategy for the initial part of the SaaS based entprepreneurial process:
+[Video - Rob Walling 2014 on Drip getting to $7k](https://www.youtube.com/watch?v=GLay7kksLtc) What this video is good at, is coming up with a strategy for the initial part of the SaaS based entprepreneurial process:
 
-## asdf
+[PDF - 8 Things You Must Know When Starting Your First SaaS](https://www.startupsfortherestofus.com/). Study a little, ship a lot. Start small. Own your time. Recurring Revenue (but a long ramp to get there)
 
-Like programming I endeavour to learn from the best, and not make the mistakes everyone else has made. I am making those mistakes, but perhaps recovering more quickly as I realise that signs such as:
+[https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi](https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi) 11 vidoes including the 2 above
 
-- Don't build a POC and assume your customers will just come!
-- Get out of the building (and talk to customers)
-- Look after customers
-- Be customer driven
-- Do research but get on with it asap
-- Just Ship It
+## Values
 
-# Values
+[https://hotjar.atlassian.net/wiki/spaces/REC/pages/269942884/Hotjar+Core+Values](https://hotjar.atlassian.net/wiki/spaces/REC/pages/269942884/Hotjar+Core+Values) inspired from hotjar on the podcast [StartupsForTheRestOfUs with David Darmanin](https://www.startupsfortherestofus.com/episodes/episode-603-bootstrapping-hotjar-to-40m-arr-using-d2c-marketing)
 
-[https://hotjar.atlassian.net/wiki/spaces/REC/pages/269942884/Hotjar+Core+Values](https://hotjar.atlassian.net/wiki/spaces/REC/pages/269942884/Hotjar+Core+Values) inspired from hotjar
+I like these core values which David and his company used to grow to be very very successful.
 
 1. Put our customers at the heart of everything
 2. Be bold and move fast
@@ -85,9 +83,19 @@ Like programming I endeavour to learn from the best, and not make the mistakes e
 4. Build trust with transparency
 5. Challenge ourselves to grow
 
-# Find Niches / Ideas
+## Find Niches / Ideas
 
 So now we have a way to write and be transparent (blogging / writing), where should we start?
+
+> Build something people want
+
+and make sure the structure of that product fits a small company ie low time input
+
+From [The stairstep approach to bootstrapping](https://robwalling.com/2015/03/26/the-stairstep-approach-to-bootstrapping/) he advises to
+
+- Start very small and ship it. Simple product and simple marketing plan.
+- Maybe sell an addon to an existing ecosystem eg WordPress, Shopify App, Heroku add-on.. built in discovery through app store. Dupal, Photoshop, WordPress theme, ebook or a course. [SaaS Marketplaces](https://rocketgems.com/blog/saas-marketplaces/)
+
 
 From [Rob's book]():
 
@@ -114,24 +122,50 @@ From [Shails book]():
 - When am I most myself
 - who do I hang out with 
 
+
+See what people are complaining about - and research these 'competitors' to see how much revenue they generate.
+
+
+
+## Idea Generation Articles 
+
+[https://www.indiehackers.com/post/tech-startup-ideas-how-to-generate-a-great-idea-4ee97af197](https://www.indiehackers.com/post/tech-startup-ideas-how-to-generate-a-great-idea-4ee97af197)
+
+This was nice as it promoted: walking, coming up with 10 ideas per day, talking to many people,
+
+[https://www.shopify.co.uk/blog/product-ideas](https://www.shopify.co.uk/blog/product-ideas)
+
+
+
+## Analyze Existing Businesses
+
 ## Concrete Examples
 
 So here are a my current list of niches and problems which haven't been validated yet. I've put my favourites at the top, purely based on gut:
 
-- Traffic calming solution in my village. Customer: Parish Council, Problem it sovles: Calms Traffic, Software
 - Write a techcnial pdf/book on dot net examples. Customer: dotnet developers. Problem it solves: lack of worked proper examples. A great starting point for applications. Learn from the best in the business. 
-- Beer Labels. Customer: home brewers, micro breweries. Problem it solves: Having a great quality label for your beer is part of the drinking experience! 
+
 - Broken Link Checker. Customer: bloggers, webmasters. Problem it solves: Fixing up site and saying what is wrong.
+
 - auto-archiver: Customer: Human Rights Investigators and organisations. Problem it solves: manually having to go to facebook, twitter, youtube and extract images/video. Then save them securely then hash them.
+
+- Beer Labels. Customer: home brewers, micro breweries. Problem it solves: Having a great quality label for your beer is part of the drinking experience! 
+
+- Traffic calming solution in my village. Customer: Parish Council, Problem it sovles: Calms Traffic, Software
 
 and some other ideas:
 
 
-## Evaluate a niche
+## Evaluate / Validate in the market
+
+[Market testing and validation - IH](https://www.indiehackers.com/post/validate-your-product-19-market-testing-and-market-validation-tactics-plus-7-tools-for-validating-df82ddf259) - an excellent article.
 
 Is there demand?
  seomoz
  competitors
+ reddit / stackexchange - niche forums
+ 
+
 
 Is this a smart niche to be in?
 
@@ -147,6 +181,39 @@ Is the niche too broad?
 Is this niche for me?
 - Do I want to be surrounded by these people?
 
+Is this on the [stairstep approach](https://robwalling.com/2015/03/26/the-stairstep-approach-to-bootstrapping/) ie
+ - If I've got no revenue coming in just now, then go for quick wins. non sexy boring?
+ - build in public
+ - SEO, write copy
+
+[https://www.indiehackers.com/group/ideas-and-validation](https://www.indiehackers.com/group/ideas-and-validation)
+
+## Evaluate - get out the building and talk to people!
+
+Rob Walling put out this email when researching drip to his friends and acquaintances:
+
+[![alt text](/assets/2022-06-10/rob.jpg "desktop")](/assets/2022-06-10/rob.jpg)
+
+then a follow up email was something like this:
+
+[![alt text](/assets/2022-06-10/rob2.jpg "desktop")](/assets/2022-06-10/rob2.jpg)
+
+and Jason Cohen did something similar for WP Engine:
+
+
+
+
+## Appendix ie What to Do Next
+
+find a mentor or 2
+join communities eg
+
+[https://microconf.com/](https://microconf.com/) slack
+
+[https://www.indiehackers.com/](https://www.indiehackers.com/)
+
+
+
 
 ## Doing
 
@@ -157,6 +224,7 @@ After choosing a niche and taking a leap, lets look at our values and be transpa
 - Put customers at heart of everything ie make sure email list (launch list) is setup and we're regularly communicating and listening
 - Write blog articles about how we're doing this
 - Tweet?
+- write for PC Pro or... (Lewes connection)
 
 
 ## Landing Page
@@ -169,6 +237,22 @@ Launch list - ideal to have many.. eg many 1000
 
 Go and speak at conferences, etc ... get people excited and signed up!
 
+## asdf
+
+podcasts get on
+
+write content a lot for seo (so broken link checking would be great)
+ as would programming
+
+indie hackers
+
+twitter maybe
+
+user groups
+
+[https://www.producthunt.com/](https://www.producthunt.com/)
+
+
 
 ## Other Tools
 
@@ -180,3 +264,19 @@ Go and speak at conferences, etc ... get people excited and signed up!
 
 Every time he finished a chapter he sent it out to all pre-order customers. And they could review it again in google docs.
 
+[Trello]() for ideas and workflow with companies eg [https://www.designjoy.co/](https://www.designjoy.co/)
+
+[https://www.typeform.com/](https://www.typeform.com/) Forms
+
+
+
+## What not to do
+
+Like programming I endeavour to learn from the best, and not make the mistakes everyone else has made. I am making those mistakes, but perhaps recovering more quickly as I realise that signs such as:
+
+- Don't build a POC (Proof of Concept) and assume your customers will just come!
+- Get out of the building (and talk to customers)
+- Look after customers
+- Be customer driven
+- Do research but get on with it asap
+- Just Ship It
