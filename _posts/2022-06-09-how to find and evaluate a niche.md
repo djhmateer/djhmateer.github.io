@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: Updating Open Visual Studio utility to .NET 6 
+title: Find and Validate Niches for a Self Funded Company 
 # description: A small utility which opens visual studio from the command shell looking for a `.sln` file in the current directory. Updating to .NET6
 menu: review
 categories: business
@@ -16,14 +16,14 @@ Idea Validation so that...
 
 I can start a self-funded/bootstrapped software company, which can lead to proper income. ie a cash-machine
 
-[The Ladders of Wealth Creation](https://nathanbarry.com/wealth-creation/) is a journey I'm on from employee, own service business, productised service with fixed price, recurring montly billing.. and towards selling products.
+[The Ladders of Wealth Creation](https://nathanbarry.com/wealth-creation/) is a journey I'm on from employee, own service business, productised service with fixed price, recurring monthly billing.. and towards selling products.
 
 
 > Find a small group of people and make them amazingly happy and you will make money.
 
 Great... but show me a repeatable process of how to narrow down on markets where I may find a niche 
 
-> Practise is everything... always keep shipping... and fail fast! Then do again.
+> Practice is everything... always keep shipping... and fail fast! Then do again.
 
 These are all great pieces of advice.. but the subtext is much harder.. about marketing too and getting good at that. So perhaps ship, market, fail fast!
 
@@ -32,7 +32,7 @@ I find choosing and evaluating niches to be the hardest part of bootstrapping/en
 
 Common mistakes developer bootstrapper entrepreneurs make (and I've done them all)
 
-- Starting with our own list of 'product ideas' (this isn't necessarly bad, but its about our customers not us)
+- Starting with our own list of 'product ideas' (this isn't necessarily bad, but its about our customers not us)
 - Just start to code up a proof of concepts without any forethought for market, marketing, product market fit
 - Reading all the books and getting disheartened
 - Writing blog articles and not following though (writing methods really helps me though to condense my thinking)
@@ -49,7 +49,7 @@ Becoming a student of a business ie reading books, talking to others is all an i
 
 As of 9th June 2022 I've got 125 unpublished blog articles. This is crazy! But I'm not worried as I like writing, and the focus at the moment is on evaluating a niche for making money. 
 
-Writing blog articles is cathartic, cements knowledge, is a wondering resource to look back on, and is my way of becoming calm about a subject which is overwhelming.
+Writing blog articles is cathartic, cements knowledge, is a wonderful resource to look back on, and is my way of becoming calm about a subject which is overwhelming.
 
 Like Making Money.
 
@@ -63,7 +63,7 @@ Like Making Money.
 
 [The Minimalist Entrepreneur: How great founders do more with less](https://www.amazon.co.uk/Minimalist-Entrepreneur-Great-Founders-More/dp/034943140X) Sahil Lavingia founder of Gumroad. [My blog review - unpublished](/2022/01/06/minimalist-entrepreneur)
 
-[Video - Jason Cohen WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) 2013. Predictable acquision of customers, of recurring revenue, with annual prepay, in a good market, creates a cash machine
+[Video - Jason Cohen WP Engine](https://www.youtube.com/watch?v=otbnC2zE2rw&t=3188s) 2013. Predictable acquisition of customers, of recurring revenue, with annual prepay, in a good market, creates a cash machine
 
 [Video - Rob Walling 2014 on Drip getting to $7k](https://www.youtube.com/watch?v=GLay7kksLtc) What this video is good at, is coming up with a strategy for the initial part of the SaaS based entprepreneurial process:
 
@@ -89,13 +89,16 @@ So now we have a way to write and be transparent (blogging / writing), where sho
 
 > Build something people want
 
+So they say
+
+> Shut up and take my money!
+
 and make sure the structure of that product fits a small company ie low time input
 
 From [The stairstep approach to bootstrapping](https://robwalling.com/2015/03/26/the-stairstep-approach-to-bootstrapping/) he advises to
 
 - Start very small and ship it. Simple product and simple marketing plan.
 - Maybe sell an addon to an existing ecosystem eg WordPress, Shopify App, Heroku add-on.. built in discovery through app store. Dupal, Photoshop, WordPress theme, ebook or a course. [SaaS Marketplaces](https://rocketgems.com/blog/saas-marketplaces/)
-
 
 From [Rob's book]():
 
@@ -122,10 +125,7 @@ From [Shails book]():
 - When am I most myself
 - who do I hang out with 
 
-
 See what people are complaining about - and research these 'competitors' to see how much revenue they generate.
-
-
 
 ## Idea Generation Articles 
 
@@ -136,8 +136,14 @@ This was nice as it promoted: walking, coming up with 10 ideas per day, talking 
 [https://www.shopify.co.uk/blog/product-ideas](https://www.shopify.co.uk/blog/product-ideas)
 
 
+## Analyze Existing Businesses and Markets
 
-## Analyze Existing Businesses
+I want to find a niche in a good market so I can create a cash machine.
+
+>  Predictable acquisition of customers, of recurring revenue, with annual prepay, in a good market, creates a cash machine
+
+
+
 
 ## Concrete Examples
 
