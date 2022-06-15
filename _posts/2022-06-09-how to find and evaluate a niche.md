@@ -71,6 +71,8 @@ Like Making Money.
 
 [https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi](https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi) 11 vidoes including the 2 above
 
+[https://www.startupsfortherestofus.com/episodes/episode-589-finding-a-saas-idea-through-70-cold-calls](https://www.startupsfortherestofus.com/episodes/episode-589-finding-a-saas-idea-through-70-cold-calls) story about senior place. He did a lot of research beforehand. Calling 80 different customers over many months. Asking about them and their day to day problems. Eventually pivoted to senior placements. Got 5 customers paying before any code was written.
+
 ## Values
 
 [https://hotjar.atlassian.net/wiki/spaces/REC/pages/269942884/Hotjar+Core+Values](https://hotjar.atlassian.net/wiki/spaces/REC/pages/269942884/Hotjar+Core+Values) inspired from hotjar on the podcast [StartupsForTheRestOfUs with David Darmanin](https://www.startupsfortherestofus.com/episodes/episode-603-bootstrapping-hotjar-to-40m-arr-using-d2c-marketing)
@@ -94,6 +96,31 @@ So they say
 > Shut up and take my money!
 
 and make sure the structure of that product fits a small company ie low time input
+
+From the research on where startup ideas came from:
+
+- Problem I was experiencing 44%?
+- Problem my customer was experiencing 30%?
+- Friend or relative less
+- Research much less
+
+Commonality is to reach out personally to many customers before building the product. Husstle.
+
+- Listen to them talk about themselves and what they do day to day 
+- Lean to see if can write software to help
+- Take lots of notes
+
+To see if there is a need (or are there well funded incumbents there already which customers have signed up to)
+
+This really is validating before building anything.
+
+Then do mock ups of proposed software
+
+Then ask 5 people or more to buy it (3 months subscription) for a 20% discount for life.
+
+
+
+
 
 From [The stairstep approach to bootstrapping](https://robwalling.com/2015/03/26/the-stairstep-approach-to-bootstrapping/) he advises to
 
@@ -171,8 +198,6 @@ Is there demand?
  competitors
  reddit / stackexchange - niche forums
  
-
-
 Is this a smart niche to be in?
 
 - Describe value (ie what problems does it solve)
