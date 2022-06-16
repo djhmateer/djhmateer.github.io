@@ -119,8 +119,7 @@ Then do mock ups of proposed software
 Then ask 5 people or more to buy it (3 months subscription) for a 20% discount for life.
 
 
-
-
+### Books
 
 From [The stairstep approach to bootstrapping](https://robwalling.com/2015/03/26/the-stairstep-approach-to-bootstrapping/) he advises to
 
@@ -170,13 +169,11 @@ I want to find a niche in a good market so I can create a cash machine.
 >  Predictable acquisition of customers, of recurring revenue, with annual prepay, in a good market, creates a cash machine
 
 
-
-
 ## Concrete Examples
 
 So here are a my current list of niches and problems which haven't been validated yet. I've put my favourites at the top, purely based on gut:
 
-- Write a techcnial pdf/book on dot net examples. Customer: dotnet developers. Problem it solves: lack of worked proper examples. A great starting point for applications. Learn from the best in the business. 
+- Write a technical pdf/book on dot net examples. Customer: dotnet developers. Problem it solves: lack of worked proper examples. A great starting point for applications. Learn from the best in the business. 
 
 - Broken Link Checker. Customer: bloggers, webmasters. Problem it solves: Fixing up site and saying what is wrong.
 
@@ -187,6 +184,23 @@ So here are a my current list of niches and problems which haven't been validate
 - Traffic calming solution in my village. Customer: Parish Council, Problem it sovles: Calms Traffic, Software
 
 and some other ideas:
+
+
+## Evaluate - get out the building and talk to people!
+
+- Rob Walling (Drip)
+- Jason Cohen (WPEngine)
+- Jason Buckingham (Senior Place)
+
+Rob Walling put out this email when researching drip to his friends and acquaintances:
+
+[![alt text](/assets/2022-06-10/rob.jpg "desktop")](/assets/2022-06-10/rob.jpg)
+
+then a follow up email was something like this:
+
+[![alt text](/assets/2022-06-10/rob2.jpg "desktop")](/assets/2022-06-10/rob2.jpg)
+
+and Jason Cohen did something similar for WP Engine:
 
 
 ## Evaluate / Validate in the market
@@ -218,18 +232,6 @@ Is this on the [stairstep approach](https://robwalling.com/2015/03/26/the-stairs
  - SEO, write copy
 
 [https://www.indiehackers.com/group/ideas-and-validation](https://www.indiehackers.com/group/ideas-and-validation)
-
-## Evaluate - get out the building and talk to people!
-
-Rob Walling put out this email when researching drip to his friends and acquaintances:
-
-[![alt text](/assets/2022-06-10/rob.jpg "desktop")](/assets/2022-06-10/rob.jpg)
-
-then a follow up email was something like this:
-
-[![alt text](/assets/2022-06-10/rob2.jpg "desktop")](/assets/2022-06-10/rob2.jpg)
-
-and Jason Cohen did something similar for WP Engine:
 
 
 
