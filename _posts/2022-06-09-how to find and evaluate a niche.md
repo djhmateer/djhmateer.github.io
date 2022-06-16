@@ -118,6 +118,14 @@ Then do mock ups of proposed software
 
 Then ask 5 people or more to buy it (3 months subscription) for a 20% discount for life.
 
+### Ideal Markets
+
+Should be
+
+- B2B
+- Big enough so first 150 customers ie 10k MRR is attainable
+- Something I know about / connected with
+- Something I enjoy ie people, technology
 
 ### Books
 
