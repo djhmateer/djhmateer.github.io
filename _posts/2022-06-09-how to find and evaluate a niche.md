@@ -18,7 +18,6 @@ I can start a self-funded/bootstrapped software company, which can lead to prope
 
 [The Ladders of Wealth Creation](https://nathanbarry.com/wealth-creation/) is a journey I'm on from employee, own service business, productised service with fixed price, recurring monthly billing.. and towards selling products.
 
-
 > Find a small group of people and make them amazingly happy and you will make money.
 
 Great... but show me a repeatable process of how to narrow down on markets where I may find a niche 
@@ -210,7 +209,6 @@ then a follow up email was something like this:
 
 and Jason Cohen did something similar for WP Engine:
 
-
 ## Evaluate / Validate in the market
 
 [Market testing and validation - IH](https://www.indiehackers.com/post/validate-your-product-19-market-testing-and-market-validation-tactics-plus-7-tools-for-validating-df82ddf259) - an excellent article.
@@ -242,8 +240,6 @@ Is this on the [stairstep approach](https://robwalling.com/2015/03/26/the-stairs
 [https://www.indiehackers.com/group/ideas-and-validation](https://www.indiehackers.com/group/ideas-and-validation)
 
 
-
-
 ## Appendix ie What to Do Next
 
 find a mentor or 2
@@ -252,8 +248,6 @@ join communities eg
 [https://microconf.com/](https://microconf.com/) slack
 
 [https://www.indiehackers.com/](https://www.indiehackers.com/)
-
-
 
 
 ## Doing
