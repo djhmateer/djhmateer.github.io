@@ -36,12 +36,63 @@ This allows me to read and write to the shared folder on the google drive accoun
 
 ie I can see a shared folder_id I can then write inside that folder.
 
+## 15GB Limit on Service Account
+
+This came as a surprise that
+
+> Storage is counted against the person who uploaded the file, not the owner of the folder.
+
+So the shared folder (which has 100GB of space in it's quota) suddenly got errors:
+
+> The user's Drive storage quota has been exceeded
+
+It was the service accounts free 15GB of storage which had been exceeded.
+
+[https://stackoverflow.com/a/68313988/26086](https://stackoverflow.com/a/68313988/26086)
+
 
 ## Code 
 
 [https://developers.google.com/drive/api/guides/manage-uploads](https://developers.google.com/drive/api/guides/manage-uploads)
 
+[https://github.com/djhmateer/auto-archiver/blob/main/dm_drive2.py](https://github.com/djhmateer/auto-archiver/blob/main/dm_drive2.py)
+
+
+
 ```py
+from google.oauth2 import service_account
+
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+def main():
+    # SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+    SCOPES = ['https://www.googleapis.com/auth/drive']
+
+    creds = service_account.Credentials.from_service_account_file('service_account.json', scopes=SCOPES)
+        
+    try:
+        service = build('drive', 'v3', credentials=creds)
+
+        # Call the Drive v3 API
+        results = service.files().list().execute()
+        items = results.get('files', [])
+
+        if not items:
+            print('No files found.')
+            return
+
+        print('Files:')
+        for item in items:
+            print(u'{0} ({1})'.format(item['name'], item['id']))
+        
+    except HttpError as error:
+        # TODO(developer) - Handle errors from drive API.
+        print(f'An error occurred: {error}')
+
+
+if __name__ == '__main__':
+    main()
 ```
 
 [https://github.com/googleworkspace/python-samples/blob/master/drive/quickstart/quickstart.py](https://github.com/googleworkspace/python-samples/blob/master/drive/quickstart/quickstart.py) Samples
