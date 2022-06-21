@@ -15,13 +15,17 @@ image: /assets/2022-04-13/sc.jpg
 
 I'm working on [auto-archiver](https://github.com/bellingcat/auto-archiver) which is written in Python.
 
-Currently the cloud storage used is Digital Ocean Spaces. I'm putting in a feature flag to use Google Drive instead.
+Currently the cloud storage used is Digital Ocean Spaces. I've written a Google Drive implementation 
 
-Secrets are held in the `.env` file
-
-They use Google Speadsheets already in the application which necessitates Google Drive API access . [See 1. Getting API access to the sheet](/2022/03/16/python-bellingcat-auto-archiver)
+They use Google Spreadsheets already in the application which necessitates Google Drive API access . [See 1. Getting API access to the sheet](/2022/03/16/python-bellingcat-auto-archiver#1-getting-api-access-to-the-google-sheet) so we have a `service_account.json` file there already.
 
 ## Google Drive using Service Account
+
+Google Drive API access is already granted to the service account:
+
+[https://console.cloud.google.com/](https://console.cloud.google.com/) Google Developers Console, API's, Credentials
+
+then
 
 [https://developers.google.com/drive/api/quickstart/python](https://developers.google.com/drive/api/quickstart/python)
 
@@ -50,13 +54,36 @@ It was the service accounts free 15GB of storage which had been exceeded.
 
 [https://stackoverflow.com/a/68313988/26086](https://stackoverflow.com/a/68313988/26086)
 
+## API Key
+
+[![alt text](/assets/2022-04-28/apikey.jpg "desktop")](/assets/2022-04-28/apikey.jpg)
+
+[https://developers.google.com/drive/api/v3/reference/about/get](https://developers.google.com/drive/api/v3/reference/about/get) About: get
+
+I created an API key yet couldn't get it to authorize:
+
+```bash
+curl \
+  'https://www.googleapis.com/drive/v3/about?key=[YOUR_API_KEY]' \
+  --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
+  --header 'Accept: application/json' \
+  --compressed
+```
+
+Mainly as I couldn't get an access token (am not using OAuth2)
+
+## Service Account
+
+
+
 
 ## Code 
+
+[https://developers.google.com/drive/api/quickstart/python](https://developers.google.com/drive/api/quickstart/python) Google Drive for Developers Drive API - Python.
 
 [https://developers.google.com/drive/api/guides/manage-uploads](https://developers.google.com/drive/api/guides/manage-uploads)
 
 [https://github.com/djhmateer/auto-archiver/blob/main/dm_drive2.py](https://github.com/djhmateer/auto-archiver/blob/main/dm_drive2.py)
-
 
 
 ```py
@@ -94,6 +121,8 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+Prints file names and ID's of everything that is shared with this service account. It produces a flat list so files in subdirectories will be listed.
 
 [https://github.com/googleworkspace/python-samples/blob/master/drive/quickstart/quickstart.py](https://github.com/googleworkspace/python-samples/blob/master/drive/quickstart/quickstart.py) Samples
 

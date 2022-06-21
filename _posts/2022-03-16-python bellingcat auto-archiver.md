@@ -202,7 +202,7 @@ The archiver needs access to a Google Sheet to get the URL to process.
 
 Setting
 
-After getting a json key
+After getting a json key which is saved as `service_account.json`
 
 Share sheet with the client_email in downloaded file.
 
