@@ -15,7 +15,7 @@ image: /assets/2022-04-13/sc.jpg
 
 I'm working on [auto-archiver](https://github.com/bellingcat/auto-archiver) which is written in Python.  [Getting API access to a Google Sheet](/2022/03/16/python-bellingcat-auto-archiver#1-getting-api-access-to-the-google-sheet) describes how we can get a `Service Account` setup to read and write to the sheet. 
 
-## Google Drive using Service Account
+## 1. Service Account
 
 [https://blog.benjames.io/2020/09/13/authorise-your-python-google-drive-api-the-easy-way/](https://blog.benjames.io/2020/09/13/authorise-your-python-google-drive-api-the-easy-way/)
 
@@ -74,7 +74,7 @@ It was the service accounts free 15GB of storage which had been exceeded.
 I would like the target shared folder's owner to become the owner of the files I'm uploading. This is tricky. So lets see what using an OAuth client ID can do
 
 
-## OAuth
+## 2. OAuth
 
 [https://developers.google.com/drive/api/quickstart/python](https://developers.google.com/drive/api/quickstart/python) The quickstart for the API guides you down the OAuth route (and not the service account)
 
@@ -188,7 +188,7 @@ if __name__ == '__main__':
 
 Then success, the app displayed the files in greenbranflakes@gmail.com drive.
 
-Running again and we're not prompted to login again as the `token.json` is saved on the filesystem. Interestingly I got 1 hour on the refresh token. What happens after this hour?
+Running again and we're not prompted to login again as the `token.json` is saved on the filesystem.
 
 ## Upload files to own Drive
 
@@ -242,6 +242,37 @@ So the app is working but I believe the refresh_token will stop working in 7 day
 - Publishing Status: Go from Testing to Published
 
 
+## Google Workspace User
+
+[https://workspace.google.com/intl/en_uk/pricing.html](https://workspace.google.com/intl/en_uk/pricing.html) this gives 30GB cloud storage, and custom email. This is what I use for my company specifically for email: dave@hmsoftware.co.uk
+
+Workspace can buy storage from One below:
+
+
+[https://one.google.com/storage](https://one.google.com/storage) This is Google One where my davemateeer@gmail.com email gets 100GB of storage (I used it to store all my photos and backup from iPhone) at £1.59 per month.
+
+
+[https://console.cloud.google.com/](https://console.cloud.google.com/) lets create the project and enable the API for dave@hmsoftware.co.uk
+
+[https://developers.google.com/drive/api/quickstart/python](https://developers.google.com/drive/api/quickstart/python) this Drive API quickstart is a good place.
+
+- Create new project - Auto Archiver HMS
+- Enable: Google Drive API
+
+OAuth consent screen, User Type: Internal 
+
+Credentials, Create OAuth
+
+`client_secret.json` or `credentials.json` which is what Python code calls it.
+
+This is working now - I'm using the old service account to talk to the spreadsheet, and the new OAuth Google Workspace account to talk to the Drive.
+
+
+But who knows how long the `refresh_token` in `token.json` will work for? [https://stackoverflow.com/questions/66058279/token-has-been-expired-or-revoked-google-oauth2-refresh-token-gets-expired-i?noredirect=1&lq=1](https://stackoverflow.com/questions/66058279/token-has-been-expired-or-revoked-google-oauth2-refresh-token-gets-expired-i?noredirect=1&lq=1) the inference is that External and published Testing, has 7 days. And no mention on Internal token.
+
+
+
+[https://support.google.com/cloud/answer/10311615#user-type](https://support.google.com/cloud/answer/10311615#user-type) User Type Internal/External and Publishing status Testing / In proudction
 
 
 

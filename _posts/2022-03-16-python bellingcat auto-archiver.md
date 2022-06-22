@@ -699,9 +699,11 @@ can't do muliple videos?
 
 ## Telegram
 
-Telethon is a telegram client. App tries telethon first
+Telethon is a telegram client. App tries telethon 
 
-Telethon -needs an API Key otherwirse prompts to enter phone number or key on command line
+Telethon - needs an API Key otherwise prompts to enter phone number or key on command line
+
+`anon.session` is written to the filesystem
 
 ## Facebook
 
