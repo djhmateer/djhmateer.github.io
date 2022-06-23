@@ -15,6 +15,11 @@ image: /assets/2022-04-13/sc.jpg
 
 I'm working on [auto-archiver](https://github.com/bellingcat/auto-archiver) which is written in Python.  [Getting API access to a Google Sheet](/2022/03/16/python-bellingcat-auto-archiver#1-getting-api-access-to-the-google-sheet) describes how we can get a `Service Account` setup to read and write to the sheet. 
 
+Lets look at connecting to Google Drive via
+
+- Service Account (as I do with Google Sheet) - didn't use this at 15GB upload limit and file ownership problems
+- OAuth2 - using this but issue with refresh tokens expiring after 1 week (for non Workspace account)
+
 ## 1. Service Account
 
 [https://blog.benjames.io/2020/09/13/authorise-your-python-google-drive-api-the-easy-way/](https://blog.benjames.io/2020/09/13/authorise-your-python-google-drive-api-the-easy-way/)
@@ -74,7 +79,7 @@ It was the service accounts free 15GB of storage which had been exceeded.
 I would like the target shared folder's owner to become the owner of the files I'm uploading. This is tricky. So lets see what using an OAuth client ID can do
 
 
-## 2. OAuth
+## 2. OAuth with Publish Status Testing and External non Workspace User 
 
 [https://developers.google.com/drive/api/quickstart/python](https://developers.google.com/drive/api/quickstart/python) The quickstart for the API guides you down the OAuth route (and not the service account)
 
@@ -85,8 +90,10 @@ I would like the target shared folder's owner to become the owner of the files I
 
 Need to do this before creating the OAuthID
 
-- Internal. Only for Google Workspace customers. Only available to users withing your org. Don't need to submit app for verification
+- Internal. Only for Google Workspace customers. Only available to users within your org. Don't need to submit app for verification
 - External. App will start in testing mode, and only available to users you add to the list of test users.
+
+[![alt text](/assets/2022-04-28/external.jpg "desktop"){:width="400px"}](/assets/2022-04-28/external.jpg)
 
 Select External, add a Title (Auto-Archiver) and email address of contact and dev (davemateer@gmail.com)
 
@@ -110,7 +117,7 @@ This is restricted to the test user added above.
 
 [https://developers.google.com/drive/api/quickstart/python](https://developers.google.com/drive/api/quickstart/python) from code in here
 
-`token.json` stores te user's access `token` and `refresh_token` and also includes the `client_id` and `client_secret`
+`token.json` stores the user's access `token` and `refresh_token` and also includes the `client_id` and `client_secret`
 
 There is an expiry which is 1 hour, but this is not the refresh_token expiry
 
@@ -118,11 +125,11 @@ There is an expiry which is 1 hour, but this is not the refresh_token expiry
 
 First time through logging in as greenbranflakes@gmail.com I got (I'm logged in with multiple gmail accounts so had to choose)
 
-[![alt text](/assets/2022-04-28/warn.jpg "desktop")](/assets/2022-04-28/warn.jpg)
+[![alt text](/assets/2022-04-28/warn.jpg "desktop"){:width="400px"}](/assets/2022-04-28/warn.jpg)
 
 then
 
-[![alt text](/assets/2022-04-28/access.jpg "desktop")](/assets/2022-04-28/access.jpg)
+[![alt text](/assets/2022-04-28/access.jpg "desktop"){:width="400px"}](/assets/2022-04-28/access.jpg)
 
 Notice the scope we had passed in via code:
 
@@ -234,15 +241,12 @@ Looks like can only get a 1 week `refresh_token` this way for 'testing' apps bef
 
 [https://stackoverflow.com/questions/66058279/token-has-been-expired-or-revoked-google-oauth2-refresh-token-gets-expired-i?noredirect=1&lq=1](https://stackoverflow.com/questions/66058279/token-has-been-expired-or-revoked-google-oauth2-refresh-token-gets-expired-i?noredirect=1&lq=1)
 
-## 1 Week Refresh Token
-
-So the app is working but I believe the refresh_token will stop working in 7 days. To get around this:
 
 - Use a paid Google Workspace account (rather than standard gmail) and make OAuth consent screen, User Type: `Internal`
-- Publishing Status: Go from Testing to Published
+- Publishing Status: Go from Testing to Published - but Google has to approve it?
 
 
-## Google Workspace User
+## 3. OAuth2 with Google Workspace User (paid)
 
 [https://workspace.google.com/intl/en_uk/pricing.html](https://workspace.google.com/intl/en_uk/pricing.html) this gives 30GB cloud storage, and custom email. This is what I use for my company specifically for email: dave@hmsoftware.co.uk
 
@@ -258,6 +262,8 @@ Workspace can buy storage from One below:
 
 - Create new project - Auto Archiver HMS
 - Enable: Google Drive API
+
+[![alt text](/assets/2022-04-28/internal.jpg "desktop"){:width="400px"}](/assets/2022-04-28/internal.jpg)
 
 OAuth consent screen, User Type: Internal 
 
@@ -275,8 +281,20 @@ But who knows how long the `refresh_token` in `token.json` will work for? [https
 [https://support.google.com/cloud/answer/10311615#user-type](https://support.google.com/cloud/answer/10311615#user-type) User Type Internal/External and Publishing status Testing / In proudction
 
 
+## 4. OAuth with Publish Status Published and External non Workspace User 
 
+[![alt text](/assets/2022-04-28/publish.jpg "desktop"){:width="400px"}](/assets/2022-04-28/publish.jpg)
 
+then
+
+[![alt text](/assets/2022-04-28/push.jpg "desktop"){:width="400px"}](/assets/2022-04-28/push.jpg)
+then
+
+[![alt text](/assets/2022-04-28/published.jpg "desktop"){:width="400px"}](/assets/2022-04-28/published.jpg)
+
+Well..will this work after 1 week?
+
+[![alt text](/assets/2022-04-28/notverified.jpg "desktop"){:width="400px"}](/assets/2022-04-28/notverified.jpg)
 
 ## Appendix
 
