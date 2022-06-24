@@ -18,7 +18,9 @@ I'm working on [auto-archiver](https://github.com/bellingcat/auto-archiver) whic
 Lets look at connecting to Google Drive via
 
 - Service Account (as I do with Google Sheet) - didn't use this at 15GB upload limit and file ownership problems
-- OAuth2 - using this but issue with refresh tokens expiring after 1 week (for non Workspace account)
+- OAuth2 - Publish Status Testing non Workspace account (ie external), tokens expire after 1 week
+- OAuth2 - Publish Status Testing, Workspace account (ie internal), tokens expire after ?
+- OAuth2 - Publish Status Published, non Workspace account (ie external) tokens expire after ?
 
 ## 1. Service Account
 
@@ -295,6 +297,9 @@ then
 Well..will this work after 1 week?
 
 [![alt text](/assets/2022-04-28/notverified.jpg "desktop"){:width="400px"}](/assets/2022-04-28/notverified.jpg)
+
+This is looking promising. I don't mind about the warning from Google as I'm the only person using the service.
+
 
 ## Appendix
 
