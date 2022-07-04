@@ -36,12 +36,27 @@ I found that a screenful of files worked and any more could be problematic and s
 
 Filter was `owner:me` and transferring to another user.
 
+## Filtering
+
+Google drive filtering is very powerful - there is a pop up icon, or you can put in commands in the search box eg:
+
+```bash
+
+# only this user
+owner:autoarchiverservice@auto-archiver-344412.iam.gserviceaccount.com
+
+# only this user
+owner:autoarchiverb@auto-archiver-344412.iam.gserviceaccount.com
+
+# not this user and not this other user
+-owner:autoarchiverservice@auto-archiver-344412.iam.gserviceaccount.com -owner:autoarchiverb@auto-archiver-344412.iam.gserviceaccount.com
+```
 
 ## Sorry, you have exceeded your sharing quota
 
 On the receiving users end they got this message after around 50 files received.
 
-Wait 24hs to see what happens.
+Wait 24hs to see what happens. After a few days I was able to transfer 600 files to a new ownership.
 
 ## Another solution
 
