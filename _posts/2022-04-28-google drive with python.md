@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Google Drive with Python 
-# description: A small utility which opens visual studio from the command shell looking for a `.sln` file in the current directory. Updating to .NET6
-menu: review
+description: Connecting to the Drive API using Python. Service account limitations, and OAuth2 token exploration.
+#menu: review
 categories: Google
 published: true 
 comments: false     
 # sitemap: true
-image: /assets/2022-04-13/sc.jpg
+image: /assets/2022-04-28/share.jpg
 ---
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->
@@ -146,36 +146,52 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+from googleapiclient.http import MediaFileUpload
+
 # If modifying these scopes, delete the file token.json.
-SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+SCOPES = ['https://www.googleapis.com/auth/drive']
 
 
 def main():
     """Shows basic usage of the Drive v3 API.
     Prints the names and ids of the first 10 files the user has access to.
     """
+    token_file = 'gd-token.json'
+
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    if os.path.exists(token_file):
+        creds = Credentials.from_authorized_user_file(token_file, SCOPES)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
+            print('Requesting new token')
             creds.refresh(Request())
         else:
+            print('First run through so putting up login dialog')
+            # credentials.json downloaded from https://console.cloud.google.com/apis/credentials
             flow = InstalledAppFlow.from_client_secrets_file(
                 'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('token.json', 'w') as token:
+        with open(token_file, 'w') as token:
+            print('Saving new token')
+            print('')
             token.write(creds.to_json())
+    else:
+        print('Token valid')
 
     try:
         service = build('drive', 'v3', credentials=creds)
 
-        # Call the Drive v3 API
+        # 0. About the user
+        results = service.about().get(fields="*").execute()
+        emailAddress = results['user']['emailAddress']
+        print(emailAddress)
+
+        # 1. Call the Drive v3 API
         results = service.files().list(
             pageSize=10, fields="nextPageToken, files(id, name)").execute()
         items = results.get('files', [])
@@ -186,10 +202,10 @@ def main():
         print('Files:')
         for item in items:
             print(u'{0} ({1})'.format(item['name'], item['id']))
+
     except HttpError as error:
         # TODO(developer) - Handle errors from drive API.
         print(f'An error occurred: {error}')
-
 
 if __name__ == '__main__':
     main()
@@ -198,6 +214,58 @@ if __name__ == '__main__':
 Then success, the app displayed the files in greenbranflakes@gmail.com drive.
 
 Running again and we're not prompted to login again as the `token.json` is saved on the filesystem.
+
+
+## Tokens
+
+I've got a cron job running every minute on a server which may need to upload files using the above method.
+
+Once logged in, and the token copied to the server, how can I deal with the `refresh_token` which I believe expires after 1 week. Yes it did - 
+
+> Token has been expired or revoked
+
+[https://stackoverflow.com/questions/19766912/how-do-i-authorise-an-app-web-or-installed-without-user-intervention/55164583#55164583](https://stackoverflow.com/questions/19766912/how-do-i-authorise-an-app-web-or-installed-without-user-intervention/55164583#55164583) - good talk in the comments about refresh tokens. The strategies here do what the Python API does and generates a refresh_token so I believe we don't need to use this?
+
+Looks like can only get a 1 week `refresh_token` this way for 'testing' apps before having to go through the consent process again.
+
+[https://stackoverflow.com/questions/66058279/token-has-been-expired-or-revoked-google-oauth2-refresh-token-gets-expired-i?noredirect=1&lq=1](https://stackoverflow.com/questions/66058279/token-has-been-expired-or-revoked-google-oauth2-refresh-token-gets-expired-i?noredirect=1&lq=1)
+
+- Use a paid Google Workspace account (rather than standard gmail) and make OAuth consent screen, User Type: `Internal`.. see all below
+- Publishing Status: Go from Testing to Published - but Google has to approve it?... see all below.
+
+`client_secret.json` downloaded from console.cloud.google.com
+
+```json
+{
+	"installed": {
+		"client_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
+		"project_id": "auto-archiver-1111111",
+		"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+		"token_uri": "https://oauth2.googleapis.com/token",
+		"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+		"client_secret": "xxxxxxx-xxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxx",
+		"redirect_uris": [
+			"http://localhost"
+		]
+	}
+}
+```
+Here is an example of a generated `token.json` after run through the process in [https://developers.google.com/drive/api/quickstart/python](https://developers.google.com/drive/api/quickstart/python)
+
+```json
+{
+	"token": "ya29.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", // refreshed every hour
+	"refresh_token": "1//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", // stays the same
+	"token_uri": "https://oauth2.googleapis.com/token",
+    
+	"client_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com", // OAuth Client ID from console.cloud.google.com (from client_secret.json)
+	"client_secret": "xxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxx", // OAuth Client secret from console.cloud.google.com (from client_secret.json)
+	"scopes": [
+		"https://www.googleapis.com/auth/drive"
+	],
+	"expiry": "2022-06-30T10:11:19.033586Z" // Zulu or GMT time. -1 hour in British Summer time. When the token expires (every hour)
+}
+```
 
 ## Upload files to own Drive
 
@@ -230,23 +298,6 @@ file = service.files().create(body=file_metadata,
 ```
 
 [https://github.com/djhmateer/auto-archiver/blob/main/dm_drive3_upload.py](https://github.com/djhmateer/auto-archiver/blob/main/dm_drive3_upload.py) has good samples on how to do different actions
-
-## Refresh Tokens
-
-I've got a cron job running every minute on a server which may need to upload files using the above method.
-
-Once logged in, and the token copied to the server, how can I deal with the `refresh_token` which I believe expires after 1 week.
-
-[https://stackoverflow.com/questions/19766912/how-do-i-authorise-an-app-web-or-installed-without-user-intervention/55164583#55164583](https://stackoverflow.com/questions/19766912/how-do-i-authorise-an-app-web-or-installed-without-user-intervention/55164583#55164583) - good talk in the comments about refresh tokens. The strategies here do what the Python API does and generates a refresh_token so I believe we don't need to use this?
-
-Looks like can only get a 1 week `refresh_token` this way for 'testing' apps before having to go through the consent process again.
-
-[https://stackoverflow.com/questions/66058279/token-has-been-expired-or-revoked-google-oauth2-refresh-token-gets-expired-i?noredirect=1&lq=1](https://stackoverflow.com/questions/66058279/token-has-been-expired-or-revoked-google-oauth2-refresh-token-gets-expired-i?noredirect=1&lq=1)
-
-
-- Use a paid Google Workspace account (rather than standard gmail) and make OAuth consent screen, User Type: `Internal`
-- Publishing Status: Go from Testing to Published - but Google has to approve it?
-
 
 ## 3. OAuth2 with Google Workspace User (paid)
 
