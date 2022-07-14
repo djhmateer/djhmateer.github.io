@@ -44,14 +44,6 @@ Becoming a student of a business ie reading books, talking to others is all an i
 
 > The joy of finding things out - Richard Feynman
 
-## Blogging
-
-As of 9th June 2022 I've got 125 unpublished blog articles. This is crazy! But I'm not worried as I like writing, and the focus at the moment is on evaluating a niche for making money. 
-
-Writing blog articles is cathartic, cements knowledge, is a wonderful resource to look back on, and is my way of becoming calm about a subject which is overwhelming.
-
-Like Making Money.
-
 ## Influential Books and Videos
 
 [Make: Bootstrappers Handbook now called: The Indie Maker Handbook](https://readmake.com/) Pieter Levels. Founder of [Nomad List](https://nomadlist.com/), [Remote OK](https://remoteok.com/) words most visited remote work job board. Used to be called [makebook.io]() - serach for this in my email as I bought it.
@@ -71,6 +63,11 @@ Like Making Money.
 [https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi](https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi) 11 vidoes including the 2 above
 
 [https://www.startupsfortherestofus.com/episodes/episode-589-finding-a-saas-idea-through-70-cold-calls](https://www.startupsfortherestofus.com/episodes/episode-589-finding-a-saas-idea-through-70-cold-calls) story about senior place. He did a lot of research beforehand. Calling 80 different customers over many months. Asking about them and their day to day problems. Eventually pivoted to senior placements. Got 5 customers paying before any code was written.
+
+
+[https://www.amazon.co.uk/Jobs-Be-Done-Playbook-Organization/dp/1933820683](https://www.amazon.co.uk/Jobs-Be-Done-Playbook-Organization/dp/1933820683)
+
+[https://www.indiehackers.com/post/how-to-brainstorm-great-business-ideas-ab51c3d51c](https://www.indiehackers.com/post/how-to-brainstorm-great-business-ideas-ab51c3d51c) IH Post of brainstorming great business ideas
 
 ## Values
 
@@ -125,6 +122,69 @@ Should be
 - Big enough so first 150 customers ie 10k MRR is attainable
 - Something I know about / connected with
 - Something I enjoy ie people, technology
+
+### CS Allen notes
+[How to brainstorm great business ideas](https://www.indiehackers.com/post/how-to-brainstorm-great-business-ideas-ab51c3d51c)
+
+Going through these notes here is a run through of my auto-archiver product
+
+1. Problem first, solution last
+What makes for a good problem?
+- many people have this problem?
+maybe not in the niche of human rights investigators.
+
+-like talking to these people
+ yes!
+
+-identify as a named group eg developers, teachers, nba fans
+human rights investigators, fraud investigators, journalists
+ need to come up with more niches, and find how big these niches are.
+
+-valuable problem 
+https://www.indiehackers.com/post/why-do-some-entrepreneurs-earn-more-than-others-dc81985afd?commentId=-M0t2SddC3EwBGMmLGAO
+people will pay money to solve it.. 
+ good money
+ easier sell!
+ charge more
+
+2. Finding a problem
+ if money is changing hands then it is a valuable problem
+   yes for auto-archiver for CIR
+
+3. Avoid fatal mistakes
+ -start with a solution in mind
+ -ruling out already-solved problems   
+   ie it is a good thing is there is competition
+ -be afraid to solve high value problems
+   $10k per year per customer?
+-not having a specific customer in mind
+
+4. dont skip distribution
+-how am I going to reach my customers
+eg channels
+-seo
+-press
+-content marketing
+-social media
+-sales
+-partnerships
+-ads
+
+first should be direct outreach 1-1 conversations with customers
+  yes!
+
+5. Boring problems, innovative solutions
+ - build from first principles
+ yes
+
+6. Start Small
+ yes
+ can I sell via someone else's distribution channel?
+
+
+
+
+
 
 ### Books
 
@@ -315,3 +375,11 @@ Like programming I endeavour to learn from the best, and not make the mistakes e
 - Be customer driven
 - Do research but get on with it asap
 - Just Ship It
+
+## Blogging
+
+As of 9th June 2022 I've got 125 unpublished blog articles. This is crazy! But I'm not worried as I like writing, and the focus at the moment is on evaluating a niche for making money. 
+
+Writing blog articles is cathartic, cements knowledge, is a wonderful resource to look back on, and is my way of becoming calm about a subject which is overwhelming.
+
+Like Making Money.
