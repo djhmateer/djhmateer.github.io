@@ -3,7 +3,7 @@ layout: post
 # title: Proxmox Beginners Guide
 description: 
 # menu: review
-categories: pho
+categories: php
 published: true 
 comments: false     
 sitemap: true
