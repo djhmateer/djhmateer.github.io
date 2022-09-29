@@ -98,3 +98,13 @@ F5 doesn't seem to start debugging, but the icon does. Error has gone away as I 
 ## PHP Errors
 
 I got enough working to debug my issue. [https://www.cloudways.com/blog/php-debug/](https://www.cloudways.com/blog/php-debug/) contains deeper debugging.
+
+
+## Formatting
+
+```php
+<?php
+echo "hello";
+// apparently best practise to not do a php closing tag anymore
+// end of file
+```

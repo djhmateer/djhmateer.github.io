@@ -62,6 +62,17 @@ Need PHP 7.4 for latest version of PHP drivers for SQL Server. Ubuntu 20.04 is g
 [![alt text](/assets/2022-09-15/pdo.jpg "email")](/assets/2022-09-15/pdo.jpg)
 
 
+## Require or Include for every page
+
+As we're not using the inbuilt
+
+```php
+session_start();
+// usercode eg 101
+ $_SESSION['usercode']=$_POST['usercode'];
+```
+
+
 ### Logout
 
 ## When a cookie expires

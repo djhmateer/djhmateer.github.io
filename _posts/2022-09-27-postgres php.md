@@ -52,7 +52,13 @@ try {
 	$pdo = new PDO('pgsql:host=127.0.0.1;dbname=nasafiremap', $username, $password);
 
 	// $sql = "select * from users;";
+
+	// Very userful for initial connect test
 	$sql = "select version();";
+
+	// useful when in pgadmin 
+	// SELECT current_database();
+
 	// $stmt = $pdo->prepare($sql);
 	$stmt = $pdo->query($sql);
 	$foo = $stmt->fetch();
@@ -85,7 +91,6 @@ try {
 }
 
 echo "outside of try";
-?>
 ```
 
 - PHP silently swallows exceptions unless you turn on error_reporting.
@@ -93,3 +98,11 @@ echo "outside of try";
 
 <!-- [![alt text](/assets/2022-09-22/1.jpg "email")](/assets/2022-09-22/1.jpg) -->
 
+## PSQL
+
+```bash
+sudo -i -u postgres
+psql
+
+SELECT current_database();
+```
