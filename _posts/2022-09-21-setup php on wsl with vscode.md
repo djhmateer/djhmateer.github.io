@@ -100,6 +100,17 @@ F5 doesn't seem to start debugging, but the icon does. Error has gone away as I 
 I got enough working to debug my issue. [https://www.cloudways.com/blog/php-debug/](https://www.cloudways.com/blog/php-debug/) contains deeper debugging.
 
 
+## Logging
+
+[https://www.loggly.com/ultimate-guide/php-logging-basics/](https://www.loggly.com/ultimate-guide/php-logging-basics/)
+
+Rudimentary logging to say the least, but it works out of the box :-)
+
+```php
+// shows up in /var/log/apache2/error.log
+error_log('Your message here');
+```
+
 ## Formatting
 
 ```php
