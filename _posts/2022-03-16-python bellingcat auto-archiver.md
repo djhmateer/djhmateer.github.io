@@ -2,12 +2,12 @@
 layout: post
 title: Python - Bellingcat auto-archiver
 # description: Download vs View a PDF or Image from .NET6 Razor Pages with source code
-menu: review
+# menu: review
 categories: Python
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2022-03-10/view.jpg 
+image: /assets/2022-03-16/38.jpg 
 ---
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->
