@@ -50,6 +50,9 @@ pip install --user pipenv
 # create a new Pipfile and Pipfile.lock if not there
 # otherwise get all dependencies
 pipenv install
+
+# useful to purge the virtual env
+pipenv --rm
 ```
 
 Add a dependency to pipfile eg [https://postmarkapp.com/send-email/python](https://postmarkapp.com/send-email/python) which I use for sending emails
@@ -136,3 +139,25 @@ If you don't see the correct pipenv, close and reopen vscode.
 [![alt text](/assets/2022-10-11/2.jpg "email")](/assets/2022-10-11/2.jpg)
 
 Ready to debug! With all dependencies installed in the pipenv.
+
+## Psycopg2
+
+[https://pypi.org/project/psycopg2-binary/](https://pypi.org/project/psycopg2-binary/)
+
+```txt
+[packages]
+postmarker = "*"
+pandas = "*"
+fiona = "*"
+SQLAlchemy = "*"
+# this fails
+#psycopg2 = "*"
+# workaround
+psycopg2-binary = "*"
+```
+
+I couldn't get the python postgres client to build from source which is advised for production.
+
+So unfortunately I'm using this only in dev, and for prod I'm manually running pip files. [https://github.com/osr4rightstools/osr4rights-tools/blob/main/fire-map-infra/create_firemap_webserver.sh#L188](https://github.com/osr4rightstools/osr4rights-tools/blob/main/fire-map-infra/create_firemap_webserver.sh#L188)
+
+
