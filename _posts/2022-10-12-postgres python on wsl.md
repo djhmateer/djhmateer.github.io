@@ -2,7 +2,7 @@
 layout: post
 # title: MSSQL PHP on WSL setup
 description: 
-# menu: review
+menu: review
 categories: postgres
 published: true 
 comments: false     
@@ -25,6 +25,18 @@ I wanted to get a local version of Python code running against a Postgres db. I 
 
 [https://chloesun.medium.com/set-up-postgresql-on-wsl2-and-connect-to-postgresql-with-pgadmin-on-windows-ca7f0b7f38ab](https://chloesun.medium.com/set-up-postgresql-on-wsl2-and-connect-to-postgresql-with-pgadmin-on-windows-ca7f0b7f38ab)
 
+## Postgres 13
+
+```bash
+sudo apt -y install gnupg2
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+sudo apt update
+sudo apt install postgis postgresql-13-postgis-3 -y
+```
+
+Below would have got 12
+
 ```bash
 sudo apt install postgresql postgresql-contrib
 sudo apt install postgis postgresql-postgis 
@@ -40,13 +52,24 @@ sudo passwd postgres
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD '<new-password>';"
 ```
 
+### Remove a version
+
+[https://askubuntu.com/a/32735/677298](https://askubuntu.com/a/32735/677298)
+
+```bash
+# removes all instances of posgres
+sudo apt-get --purge remove postgresql postgresql-*
+```
+
+## PGAdmin
+
 [![alt text](/assets/2022-10-12/1.jpg "email")](/assets/2022-10-12/1.jpg)
 
 Connect to WSL Postgres from Windows PGAdmin. Use 127.0.0.1 and not localhost to stop errors such as `could not receive data from server: Socket is not connected (0x00002749/10057)`
 
 ## Connect from Python
 
-Remember to update `/etc/postgres/12/main/pg_hba.conf` to allow md5 then restart postgre
+Remember to update `/etc/postgres/12/main/pg_hba.conf` to allow md5 then restart postgres
 
 
 ```txt
@@ -86,4 +109,14 @@ password = 'test'
 
 engine = create_engine('postgresql://postgres:'+password+'@localhost:5432/nasafiremap')
 sql.execute('DROP TABLE IF EXISTS MODIS_C6_1_Global_24h'  , engine)
+```
+
+## Backup and Restore
+
+I run automated build scripts, so a quick win is to simply back the database on the old vm, then restore on the new one. I'm not worried about losing a minutes worth of transactions.
+
+Also a quick win is to backup every night via a cron job.
+
+```bash
+
 ```
