@@ -20,57 +20,30 @@ image: /assets/2022-09-22/1.jpg
 
 <!-- [![alt text](/assets/2022-09-15/cookie.jpg "email")](/assets/2022-09-15/cookie.jpg) -->
 
+## cron daily backup of db
 
-I wanted to get a local version of Python code running against a Postgres db. I use WSL2.
-
-[https://chloesun.medium.com/set-up-postgresql-on-wsl2-and-connect-to-postgresql-with-pgadmin-on-windows-ca7f0b7f38ab](https://chloesun.medium.com/set-up-postgresql-on-wsl2-and-connect-to-postgresql-with-pgadmin-on-windows-ca7f0b7f38ab)
-
-## Postgres 13
+[https://gist.github.com/linuxkathirvel/90771e9d658195fa59e0f0b921f7e22e](https://gist.github.com/linuxkathirvel/90771e9d658195fa59e0f0b921f7e22e) I ended up using this strategy to create a daily backup job.
 
 ```bash
-sudo apt -y install gnupg2
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
-sudo apt update
-sudo apt install postgis postgresql-13-postgis-3 -y
+# /etc/cron.d/postgres-cron-backup
+
+# 1400UTC (1500UK Summer Time). nasa download happens at 0100 and 1300 UTC
+0 14 * * *  dave   /home/dave/source/fire-map-infra/postgres-cron-backup.sh
 ```
 
-Below would have got 12
+then
 
 ```bash
-sudo apt install postgresql postgresql-contrib
-sudo apt install postgis postgresql-postgis 
+#!/bin/bash
+# /home/dave/source/fire-map-infra/postgres-cron-backup.sh
 
-# 12.12
-psql --version
+BACKUP_DIR="/home/dave/"
+FILE_NAME=$BACKUP_DIR`date +%d-%m-%Y-%I-%M-%S-%p`.sql
 
-sudo service postgresql status
-sudo service postgresql start
-
-sudo passwd postgres
-
-sudo -u postgres psql -c "ALTER USER postgres PASSWORD '<new-password>';"
+pg_dump -Fc -U postgres nasafiremap > $FILE_NAME
 ```
 
-### Remove a version
-
-[https://askubuntu.com/a/32735/677298](https://askubuntu.com/a/32735/677298)
-
-```bash
-# removes all instances of posgres
-sudo apt-get --purge remove postgresql postgresql-*
-```
-
-## PGAdmin
-
-[![alt text](/assets/2022-10-12/1.jpg "email")](/assets/2022-10-12/1.jpg)
-
-Connect to WSL Postgres from Windows PGAdmin. Use 127.0.0.1 and not localhost to stop errors such as `could not receive data from server: Socket is not connected (0x00002749/10057)`
-
-## Connect from Python
-
-Remember to update `/etc/postgres/12/main/pg_hba.conf` to allow md5 then restart postgres
-
+As we're not using a password, we need to trust local connections
 
 ```txt
 # /etc/postgres/12/main/pg_hba.conf
@@ -82,10 +55,10 @@ Remember to update `/etc/postgres/12/main/pg_hba.conf` to allow md5 then restart
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
 
 # "local" is for Unix domain socket connections only
-local   all             all                                     md5
+local   all             all                                     trust
 
 # IPv4 local connections:
-host    all             all             127.0.0.1/32            md5
+host    all             all             127.0.0.1/32            trust
 
 # opening up to outside on port 5432
 host    all             all             all                     md5
@@ -100,18 +73,8 @@ host    replication     all             127.0.0.1/32            md5
 host    replication     all             ::1/128                 md5
 ```
 
-Using `import psycopg2` we can do a test
 
-```python
-import psycopg2
-
-password = 'test'
-
-engine = create_engine('postgresql://postgres:'+password+'@localhost:5432/nasafiremap')
-sql.execute('DROP TABLE IF EXISTS MODIS_C6_1_Global_24h'  , engine)
-```
-
-## Backup and Restore
+## old
 
 [https://www.tecmint.com/backup-and-restore-postgresql-database/](https://www.tecmint.com/backup-and-restore-postgresql-database/)
 
@@ -122,11 +85,3 @@ Also a quick win is to backup every night via a cron job.
 [https://unix.stackexchange.com/a/417327/278547](https://unix.stackexchange.com/a/417327/278547) /etc/crond.d vs crontab
 
 [https://serverfault.com/questions/352835/crontab-running-as-a-specific-user](https://serverfault.com/questions/352835/crontab-running-as-a-specific-user) and can run as a specific user
-
-### cron
-
-[https://gist.github.com/linuxkathirvel/90771e9d658195fa59e0f0b921f7e22e](https://gist.github.com/linuxkathirvel/90771e9d658195fa59e0f0b921f7e22e) I ended up using this strategy
-
-```bash
-
-```
