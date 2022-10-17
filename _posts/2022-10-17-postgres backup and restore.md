@@ -40,6 +40,7 @@ then
 BACKUP_DIR="/home/dave/"
 FILE_NAME=$BACKUP_DIR`date +%d-%m-%Y-%I-%M-%S-%p`.sql
 
+# custom compressed file format which pg_restore can restore from
 pg_dump -Fc -U postgres nasafiremap > $FILE_NAME
 ```
 
@@ -72,6 +73,21 @@ local   replication     all                                     peer
 host    replication     all             127.0.0.1/32            md5
 host    replication     all             ::1/128                 md5
 ```
+
+## backup db for a new deployment
+
+I like deployments to be fully automated. So when I run `infra.sh` I'd like a new VM to be build, and for the existing database on the old vm to be backed up, and restored onto the new vm
+
+```bash
+pgpassword=$(<../secrets/pgpassword.txt)
+# dump remote database from old vm to local machine
+pg_dump -Fc -d postgres://postgres:${pgpassword}@firemaposr4rights214.westeurope.cloudapp.azure.com:5432/nasafiremap > pg.backup
+
+# restore database to new vm which has the same password
+
+```
+
+
 
 
 ## old
