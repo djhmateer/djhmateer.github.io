@@ -74,30 +74,22 @@ host    replication     all             127.0.0.1/32            md5
 host    replication     all             ::1/128                 md5
 ```
 
-## backup db for a new deployment
+It would be very nice to backup to a shared drive on Azure so can keep backups between vm updates. See notes on smb mounting in 2021-09-17-azure file share.
 
-I like deployments to be fully automated. So when I run `infra.sh` I'd like a new VM to be build, and for the existing database on the old vm to be backed up, and restored onto the new vm
+## backup and restore db for a new deployment
+
+I like deployments to be fully automated. So when I run [infra.sh](https://github.com/osr4rightstools/osr4rights-tools/blob/main/fire-map-infra/infra.azcli) to create a new PHP vm I want the old db to be backed up and restored on to the new vm
 
 ```bash
+echo "backing up database from old vm on $resourcegroup"
 pgpassword=$(<../secrets/pgpassword.txt)
-# dump remote database from old vm to local machine
-pg_dump -Fc -d postgres://postgres:${pgpassword}@firemaposr4rights214.westeurope.cloudapp.azure.com:5432/nasafiremap > pg.backup
+file_name=`date +%d-%m-%Y-%I-%M-%S-%p`.backup
+pg_dump -Fc -d postgres://postgres:${pgpassword}@$resourcegroup.westeurope.cloudapp.azure.com:5432/nasafiremap > $file_name
 
-# restore database to new vm which has the same password
-
+echo "restoring to new vm on $rg"
+export PGPASSWORD=$pgpassword
+pg_restore -h $rg.westeurope.cloudapp.azure.com -U postgres -v -d "nasafiremap" $file_name
 ```
 
+This pulls the backup file down to my local dev machine, which is useful for a snapshot offsite backup
 
-
-
-## old
-
-[https://www.tecmint.com/backup-and-restore-postgresql-database/](https://www.tecmint.com/backup-and-restore-postgresql-database/)
-
-I run automated build scripts, so a quick win is to simply back the database on the old vm, then restore on the new one. I'm not worried about losing a minutes worth of transactions.
-
-Also a quick win is to backup every night via a cron job.
-
-[https://unix.stackexchange.com/a/417327/278547](https://unix.stackexchange.com/a/417327/278547) /etc/crond.d vs crontab
-
-[https://serverfault.com/questions/352835/crontab-running-as-a-specific-user](https://serverfault.com/questions/352835/crontab-running-as-a-specific-user) and can run as a specific user
