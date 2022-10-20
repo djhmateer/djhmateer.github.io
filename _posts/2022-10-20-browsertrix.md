@@ -69,7 +69,7 @@ The output of the crawler
 
 ### Formats
 
-Web archive formats
+Web archive formats supported by webrecorder.net suite of tools
 
 - WARC [Web ARChive](https://en.wikipedia.org/wiki/Web_ARChive) .warc, .warc.gz - Supported - the standard to follow.
 - HAR .har - In Progress
@@ -77,7 +77,5 @@ Web archive formats
 - ARC .arc - Not supported
 - CDX .cdx, .cdxj - Supported
 - WACZ - Newly proposed format -  .wacz - In Progress.
-
-## WARC
 
 
