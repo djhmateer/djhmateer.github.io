@@ -30,7 +30,7 @@ Part of the [https://webrecorder.net/](https://webrecorder.net/) which is
 
 - [https://pywb.readthedocs.io/en/latest/index.html](https://pywb.readthedocs.io/en/latest/index.html) python framework for web archive
 
-- [https://github.com/webrecorder/browsertrix-crawler#readme](https://github.com/webrecorder/browsertrix-crawler#readme)
+- [https://github.com/webrecorder/browsertrix-crawler#readme](https://github.com/webrecorder/browsertrix-crawler#readme) - Browsertrix - what we are talking about here
 
 - [https://browsertrix.cloud/](https://browsertrix.cloud/) cloud version of above - alpha stage. K8s and Docker Swarm.
 
@@ -50,23 +50,43 @@ This can save to the .wacz file format.
 
 
 
-
-## Single Page
+## Single Page from a static site
 
 Lets explore what BC can do
 
 ```bash
-docker run -v $PWD/crawls:/crawls/ -it webrecorder/browsertrix-crawler crawl --url https://davemateer.com/2022/09/22/mssql-php-local-on-wsl  --generateWACZ --text --collection mssql11
+# --text automated text extraction for full text search
+# --collection is where to save
+docker run -v $PWD/crawls:/crawls/ -it webrecorder/browsertrix-crawler crawl 
+--url https://davemateer.com/2022/09/22/mssql-php-local-on-wsl  
+--generateWACZ --text --collection mssql11
 ```
 
 [![alt text](/assets/2022-10-20/1.jpg "email")](/assets/2022-10-20/1.jpg)
 
 The output of the crawler
 
+[![alt text](/assets/2022-10-20/3.jpg "files")](/assets/2022-10-20/3.jpg)
+
+Main output of the crawler - warc files.
+
+[![alt text](/assets/2022-10-20/4.jpg "files")](/assets/2022-10-20/4.jpg)
+
+first file (unzipped) looking at the warc
+
+
 ## ReplayWeb.page
+
+[![alt text](/assets/2022-10-20/5.jpg "files")](/assets/2022-10-20/5.jpg)
 
 [https://replayweb.page/](https://replayweb.page/) is a browser based viewer that loads web archive files provided. [docs](https://replayweb.page/docs/)
 
+It can get confused so to delete the service worker, click the button from F12 dev toolbar as shown above.
+
+
+[![alt text](/assets/2022-10-20/6.jpg "files")](/assets/2022-10-20/6.jpg)
+
+then it can render the saved webpage.
 ### Formats
 
 Web archive formats supported by webrecorder.net suite of tools
@@ -77,5 +97,30 @@ Web archive formats supported by webrecorder.net suite of tools
 - ARC .arc - Not supported
 - CDX .cdx, .cdxj - Supported
 - WACZ - Newly proposed format -  .wacz - In Progress.
+
+## Twitter 
+
+[https://twitter.com/bellingcat/status/1572958778177515520](https://twitter.com/bellingcat/status/1572958778177515520) this will not work and will stall with a message `note: waitForNetworkIdle timed out, ignoring`
+
+```bash
+# wont work
+docker run -v $PWD/crawls:/crawls/ -it webrecorder/browsertrix-crawler crawl 
+--url https://twitter.com/bellingcat/status/1572958778177515520  
+--generateWACZ --text --collection a
+```
+
+[Browsertrix profiles](https://github.com/webrecorder/browsertrix-crawler#creating-and-using-browser-profiles) a file is made with temporary session cookies.
+
+```bash
+docker run -v $PWD/crawls/profiles:/crawls/profiles -it webrecorder/browsertrix-crawler create-login-profile --url "https://twitter.com/login"
+```
+
+I'm not comfortable putting my real twitter account into this, as it may go against the Twitter ToC (need to look this up)
+
+## Facebook
+
+
+
+
 
 
