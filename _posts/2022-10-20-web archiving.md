@@ -27,7 +27,7 @@ Keeping copies of a web page / site.
 
 [https://archive.org/web/](https://archive.org/web/) aka The Wayback Machine is the most well know web archiver.
 
-## When is web archving used?
+## When is web archiving used?
 
 [https://specs.webrecorder.net/use-cases/0.1.0/#researcher-saves-an-article](https://specs.webrecorder.net/use-cases/0.1.0/#researcher-saves-an-article) - use cases
 
@@ -61,6 +61,10 @@ Web archive formats
 
 
 [https://github.com/internetarchive/heritrix3/wiki](https://github.com/internetarchive/heritrix3/wiki) - Internet Archives web crawler
+
+## Existing data crawls
+
+[https://commoncrawl.org/](https://commoncrawl.org/) lots of data in warc format. They adhere to robots.txt so wont crawl facebook etc.
 
 
 ## Replay
