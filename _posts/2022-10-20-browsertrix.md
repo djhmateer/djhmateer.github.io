@@ -57,8 +57,8 @@ Lets explore what BC can do
 ```bash
 # --text automated text extraction for full text search
 # --collection is where to save
-docker run -v $PWD/crawls:/crawls/ -it webrecorder/browsertrix-crawler crawl 
---url https://davemateer.com/2022/09/22/mssql-php-local-on-wsl  
+docker run -v $PWD/crawls:/crawls/ -it webrecorder/browsertrix-crawler crawl \
+--url https://davemateer.com/2022/09/22/mssql-php-local-on-wsl  \
 --generateWACZ --text --collection mssql11
 ```
 
@@ -98,6 +98,32 @@ Web archive formats supported by webrecorder.net suite of tools
 - CDX .cdx, .cdxj - Supported
 - WACZ - Newly proposed format -  .wacz - In Progress.
 
+## Simple site - 1 page only and combine warc
+
+```bash
+docker run -v $PWD/crawls:/crawls/ -it webrecorder/browsertrix-crawler crawl \
+--url http://brokenlinkcheckerchecker.com/pagec-single-image \
+--scopeType page \
+--combineWarc \
+--collection blcc-single
+```
+
+A single page to crawl only
+
+Combine warcs into a single file which is useful for parsing all the images out of.
+
+## Facebook
+
+So I can save the [facebook lady](https://www.facebook.com/photo/?fbid=1329142910787472&set=a.132433247125117) page using webrecorder locally to a warc file which I can parse out the images from.
+
+Can I do it with the docker browsertrix with my fb login?
+
+it creates a state of the browser.. so 16MB profile
+
+
+
+
+
 ## Twitter 
 
 [https://twitter.com/bellingcat/status/1572958778177515520](https://twitter.com/bellingcat/status/1572958778177515520) this will not work and will stall with a message `note: waitForNetworkIdle timed out, ignoring`
@@ -117,7 +143,7 @@ docker run -v $PWD/crawls/profiles:/crawls/profiles -it webrecorder/browsertrix-
 
 I'm not comfortable putting my real twitter account into this, as it may go against the Twitter ToC (need to look this up)
 
-## Facebook
+
 
 
 
