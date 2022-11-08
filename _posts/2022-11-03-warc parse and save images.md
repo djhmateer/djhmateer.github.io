@@ -90,7 +90,7 @@ Replay and recording on web archives - archivewebpage uses this under the hood.
 
 [https://github.com/lxucs/commoncrawl-warc-retrieval](https://github.com/lxucs/commoncrawl-warc-retrieval) a very simple parser. And [blog](https://liyanxu.blog/2019/01/19/retrieve-archived-pages-using-commoncrawl-index/)
 
-## WARIO
+## WARCIO - parse and save jpegs
 
 [https://github.com/webrecorder/warcio](https://github.com/webrecorder/warcio) 2020. Supports WARC/1.1. Part of the webrecroder project.
 
@@ -102,32 +102,24 @@ from warcio.archiveiterator import ArchiveIterator
 # pip install pillow
 from PIL import Image
 
-# buffered IO implementation 
 from io import BytesIO
 
 from urllib.parse import urlparse
 import os
+import os.path
+import uuid
 
 # can handle gzipped warc files too
-# input = '/mnt/c/warc-in/test3.warc'
-# input = '/mnt/c/warc-in/davemateer-mssql.warc'
-
-# this works getting a 697k file
-# input = '/mnt/c/warc-in/facebook-lady.warc'
-
-input = '/mnt/c/warc-in/1.warc.gz'
+input = '/mnt/c/warc-in/building18_0.warc.gz'
 
 with open(input, 'rb') as stream:
     for record in ArchiveIterator(stream):
         if record.rec_type == 'response':
             # http://brokenlinkcheckerchecker.com/img/flower3.jpg
             uri = record.rec_headers.get_header('WARC-Target-URI')
-            # print(uri)
-
             ct = record.http_headers.get_header('Content-Type')
+
             if ct == 'image/jpeg':
-                #404 Not Found
-                #200 OK
                 status = record.http_headers.statusline
                 if status=='200 OK':
                     
@@ -138,13 +130,13 @@ with open(input, 'rb') as stream:
                     filename = os.path.basename(o.path)
                     print(filename)
 
-                    print(ct)
-
-
                     content = record.content_stream().read()
-                    # print(content)
                     img_bytes_io = BytesIO()
                     img_bytes_io.write(content)
+
+                    # check if already saved this filename 
+                    if os.path.isfile(f'/mnt/c/warc-out/{filename}'):
+                        filename=str(uuid.uuid4())
 
                     with Image.open(img_bytes_io) as img:
                         img.save(f'/mnt/c/warc-out/{filename}', format='JPEG')
@@ -154,4 +146,4 @@ with open(input, 'rb') as stream:
 
 I'm using archivepageweb to save a warc file which works well.
 
-[groups.google.io](https://groups.google.com/g/common-crawl/c/DZBOmz-OPoE) potentially an even easier way to write out the jpg. Just pipe the bytes straight to file?
+[groups.google.io](https://groups.google.com/g/common-crawl/c/DZBOmz-OPoE) potentially an even easier way to write out the jpg. Just pipe the bytes straight to file
