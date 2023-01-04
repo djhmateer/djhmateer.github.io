@@ -30,6 +30,7 @@ curl --proxy zproxy.lum-superproxy.io:22225  \
 -Password: yyyyyyyyy 
 
 
+.
 ## Curl
 
 Customer support on brightdata was exceptional! I got an answer back in minutes.
