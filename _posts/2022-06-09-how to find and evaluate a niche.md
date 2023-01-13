@@ -46,7 +46,7 @@ Becoming a student of a business ie reading books, talking to others is all an i
 
 ## Influential Books and Videos
 
-[Make: Bootstrappers Handbook now called: The Indie Maker Handbook](https://readmake.com/) Pieter Levels. Founder of [Nomad List](https://nomadlist.com/), [Remote OK](https://remoteok.com/) words most visited remote work job board. Used to be called [makebook.io]() - serach for this in my email as I bought it.
+[Make: Bootstrappers Handbook now called: The Indie Maker Handbook](https://readmake.com/) Pieter Levels. Founder of [Nomad List](https://nomadlist.com/), [Remote OK](https://remoteok.com/) words most visited remote work job board. Used to be called [makebook.io]() - search for this in my email as I bought it.
 
 [How to build a startup without funding](https://www.youtube.com/watch?v=6reLWfFNer0) Pieter Levels. Video of above.
 
@@ -60,7 +60,7 @@ Becoming a student of a business ie reading books, talking to others is all an i
 
 [PDF - 8 Things You Must Know When Starting Your First SaaS](https://www.startupsfortherestofus.com/). Study a little, ship a lot. Start small. Own your time. Recurring Revenue (but a long ramp to get there)
 
-[https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi](https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi) 11 vidoes including the 2 above
+[https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi](https://www.youtube.com/playlist?list=PLwcQbu9cKWclSZ5X1D2BFr3t4jBzpiSoi) 11 videos including the 2 above
 
 [https://www.startupsfortherestofus.com/episodes/episode-589-finding-a-saas-idea-through-70-cold-calls](https://www.startupsfortherestofus.com/episodes/episode-589-finding-a-saas-idea-through-70-cold-calls) story about senior place. He did a lot of research beforehand. Calling 80 different customers over many months. Asking about them and their day to day problems. Eventually pivoted to senior placements. Got 5 customers paying before any code was written.
 
