@@ -17,7 +17,7 @@ image: /assets/2020-10-05/forget-me-not.jpg
 [![alt text](/assets/2020-10-05/forget-me-not.jpg "Forget me not photo by Belinda Fewings")](https://unsplash.com/@bel2000a)
 
 
-If your git session forgets your credentials after 15 minutes on Linux then it could be that you're using the cache instead of the store (for good reasons)
+If your git session forgets your credentials after 15 minutes on Linux then it could be that you're using the cache instead of the store (for good reasons).
 
 I'm using 2FA and have to use Personal Access Tokens to write access my repos:
 
