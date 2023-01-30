@@ -12,34 +12,92 @@ image: /assets/2022-09-22/1.jpg
 
 <!-- ![alt text](/assets/2022-11-03/2.jpg "email")](/assets/2022-11-03/2.jpg) -->
 
-My 4790k (Release Date May 2014) desktop machine is nearly 9 years old. build has started doing strange things. DDR3 (16GB)
-
-[CPU Mark](https://www.passmark.com/products/performancetest/) from passmark of 8,710 
-
-## Why change a machine that is working
-
-- Keep up to date
-- Develop faster
-- So can play more games with kids
-- The joy of finding things out and playing
-
-## Why build a machine?
-
-- For the fun! Not done a full build before
-- Show kids the different parts of a PC
-- Build what I want
-- Learn so that I'm more of an expert in this
+[PCPartPicker summary](https://uk.pcpartpicker.com/user/davemateer/saved/#view=h9q6Q7) of this build
 
 
-## What am I using this build for?
+[LTT sister build](https://www.youtube.com/watch?v=AOdp09SYhCc) - z690, 3060ti
 
-- Development
-- VSCode
-- Visual Studio
-- Docker
-- WSL
-- Steam games with my 6 and 8 year old
+[CPU chooser - toms guide](https://www.tomshardware.com/reviews/best-cpus,3986.html) 
 
+## CPU
+
+Intel (13th gen - Raptor Lake) - £313
+
+-Core i5-13600K or KF (KF = no onboard graphics)
+
+LGA-1700 socket
+
+[cpu mark](https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i5-13600K&id=5008) 38,400
+
+
+
+## Motherboard (MOBO)
+
+B660M - no. can be slower
+
+z690 - yes. Good for overclocking if need it 
+
+z790 - don't need yet
+
+I'm going with DDR4 RAM currently
+
+[PC Builder](https://www.youtube.com/watch?v=JEViM1s4UMY)
+
+## RAM
+
+64GB of DDR4
+
+ Corsair LPX  amazon
+ 3200 DDR4 (only need 3600 if overclock)
+
+## CPU Cooler
+
+Air cooler
+
+## Case
+asdf
+
+
+## GPU 
+
+[PC Builder GPU Price spreadsheet](https://docs.google.com/spreadsheets/d/1Y-XKBPTL8RyAuw_Kkcye1FIjFGlnb7dacdN3EEybWGs/edit#gid=955405380)
+
+do not buy 3060 8gb.. need 12gb
+3070 msi model?
+
+I want to go with NVidia purely as can then use ....
+
+[amazon bestseller gpu](https://www.amazon.co.uk/gp/bestsellers/computers/430500031/ref=zg_b_bs_430500031_1)
+
+## PSU
+
+asdf
+
+
+## Networking
+
+I want a long antenna option
+
+
+## Storage
+
+m.2 SSD
+
+
+
+## Monitor
+
+I want to game at 144MHz at 1440p. Probably 27inch
+
+- 1080p
+- 1440p
+- 4k
+
+
+[PC Builder - best gaming monitor 2023](https://www.youtube.com/watch?v=00l3Uq6oyic)
+
+
+XXXXXXX
 ## Strategy
 
 Read up on background on latest CPUs, MOBO (Motherboards), Memory, GPUS, monitors, keyboards, m.2, SSD, WiFi
@@ -78,11 +136,6 @@ memory 32GB £84
 
 cpu cooler
  £105
-
-
-
-
-
 
 
 ## Windows 11 Pro vs Win 11 Home
