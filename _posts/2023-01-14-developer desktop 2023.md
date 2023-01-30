@@ -1,13 +1,13 @@
 ---
 layout: post
-# title: MSSQL PHP on WSL setup
+title: Developer Desktop Build 2023
 description: 
 menu: review
-categories: proxy
+categories: hardware
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2022-09-22/1.jpg
+image: /assets/2023-01-30/1.jpg
 ---
 
 <!-- ![alt text](/assets/2022-11-03/2.jpg "email")](/assets/2022-11-03/2.jpg) -->
@@ -29,7 +29,13 @@ LGA-1700 socket
 
 [cpu mark](https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i5-13600K&id=5008) 38,400
 
+[![alt text](/assets/2023-01-30/1.jpg "email")](/assets/2023-01-30/1.jpg)
 
+I went for this as very [good price for performance](https://www.cpubenchmark.net/cpu_value_available.html) - this processor is
+
+[![alt text](/assets/2023-01-30/1.jpg "email")](/assets/2023-01-30/1.jpg)
+
+Interestinly the xxxx is only $90 more..
 
 ## Motherboard (MOBO)
 
