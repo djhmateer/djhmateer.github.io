@@ -33,7 +33,7 @@ LGA-1700 socket
 
 I went for this as very [good price for performance](https://www.cpubenchmark.net/cpu_value_available.html) - this processor is
 
-[![alt text](/assets/2023-01-30/1.jpg "email")](/assets/2023-01-30/1.jpg)
+[![alt text](/assets/2023-01-30/2.jpg "email")](/assets/2023-01-30/2.jpg)
 
 Interestinly the xxxx is only $90 more..
 
@@ -99,8 +99,16 @@ I want to game at 144MHz at 1440p. Probably 27inch
 - 1440p
 - 4k
 
-
 [PC Builder - best gaming monitor 2023](https://www.youtube.com/watch?v=00l3Uq6oyic)
+
+## Keyboard
+
+I like Microsoft keyboards and mice.. for development. But letters have worn off current once.
+
+
+[Microsoft Desktop 2000](https://www.amazon.co.uk/Microsoft-Wireless-Desktop-Keyboard-Layout/dp/B0055JDLVG/) £34
+
+[Microsoft Wireless 4000](https://www.amazon.co.uk/Microsoft-Wireless-Mobile-Mouse-4000/dp/B0992LXCLT/) £60
 
 
 XXXXXXX
