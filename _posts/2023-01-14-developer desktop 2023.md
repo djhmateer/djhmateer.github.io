@@ -39,6 +39,11 @@ Interestinly the xxxx is only $90 more..
 
 ## Motherboard (MOBO)
 
+[Toms Guide](https://www.tomshardware.com/best-picks/best-motherboards)
+
+MSI PRO Z690-A WIFI DDR4 ATX LGA1700 Motherboard £200
+
+
 B660M - no. can be slower
 
 z690 - yes. Good for overclocking if need it 
@@ -47,18 +52,23 @@ z790 - don't need yet
 
 I'm going with DDR4 RAM currently
 
+ATX, Micro ATX and Mini-ITX. (Mini is smaller than Micro)
+
 [PC Builder](https://www.youtube.com/watch?v=JEViM1s4UMY)
 
 ## RAM
 
 64GB of DDR4
 
- Corsair LPX  amazon
- 3200 DDR4 (only need 3600 if overclock)
+Corsair LPX  amazon
+
+3200 DDR4 (only need 3600 if overclock)
 
 ## CPU Cooler
 
 Air cooler
+
+[Deepcool AK620 68.99 CFM CPU Cooler]()
 
 ## Case
 asdf
@@ -69,18 +79,22 @@ asdf
 [PC Builder GPU Price spreadsheet](https://docs.google.com/spreadsheets/d/1Y-XKBPTL8RyAuw_Kkcye1FIjFGlnb7dacdN3EEybWGs/edit#gid=955405380)
 
 do not buy 3060 8gb.. need 12gb
+
 3070 msi model?
 
-I want to go with NVidia purely as can then use ....
+I want to go with NVidia purely as can then talk to the gpu
 
 [amazon bestseller gpu](https://www.amazon.co.uk/gp/bestsellers/computers/430500031/ref=zg_b_bs_430500031_1)
 
+But I'm not gaming at the moment, and prices are falling. Don't want kids gaming on my PC!
+
 ## PSU
 
-asdf
 
 
 ## Networking
+
+Am putting in ethernet, but also wifi is super userful
 
 I want a long antenna option
 
@@ -88,7 +102,6 @@ I want a long antenna option
 ## Storage
 
 m.2 SSD
-
 
 
 ## Monitor
