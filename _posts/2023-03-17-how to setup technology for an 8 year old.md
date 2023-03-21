@@ -70,7 +70,10 @@ Notice the kids don't need their own google account, and I can manage the conten
 
 - Supervised account on YouTube - [myfamily](https://www.youtube.com/myfamily/).. seems like I have done this, but use youtube kids. supervised experience . [https://support.google.com/youtube/answer/10314940](https://support.google.com/youtube/answer/10314940). Explore is 9+, Explore more is 13+ and Most of YouTube is 18+. [https://support.google.com/youtube/answer/10315823#zippy=%2Cexplore](https://support.google.com/youtube/answer/10315823#zippy=%2Cexplore)
 
+[https://accounts.google.com/signup](https://accounts.google.com/signup) to setup a new account
 
+
+- Note this is not family link.
 
 If you want to use full blown youtube, setting the restricted mode to on helps block unwanted mature content.
 
