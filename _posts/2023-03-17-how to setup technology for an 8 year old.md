@@ -10,6 +10,7 @@ sitemap: true
 image: /assets/2023-01-30/1.jpg
 ---
 
+..and a 6 year old!
 <!-- ![alt text](/assets/2022-11-03/2.jpg "email")](/assets/2022-11-03/2.jpg) -->
 
 - teach kids technology by letting them play and explore (and getting out their way)
@@ -54,42 +55,72 @@ In order of how much used...
 
 My son (6) and daughter (8) love YouTube especially watching people play Minecraft!
 
-[![alt text](/assets/2023-03-17/2.jpg "email")](/assets/2023-03-17/2.jpg)
+so that they don't see things which are not age appropriate like jump scares, swear words, grown up stuff..
+
+
+There are a few ways to do this
+
+- let the kids watch without youtube beig signed in. not good as have full unrestricted access to youtube
+- sign in as yourself and turn on restricted mode. not a bad simple solution
+- use youtubekids and setup 'profiles'. This is more for devices and not laptops
+
+what we've done
+
+- setup separate Google Accounts for each child (with a parent's gmail account in control of each of the childrens accounts)
+
+This then lets us:
+
+- [youtubekids.com](https://youtubekids.com) which is a curated list of videos for specific age ranges
+- [youtube.com](https://youtube.com) full youtube with content filters on for appropriate age group. So kids can subscribe to fave youtubers.
+
+Can manage all this with [https://familylink.google.com/](https://familylink.google.com/) which links to families.google.com
+
+Henry (6) 
+- he is on youtubekids. younger (5-8). 
+
+Mia (8) 
+ - is on youtubekids. older (9-12)
+
+Both
+- youtube on explore 9+
+- chrome - try to block explicit sites
+- google search - safe search is on
+
+[![alt text](/assets/2023-03-17/3.jpg "email")](/assets/2023-03-17/3.jpg)
+
+This is youtube kids -  curated bunch of videos for kids. Minecraft on here too.
+
+Notice that the chrome browser is signed in as Mia (pizza icon), and youtubekids too. I've since unpinned the guest chrome link in the taskbar at the bottom, so only the Mia signed in Chrome profile works.
+
+
+### Review
+
+[myactivity.google.com](myactivity.google.com) - to see history of what each kid has been doing. Do it from their own laptop
+
+## Other
+
 
 [https://support.google.com/youtubekids/answer/10315420?hl=en-GB&ref_topic=12970520](https://support.google.com/youtubekids/answer/10315420?hl=en-GB&ref_topic=12970520) 
 
-- Use your own unrestricted YouTube. top tip is to turn restricted mode on (see above)
-
-[![alt text](/assets/2023-03-17/4.jpg "email")](/assets/2023-03-17/4.jpg)
-
-- YouTube kids... created individual profiles (ie don't need google accounts for the kids). This is for younger children before under 13
-
-[![alt text](/assets/2023-03-17/5.jpg "email")](/assets/2023-03-17/5.jpg)
-
-Notice the kids don't need their own google account, and I can manage the content they see.
-
 - Supervised account on YouTube - [myfamily](https://www.youtube.com/myfamily/).. seems like I have done this, but use youtube kids. supervised experience . [https://support.google.com/youtube/answer/10314940](https://support.google.com/youtube/answer/10314940). Explore is 9+, Explore more is 13+ and Most of YouTube is 18+. [https://support.google.com/youtube/answer/10315823#zippy=%2Cexplore](https://support.google.com/youtube/answer/10315823#zippy=%2Cexplore)
+
+There is YouTube music (supervised) here too for pre teens and older
 
 [https://accounts.google.com/signup](https://accounts.google.com/signup) to setup a new account
 
 
-- Note this is not family link.
-
-If you want to use full blown youtube, setting the restricted mode to on helps block unwanted mature content.
-
-We're trying the walled garden of
-
-[https://www.youtubekids.com/](https://www.youtubekids.com/)
-
-
-[![alt text](/assets/2023-03-17/3.jpg "email")](/assets/2023-03-17/3.jpg)
-
-This is a curated bunch of videos for kids. Minecraft on here too.
-
-Notice that the browser is signed in as Mia (pizza icon), and thus youtube too. I had to create an email account for her, and as an under 13 year old, I had to link it to my gmail account.
-
-
 ### Channels
+
+[xNestorio]()
+
+[SB737]()
+
+[Evbo]()
+
+[numberBlocks]()
+
+[unworthy]() - power rangers fan
+
 
 [Mr Beast](https://www.youtubekids.com/watch?v=pCve1w1GFOs&hl=en-GB)
 
