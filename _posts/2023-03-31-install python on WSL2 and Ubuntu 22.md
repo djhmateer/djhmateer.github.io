@@ -36,20 +36,16 @@ wsl --list --online
 
 # install 22.04. I had to do this as had an older version running in WSL
 wsl --install -d Ubuntu-22.04
-
-
-## then install the terminal?
-
 ```
+
+Then install the Terminal:
 
 [https://learn.microsoft.com/en-us/windows/terminal/install](https://learn.microsoft.com/en-us/windows/terminal/install)
 which is a MS Store application
 
 ```bash
-# set default terminal to Ubuntu 22.04.2 LTS (orange circle)
-# note there may be 2 versions of 22.04.2 LTS 
-#
-# default text size to 10
+# set default terminal to Ubuntu 22.04.2 LTS (orange circle). Ignore the other one if there
+# default text size to 10 or 9
 
 sudo apt get update
 
@@ -78,16 +74,11 @@ pip install --upgrade pip
 Why not using a virtual environment? Well, for simplicity lets install python packages on the base OS ie Ubuntu for now. I normally run inside `pipenv`
 
 ```bash
-# to stop a dependency error in pip install below
-sudo apt install python3-testresources
-
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+
+# if you get a dependency error in pip install above, try this, then rerun pip install
+sudo apt install python3-testresources
 ```
-
-error:
-ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-launchpadlib 1.10.13 requires testresources, which is not installed.
-
 
 ## Running the program
 
@@ -118,7 +109,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
 def main():
-    token_file = 'secrets/token-dave-hms2.json'
+    token_file = 'secrets/token-generated.json'
 
     creds = None
 
@@ -148,7 +139,7 @@ def main():
     try:
         service = build('drive', 'v3', credentials=creds)
 
-        # !. print info about the user to prove the token works
+        # print info about the user to prove the token works
         results = service.about().get(fields="*").execute()
         emailAddress = results['user']['emailAddress']
         print(emailAddress)
@@ -160,10 +151,14 @@ if __name__ == '__main__':
     main()
 ```
 
-You can run this code multiple times to prove the generated token works.
+[![alt text](/assets/2023-03-31/2.png "email")](/assets/2023-03-31/2.png)
 
-### Run
+Remember to create secrets directory, and have the credentials.json in the root
 
-```
-python3 quickstart.py
-```
+[![alt text](/assets/2023-03-31/1.png "email")](/assets/2023-03-31/1.png)
+
+If all the dependencies are installed correctly you should see this on first run of the program.
+
+The next step is to click on the link in the terminal, then run through the OAuth flow to get the `secrets\token-generated.json`
+
+You can run this code multiple times to prove the `secrets\token-generated.json` token works without having to reauthenticate.
