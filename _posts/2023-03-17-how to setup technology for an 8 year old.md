@@ -40,7 +40,7 @@ In order of how much used...
 
 - 1 fire stick on our TV with Netflix kids profile set to PG rated.
 
-- Kindle Fire per kid - useful to watch movies on long car journey with headphones - [these ones](https://www.amazon.co.uk/gp/product/B01A5RKRV4/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+- Kindle Fire per kid - useful to watch movies on long car journey with headphones - [these ones](https://www.amazon.co.uk/gp/product/B01A5RKRV4/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1). Also minecraft but it is slow!
 
 - 1 Old Apple iPod which is used to listen to audio books (Audible is good for buying them). 
 
@@ -161,6 +161,17 @@ Only 1 game matters. Minecraft!
 
 - Creative Mode
 - Survival Mode
+
+## Fire Tablets
+
+[https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices) Manage my Amazon Devices eg Fire Tablets
+
+[https://www.amazon.co.uk/myh/manage](https://www.amazon.co.uk/myh/manage) Household Management. to change childs name and icon. this is children in my household. 
+
+Note you can shared you prime benefits with 1 other adult in the household! [https://www.amazon.co.uk/gp/primecentral](https://www.amazon.co.uk/gp/primecentral) use this link
+
+[https://parents.amazon.co.uk/](https://parents.amazon.co.uk/) can control how much time per day kids can have on kindle fire.
+
 
 
 ## Amazon Alexa / Spotify 
