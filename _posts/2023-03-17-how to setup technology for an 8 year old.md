@@ -164,15 +164,28 @@ Only 1 game matters. Minecraft!
 
 ## Fire Tablets
 
-[https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices) Manage my Amazon Devices eg Fire Tablets
+We have 2 tablets, and each kid has a profile on each device
+
+I've found that they slow down, and doing a complete reset fixes it.
+
+Yellow one (Henry) - Fire HD 8 (8th generation registered in July 2019). Updated through 2024. has a 64GB sim card in it. We put mp4 movies (we have the originals!) on there and watch them with VLC player. 24GB internal storage?
+
+Green one (Mia) - Fire HD 8 (6th generation). No more software updates. has a 128GB sim. Only 12GB internal storage.
+
+0. Devices [https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices)
+
+1. Household manage [https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices) Manage my Amazon Devices eg Fire Tablets
 
 [https://www.amazon.co.uk/myh/manage](https://www.amazon.co.uk/myh/manage) Household Management. to change childs name and icon. this is children in my household. 
 
+2. Parents Dashboard [https://parents.amazon.co.uk/](https://parents.amazon.co.uk/) can control how much time per day kids can have on kindle fire.
+
+
+To add apps [Go to Amazon Appstore](https://www.amazon.co.uk/s?i=mobile-apps&bbn=1661657031&rh=n%3A1661657031&dc&qid=1680367019&ref=sr_ex_n_1&ds=v1%3AMWeSoxizck1IdAujPAfQ2bac5FMOFOJ6og0JpNRZdHA) then add them to a child via [Parents Dashboard](https://parents.amazon.co.uk/)
+
+VLC seems to be needed to be added to the adult profile on the device, then look for external storage ie the sim. Then it will work on the child profile.
+
 Note you can shared you prime benefits with 1 other adult in the household! [https://www.amazon.co.uk/gp/primecentral](https://www.amazon.co.uk/gp/primecentral) use this link
-
-[https://parents.amazon.co.uk/](https://parents.amazon.co.uk/) can control how much time per day kids can have on kindle fire.
-
-
 
 ## Amazon Alexa / Spotify 
 
