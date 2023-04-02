@@ -111,12 +111,8 @@ I've found that they slow down, and doing a factory reset fixes it.
 
 ## Minecraft
 
-<<<<<<< HEAD
 
 ### Review
-=======
-To be able to save worlds you need an account.
->>>>>>> 58e8ce3a4c360bedc34bdd9b8414302c52ea4f96
 
 
 ## Other
