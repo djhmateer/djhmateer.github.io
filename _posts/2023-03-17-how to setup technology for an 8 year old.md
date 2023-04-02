@@ -109,6 +109,14 @@ VLC seems to be needed to be added (maybe?) to the adult profile on the device, 
 
 I've found that they slow down, and doing a factory reset fixes it.
 
+### Apps on Fire Tablet
+
+- Minecraft
+- VLC
+- Spotify (can download for offline car journeys)
+- Netflix (can download for offline car journeys)
+
+
 ## Minecraft
 
 
