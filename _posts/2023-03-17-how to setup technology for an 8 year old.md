@@ -23,12 +23,8 @@ image: /assets/2023-01-30/1.jpg
 Our school organised an Online Child Safety talk by [Paul Platts](https://www.linkedin.com/in/paul-platts-643b801b/) where the biggest takeaways I had were:
 
 - 'Is not a technology issue' ie we have to sit down with kids and listen to them, and make sure they are happy and safe (and are safely exploring)
-
-
 - Review what the kids have been doing to help keep them safe (look at their browser history / dashboard from amazon parents / google / apple)
-
 - Be a role model ie don't look at our devices all the time (no phones at dinner table / checking work emails all the time)
-
 
 ## What Tech we have
 
@@ -42,11 +38,9 @@ In order of how much used...
 
 - 1 fire stick on our TV with Netflix kids profile set to PG rated.
 
-
 - 1 Old Apple iPod which is used to listen to audio books (Audible is good for buying them). 
 
 - 4 amazon Alexa's around the house with explicit filtering turned on for music. 1 linked spotify account (Premium Individual). Used for listening to music in kitchen. audio books in bedroom.
-
 
 ## Our 'Rules' 
 
@@ -92,8 +86,10 @@ This is youtube kids -  curated bunch of videos for kids. Minecraft on here too.
 
 Notice that the chrome browser is signed in as Mia (pizza icon), and youtubekids too. I've since unpinned the guest chrome link in the taskbar at the bottom, so only the Mia signed in Chrome profile works.
 
+[myactivity.google.com](myactivity.google.com) - to see history of what each kid has been doing. Do it from their own laptop
 
-## Fire Tablets
+
+## 2. Fire Tablets
 
 We have 1 tablets, and each kid has a profile on each device
 
@@ -103,10 +99,9 @@ Green one (Mia) - Fire HD 7 (6th generation). No more software updates. has a 12
 
 1. Devices [https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices) - useful for managing name of device, seeing seriel number, generation, child device name eg Mia on Green Fire.
 
-2. Parents Dashboard [https://parents.amazon.co.uk/](https://parents.amazon.co.uk/). Add Content! eg Minecraft, audio books, VLC. Can control how much time per day kids can have on kindle fire.
+2. Parents Dashboard [https://parents.amazon.co.uk/](https://parents.amazon.co.uk/). Add Content! eg Minecraft, audio books, VLC. Can control how much time per day kids can have on kindle fire. Web browser off. Store access off. Prime video off.
 
 3. Household manage [https://www.amazon.co.uk/myh/manage](https://www.amazon.co.uk/myh/manage) Change child's icon (useful to see who is logged in!). Share prime benefits.
-
 
 To add apps [Go to Amazon Appstore](https://www.amazon.co.uk/s?i=mobile-apps&bbn=1661657030&rh=n%3A1661657031&dc&qid=1680367019&ref=sr_ex_n_1&ds=v1%3AMWeSoxizck1IdAujPAfQ2bac5FMOFOJ6og0JpNRZdHA) then add them to a child via [Parents Dashboard](https://parents.amazon.co.uk/)
 
@@ -114,14 +109,17 @@ VLC seems to be needed to be added (maybe?) to the adult profile on the device, 
 
 I've found that they slow down, and doing a factory reset fixes it.
 
+## Minecraft
 
+<<<<<<< HEAD
 
 ### Review
+=======
+To be able to save worlds you need an account.
+>>>>>>> 58e8ce3a4c360bedc34bdd9b8414302c52ea4f96
 
-[myactivity.google.com](myactivity.google.com) - to see history of what each kid has been doing. Do it from their own laptop
 
 ## Other
-
 
 [https://support.google.com/youtubekids/answer/10315420?hl=en-GB&ref_topic=12970520](https://support.google.com/youtubekids/answer/10315420?hl=en-GB&ref_topic=12970520) 
 
