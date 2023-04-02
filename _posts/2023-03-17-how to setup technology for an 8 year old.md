@@ -34,13 +34,14 @@ Our school organised an Online Child Safety talk by [Paul Platts](https://www.li
 
 In order of how much used...
 
-- Old Laptop per kid. Used to watch youtube and play browser games
+- Old Laptop per kid. Used to watch youtube (mostly) and play browser games
+
+- Amazon Fire tablet per kid - useful to watch movies on long car journey with headphones - [these ones](https://www.amazon.co.uk/gp/product/B01A5RKRV4/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1). Also Minecraft and audio books (audible)
 
 - PS3 games console hooked up to the TV in living room. 99% of the time used to play minecraft.
 
 - 1 fire stick on our TV with Netflix kids profile set to PG rated.
 
-- Kindle Fire per kid - useful to watch movies on long car journey with headphones - [these ones](https://www.amazon.co.uk/gp/product/B01A5RKRV4/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1). Also minecraft but it is slow!
 
 - 1 Old Apple iPod which is used to listen to audio books (Audible is good for buying them). 
 
@@ -51,12 +52,11 @@ In order of how much used...
 
 30 minutes of screen time per day on school days. They decide what to do, and when to use the screen time.
 
-## YouTube
+## 1. YouTube
 
 My son (6) and daughter (8) love YouTube especially watching people play Minecraft!
 
 so that they don't see things which are not age appropriate like jump scares, swear words, grown up stuff..
-
 
 There are a few ways to do this
 
@@ -91,6 +91,28 @@ Both
 This is youtube kids -  curated bunch of videos for kids. Minecraft on here too.
 
 Notice that the chrome browser is signed in as Mia (pizza icon), and youtubekids too. I've since unpinned the guest chrome link in the taskbar at the bottom, so only the Mia signed in Chrome profile works.
+
+
+## Fire Tablets
+
+We have 1 tablets, and each kid has a profile on each device
+
+Yellow one (Henry) - Fire HD 7 (8th generation registered in July 2019). Updated through 2024. has a 64GB sim card in it. We put mp4 movies (we have the originals!) on there and watch them with VLC player. 24GB internal storage?
+
+Green one (Mia) - Fire HD 7 (6th generation). No more software updates. has a 128GB sim. Only 12GB internal storage.
+
+1. Devices [https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices) - useful for managing name of device, seeing seriel number, generation, child device name eg Mia on Green Fire.
+
+2. Parents Dashboard [https://parents.amazon.co.uk/](https://parents.amazon.co.uk/). Add Content! eg Minecraft, audio books, VLC. Can control how much time per day kids can have on kindle fire.
+
+3. Household manage [https://www.amazon.co.uk/myh/manage](https://www.amazon.co.uk/myh/manage) Change child's icon (useful to see who is logged in!). Share prime benefits.
+
+
+To add apps [Go to Amazon Appstore](https://www.amazon.co.uk/s?i=mobile-apps&bbn=1661657030&rh=n%3A1661657031&dc&qid=1680367019&ref=sr_ex_n_1&ds=v1%3AMWeSoxizck1IdAujPAfQ2bac5FMOFOJ6og0JpNRZdHA) then add them to a child via [Parents Dashboard](https://parents.amazon.co.uk/)
+
+VLC seems to be needed to be added (maybe?) to the adult profile on the device, then look for external storage ie the sim. Then it will work on the child profile.
+
+I've found that they slow down, and doing a factory reset fixes it.
 
 
 ### Review
@@ -162,30 +184,7 @@ Only 1 game matters. Minecraft!
 - Creative Mode
 - Survival Mode
 
-## Fire Tablets
 
-We have 2 tablets, and each kid has a profile on each device
-
-I've found that they slow down, and doing a complete reset fixes it.
-
-Yellow one (Henry) - Fire HD 8 (8th generation registered in July 2019). Updated through 2024. has a 64GB sim card in it. We put mp4 movies (we have the originals!) on there and watch them with VLC player. 24GB internal storage?
-
-Green one (Mia) - Fire HD 8 (6th generation). No more software updates. has a 128GB sim. Only 12GB internal storage.
-
-0. Devices [https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices)
-
-1. Household manage [https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices) Manage my Amazon Devices eg Fire Tablets
-
-[https://www.amazon.co.uk/myh/manage](https://www.amazon.co.uk/myh/manage) Household Management. to change childs name and icon. this is children in my household. 
-
-2. Parents Dashboard [https://parents.amazon.co.uk/](https://parents.amazon.co.uk/) can control how much time per day kids can have on kindle fire.
-
-
-To add apps [Go to Amazon Appstore](https://www.amazon.co.uk/s?i=mobile-apps&bbn=1661657031&rh=n%3A1661657031&dc&qid=1680367019&ref=sr_ex_n_1&ds=v1%3AMWeSoxizck1IdAujPAfQ2bac5FMOFOJ6og0JpNRZdHA) then add them to a child via [Parents Dashboard](https://parents.amazon.co.uk/)
-
-VLC seems to be needed to be added to the adult profile on the device, then look for external storage ie the sim. Then it will work on the child profile.
-
-Note you can shared you prime benefits with 1 other adult in the household! [https://www.amazon.co.uk/gp/primecentral](https://www.amazon.co.uk/gp/primecentral) use this link
 
 ## Amazon Alexa / Spotify 
 
