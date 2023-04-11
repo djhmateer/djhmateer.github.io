@@ -46,9 +46,11 @@ In order of how much used...
 
 30 minutes of screen time per day on school days. They decide what to do, and when to use the screen time.
 
+friday nights and weekends we haven't figured out yet (and this is a problem as it always works better for the kids when they know)
+
 ## 1. YouTube
 
-My son (6) and daughter (8) love YouTube especially watching people play Minecraft!
+Henry (6) and Mia (8) love YouTube especially watching people play Minecraft!
 
 so that they don't see things which are not age appropriate like jump scares, swear words, grown up stuff..
 
@@ -117,7 +119,11 @@ I've found that they slow down, and doing a factory reset fixes it.
 - Netflix (can download for offline car journeys)
 
 
-## Minecraft
+## 3. Minecraft
+asdf
+
+## 4. Roblox
+asdf
 
 
 ### Review
@@ -134,7 +140,7 @@ There is YouTube music (supervised) here too for pre teens and older
 [https://accounts.google.com/signup](https://accounts.google.com/signup) to setup a new account
 
 
-### Channels
+### YouTube Channels
 
 [xNestorio]()
 
