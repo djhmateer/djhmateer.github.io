@@ -37,7 +37,7 @@ In order of how much used...
 
 - Old Laptop per kid. Used to watch youtube (mostly) and play browser games
 
-- PS3 games console hooked up to the TV in living room. 99% of the time used to play minecraft.
+- Sony PS3 games console hooked up to the TV in living room. 99% of the time used to play minecraft.
 
 - Amazon Fire tablet per kid - useful to watch movies on long car journey with headphones - [these ones](https://www.amazon.co.uk/gp/product/B01A5RKRV4/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1). Also Minecraft and audio books (audible)
 
@@ -99,9 +99,9 @@ Notice that the chrome browser is signed in as Mia (pizza icon), and youtubekids
 
 ### 1.5 Chrome Extensions
 
-[uBlock Origin]()
+[uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) - wide spectrum content blocker eg adverts on webpages
 
-[privacy Badger]()
+[privacy Badger](https://privacybadger.org/) - blocks trackers
 
 ## 2. Fire Tablets
 
