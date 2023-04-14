@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Home technology setup for an 8 year old 
+title: Home technology setup for kids in 2023 
 description: 
 menu: review
 categories: teaching
@@ -10,11 +10,11 @@ sitemap: true
 image: /assets/2023-01-30/1.jpg
 ---
 
-..and a 6 year old!
-<!-- ![alt text](/assets/2022-11-03/2.jpg "email")](/assets/2022-11-03/2.jpg) -->
+Our kids are 6 and 8, and love playing with technology.
 
-- teach kids technology by letting them play and explore (and getting out their way)
-- make it fun to play with tech!
+Here is how we are setting things up and trying to tame the beast! Let me know if you have any tips please! davemateer@gmail.com
+
+- teach kids technology by letting them play and safely explore (and getting out their way)
 - do it in the living room/kitchen so I can keep an eye on things
 - they have chat to each other if need help (social)
 
@@ -55,6 +55,12 @@ Weekends we're trying 2 hours in the morning (includes time after 7:30 when they
 
 ## 1. YouTube on Laptop
 
+[![alt text](/assets/2023-03-17/9.jpg "email"){:width="500px"}](/assets/2023-03-17/9.jpg)
+
+Old laptops (7 and 12 years old) running Windows 10, and kids non admin profile. Laptop keyboard is broken on right hand one, so using an external keyboard and mouse as a workaround. Batteries nearly totally useless on both, but that doesn't matter.
+
+Laptops kept in the living room.
+
 Henry (6) and Mia (8) love YouTube especially watching people play Minecraft!
 
 so that they don't see things which are not age appropriate like jump scares, swear words, grown up stuff..
@@ -89,7 +95,7 @@ Both
 - chrome - try to block explicit sites
 - google search - safe search is on
 
-[![alt text](/assets/2023-03-17/3.jpg "email")](/assets/2023-03-17/3.jpg)
+[![alt text](/assets/2023-03-17/3.jpg "email"){:width="500px"}](/assets/2023-03-17/3.jpg)
 
 This is youtube kids -  curated bunch of videos for kids. Minecraft on here too.
 
@@ -99,11 +105,17 @@ Notice that the chrome browser is signed in as Mia (pizza icon), and youtubekids
 
 ### 1.5 Chrome Extensions
 
+I use these on all my computers to try and block trackers and block adverts.
+
 [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en) - wide spectrum content blocker eg adverts on webpages
 
 [privacy Badger](https://privacybadger.org/) - blocks trackers
 
+[bitwarden](https://bitwarden.com/) - A Password and sensitive information manager. So that you have different passwords on every site you go to. Super important to show your kids how important this is. I've used [lastpass](https://www.lastpass.com/) for years, but switching to bitwarden.
+
 ## 2. Fire Tablets
+
+[![alt text](/assets/2023-03-17/8.jpg "email"){:width="500px"}](/assets/2023-03-17/8.jpg)
 
 We have 1 tablets, and each kid has a profile on each device
 
@@ -147,32 +159,42 @@ Also we have Minecraft on the tablets, but kids tend to disappear upstairs, so p
 
 [https://poki.com/](https://poki.com/) poki - loads of simple games
 
-We're staying off Roblox for the time being as I've heard bad things (and I don't know enough)
+[https://lichess.org/training](https://lichess.org/training) chess for free!
 
-[https://www.nytimes.com/games/wordle/index.html](https://www.nytimes.com/games/wordle/index.html) Wordle - I love playing this with the kids
+We're staying off Roblox for the time being as I've heard bad things (and I don't know enough)
 
 [https://ttrockstars.com/](https://ttrockstars.com/) Times Table Rock Stars
 
 [https://www.typingclub.com/](https://www.typingclub.com/) free touch typing
 
 
-and I'm going to try this
+### Games to play together
 
-[https://www.decisionproblem.com/paperclips/index2.html](https://www.decisionproblem.com/paperclips/index2.html) this is very addictive! [discussion here](https://news.ycombinator.com/item?id=33446121)
+[![alt text](/assets/2023-03-17/7.jpg "email"){:width="500px"}](/assets/2023-03-17/7.jpg)
+
+[https://www.nytimes.com/games/wordle/index.html](https://www.nytimes.com/games/wordle/index.html) Wordle - I love playing this with the kids. I try and get them to use the real keyboard to get practise typing.
 
 
-[https://lichess.org/training](https://lichess.org/training) chess for free!
+
+[![alt text](/assets/2023-03-17/6.jpg "email")](/assets/2023-03-17/6.jpg)
+
+[https://www.decisionproblem.com/paperclips/index2.html](https://www.decisionproblem.com/paperclips/index2.html) this is very addictive! [discussion here](https://news.ycombinator.com/item?id=33446121). Kids not that interested but I love it.
+
+
 
 
 ## Amazon Alexa / Spotify 
 
-There is a global Explicit filtering on profanity on Alexa (which filters through to Spotify).
+[![alt text](/assets/2023-03-17/10.jpg "email"){:width="700px"}](/assets/2023-03-17/10.jpg)
+<!-- [![alt text](/assets/2023-03-17/10.jpg "email")](/assets/2023-03-17/10.jpg) -->
+
+There is a global Explicit filtering on profanity on Alexa (which filters through to Spotify). Notice the Black Eyed Peas song is greyed out and wont play due to Explicit filtering turned on
 
 To enable Amazon Kids on a device eg Alexa Dot, go to Settings on that device through the app on your mobile phone. Open the Alexa app . Open More and select Settings. Select Music & Podcasts, and then Profanity Filter. 
 
 [https://www.amazon.co.uk/parents](https://www.amazon.co.uk/parents) - Parent Dashboard
 
-[![alt text](/assets/2023-03-17/1.jpg "email")](/assets/2023-03-17/1.jpg)
+[![alt text](/assets/2023-03-17/1.jpg "email"){:width="500px"}](/assets/2023-03-17/1.jpg)
 
 - Kids Echo Dot - explicit filter (stops explicit music on Amazon Music and Spotify)
 - Set Daily Time limits - sets bedtime hours so kids don't get up early and play with Alexa.
