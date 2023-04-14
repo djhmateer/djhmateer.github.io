@@ -158,7 +158,10 @@ We're staying off Roblox for the time being as I've heard bad things (and I don'
 
 and I'm going to try this
 
-[https://www.decisionproblem.com/paperclips/index2.html](https://www.decisionproblem.com/paperclips/index2.html) this is very addictive!
+[https://www.decisionproblem.com/paperclips/index2.html](https://www.decisionproblem.com/paperclips/index2.html) this is very addictive! [discussion here](https://news.ycombinator.com/item?id=33446121)
+
+
+[https://lichess.org/training](https://lichess.org/training) chess for free!
 
 
 ## Amazon Alexa / Spotify 
