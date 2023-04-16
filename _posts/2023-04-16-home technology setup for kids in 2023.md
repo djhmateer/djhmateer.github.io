@@ -2,12 +2,12 @@
 layout: post
 title: Home technology setup for kids in 2023 
 description: 
-menu: review
-categories: teaching
+#menu: review
+categories: kids
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2023-01-30/1.jpg
+image: /assets/2023-04-11/1.jpg
 ---
 
 Our kids are 6 and 8, and love playing with technology.
@@ -117,11 +117,11 @@ I use these on all my computers to try and block trackers and block adverts.
 
 [![alt text](/assets/2023-03-17/8.jpg "email"){:width="500px"}](/assets/2023-03-17/8.jpg)
 
-We have 1 tablets, and each kid has a profile on each device
+We have 2 tablets, and each kid has a profile on each device
 
-Yellow one (Henry) - Fire HD 7 (8th generation registered in July 2019). Updated through 2024. has a 64GB sim card in it. We put mp4 movies (we have the originals!) on there and watch them with VLC player. 24GB internal storage?
+Yellow one (Henry) - Fire HD 7 (8th generation registered in July 2019). Updated through 2024. has a 64GB sim card in it. We put mp4 movies (we have the originals!) on there and watch them with VLC player. 24GB internal storage
 
-Green one (Mia) - Fire HD 7 (6th generation). No more software updates. has a 128GB sim. Only 12GB internal storage.
+Green one (Mia) - Fire HD 7 (6th generation). No more software updates. has a 128GB sim. 12GB internal storage.
 
 1. Devices [https://www.amazon.co.uk/hz/mycd/digital-console/alldevices](https://www.amazon.co.uk/hz/mycd/digital-console/alldevices) - useful for managing name of device, seeing seriel number, generation, child device name eg Mia on Green Fire.
 
@@ -155,15 +155,25 @@ Also we have Minecraft on the tablets, but kids tend to disappear upstairs, so p
 
 ## 4. Browser based games on Laptop
 
+[![alt text](/assets/2023-03-17/11.jpg "email"){:width="500px"}](/assets/2023-03-17/11.jpg)
+
 [https://www.lessmilk.com/almost-pong/](https://www.lessmilk.com/almost-pong/) - pong!
 
-[https://poki.com/](https://poki.com/) poki - loads of simple games
+[![alt text](/assets/2023-03-17/12.jpg "email"){:width="500px"}](/assets/2023-03-17/12.jpg)
+
+[https://poki.com/](https://poki.com/) poki - loads of games. Not sure if all suitable!
+
+[![alt text](/assets/2023-03-17/13.jpg "email"){:width="500px"}](/assets/2023-03-17/13.jpg)
 
 [https://lichess.org/training](https://lichess.org/training) chess for free!
 
 We're staying off Roblox for the time being as I've heard bad things (and I don't know enough)
 
-[https://ttrockstars.com/](https://ttrockstars.com/) Times Table Rock Stars
+[![alt text](/assets/2023-03-17/14.jpg "email"){:width="500px"}](/assets/2023-03-17/14.jpg)
+
+[https://ttrockstars.com/](https://ttrockstars.com/) Times Table Rock Stars we get a login from the school to play.
+
+[![alt text](/assets/2023-03-17/15.jpg "email"){:width="500px"}](/assets/2023-03-17/15.jpg)
 
 [https://www.typingclub.com/](https://www.typingclub.com/) free touch typing
 
@@ -185,8 +195,10 @@ We're staying off Roblox for the time being as I've heard bad things (and I don'
 
 ## Amazon Alexa / Spotify 
 
-[![alt text](/assets/2023-03-17/10.jpg "email"){:width="700px"}](/assets/2023-03-17/10.jpg)
+[![alt text](/assets/2023-03-17/10.jpg "email"){:width="500px"}](/assets/2023-03-17/10.jpg)
 <!-- [![alt text](/assets/2023-03-17/10.jpg "email")](/assets/2023-03-17/10.jpg) -->
+
+[https://open.spotify.com/playlist/4mCwNgY4JhiWtnjIknNK0J?si=ec7d0e243d414067](https://open.spotify.com/playlist/4mCwNgY4JhiWtnjIknNK0J?si=ec7d0e243d414067) here is the street funk playlist!
 
 There is a global Explicit filtering on profanity on Alexa (which filters through to Spotify). Notice the Black Eyed Peas song is greyed out and wont play due to Explicit filtering turned on
 
@@ -202,6 +214,8 @@ To enable Amazon Kids on a device eg Alexa Dot, go to Settings on that device th
 We have audible books (specifically Harry Potter) which they love listening to.
 
 ## Useful Websites
+
+[![alt text](/assets/2023-03-17/16.jpg "email"){:width="500px"}](/assets/2023-03-17/16.jpg)
 
 [https://www.commonsensemedia.org/](https://www.commonsensemedia.org/) - Books, Film, TV and Games. Gives a parents rating / kids rating. eg The Goonies adults say 10+/kids say 10+. Harry Potter 1 is 7+, Harry Potter 2 is 9+/8+
 
