@@ -193,7 +193,7 @@ We're staying off Roblox for the time being as I've heard bad things (and I don'
 
 
 
-## Amazon Alexa / Spotify 
+## 5. Amazon Alexa / Spotify 
 
 [![alt text](/assets/2023-03-17/10.jpg "email"){:width="500px"}](/assets/2023-03-17/10.jpg)
 <!-- [![alt text](/assets/2023-03-17/10.jpg "email")](/assets/2023-03-17/10.jpg) -->
@@ -212,6 +212,13 @@ To enable Amazon Kids on a device eg Alexa Dot, go to Settings on that device th
 - Set Daily Time limits - sets bedtime hours so kids don't get up early and play with Alexa.
 
 We have audible books (specifically Harry Potter) which they love listening to.
+
+## 6. Apple ipod
+
+I've setup a family account from my Apple ID so can manage Mia's settings from my phone ie Mia has her own Apple ID which I manage.
+
+- 45 mins per day of app time
+
 
 ## Useful Websites
 
