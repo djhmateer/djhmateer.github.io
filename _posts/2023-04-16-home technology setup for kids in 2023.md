@@ -217,6 +217,9 @@ We have audible books (specifically Harry Potter) which they love listening to.
 
 I've setup a family account from my Apple ID so can manage Mia's settings from my phone ie Mia has her own Apple ID which I manage.
 
+To manage I use my Phone, Settings, David Mateer, Family Sharing:
+
+
 - 45 mins per day of app time
 
 
