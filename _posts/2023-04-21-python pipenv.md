@@ -1,13 +1,13 @@
 ---
 layout: post
-# title: Proxmox Beginners Guide
+title: Python Pipenv 
 description: 
-menu: review
+# menu: review
 categories: python
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2022-09-22/1.jpg
+image: /assets/2022-10-11/1.jpg
 ---
 
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->
@@ -21,6 +21,8 @@ image: /assets/2022-09-22/1.jpg
 <!-- [![alt text](/assets/2022-09-15/cookie.jpg "email")](/assets/2022-09-15/cookie.jpg) -->
 
 To make dependencies easier in dev and production, I use `pipenv`. 
+
+Here is an example of my production VM build script with pipenv at the bottom
 
 ```bash
 # Python 3.8.2 comes with Ubuntu 20_04 but we want newer
@@ -161,3 +163,6 @@ I couldn't get the python postgres client to build from source which is advised 
 So unfortunately I'm using this only in dev, and for prod I'm manually running pip files. [https://github.com/osr4rightstools/osr4rights-tools/blob/main/fire-map-infra/create_firemap_webserver.sh#L188](https://github.com/osr4rightstools/osr4rights-tools/blob/main/fire-map-infra/create_firemap_webserver.sh#L188)
 
 
+## Conclusion
+
+Using a virtual environment to control versions of packages is super important in python to avoid clashes in package versions! Pipenv works fine.
