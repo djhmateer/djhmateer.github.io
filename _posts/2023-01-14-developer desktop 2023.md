@@ -182,7 +182,28 @@ sign up with personal account
 
 Samsung Magician - to update SSD firmware
 
-HW Info 64 to monitor temps
+MSI Centre to update mobo drivers
+
+
+[HW Info 64](https://www.hwinfo.com/download/) to monitor temps
+
+Cinebench r23 to give load (use MS Store to easily get it)
+
+
+Here is my old 4790k running cinebench with an air cooler
+
+[![alt text](/assets/2023-01-30/4.jpg "email")](/assets/2023-01-30/4.jpg)
+
+pulling 100W and maxing around 92 degrees (hit 97 later on 30min run). Didn't thermal throttle (yet)
+
+I got: 4,712, 4,560.. single runs... then for a 30 min run (Test Stability) 4,702
+
+39,600 is what hanselman got on his 13900k (LTT only got 36,000 with no work) - so good silicon!
+
+
+Intel XTU - to do overclocking of CPU. But core isolation. 
+
+[AIDA64](https://aida64.co.uk/download) for memory testing
 
 ## Case
 
