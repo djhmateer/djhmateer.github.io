@@ -23,6 +23,8 @@ I'm going for a fairly average power build with high storage and high memory, an
 
 Interestingly Damien Edwards has built around 12 machines over the last 3 years [Video Here](https://www.youtube.com/watch?v=Lv4eiMajw2M) so this may be a fun start of building as a hobby! at 29 minutes in he starts the build with tips eg how tight to tighten screws.
 
+[PCParkPicker of Hanselrig](https://pcpartpicker.com/user/DamianEdwards/saved/#view=444DwP)
+
 [PCPartPicker summary](https://uk.pcpartpicker.com/user/davemateer/saved/#view=h9q6Q7) of this build
 
 [LTT sister build](https://www.youtube.com/watch?v=AOdp09SYhCc) - z690, 3060ti
@@ -35,7 +37,7 @@ Inspect boxes when you receive them for damage!
 
 Where to buy stuff in the UK?
 
--Amazon. Good as can cross ship if have got a problem
+-Amazon. Good as can cross ship if have got a problem. support bot try and get.
 -scan.co.uk
 -overclockers.co.uk
 
@@ -145,6 +147,16 @@ ARCTIC Liquid Freezer II 360 A-RGB 48.8 CFM Liquid CPU Cooler - but it costs £1
 
 Use arctix thermal paste mx5
 
+## PSU
+
+Modular power supply means none of the cables are attached
+
+Platinum is highly efficient
+
+Corsair are good.
+
+cheaper ones will be nosier and less efficient maybe
+
 ## BIOS
 
 Simple and Advanced mode
@@ -225,15 +237,7 @@ I want to go with NVidia purely as can then talk to the gpu
 
 But I'm not gaming at the moment, and prices are falling. Don't want kids gaming on my PC!
 
-## PSU
 
-Modular power supply means none of the cables are attached
-
-Platinum is highly efficient
-
-Corsair are good.
-
-cheaper ones will be nosier and less efficient maybe
 
 ### Cables
 
