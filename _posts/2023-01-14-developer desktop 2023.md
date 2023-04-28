@@ -366,4 +366,24 @@ I've never had a 'gaming' screen ie high refresh rate.. would be fun to try
 
 
 
+
 New Mechanical disk?
+
+
+## The Build
+ 
+[https://www.youtube.com/watch?v=yC1f5_cWFNU](https://www.youtube.com/watch?v=yC1f5_cWFNU) CPU install - lining up arrows
+
+[https://www.youtube.com/watch?v=tmknmmSpUA4](https://www.youtube.com/watch?v=tmknmmSpUA4) AK 620 cooler install
+
+
+[https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support](https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support)
+ memory in DIMMA2 and DIMMB2
+
+[https://download.msi.com/archive/mnu_exe/mb/PROZ690-AWIFIDDR4_PROZ690-ADDR4100x150.pdf](https://download.msi.com/archive/mnu_exe/mb/PROZ690-AWIFIDDR4_PROZ690-ADDR4100x150.pdf)
+
+
+
+mobo
+ xmp profile 1 - running at full speed RAM ie 3600MHz
+
