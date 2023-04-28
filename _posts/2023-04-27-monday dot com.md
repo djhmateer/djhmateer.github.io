@@ -85,3 +85,7 @@ Basic £9/seat per month
 Standard £11 seat per month
 Pro £18 seat per moth. Charts. Formula column. Integrations automations.
 Enterprise
+
+## Alternatives
+
+[https://www.smartsheet.com/](https://www.smartsheet.com/)
