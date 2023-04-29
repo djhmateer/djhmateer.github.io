@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Mondaky.com
+title: Monday.com
 description: 
-# menu: review
+menu: review
 categories: monday
 published: true 
 comments: false     
