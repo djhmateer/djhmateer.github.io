@@ -1,19 +1,23 @@
 ---
 layout: post
 title: Developer Desktop Build 2023
-description: 
-menu: review
+description: Building a desktop PC focussed on being developer daily driver.
+#menu: review
 categories: hardware
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2023-01-30/1.jpg
+image: /assets/2023-04-29/5.jpg
 ---
 
 <!-- ![alt text](/assets/2022-11-03/2.jpg "email")](/assets/2022-11-03/2.jpg) -->
 
-This is a daily driver PC for the next 5 - 7 years as a developer (only occasional gamer!). 
 
+- Why buy a new PC
+- The research (months!)
+- The build
+
+## Why a new PC
 
 [![alt text](/assets/2023-01-30/3.jpg "email")](/assets/2023-01-30/3.jpg)
 
@@ -372,9 +376,24 @@ New Mechanical disk?
 
 ## The Build
  
+[![alt text](/assets/2023-04-29/1.jpg "email")](/assets/2023-04-29/1.jpg)
+
+[![alt text](/assets/2023-04-29/2.jpg "email")](/assets/2023-04-29/2.jpg)
+
+Lets do a bench build to test components
+
+[![alt text](/assets/2023-04-29/3.jpg "email")](/assets/2023-04-29/3.jpg)
+
+First step is to seat the CPU - the trick was to get the arrows lined up:
+
 [https://www.youtube.com/watch?v=yC1f5_cWFNU](https://www.youtube.com/watch?v=yC1f5_cWFNU) CPU install - lining up arrows
 
+
+[![alt text](/assets/2023-04-29/4.jpg "email")](/assets/2023-04-29/4.jpg)
+
 [https://www.youtube.com/watch?v=tmknmmSpUA4](https://www.youtube.com/watch?v=tmknmmSpUA4) AK 620 cooler install
+
+Notice above I should have put in the m.2, but I could get it in afterwaards. Also the memory was in the incorrect slot, but I was testing the clearances
 
 
 [https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support](https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support)
@@ -384,6 +403,14 @@ New Mechanical disk?
 
 
 
-mobo
- xmp profile 1 - running at full speed RAM ie 3600MHz
+[![alt text](/assets/2023-04-29/5.jpg "email")](/assets/2023-04-29/5.jpg)
+
+It is alive! I powered on the mobo by shorting the two power pins (see manual)
+
+checking temps are not rising crazily (which would indicate problems with the thermal cooling paste).
+
+
+[![alt text](/assets/2023-04-29/6.jpg "email"){:width="800px"}](/assets/2023-04-29/6.jpg)
+
+xmp profile 1 - running at full speed RAM ie 3600 MHz (in first picture DDR is at 2133 MHz)
 
