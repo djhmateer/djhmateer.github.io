@@ -225,6 +225,8 @@ Intel XTU - to do overclocking of CPU. But core isolation.
 
 Mid tower
 
+ATX, Micro ATX and Mini-ITX. (Mini is smaller than Micro)
+
 ## GPU 
 
 Team Green (Nvidia) vs Team Red (AMD)
@@ -413,4 +415,46 @@ checking temps are not rising crazily (which would indicate problems with the th
 [![alt text](/assets/2023-04-29/6.jpg "email"){:width="800px"}](/assets/2023-04-29/6.jpg)
 
 xmp profile 1 - running at full speed RAM ie 3600 MHz (in first picture DDR is at 2133 MHz)
+
+cooling profile - in Advanced, OC, CPU Cooling Tuning, Water cooling 4096W (ie full power)
+
+
+## Windows
+
+windows 10 pro
+user: setup
+
+MSI Driver Utility Installer - comes up once only. Otherwise have to install drivers via MSI Center.
+
+
+had to use USB external CD ROM drive to read Ethernet Adapter driver (and wifi)
+
+Do all updates in Windows
+
+Download MSI Center - to get all devices on the mobo working (ie in device maanger on windows)
+ download driver all except Norton
+ Also in advanced I went from BIOS  V1.A0 to V1.B0 - 24/03/2023 (so 5 days old)
+
+Samsung Magician (to get and chec updated firmware on ssd). ScottH likes to Overprovision by 10% . I've not.
+ Perf test gave:
+ Sequential Reads: 6874 MB/s
+ Sequential Writes: 5116 MB/s
+ Random Reads: 1.06 million iOPS
+ Random Writes: 1.06 million iOPS
+
+
+
+Install [HW Info 64](https://www.hwinfo.com/download/)
+ Sensors Only
+  CPU Package
+  CPI Package Power
+
+
+Cinebench r23 from MS Store
+ I got a 24,042 which looks good [results](https://www.cgdirector.com/cinebench-r23-scores-updated-results/)
+
+Get Intel Extreme Tuning from Intel
+ turned on automatic overclocking which gave me 24,316 above
+
+
 
