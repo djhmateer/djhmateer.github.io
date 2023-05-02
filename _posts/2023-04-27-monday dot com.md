@@ -26,17 +26,15 @@ The current system is on Google Spreadsheets, and we need much more control and 
 
 However we would love to keep the flexibility of a spreadsheet system
 
-And not have the cost of a custom built SaaS product which is in the realm of £40k per year for 600 employees.
+And not have the cost of a specific scheduling SaaS product which is in the realm of £40k per year for 600 employees.
 
 
 ## What is Monday.com?
 Is it a spreadsheet with automation and workflow?
 
-
-
-There is good undo (Trash)
-Keyboard shortcuts looks good
-Multi select looks good
+- There is good undo (Trash)
+- Keyboard shortcuts looks good
+- Multi select looks good
 
 ## Terminology
 
@@ -45,7 +43,9 @@ Workspace - contains Items eg Board, Doc, Dashboard, Form. All team members are 
 Board - like a worksheet. everything is a board
 
 Groups (top level)
+
 Items - can be anything eg Clients, Deals, Meetings, Bugs.. anything you need to manage
+
 Sub Items
 
 
@@ -80,11 +80,11 @@ Each person is a user
 
 Timeline and Gant views are 
 
-Individual (2 seats) free
-Basic £9/seat per month
-Standard £11 seat per month
-Pro £18 seat per moth. Charts. Formula column. Integrations automations.
-Enterprise
+- Individual (2 seats) free
+- Basic £9/seat per month
+- Standard £11 seat per month
+- Pro £18 seat per moth. Charts. Formula column. Integrations automations.
+- Enterprise
 
 ## Alternatives
 
