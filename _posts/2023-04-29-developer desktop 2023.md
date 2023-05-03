@@ -457,4 +457,11 @@ Get Intel Extreme Tuning from Intel
  turned on automatic overclocking which gave me 24,316 above
 
 
+## Case
+
+
+[![alt text](/assets/2023-04-29/7.jpg "email"){:width="800px"}](/assets/2023-04-29/7.jpg)
+
+It is alive!
+
 
