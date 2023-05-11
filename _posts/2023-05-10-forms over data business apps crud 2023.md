@@ -44,42 +44,43 @@ In order of complexity and cost
 
 MS Access forms over data..
 
-1999
-PHP / MySQL / HTML on Linux
-deployment using FTP
+### 1999
+- PHP / MySQL / HTML on Linux
+- deployment using FTP
 
-2005
-ASP.NET / MSSQL / CSS / JS on Windows Servers then Azure then Linux VM's on and off cloud
-Wordpress hosted on proxmox hypervisor for performance and costs
-Nginx for reverse proxy 
-Kestrel for webserver
-Dapper and Polly and high perf SQL and resilience
-git for source control / github
-functional programming for solving complex state and simplifying code
-async for performance
-azure CLI for deploymnet ie fully automated build of VM's
-fully custom authentication and authorisation for asp.net cookie
-uploading large files in http
-serilog for logging
-Razor page templating
-PWA
-Bootstrap
-jQuery
-Postmark for email sending
-DNSimple for DNS
-Docker/K8s (and when not to use it!)
+### 2005
+- ASP.NET / MSSQL / CSS / JS on Windows Servers then Azure then Linux VM's on and off cloud
+- Wordpress hosted on proxmox hypervisor for performance and costs
+- Nginx for reverse proxy 
+- Kestrel for webserver
+- Dapper and Polly and high perf SQL and resilience
+- git for source control / github
+- functional programming for solving complex state and simplifying code
+- async for performance
+- azure CLI for deploymnet ie fully automated build of VM's
+- fully custom authentication and authorisation for asp.net cookie
+- uploading large files in http
+- serilog for logging
+- Razor page templating
+- PWA
+- Bootstrap
+- jQuery
+- Postmark for email sending
+- DNSimple for DNS
+- Docker/K8s (and when not to use it!)
 
-2020
-Python for data processing and interacting with Google Spreadsheets
-Postgres and PHP for custom mapping
-cron for recurring jobs
-Google Drive API for storage
-Custom CSS for front end flexbox, Tailwind
-Excel dashboard for simple reporting connecting to live azure db
+### 2020
+- Python for data processing and interacting with Google Spreadsheets
+- Postgres and PHP for custom mapping
+- cron for recurring jobs
+- Google Drive API for storage
+- Custom CSS for front end flexbox, Tailwind
+- Excel dashboard for simple reporting connecting to live azure db
 
 
-2023
+### 2023
 No Code
+
 Low Code
  - MS Power Platform ($20 per month per user)
  - Google App Sheet (similar to above)
