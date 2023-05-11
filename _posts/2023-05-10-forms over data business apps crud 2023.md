@@ -109,8 +109,15 @@ Beginners/Experts: Spreadsheets are often more maintainable, more usable, and mo
 Databases store information, but we need a way (code) to create a UI to do things with that info
 
 High Code
+- Node
+- React
+- Express
+- ASP.NET Core / MSSQL
 - Python Django
+- Flask
+- Next.js
 - PHP and Laravel
+- LAMP
 
 Low Code
 - [MS Power Apps](https://powerplatform.microsoft.com/en-gb/power-apps/) - part of power platform which includes power bi
