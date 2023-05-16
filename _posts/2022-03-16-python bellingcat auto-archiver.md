@@ -22,6 +22,30 @@ In this article I'll go through setting up my virtual Python developement enviro
 
 [Python.org](https://www.python.org/downloads/) is currently on 3.10.3 (16th March 2022 release). I'm using 3.9.11 (16th March 2022 release) as had issues with debugging with VS Code with 3.10.
 
+**update 12th May 2023** I'm building a new desktop which now runs Ubuntu 22.04 under WSL and comes with Python 3.10.6
+
+```bash
+# 22.04 install
+
+# 3.10.6
+python3 -V
+
+# didn't need to put in profile like below?
+export PATH=/home/dave/.local/bin:$PATH
+
+sudo apt install python3-pip -y
+
+# 23.1.2
+pip install --upgrade pip
+
+pip install --user pipenv
+
+# Warning: Python 3.9 was not found on your system...
+# I had to update my pipfile to python version of 3.10 (was forcing 3.9 only)
+pipenv install
+
+```
+
 [Python Installation Guide Documents](https://docs.python-guide.org/starting/install3/linux/#install3-linux) - below is how I did it.
 
 ```bash
