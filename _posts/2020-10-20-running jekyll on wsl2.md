@@ -32,6 +32,8 @@ ERROR:  Error installing zlib:
 extconf failed, exit code 1
 ```
 
+**UPDATE 15th May 2023** I couldn't get it working on WSL2 / Ubuntu 22.04
+
 After some playing around this worked for me:
 
 ```bash
@@ -49,6 +51,7 @@ sudo gem install bundler
 #sudo gem install jekyll
 
 # inside jekyll repo
+# **Had to do sudo to get this to work**
 bundle install
 
 # simple serve
