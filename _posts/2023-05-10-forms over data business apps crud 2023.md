@@ -12,8 +12,6 @@ image: /assets/2023-04-29/5.jpg
 
 <!-- [![alt text](/assets/2023-04-29/7.jpg "email"){:width="800px"}](/assets/2023-04-29/7.jpg) -->
 
-x
-
 A client/boss comes to you and says `I need a new business application to do x`
 
 Lets assume that

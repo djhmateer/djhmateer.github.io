@@ -34,6 +34,28 @@ extconf failed, exit code 1
 
 **UPDATE 15th May 2023** I couldn't get it working on WSL2 / Ubuntu 22.04
 
+**UPDATE 5th June 2023** I did get it working like this: [help article](https://talk.jekyllrb.com/t/jekyll-is-giving-me-an-error-after-updating-ubuntu-to-22-04/7292)
+
+```bash
+# so probably some commands from further down then...
+# 5th june 2023 on Ubuntu 22
+gem install jekyll bundler
+bundle install
+bundle update
+bundle install
+bundle update
+
+sudo apt update
+sudo apt upgrade
+
+gem install jekyll bundler
+
+bundle add webrick
+
+bundle exec jekyll serve
+
+```
+
 After some playing around this worked for me:
 
 ```bash

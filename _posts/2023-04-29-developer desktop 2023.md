@@ -12,10 +12,121 @@ image: /assets/2023-04-29/5.jpg
 
 <!-- ![alt text](/assets/2022-11-03/2.jpg "email")](/assets/2022-11-03/2.jpg) -->
 
+- Intel i5-13600K (onboad graphics) - £297
+- MSI PRO Z690-A WIFI DDR4 ATX LGA1700 Motherboard - £180
+- Corsair VENGEANCE RGB PRO 64GB (2x32GB) DDR4 3600 - £174
+- Samsung 980 PRO M.2 NVMe SSD (MZ-V8P2T0BW), 2 TB, PCIe 4.0  - £156
+- DeepCool AK620 CPU Air Cooler - £60
+- Corsair 4000D Airflow Tempered Glass Mid-Tower ATX Case - £95
+- Corsair RM850x 80 PLUS Gold Fully Modular ATX 850 Watt Power Supply - £153
 
-- Why buy a new PC
-- The research (months!)
-- The build.
+[PCPartPicker - Dave Dev Rig April 2023](https://uk.pcpartpicker.com/user/davemateer/saved/#view=TDGbpg)
+
+
+[![alt text](/assets/2023-06-05/1.jpg "email")](/assets/2023-06-05/1.jpg)
+
+Super quiet, 64GB RAM, 2TB rig.
+
+Total: £1115
+
+All parts bought from Amazon UK for their returns policy.
+
+
+## The Build
+ 
+[![alt text](/assets/2023-04-29/1.jpg "email")](/assets/2023-04-29/1.jpg)
+
+[![alt text](/assets/2023-04-29/2.jpg "email")](/assets/2023-04-29/2.jpg)
+
+Lets do a bench build to test components
+
+[![alt text](/assets/2023-04-29/3.jpg "email")](/assets/2023-04-29/3.jpg)
+
+First step is to seat the CPU - the trick was to get the arrows lined up:
+
+[https://www.youtube.com/watch?v=yC1f5_cWFNU](https://www.youtube.com/watch?v=yC1f5_cWFNU) CPU install - lining up arrows
+
+
+[![alt text](/assets/2023-04-29/4.jpg "email")](/assets/2023-04-29/4.jpg)
+
+[https://www.youtube.com/watch?v=tmknmmSpUA4](https://www.youtube.com/watch?v=tmknmmSpUA4) AK 620 cooler install
+
+Notice above I should have put in the m.2, but I could get it in afterwaards. Also the memory was in the incorrect slot, but I was testing the clearances
+
+
+[https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support](https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support)
+ memory in DIMMA2 and DIMMB2
+
+[https://download.msi.com/archive/mnu_exe/mb/PROZ690-AWIFIDDR4_PROZ690-ADDR4100x150.pdf](https://download.msi.com/archive/mnu_exe/mb/PROZ690-AWIFIDDR4_PROZ690-ADDR4100x150.pdf)
+
+
+
+[![alt text](/assets/2023-04-29/5.jpg "email")](/assets/2023-04-29/5.jpg)
+
+It is alive! I powered on the mobo by shorting the two power pins (see manual)
+
+checking temps are not rising crazily (which would indicate problems with the thermal cooling paste).
+
+
+[![alt text](/assets/2023-04-29/6.jpg "email"){:width="800px"}](/assets/2023-04-29/6.jpg)
+
+xmp profile 1 - running at full speed RAM ie 3600 MHz (in first picture DDR is at 2133 MHz)
+
+cooling profile - in Advanced, OC, CPU Cooling Tuning, Water cooling 4096W (ie full power)
+
+[![alt text](/assets/2023-06-05/2.jpg "email")](/assets/2023-06-05/2.jpg)
+
+226W max draw on cinebench. Thermal throttle, but I believe this is okay.
+
+[![alt text](/assets/2023-06-05/3.jpg "email")](/assets/2023-06-05/3.jpg)
+
+22412 on cinebench which is fine.
+
+## Windows
+
+windows 10 pro
+user: setup
+
+MSI Driver Utility Installer - comes up once only. Otherwise have to install drivers via MSI Center.
+
+
+had to use USB external CD ROM drive to read Ethernet Adapter driver (and wifi)
+
+Do all updates in Windows
+
+Download MSI Center - to get all devices on the mobo working (ie in device maanger on windows)
+ download driver all except Norton
+ Also in advanced I went from BIOS  V1.A0 to V1.B0 - 24/03/2023 (so 5 days old)
+
+Samsung Magician (to get and chec updated firmware on ssd). ScottH likes to Overprovision by 10% . I've not.
+ Perf test gave:
+ Sequential Reads: 6874 MB/s
+ Sequential Writes: 5116 MB/s
+ Random Reads: 1.06 million iOPS
+ Random Writes: 1.06 million iOPS
+
+
+
+Install [HW Info 64](https://www.hwinfo.com/download/)
+ Sensors Only
+  CPU Package
+  CPI Package Power
+
+
+Cinebench r23 from MS Store
+ I got a 24,042 which looks good [results](https://www.cgdirector.com/cinebench-r23-scores-updated-results/)
+
+Get Intel Extreme Tuning from Intel
+ turned on automatic overclocking which gave me 24,316 above
+
+
+## Case
+
+
+[![alt text](/assets/2023-04-29/7.jpg "email"){:width="800px"}](/assets/2023-04-29/7.jpg)
+
+It is alive!
+
 
 ## Why a new PC
 
@@ -375,93 +486,5 @@ I've never had a 'gaming' screen ie high refresh rate.. would be fun to try
 
 New Mechanical disk?
 
-
-## The Build
- 
-[![alt text](/assets/2023-04-29/1.jpg "email")](/assets/2023-04-29/1.jpg)
-
-[![alt text](/assets/2023-04-29/2.jpg "email")](/assets/2023-04-29/2.jpg)
-
-Lets do a bench build to test components
-
-[![alt text](/assets/2023-04-29/3.jpg "email")](/assets/2023-04-29/3.jpg)
-
-First step is to seat the CPU - the trick was to get the arrows lined up:
-
-[https://www.youtube.com/watch?v=yC1f5_cWFNU](https://www.youtube.com/watch?v=yC1f5_cWFNU) CPU install - lining up arrows
-
-
-[![alt text](/assets/2023-04-29/4.jpg "email")](/assets/2023-04-29/4.jpg)
-
-[https://www.youtube.com/watch?v=tmknmmSpUA4](https://www.youtube.com/watch?v=tmknmmSpUA4) AK 620 cooler install
-
-Notice above I should have put in the m.2, but I could get it in afterwaards. Also the memory was in the incorrect slot, but I was testing the clearances
-
-
-[https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support](https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support)
- memory in DIMMA2 and DIMMB2
-
-[https://download.msi.com/archive/mnu_exe/mb/PROZ690-AWIFIDDR4_PROZ690-ADDR4100x150.pdf](https://download.msi.com/archive/mnu_exe/mb/PROZ690-AWIFIDDR4_PROZ690-ADDR4100x150.pdf)
-
-
-
-[![alt text](/assets/2023-04-29/5.jpg "email")](/assets/2023-04-29/5.jpg)
-
-It is alive! I powered on the mobo by shorting the two power pins (see manual)
-
-checking temps are not rising crazily (which would indicate problems with the thermal cooling paste).
-
-
-[![alt text](/assets/2023-04-29/6.jpg "email"){:width="800px"}](/assets/2023-04-29/6.jpg)
-
-xmp profile 1 - running at full speed RAM ie 3600 MHz (in first picture DDR is at 2133 MHz)
-
-cooling profile - in Advanced, OC, CPU Cooling Tuning, Water cooling 4096W (ie full power)
-
-
-## Windows
-
-windows 10 pro
-user: setup
-
-MSI Driver Utility Installer - comes up once only. Otherwise have to install drivers via MSI Center.
-
-
-had to use USB external CD ROM drive to read Ethernet Adapter driver (and wifi)
-
-Do all updates in Windows
-
-Download MSI Center - to get all devices on the mobo working (ie in device maanger on windows)
- download driver all except Norton
- Also in advanced I went from BIOS  V1.A0 to V1.B0 - 24/03/2023 (so 5 days old)
-
-Samsung Magician (to get and chec updated firmware on ssd). ScottH likes to Overprovision by 10% . I've not.
- Perf test gave:
- Sequential Reads: 6874 MB/s
- Sequential Writes: 5116 MB/s
- Random Reads: 1.06 million iOPS
- Random Writes: 1.06 million iOPS
-
-
-
-Install [HW Info 64](https://www.hwinfo.com/download/)
- Sensors Only
-  CPU Package
-  CPI Package Power
-
-
-Cinebench r23 from MS Store
- I got a 24,042 which looks good [results](https://www.cgdirector.com/cinebench-r23-scores-updated-results/)
-
-Get Intel Extreme Tuning from Intel
- turned on automatic overclocking which gave me 24,316 above
-
-
-## Case
-
-
-[![alt text](/assets/2023-04-29/7.jpg "email"){:width="800px"}](/assets/2023-04-29/7.jpg)
-
-It is alive!
 
 
