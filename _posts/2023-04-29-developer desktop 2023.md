@@ -12,7 +12,7 @@ image: /assets/2023-04-29/5.jpg
 
 <!-- ![alt text](/assets/2022-11-03/2.jpg "email")](/assets/2022-11-03/2.jpg) -->
 
-- Intel i5-13600K (onboad graphics) - £297
+- Intel i5-13600K - £297
 - MSI PRO Z690-A WIFI DDR4 ATX LGA1700 Motherboard - £180
 - Corsair VENGEANCE RGB PRO 64GB (2x32GB) DDR4 3600 - £174
 - Samsung 980 PRO M.2 NVMe SSD (MZ-V8P2T0BW), 2 TB, PCIe 4.0  - £156
@@ -29,7 +29,7 @@ Super quiet, 64GB RAM, 2TB rig.
 
 Total: £1115
 
-All parts bought from Amazon UK for their returns policy.
+All parts bought from Amazon UK 
 
 
 ## The Build
@@ -51,7 +51,7 @@ First step is to seat the CPU - the trick was to get the arrows lined up:
 
 [https://www.youtube.com/watch?v=tmknmmSpUA4](https://www.youtube.com/watch?v=tmknmmSpUA4) AK 620 cooler install
 
-Notice above I should have put in the m.2, but I could get it in afterwaards. Also the memory was in the incorrect slot, but I was testing the clearances
+Notice above I should have put in the m.2, but I could get it in afterwards. Also the memory was in the incorrect slot, but I was testing the clearances
 
 
 [https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support](https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/support)
