@@ -15,7 +15,7 @@ image: /assets/2023-04-29/5.jpg
 
 - Why buy a new PC
 - The research (months!)
-- The build
+- The build.
 
 ## Why a new PC
 
