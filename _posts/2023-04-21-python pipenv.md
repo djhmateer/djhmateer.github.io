@@ -55,6 +55,9 @@ pipenv install
 
 # useful to purge the virtual env
 pipenv --rm
+
+# update all packages
+pipenv update
 ```
 
 Add a dependency to pipfile eg [https://postmarkapp.com/send-email/python](https://postmarkapp.com/send-email/python) which I use for sending emails

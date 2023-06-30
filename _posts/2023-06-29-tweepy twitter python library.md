@@ -124,6 +124,14 @@ Here are the highlights:
 - Free .. 50 Tweets per 24 hours. Giving 1,500 Tweets per month
 - Basic .. 100 Tweets per 24 hours. Giving 3,000 Tweets per month
 
+## Length of Tweets
+
+[https://twitter.com/imPrachiPoddar/status/1671003918665646081](https://twitter.com/imPrachiPoddar/status/1671003918665646081) showing a tweet of 25,000 characters for subscribers aka Twitter Blue.
+
+[https://help.twitter.com/en/using-twitter/twitter-blue](https://help.twitter.com/en/using-twitter/twitter-blue) £9.60 per month.
+
+[https://help.twitter.com/en/using-twitter/verified-organizations#verifiedorgs-pricing](https://help.twitter.com/en/using-twitter/verified-organizations#verifiedorgs-pricing) verified organisation at £1,140 per month.
+
 ## Alternatives to Twitter API Search
 
 [https://github.com/JustAnotherArchivist/snscrape](https://github.com/JustAnotherArchivist/snscrape) 3.7k stars. Python
