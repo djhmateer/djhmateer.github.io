@@ -1,8 +1,8 @@
 ---
 layout: post
-#title: Developer Desktop Build 2023
-#description: Building a desktop PC focussed on being developer daily driver.
-menu: review
+title: Tweepy and Twitter 
+description: Accessing the free Twitter API with new limits and what you can now do 
+# menu: review
 categories: twitter
 published: true 
 comments: false     
