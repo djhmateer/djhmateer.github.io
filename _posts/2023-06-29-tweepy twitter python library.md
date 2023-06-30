@@ -66,6 +66,10 @@ In general these represent the `User` that you are making a request on behalf of
 
 You'll need to generate these 4 above
 
+### Bearer Token
+
+Only use if it is non User related. Otherwise we need to use the way above. The app-only bearer token is by definition app-only and doesn't have a user contxt [source](https://github.com/tweepy/tweepy/discussions/1974)
+
 
 ## Example - Calling Twitter API v2 with OAuth 1.0a Authentication
 
@@ -91,7 +95,20 @@ client = tweepy.Client(
 
 # as can't have 2 exactly the same tweets in a row so put in a time
 message = f"Hello Twitter from tweepy - hitting Twitter API v2 with OAuth 1.0a Authentication at unixtime {time.time()}. Please ignore :-)"
-client.create_tweet(text=message)
+
+# 280 characters test
+message = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat mas"
+
+# 281 - this fails
+# message = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat masx"
+
+try: 
+    client.create_tweet(text=message)
+except Exception as e:
+    # eg 403 Forbidden You are not allowed to create a Tweet with duplicate content
+    # 400 Bad Request Your Tweet text is too long. For more information on how Twitter determines text length see https://github.com/twitter/twitter-text.
+    print(f'unexpected error creating tweet: \n\n{e}\n')
+
 ```
 
 ## Limits on the Free API access
@@ -125,6 +142,9 @@ Here are the highlights:
 - Basic .. 100 Tweets per 24 hours. Giving 3,000 Tweets per month
 
 ## Length of Tweets
+
+The current max length of a tweet is 280 characters
+
 
 [https://twitter.com/imPrachiPoddar/status/1671003918665646081](https://twitter.com/imPrachiPoddar/status/1671003918665646081) showing a tweet of 25,000 characters for subscribers aka Twitter Blue.
 
