@@ -158,3 +158,7 @@ The current max length of a tweet is 280 characters
 
 [https://github.com/n0madic/twitter-scraper](https://github.com/n0madic/twitter-scraper) 564 stars, Go
 
+
+**News on 1st July 2023**
+[https://news.ycombinator.com/item?id=36540957](https://news.ycombinator.com/item?id=36540957) requiring an account to view tweets!
+
