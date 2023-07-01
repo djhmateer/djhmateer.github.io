@@ -107,6 +107,7 @@ try:
 except Exception as e:
     # eg 403 Forbidden You are not allowed to create a Tweet with duplicate content
     # 400 Bad Request Your Tweet text is too long. For more information on how Twitter determines text length see https://github.com/twitter/twitter-text.
+    # 429 Too Many Requests - if you go over the 50 a day limit for example (free tier)
     print(f'unexpected error creating tweet: \n\n{e}\n')
 
 ```
@@ -144,7 +145,6 @@ Here are the highlights:
 ## Length of Tweets
 
 The current max length of a tweet is 280 characters
-
 
 [https://twitter.com/imPrachiPoddar/status/1671003918665646081](https://twitter.com/imPrachiPoddar/status/1671003918665646081) showing a tweet of 25,000 characters for subscribers aka Twitter Blue.
 
