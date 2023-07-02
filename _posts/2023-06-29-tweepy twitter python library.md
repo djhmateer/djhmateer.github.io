@@ -162,3 +162,7 @@ The current max length of a tweet is 280 characters
 **News on 1st July 2023**
 [https://news.ycombinator.com/item?id=36540957](https://news.ycombinator.com/item?id=36540957) requiring an account to view tweets!
 
+
+- verified accounts are limited to reading 6000 posts/day
+- univerified accounts are limited to reading 600 posts/day
+- new unverified accounts to 300 day
