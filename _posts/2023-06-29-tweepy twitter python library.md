@@ -134,7 +134,6 @@ Here are the highlights:
 
 - Academic Research access [https://developer.twitter.com/en/products/twitter-api/academic-research/application-info](https://developer.twitter.com/en/products/twitter-api/academic-research/application-info) looks like not accepting new applications currently.
 
-
 ## Rate Limits
 
 [https://developer.twitter.com/en/docs/twitter-api/rate-limits](https://developer.twitter.com/en/docs/twitter-api/rate-limits)
@@ -151,6 +150,13 @@ The current max length of a tweet is 280 characters
 [https://help.twitter.com/en/using-twitter/twitter-blue](https://help.twitter.com/en/using-twitter/twitter-blue) £9.60 per month.
 
 [https://help.twitter.com/en/using-twitter/verified-organizations#verifiedorgs-pricing](https://help.twitter.com/en/using-twitter/verified-organizations#verifiedorgs-pricing) verified organisation at £1,140 per month.
+
+[![alt text](/assets/2023-06-30/4.jpg "email")](/assets/2023-06-30/4.jpg)
+
+You need a phone number to subscribe, then it needs to be reviewed to get a blue tick.
+
+
+
 
 ## Alternatives to Twitter API Search
 
