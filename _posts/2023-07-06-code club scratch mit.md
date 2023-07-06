@@ -58,7 +58,25 @@ When sprit is clicked, change colour (the A)
 
 [![alt text](/assets/2023-07-06/6.jpg "email")](/assets/2023-07-06/6.jpg)
 
-Turning a sprint (the V)
+Turning a sprite (the V)
+
+[![alt text](/assets/2023-07-06/7.jpg "email")](/assets/2023-07-06/7.jpg)
+
+Making sprite bigger and smaller when clicked
+
+
+## Summary so Far
+
+- when green flag clicked (ie program start)
+- move a sprite
+- make it say a message
+
+- when a sprite is clicked
+- play a sound
+- change colour
+- turn the sprite
+- change sprite size (ie bigger and smaller) 
+
 
 ## Windows skill
 
