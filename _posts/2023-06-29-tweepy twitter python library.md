@@ -155,6 +155,7 @@ The current max length of a tweet is 280 characters
 
 You need a phone number to subscribe, then it needs to be reviewed to get a blue tick.
 
+[notes on who is eligible](https://www.marketingoptimised.com/post/how-long-does-it-take-to-get-blue-tick-on-twitter-blue#:~:text=To%20qualify%20for%20the%20blue,is%20older%20than%207%20days.) my test account may not work.
 
 
 
@@ -172,3 +173,8 @@ You need a phone number to subscribe, then it needs to be reviewed to get a blue
 - verified accounts are limited to reading 6000 posts/day
 - univerified accounts are limited to reading 600 posts/day
 - new unverified accounts to 300 day
+
+## Twitter Professional
+
+[detail](https://business.twitter.com/en/help/account-setup/professional-accounts.html#:~:text=Professionals%20are%20any%20person%20or,their%20livelihood%20is%20a%20professional.)
+
