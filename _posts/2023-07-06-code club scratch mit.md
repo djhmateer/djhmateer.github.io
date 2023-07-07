@@ -65,7 +65,7 @@ Turning a sprite (the V)
 Making sprite bigger and smaller when clicked
 
 
-## Summary so Far
+## A. Summary - Cat on Boardwalk
 
 - when green flag clicked (ie program start)
 - move a sprite
@@ -99,6 +99,12 @@ New things learned here:
 - arrow keys move sprite
 
 - glide to random position
+
+## B. Dog on Moon
+
+[![alt text](/assets/2023-07-06/10.jpg "email")](/assets/2023-07-06/10.jpg)
+
+testing out everything learned so far
 
 
 ## Windows skill
