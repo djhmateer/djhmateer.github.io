@@ -2,7 +2,7 @@
 layout: post
 title: Code Club Scratch MIT
 description: 
-menu: review
+menu: #review
 categories: teaching
 published: true 
 comments: false     
@@ -81,6 +81,25 @@ Making sprite bigger and smaller when clicked
 [![alt text](/assets/2023-07-06/8.jpg "email")](/assets/2023-07-06/8.jpg)
 
 Own demo of first things learned including figuring out how to reset the sprite direction of program restart.
+
+
+## 3. Imagine a World
+
+
+[![alt text](/assets/2023-07-06/9.jpg "email")](/assets/2023-07-06/9.jpg)
+
+New things learned here:
+
+- switch backdrop
+- go to x y coords (on green flag ie reset)
+- glide to position
+
+- switch costume
+- set size to 125% (rather than making size bigger by 10 on repeat)
+- arrow keys move sprite
+
+- glide to random position
+
 
 ## Windows skill
 
