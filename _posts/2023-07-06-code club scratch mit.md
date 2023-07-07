@@ -78,6 +78,10 @@ Making sprite bigger and smaller when clicked
 - change sprite size (ie bigger and smaller) 
 
 
+[![alt text](/assets/2023-07-06/8.jpg "email")](/assets/2023-07-06/8.jpg)
+
+Own demo of first things learned including figuring out how to reset the sprite direction of program restart.
+
 ## Windows skill
 
 - all can open laptop and login (they know which class)
