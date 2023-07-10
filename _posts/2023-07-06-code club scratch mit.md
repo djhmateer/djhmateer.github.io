@@ -7,7 +7,7 @@ categories: teaching
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2023-01-30/1.jpg
+image: /assets/2023-07-06/1.jpg
 ---
 
 <!-- [![alt text](/assets/2023-07-06/1.jpg "email")](/assets/2023-07-06/1.jpg) -->
