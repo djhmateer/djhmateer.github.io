@@ -158,6 +158,20 @@ You need a phone number to subscribe, then it needs to be reviewed to get a blue
 [notes on who is eligible](https://www.marketingoptimised.com/post/how-long-does-it-take-to-get-blue-tick-on-twitter-blue#:~:text=To%20qualify%20for%20the%20blue,is%20older%20than%207%20days.) my test account may not work.
 
 
+[![alt text](/assets/2023-06-30/5.jpg "email")](/assets/2023-06-30/5.jpg)
+
+After about a week my test account was `verified` - having no profile. Here is a [tweet with 281 characters](https://twitter.com/pjhemingway/status/1678383700562571265) - the old limit is 280.
+
+Interestingly the API doesn't allow me to post > 280 characters.
+
+[https://docs.tweepy.org/en/stable/client.html#tweepy.Client.create_tweet](https://docs.tweepy.org/en/stable/client.html#tweepy.Client.create_tweet) and [twtitter API ref](https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets)
+
+
+[https://twittercommunity.com/t/how-to-post-280-4000-characters-via-api-v2/191156](https://twittercommunity.com/t/how-to-post-280-4000-characters-via-api-v2/191156)
+
+[https://twittercommunity.com/t/how-to-post-280-4000-characters-via-api-v2/191156](https://twittercommunity.com/t/how-to-post-280-4000-characters-via-api-v2/191156) insider chat that not available.
+
+
 
 ## Alternatives to Twitter API Search
 
