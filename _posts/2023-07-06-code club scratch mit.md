@@ -108,12 +108,25 @@ testing out everything learned so far
 
 
 ## 4. Make Music
-asd
+
+Interesting as can make chords
+
 
 ## Extensions
 
 - Text to speech
 - Music
+
+## TODO
+
+Make classic games in scratch
+
+- pong
+- frogger
+- dinosaur game
+- space invaders
+- 1942
+- pac man
 
 ## Windows skill
 
