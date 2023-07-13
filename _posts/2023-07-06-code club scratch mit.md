@@ -107,6 +107,14 @@ New things learned here:
 testing out everything learned so far
 
 
+## 4. Make Music
+asd
+
+## Extensions
+
+- Text to speech
+- Music
+
 ## Windows skill
 
 - all can open laptop and login (they know which class)
