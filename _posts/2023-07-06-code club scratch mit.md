@@ -85,7 +85,6 @@ Own demo of first things learned including figuring out how to reset the sprite 
 
 ## 3. Imagine a World
 
-
 [![alt text](/assets/2023-07-06/9.jpg "email")](/assets/2023-07-06/9.jpg)
 
 New things learned here:
@@ -110,6 +109,34 @@ testing out everything learned so far
 ## 4. Make Music
 
 Interesting as can make chords
+
+[![alt text](/assets/2023-07-06/11.jpg "email")](/assets/2023-07-06/11.jpg)
+
+- operator - pick random 1 to 10!
+- next costume to give note graphic from sax
+
+## 5. Story
+
+[![alt text](/assets/2023-07-06/12.jpg "email")](/assets/2023-07-06/12.jpg)
+
+- witchhouse background
+- wizard sprite
+- elf sprite
+- flip costume (so characters face each other)
+- switch backdrop to
+- when backdrop switches to.. hide wizard
+- when green flag clicked... show wizard
+
+## YouTube
+
+[https://www.youtube.com/watch?v=D16hTnDGweo](https://www.youtube.com/watch?v=D16hTnDGweo) griff patch. platformer.. looks great. There is a project to remix
+
+[https://www.youtube.com/watch?v=4N033rFSELE](https://www.youtube.com/watch?v=4N033rFSELE) space invaders - looks good!
+
+[https://www.youtube.com/watch?v=sqsNb0s7Oq4](https://www.youtube.com/watch?v=sqsNb0s7Oq4) asteroids... lemons.. looks super good
+
+
+[https://www.youtube.com/watch?v=x14G4DCk4nY](https://www.youtube.com/watch?v=x14G4DCk4nY) flappy chicken... scroller, gravity, collision
 
 
 ## Extensions
