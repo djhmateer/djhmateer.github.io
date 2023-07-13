@@ -31,8 +31,6 @@ How to do this from Python side on Linux servers
 [Docs](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=alpine18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline)
 
 
-
-
 ## pyodbc
 
 ```bash
@@ -45,9 +43,6 @@ pip install --upgrade pip
 pipenv update
 
 ```
-
-
-
 
 ## First Query
 
