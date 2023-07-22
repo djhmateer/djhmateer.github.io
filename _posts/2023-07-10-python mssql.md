@@ -2,16 +2,16 @@
 layout: post
 title: Python MSSQL 
 description: 
-menu: review
+#menu: review
 categories: python
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2023-07-06/1.jpg
+image: /assets/2023-07-22/2.jpg
 ---
 
 
-<!-- [![alt text](/assets/2023-07-06/1.jpg "email")](/assets/2023-07-06/1.jpg) -->
+[![alt text](/assets/2023-07-22/2.jpg "email")](/assets/2023-07-22/2.jpg)
 
 WIth C# I know how to
 
@@ -80,3 +80,10 @@ pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 18 for SQL S
 My WSL2 (Ubuntu 22.04) instance runs fine, as does cloud server on Ubuntu 20.04.
 
 Turns out it was the pfsense firewall blocking the outbound 1433 port.
+
+## Production
+
+[https://github.com/djhmateer/auto-archiver/blob/main/tweet.py](https://github.com/djhmateer/auto-archiver/blob/main/tweet.py) is an example of how I use this in prod.
+
+[https://github.com/djhmateer/auto-archiver/blob/main/infra/server-build.sh](https://github.com/djhmateer/auto-archiver/blob/main/infra/server-build.sh) automated build script for a server.
+
