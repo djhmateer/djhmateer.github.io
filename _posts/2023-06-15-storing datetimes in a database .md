@@ -1,8 +1,8 @@
 ---
 layout: post
-#title: Developer Desktop Build 2023
+title: Storing datetimes in a database 
 #description: Building a desktop PC focussed on being developer daily driver.
-menu: review
+#menu: review
 categories: datetime
 published: true 
 comments: false     
@@ -15,6 +15,8 @@ image: /assets/2023-04-29/5.jpg
 I like to store datetimes in my databases as Utc eg `DateTimeCreatedUtc` as a matter of principle. datetimes are hard.
 
 My Linux servers are generally in Holland (Azure West), and clients generally in the UK, which is mostly UTC+1 timezone depending on daylight savings. Even if I used UK webservers and UK SQL Azure db, their default timezone may not be set right.
+
+## C#
 
 I like to use server side rendering where possible, so if I know my user is in the UK timezine, I can adjust any dates sent to them by
 
@@ -53,6 +55,25 @@ so it is stored as: 12:14:34
 
 And displays from the dutch server as the correct time of 13:14:34
 
-## Does it work post daylight saving?
+## Python
+
+```py
+import datetime
+import time
+# now in utc to write to a db
+dt_now_utc = datetime.datetime.now(datetime.timezone.utc)
+
+
+# reading utc from db using pyodbc
+next_tweet_utc_naive = row.TimeToTryTweetUtc
+# naive datetime to timezone aware so can do a compare
+next_tweet_utc = next_tweet_utc_naive.replace(tzinfo=datetime.timezone.utc)
+
+
+if (dt_now_utc > next_tweet_utc):
+    pass
+#etc..
+```
+
 
 
