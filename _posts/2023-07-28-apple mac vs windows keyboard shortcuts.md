@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apple Mac vs Windows keyboard shortcuts 
+title: Apple Mac vs Windows keyboard shortcuts and apps
 description: 
 # menu: review
 categories: mac
@@ -19,33 +19,48 @@ Lets see how to Win and Mac compare with keyboard shortcuts (I've been a Windows
 - Activity Monitor (Task Manager)
 - Finder (Explorer)
 - Terminal (Terminal in WSL2)
+- VS Code 
+- OneNote
+- Photos (nothing good on windows)
 
-## Linux side
 
-- brew (apt)
-
-
-## Shortcuts
+## MacOS Shortcuts
 
 - Cmd Space (Windows key) - search
-- xxx (Win E) - open finder explorer
 - alt tab (alt tab) - switch windows
 - Cmd C (ctrl C) - copy
 - cmd V (ctrl V) - paste
+- cmd q (alt f4) - close app
 
+- ctrl cmd q (win l) - lock screen
+- cmd z (ctrl z) - undo
+
+- xxx (Win E) - open finder / explorer from anywhere
+
+## Terminal shortcuts
+
+- Cmd + / - increase font size
 
 ## Chrome shortcuts
 
 - Cmd L (Ctrl D) - cursor in address bar / location bar
+- cmd t (ctrl t) - open new tab
+- cmd w (ctrl w) - close tab
+- cmd tab (ctrl tab) - switch between chrome tabs
 
 ## iMovie shortcuts
+see blog article
 
-- Cmd i - import media
+## Linux side
 
-- E - when selected media, it will add to the end of the timeline
+- brew (apt) eg to install wget 
+- brwew install python  (I had 3.8.2 installed with catalina)
 
+## Finder 
 
+- ctrl click (right click) - get get info on a folder
 
+- View, Show Path Bar
+- View, Show Status Bar
 
-
-
+- Users is where Movies is. (can just drag this to external hard disk if need be)
