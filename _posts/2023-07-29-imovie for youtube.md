@@ -44,6 +44,20 @@ why not
 - arrow - scrub left and right
 - up arrow - beginning of current clip
 
+- Cmd + - - zoom in and out
+- r - range  (to sort out peaking audio levels)
+- option key on keyboard to create anohter copy of a sound/clip 
+
+- m - mark (put on a visual marker) so can get audio to sync to music
+ 
+
+- Cmd + - - zoom in and out
+- r - range  (to sort out peaking audio levels)
+- option key on keyboard to create anohter copy of a sound/clip 
+
+- m - mark (put on a visual marker) so can get audio to sync to music
+ 
+
 - Cmd N - create new project (from home screen)
 - Cmd i - import media 
 - E - when selected media, it will add to the end of the timeline
@@ -132,7 +146,62 @@ put shots along with the music
 
 ## Transitions
 
-drag between 2 shots
+jump shots ie not transition are most normal transition
+drag between 2 shots - use when something big is happening. eg cymbal crash in music
+fade to black between major parts
+
+
+
+
+## Music
+
+ 
+jump shots ie not transition are most normal transition
+drag between 2 shots - use when something big is happening. eg cymbal crash in music
+fade to black between major parts
+
+
+## photos
+
+ken burns effect - panning / zoom
+ imovie preferences
+
+make it small (use rectangle) to decrease size to start and end
+
+## titles
+
+use different fonts to make it look like not imovie
+
+place cursor
+q - add conneted media
+ 
+## editing
+
+stabilisation - set to low eg 12%.. well lit
+
+## audio
+
+whilst most people will forgive bad video
+most will not forgive bad audio
+
+eg hype mic by apogee sounds just fine
+
+voiceover can do
+
+## base correction
+
+- cmd c
+- cmd option v - paste all attributes
+
+## export
+
+- file, share, File
+Quality should be `high` and not ``
+
+
+
+## Music
+
  
 ## imovie
 
