@@ -15,6 +15,7 @@ image: /assets/2023-07-22/1.jpg
 
 If you've an older Mac Book like me (Early 2013), which has 8GB of RAM and a 250GB SSD then it is hard to get iMovie on it from a fresh install of the OS. Catalina is the most recent OS I can put on there (10.15.7)
 
+**NOTE** - I found that the older hardware was frustrating whilst editing so I recommend getting newer hardware!
 
 [https://www.movieforwindows.com/imovie/download-an-older-version-of-imovie.html](https://www.movieforwindows.com/imovie/download-an-older-version-of-imovie.html) helped me.
 

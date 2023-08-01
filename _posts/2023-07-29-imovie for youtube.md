@@ -2,7 +2,7 @@
 layout: post
 title: iMovie for YouTube 
 description: 
-menu: review
+# menu: review
 categories: mac
 published: true 
 comments: false     
@@ -13,6 +13,8 @@ image: /assets/2023-07-22/1.jpg
 [![alt text](/assets/2023-07-22/1.jpg "email"){:width="800px"}](/assets/2023-07-22/1.jpg)
 
 An exploration into making movies for YouTube as a fun summer project!
+
+**NOTE** Make sure you have decent hardware. I had an old catalina machine (late 2013) which was frustrating to use.
 
 ## Why
 why not
