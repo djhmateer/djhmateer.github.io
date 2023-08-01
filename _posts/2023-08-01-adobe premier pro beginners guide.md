@@ -150,18 +150,11 @@ To clear, right click to clear in and out points
 
 click to export.
 
+upload to youtube and [this](https://www.youtube.com/watch?v=rnFwFq63BrU) is my test video
 
+<!-- [![alt text](/assets/2023-08-01/1.jpg "email"){:width="800px"}](/assets/2023-08-01/1.jpg) -->
+[![alt text](/assets/2023-08-01/1.jpg "email")](/assets/2023-08-01/1.jpg)
 
-
-
-
-
-
-
-
-
-
-
-
+Interestingly our track from our band got caught in the copyright filter!
 
 
