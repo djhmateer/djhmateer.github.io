@@ -19,6 +19,8 @@ why not
 
 ## Inspiration
 
+[https://www.youtube.com/watch?v=ljAWrpmEFoU&t=1s](https://www.youtube.com/watch?v=ljAWrpmEFoU&t=1s) Tech Talk America iMovie 2020 Full tutorial. 23mins. 1.2m views
+
 [https://www.youtube.com/watch?v=sz6b0Wp9gyE](https://www.youtube.com/watch?v=sz6b0Wp9gyE) Matts Off Road Recovery
 
 # Nomenclature
@@ -33,6 +35,12 @@ why not
 
 - spacebar 
 - \ - play from beginning
+- r - range
+- x - select entire clip
+- cmx x - cut selected frames
+
+
+
 - i - in point
 - o - out point
 - e - send to end
