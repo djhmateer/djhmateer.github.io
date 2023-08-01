@@ -39,11 +39,17 @@ why not
 - m - mark
 - cmb b - blade
 
-
 - l and k - scrub left and right fast
 - arrow - scrub left and right
 - up arrow - beginning of current clip
 
+
+- Cmd + - - zoom in and out
+- r - range  (to sort out peaking audio levels)
+- option key on keyboard to create anohter copy of a sound/clip 
+
+- m - mark (put on a visual marker) so can get audio to sync to music
+ 
 
 - Cmd N - create new project (from home screen)
 - Cmd i - import media 
@@ -133,7 +139,15 @@ put shots along with the music
 
 ## Transitions
 
-drag between 2 shots
+jump shots ie not transition are most normal transition
+drag between 2 shots - use when something big is happening. eg cymbal crash in music
+fade to black between major parts
+
+
+
+
+## Music
+
  
 
 
