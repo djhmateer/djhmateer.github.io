@@ -32,6 +32,7 @@ why not
 ## iMovie shortcuts
 
 - spacebar 
+- \ - play from beginning
 - i - in point
 - o - out point
 - e - send to end
@@ -39,11 +40,9 @@ why not
 - m - mark
 - cmb b - blade
 
-
 - l and k - scrub left and right fast
 - arrow - scrub left and right
 - up arrow - beginning of current clip
-
 
 - Cmd N - create new project (from home screen)
 - Cmd i - import media 
@@ -135,6 +134,48 @@ put shots along with the music
 
 drag between 2 shots
  
+## imovie
+
+import to project media (rather than global iMovie library)
+
+
+## photos
+
+ken burns effect - panning / zoom
+ imovie preferences
+
+make it small (use rectangle) to decrease size to start and end
+
+## titles
+
+use different fonts to make it look like not imovie
+
+place cursor
+q - add conneted media
+ 
+## editing
+
+stabilisation - set to low eg 12%.. well lit
+
+## audio
+
+whilst most people will forgive bad video
+most will not forgive bad audio
+
+eg hype mic by apogee sounds just fine
+
+voiceover can do
+
+## base correction
+
+- cmd c
+- cmd option v - paste all attributes
+
+## export
+
+- file, share, File
+Quality should be `high` and not ``
+
 
 
 

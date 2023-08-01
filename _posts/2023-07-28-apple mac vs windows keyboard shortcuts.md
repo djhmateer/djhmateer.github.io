@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apple Mac vs Windows keyboard shortcuts and apps
+title: Apple Mac vs Windows keyboard setup, shortcuts and apps
 description: 
 # menu: review
 categories: mac
@@ -64,3 +64,18 @@ see blog article
 - View, Show Status Bar
 
 - Users is where Movies is. (can just drag this to external hard disk if need be)
+
+## Setup machine
+
+- system preferences, mouse, reverse wheel direction
+- system preferences, keyboard, map caps lock to escape (check both keyboards!)
+- to enable keyboard repeating (Which I use in vim to move left and right)
+
+```bash
+# then reboot to get auto keyboard repeat
+defaults write -g ApplePressAndHoldEnabled -bool false
+```
+
+- to get hash symbol Alt-3
+
+brew problem not supported anymore on catalina eg installing wget taking ages (1 hour) as it is building from cmake. vim taking ages as it built rust as a dependency.
