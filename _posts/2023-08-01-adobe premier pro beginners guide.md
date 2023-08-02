@@ -33,7 +33,6 @@ took about 15mins. Tutorial didn't start and seemed to hang (worked after a rest
 - Timeline - arrange clips into a sequence
 - Program monitor - preview
 
-
 ## Create New Project
 
 `c:\premiere` is where I keep my projects
@@ -84,31 +83,37 @@ Different preset layouts depending on what tasks you're doing
 - drag it onto timeline
 - double click and view in source monitor, use in and out points to grab sections
 
+## 6. Editing keyboard
 
-## Editing keyboard
+**try i and o in the source monitor** - to get the rough cut edits
+
+- i - in point
+- o - out point
+
+check snap is on (magnet icon in timeline)
+
+use shorten clip rather than cut (razor)
+
 
 - up down arrow - next section
 - mouse wheen - left and right
 - alt mouse wheel - zoom
 
-
-
 - j and l - fast forward
  
-- i - in point
-- o - out point
-
 - - and + - zoom in 
 - Ctrl + - zoom in 
 - Alt and mouse wheen to zoom in an dout
 
 - Ctrl + Shift + Y - redo
 
-
 ### Tools
 
 v - selection tool
 c - razor tool
+n - rolling edit  (to get cut point to suit actions better)
+y - slip tool (change in and out points without changing time)
+z - zoom (or alt click to zoom out)
 
 shift delete - delete get rid of space (ripple delete) 
 
@@ -119,17 +124,22 @@ right click, speed duration
 
 ## transitions
 
-effects tab in bottom left window
-
-or use the Workspace / effets
+Effects tab in bottom left window or use the Workspace / effets
 
 `Video Transitions / cross dissolve` is nice
 
 zoom in to make shoter by dragging
 
-`Video Effects / `
+`cross dissolve` from black at the beginning
 
-eg gaussian blur
+`constant power` audio fade in at beginning
+
+### video effects
+
+gaussian blur - to highlight the people for example using a mask
+
+digital zoom - effect control / motion / scale click stopwatch icon at start of clip, then move playhead to end, and do 130% scale [youtube](https://www.youtube.com/watch?v=WfD_xY-YjL8)
+
 
 ## captions and graphics
 
@@ -143,6 +153,15 @@ highlight the text to make changes to it
 
 drag it on!
 adjust levels
+
+[youtube](https://www.youtube.com/watch?v=WfD_xY-YjL8)
+
+- parametric EQ to enhance vocals
+- compressor on vox
+
+then eq on music to take down 1khz vocal range
+also compressor on music
+
 
 ## sequence layer for colouring
 
