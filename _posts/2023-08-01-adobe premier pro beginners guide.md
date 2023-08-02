@@ -66,10 +66,12 @@ But ultimately I used the sequential filenames to get datetime order of footage.
 
 Basically I put anything in here, and let Premiere adjust the sequence to my gopro footage when I add a clip.
 
+Be careful to add in a 5312 * 2988 at 29.97 fps clip first (otherwise you'll have to select all clips, then clip menu, video, scale to frame size)
+
 My [GoPro 11 Black](https://gopro.com/en/gb/shop/cameras/hero11-black/CHDHX-111-master.html) is shooting at:
 
-- 5312 * 2988 (5.3k) - 16:9 aspect ratio
-- 2704 * 1520 - when on slomo? - 16:9 aspect ratio
+- 5312 * 2988 (5.3k) at 29.97fps and 59.94fps - 16:9 aspect ratio
+- 2704 * 1520 - slomo eg 239.76 fps- 16:9 aspect ratio
 
 ## 4. Workspace
 
@@ -161,7 +163,6 @@ adjust levels
 
 then eq on music to take down 1khz vocal range
 also compressor on music
-
 
 ## sequence layer for colouring
 
