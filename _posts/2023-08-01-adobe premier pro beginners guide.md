@@ -73,6 +73,17 @@ My [GoPro 11 Black](https://gopro.com/en/gb/shop/cameras/hero11-black/CHDHX-111-
 - 5312 * 2988 (5.3k) at 29.97fps and 59.94fps - 16:9 aspect ratio
 - 2704 * 1520 - slomo eg 239.76 fps- 16:9 aspect ratio
 
+common resolutions eg youtube are:
+
+- 2160p - 3860 * 2160 (16:9) which is 4K Ultra HD (UHD)
+- 1440p - 2560 * 1440 (16:9)
+- 1080p - 1920 * 1080 (16:9)
+- 720p - 1280 * 720
+- 480p - 854 * 480
+
+YT recommends to upload at the same fps as the camera shooting it - commons framerates are 24, 25, 30, 48, 50, 60
+
+
 ## 4. Workspace
 
 Different preset layouts depending on what tasks you're doing
