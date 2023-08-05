@@ -81,7 +81,9 @@ common resolutions eg youtube are:
 - 720p - 1280 * 720
 - 480p - 854 * 480
 
-YT recommends to upload at the same fps as the camera shooting it - commons framerates are 24, 25, 30, 48, 50, 60
+YT recommends to upload at the same fps as the camera shooting it - common framerates are 24, 25, 30, 48, 50, 60
+
+
 
 
 ## 4. Workspace
