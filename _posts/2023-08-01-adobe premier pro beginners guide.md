@@ -18,7 +18,7 @@ So lets move fast and onto Premiere Pro on new PC hardware.
 
 ## Install Proces and Cost
 
-There is a 7 day free trial of Adobe Premiere Pro. £19.97/mo (annual but paid montly), £30.34/mo cancel anytime.
+There is a 7 day free trial of Adobe Premiere Pro. £19.97/mo (annual but paid montly), £30.34/mo cancel anytime.  If you cancel the free triel they will have you a special plan as an offer.. £20?
 
 Adobe Genuine Service (AGS) - didn't need to install
 

@@ -22,6 +22,7 @@ Lets see how to Win and Mac compare with keyboard shortcuts (I've been a Windows
 - VS Code 
 - OneNote
 - Photos (nothing good on windows)
+- Image Capture (win explorer crashes a lot) for transferring photos from an iPhone
 
 
 ## MacOS Shortcuts
