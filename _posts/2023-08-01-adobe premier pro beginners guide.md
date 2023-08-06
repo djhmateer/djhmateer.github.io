@@ -93,6 +93,11 @@ Different preset layouts depending on what tasks you're doing
 - Captions and Graphics (titles)
 
 
+## 4.5 Copying imgaes from GoPro
+
+[https://vendyxiao.com/how-to-solve-video-files-mp4-mpg-avi-etc-thumbnail-not-showing-in-windows-explorer/](https://vendyxiao.com/how-to-solve-video-files-mp4-mpg-avi-etc-thumbnail-not-showing-in-windows-explorer/) could help in prevewing mp4's which don't work on my machine.
+
+
 ## 5. Importing
 
 - drag it onto timeline
