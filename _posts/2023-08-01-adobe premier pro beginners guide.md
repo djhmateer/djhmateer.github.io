@@ -84,13 +84,13 @@ common resolutions eg youtube are:
 YT recommends to upload at the same fps as the camera shooting it - common framerates are 24, 25, 30, 48, 50, 60
 
 
-
-
 ## 4. Workspace
 
 Different preset layouts depending on what tasks you're doing
 
 - Editing (main one)
+- Effects (for transitions)
+- Captions and Graphics (titles)
 
 
 ## 5. Importing
@@ -98,22 +98,25 @@ Different preset layouts depending on what tasks you're doing
 - drag it onto timeline
 - double click and view in source monitor, use in and out points to grab sections
 
-## 6. Editing keyboard
-
-**try i and o in the source monitor** - to get the rough cut edits
+I like the second option using
 
 - i - in point
 - o - out point
+
+To get roughly the bits I want
+
+
+## 6. Editing keyboard
 
 check snap is on (magnet icon in timeline)
 
 use shorten clip rather than cut (razor)
 
-
-- up down arrow - next section
 - mouse wheen - left and right
 - alt mouse wheel - zoom
 
+
+- up down arrow - next section
 - j and l - fast forward
  
 - - and + - zoom in 
@@ -132,12 +135,18 @@ z - zoom (or alt click to zoom out)
 
 shift delete - delete get rid of space (ripple delete) 
 
+- ctrl and drag - add to start of timeline
+- , - add to start of timeline (from source monitor)
+
+
    
 ## Speed up and slow down clips
 
 right click, speed duration
 
-## transitions
+Can also reverse the clip 
+
+## 9. Transitions
 
 Effects tab in bottom left window or use the Workspace / effets
 
