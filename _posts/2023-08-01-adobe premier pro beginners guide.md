@@ -187,10 +187,9 @@ Here are the standard ones
 - Ultra Slo-Mo
 
 
-## What I use
+## My Preset settings 
 
 [Gemini Connect](https://www.youtube.com/watch?v=r3aitG3-_bQ) taken from this great video: See right at the end for her presets.
-
 
 - 16:9 ratio (aka widescreen)
 
