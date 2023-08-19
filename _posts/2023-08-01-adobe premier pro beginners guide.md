@@ -73,16 +73,148 @@ My [GoPro 11 Black](https://gopro.com/en/gb/shop/cameras/hero11-black/CHDHX-111-
 - 5312 * 2988 (5.3k) at 29.97fps and 59.94fps - 16:9 aspect ratio
 - 2704 * 1520 - slomo eg 239.76 fps- 16:9 aspect ratio
 
+[Go Pro 11 Black video settings and resolutions](https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US#highestquality) - it can shoot in many different resolutions and indeed create your own.
+
+*to get it to shoot at 30fps, set the anti flicker to 60Hz (USA). I'm in the UK so have set it to 50Hz which gives me the stadard 25fps for PAL.
+
 common resolutions eg youtube are:
 
-- 2160p - 3860 * 2160 (16:9) which is 4K Ultra HD (UHD)
+- 2160p - 3840 * 2160 (16:9 aka widescreen) which is 4K Ultra HD (UHD) (matts off road - 30fps). Sides chopped on smartphone.
+- xxx -  3840 x 1920 (18:9 or 2.00) 4K UHD (ltt shoots in this - 30fps). Better for modern smartphone.
 - 1440p - 2560 * 1440 (16:9)
 - 1080p - 1920 * 1080 (16:9)
 - 720p - 1280 * 720
 - 480p - 854 * 480
 
+4:3 is fullscreen mode (old school tv)
+
+8:7 is a new aspect ratio on gopro which uses all the sensor to allow cropping to other ratios. This gives the flexibility to shoot in this, then crop later for: instagram reels / tictok etc.. but makes video file lager.
+
 YT recommends to upload at the same fps as the camera shooting it - common framerates are 24, 25, 30, 48, 50, 60
 
+## Different Framerates
+
+
+[https://www.youtube.com/watch?v=dR7B8uKc0JU&t=135s](https://www.youtube.com/watch?v=dR7B8uKc0JU&t=135s) Brendon Li video
+
+- 200fps, 2704 * 1520
+- 25fps, 5312 * 2988
+
+frame rate = number of pictures per second
+
+shutter speed = amount of time that the shutter stays open during each frames exposure
+
+
+So, always keep shutter speed faster than the frame rate
+
+
+- 24 fps (technically 23.97) - movies
+- 25 fps - PAL braodcast (Europe and Asia) - power frequency is 50 Hz - 625 scan lines
+- 30 fps - NTSC (North and South America) - power frequency is 60 Hz - 525 scan lines
+- 48-60fps - HFR (Hobbit Frame Rate)
+
+### Creative Frame Rates
+
+Maths problem - if you can't evenly divide the frames being recorded by project framerate, you don't get an even number. So you'll get stutter.
+
+Shutter speed will be higher at higher fps, so you'll get less natural motion blur 
+
+
+Base frame rate is where your camera will probably do highest quality image eg 24, 25 or 30 fps
+
+### ROT
+
+Choose frame rate based on subject
+
+- 24 or 25 - any subject that is speaking and will be at real speed. Landscapes, little motion
+- 30 - can use this as an 80% speed (with base at 24)... smooth walking slightly slower
+- 60 - medium speed slo mo. people laughing, people clapping, walking. singing (if you don't want audio in post)
+- 90-120 - speed ramp down to slowmo.. dramatic.. also elimintas camera shake for small sections
+- 180+
+
+
+
+For slow, mostly still videos go for 25-30fps eg [https://www.youtube.com/watch?v=sl0UUhmaiDU](https://www.youtube.com/watch?v=sl0UUhmaiDU) - he is shooting at 30fps in 4k.. well 3840 x 1920.. which is more cinematic aspect ratio. ie black on top and bottom. Totally gorgeous footage and filming!
+
+
+[https://www.youtube.com/watch?v=JhVJMO0wgTE](https://www.youtube.com/watch?v=JhVJMO0wgTE) filming in 3840 x 2160 at 24fps
+
+
+Gaming highlights/montages which need more fps
+
+[https://www.youtube.com/watch?v=JXDoCJnaD20](https://www.youtube.com/watch?v=JXDoCJnaD20) 1920 x 1080 at 60 fps - but the video quality isn't great.
+
+
+
+So, for family style videos
+
+- base rate of 30fps
+
+My computer monitors are:
+
+- 3840 x 2160 (4K) at 60Hz
+- 1920 x 1080  (1080p) at 60Hz
+
+[ltt](https://www.youtube.com/watch?v=JXDoCJnaD20) 3840 x 1920 (cinematic) at 30fps
+
+## My Go Pro settings
+
+### settings - swipe down
+
+- voice off
+- beeps off
+- quick capture on
+- screen orientation lock on
+
+--
+- video mode - highest
+- controls - pro
+
+--
+
+preferences - gps off
+
+---
+
+### video presets
+
+Here are the standard ones
+
+- Standard
+- FullFrame
+- Activity
+- Cinematic
+- Ultra Slo-Mo
+
+
+## What I use
+
+[Gemini Connect](https://www.youtube.com/watch?v=r3aitG3-_bQ) taken from this great video: See right at the end for her presets.
+
+
+- 16:9 ratio (aka widescreen)
+
+- 25fps at 4k for standard shooting - not 5.3k as don't need it.. have nothing to view on!
+
+- lens or FOV (Field of View) ie 19 - 39mm (least wide angle)
+
+- hypersmooth (image stabilisation) with minimal 
+
+## protune
+
+- 10bit (more colour range) - on. takes up more space
+- bitrate high
+- shutter speed - auto
+- iso min and max - auto
+
+- sharpness medium
+- colour - vibrant (do this) or natural. flat always needs post processing.
+
+### audio
+
+can get a media mod case, which has a 3.5mm input and mic.  But best possible audio
+
+[Gemini Connect](https://www.youtube.com/watch?v=HWH6hus3vuE) - big review.
 
 ## 4. Workspace
 
@@ -93,10 +225,13 @@ Different preset layouts depending on what tasks you're doing
 - Captions and Graphics (titles)
 
 
-## 4.5 Copying imgaes from GoPro
+## 4.5 Previewing imgaes from GoPro / iPhone
 
-[https://vendyxiao.com/how-to-solve-video-files-mp4-mpg-avi-etc-thumbnail-not-showing-in-windows-explorer/](https://vendyxiao.com/how-to-solve-video-files-mp4-mpg-avi-etc-thumbnail-not-showing-in-windows-explorer/) could help in prevewing mp4's which don't work on my machine.
+[https://www.howtogeek.com/680690/how-to-install-free-hevc-codecs-on-windows-10-for-h265-video/](https://www.howtogeek.com/680690/how-to-install-free-hevc-codecs-on-windows-10-for-h265-video/) I paid £0.79 for a codec which allowed me to preview footage in windows explorer which is very useful!
 
+[![alt text](/assets/2023-08-01/3.jpg "email")](/assets/2023-08-01/3.jpg)
+
+Right Click an MP4 file, Properties, Open With, Media Player.
 
 ## 5. Importing
 
