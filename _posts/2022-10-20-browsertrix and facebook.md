@@ -190,6 +190,9 @@ However a better way is just to accept the cookies, then we don't have the rest 
 ```bash
 # fb accept cookies 
 docker run -p 9222:9222 -p 9223:9223 -v $PWD/crawls/profiles:/crawls/profiles/ -it webrecorder/browsertrix-crawler create-login-profile --interactive --url "https://facebook.com/"
+
+# **THIS IS NEWWER AND WORKS**
+docker run -p 6080:6080 -p 9223:9223 -v $PWD/crawls/profiles:/crawls/profiles/ -it webrecorder/browsertrix-crawler create-login-profile --url "https://example.com/"
 ```
 
 then
