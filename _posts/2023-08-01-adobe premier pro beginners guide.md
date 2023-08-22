@@ -39,13 +39,9 @@ took about 15mins. Tutorial didn't start and seemed to hang (worked after a rest
 
 Create Bins
 
-- Broll - shots
+- Broll - video shots
+- pictures
 - Audio
-
-He did others like:
-
-- Drone shots
-- VFX - overlays?
 
 ## GoPro footage
 
@@ -54,7 +50,7 @@ He did others like:
 - THM file - thumbnail
 - LRV file - low resolution video
 
-I like to have correct dates modified when copying to filesystem from my gopro sd card. 
+I like to have correct dates modified when copying to filesystem from my gopro sd card. Sometimes when I drag it doesn't work, so need to do this:
 
 ```
 robocopy H:\DCIM\100GOPRO c:\gopro /COPY:DT /DCOPY:T
@@ -126,29 +122,24 @@ Base frame rate is where your camera will probably do highest quality image eg 2
 
 Choose frame rate based on subject
 
-- 24 or 25 - any subject that is speaking and will be at real speed. Landscapes, little motion
+- 24 or 25 - any subject that is speaking and will be at real speed. Landscapes, little motion. I used 25fps. as UK PAL
 - 30 - can use this as an 80% speed (with base at 24)... smooth walking slightly slower
 - 60 - medium speed slo mo. people laughing, people clapping, walking. singing (if you don't want audio in post)
 - 90-120 - speed ramp down to slowmo.. dramatic.. also elimintas camera shake for small sections
 - 180+
 
-
-
 For slow, mostly still videos go for 25-30fps eg [https://www.youtube.com/watch?v=sl0UUhmaiDU](https://www.youtube.com/watch?v=sl0UUhmaiDU) - he is shooting at 30fps in 4k.. well 3840 x 1920.. which is more cinematic aspect ratio. ie black on top and bottom. Totally gorgeous footage and filming!
 
-
 [https://www.youtube.com/watch?v=JhVJMO0wgTE](https://www.youtube.com/watch?v=JhVJMO0wgTE) filming in 3840 x 2160 at 24fps
-
 
 Gaming highlights/montages which need more fps
 
 [https://www.youtube.com/watch?v=JXDoCJnaD20](https://www.youtube.com/watch?v=JXDoCJnaD20) 1920 x 1080 at 60 fps - but the video quality isn't great.
 
 
-
 So, for family style videos
 
-- base rate of 30fps
+- base rate of 30fps/25fps
 
 My computer monitors are:
 
@@ -171,9 +162,7 @@ My computer monitors are:
 - controls - pro
 
 --
-
-preferences - gps off
-
+preferences - gps off (to conserve battery)
 ---
 
 ### video presets
@@ -186,17 +175,13 @@ Here are the standard ones
 - Cinematic
 - Ultra Slo-Mo
 
-
 ## My Preset settings 
 
 [Gemini Connect](https://www.youtube.com/watch?v=r3aitG3-_bQ) taken from this great video: See right at the end for her presets.
 
 - 16:9 ratio (aka widescreen)
-
 - 25fps at 4k for standard shooting - not 5.3k as don't need it.. have nothing to view on!
-
-- lens or FOV (Field of View) ie 19 - 39mm (least wide angle)
-
+- lens or FOV (Field of View) ie 19 - 39mm (least wide angle with horizon lock)
 - hypersmooth (image stabilisation) with minimal 
 
 ## protune
@@ -274,9 +259,8 @@ z - zoom (or alt click to zoom out)
 
 shift delete - delete get rid of space (ripple delete) 
 
-- ctrl and drag - add to start of timeline
+- ctrl and drag - add into timeline and move other things around it.
 - , - add to start of timeline (from source monitor)
-
 
    
 ## Speed up and slow down clips
@@ -357,3 +341,4 @@ Aspect ratio is fine at 16:9 (same aspect ratio at 1920*1080), 4k quality ie 384
 
 
 
+ti

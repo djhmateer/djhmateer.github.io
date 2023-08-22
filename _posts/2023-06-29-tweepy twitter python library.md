@@ -132,7 +132,7 @@ Here are the highlights:
 
 - Enterprise
 
-- Academic Research access [https://developer.twitter.com/en/products/twitter-api/academic-research/application-info](https://developer.twitter.com/en/products/twitter-api/academic-research/application-info) looks like not accepting new applications currently.
+- Academic Research access [https://developer.twitter.com/en/products/twitter-api/academic-research/application-info](https://developer.twitter.com/en/products/twitter-api/academic-research/application-info) looks like not accepting new applications currently. 22nd Aug 2023 - I believe it is now shut down.
 
 ## Rate Limits
 
