@@ -72,5 +72,32 @@ However I couldn't get wacz to work - just kept timing out. [issued 86](https://
 
 The paid API works well.
 
+## Local Version Install
+
+```bash
+
+# 23.1.2 on python 3.10
+pip --version
+
+# 23.2.1 now on 23rd Aug 2023
+pip install --upgrade pip
+
+pipenv install
+
+pipenv run python -m src.auto_archiver --config secrets/orchestration.yaml
+
+```
 
 
+## Google Drive Upload
+
+
+<!-- [![alt text](/assets/2023-08-23/1.jpg "email"){:width="800px"}](/assets/2023-08-23/1.jpg) -->
+[![alt text](/assets/2023-08-23/1.jpg "email")](/assets/2023-08-23/1.jpg)
+ `filename_generator: static`
+
+
+[![alt text](/assets/2023-08-23/2.jpg "email")](/assets/2023-08-23/2.jpg)
+`filename_generator: random`
+
+I'd like the folder name to be the same as the entry name eg `DM_001` - and I don't think the code can do that yet.
