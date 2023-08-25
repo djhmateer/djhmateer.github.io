@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Auto Archiver Docker 
+title: Auto Archiver v6
 description: 
 menu: review
-categories: docker
+categories: archiver
 published: true 
 comments: false     
 sitemap: true
@@ -85,12 +85,9 @@ pip install --upgrade pip
 pipenv install
 
 pipenv run python -m src.auto_archiver --config secrets/orchestration.yaml
-
 ```
 
-
 ## Google Drive Upload
-
 
 <!-- [![alt text](/assets/2023-08-23/1.jpg "email"){:width="800px"}](/assets/2023-08-23/1.jpg) -->
 [![alt text](/assets/2023-08-23/1.jpg "email")](/assets/2023-08-23/1.jpg)
@@ -101,3 +98,47 @@ pipenv run python -m src.auto_archiver --config secrets/orchestration.yaml
 `filename_generator: random`
 
 I'd like the folder name to be the same as the entry name eg `DM_001` - and I don't think the code can do that yet.
+
+## Debug v6 python
+
+`attempted relative import with no known parent package`
+
+
+hmm how to debug? when I have relative imports [here](https://stackoverflow.com/questions/16981921/relative-imports-in-python-3)
+
+The trick is to use the `module` directive instead of `program` in vscode `launch.json`
+
+```json
+{
+	"name": "AA Demo Main (davemateer@gmail)",
+    "type": "python",
+	"request": "launch",
+    // "program": "src/auto_archiver",
+    "module": "src.auto_archiver",
+	"console": "integratedTerminal",
+	"justMyCode": true,
+	"args": ["--config","secrets/orchestration.yaml"]
+}
+```
+
+## Thoughts
+
+Naming structure on folders is not good - I want it to be the entry number eg `DM-001`
+
+Multiple storages not really supported as just writes multiple into the spreadsheet
+
+S3 buckets work well as get image previews in spreadsheet. And the Archive location is handy
+
+
+[![alt text](/assets/2023-08-23/3.jpg "email")](/assets/2023-08-23/3.jpg)
+
+Annoying can't serve html from Gdrive
+
+[https://www.labnol.org/google-drive-image-hosting-220515](https://www.labnol.org/google-drive-image-hosting-220515) - you can service public images directly from google drive now.
+
+
+
+
+
+
+
