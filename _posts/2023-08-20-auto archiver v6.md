@@ -19,6 +19,8 @@ image: /assets/2023-07-22/1.jpg
 ## Running the docker version
 
 ```bash
+# check to make sure running latest version by running this again
+# https://hub.docker.com/r/bellingcat/auto-archiver
 docker pull bellingcat/auto-archiver
 
 mkdir secrets
@@ -56,17 +58,24 @@ docker run -p 6080:6080 -p 9223:9223 -v $PWD/crawls/profiles:/crawls/profiles/ -
 
 - profile.tar.gz has to be in secrets
 
-However I couldn't get wacz to work - just kept timing out. [issued 86](https://github.com/bellingcat/auto-archiver/issues/86)
-
-`
-{"logLevel":"error","timestamp":"2023-08-21T10:47:31.054Z","context":"worker","message":"Unknown exception","details":{"type":"exception","message":"net::ERR_PROXY_CONNECTION_FAILED at https://davemateer.com/2022/03/23/is-web-scraping-legal","stack":"Error: net::ERR_PROXY_CONNECTION_FAILED at https://davemateer.com/2022/03/23/is-web-scraping-legal\n    at navigate (file:///app/node_modules/puppeteer-core/lib/esm/puppeteer/common/Frame.js:98:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Deferred.race (file:///app/node_modules/puppeteer-core/lib/esm/puppeteer/util/Deferred.js:79:20)\n    at async Frame.goto (file:///app/node_modules/puppeteer-core/lib/esm/puppeteer/common/Frame.js:64:21)\n    at async CDPPage.goto (file:///app/node_modules/puppeteer-core/lib/esm/puppeteer/common/Page.js:578:16)\n    at async Crawler.loadPage (file:///app/crawler.js:1062:20)\n    at async Crawler.default [as driver] (file:///app/defaultDriver.js:3:3)\n    at async Crawler.crawlPage (file:///app/crawler.js:451:5)\n    at async PageWorker.timedCrawlPage (file:///app/util/worker.js:151:7)\n    at async PageWorker.runLoop (file:///app/util/worker.js:192:9)","workerid":0}}
-{
-`
-
 ## WACZ
 
-**HERE - next try doing it developer side ie not docker... to see the errors**
+However I couldn't get wacz to work - just kept timing out. [issued 86](https://github.com/bellingcat/auto-archiver/issues/86) is now fixed as of 25th Aug 2023.
 
+The replayweb.page doesn't work for some reason
+
+[https://replayweb.page/](https://replayweb.page/) - works when I download the wacz and upload here
+
+Direct paste into this UI doesn't work, nor does the direct link eg 
+
+```
+https://testhashing.fra1.cdn.digitaloceanspaces.com/https-twitter-com-dave-mateer-status-1505876265504546817/1c834bb7-e8b6-4e.wacz
+
+https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/https-twitter-com-dave-mateer-status-1505876265504546817/1c834bb7-e8b6-4e.wacz#view=pages&url=https%3A//twitter.com/dave_mateer/status/1505876265504546817
+
+```
+
+[![alt text](/assets/2023-08-23/4.jpg "email")](/assets/2023-08-23/4.jpg)
 
 ## Twitter API
 
@@ -137,6 +146,65 @@ Annoying can't serve html from Gdrive
 [https://www.labnol.org/google-drive-image-hosting-220515](https://www.labnol.org/google-drive-image-hosting-220515) - you can service public images directly from google drive now.
 
 
+
+
+## wacz_enricher
+
+**don't use this at the moment as bug where if it fails, it kills the rest of the run** see FB video to Telegram in my test suite
+
+
+wacz runs browsertrix-crawler running locally - well it uses Docker.. but this does work. WACZ extract_media flag is set.
+
+
+why are there 2 _enricher things in archivers: yaml?
+
+well it is so that the archiver will give a `wacz: success` if it is turned on in the archivers section.
+
+we can then get a wacz as an enricher (ie download all images file and wacz file)
+
+## wayback_archiver_enricher
+
+as n archiver can see what it does
+
+but as an enricher?
+
+
+[![alt text](/assets/2023-08-23/7.jpg "email")](/assets/2023-08-23/7.jpg)
+
+
+## Telethon
+
+ - telethon - 
+ - telegram - more of a hack.. not advised.. no login needed. just beautiful soup
+
+ [my.telegram.org](https://my.telegram.org/apps)
+
+Essentially create an app to get APP ID and HASH [instructions](https://telegra.ph/How-to-get-Telegram-APP-ID--API-HASH-05-27)
+
+then run the auto_archiver and we are 
+
+
+[![alt text](/assets/2023-08-23/5.jpg "email")](/assets/2023-08-23/5.jpg)
+
+put in phone eg +447584123456
+then put in code telethon sends us.
+
+# metadata_enricher
+
+uses exiftool
+
+```bash
+sudo apt install exiftool
+```
+
+which is stored in the html:
+
+[![alt text](/assets/2023-08-23/6.jpg "email")](/assets/2023-08-23/6.jpg)
+
+## pdq_hash_enricher
+
+
+writes to column: perceptual hashes
 
 
 
