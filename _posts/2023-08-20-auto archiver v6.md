@@ -16,6 +16,9 @@ image: /assets/2023-07-22/1.jpg
 
 [https://github.com/bellingcat/auto-archiver/](https://github.com/bellingcat/auto-archiver/)
 
+Am not running yet have a problem with idempotency ie when a line fails, it affects all following runs.
+
+
 ## Running the docker version
 
 ```bash
