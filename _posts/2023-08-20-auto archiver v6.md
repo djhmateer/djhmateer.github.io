@@ -135,7 +135,8 @@ The trick is to use the `module` directive instead of `program` in vscode `launc
 
 ## Thoughts
 
-Naming structure on folders is not good - I want it to be the entry number eg `DM-001`
+Naming structure on folders is not good - I want it to be the entry number eg `DM-001`. This is possible!
+
 
 Multiple storages not really supported as just writes multiple into the spreadsheet
 
@@ -147,7 +148,6 @@ S3 buckets work well as get image previews in spreadsheet. And the Archive locat
 Annoying can't serve html from Gdrive
 
 [https://www.labnol.org/google-drive-image-hosting-220515](https://www.labnol.org/google-drive-image-hosting-220515) - you can service public images directly from google drive now.
-
 
 
 
@@ -205,7 +205,6 @@ which is stored in the html:
 [![alt text](/assets/2023-08-23/6.jpg "email")](/assets/2023-08-23/6.jpg)
 
 ## pdq_hash_enricher
-
 
 writes to column: perceptual hashes
 
