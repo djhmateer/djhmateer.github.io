@@ -340,5 +340,63 @@ Interestingly our track from our band got caught in the copyright filter!
 Aspect ratio is fine at 16:9 (same aspect ratio at 1920*1080), 4k quality ie 3840x2160 ie 2160p. The original footage is mostly on 5312 * 2988 (5.3k)
 
 
+## Photos
 
-ti
+scale to frame size - useful to scale properly (set also is another option)
+
+then manually scale to maybe 120 in Effects
+
+- copy
+- ctrl A
+- right click and paste attributes to paste this scaling onto all
+
+
+### cross dissolve
+
+- select all photos
+- sequence, apply video transition. or ctrl D
+
+## ken burns effect
+
+
+[![alt text](/assets/2023-08-01/4.jpg "email")](/assets/2023-08-01/4.jpg)
+
+- set timeline to start of photo clip
+- click on scale stopwatch
+- make sure at 100 or whatever you like eg 120?
+
+then drag to end of photo clip
+
+[![alt text](/assets/2023-08-01/5.jpg "email")](/assets/2023-08-01/5.jpg)
+
+- set scale to a bit more eg 105
+- copy then clip
+- highlight all the others
+- right click, paste attributes
+
+## Blur background
+To get rid of black bars
+
+[https://www.youtube.com/watch?v=hWZ6tcCODYY](https://www.youtube.com/watch?v=hWZ6tcCODYY) see minute 7.
+
+## Export
+
+- Ctrl A
+
+- stil haven't found an easy way!
+
+## Notes on Eastbourne airshow
+
+- Love the section of Spy who loved me!
+- Red arrows
+
+Horizon locking so important!
+
+## Do a short
+
+Just that section of Annie
+
+
+
+
+
