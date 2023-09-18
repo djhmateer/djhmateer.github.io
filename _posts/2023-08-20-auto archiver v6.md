@@ -209,6 +209,20 @@ which is stored in the html:
 
 writes to column: perceptual hashes
 
+## Facebook wacz enricher and crawler
+
+```bash
+# get latest image
+docker pull webrecorder/browsertrix-crawler
+
+pip install --upgrade pip
+
+# had problems with pdq_hash on Ubuntu 20_04
+pipenv update
+
+pipenv run python -m src.auto_archiver --config secrets/orchestration.yaml
+```
+
 
 
 
