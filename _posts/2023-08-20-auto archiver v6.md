@@ -56,6 +56,8 @@ Lets try the wacz instead on the twitter one
 
 ```bash
 # create a new profile
+# if you get a blank screen, click create profile
+# then try again
 docker run -p 6080:6080 -p 9223:9223 -v $PWD/crawls/profiles:/crawls/profiles/ -it webrecorder/browsertrix-crawler create-login-profile --url "https://twitter.com/"
 ```
 
@@ -148,7 +150,6 @@ S3 buckets work well as get image previews in spreadsheet. And the Archive locat
 Annoying can't serve html from Gdrive
 
 [https://www.labnol.org/google-drive-image-hosting-220515](https://www.labnol.org/google-drive-image-hosting-220515) - you can service public images directly from google drive now.
-
 
 
 ## wacz_enricher
