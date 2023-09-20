@@ -220,7 +220,7 @@ pip install --upgrade pip
 # had problems with pdq_hash on Ubuntu 20_04
 pipenv update
 
-pipenv run python -m src.auto_archiver --config secrets/orchestration.yaml
+pipenv run python -m src.auto_archiver --config secrets/orchestration-aa-demo-main.yaml
 ```
 
 
