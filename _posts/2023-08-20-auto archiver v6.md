@@ -59,6 +59,10 @@ Lets try the wacz instead on the twitter one
 # if you get a blank screen, click create profile
 # then try again
 docker run -p 6080:6080 -p 9223:9223 -v $PWD/crawls/profiles:/crawls/profiles/ -it webrecorder/browsertrix-crawler create-login-profile --url "https://twitter.com/"
+
+
+docker run -p 6080:6080 -p 9223:9223 -v $PWD/crawls/profiles:/crawls/profiles/ -it webrecorder/browsertrix-crawler create-login-profile --url "https://facebook.com/"
+
 ```
 
 - profile.tar.gz has to be in secrets
@@ -221,6 +225,9 @@ pip install --upgrade pip
 pipenv update
 
 pipenv run python -m src.auto_archiver --config secrets/orchestration-aa-demo-main.yaml
+
+
+docker system prune
 ```
 
 
