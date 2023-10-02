@@ -17,6 +17,109 @@ image: /assets/2023-07-22/1.jpg
 
 I'm exploring LLM's and also teaching at a coding club. Can LLM's help?
 
+
+[https://www.youtube.com/watch?v=jRAAaDll34Q](https://www.youtube.com/watch?v=jRAAaDll34Q) Using ChatGPT as a Powerful Tool for Programming
+
+## Loop
+
+> please write a python script that loops from 1 to 10 and prints out each number
+
+```py
+for number in range(1, 11):
+    print(number)
+
+```
+
+## Password SALT
+
+> Write a Python script that accepts user input. This input will be a password. I then want this password to be hasehd using a salt. Then print the hased password to the user.
+
+
+> Since the user input is a password, can you make it so that when they type in their input it doesn't show the character they're typing t the screen?
+
+uses getpass to hide screen
+
+## Optimise existing code
+
+type the code in and it will explain how it works.
+
+```py
+names = ['Corey', 'Chris', 'Travis', 'Dave']
+
+index = 0
+for name in names:
+    print(index,name)
+    index += 1
+```
+
+> optimise this code
+
+```py
+names = ['Corey', 'Chris', 'Travis', 'Dave']
+
+for index, name in enumerate(names):
+    print(index, name)
+```
+
+
+## Explain code - eg a Regex
+
+[https://cs.lmu.edu/~ray/notes/regex/](https://cs.lmu.edu/~ray/notes/regex/) - some sample regex's
+
+> can you explain what this regular expression does? [2-9]|[12]\d|3[0-6]
+
+
+Or email address regex [which is complex](https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression)
+
+> please exaplain this regular expression to check email addresses: (?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])
+
+"In summary, this regular expression is quite comprehensive and can validate a wide range of email addresses, including those with special characters, quoted local parts, domain names, and IP addresses. However, please note that email address validation can be quite complex, and this regex may not cover all edge cases or conform to the latest email address standards. It's essential to consider the specific requirements of your application when using this regex for email validation."
+
+ChatGPT4 tells you to send a confirmation email instead of trying to validate it.
+
+
+> can you write a Python script using that regular expression to match email addresses in a string of text?
+
+```py
+import re
+
+def match_email_addresses(text):
+  """Matches email addresses in a string of text.
+
+  Args:
+    text: A string of text.
+
+  Returns:
+    A list of email addresses found in the text.
+  """
+
+  email_regex = re.compile(r'(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])')
+
+  email_addresses = email_regex.findall(text)
+
+  return email_addresses
+
+# Example usage:
+
+text = "This is a string of text that contains email addresses: john.doe@example.com, jane.doe@example.com, and bob.smith@example.com."
+
+email_addresses = match_email_addresses(text)
+
+print(email_addresses)
+```
+
+### Convert to Javascript
+
+> can you convert this script to javascript
+
+
+Please note that the JavaScript regular expression is slightly different from the Python regular expression, because JavaScript regular expressions are case-insensitive by default. To make the JavaScript regular expression case-insensitive, we have added the i flag to the end of the expression.
+
+wow!
+
+
+
+
 ## Capital City Game
 
 > make a game in python where  it gives you the name of a country in Europe, and you are give 4 capital cities to choose from. you can then enter a guess and the program tells you if you 're right. for example it may say: France, and give 4 cities as a multiple choice: London, Paris, Rome and Berlin
