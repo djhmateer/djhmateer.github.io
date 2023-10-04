@@ -117,6 +117,308 @@ Please note that the JavaScript regular expression is slightly different from th
 
 wow!
 
+## Unit Tests
+
+> can you write a Python script using that regular expression to match email addresses in a string of text?
+
+```py
+import re
+
+# Define the regular expression pattern for matching email addresses
+email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+
+# Sample text containing email addresses
+text = """
+Here are some email addresses:
+john.doe@example.com
+jane.smith123@gmail.com
+user@my-website.net
+"""
+
+# Find all email addresses in the text using the regular expression
+matches = re.findall(email_pattern, text)
+
+# Print the matched email addresses
+for match in matches:
+    print(match)
+
+```
+
+
+> write unit tests for this code
+
+```py
+import unittest
+import re
+
+def find_email_addresses(text):
+    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    return re.findall(email_pattern, text)
+
+class TestEmailMatching(unittest.TestCase):
+
+    def test_single_email(self):
+        text = "Email address: john.doe@example.com"
+        expected_result = ["john.doe@example.com"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_multiple_emails(self):
+        text = """
+        Here are some email addresses:
+        john.doe@example.com
+        jane.smith123@gmail.com
+        user@my-website.net
+        """
+        expected_result = ["john.doe@example.com", "jane.smith123@gmail.com", "user@my-website.net"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_no_email(self):
+        text = "This text does not contain any email addresses."
+        expected_result = []
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+if __name__ == '__main__':
+    unittest.main()
+
+```
+
+> can you provide more tests with more edge cases
+
+
+```py
+import unittest
+import re
+
+def find_email_addresses(text):
+    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    return re.findall(email_pattern, text)
+
+class TestEmailMatching(unittest.TestCase):
+
+    def test_single_email(self):
+        text = "Email address: john.doe@example.com"
+        expected_result = ["john.doe@example.com"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_multiple_emails(self):
+        text = """
+        Here are some email addresses:
+        john.doe@example.com
+        jane.smith123@gmail.com
+        user@my-website.net
+        """
+        expected_result = ["john.doe@example.com", "jane.smith123@gmail.com", "user@my-website.net"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_no_email(self):
+        text = "This text does not contain any email addresses."
+        expected_result = []
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_email_with_underscores(self):
+        text = "Email address: john_doe@example.com"
+        expected_result = ["john_doe@example.com"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_email_with_plus(self):
+        text = "Email address: user+test@example.com"
+        expected_result = ["user+test@example.com"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_email_with_subdomains(self):
+        text = "Email address: user@sub.example.co.uk"
+        expected_result = ["user@sub.example.co.uk"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_email_with_invalid_domain(self):
+        text = "Invalid email address: user@.com"
+        expected_result = []
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_email_with_numbers_in_domain_tld(self):
+        text = "Email address: user@example123.net"
+        expected_result = ["user@example123.net"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+wow!
+
+> more
+
+and it does
+
+### Documentation
+
+> can you add comments and documentation for that code?
+
+
+```py
+import unittest
+import re
+
+def find_email_addresses(text):
+    """
+    Find and return a list of email addresses in a given text.
+
+    Args:
+        text (str): The input text to search for email addresses in.
+
+    Returns:
+        list: A list of matched email addresses found in the input text.
+    """
+    # Define the regular expression pattern for matching email addresses
+    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    
+    # Use re.findall to find all matches of the email pattern in the text
+    return re.findall(email_pattern, text)
+
+class TestEmailMatching(unittest.TestCase):
+    """
+    Unit tests for the email address matching code.
+    """
+
+    def test_single_email(self):
+        """
+        Test matching a single email address in the text.
+        """
+        text = "Email address: john.doe@example.com"
+        expected_result = ["john.doe@example.com"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_multiple_emails(self):
+        """
+        Test matching multiple email addresses in the text.
+        """
+        text = """
+        Here are some email addresses:
+        john.doe@example.com
+        jane.smith123@gmail.com
+        user@my-website.net
+        """
+        expected_result = ["john.doe@example.com", "jane.smith123@gmail.com", "user@my-website.net"]
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    def test_no_email(self):
+        """
+        Test when there are no email addresses in the text.
+        """
+        text = "This text does not contain any email addresses."
+        expected_result = []
+        self.assertEqual(find_email_addresses(text), expected_result)
+
+    # Add more test cases here with comments explaining their purpose
+
+if __name__ == '__main__':
+    unittest.main()
+
+```
+
+## Starting a project - **GREAT USE CASE**
+
+eg we have a project idea
+
+want to check out league of legends API
+
+but can start easier with chat gpt
+
+> Can you write a Python script using the League of Legends API that shows me the percentage of wins for a specific player?
+
+```py
+import requests
+
+# Replace 'YOUR_API_KEY' with your actual API key
+API_KEY = 'YOUR_API_KEY'
+
+# Define the region and summoner name you want to look up
+REGION = 'na1'  # Change to the appropriate region code
+SUMMONER_NAME = 'SummonerName'  # Replace with the summoner's name you want to search
+
+# Define the base API URL
+BASE_URL = f'https://{REGION}.api.riotgames.com/lol'
+
+# Function to get summoner information
+def get_summoner_data():
+    try:
+        # Get summoner ID
+        summoner_url = f'{BASE_URL}/summoner/v4/summoners/by-name/{SUMMONER_NAME}'
+        response = requests.get(summoner_url, headers={'X-Riot-Token': API_KEY})
+
+        if response.status_code == 200:
+            summoner_data = response.json()
+            summoner_id = summoner_data['id']
+            return summoner_id
+        else:
+            print(f'Error: Unable to retrieve summoner data. Status code: {response.status_code}')
+            return None
+
+    except Exception as e:
+        print(f'An error occurred: {str(e)}')
+        return None
+
+# Function to get ranked statistics for a summoner
+def get_ranked_stats(summoner_id):
+    try:
+        # Get ranked data
+        ranked_url = f'{BASE_URL}/league/v4/entries/by-summoner/{summoner_id}'
+        response = requests.get(ranked_url, headers={'X-Riot-Token': API_KEY})
+
+        if response.status_code == 200:
+            ranked_data = response.json()
+            return ranked_data
+        else:
+            print(f'Error: Unable to retrieve ranked data. Status code: {response.status_code}')
+            return None
+
+    except Exception as e:
+        print(f'An error occurred: {str(e)}')
+        return None
+
+# Function to calculate win percentage
+def calculate_win_percentage(ranked_data):
+    total_games = 0
+    wins = 0
+
+    for entry in ranked_data:
+        if entry['queueType'] == 'RANKED_SOLO_5x5':
+            total_games += entry['wins'] + entry['losses']
+            wins += entry['wins']
+
+    if total_games > 0:
+        win_percentage = (wins / total_games) * 100
+        return win_percentage
+    else:
+        return 0
+
+# Main function
+def main():
+    summoner_id = get_summoner_data()
+    if summoner_id:
+        ranked_data = get_ranked_stats(summoner_id)
+        if ranked_data:
+            win_percentage = calculate_win_percentage(ranked_data)
+            print(f'Win Percentage for {SUMMONER_NAME}: {win_percentage:.2f}%')
+
+if __name__ == "__main__":
+    main()
+
+```
+
+wow!! this is a great start.
+
+
+## Learning
+
+> Whats the best resource for learning Python on YouTube?
+
+- corey schafer 
+- sentdex
+- tech with tim
+- coding with harry
+
+
 
 
 

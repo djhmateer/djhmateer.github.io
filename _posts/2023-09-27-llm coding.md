@@ -2,7 +2,7 @@
 layout: post
 title: ai and llm 
 description: 
-# menu: review
+menu: review
 categories: ai 
 published: true 
 comments: false     
