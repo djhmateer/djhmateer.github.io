@@ -221,7 +221,7 @@ Add heading
 
 
 
-## HTML / CSS Site
+## 2. HTML / CSS Site - next video
 
 I've created in `belgian-hb` directory
 
@@ -384,7 +384,36 @@ Hmm - don't like where it is going as fine.
 
 <!-- [![alt text](/assets/2023-10-04/1.jpg "email"){:width="800px"}](/assets/2023-10-04/1.jpg) -->
 [![alt text](/assets/2023-10-04/1.jpg "email")](/assets/2023-10-04/1.jpg)
+
+Image generated from DallE-3 via Bing. Notice typo in Dubbel on the bottle. Doesn't matter - this is all about doiong things fast.
+
+
 As I see the website progress really quickly, I'm able to pivot fast.
 
->
+**HERE**
+around 14 mins into [https://www.youtube.com/watch?v=ng438SIXyW4](https://www.youtube.com/watch?v=ng438SIXyW4)
+
+What I'd like to see are all the recipes displayed on the page in summary form.
+
+Order by popularity, ABV, bitterness, colour
+
+Come to my masterclass in person in Sussex on home brew belgian beers
+
+Merchandise page
+
+Buy kit (affiliate links)
+
+Watch video making W12.
+
+Create content on the history of belgian beers
+
+Come along on a home brew tour of belgian breweries and inside information.... weekend from London.
+
+See our sponsors - 
+
+Social Media
+launch on HN / 
+
+**
+
 
