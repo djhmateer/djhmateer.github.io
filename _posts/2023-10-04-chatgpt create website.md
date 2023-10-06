@@ -188,6 +188,203 @@ Install plugins:
 
 ### Images
 
+[https://www.midjourney.com/app/](https://www.midjourney.com/app/)
+
+then can hop onto discord channel:
+
+but have to have a subscription to play.
+
+
+
 > MidJouney: /Imagine home brew beer, realistic
 
 **need to subscribe?
+
+### DallE 3 via Bing
+
+[https://www.bing.com/](https://www.bing.com/) use the Edge browser to get more credits.
+
+
+> Poster image mixing boardgames and Halloween with an 80's Stranger Things style, synthwave, 80's, dark, neon
+
+
+## Theme of website
+
+He just uses Astra theme
+
+Pages, Add New, Add with Elementor
+
+
+Drag image
+
+Add heading
+
+
+
+## HTML / CSS Site
+
+I've created in `belgian-hb` directory
+
+- index.html
+- app.css (I've gone with styles.css)
+- app.js (I've gone with script.js)
+
+Use VSCode live Server to easily to Ctrl F5 (hint - launch separately from windows side if you're using WSL)
+
+[https://www.youtube.com/watch?v=ng438SIXyW4](https://www.youtube.com/watch?v=ng438SIXyW4)
+
+> I'm going to build a website for Belgian Home Brew beer using html, css and Javascript. Can you generate some html for my website?
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belgian Home Brew Beer</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to Belgian Home Brew Beer</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Equipment</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="featured-recipe">
+            <h2>Featured Recipe</h2>
+            <!-- Include details and image of your featured recipe -->
+            <p>Try our delicious Belgian Tripel recipe with a hint of spice and fruity esters.</p>
+            <img src="tripel.jpg" alt="Belgian Tripel">
+        </section>
+
+        <section class="latest-articles">
+            <h2>Latest Articles</h2>
+            <!-- List your latest articles with links and summaries -->
+            <article>
+                <h3><a href="#">Exploring Belgian Beer Styles</a></h3>
+                <p>Learn about the different beer styles that Belgium is famous for.</p>
+            </article>
+            <article>
+                <h3><a href="#">Tips for Perfecting Your Brew</a></h3>
+                <p>Discover some tips and tricks for improving your homebrewing skills.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Belgian Home Brew Beer</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
+
+```
+
+I love that it has put in sample sample content
+
+
+> I'm going to be creating separate files for CSS and Javascript. Can you generate some CSS to go with te html you generated?
+
+
+> Can you center the featured recipe section
+
+> Can you add comments to the CSS
+
+## Mock Data
+
+>  can you generate mock json data for the featured recipe section
+
+> use degrees C
+
+```json
+{
+  "featuredRecipe": {
+    "title": "Belgian Tripel",
+    "description": "A classic Belgian Tripel with a hint of spice and fruity esters. Perfect for advanced homebrewers.",
+    "image": "tripel.jpg",
+    "ingredients": [
+      "8 lbs (3.63 kg) Pilsner malt",
+      "1 lb (0.45 kg) Candi sugar",
+      "1 oz (28 g) Saaz hops",
+      "1 oz (28 g) Styrian Goldings hops",
+      "Belgian ale yeast"
+    ],
+    "instructions": [
+      "Mash the grains at 65°C (149°F) for 60 minutes.",
+      "Add candi sugar and boil for 60 minutes, adding hops at specified times.",
+      "Cool wort and transfer to fermenter, pitch yeast, and ferment at 20°C (68°F).",
+      "Bottle and carbonate after fermentation is complete."
+    ]
+  },
+  "recipes": [
+    {
+      "title": "Belgian Dubbel",
+      "description": "A rich and malty Belgian Dubbel with notes of dark fruit and caramel. Great for intermediate brewers.",
+      "image": "dubbel.jpg",
+      "ingredients": [
+        "7 lbs (3.18 kg) Belgian Pilsner malt",
+        "1 lb (0.45 kg) Belgian Munich malt",
+        "0.5 lb (0.23 kg) Belgian Special B malt",
+        "0.5 lb (0.23 kg) Belgian dark candi syrup",
+        "1 oz (28 g) Saaz hops",
+        "0.5 oz (14 g) Hallertau Mittelfrüh hops",
+        "Abbey ale yeast"
+      ],
+      "instructions": [
+        "Mash the grains at 66°C (151°F) for 60 minutes.",
+        "Add candi syrup and boil for 60 minutes, adding hops at specified times.",
+        "Cool wort and transfer to fermenter, pitch yeast, and ferment at 22°C (72°F).",
+        "Bottle and allow to age for several weeks for best flavor."
+      ]
+    },
+    {
+      "title": "Belgian Witbier",
+      "description": "A refreshing Belgian Witbier with coriander and orange peel. Perfect for summertime brewing.",
+      "image": "witbier.jpg",
+      "ingredients": [
+        "5 lbs (2.27 kg) Belgian Pilsner malt",
+        "3 lbs (1.36 kg) Flaked wheat",
+        "1 oz (28 g) Saaz hops",
+        "0.5 oz (14 g) Czech Saaz hops",
+        "Belgian Witbier yeast",
+        "Coriander and orange peel (for flavor)"
+      ],
+      "instructions": [
+        "Mash the grains at 67°C (152°F) for 60 minutes.",
+        "Boil for 60 minutes, adding hops at specified times and coriander/orange peel in the last 10 minutes.",
+        "Cool wort and transfer to fermenter, pitch yeast, and ferment at 21°C (70°F).",
+        "Bottle and enjoy after carbonation."
+      ]
+    }
+  ]
+}
+```
+
+This is a pretty realistic starting point
+
+> I'd like to use javascript to populate the html with the data
+
+
+Okay so this sort of worked but produced slightly mad json. Fine.
+
+Hmm - don't like where it is going as fine.
+
+
+## Pivot Fast
+
+<!-- [![alt text](/assets/2023-10-04/1.jpg "email"){:width="800px"}](/assets/2023-10-04/1.jpg) -->
+[![alt text](/assets/2023-10-04/1.jpg "email")](/assets/2023-10-04/1.jpg)
+As I see the website progress really quickly, I'm able to pivot fast.
+
+>
+
