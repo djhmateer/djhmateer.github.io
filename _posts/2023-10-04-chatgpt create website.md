@@ -45,7 +45,6 @@ In the video above Charlie is creating educational websites because of the diffe
 - E-Commerce
 - Blog
 
-
 ## Content
 
 > What type of website can I make about hoverflys?
@@ -54,8 +53,7 @@ and it gives great ideas on what to write
 
 > reformat into markdown (so I can render it here)
 
-
-# Types of Websites About Hoverflies
+# 1. Types of Websites About Hoverflies
 
 Creating a website about hoverflies can be a great way to share information and educate people about these fascinating insects. Hoverflies are often mistaken for bees or wasps but are beneficial pollinators and can be of interest to nature enthusiasts, gardeners, and scientists. Here are some ideas for the type of website you can create about hoverflies:
 
@@ -109,7 +107,7 @@ When creating your website, make sure to use high-quality, well-researched conte
 
 ----
 
-## Beer Making
+## 2. Beer Making
 
 > What type of website can I make about home brew beer making in the UK?
 
@@ -173,8 +171,6 @@ Get ready to embark on your homebrewing journey with Homebrew UK!
 
 ---
 
-
-
 ## WordPress
 
 Install plugins:
@@ -193,8 +189,6 @@ Install plugins:
 then can hop onto discord channel:
 
 but have to have a subscription to play.
-
-
 
 > MidJouney: /Imagine home brew beer, realistic
 
@@ -221,19 +215,24 @@ Add heading
 
 
 
-## 2. HTML / CSS Site - next video
+## 4. HTML / CSS Site - next video
 
 I've created in `belgian-hb` directory
 
 - index.html
 - app.css (I've gone with styles.css)
 - app.js (I've gone with script.js)
+- favicon.ico (dalle to create an image then [https://favicon.io/](https://favicon.io/))
 
-Use VSCode live Server to easily to Ctrl F5 (hint - launch separately from windows side if you're using WSL)
+Use VSCode live Server to easily to Ctrl F5 (hint - launch separately from windows side if you're using WSL..maybe it will work - check for errors in js).
 
 [https://www.youtube.com/watch?v=ng438SIXyW4](https://www.youtube.com/watch?v=ng438SIXyW4)
 
 > I'm going to build a website for Belgian Home Brew beer using html, css and Javascript. Can you generate some html for my website?
+
+> I'm going to build a website for Belgian Home Brew Beer in the UK using html, css and Javascript. Can you generate some html for my website?
+
+### Chat GPT 3.5
 
 ```html
 <!DOCTYPE html>
@@ -292,9 +291,98 @@ Use VSCode live Server to easily to Ctrl F5 (hint - launch separately from windo
 
 I love that it has put in sample sample content
 
+### Bing - Chat GPT 4
+
+Gives a totally different starting point
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Belgian Home Brew Beer</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header>
+		<h1>Belgian Home Brew Beer</h1>
+		<nav>
+			<ul>
+				<li><a href="#about">About</a></li>
+				<li><a href="#beers">Beers</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section id="about">
+			<h2>About Us</h2>
+			<p>Welcome to Belgian Home Brew Beer! We are a group of beer enthusiasts who love to brew our own beer. Our passion for beer has led us to create this website to share our knowledge and experience with others. We hope you enjoy our website and find it useful.</p>
+			<p>Our mission is to promote the art of home brewing and to help people make great beer at home. We believe that everyone can make great beer with the right knowledge and equipment. That's why we offer a wide range of resources and information on our website to help you get started.</p>
+			<p>So whether you're a seasoned brewer or just starting out, we're here to help you make great beer at home!</p>
+		</section>
+
+		<section id="beers">
+			<h2>Our Beers</h2>
+			<p>Here are some of the beers we've brewed:</p>
+
+			<ul>
+				<li><strong>Belgian Witbier:</strong> A refreshing wheat beer with hints of coriander and orange peel.</li>
+				<li><strong>Saison:</strong> A spicy and fruity farmhouse ale with a dry finish.</li>
+				<li><strong>Dubbel:</strong> A rich and malty brown ale with notes of dark fruit and caramel.</li>
+				<li><strong>Tripel:</strong> A strong and complex golden ale with a spicy finish.</li>
+			</ul>
+
+			<p>We also offer a wide range of brewing supplies and equipment to help you make your own beer at home. Check out our online store for more information.</p>
+
+			<p>If you have any questions or comments, please don't hesitate to contact us. We'd love to hear from you!</p>
+
+			<a href="#contact"><button>Contact Us</button></a>
+
+		 </section>
+
+		 <section id="contact">
+		  <h2>Contact Us</h2>
+
+		  <form action="#" method="post">
+		   <label for="name">Name:</label><br>
+		   <input type="text" id="name" name="name"><br>
+
+		   <label for="email">Email:</label><br>
+		   <input type="email" id="email" name="email"><br>
+
+		   <label for="message">Message:</label><br>
+		   <textarea id="message" name="message"></textarea><br>
+
+		   <input type="submit" value="Send">
+		  </form>
+
+		  <p>You can also reach us at:</p>
+
+		  <ul>
+		   <li>Email: info@belgianhomebrewbeer.co.uk</li>
+		   <li>Phone: +44 1234 567890</li>
+		   <li>Address: 123 Main Street, London, UK</li>
+		  </ul>
+
+		 </section>
+
+    </main>
+
+    <footer>© 2023 Belgian Home Brew Beer. All rights reserved.</footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
+
+which has some good ideas.
+
 
 > I'm going to be creating separate files for CSS and Javascript. Can you generate some CSS to go with te html you generated?
-
 
 > Can you center the featured recipe section
 
