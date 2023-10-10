@@ -45,13 +45,95 @@ In the video above Charlie is creating educational websites because of the diffe
 - E-Commerce
 - Blog
 
+## Name
+
+> create me a name for a belgian home brew beer website based in the uk
+
+
 ## Content
+
+> create an outline of a website for our belgian home brew beer uk website
+
+This is great as it brought up ideas like
+
+- a shop selling belgian beer which I hadn't thought of
+
+This is great for a project proposal too, as it starts to flesh out pages.
+
+> Give me the broad outline for a website for home brew belgian beer in the uk including hero, tagline, call to action button, section for features and details about the beers.
+
+This is an excellent prompt giving some great details.
+
+> please provide content for every one of these that I can copy and paste into the website
+
+This is great content (totally sounds believable)
+
+
+# Belgian Brews UK
+
+## Homepage
+
+### Header
+- Logo
+- Navigation menu (Home, About Us, Beers, Brewing Tips, Shop, Contact)
+
+### Hero Section
+- ![High-quality image of Belgian-style homebrewed beers](image-link)
+- Catchy slogan or tagline
+- Call-to-action button leading to your beer collection or shop
+
+### About Us Section
+- Brief company history and mission
+- Information about your passion for Belgian homebrewed beers
+
+### Beers Section
+- Showcase your range of Belgian-style homebrewed beers
+- Include images, descriptions, and pricing
+- Option to filter beers by style, ABV, or other relevant categories
+
+### Brewing Tips Section
+- Share valuable tips and guides on homebrewing Belgian beers
+- Articles on ingredients, techniques, and equipment
+
+### Shop Section
+- Display your products for sale (beers, brewing equipment, merchandise)
+- Shopping cart functionality
+- Secure payment options
+
+### Blog Section
+- Regularly updated blog posts about brewing, beer culture, and Belgian beer news
+- Share your expertise and engage with your audience
+
+### Contact Us Section
+- Contact form for inquiries and feedback
+- Email address and phone number for direct contact
+- Social media links for easy connection
+
+## Footer
+- Copyright information
+- Links to privacy policy and terms of service
+- Social media icons for sharing and following
+
+## Additional Pages
+- **FAQ**: Frequently asked questions about your products and brewing process
+- **Testimonials**: Customer reviews and feedback
+- **Events**: If you host or participate in beer-related events in the UK
+- **Gallery**: Photos of your brewing process, events, and happy customers
+- **Resources**: Downloads, videos, or additional resources for homebrewers
+- **Newsletter Signup**: Allow visitors to subscribe to your newsletter for updates and promotions
+
+
+
+> give me more content to put on the home page
+
+
 
 > What type of website can I make about hoverflys?
 
 and it gives great ideas on what to write
 
 > reformat into markdown (so I can render it here)
+
 
 # 1. Types of Websites About Hoverflies
 
@@ -504,4 +586,33 @@ launch on HN /
 
 **
 
+
+## Website Images for home brew beer
+
+[https://www.youtube.com/watch?v=8I3NTE4cn5s](https://www.youtube.com/watch?v=8I3NTE4cn5s)
+
+Bing Chat
+
+> create a beautiful website image to do with home brew beer - ui ux website
+
+> can you do it in dalle
+
+[https://www.bing.com/images/create](https://www.bing.com/images/create) maybe this is a smarter way to get dalle-3 rather than bing.com/chat
+
+
+[![alt text](/assets/2023-10-05/1.jpg "email")](/assets/2023-10-05/1.jpg)
+[![alt text](/assets/2023-10-05/2.jpg "email")](/assets/2023-10-05/2.jpg)
+[![alt text](/assets/2023-10-05/3.jpg "email")](/assets/2023-10-05/3.jpg)
+[![alt text](/assets/2023-10-05/4.jpg "email")](/assets/2023-10-05/4.jpg)
+
+
+Impressie mockups
+
+
+
+## Design
+
+Pull into photoshop and start to chop up
+
+[https://www.youtube.com/watch?v=8I3NTE4cn5s](https://www.youtube.com/watch?v=8I3NTE4cn5s) 12:00 minutes
 
