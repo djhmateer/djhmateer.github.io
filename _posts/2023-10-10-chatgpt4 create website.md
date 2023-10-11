@@ -49,18 +49,157 @@ In the video above Charlie is creating educational websites because of the diffe
 
 > create me a name for a belgian home brew beer website based in the uk
 
+GPT-4 gives very good names:
+
+- BelgUK Brews
+- Brussels2Britain Brews
+- BelgeBrew Britannia
+- UK's Belgian Brew House
+- AngloBelge Brews
+- BritBelge Beer Boutique
+- The Belgian Brewer of Britain
+- Brews Beyond the Channel
+- Benelux Brews UK
+- Britannia's Belgian Bottles
+
 
 ## Content
 
-> create an outline of a website for our belgian home brew beer uk website
+`create an outline of a website for our belgian home brew beer uk website``
 
-This is great as it brought up ideas like
+This is great as it brought up ideas. GPT-4 is much better than 3.
 
-- a shop selling belgian beer which I hadn't thought of
+# **BelgUK Brews**
+*Logo and tagline: "The Best of Belgian Beers, Brewed in Britain"*
+
+---
+
+## **1. Home**
+- Welcoming banner with high-quality images of Belgian-style beer, glasses, and brewing process.
+- A brief intro about the love for Belgian beers and the unique UK touch.
+- Featured beers or limited-time brews.
+- CTA: Shop Now, Learn More, or Join Our Community.
+
+## **2. About Us**
+- The story of how the website/business started.
+- The passion and connection between Belgium and the UK.
+- Photos of the founders, brewing facility, or events.
+
+## **3. Our Beers**
+- A showcase of all the Belgian-style beers available.
+- Filters: By Type (Ale, Stout, Lager, etc.), By Strength, By Popularity.
+- Individual beer page: Description, brewing process, taste profile, customer reviews, and pairing suggestions.
+
+## **4. How We Brew**
+- A detailed explanation of the brewing process, highlighting the blend of traditional Belgian methods with a UK twist.
+- Videos, diagrams, or animations for visual appeal.
+- Mention of quality of ingredients sourced, brewing equipment used.
+
+## **5. Shop**
+- Categories: Beer Kits, Individual Beers, Gift Sets, Brewing Equipment, and Merchandise (T-shirts, glasses, etc.).
+- Shopping cart and secure checkout process.
+- Shipping information and policies.
+
+## **6. Blog**
+- Articles about the Belgian beer culture, home brewing tips, and the latest trends in the beer industry.
+- Guest posts from Belgian brewers or UK brewing experts.
+- Beer recipes or food pairing recipes.
+
+## **7. Events & Workshops**
+- Information about upcoming events, workshops, or beer tasting sessions.
+- Online webinars or virtual tours for remote participants.
+- Past event highlights and galleries.
+
+## **8. Testimonials & Reviews**
+- Customer reviews about beers, events, and products.
+- Highlighted reviews with photos or video testimonials.
+- CTA: Leave a Review or Share Your Experience.
+
+## **9. FAQs**
+- Common questions about the beers, brewing process, shipping, etc.
+- Information on how to store, serve, and enjoy the beers.
+
+## **10. Contact Us**
+- Contact form for customer inquiries, feedback, or collaboration.
+- Map location of the brewing facility or office.
+- Social media links and newsletter signup form.
+
+## **11. Footer**
+- Quick links to main sections.
+- Privacy policy, terms and conditions, return policy.
+- Sign up for a newsletter feature for exclusive deals, news, and updates.
+
+
+
+
+## xx
 
 This is great for a project proposal too, as it starts to flesh out pages.
 
 > Give me the broad outline for a website for home brew belgian beer in the uk including hero, tagline, call to action button, section for features and details about the beers.
+
+
+
+# **BelgUK Brews**
+
+---
+
+## **Hero Section**
+![Background Image: Belgian-style beers and brewing equipment](URL-to-image)
+### **Tagline**: 
+"Belgian Craftsmanship. British Spirit."
+#### Dive into the unique fusion of Belgian brewing traditions with the distinct flavors of the UK.
+[Discover Our Beers](#)
+
+---
+
+## **About Us Section**
+### **Our Brewing Journey**
+A brief story on the passion for Belgian beers, the decision to home brew in the UK, and the inception of the business/website.
+![Picture of founders or brewing setup](URL-to-image)
+
+---
+
+## **Features Section**
+### **Why Our Beers Stand Out**
+
+- **Authentic Ingredients**: ![Hops or Barley Icon](URL-to-icon)  
+  Sourcing the finest ingredients directly from Belgium for an authentic taste.
+
+- **Traditional Techniques**: ![Brewing Kettle Icon](URL-to-icon)  
+  Employing age-old Belgian brewing methods infused with a modern twist.
+
+- **Local Infusion**: ![Globe with UK flag Icon](URL-to-icon)  
+  Incorporating British elements and flavors to craft beers that represent the best of both worlds.
+
+- **Award-Winning Brews**: ![Star or Medal Icon](URL-to-icon)  
+  Celebrating our acclaimed beers recognized in local and international competitions.
+
+---
+
+## **Our Beers Section**
+### **Explore Our Brews**
+A collection of beers crafted with Belgian heart and British soul.
+
+- ![Beer Image](URL-to-beer-image)  
+  **Brussels Blonde**  
+  A brief taste profile and unique features. [Learn More](#)
+
+- (Repeat the above format for each beer)
+
+[Shop All Beers](#)
+
+---
+
+## **Footer**
+
+- **Quick Links**: [Home](#), [About](#), [Shop](#), [Contact Us](#).
+- **Social Media**: [Facebook](#), [Twitter](#), [Instagram](#).
+- **Newsletter Signup**: Stay updated on new releases and special offers.
+- **Legal**: [Terms of Service](#), [Privacy Policy](#).
+
+
+
 
 This is an excellent prompt giving some great details.
 
@@ -134,60 +273,6 @@ and it gives great ideas on what to write
 
 > reformat into markdown (so I can render it here)
 
-
-# 1. Types of Websites About Hoverflies
-
-Creating a website about hoverflies can be a great way to share information and educate people about these fascinating insects. Hoverflies are often mistaken for bees or wasps but are beneficial pollinators and can be of interest to nature enthusiasts, gardeners, and scientists. Here are some ideas for the type of website you can create about hoverflies:
-
-----
-
-## 1. Educational Website
-- Provide detailed information about hoverflies, their life cycle, behavior, and habitat.
-- Include high-quality photos and videos of hoverflies in various stages of their life cycle.
-- Explain their role in pollination and how they benefit ecosystems and agriculture.
-- Offer resources for teachers, students, and researchers interested in hoverfly biology.
-
-## 2. Field Guide
-- Create a comprehensive field guide to help enthusiasts identify different species of hoverflies.
-- Include photographs, descriptions, and distribution maps for each species.
-- Offer tips on where and how to observe hoverflies in the wild.
-
-## 3. Gardening and Conservation
-- Share tips on how to attract hoverflies to your garden by planting the right flowers and providing suitable habitats.
-- Discuss the importance of hoverflies in pest control and organic gardening.
-- Highlight conservation efforts and ways individuals can help protect hoverfly populations.
-
-## 4. Citizen Science
-- Encourage citizen science participation by providing information on how people can contribute to hoverfly research and data collection.
-- Create a platform for reporting hoverfly sightings and observations, which can help researchers monitor their populations.
-
-## 5. Photography and Art
-- Showcase stunning photographs and artwork of hoverflies.
-- Feature galleries of hoverfly images submitted by photographers and artists from around the world.
-
-## 6. Blog and News
-- Maintain a blog that discusses the latest research, news, and discoveries related to hoverflies.
-- Share personal experiences and stories of encounters with hoverflies.
-
-## 7. Forums and Community
-- Create a space for enthusiasts to discuss hoverflies, share observations, and ask questions.
-- Foster a community of people passionate about hoverfly conservation and research.
-
-## 8. Resources and Downloads
-- Provide downloadable resources such as identification guides, fact sheets, and educational materials.
-- Offer links to relevant scientific articles and publications.
-
-## 9. Videos and Webinars
-- Produce videos or host webinars featuring experts in hoverfly research or related topics.
-- Share video footage of hoverflies in their natural habitats.
-
-## 10. Merchandise and Fundraising
-- Sell hoverfly-themed merchandise to raise funds for conservation efforts.
-- Use the website to solicit donations for hoverfly research and conservation projects.
-
-When creating your website, make sure to use high-quality, well-researched content, and consider the interests and needs of your target audience. Regularly update the site with fresh content to keep visitors engaged and informed about these important insects.
-
-----
 
 ## 2. Beer Making
 
@@ -274,30 +359,22 @@ but have to have a subscription to play.
 
 > MidJouney: /Imagine home brew beer, realistic
 
-**need to subscribe?
-
 ### DallE 3 via Bing
 
 [https://www.bing.com/](https://www.bing.com/) use the Edge browser to get more credits.
 
-
 > Poster image mixing boardgames and Halloween with an 80's Stranger Things style, synthwave, 80's, dark, neon
-
-
-## Theme of website
 
 He just uses Astra theme
 
 Pages, Add New, Add with Elementor
-
 
 Drag image
 
 Add heading
 
 
-
-## 4. HTML / CSS Site - next video
+## 4. HTML / CSS Site
 
 I've created in `belgian-hb` directory
 
@@ -309,8 +386,6 @@ I've created in `belgian-hb` directory
 Use VSCode live Server to easily to Ctrl F5 (hint - launch separately from windows side if you're using WSL..maybe it will work - check for errors in js).
 
 [https://www.youtube.com/watch?v=ng438SIXyW4](https://www.youtube.com/watch?v=ng438SIXyW4)
-
-> I'm going to build a website for Belgian Home Brew beer using html, css and Javascript. Can you generate some html for my website?
 
 > I'm going to build a website for Belgian Home Brew Beer in the UK using html, css and Javascript. Can you generate some html for my website?
 
@@ -373,7 +448,7 @@ Use VSCode live Server to easily to Ctrl F5 (hint - launch separately from windo
 
 I love that it has put in sample sample content
 
-### Bing - Chat GPT 4
+### Bing - Chat GPT-4
 
 Gives a totally different starting point
 
@@ -463,6 +538,99 @@ Gives a totally different starting point
 
 which has some good ideas.
 
+### GPT-4
+
+> I'm going to build a website for Belgian Home Brew beer using html and css. Can you generate some html for my website? I would like it to be very styley using tailwind css
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BelgUK Brews</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white py-20">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl mb-6">Belgian Craftsmanship. British Spirit.</h1>
+            <p class="text-xl mb-8">Dive into the unique fusion of Belgian brewing traditions with the British soul.</p>
+            <a href="#" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full">
+                Discover Our Beers
+            </a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="py-20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl mb-8">Our Brewing Journey</h2>
+            <p class="text-xl mb-8">A brief story about the passion for Belgian beers, the decision to home brew in the UK, and the inception of the website.</p>
+            <img src="URL-to-image" alt="Founders or Brewing Setup" class="mx-auto w-1/2 rounded shadow-lg">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-200 py-20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl mb-8">Why Our Beers Stand Out</h2>
+            <!-- Feature Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Each feature -->
+                <div>
+                    <img src="URL-to-icon" alt="Authentic Ingredients" class="mx-auto mb-6">
+                    <h3 class="text-2xl mb-4">Authentic Ingredients</h3>
+                    <p>Sourcing the finest ingredients directly from Belgium for an authentic taste.</p>
+                </div>
+                <!-- Repeat for other features -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl mb-6">BelgUK Brews</h2>
+            <p class="mb-6">Stay updated on new releases and special offers.</p>
+            <div class="flex justify-center mb-6">
+                <a href="#" class="mx-4">Facebook</a>
+                <a href="#" class="mx-4">Twitter</a>
+                <a href="#" class="mx-4">Instagram</a>
+            </div>
+            <p>&copy; 2023 BelgUK Brews. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+```
+
+`can you create a recipes section and put in 4 belgian beer recipes`
+
+then
+
+`convert to celcius and kg`
+
+then
+
+`please hide bullet points`
+
+then
+
+
+
+
+
+
+# asdf
 
 > I'm going to be creating separate files for CSS and Javascript. Can you generate some CSS to go with te html you generated?
 
@@ -616,3 +784,4 @@ Pull into photoshop and start to chop up
 
 [https://www.youtube.com/watch?v=8I3NTE4cn5s](https://www.youtube.com/watch?v=8I3NTE4cn5s) 12:00 minutes
 
+[https://www.editorx.com/](https://www.editorx.com/) for a nice wysiwyg
