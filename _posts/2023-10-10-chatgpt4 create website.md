@@ -1,6 +1,6 @@
 ---
 layout: post
-#title: 
+title: ChatGPT-4 Create a Website
 description: 
 menu: review
 categories: ai 
@@ -18,59 +18,142 @@ image: /assets/2023-07-22/1.jpg
 
 [https://www.youtube.com/watch?v=LJyfhD5CUiM](https://www.youtube.com/watch?v=LJyfhD5CUiM)
 
-In my series of exploration of LLM's / GPT, lets see if it can help me create a website
+In my series of exploration of LLM's / GPT, lets see if it can help me create a website for a new business.
 
-This is really part 1 here. 
+This is really part 1, 2 and 3 here. 
 
-1. Coding / code completion / summerisation of code
-2. Assimilating information and summerising 
-3. Generation (text / image)
+1. Coding / code completion / summerisation of code - html / css
+2. Assimilating information and summerising  - coming up with project plan
+3. Generation (text / image) - generating content / images
 4. Coversation (chatbots)
 5. Knowledge accessibility - question and answer 
 
 
 ## 1.1 Starting from a blank slate
 
-This to me seems like a great use case for programmers who just want to get started quickly! and do things fast
+This to me seems like a great use case for programmers/entrepreneurs who just want to get started quickly to rapidly iterate on a project.
+
+## Idea and Why
+
+Lets imagine that I want to explore the idea of 
+
+> running home brew training courses in real life
+
+Why: 
+
+- Becuase it is something I want to go on.
+- Becuase it is a complicated hobby to get started with and there is always something more to learn
+- Seeing others do something is a great way to learn
+- You'll come away with wort to ferment of the different beers we will make
+- Get away for a holiday / adventure
+- Get the right kit a the right price
+- Find top tips on suppliers of ingredients 
+- Our favourite recipes 
+- Will visit a commercial brewery
+- Will visit home setups in the kitchen, outside and custom brew shed.
+
+### Caveat.. and why not
+
+*caveat - I'm not sure this is a good idea at all, but as an example, why not. And actually this is what LLM's are all about.. is moving fast, failing fast, so lets push this example and see what happens.*
 
 
-## Idea
 
-So firstly we have to ask why we're doing something.. 
+# Monetization Strategies for Training Courses
 
-In the video above Charlie is creating educational websites because of the different ways you can monetise them.
+`what are good monetization strategies for running home brew training courses in person and online`
 
-- Educational
-- Community
-- E-Commerce
-- Blog
+This is a summary of the great content below
 
-## Name
-
-> create me a name for a belgian home brew beer website based in the uk
-
-GPT-4 gives very good names:
-
-- BelgUK Brews
-- Brussels2Britain Brews
-- BelgeBrew Britannia
-- UK's Belgian Brew House
-- AngloBelge Brews
-- BritBelge Beer Boutique
-- The Belgian Brewer of Britain
-- Brews Beyond the Channel
-- Benelux Brews UK
-- Britannia's Belgian Bottles
+- **Course Fees**: Charge per session/module or a one-time fee.
+- **Subscription Model**: Offer monthly or annual access to course content.
+- **Course Material Sales**: Sell textbooks, workbooks, and other materials.
+- **Upsells**: Offer advanced or specialized modules for an extra charge.
+- **Private Tutoring**: Charge for 1-on-1 personalized sessions.
+- **Certifications**: Charge for certification exams or processes.
+- **Affiliate Marketing**: Earn commissions on recommended products.
+- **Sponsored Content**: Partner with businesses for sponsored lessons.
+- **Merchandising**: Sell branded merchandise.
+- **Donations**: Ask for support for free content through platforms like Patreon.
+- **Licensing Content**: Allow others to use your material for a fee.
+- **Membership Sites**: Charge for exclusive content and resources.
+- **Ad Revenue**: Earn from ads on platforms like YouTube.
+- **Workshops**: Charge for specialized in-person or virtual sessions.
+- **Sell Recorded Sessions**: Offer recorded sessions for a fee.
+- **Corporate Packages**: Offer bulk courses for businesses.
+- **Grants & Scholarships**: Seek sponsorship from organizations.
 
 
-## Content
+
+## web
+
+`can you write an html website for running home brew training courses in person and online using tailwind CSS`
+
+[![alt text](/assets/2023-10-10/1.jpg "email")](/assets/2023-10-10/1.jpg)
+
+this was a bit thin
+
+## Add content and Generative AI Images
+
+`what are good monetization strategies for running home brew training courses in person and online`
+
+`can you write an html website for this using tailwind CSS`
+
+`add a login button on the top right`
+
+`add more detail to the in person Intro to home brewing course including a summary of what will be learned and space for an image`
+
+[https://www.bing.com/images/create](https://www.bing.com/images/create) - to create images from DALL-E 3
+
+`create a beautiful image of home brewing equipment in an English kitchen`
+
+`create a beautiful image of home brewing equipment in a brew shed with lots of equipment`
+
+
+`add more detail to an intermediate home brewing course including a summary of what will be learned and space for an image`
+
+[![alt text](/assets/2023-10-10/2.jpg "email")](/assets/2023-10-10/2.jpg)
+
+This is taking shape and exciting. Fast!
+
+
+## Tag Line and Hero and CTA
+
+`create a tag line for this site and put it in code`
+
+`another tag line`
+
+
+[![alt text](/assets/2023-10-10/3.jpg "email")](/assets/2023-10-10/3.jpg)
+
+
+## Brewing Equipment
+
+
+[![alt text](/assets/2023-10-10/4.jpg "email")](/assets/2023-10-10/4.jpg)
+
+`make the image 100%`
+
+Interestingly it has done better on the top section, which I could of course just use that code.
+
+[![alt text](/assets/2023-10-10/5.jpg "email")](/assets/2023-10-10/5.jpg)
+
+I did use that code.
+
+## Hamburger Menu
+
+I gave it my code, but didn't work quite yet! Will have to delve into this, but need to keep going fast to do POC.
+
+## Footer
+
+
+
+
+
+
+
+
 
 `create an outline of a website for our belgian home brew beer uk website``
-
-This is great as it brought up ideas. GPT-4 is much better than 3.
-
-# **BelgUK Brews**
-*Logo and tagline: "The Best of Belgian Beers, Brewed in Britain"*
 
 ---
 
@@ -128,6 +211,24 @@ This is great as it brought up ideas. GPT-4 is much better than 3.
 - Quick links to main sections.
 - Privacy policy, terms and conditions, return policy.
 - Sign up for a newsletter feature for exclusive deals, news, and updates.
+
+
+## Name
+
+`create me a name for a belgian home brew beer website based in the uk`
+
+GPT-4 gives very good names:
+
+- BelgUK Brews
+- Brussels2Britain Brews
+- BelgeBrew Britannia
+- UK's Belgian Brew House
+- AngloBelge Brews
+- BritBelge Beer Boutique
+- The Belgian Brewer of Britain
+- Brews Beyond the Channel
+- Benelux Brews UK
+- Britannia's Belgian Bottles
 
 
 
