@@ -8,6 +8,19 @@ sitemap: true
 ---
 After 8 months of using Vim here are my most used commands. I now find it easier and more enjoyable to edit text in Vim than in any other editor.
 
+## Vim 2023
+
+```bash
+qa - start recording a macro and put into the a register
+# do stuff
+q - stop recording and save
+
+@a - replay a macro
+@@ - replay last used macro
+10@a - replay a macro 10 times
+
+```
+
 ## Vim commands
 ```
 h,j,k,l - j (down), h (left), k (right), l (up) 
