@@ -102,6 +102,8 @@ timedatectl
 sudo timedatectl set-timezone Europe/London
 ```
 
+This wasn't the only problem (if that did matter)
+
 ## Cert Checker is Fine!
 
 [![alt text](/assets/2023-10-12/1.jpg "email")](/assets/2023-10-12/1.jpg)
@@ -123,6 +125,8 @@ server {
     #include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 ```
+
+A clue.. lets try and fix this because we do want these settings
 
 [![alt text](/assets/2023-10-12/3.jpg "email")](/assets/2023-10-12/3.jpg)
 
@@ -146,6 +150,8 @@ ssl_prefer_server_ciphers off;
 
 ssl_ciphers "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
 ```
+
+So my conf file was okay.
 
 [https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf](https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf)
 
@@ -175,7 +181,7 @@ server {
 
 ## Reverse Proxy
 
-Am using http to proxy to the next box:
+Am using http to proxy to the next box. It's on the same hypervisor as the reverse proxy, so I'm not concerned about encryption all of the way.
 
 ```bash
 server {
@@ -208,4 +214,4 @@ server {
 
 [![alt text](/assets/2023-10-12/4.jpg "email")](/assets/2023-10-12/4.jpg)
 
-SSL cert working over reverse proxy.
+SSL cert working over reverse proxy now!
