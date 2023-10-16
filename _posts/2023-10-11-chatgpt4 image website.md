@@ -25,3 +25,8 @@ We can now upload images into ChatGPT4 (and Bing Chat). Well, it seems they are 
 
 Want to explore this to help me create great websites fast which look beautiful
 
+## Worked after a few days
+
+I got access after a few days, but found that I can't easily get it to create html from a sample image.
+
+
