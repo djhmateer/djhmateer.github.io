@@ -94,7 +94,7 @@ this was a bit thin
 
 ## Add content and Generative AI Images
 
-`what are good monetization strategies for running home brew training courses in person and online`
+`what are good monetisation strategies for running home brew training courses in person and online`
 
 `can you write an html website for this using tailwind CSS`
 
@@ -144,6 +144,20 @@ I did use that code.
 I gave it my code, but didn't work quite yet! Will have to delve into this, but need to keep going fast to do POC.
 
 ## Footer
+
+
+
+**HERE**
+ask chatgpt about marketing
+
+eg PRoduct Hunt
+Free newsletter
+
+
+
+
+
+
 
 
 
