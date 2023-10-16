@@ -100,13 +100,25 @@ qn config 122
 # do a backup so can easily restore from this point?
 
 
-```
 
+```
 
 q - qemu
 m - manager
 
+**use cloud-init and learn about it - can it help?**
 
+
+
+
+
+
+
+
+ask chatgpt about marketing
+
+eg PRoduct Hunt
+Free newsletter
 
 
 
