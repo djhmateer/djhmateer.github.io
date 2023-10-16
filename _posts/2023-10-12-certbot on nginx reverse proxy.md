@@ -16,7 +16,7 @@ image: /assets/2023-10-12/3.jpg
 <!-- [![alt text](/assets/2023-08-23/3.jpg "email")](/assets/2023-08-23/3.jpg) -->
 <!-- ![alt text](/assets/2023-10-05/2.jpg "email")](/assets/2023-10-05/2.jpg) -->
 
-I use [Let's Encrypt](https://letsencrypt.org/) for SSL certs for all my sites. I've been manually copying them in, getting them issued from [DNSimple]() who I use for DNS. 
+I use [Let's Encrypt](https://letsencrypt.org/) for SSL certs for all my sites. I've been manually copying them in, getting them issued from [DNSimple](https://dnsimple.com/) who I use for DNS. 
 
 But I need to do this every 3 months, so lets automate it 
 
@@ -64,6 +64,9 @@ Congratulations! You have successfully enabled HTTPS on https://hmsoftware.org
 But I'm running a reverse proxy, so need to run certbot on that proxy (not the actual server where the files are). I'm forwarding to http on the webserver.
 
 ```bash
+# nginx conf file
+/etc/nginx/sites-available/default
+
 # test the config file
 # pay attention to any warnings here around ssl - see below!
 sudo nginx -t

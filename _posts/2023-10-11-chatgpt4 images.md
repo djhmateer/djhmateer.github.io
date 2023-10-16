@@ -30,3 +30,10 @@ Want to explore this to help me create great websites fast which look beautiful
 I got access after a few days, but found that I can't easily get it to create html from a sample image.
 
 
+## Use Cases
+
+- Photo of a meal and ask what this is
+- Photo of a crossword and say solve it
+- Wordserach and say solve it
+
+
