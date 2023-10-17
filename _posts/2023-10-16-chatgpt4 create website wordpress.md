@@ -76,109 +76,125 @@ qm stop 122
 # destroy it
 qm destroy 122
 
-# HERE
+# CLONE commands here
 # clone my template
-qm clone 1002 122 --name hmsoftwareuk-p36
+qm clone 1002 123 --name hmsoftwareuk-p37
 
-qm set --startup order=20
+qm set --startup order=20 123
 
-qm start 122
+qm start 123
+
+# get dynamic IP address
+pvesh get /nodes/pve/qemu/123/agent/network-get-interfaces --output-format=json | jq
+
+# from an internal proxmov vm eg ssh pfsense (access point)
+ssh 172.16.44.20
 
 # ssh into the vm with dynamic IP address eg ssh 172.16.44.25
 sudo bash -c "bash <(wget -qO- https://raw.githubusercontent.com/dlford/ubuntu-vm-boilerplate/master/run.sh)"
 
 # Get MAC
-qn config 122
-# eg 9E:1B:66:61:F4:78
+qm config 123
+# eg 92:61:B1:A5:5E:6A
 
 #pf sense -  Services / DHCP Server / LAN / Edit Static Mapping
 # eg to 172.16.44.111
 
+# firewall, NAT
 # allow ssh on port 36 or whatever
-# so can easily get to it internally
+
+# sudo don't type 
+# https://askubuntu.com/questions/147241/execute-sudo-without-password
 
 # do a backup so can easily restore from this point?
+vzdump 123
 
-
+# easier to use the GUI?
+qmrestore /var/lib/vz/dump/vzdump-qemu-123-2023_10_17-11_40_41.vma 123
 
 ```
 
-q - qemu
-m - manager
+Patch through domain name from reverse proxy and put in certbot to ensure ssl is working.
 
-**use cloud-init and learn about it - can it help?**
+So now I have a serer in proxmox ready for Wordpress.
+
+```bash
+# build the wordpress instance
+
+# copy all files from /dev/chatgpt/wordpress/ to ~/source/
+# infra should be in ~/source/infra
+
+# run through the shell commands
+
+```
+
+[![alt text](/assets/2023-10-16/1.jpg "email")](/assets/2023-10-16/1.jpg)
+
+So now we have a 
+
+- working wordpress install
+- ssl working via letsencrypt
+- live on the internet hosted on proxmox
 
 
+## Monetization Strategies for Pressure Washer Rental
+ Monetization Strategies for Pressure Washer Hire business: 
 
-
-
-
-
-
-ask chatgpt about marketing
-
-eg PRoduct Hunt
-Free newsletter
-
-
-
-
-## 1.1 Starting from a blank slate
-
-This to me seems like a great use case for programmers/entrepreneurs who just want to 
-
-> Get started quickly to rapidly iterate on a project
-
-## Idea and Why
-
-Lets imagine that I want to explore the idea of 
-
-> Running home brew training courses in real life
-
-Why: 
-
-- Because it is something I want to go on.
-- Because it is a complicated hobby to get started with and there is always something more to learn
-- Seeing others do something is a great way to learn
-- You'll come away with wort to ferment of the different beers we will make
-- Get away for a holiday / adventure
-- Get the right kit a the right price
-- Find top tips on suppliers of ingredients 
-- Our favourite recipes 
-- Will visit a commercial brewery
-- Will visit home setups in the kitchen, outside and custom brew shed.
-
-### Caveat.. and why not
-
-*caveat - I'm not sure this is a good idea at all, but as an example, why not. And actually this is what LLM's are all about.. is moving fast, failing fast, so lets push this example and see what happens.*
-
-# Monetization Strategies for Training Courses
-
-`what are good monetisation strategies for running home brew training courses in person and online`
+`what are good monetisation strategies for running a company that hires out pressure washers to residential customers so they can: clean their wooden decks, furniture and car`
 
 This is a summary of the great content below
 
-- **Course Fees**: Charge per session/module or a one-time fee.
-- **Subscription Model**: Offer monthly or annual access to course content.
-- **Course Material Sales**: Sell textbooks, workbooks, and other materials.
-- **Upsells**: Offer advanced or specialized modules for an extra charge.
-- **Private Tutoring**: Charge for 1-on-1 personalized sessions.
-- **Certifications**: Charge for certification exams or processes.
-- **Affiliate Marketing**: Earn commissions on recommended products.
-- **Sponsored Content**: Partner with businesses for sponsored lessons.
-- **Merchandising**: Sell branded merchandise.
-- **Donations**: Ask for support for free content through platforms like Patreon.
-- **Licensing Content**: Allow others to use your material for a fee.
-- **Membership Sites**: Charge for exclusive content and resources.
-- **Ad Revenue**: Earn from ads on platforms like YouTube.
-- **Workshops**: Charge for specialized in-person or virtual sessions.
-- **Sell Recorded Sessions**: Offer recorded sessions for a fee.
-- **Corporate Packages**: Offer bulk courses for businesses.
-- **Grants & Scholarships**: Seek sponsorship from organizations.
+
+1. **Tiered Pricing**
+   - Offer different models at varying prices.
+2. **Package Deals**
+   - Bundle pressure washers with detergents and tools.
+3. **Sell Cleaning Supplies**
+   - Provide detergents and cleaning solutions for purchase.
+4. **Maintenance and Damage Waivers**
+   - Charge for equipment protection and post-use cleaning.
+5. **Delivery and Pickup Service**
+   - Offer transport of equipment for a fee.
+6. **Loyalty Programs**
+   - Reward repeat customers with discounts or free rentals.
+7. **Training Workshops**
+   - Charge for lessons on safe and effective pressure washer use.
+8. **Upsell Additional Services**
+   - Offer professional washing or maintenance services.
+9. **Affiliate Partnerships**
+   - Partner with related businesses for referral discounts.
+10. **Seasonal Promotions**
+   - Offer discounts during peak cleaning seasons.
+11. **Online Presence and Booking**
+   - Use an SEO-optimized website for online rentals.
+12. **Security Deposits**
+   - Charge refundable deposits for potential damages.
+13. **Memberships/Subscriptions**
+   - Provide discounted rates for frequent renters.
+14. **Bulk Deals**
+   - Offer discounts for multiple unit rentals.
+15. **Feedback and Reviews**
+   - Encourage positive online reviews to attract more customers.
+
+> **Note**: Focus on customer needs and regularly reassess strategies for best results.
+
 
 ## HTML
 
-`can you write an html website for running home brew training courses in person and online using tailwind CSS`
+`Can you write a wordpress website using Tailwind CSS for this`
+
+hmm not so good
+
+`show me how to make a 1 page wordpress website using TailwindCSS`
+
+try this - no.. ithttps://wordpress.org/plugins/tailpress/  [https://wordpress.org/plugins/tailpress/](https://wordpress.org/plugins/tailpress/)... 
+
+**HERE***
+lets just go simple and use the CDN version!!!
+
+
+
+
 
 [![alt text](/assets/2023-10-10/1.jpg "email")](/assets/2023-10-10/1.jpg)
 
