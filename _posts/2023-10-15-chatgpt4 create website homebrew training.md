@@ -36,7 +36,7 @@ In my series of exploration of LLM's / GPT, lets see if it can help me create a 
 This is really part 1, 2 and 3 of:
 
 1. Coding / code completion / summerisation of code - html / css
-2. Assimilating information and summerising  - coming up with project plan
+2. Assimilating information and summerising  - project plan / monetisation ideas / costsing ideas
 3. Generation (text / image) - generating content / images
 4. Coversation (chatbots)
 5. Knowledge accessibility - question and answer 
