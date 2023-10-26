@@ -23,3 +23,20 @@ RunPod to [rent GPU](https://www.runpod.io/)
 Inference 
 
 Training
+
+
+## Mistral 7B
+
+[https://www.youtube.com/watch?v=5mmjig68d40](https://www.youtube.com/watch?v=5mmjig68d40) 
+
+Lets see if I can run this model locally?
+
+Performs better than LLaMA 2 apparently
+
+
+[https://ollama.ai/](https://ollama.ai/) to run locallly
+
+langchain too - python
+
+labs.perplexity.ai - very fast implementations of llama2
+
