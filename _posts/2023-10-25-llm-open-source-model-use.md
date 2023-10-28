@@ -42,7 +42,7 @@ labs.perplexity.ai - very fast implementations of llama2
 
 ## LLaMA.cpp
 
-[https://www.youtube.com/watch?v=k2FHUP0krqg](https://www.youtube.com/watch?v=k2FHUP0krqg) - using oobabooga with llama.cpp
+[https://www.youtube.com/watch?v=k2FHUP0krqg](https://www.youtube.com/watch?v=k2FHUP0krqg) - using oobabooga with llama.cpp with Matthew Berman
 
 
 [https://github.com/ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) 43k stars.
@@ -58,17 +58,32 @@ conda update -n base -c defaults conda
 
 git clone https://github.com/oobabooga/text-generation-webui.git
 
-./start_linux.sh
-
+# this doesn't work for me
+# ./start_linux.sh
 # OSError: [Errno 40] Too many levels of symbolic links: '/mnt/c/dev/test/text-generation-webui/installer_files/conda/pkgs/ncurses-6.4-h6a678d5_0/share/terminfo/n/ncr260vt300wpp'
 
+# use manual instructions
+# https://github.com/oobabooga/text-generation-webui#manual-installation-using-conda
+
+conda create -n textgen python=3.11
+conda activate textgen
+
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+pip3 install -r requirements_cpu_only.txt
 
 
+sudo apt-get install git-lfs
+git lfs install
 
-
-
-# git clone https://github.com/ggerganov/llama.cpp
-# cd llama.cpp
+# not working - getting error below
+python3 server.py
+# Traceback (most recent call last):
+#  File "/mnt/c/dev/textgen/server.py", line 5, in <module>
+#    from modules.block_requests import OpenMonkeyPatch, RequestBlocker
+#  File "/mnt/c/dev/textgen/modules/block_requests.py", line 4, in <module>
+#    import requests
+#ModuleNotFoundError: No module named 'requests'
 
 ```
 
