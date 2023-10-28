@@ -54,12 +54,23 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.5.2-0-Linux-x86_64.s
 
 conda update -n base -c defaults conda
 
-# conda create -n textgen2 python=3.10.9
+# conda create -n textgen python=3.10.9
 
 git clone https://github.com/oobabooga/text-generation-webui.git
 
-# this doesn't work for me
-# ./start_linux.sh
+# this worked in ~/
+# and not having conda started
+# selected cpu only
+./start_linux.sh
+
+
+# get a model
+# https://huggingface.co/TheBloke/Llama-2-13B-fp16
+
+# copy button on name to get TheBloke/Llama-2-13B-fp16, then paste into UI
+
+
+
 # OSError: [Errno 40] Too many levels of symbolic links: '/mnt/c/dev/test/text-generation-webui/installer_files/conda/pkgs/ncurses-6.4-h6a678d5_0/share/terminfo/n/ncr260vt300wpp'
 
 # use manual instructions
@@ -70,11 +81,23 @@ conda activate textgen
 
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
+# trying this one with directory on wsl side ie ~
+
+# getting
+#   File "/home/dave/.local/lib/python3.8/site-packages/pip/_vendor/resolvelib/resolvers.py", line 457, in resolve
+    # raise ResolutionTooDeep(max_rounds)
+
+# try this command to get further
+# on laptop with only python3.8
+# and older version of Ubuntu ie 20
+python3.8 -m pip install --upgrade pip setuptools
+
+
+# takes ages downloading all versions of pandas for example
 pip3 install -r requirements_cpu_only.txt
+# intel i7-6500U does not support AVX2
 
-
-sudo apt-get install git-lfs
-git lfs install
+pip3 install -r requirements_cpu_only_noavx2.txt
 
 # not working - getting error below
 python3 server.py
@@ -84,6 +107,11 @@ python3 server.py
 #  File "/mnt/c/dev/textgen/modules/block_requests.py", line 4, in <module>
 #    import requests
 #ModuleNotFoundError: No module named 'requests'
+
+# to clone models from huggingface
+sudo apt-get install git-lfs
+git lfs install
+
 
 ```
 
