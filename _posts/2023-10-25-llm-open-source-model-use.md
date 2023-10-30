@@ -41,13 +41,15 @@ langchain too - python
 labs.perplexity.ai - very fast implementations of llama2
 
 ## LLaMA.cpp
-
-[https://www.youtube.com/watch?v=k2FHUP0krqg](https://www.youtube.com/watch?v=k2FHUP0krqg) - using oobabooga with llama.cpp with Matthew Berman
-
-
 [https://github.com/ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) 43k stars.
 
 has bindings for Python, C#, Go etc.. and UI like below
+
+
+## TextGenWebUI LLaMA.cpp
+
+[https://www.youtube.com/watch?v=k2FHUP0krqg](https://www.youtube.com/watch?v=k2FHUP0krqg) - using oobabooga with llama.cpp with Matthew Berman
+
 
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.5.2-0-Linux-x86_64.sh
@@ -63,11 +65,17 @@ git clone https://github.com/oobabooga/text-generation-webui.git
 # selected cpu only
 ./start_linux.sh
 
+# this just may tick the box on the ui to run cpu only
+./start_linux.sh --cpu
+
 
 # get a model
 # https://huggingface.co/TheBloke/Llama-2-13B-fp16
 
 # copy button on name to get TheBloke/Llama-2-13B-fp16, then paste into UI
+
+# bu tthen get an error AssertionError: Torch not compiled with CUDA enabled
+
 
 
 
@@ -111,9 +119,22 @@ python3 server.py
 # to clone models from huggingface
 sudo apt-get install git-lfs
 git lfs install
-
-
 ```
+
+## Models
+
+For CPU only 
+
+- https://huggingface.co/TheBloke/Llama-2-13B-fp16  - couldn't get to work.. resources?
+- TheBloke/Llama-2-7B-Chat-GGML - didnt download... superseeded by GGUF format
+- [TheBloke/Llama-2-7b-Chat-GGUF](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF) - trying now
+
+Llama-2-7b-Chat.Q2_K.gguf worked!
+
+
+
+
+
 
 ## OOBABOOGA Gradio web UI for LLMs - text generation
 
