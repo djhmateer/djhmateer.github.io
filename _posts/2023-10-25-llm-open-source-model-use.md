@@ -1,19 +1,158 @@
 ---
 layout: post
-# title: LLMs for Entrepreneurial Ideas 
+title: LLM Run Localy with CPU and Text Generation WebUI 
 description: 
 menu: review
 categories: ai 
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2023-07-22/1.jpg
+image: /assets/2023-10-30/1.jpg
 ---
 
 <!-- [![alt text](/assets/2023-10-10/3.jpg "email"){:width="600px"}](/assets/2023-10-10/3.jpg) -->
+[![alt text](/assets/2023-10-30/1.jpg "email")](/assets/2023-10-30/1.jpg)
+A working LLM on my local machine.
+
+[oobabooga/text-generation-webui](https://github.com/oobabooga/text-generation-webui) is a front end for running Large Language Models on local hardware.
+
+A LLM is a type of AI system designed to understand, generate, and interact with human language eg [Open AI GPT-4](), [Google PaLM used in Bard](), [Meta's LLaMa](), [Anthropic Claude 2]()
+
+TextGenWebUI supports
+
+- Transformers
+- GPTQ (GPUS)
+- AWQ
+- EXL2
+- llama.cpp (GGML now called GGUF - CPU)
+- Llama
+
+[https://www.youtube.com/watch?v=k2FHUP0krqg](https://www.youtube.com/watch?v=k2FHUP0krqg) - using with Matthew Berman
+
+I used the `start_linux.sh` script to get it working, and not his more manual way of `python server.py`. Although I could run from VSCode straight into server.py just fine.
+
+```bash
+# cd ~ - doing it from WSL side as had strange filesystem erros from c:/dev/test
+
+# notice the version referes to the version of python you have 
+# https://docs.conda.io/projects/miniconda/en/latest/miniconda-other-installer-links.html
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.5.2-0-Linux-x86_64.sh
+
+conda update -n base -c defaults conda
+
+# conda create -n textgen python=3.10.9
+
+git clone https://github.com/oobabooga/text-generation-webui.git
+
+# this worked in ~/
+# and not having conda started
+# selected cpu only
+./start_linux.sh
+
+# this just may tick the box on the ui to run cpu only
+./start_linux.sh --cpu
+
+# to update
+./update_linux.sh 
+
+# to delete and start again
+# remove `installer_files` directory
+```
+
+And here is the manual install method which didn't work.
+
+```bash
+# use manual instructions
+# https://github.com/oobabooga/text-generation-webui#manual-installation-using-conda
+
+conda create -n textgen python=3.11
+conda activate textgen
+
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+pip3 install -r requirements_cpu_only.txt
+
+# not working - getting error below
+python3 server.py
+# Traceback (most recent call last):
+#  File "/mnt/c/dev/textgen/server.py", line 5, in <module>
+#    from modules.block_requests import OpenMonkeyPatch, RequestBlocker
+#  File "/mnt/c/dev/textgen/modules/block_requests.py", line 4, in <module>
+#    import requests
+#ModuleNotFoundError: No module named 'requests'
+```
+
+## Models
+
+```bash
+# to clone models from huggingface or just use the TextGenWebUI
+sudo apt-get install git-lfs
+git lfs install
+```
+
+For me I have to look for CPU models only:
+
+GGML (now called GGUF) - good for CPU only. Only GGUF works for me.
+GPTQ - GPU only
+
+- [TheBloke/Llama-2-7b-Chat-GGUF](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF) - works!
+
+- [https://huggingface.co/TheBloke/Llama-2-7B-GGUF](https://huggingface.co/TheBloke/Llama-2-7B-GGUF) - what is the difference between the Chat variant above and this?
 
 
-[https://www.youtube.com/watch?v=tK1Pivdcl3U]9https://www.youtube.com/watch?v=tK1Pivdcl3U)
+
+- [https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF)
+
+- [https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF](https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF) what is the instruct variant above?
+
+
+## Quantization
+
+aka Language Model Quantization - compressing or reducing the size of a LLM
+
+Go for at least Q4 quantization
+
+[good notes here](http://webcache.googleusercontent.com/search?q=cache:https://artificialcorner.com/run-gptq-ggml-gguf-one-library-to-rule-them-all-115b1f84b0e2&sca_esv=577764723&strip=1&vwsrc=0)
+
+
+
+## Performance
+
+[https://time.com/4534903/moby-dick-chapter-one/](https://time.com/4534903/moby-dick-chapter-one/)
+
+`please summerise: (chapter 1 of moby dick)`
+
+
+llama-2-7b-chat.Q4_0.gguf - 192secs. 0.05 tokens/sec.. and it failed. shorter bits of text work. ChatGPT4 did it in a few seconds!
+
+
+## NEXT
+
+explore different models
+
+look at video from matthew - what are his tests?
+
+clean out all models from directory?
+
+how to train a model?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## xx
+
+[https://www.youtube.com/watch?v=tK1Pivdcl3U](https://www.youtube.com/watch?v=tK1Pivdcl3U)
 
 [https://huggingface.co/ehartford/dolphin-2.0-mistral-7b](https://huggingface.co/ehartford/dolphin-2.0-mistral-7b) - a model which is based on the text generation model called Mistral-7B which has been fine tuned on the Dolphin dataset - an uncensored dataset.
 
@@ -44,94 +183,6 @@ labs.perplexity.ai - very fast implementations of llama2
 [https://github.com/ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) 43k stars.
 
 has bindings for Python, C#, Go etc.. and UI like below
-
-
-## TextGenWebUI LLaMA.cpp
-
-[https://www.youtube.com/watch?v=k2FHUP0krqg](https://www.youtube.com/watch?v=k2FHUP0krqg) - using oobabooga with llama.cpp with Matthew Berman
-
-
-```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.5.2-0-Linux-x86_64.sh
-
-conda update -n base -c defaults conda
-
-# conda create -n textgen python=3.10.9
-
-git clone https://github.com/oobabooga/text-generation-webui.git
-
-# this worked in ~/
-# and not having conda started
-# selected cpu only
-./start_linux.sh
-
-# this just may tick the box on the ui to run cpu only
-./start_linux.sh --cpu
-
-
-# get a model
-# https://huggingface.co/TheBloke/Llama-2-13B-fp16
-
-# copy button on name to get TheBloke/Llama-2-13B-fp16, then paste into UI
-
-# bu tthen get an error AssertionError: Torch not compiled with CUDA enabled
-
-
-
-
-# OSError: [Errno 40] Too many levels of symbolic links: '/mnt/c/dev/test/text-generation-webui/installer_files/conda/pkgs/ncurses-6.4-h6a678d5_0/share/terminfo/n/ncr260vt300wpp'
-
-# use manual instructions
-# https://github.com/oobabooga/text-generation-webui#manual-installation-using-conda
-
-conda create -n textgen python=3.11
-conda activate textgen
-
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-
-# trying this one with directory on wsl side ie ~
-
-# getting
-#   File "/home/dave/.local/lib/python3.8/site-packages/pip/_vendor/resolvelib/resolvers.py", line 457, in resolve
-    # raise ResolutionTooDeep(max_rounds)
-
-# try this command to get further
-# on laptop with only python3.8
-# and older version of Ubuntu ie 20
-python3.8 -m pip install --upgrade pip setuptools
-
-
-# takes ages downloading all versions of pandas for example
-pip3 install -r requirements_cpu_only.txt
-# intel i7-6500U does not support AVX2
-
-pip3 install -r requirements_cpu_only_noavx2.txt
-
-# not working - getting error below
-python3 server.py
-# Traceback (most recent call last):
-#  File "/mnt/c/dev/textgen/server.py", line 5, in <module>
-#    from modules.block_requests import OpenMonkeyPatch, RequestBlocker
-#  File "/mnt/c/dev/textgen/modules/block_requests.py", line 4, in <module>
-#    import requests
-#ModuleNotFoundError: No module named 'requests'
-
-# to clone models from huggingface
-sudo apt-get install git-lfs
-git lfs install
-```
-
-## Models
-
-For CPU only 
-
-- https://huggingface.co/TheBloke/Llama-2-13B-fp16  - couldn't get to work.. resources?
-- TheBloke/Llama-2-7B-Chat-GGML - didnt download... superseeded by GGUF format
-- [TheBloke/Llama-2-7b-Chat-GGUF](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF) - trying now
-
-Llama-2-7b-Chat.Q2_K.gguf worked!
-
-
 
 
 
