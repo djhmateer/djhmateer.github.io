@@ -88,7 +88,7 @@ image: /assets/2023-07-22/1.jpg
 # Fundraising
 - I can research appropriate funding options like crowdsourcing, grants, angel investors, or loans to get a new business off the ground. I can help put together pitches and collateral for pursuing capital.
 
-## FOO
+## Conclusion
 
 So in summary the LLM's agree that a good process is:
 

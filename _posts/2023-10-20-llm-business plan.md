@@ -14,7 +14,7 @@ image: /assets/2023-07-22/1.jpg
 
 ## Intro
 
-In my series of exploration of LLM's / GPT, lets see if it can help me planning a ficticious Pressure Washer Rental business. 
+In my series of exploration of LLM's / GPT, lets see if it can help me planning a `Consulting as a Service business`
 
 This is really part 2
 
