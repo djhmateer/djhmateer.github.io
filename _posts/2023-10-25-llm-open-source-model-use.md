@@ -1,6 +1,6 @@
 ---
 layout: post
-title: LLM Run Localy with CPU and Text Generation WebUI 
+title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
 menu: review
 categories: ai 
