@@ -12,7 +12,20 @@ image: /assets/2023-07-22/1.jpg
 
 <!-- [![alt text](/assets/2023-10-10/3.jpg "email"){:width="600px"}](/assets/2023-10-10/3.jpg) -->
 
+[https://www.youtube.com/watch?v=SQEr--XLBD8](https://www.youtube.com/watch?v=SQEr--XLBD8) Sam Altman...developers always say "how do I think about this business idea, can you give me some advice"
+
+`I want to help startup founders think through their business ideas and get advice. After the founder has got advice, grill them on why they are not growing faster`
+
+
+
+- Forcing us to write down what the product is.
+- Who are the target customers
+- What problems does it solve for them
+
+`please help me as an entrepreneur brainstorm and refine business ideas. Provide thoughtful advice, ask probing questions, and challenge me to think critically about growth strategies. while being supportive, please push me to consider why I am not growing at the pace I desire and help me find shortcomings in the approach. please also consider work life balance as I've got a young family, and love working from home. I probably work 5 hours per day`
+
 # Guide: Using ChatGPT for Entrepreneurial Ideas
+
 
 `how do I use chatgpt to help with entrepreneurial ideas?`
 
