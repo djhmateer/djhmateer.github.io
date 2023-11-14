@@ -85,11 +85,11 @@ Remember, maintaining a balance between your professional aspirations and family
 And a more refined summary:
 
 
-- 1. Market Research - Conduct thorough market research to understand the needs and gaps in the human rights technology sector.
+1. Market Research - Conduct thorough market research to understand the needs and gaps in the human rights technology sector.
 
-- 2. Networking and Partnerships - Actively seek networking opportunities and potential partnerships.
+2. Networking and Partnerships - Actively seek networking opportunities and potential partnerships.
 
-- 3. Business Planning - evisit and refine your business plan, focusing on scalable, sustainable growth strategies.
+3. Business Planning - evisit and refine your business plan, focusing on scalable, sustainable growth strategies.
 
 ## 2.Market Research
 
