@@ -53,7 +53,7 @@ pipenv run python foo.py
 
 ## pyenv
 
-[pyenv](https://github.com/pyenv/pyen) - switch between versions of python
+[pyenv](https://github.com/pyenv/pyenv) - switch between versions of python
 
 ```bash
 curl https://pyenv.run | bash
@@ -77,6 +77,9 @@ eval "$(pyenv init -)"
 # the following to ~/.bashrc:
 
 eval "$(pyenv virtualenv-init -)"
+
+# restart the shell
+exec bash
 ```
 
 then
