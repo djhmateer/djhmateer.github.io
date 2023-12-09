@@ -36,11 +36,14 @@ Image
 
 I'm working in human rights investigations. To mitigate trauma for myself and other investigators, I want the AI to descibe in non emotional terms what is in the image.
 
-`could you give a general description of this image please. Also identify objects, people, scenes. Can you also tell me if this would be classified as a traumatic picture for someone to look at`
+`could you give a 1 sentence general description of this image please. Also identify objects, people, scenes. Can you also tell me if this would be classified as a traumatic picture for someone to look at`
 
 
 ### Simple Description in 5 words
 `describe this image in 5 words`
+
+`describe this image in 1 sentence using non emotional language`
+
 
 ### Traumatic Rating
 
