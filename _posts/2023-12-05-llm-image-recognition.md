@@ -61,6 +61,12 @@ ChatGPT4 looks good, but will be expensive. Lets find out if there are any other
 ideally I wwant to run these models myself via an API
  as have 10's thousands
 
+
+[https://llava-vl.github.io/](https://llava-vl.github.io/) look into?
+
+[https://lmstudio.ai/](https://lmstudio.ai/) perhaps this is useful?
+
+
 **HERE**
 
 
