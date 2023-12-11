@@ -27,3 +27,19 @@ creating effects
 - countdown timer
 - better way to display messages
 - leaderboard
+
+
+## Next Games
+
+flappy birds
+
+dinosaur game
+ 
+shooter game
+
+space invaders
+
+frogger
+
+cookie clicker (a la paperclip)
+
