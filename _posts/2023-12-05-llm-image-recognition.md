@@ -67,7 +67,10 @@ ideally I wwant to run these models myself via an API
 [https://lmstudio.ai/](https://lmstudio.ai/) perhaps this is useful?
 
 
-**HERE**
+## Chat GPT-4 API
+
+
+[https://platform.openai.com/](https://platform.openai.com/)
 
 
 ## FOO
