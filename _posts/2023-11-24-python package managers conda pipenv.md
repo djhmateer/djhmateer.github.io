@@ -15,6 +15,8 @@ image: /assets/2023-07-22/1.jpg
 
 ## Pipenv
 
+This is the only virtual environment I've successfully got working on my WSL2 environment.
+
 this uses pipfile and pipfile.lock to manage dependencies (not requirements.txt as is common in pip)
 
 pipenv automatically creates and manages a virtual environment for projects.
@@ -43,6 +45,22 @@ name = "pypi"
 gspread = "*"
 boto3 = "*"
 argparse = "*"
+requests = "*"
+```
+
+Here is my standard test:
+
+```py
+import sys
+import requests
+
+# 3.11.6
+print("Python intepreter version:")
+print(sys.version)
+
+# 2.31.0
+print("requests module version:")
+print(requests.__version__)
 ```
 
 then to run a program
@@ -116,7 +134,7 @@ pyenv activate foo4
 
 ## pyenv-virtualenv
 
-a pyenv plugin that provides features to manage virtualenvs and conda envs fo rpython.
+a pyenv plugin that provides features to manage virtualenvs and conda envs for python.
 
 
 ## Poetry
@@ -131,14 +149,69 @@ poetry install
 uses `pyproject.toml` for configuration
 
 
-
-
-
 ## OTHER
 
 ## Conda (Miniconda)
 
-environemnet management system - including non python projects.
+I can't get this to work in my WSL2 environment. A newer version of python works, but package management dooesn't. Am using pipenv instead.
+
+[miniconda](https://docs.conda.io/projects/miniconda/en/latest/)
+
+
+```bash
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+
+# create any parent directories that dont exist
+mkdir -p ~/miniconda3
+
+# I'm running python 3.10.12 so need that from https://docs.conda.io/projects/miniconda/en/latest/miniconda-other-installer-links.html
+wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.10.0-1-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+
+rm -rf ~/miniconda3/miniconda.sh
+
+# 23.10.0
+conda --version
+
+# creates an environment in  /home/dave/miniconda3/envs/gpt-vision-api
+# defaulted to python 3.12.0
+conda create --name gpt-vision-api
+
+#remember to restart shell
+
+conda activate gpt-vision-api
+
+# to install a library use either:
+
+# I got strange errors here from a previous install
+pip install --upgrade openai
+conda install xxx
+
+# /home/dave/.pyenv/shims/python
+which python
+
+# inside the environment it is 3.12.0 and outside it is 3.10.13
+python --version
+
+
+
+# openai 1.3.8 is installed
+pip list | grep open
+
+# requests 2.31.0
+
+# it does not seem to be working
+
+conda deactivate
+
+```
+
+environmenet management system - including non python projects.
 
 popular in data science
 
