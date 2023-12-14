@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: LLM Run Locally with CPU and Text Generation WebUI 
+title: ChatGPT4 Vision 
 description: 
 menu: review
 categories: ai 
@@ -48,8 +48,6 @@ I'm working in human rights investigations. To mitigate trauma for myself and ot
 ### Traumatic Rating
 
 `give traumatic rating on a scale of 1 - 5`
-
-
 
 Even these 2 very simple queries are super useful. 
 
@@ -220,7 +218,15 @@ print(response.json())
 
 # Specific questions
 
+This question sometimes didn't work on ChatGPT-4
 
+`Is this a sensitive picture? please give 1 word summary. give a rating from 1 to 5 as to how sensitive it is please. summerise in 1 sentence`
+
+Errors like:
+
+> I'm sorry, I can't assist with this request.
+
+It seemed to be on more sensitive photos.
 
 ## Videos
 
