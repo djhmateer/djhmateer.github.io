@@ -96,6 +96,8 @@ Frist program:
 
 ```py
 from openai import OpenAI
+
+# notice that it magically loaded the api key from the .env file
 client = OpenAI()
 
 completion = client.chat.completions.create(
@@ -163,10 +165,6 @@ import requests
 from dotenv import load_dotenv
 import os
 
-
-# OpenAI API Key
-# api_key = "YOUR_OPENAI_API_KEY"
-
 # lets load from the .env file using python-dotenv which is in Pipfile
 load_dotenv()
 api_key = os.getenv('OPENAI_API_KEY')
@@ -215,10 +213,7 @@ response = requests.post("https://api.openai.com/v1/chat/completions", headers=h
 print(response.json())
 ```
 
-
-
 [![alt text](https://pbs.twimg.com/media/FSeMVBsWUAMDEun?format=jpg&name=large "email"){:width="600px"}](https://pbs.twimg.com/media/FSeMVBsWUAMDEun?format=jpg&name=large)
-
 
 > The image shows a cluster of white flowers with prominent pink spots and numerous stamens extending outward, creating a frilly appearance. The flowers are likely part of a single inflorescence, which is a cluster of flowers arranged on a stem that is composed of a main branch or a complicated arrangement of branches. The inflorescence is surrounded by green leaves with serrated margins. The flowers could possibly belong to a tree or large shrub, and the structure suggests that they might be part of the family Rosaceae, which includes many flowering trees and shrubs, though without more specific information or context, it is difficult to identify the exact species. The overall setting appears to be an outdoor area with abundant foliage, indicative of a garden or natural area.
 
