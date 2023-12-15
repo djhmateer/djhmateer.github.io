@@ -13,46 +13,45 @@ image: /assets/2023-10-30/1.jpg
 <!-- [![alt text](/assets/2023-10-10/3.jpg "email"){:width="600px"}](/assets/2023-10-10/3.jpg) -->
 <!-- [![alt text](/assets/2023-10-30/1.jpg "email")](/assets/2023-10-30/1.jpg) -->
 
-[Previously](/2023/10/25/llm-open-source-model-use) I've looked at running an LLM locally on my CPU with [TextGenerationWebUI]()
+[Previously](/2023/10/25/llm-open-source-model-use) I've looked at running an LLM locally on my CPU with TextGenerationWebUI
 
 
- I've looked at ChatGPT-4 vision for my use case of:
+Also I've looked at [ChatGPT-4 vision](2023/12/05/llm-image-recognition) for my use case of:
 
 - give a traumatic rating of 1 to 5 (so human rights investigators are warned of graphic images)
 - describe the image in 5 words
-- desctibe the imgae in 1 sentence in non emotional language
+- describe the image in 1 sentence in non emotional language
+
+This is an exploration into whether open source models can achieve a similar (good!) performance.
 
 ## LM Studio
 
-[https://lmstudio.ai/](https://lmstudio.ai/)
+[https://lmstudio.ai/](https://lmstudio.ai/) is an easy way to run models locally. 
 
 Version 0.2.9 as of 14th Dec 23.
 
-Supports any `ggml now called gguf` ie for CPUS - Llama, MPT and StarCoder model on [HuggingFace](https://huggingface.co/models) eg
-
-- Llama 2
-- Orcae
-- Vicuna
-- Novus Hermes
-
-Based on [https://github.com/ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp)
+Supports any `ggml now called gguf` models ie for CPUS. Look [HuggingFace](https://huggingface.co/models) eg
 
 
-## LLaVA
+## LLaVA - Large Language and Vision Assistant
 
 [![alt text](/assets/2023-12-14/1.jpg "email"){:width="800px"}](/assets/2023-12-14/1.jpg)
 
-[https://llava-vl.github.io/](https://llava-vl.github.io/) - LLaVA-v1.5-7B was trained in Sept 23.
+[https://llava-vl.github.io/](https://llava-vl.github.io/) - LLaVA-v1.5 was trained in Sept 23.
 
 [https://huggingface.co/jartine/llava-v1.5-7B-GGUF](https://huggingface.co/jartine/llava-v1.5-7B-GGUF) - updated 14th Dec. Main files 3 weeks ago.
 
 Notice - need to download the vision adapter too
 
-Trying the Q4 model first (smaller) at 4GB.
+Trying the Q4 model first (smaller) at 4GB. There is a Q8 (8GB) and f16 (13GB)
 
 [![alt text](/assets/2023-12-14/2.jpg "email"){:width="800px"}](/assets/2023-12-14/2.jpg)
 
 LLaVA successfully working on CPU with vision adapter.
+
+[![alt text](/assets/2023-12-14/6.jpg "email"){:width="800px"}](/assets/2023-12-14/6.jpg)
+
+[https://llava.hliu.cc/](https://llava.hliu.cc/) live demo which runs on a GPU - very useful for prompt testing.
 
 ## Python - Q4 - 4GB
 
@@ -61,20 +60,77 @@ Lets try to connect to my locally running model using Python
 Notice that I'm referring to the ip address of my windows machine eg `192.168.1.191` as I'm calling Windows from WSL2.
 
 ```py
+from openai import OpenAI
+import base64
+import requests
+import time
 
+start_time = time.time()
+
+# Point to the local server
+# client = OpenAI(base_url="http://localhost:1234/v1", api_key="not-needed")
+
+# using windows IP as I'm calling Python from WSL2 side
+client = OpenAI(base_url="http://192.168.1.191:1234/v1", api_key="not-needed")
+
+# image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Adelie_penguins_in_the_South_Shetland_Islands.jpg/640px-Adelie_penguins_in_the_South_Shetland_Islands.jpg"
+
+# 1.Download the image and encode it to base64
+# response = requests.get(image_url)
+# base64_image = base64.b64encode(response.content).decode('utf-8')
+
+# 2.Get image locally
+image_path = f'pics/hchestnut.jpg'
+
+def encode_image(image_path):
+      with open(image_path, "rb") as image_file:
+          return base64.b64encode(image_file.read()).decode('utf-8')
+
+base64_image = encode_image(image_path)
+
+completion = client.chat.completions.create(
+  model="local-model", # not used
+  messages=[
+    {
+      "role": "user",
+      "content": [
+        {"type": "text", "text": "What’s in this image?"},
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": f"data:image/jpeg;base64,{base64_image}"
+          },
+        },
+      ],
+    }
+  ],
+  max_tokens=1000,
+  stream=True
+)
+
+for chunk in completion:
+  if chunk.choices[0].delta.content:
+    print(chunk.choices[0].delta.content, end="",flush=True)
+
+end_time = time.time()
+print(f"Time elapsed: {end_time - start_time} seconds")
 ```
 
 1:03 to run it from the UI
 0:40 to run from python
 
-
 [![alt text](/assets/2023-12-14/3.jpg "email"){:width="500px"}](/assets/2023-12-14/3.jpg)
 
-292seconds - using E cores... not good.
+292seconds - using E(fficiency) cores... not good. Need to maximise LM Studio app to run on P cores too.
 
 [![alt text](/assets/2023-12-14/4.jpg "email"){:width="400px"}](/assets/2023-12-14/4.jpg)
 
-When LM Studio is non minimised on the desktop I use all cores. Notice I'm thermal throttling.
+Notice I'm thermal throttling.
+
+[![alt text](/assets/2023-12-14/5.jpg "email"){:width="400px"}](/assets/2023-12-14/5.jpg)
+
+Core temp and Power Draw graphs are useful.
+
 
 0:35 is best time.
 
@@ -82,11 +138,6 @@ When LM Studio is non minimised on the desktop I use all cores. Notice I'm therm
 
 
 ### Q8 Model - 7GB
-
-> This image is a beautiful composition featuring four penguins standing together on an icy snowy field with mountains in the background. They are located atop a glacier, adding to the majesty of this scene. The group of penguins appears to be enjoying their time in nature while creating a striking visual for the viewers. The combination of these cute birds and the stunning mountainous landscape creates an impressive image that is sure to capture the attention of anyone who sees it
-
-
-> This is a group of four penguins standing in the snow, facing different directions. One penguin is near the left edge of the image and three others are positioned more towards the center-right of the picture. The first two penguins stand closer together and appear to be looking at each other, while the third penguin stands slightly further away and appears to look in a different direction. The scene seems to be captured during winter or at an icy location where these penguins have gathered, possibly searching for food or interacting with one another
 
 0:58 to run
 
@@ -98,6 +149,7 @@ When LM Studio is non minimised on the desktop I use all cores. Notice I'm therm
 
 ## 1.Giving a trauma rating
 
+This is where I'm finding ChatGPT4 is much better than LLaVA:
 
 `This image is from a war torn area. give a rating from 1 to 5 as to how sensitive it is please.`
 
@@ -105,8 +157,6 @@ When LM Studio is non minimised on the desktop I use all cores. Notice I'm therm
 
 
 [PsiPi/liuhaotian_llava-v1.5-13b-GGUF](PsiPi/liuhaotian_llava-v1.5-13b-GGUF) - lets try this model locally
-
-
 
 
 I want to give a 1 to 5 rating of an image on how traumatic it is to look at. eg if it shows human suffering, upsetting images,
@@ -139,12 +189,11 @@ LLaVA not so good
 
 ## Other Vision Models
 
-llava 11.5 7B Q8
+llava v1.5 7B Q4, Q8, f16
 
-llava v1.5 13b Q2_K
-  nope
+llava v1.5 13B Q2, Q4, Q5
 
-BakLLaVA 7B
+BakLLaVA 7B Q5
 
 obsidian-3B-f16
  gave nothing
