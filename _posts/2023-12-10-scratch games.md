@@ -40,6 +40,8 @@ First try took an hour or so
 
 ## Next 
 
+[almost pong](https://www.lessmilk.com/almost-pong/)
+
 flappy birds
 
 dinosaur game
