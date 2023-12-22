@@ -190,7 +190,7 @@ LLaVA not so good
 
 Nothing working that well so far.
 
-- temo - reduced to 0
+- temp - reduced to 0
 
 ## Other Vision Models
 
@@ -202,6 +202,8 @@ BakLLaVA 7B Q5
 
 obsidian-3B-f16
  gave nothing
+
+Mixtral 8x7B - not vision but Apache 2.0 license. [https://erichartford.com/dolphin-25-mixtral-8x7b](https://erichartford.com/dolphin-25-mixtral-8x7b)
 
 
 ## Prompt Engineering
@@ -316,6 +318,6 @@ But try and convey tone by describing
 
 ## Final example
 
-[![alt text](/assets/2023-12-14/8.jpg "email"){:width="500px"}](/assets/2023-12-14/8.jpg)
+[![alt text](/assets/2023-12-14/8.jpg "email"){:width="800px"}](/assets/2023-12-14/8.jpg)
 
 `Y`
