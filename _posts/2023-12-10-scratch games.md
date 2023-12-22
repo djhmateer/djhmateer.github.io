@@ -15,6 +15,7 @@ image: /assets/2023-10-30/1.jpg
 
 Kids love games, and Scratch is a good platform to play with. Lets explore some actual games which allow us to find out about Scratch.
 
+[Previous poston Scratch from 6 months ago](/2023/07/06/code-club-scratch-mit)
 
 ## Guess a Number Game
 
