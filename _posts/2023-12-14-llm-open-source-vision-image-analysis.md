@@ -37,7 +37,7 @@ Supports any `ggml now called gguf` models ie for CPUS. Look [HuggingFace](https
 
 [![alt text](/assets/2023-12-14/1.jpg "email"){:width="800px"}](/assets/2023-12-14/1.jpg)
 
-[https://llava-vl.github.io/](https://llava-vl.github.io/) - LLaVA-v1.5 was trained in Sept 23.
+[https://llava-vl.github.io/](https://llava-vl.github.io/) - LLaVA-v1.5 was trained in Sept 23. 
 
 [https://huggingface.co/jartine/llava-v1.5-7B-GGUF](https://huggingface.co/jartine/llava-v1.5-7B-GGUF) - updated 14th Dec. Main files 3 weeks ago.
 
@@ -186,6 +186,11 @@ LLaVA not so good
 
 > The image showcases a white flowering tree with pink blossoms, creating a beautiful scene. The tree is filled with tiny white flowers and draped in pink flora. These delicate petals are scattered throughout the tree, with some near the top, middle, and lower branches. The vibrant display of flowers creates an appealing and serene atmosphere.
 
+## Parameters
+
+Nothing working that well so far.
+
+- temp - reduced to 0
 
 ## Other Vision Models
 
@@ -198,5 +203,121 @@ BakLLaVA 7B Q5
 obsidian-3B-f16
  gave nothing
 
+Mixtral 8x7B - not vision but Apache 2.0 license. [https://erichartford.com/dolphin-25-mixtral-8x7b](https://erichartford.com/dolphin-25-mixtral-8x7b)
 
 
+## Prompt Engineering
+
+Could it be that I can get better, and more reliable results with better prompting?
+
+[https://promptperfect.jina.ai/](https://promptperfect.jina.ai/)
+
+
+[https://www.youtube.com/watch?v=jC4v5AS4RIM](https://www.youtube.com/watch?v=jC4v5AS4RIM)
+
+This is in order of importance:
+
+- task - mandatory
+- context - important
+- exemplar - important
+- persona - nice
+- format - nice
+- tone - nice
+
+`I'm a 87kg male, give me a 3-month training program`
+
+### Task
+
+Always start Task sentence with Action Verb eg Generate, Give, Write, Analyze
+
+`Generate a 3 month training program`
+
+Or multi task request
+
+`Analyse the collected feedbackj
+Summerize the top 3 takeaways
+Categorize the rest based on team responsible...
+`
+
+
+### Context
+
+Give just enough information to constrain the endless possibilities
+
+1. What is the users background?
+2. What does success look like?
+3. What environment are they in?
+
+`I'm a 87kg male looking to put on 5 kg of muscle mass over the next 3 months`
+
+[![alt text](/assets/2023-12-14/7.jpg "email"){:width="400px"}](/assets/2023-12-14/7.jpg)
+
+### Exemplars
+
+Gives 
+
+Here is the task:
+
+`Re-write this bullet point using this structure: I accomplised X by the measure Y that resulted in Z`
+
+Exemplar
+
+`For example: "I lowered the hospital mortality rate by 10% by educating nurses in new protocols which translates to 200 lives saved per year. `
+
+### Exemplar 2
+
+
+
+## Persona
+
+Think of an expert who you would like to ask this question
+
+- physiotherapist
+- hiring manager
+- senior product marketing manager who is good at story telling
+
+or famous invididuals
+
+- act like a legendary investor Warren Buffet
+- you are the master storyteller Steve Jobs
+-
+
+## Format
+
+Close eyes and imagine what you would like the end result to look like.
+
+
+eg
+- output in table format with column headers: Feedback, Team, and Priority
+- output in json format
+- output in markdown
+- ouutput in paragraphs 
+
+I just received an industry report from my director
+first give me the 3 key takeaways them summerize based on topic
+use h2 as section headers
+here's the report:
+
+
+### Proofread
+
+`Proofread this email below and correct all typos and grammer mistakes. Bold all changes you make.`
+
+## Tone
+
+`Use a casual tone of voice`
+`Use a format tone of voice`
+`Give me a witty output`
+`Show enthusiasm`
+`Sound pessimistic`
+
+But try and convey tone by describing
+
+`I'm writing an email and I want to be taken seriously without coming off as too stuck up and cringy. Ca you please give me a list of 5 tone keywords I can include in a prompt for ChatGPT?`
+
+
+## Final example
+
+[![alt text](/assets/2023-12-14/8.jpg "email"){:width="800px"}](/assets/2023-12-14/8.jpg)
+
+`Y`

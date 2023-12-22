@@ -54,4 +54,8 @@ frogger
 cookie clicker (a la paperclip)
 
 
+## YouTube
+
+[https://www.youtube.com/watch?v=vHWjABSkod0](https://www.youtube.com/watch?v=vHWjABSkod0) - nightly routine.
+
 
