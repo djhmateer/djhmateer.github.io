@@ -50,6 +50,11 @@ tab auto completes
 
 ## commands
 
+/say hello
+
+/weather rain
+
+
 /clear - clear inventory
 
 /alwaysday - makes it day time
