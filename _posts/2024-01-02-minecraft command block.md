@@ -13,7 +13,7 @@ image: /assets/2023-10-30/1.jpg
 <!-- [![alt text](/assets/2023-10-10/3.jpg "email"){:width="600px"}](/assets/2023-10-10/3.jpg) -->
 <!-- [![alt text](/assets/2023-10-30/1.jpg "email")](/assets/2023-10-30/1.jpg) -->
 
-Minecraft comes in 2 editions
+Minecraft comes in 2 editions.
 
 - Java Edition - specifically for PC's. includes more modding.
 - Windows 10 (Bedrock) - cross platform play between various consoles.
