@@ -2,12 +2,12 @@
 layout: post
 # title: Splash Screen
 description: 
-menu: review
+# menu: review
 categories: IP
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2021-10-07/http2b.png
+image: /assets/2021-11-17/city.jpg
 ---
 
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->

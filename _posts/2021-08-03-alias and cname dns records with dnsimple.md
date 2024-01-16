@@ -2,12 +2,12 @@
 layout: post
 # title: 
 description:
-menu: review
-categories: Dates 
+# menu: review
+categories: dns 
 published: true 
 comments: false     
-sitemap: false
-image: /assets/2021-07-26/save.jpg
+sitemap: true
+image: /assets/2021-08-04/dns.jpg
 ---
 
 <!-- [![alt text](/assets/2021-07-26/save.jpg "Turn auto build on save off")](/assets/2021-07-26/save.jpg) -->

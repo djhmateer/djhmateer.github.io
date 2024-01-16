@@ -157,8 +157,6 @@ There is much more detailed code including
 
 ## Nested Try Catch
 
-lkj
-
 ```cs
 try
 {

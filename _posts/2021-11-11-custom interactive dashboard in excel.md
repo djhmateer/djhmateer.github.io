@@ -2,11 +2,11 @@
 layout: post
 # title: Splash Screen
 description: 
-menu: review
+# menu: review
 categories: Excel
 published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2021-10-07/http2b.png
 ---
 

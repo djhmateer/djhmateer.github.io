@@ -2,12 +2,12 @@
 layout: post
 # title: Proxmox Beginners Guide
 description: 
-menu: review
+# menu: review
 categories: authentication
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2022-01-13/upload.jpg
+image: /assets/2022-09-15/cookie.jpg
 ---
 
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->

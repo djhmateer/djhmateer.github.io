@@ -2,12 +2,12 @@
 layout: post
 # title: Updating Open Visual Studio utility to .NET 6 
 # description: A small utility which opens visual studio from the command shell looking for a `.sln` file in the current directory. Updating to .NET6
-menu: review
+# menu: review
 categories: selenium
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2022-04-13/sc.jpg
+image: /assets/2022-04-20/cook.jpg
 ---
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->

@@ -2,12 +2,12 @@
 layout: post
 #title: Find and Validate Niches for a Self Funded Company 
 # description: A small utility which opens visual studio from the command shell looking for a `.sln` file in the current directory. Updating to .NET6
-menu: review
+# menu: review
 categories: google
 published: true 
 comments: false     
-# sitemap: true
-image: /assets/2022-04-13/sc.jpg
+sitemap: true
+image: /assets/2022-06-30/1.jpg
 ---
 <!-- [![alt text](/assets/2022-03-09/vsc.jpg "desktop"){:width="500px"}](/assets/2022-03-09/vsc.jpg) -->
 <!-- [![alt text](/assets/2022-03-10/down.jpg "desktop")](/assets/2022-03-10/down.jpg) -->

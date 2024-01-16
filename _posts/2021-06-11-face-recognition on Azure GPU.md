@@ -2,11 +2,11 @@
 layout: post
 title: Face-recognition on Azure GPU 
 description: 
-menu: review
+# menu: review
 categories: GPU 
 published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2020-02-03/40.jpg
 ---
 

@@ -16,7 +16,7 @@ image: /assets/2023-10-30/1.jpg
 [Previously](/2023/10/25/llm-open-source-model-use) I've looked at running an LLM locally on my CPU with TextGenerationWebUI
 
 
-Also I've looked at [ChatGPT-4 vision](2023/12/05/llm-image-recognition) for my use case of:
+Also I've looked at [ChatGPT-4 vision](/2023/12/05/llm-image-recognition) for my use case of:
 
 - give a traumatic rating of 1 to 5 (so human rights investigators are warned of graphic images)
 - describe the image in 5 words
@@ -280,7 +280,6 @@ or famous invididuals
 
 - act like a legendary investor Warren Buffet
 - you are the master storyteller Steve Jobs
--
 
 ## Format
 
@@ -320,4 +319,72 @@ But try and convey tone by describing
 
 [![alt text](/assets/2023-12-14/8.jpg "email"){:width="800px"}](/assets/2023-12-14/8.jpg)
 
-`Y`
+## Multi-Modal Image Analysis
+
+I've found that for giving a trauma rating that ChatGPT4 is very good and is consistently the best.
+
+For open source I've found this approach to work well:
+
+- LLaVA for image analysis to output a detailed description (jartine/llava 7B Q8_0)
+- Mixtral 7B for giving a trauma rating (TheBloke/Mixtral 7B Q4_0)
+
+And prompt engineering you can see:
+
+Results are not consistent, but are generally good.
+
+### LLaVA
+
+`You are a senior human rights investigator.
+
+You are investigating war crimes and human rights violations.
+
+Analyse this photo and give a long detailed description of it. Give at least 100 words. 
+
+You should focus on anything to do with human rights eg war, guns, blood, destruction
+
+Use clear and concise non emotive language in formal tone.`
+
+
+### Mixtral
+
+`
+Given this text below in quotes which describes a photo
+
+Give a rating from 1 to 5 as to how sensitive / traumatic / violence level for a person to look at it would be.
+
+show me step by step why you got this number
+
+"{gpt_vision_result}"
+
+please output as json
+`
+
+
+<!-- [![alt text](/assets/2023-12-14/9.jpg "email"){:width="400px"}](/assets/2023-12-14/9.jpg) -->
+[![alt text](/assets/2023-12-14/9.jpg "email")](/assets/2023-12-14/9.jpg)
+
+LLaVA/Mixtral run - notice it thought a crane image (in the UK) pointed to suspicious activity, as I'd pointed it towards this type of analysis
+
+[![alt text](/assets/2023-12-14/10.jpg "email")](/assets/2023-12-14/10.jpg)
+
+ChatGPT4 run - more consistent results even though my prompt was:
+
+`
+You are a senior human rights investigator.
+
+You are investigating war crimes and human rights violations in myanmar.
+
+Analyse this photo and give a long summary of it. You should focus on anything to do with human rights eg war, guns, blood, destruction
+
+
+Give a rating from 1 to 5 as to how sensitive / traumatic / violence level for a person to look at it would be.
+
+For example an image with human deaths or graphic human suffering would be a 5 (very severe), burned out village with property damage would be a 3,
+ destroyed buildings 3, whereas an landscape scene / nothing traumatic would be a 1 (no violence), civilian equipment eg a crane would be a 1.
+   Only give a high rating if it is truly horrible or traumatic - ie a 5 should only be given for human remains etc..
+
+
+Use clear and concise non emotive language in formal tone.
+
+Output in a valid json format with header: rating, summary, shortsummary
+`

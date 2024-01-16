@@ -2,12 +2,12 @@
 layout: post
 title: Azure create an image of a VM
 description: 
-menu: review
+# menu: review
 categories: Azure 
 published: true 
 comments: false     
-sitemap: false
-image: /assets/2020-02-03/40.jpg
+sitemap: true
+# image: /assets/2020-02-03/40.jpg
 ---
 
 <!-- [![Bitcoin logo](/assets/2021-02-19/bitcoin.svg "Bitcoin"){:width="500px"}](/assets/2021-02-19/bitcoin.svg) -->

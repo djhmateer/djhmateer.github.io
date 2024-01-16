@@ -2,12 +2,12 @@
 layout: post
 # title: MSSQL PHP on WSL setup
 description: 
-menu: review
+# menu: review
 categories: warc
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2022-09-22/1.jpg
+# image: /assets/2022-09-22/1.jpg
 ---
 
 <!-- [![alt text](/assets/2021-10-22/email-cover.jpg "email"){:width="800px"}](/assets/2021-10-22/email-cover.jpg) -->

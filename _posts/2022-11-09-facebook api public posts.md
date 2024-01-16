@@ -2,7 +2,7 @@
 layout: post
 # title: MSSQL PHP on WSL setup
 description: 
-menu: review
+# menu: review
 categories: facebook
 published: true 
 comments: false     
