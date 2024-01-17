@@ -3,8 +3,8 @@ layout: post
 title: Upload and Resume large files with TusDotNet
 description: 
 # menu: review
-categories: Kestrel 
-published: false 
+categories: Tus 
+published: true 
 comments: false     
 sitemap: false
 image: /assets/2019-11-13/1.jpg
@@ -13,7 +13,6 @@ image: /assets/2019-11-13/1.jpg
 I'm using Kestrel on Ubuntu 20.04 as an internet facing edge web server, using ASP.NET 5 with Razor Pages. 
 
 Update - am using nginx as a reverse proxy now so can handle: redirect to apex, ssl cert, no iptables direct to port 5000. Detailed blog [here]()
-
 
 I need to be able to handle large file uploads, which initially are zip files up to a few GB
 
