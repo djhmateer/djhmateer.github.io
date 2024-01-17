@@ -2,7 +2,7 @@
 layout: post
 # title: ChatGPT4 Vision 
 description: 
-menu: review
+# menu: review
 categories: ai 
 published: true 
 comments: false     

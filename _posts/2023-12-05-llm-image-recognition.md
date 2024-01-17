@@ -2,12 +2,12 @@
 layout: post
 title: ChatGPT4 Vision 
 description: 
-menu: review
+# menu: review
 categories: ai 
 published: true 
 comments: false     
 sitemap: true
-image: /assets/2023-10-30/1.jpg
+image: /assets/2024-01-15/1.jpg
 ---
 
 <!-- [![alt text](/assets/2023-10-10/3.jpg "email"){:width="600px"}](/assets/2023-10-10/3.jpg) -->
