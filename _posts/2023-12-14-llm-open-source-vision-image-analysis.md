@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: ChatGPT4 Vision 
+title: LLM Open Source Image Analysis - LLaVA 
 description: 
 # menu: review
 categories: ai 
@@ -23,6 +23,8 @@ Also I've looked at [ChatGPT-4 vision](/2023/12/05/llm-image-recognition) for my
 - describe the image in 1 sentence in non emotional language
 
 This is an exploration into whether open source models can achieve a similar (good!) performance.
+
+Update 18th Jan 2024 - [https://github.com/djhmateer/gpt-vision-api](https://github.com/djhmateer/gpt-vision-api). llava_and_mixtral.py works, but inconsistent results eg json not coming back. Used LMStudio locally. ChatGPT-4 more consistent and higher quality results.
 
 ## LM Studio
 
