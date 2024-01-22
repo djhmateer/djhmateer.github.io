@@ -34,3 +34,22 @@ all others can be eg minor 3rd
 natural minor
 harmonic minor
 
+## YouTube
+
+[https://www.youtube.com/watch?v=rgaTLrZGlk0](https://www.youtube.com/watch?v=rgaTLrZGlk0)
+
+
+What Key
+Chords
+Scales
+
+
+## AI
+
+
+
+## nandi
+
+[https://thenandimethod.com/lesson/interval-names-guitar/](https://thenandimethod.com/lesson/interval-names-guitar/)
+
+
