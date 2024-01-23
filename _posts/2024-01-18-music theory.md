@@ -36,12 +36,70 @@ harmonic minor
 
 ## YouTube
 
+> "Music Theory" - the language behind music
+
 [https://www.youtube.com/watch?v=rgaTLrZGlk0](https://www.youtube.com/watch?v=rgaTLrZGlk0)
 
+## Notes
 
-What Key
-Chords
-Scales
+- faster vibrations - higher note
+
+- A - 110 Hz (vibrations per second)
+
+- Only 12 notes - that sound good together.
+
+- accidentals:
+- sharp - higher eg F#
+- flat - lower eg Gb (same as F#, but called this in some situations)
+
+- octave - double the vibrations? ie interval between one musical pitch and another with double its frequency. eg 100Hz (G2) to 200Hz and an octave lower would be 50Hz.
+
+- A above middle C is tuned to 440 Hz.
+
+- Semitone - half step. increment between each individual note.
+- Tone - whole step. increment between 2 half steps.
+
+Music is build around the relationships of these notes.
+
+- Key - a common combination of notes. A guide of which notes will sound good together.
+
+- eg Major Key - which has 7 notes
+- Minor Key - 7 notes
+
+## C Major Scale
+
+- key - home base of a piece of music
+- scale - sequence of notes arranged in ascending or descending order
+
+often we use the same scale as the key
+
+but in blues we use Emajor as the key, but blues solos happen on E pentatonic minor
+
+Major spacings: TTSTTTS - formula of a major scale
+where a Tone is 2 half steps.
+
+## Naming
+
+1,2,3,4,5
+second (degree), third
+
+In A Major
+A B C# D E F# G# A
+- we don't use Db etc.. as then D would appear twice.
+
+In A# Major
+A# B# (it is a C!)
+but then easier to call the root a Bb
+Bb C
+
+# Practise
+
+do 5 different root notes and do their major scales
+
+
+
+
+
 
 
 ## AI
