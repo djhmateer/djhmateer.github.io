@@ -30,7 +30,6 @@ Augmented
 Perfect - 4,5,8  (cannot be minor or major)
 all others can be eg minor 3rd
 
-
 natural minor
 harmonic minor
 
@@ -95,6 +94,47 @@ Bb C
 # Practise
 
 do 5 different root notes and do their major scales
+
+
+- 1 flat - F with Bb (D min - rel  minor)
+- 1 sharp - G with F#
+- 2 flats - Bb with Bb and Eb
+- 2 sharps - D with F# C#
+
+## Part 2 - Chords
+
+Do most of the work of setting the emotion of the song
+
+eg
+
+root of Cmaj - C
+3rd of Cmaj - E
+5th of Cmaj - G
+
+aka Triad
+
+
+## Major and Minor
+
+These are chord types
+
+
+Major triad is 4 semitones, then 3 semitones apart
+Minor triad is 3 then 4
+
+Move 3 semitones down and you'll get relative (natural) minor scale... ie relative minor scale starts on 6th degree of relative major scale.
+
+Diminished is 3 then 3
+ in C major.. if you do a triad shape, then the B is a dim
+
+
+## Practise
+
+1,2,3,4,5,6 - make triads out of these in different scales
+
+eg he is using Amaj!!!
+
+
 
 
 
