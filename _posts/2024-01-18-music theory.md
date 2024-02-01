@@ -150,7 +150,19 @@ I V vi IV
 C G Am F
 
 
+## Creep Chord Progression
 
+I
+III
+IV
+iv
+
+
+##
+bass chifre
+- figured bass
+
+G 6 4
 
 
 
