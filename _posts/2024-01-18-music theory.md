@@ -135,6 +135,23 @@ Diminished is 3 then 3
 eg he is using Amaj!!!
 
 
+## naming of scale degrees
+
+First 6 triads of a major scale
+
+1 : I (major)
+2 : ii (minor)
+3 : iii (minor)
+4 : IV (major)
+5 : V (major)
+6 : vi (minor)
+
+I V vi IV
+C G Am F
+
+
+
+
 
 
 
