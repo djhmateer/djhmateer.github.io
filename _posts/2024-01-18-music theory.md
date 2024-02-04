@@ -158,6 +158,19 @@ IV
 iv
 
 
+The III could be thought of as a Secondary Dominant
+
+eg  in G
+
+I ii iii IV V vi
+G Am Bm  C  D Em
+
+The dominant (V) of Em Key is B. Which resolves back to the their relative tonic chord ie root I ie Em
+
+
+
+
+
 ##
 bass chifre
 - figured bass
