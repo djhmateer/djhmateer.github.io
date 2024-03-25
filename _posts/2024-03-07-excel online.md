@@ -102,6 +102,12 @@ Insert, Text Box
 Useful for notes and guides how to use the sheet.
 
 
+## Filters on top row of all columns
+
+Select all columns
+
+Data, Sort and Filter (funnel)
+
 ## Get Row Number of Name Selected in Filter List
 
 [![alt text](/assets/2024-03-07/5.jpg "email")](/assets/2024-03-07/5.jpg)
@@ -195,11 +201,11 @@ Write Script
 
 It is possible to create a button
 
-
 It is possible to scheudle scripts which uses Power Automate - see below.
 
 It isn't possible to call an Office Script from a cell change.
 
+I have [another blog post on Office Scripts]()
 
 ## Filters
 
