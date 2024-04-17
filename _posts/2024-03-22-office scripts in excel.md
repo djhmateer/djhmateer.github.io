@@ -22,7 +22,14 @@ image: /assets/2024-03-03/2.jpg
 
 Office Scripts showing dev envionment with console log. Also Production 'button' to kick off the script. Writes output to cells. Also production writes to a log.
 
+They are cross spreadsheet - notice This workbook.
+
 Office Scripts are designed for secure, cross platform, cloud-based solutions. [ref](https://learn.microsoft.com/en-us/office/dev/scripts/resources/vba-differences?view=office-scripts)
+
+[https://stackoverflow.com/questions/71935936/office-scripts-vs-script-lab](https://stackoverflow.com/questions/71935936/office-scripts-vs-script-lab) Office Scripts vs Script Lab. Office Scripts is only for Excel and is a simplifed API actually built on top of Office.js which is what Script lab runs. Script Lab runs Office.js which has APIs for Word, OneNote etc..
+
+Can't see any samples for Script Lab running on Excel online. It feels more like a add on for the Desktop and has CSS and UI parts to make it render.
+
 
 ## Code
 
@@ -190,4 +197,9 @@ function main(workbook: ExcelScript.Workbook) {
 }
 
 ```
+
+## Pause calculations
+
+[https://learn.microsoft.com/en-us/office/dev/scripts/develop/web-client-performance](https://learn.microsoft.com/en-us/office/dev/scripts/develop/web-client-performance)
+
 
