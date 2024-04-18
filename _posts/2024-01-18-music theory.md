@@ -13,7 +13,7 @@ image: /assets/2023-10-30/1.jpg
 <!-- [![alt text](/assets/2023-10-10/3.jpg "email"){:width="600px"}](/assets/2023-10-10/3.jpg) -->
 <!-- [![alt text](/assets/2023-10-30/1.jpg "email")](/assets/2023-10-30/1.jpg) -->
 
-Lets start at the basics on Pianp.
+Lets start at the basics on Piano
 
 minor 3rd - 3 semitones.
 major 3rd - 4 semitones
@@ -95,7 +95,6 @@ Bb C
 
 do 5 different root notes and do their major scales
 
-
 - 1 flat - F with Bb (D min - rel  minor)
 - 1 sharp - G with F#
 - 2 flats - Bb with Bb and Eb
@@ -157,7 +156,6 @@ III
 IV
 iv
 
-
 The III could be thought of as a Secondary Dominant
 
 eg  in G
@@ -168,21 +166,11 @@ G Am Bm  C  D Em
 The dominant (V) of Em Key is B. Which resolves back to the their relative tonic chord ie root I ie Em
 
 
-
-
-
 ##
 bass chifre
 - figured bass
 
 G 6 4
-
-
-
-
-
-
-
 
 ## AI
 
@@ -240,7 +228,6 @@ G 6 4
 - **Books**: Beginner music theory books for pianists.
 - **Online Courses**: Websites like Udemy, Coursera, or YouTube.
 - **Apps**: For ear training, sight-reading, and theory exercises.
-
 
 
 
