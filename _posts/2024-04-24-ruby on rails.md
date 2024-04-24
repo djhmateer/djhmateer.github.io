@@ -16,25 +16,23 @@ image: /assets/2024-03-03/2.jpg
 
 <!-- [![alt text](/assets/2024-04-24/1.jpg "email")](/assets/2024-04-24/1.jpg) -->
 
-I've been following Rob Conery for many years and respect his technical judgement / entrepreneurial attitude. So when published this:
+I've been following Rob Conery for many years and respect his technical judgement / entrepreneurial attitude. So when he published [this article](https://bigmachine.io/courses/rails-revisited) it got me thinking:
 
-[https://bigmachine.io/courses/rails-revisited](https://bigmachine.io/courses/rails-revisited)
 
 [![alt text](/assets/2024-04-24/5.jpg "email"){:width="500px"}](/assets/2024-04-24/5.jpg)
 
-Saying how he is moving away fom Javascript front end frameworks (which he'd been doing since 2017) back to a back end RoR. [blog post](https://a.bigmachine.io/posts/a-strange-thing-happened-when-i-told-myself-to-shut-it)
+Saying how he is moving away fom Javascript front end frameworks (which he'd been doing since 2017) back to RoR. [blog post](https://a.bigmachine.io/posts/a-strange-thing-happened-when-i-told-myself-to-shut-it)
 
-[https://github.com/maybe-finance/maybe?tab=readme-ov-file](https://github.com/maybe-finance/maybe?tab=readme-ov-file) is an app that is moving to RoR from React.
 
-Rails is having a resurgence?!
+Is Rails is having a resurgence?!
 
 ## What is Ruby on Rails
 
 [Ruby on Rails](https://rubyonrails.org/) (Rails) is a web application framework written meant to mean to 'compress the complexity' of modern web apps.
 
-[Wikipedia Rails](https://en.wikipedia.org/wiki/Ruby_on_Rails) has been around since 2004. 7.1.3.2 is latest. Written by David Heinemeier Hansson (DHH) of [37signals]()
+[Rails](https://en.wikipedia.org/wiki/Ruby_on_Rails) has been around since 2004. 7.1.3.2 is latest. Written by David Heinemeier Hansson (DHH) of [37signals]()
 
-[Wikipedia Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) started in 1995. v. 3.3.1 is latest as of 23rd April 2024. Written by Yukihiro Matsumoto (Matz)
+[Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) started in 1995. v. 3.3.1 is latest as of 23rd April 2024. Written by Yukihiro Matsumoto (Matz)
 
 
 ## Who Uses Rails?
@@ -46,9 +44,6 @@ Rails is having a resurgence?!
 ## Discussions
 
 [https://news.ycombinator.com/item?id=29577897](https://news.ycombinator.com/item?id=29577897)
-
-
-
 
 ## Why consider?
 
@@ -79,20 +74,37 @@ Conventions, generators, tooling
 - [Django](https://www.djangoproject.com/)
 
 
-## Whats wrong with ASP.NET / Python
+## Whats wrong with ASP.NET Core
 
-There are some things which bug me about the Web framework I use
+There are some things which bug me about the framework I've used for years:
 
 - Authentication and Authorisation in ASP.NET Core. I had to roll my own to do simple Cookie based auth.
 - DB Schema source control / Migrations are not built in
 - Scaffolding of pages - I ended up never using that feature
 
-On Python I really like how easy it is to work with, and how productive it is. Also not having the compile step is handy. Makes in situ updates easy.
+
+Tangentially I've been using Python for non web based work and I really like how easy it is to work with, and how productive it is. Also not having the compile step is handy. Makes in situ updates easy.
 
 
 ## Play
 
 Sometimes it's important to have fun and play!
+
+## Where to Start?????
+
+Okay so after being bitten by the crazyness of Python package management and different versions on the same system, I'm being careful with Ruby.
+
+ChatGPT4 says to use
+
+- [rbenv](https://github.com/rbenv/rbenv) - so can have specific versions of ruby running (less intrusive than rvm)
+
+[https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04) looks similar
+
+[https://guides.rubyonrails.org/getting_started.html](https://guides.rubyonrails.org/getting_started.html) doesn't mention rbenv
+
+
+
+
 
 ## Rewrite existing app
 
@@ -122,7 +134,6 @@ What is
 - [https://theskatefarmcic.co.uk/](https://theskatefarmcic.co.uk/) - Wordpress site I host on proxmos.. Leave this. 
 
 - [https://hoverflylagoons.co.uk/](https://hoverflylagoons.co.uk/) - Wordpress site I host on proxmos.. Leave this. 
-
 
 
 
