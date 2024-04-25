@@ -190,7 +190,7 @@ It turns out I do use Ruby to generate this Jekyll blog hosted on GH Pages on ma
 
 [https://gorails.com/setup/ubuntu/22.04](https://gorails.com/setup/ubuntu/22.04)
 
-[https://gorails.com/setup/ubuntu/20.04](https://gorails.com/setup/ubuntu/20.04)
+[https://gorails.com/setup/ubuntu/20.04](https://gorails.com/setup/ubuntu/20.04) - this failed for me on Ruby 3.3.1
 
 ```bash
 
@@ -250,6 +250,8 @@ rails -v
 sudo apt install postgresql libpq-dev
 
 sudo service postgresql start
+
+**HERE - trying to get it installed on Ubuntu side for user dave
 
 
 ```
