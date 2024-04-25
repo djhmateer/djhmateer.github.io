@@ -193,6 +193,14 @@ It turns out I do use Ruby to generate this Jekyll blog hosted on GH Pages on ma
 [https://gorails.com/setup/ubuntu/20.04](https://gorails.com/setup/ubuntu/20.04) - this failed for me on Ruby 3.3.1
 
 ```bash
+fiddle:
+        Could not be configured. It will not be installed.
+        /tmp/ruby-build.20240425165908.8723.ssnzTU/ruby-3.3.1/ext/fiddle/extconf.rb:78: missing libffi. Please install libffi or use --with-libffi-source-dir with libffi source location.
+```
+
+
+
+```bash
 
 sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
 
