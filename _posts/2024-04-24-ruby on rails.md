@@ -58,6 +58,8 @@ Conventions, generators, tooling
 
 - Language that is fun to use
 
+It is simple compared to every front end framework which admittadly I'm not cognicent of at all eg: [https://astro.build/](https://astro.build/) which looks great. But.. it's just content for the most part. And I can get as much speed as I like with good servers.
+
 ## Why not consider?
 
 - Learning curve
