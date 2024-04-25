@@ -47,6 +47,8 @@ Is Rails is having a resurgence?!
 
 [Building GH with Rails](https://news.ycombinator.com/item?id=35478884)
 
+[https://news.ycombinator.com/item?id=40150045](https://news.ycombinator.com/item?id=40150045) some of  shopify team are on the core Rails/Ruby team
+
 ## Why consider?
 
 - Convention over configuration principle - so can build apps quickly with less boilerplate
@@ -184,7 +186,11 @@ What is
 
 ## Install Rails on WSL2 Ubuntu
 
+It turns out I do use Ruby to generate this Jekyll blog hosted on GH Pages on may laptop (Ubuntu 20.04) and Desktop (Ubuntu 22.04). [Post explainng how I do it](/2020/10/20/running-jekyll-on-wsl2). Looks like I'm using Ruby 2.7.0  [Jekyll install](https://jekyllrb.com/docs/) suggests that Ruby3 or higher may have problems.
+
 [https://gorails.com/setup/ubuntu/22.04](https://gorails.com/setup/ubuntu/22.04)
+
+[https://gorails.com/setup/ubuntu/20.04](https://gorails.com/setup/ubuntu/20.04)
 
 ```bash
 
