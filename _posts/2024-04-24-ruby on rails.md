@@ -45,6 +45,8 @@ Is Rails is having a resurgence?!
 
 [https://news.ycombinator.com/item?id=29577897](https://news.ycombinator.com/item?id=29577897)
 
+[Building GH with Rails](https://news.ycombinator.com/item?id=35478884)
+
 ## Why consider?
 
 - Convention over configuration principle - so can build apps quickly with less boilerplate
@@ -60,6 +62,12 @@ Conventions, generators, tooling
 
 It is simple compared to every front end framework which admittadly I'm not cognicent of at all eg: [https://astro.build/](https://astro.build/) which looks great. But.. it's just content for the most part. And I can get as much speed as I like with good servers.
 
+I like to
+
+> Enjoy the work I do every day.. so if that includes playing with a language just because.. then that is fine!
+
+[exit plan](https://a.bigmachine.io/posts/what-s-your-exit-plan)
+
 ## Why not consider?
 
 - Learning curve
@@ -71,9 +79,11 @@ It is simple compared to every front end framework which admittadly I'm not cogn
 
 [https://survey.stackoverflow.co/2023/#most-popular-technologies-webframe](https://survey.stackoverflow.co/2023/#most-popular-technologies-webframe)
 
-- Node.js
-- React
-- [Django](https://www.djangoproject.com/)
+- [Node](https://github.com/django/django) - 104k stars
+- [React](https://github.com/django/django) - 222k stars
+- [Django](https://www.djangoproject.com/) - 76.8k stars on [GH](https://github.com/django/django)
+- [Ruby on Rails](https://github.com/django/django) - 54.9k stars
+- [ASP.NET Core](https://github.com/dotnet/aspnetcore) - 34.3k stars (but corporate driven)
 
 
 ## Whats wrong with ASP.NET Core
@@ -91,6 +101,13 @@ Tangentially I've been using Python for non web based work and I really like how
 ## Play
 
 Sometimes it's important to have fun and play!
+
+AI - everything I do now I'm using [https://chat.openai.com/](https://chat.openai.com/) as a sanity check eg
+
+> should I use apt or apt-get
+
+I prefer apt, but can't remember why. So it turns out apt-get is older, but prefered for scripting as it is more reliable (and wont change)
+
 
 ## Where to Start?????
 
@@ -120,13 +137,14 @@ Rob is using:
 
 What is
 
-- Hotwire (Turbo under the hood) - sends html over the wire instead of json..
+- Hotwire (Turbo under the hood) - sends html over the wire instead of json.. default front end framework for Rails.
+
 
 ## What app should I rewrite / write for fun?
 
-- New crud site on music. Logins / async back end webservice calling. Fast react style type ahead.
+- [https://hmsoftware.co.uk/](https://hmsoftware.co.uk/) - Consulting as a service (product) company.  CMS. Auth. Email.
 
-- [https://hmsoftware.co.uk/](https://hmsoftware.co.uk/) - a static page for my company
+- New crud site on music. Logins / async back end webservice calling. Fast react style type ahead.
 
 
 
@@ -160,3 +178,72 @@ What is
 - Bash
 
 [![alt text](/assets/2024-04-24/4.jpg "email"){:width="500px"}](/assets/2024-04-24/4.jpg)
+
+
+- Static typing for Ruby eg Sorbet
+
+## Install Rails on WSL2 Ubuntu
+
+[https://gorails.com/setup/ubuntu/22.04](https://gorails.com/setup/ubuntu/22.04)
+
+```bash
+
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+
+# Install Ruby using version manager called ASDF
+cd
+git clone https://github.com/excid3/asdf.git ~/.asdf
+echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bashrc
+echo '. "$HOME/.asdf/completions/asdf.bash"' >> ~/.bashrc
+echo 'legacy_version_file = yes' >> ~/.asdfrc
+echo 'export EDITOR="code --wait"' >> ~/.bashrc
+exec $SHELL
+
+# add plugins
+# nodejs for frontend javascript
+asdf plugin add ruby
+asdf plugin add nodejs
+
+# got warnings about can't preserve downloads
+# there is 3.3.1 as of 23rd April 2024
+# downloads come straight from https://www.ruby-lang.org/en/
+asdf install ruby 3.3.0
+asdf install ruby 3.3.1
+
+asdf global ruby 3.3.1
+
+gem update --system
+
+# 3.3.1
+ruby -v
+
+# 20.12.2 is latest LTS version on nodejs
+# why do we need nodejs - handling Javascript in our Rails apps?
+# NOT DONE HERE START
+asdf install nodejs 20.11.0
+asdf global nodejs 20.11.0
+
+which node
+#=> /home/username/.asdf/shims/node
+node -v
+#=> 20.11.0
+
+# Install yarn for Rails jsbundling/cssbundling or webpacker
+npm install -g yarn
+
+# NOT DONE HERE END
+
+# latest is 7.1.3.2
+gem install rails -v 7.1.3
+
+# 7.1.3
+rails -v
+
+
+## PostgreSQL
+sudo apt install postgresql libpq-dev
+
+sudo service postgresql start
+
+
+```
