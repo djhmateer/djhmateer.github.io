@@ -193,9 +193,16 @@ It turns out I do use Ruby to generate this Jekyll blog hosted on GH Pages on ma
 [https://gorails.com/setup/ubuntu/20.04](https://gorails.com/setup/ubuntu/20.04) - this failed for me on Ruby 3.3.1
 
 ```bash
-fiddle:
-        Could not be configured. It will not be installed.
-        /tmp/ruby-build.20240425165908.8723.ssnzTU/ruby-3.3.1/ext/fiddle/extconf.rb:78: missing libffi. Please install libffi or use --with-libffi-source-dir with libffi source location.
+
+asdf install ruby 3.3.1
+
+# fiddle:
+#        Could not be configured. It will not be installed.
+#        /tmp/ruby-build.20240425165908.8723.ssnzTU/ruby-3.3.1/ext/fiddle/extconf.rb:78: missing libffi. Please install libffi or use --with-libffi-source-dir with libffi source location.
+
+# after feeding the error into chatgpt
+sudo apt-get install libffi-dev
+
 ```
 
 
@@ -260,6 +267,55 @@ sudo apt install postgresql libpq-dev
 sudo service postgresql start
 
 **HERE - trying to get it installed on Ubuntu side for user dave
+```
+
+## Code
+
+[https://www.youtube.com/watch?v=Hwou03YqH4I](https://www.youtube.com/watch?v=Hwou03YqH4I) this video suggests putting code in `\code` so that it isn't in the Windows filesystem, thus will be much faster.
+
+
+## VS Code Extensions
+
+[https://www.youtube.com/watch?v=4GjXSI6jcLI&t=0s](https://www.youtube.com/watch?v=4GjXSI6jcLI&t=0s)
+
+- Emmet
+- GitHub Copilot
+- GitLens - to see the changes
+- Prettier - CSS / HTML / JS
+- Ruby - formatting and prettier
+- Ruby extension pack - linter, erb?, symbols
+- Solargraph
+
+## Shortcuts
+
+Ctrl B - hide side panel
+
+
+## Rails new
+
+```bash
+# create a new rails app
+rails new hello-world
+
+# maybe need sqllite?
+sudo apt install libsqlite3-dev
+
+bundle install
+
+# start
+rails s
+
+# http://localhost:3000
+
+# common postgres error is that the service isn't acutally working
+service postgresql start
+
+rails g scaffold post title body:text
+
+rails db:migrate
 
 
 ```
+
+
+
