@@ -169,6 +169,7 @@ What is
 ## Tech to Try
 
 - Use AI to learn something completely new
+
 - Use AI for fast content generation eg [https://hmsoftware.org/](https://hmsoftware.org/)
 - Try GitHub copilot
 

@@ -3,7 +3,7 @@ layout: post
 # title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
 menu: review
-categories: ror 
+categories: mssql 
 published: true 
 comments: false     
 sitemap: false
@@ -16,116 +16,40 @@ image: /assets/2024-03-03/2.jpg
 
 <!-- [![alt text](/assets/2024-04-24/1.jpg "email")](/assets/2024-04-24/1.jpg) -->
 
+I'm trying to restore an MSSQL database using
 
+- .bak file (800GB)
+- .trn transaction log files
+
+And getting:
+
+`Microsoft.Data.SqlClient.SqlError: The log or differential backup cannot be restored because no files are ready to rollforward. (Microsoft.SqlServer.Smo)`
+
+I'm trying to figure out the timings of what has happened which could have caused this as it has worked before.
+
+
+[![alt text](/assets/2024-04-25/1.jpg "email")](/assets/2024-04-25/1.jpg)
+
+I can restore all of Sunday 21st April, but not Monday 22nd Apr. Suspicious that the 0500 .bak file was written at 1805 in the evening.
+
+But what about the insane log file of 18gb at 0700 on Sunday morning. which was written at 0733.
+
+
+
+
+I belive the LSN (Log Sequence Number) chain is correct by using this:
 
 ```sql
-![alt text](image.png)
 -- Enable xp_cmdshell (consult your DBA if permissions are an issue)
 EXEC sp_configure 'show advanced options', 1;
 RECONFIGURE;
 EXEC sp_configure 'xp_cmdshell', 1;
 RECONFIGURE;
 
---DECLARE @DynamicSQL NVARCHAR(MAX);
---SET @DynamicSQL = 'RESTORE HEADERONLY FROM DISK = ''C:\temp\foo\ProNet_backup_2024_04_21_070003_1327184.trn'''
-
---INSERT INTO LogFileHeaders (BackupName, BackupDescription, BackupType, ExpirationDate, Compressed, Position, DeviceType, UserName, ServerName, DatabaseName, DatabaseVersion, DatabaseCreationDate, BackupSize, FirstLSN, LastLSN, CheckpointLSN, DatabaseBackupLSN)
-  --  EXEC (@DynamicSQL);
-
---INSERT INTO [dbo].[LogFileHeaders]
---           ([BackupName]
---           ,[BackupDescription]
---           ,[BackupType]
---           ,[ExpirationDate]
---           ,[Compressed]
---           ,[Position]
---           ,[DeviceType]
---           ,[UserName]
---           ,[ServerName]
---           ,[DatabaseName]
---           ,[DatabaseVersion]
---           ,[DatabaseCreationDate]
---           ,[BackupSize]
---           ,[FirstLSN]
---           ,[LastLSN]
---           ,[CheckpointLSN]
---           ,[DatabaseBackupLSN]
---           ,[BackupStartDate]
---           ,[BackupFinishDate]
---           ,[SortOrder]
---           ,[CodePage]
---           ,[UnicodeLocaleId]
---           ,[UnicodeComparisonStyle]
---           ,[CompatibilityLevel]
---           ,[SoftwareVendorId]
---           ,[SoftwareVersionMajor]
---           ,[SoftwareVersionMinor]
---           ,[SoftwareVersionBuild]
---           ,[MachineName]
---           ,[Flags]
---           ,[BindingId]
---           ,[RecoveryForkId]
---           ,[Collation]
---           ,[FamilyGUID]
---           ,[HasBulkLoggedData]
---           ,[IsSnapshot]
---           ,[IsReadOnly]
---           ,[IsSingleUser]
---           ,[HasBackupChecksums]
---           ,[IsDamaged]
---           ,[BeginsLogChain]
---           ,[HasIncompleteMetaData]
---           ,[IsForceOffline]
---           ,[IsCopyOnly]
---           ,[FirstRecoveryForkID]
---           ,[ForkPointLSN]
---           ,[RecoveryModel]
---           ,[DifferentialBaseLSN]
---           ,[DifferentialBaseGUID]
---           ,[BackupTypeDescription]
---           ,[BackupSetGUID]
---           ,[CompressedBackupSize]
---           ,[Containment]
---           ,[KeyAlgorithm]
---           ,[EncryptorThumbprint]
---           ,[EncryptorType])
---		EXEC (@DynamicSQL);
-
-
--- Continue with the rest of your operations...
-
-
-
-
-
--- Create a temporary table to store log file headers
 IF OBJECT_ID('tempdb..#LogFileHeaders') IS NOT NULL
     DROP TABLE #LogFileHeaders;
 
---IF OBJECT_ID('tempdb..#LogFileHeadersOLD') IS NOT NULL
---    DROP TABLE #LogFileHeadersOLD;
-
---CREATE TABLE #LogFileHeadersOLD
---(
---    BackupName NVARCHAR(128),
---    BackupDescription NVARCHAR(255),
---    BackupType SMALLINT,
---    ExpirationDate DATETIME,
---    Compressed BIT,
---    Position INT,
---    DeviceType TINYINT,
---    UserName NVARCHAR(128),
---    ServerName NVARCHAR(128),
---    DatabaseName NVARCHAR(128),
---    DatabaseVersion INT,
---    DatabaseCreationDate DATETIME,
---    BackupSize NUMERIC(20,0),
---    FirstLSN NUMERIC(25,0),
---    LastLSN NUMERIC(25,0),
---    CheckpointLSN NUMERIC(25,0),
---    DatabaseBackupLSN NUMERIC(25,0)
---    -- Include other columns as necessary
---);
+-- TODO - need to create a table called Start
 
 CREATE TABLE #LogFileHeaders
 (
@@ -197,6 +121,7 @@ SET @Command = 'DIR ' + @Path + '*.trn /B';
 --SELECT @Command
 --INSERT INTO #LogFileHeaders (BackupName)
 
+-- **TODO create a table called start with a single txt col called BackupName
 INSERT INTO Start (BackupName)
 --EXEC xp_cmdshell @Command;
 EXEC xp_cmdshell "DIR C:\temp\foo\*.trn /B"
@@ -224,11 +149,8 @@ WHILE @@FETCH_STATUS = 0
 BEGIN
     -- Build and execute the dynamic SQL to populate the header info
     SET @DynamicSQL = 'RESTORE HEADERONLY FROM DISK = ''' + @Path + @FileName + '''';
-    --INSERT INTO #LogFileHeaders (BackupName, BackupDescription, BackupType, ExpirationDate, Compressed, Position, DeviceType, UserName, ServerName, DatabaseName, DatabaseVersion, DatabaseCreationDate, BackupSize, FirstLSN, LastLSN, CheckpointLSN, DatabaseBackupLSN)
-    --EXEC (@DynamicSQL);
 
-	-- this works but only on some
-	INSERT INTO #LogFileHeaders
+ 	INSERT INTO #LogFileHeaders
            ([BackupName]
            ,[BackupDescription]
            ,[BackupType]
@@ -287,18 +209,13 @@ BEGIN
            ,[EncryptorType])
 		EXEC (@DynamicSQL);
 
-	-- 
-	--SELECT @DynamicSQL
-
-	-- this gets 176 rows of perfect SQL
-	--INSERT INTO bar(foo) VALUES (@DynamicSQL)
-
     FETCH NEXT FROM file_cursor INTO @FileName;
 END;
 
 CLOSE file_cursor;
 DEALLOCATE file_cursor;
 
+-- SEE THE LAST COL
 -- Now, analyze the LSNs from #LogFileHeaders and determine if any are out of sequence
 SELECT *,
        LAG(LastLSN, 1, 0) OVER (ORDER BY FirstLSN) AS PrevLastLSN
@@ -307,6 +224,4 @@ ORDER BY FirstLSN;
 
 -- Optional: Drop the temporary table if no longer needed
 -- DROP TABLE #LogFileHeaders;
-
-
 ```
