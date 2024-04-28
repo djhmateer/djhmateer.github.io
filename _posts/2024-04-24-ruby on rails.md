@@ -204,6 +204,18 @@ asdf install ruby 3.3.1
 # after feeding the error into chatgpt
 sudo apt-get install libffi-dev
 
+sudo apt-get install libssl-dev
+
+sudo apt-get install libyaml-dev
+
+gem install psych
+
+# then it worked!kk
+
+# but doing a gem update --system
+
+# bu then doing a gem install rails is linked to Ruby 2.7 ahh
+
 ```
 
 

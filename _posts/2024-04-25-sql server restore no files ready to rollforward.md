@@ -35,9 +35,21 @@ I can restore all of Sunday 21st April, but not Monday 22nd Apr. Suspicious that
 But what about the insane log file of 18gb at 0700 on Sunday morning. which was written at 0733.
 
 
+## RESTORE NO RECOVERY
+
+So the DB comes back in a `restoring` state but we can apply .trn log files to it. Remember on the last log file to `RESTORE WITH RECOVERY` so that the db comes back online.
+
+## Error
+
+`Microsoft.Data.SqlClient.SqlError: The log in this backup set terminates at LSN 1821957000080696200001, which is too early to apply to the database. A more recent log backup that includes LSN 1821957000104764400001 can be restored. (Microsoft.SqlServer.Smo)`
+
+How to find out which trn log file it expects?
 
 
-I belive the LSN (Log Sequence Number) chain is correct by using this:
+## Check log files
+
+Here is how we can get the LSN's from a directory of files.
+
 
 ```sql
 -- Enable xp_cmdshell (consult your DBA if permissions are an issue)
@@ -225,3 +237,27 @@ ORDER BY FirstLSN;
 -- Optional: Drop the temporary table if no longer needed
 -- DROP TABLE #LogFileHeaders;
 ```
+
+
+## Checker
+
+```sql
+SELECT 
+    BackupName, 
+    FirstLSN, 
+    LastLSN,
+    LEAD(FirstLSN) OVER (ORDER BY BackupName) AS Next_FirstLSN,
+    CASE 
+        WHEN LastLSN = LEAD(FirstLSN) OVER (ORDER BY BackupName) THEN 'Match'
+        ELSE 'No Match'
+    END AS LSN_Check
+FROM 
+    #LogFileHeaders
+ORDER BY 
+    BackupName;
+```
+
+
+[![alt text](/assets/2024-04-25/2.jpg "email")](/assets/2024-04-25/2.jpg)
+
+Showing that each day there seems to be a break in the LSN numbers 
