@@ -30,9 +30,9 @@ I'm trying to figure out the timings of what has happened which could have cause
 
 [![alt text](/assets/2024-04-25/1.jpg "email")](/assets/2024-04-25/1.jpg)
 
-I can restore all of Sunday 21st April, but not Monday 22nd Apr. Suspicious that the 0500 .bak file was written at 1805 in the evening.
+I can restore all of Sunday 21st April, but not Monday 22nd Apr. Suspicious that the 0500 .bak file was written at 1805 in the evening. Problem sovled - the backup takes over 13 hours to complete.
 
-But what about the insane log file of 18gb at 0700 on Sunday morning. which was written at 0733.
+But what about the insane log file of 18gb at 0700 on Sunday morning. which was written at 0733. I don't think this is a problem
 
 
 ## RESTORE NO RECOVERY
@@ -52,16 +52,23 @@ Here is how we can get the LSN's from a directory of files.
 
 
 ```sql
--- Enable xp_cmdshell (consult your DBA if permissions are an issue)
 EXEC sp_configure 'show advanced options', 1;
 RECONFIGURE;
 EXEC sp_configure 'xp_cmdshell', 1;
 RECONFIGURE;
 
+-- Where we put filenames from our directory
+IF OBJECT_ID('tempdb..#Start') IS NOT NULL
+    DROP TABLE #Start;
+
+CREATE TABLE #Start(
+    [BackupName] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+-- The output
 IF OBJECT_ID('tempdb..#LogFileHeaders') IS NOT NULL
     DROP TABLE #LogFileHeaders;
-
--- TODO - need to create a table called Start
 
 CREATE TABLE #LogFileHeaders
 (
@@ -123,27 +130,15 @@ CREATE TABLE #LogFileHeaders
     EncryptorType nvarchar(32)
 )
 
-
 -- Variable to store file path and command for directory listing
-DECLARE @Path NVARCHAR(MAX) = 'C:\temp\foo\';  -- Adjust this path as necessary
-DECLARE @Command NVARCHAR(MAX);
+DECLARE @Path VARCHAR(512) = 'C:\temp\foo\';  -- Adjust this path as necessary
+DECLARE @Command VARCHAR(512) = 'DIR ' + @Path + '*.trn /B';
 
--- Get list of .trn files from the directory
-SET @Command = 'DIR ' + @Path + '*.trn /B';
---SELECT @Command
---INSERT INTO #LogFileHeaders (BackupName)
-
--- **TODO create a table called start with a single txt col called BackupName
-INSERT INTO Start (BackupName)
---EXEC xp_cmdshell @Command;
-EXEC xp_cmdshell "DIR C:\temp\foo\*.trn /B"
+INSERT INTO #Start (BackupName)
+EXEC xp_cmdshell @Command;
 
 -- Remove NULL or irrelevant entries
---DELETE FROM #LogFileHeaders WHERE BackupName IS NULL OR BackupName NOT LIKE '%.trn';
-DELETE FROM Start WHERE BackupName IS NULL OR BackupName NOT LIKE '%.trn';
-
--- 176 rows - perfect
---SELECT * FROM #LogFileHeaders
+DELETE FROM #Start WHERE BackupName IS NULL OR BackupName NOT LIKE '%.trn';
 
 -- Declare variables to loop through files and add header info
 DECLARE @FileName NVARCHAR(MAX);
@@ -151,8 +146,7 @@ DECLARE @DynamicSQL NVARCHAR(MAX);
 
 -- Cursor to loop through each .trn file and populate header information
 DECLARE file_cursor CURSOR FOR
---SELECT BackupName FROM #LogFileHeaders;
-SELECT BackupName FROM Start;
+SELECT BackupName FROM #Start;
 
 OPEN file_cursor;
 FETCH NEXT FROM file_cursor INTO @FileName;
@@ -227,21 +221,8 @@ END;
 CLOSE file_cursor;
 DEALLOCATE file_cursor;
 
--- SEE THE LAST COL
--- Now, analyze the LSNs from #LogFileHeaders and determine if any are out of sequence
-SELECT *,
-       LAG(LastLSN, 1, 0) OVER (ORDER BY FirstLSN) AS PrevLastLSN
-FROM #LogFileHeaders
-ORDER BY FirstLSN;
-
--- Optional: Drop the temporary table if no longer needed
--- DROP TABLE #LogFileHeaders;
-```
-
-
-## Checker
-
-```sql
+-- Does the LastLSN match the next FirstLSN?
+-- look for 'No Match'
 SELECT 
     BackupName, 
     FirstLSN, 
@@ -256,6 +237,10 @@ FROM
 ORDER BY 
     BackupName;
 ```
+
+
+## Checker
+
 
 [![alt text](/assets/2024-04-25/2.jpg "email")](/assets/2024-04-25/2.jpg)
 
