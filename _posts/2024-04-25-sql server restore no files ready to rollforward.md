@@ -257,7 +257,18 @@ ORDER BY
     BackupName;
 ```
 
-
 [![alt text](/assets/2024-04-25/2.jpg "email")](/assets/2024-04-25/2.jpg)
 
 Showing that each day there seems to be a break in the LSN numbers 
+
+LastLSN of 1745 file - 1821957000104761900001
+FirstLSN of 0700 file - 1821957000104785500001
+
+From our error message above we're looking for an LSN of - 1821957000104764400001
+
+LastLSN - 1047619
+FirstLSN -1047855
+
+Target   -1047644
+
+So we need a trn file written after 1745  and before 0700. Perhaps an 1800 one which isn't working?
