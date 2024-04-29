@@ -218,6 +218,13 @@ gem install psych
 
 ```
 
+## Install Ubuntu 22.04
+
+Windows Store, Ubuntu 22.04.3 LTS (Orange Icon), Get, Open
+
+Then open a terminal and it should be there.
+
+
 
 
 ```bash
