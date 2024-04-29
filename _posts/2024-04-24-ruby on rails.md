@@ -222,7 +222,38 @@ gem install psych
 
 Windows Store, Ubuntu 22.04.3 LTS (Orange Icon), Get, Open
 
-Then open a terminal and it should be there.
+Then open a terminal and it should be there. Settings, Profile, Ubuntu 22.04, Appearance, Front size 9
+
+import my `vim ~/.bash_aliases` file which is linked from `~/.bashrc`
+
+```bash
+alias cdd='cd ~/djhmateer.github.io'
+alias cdl='cd /mnt/c/dev/test'
+
+alias p='git add . && git commit -m "auto" && git push'
+alias gs='git status'
+alias gp='git pull'
+
+# default colours are not good for me (green backgrounds for directories)
+alias ls='ls -lat --color=auto'
+
+alias e='explorer.exe .'
+alias c='code .'
+
+alias js='bundle exec jekyll serve --livereload --unpublished'
+alias jsi='bundle exec jekyll serve --livereload --unpublished --incremental'
+
+# https://uly.me/run-jekyll-in-background/
+alias jsu='bundle exec jekyll serve --livereload --unpublished > /dev/null 2>&1 &'
+alias jsui='bundle exec jekyll serve --livereload --unpublished --incremental > /dev/null 2>&1 &'
+
+alias gj='ps -ef | grep jekyll'
+
+alias up='sudo apt update && sudo apt upgrade -y'
+
+alias d='/mnt/c/sharedtools/OpenVSSolution/d.exe'
+```
+
 
 
 
