@@ -189,34 +189,8 @@ What is
 
 It turns out I do use Ruby to generate this Jekyll blog hosted on GH Pages on may laptop (Ubuntu 20.04) and Desktop (Ubuntu 22.04). [Post explainng how I do it](/2020/10/20/running-jekyll-on-wsl2). Looks like I'm using Ruby 2.7.0  [Jekyll install](https://jekyllrb.com/docs/) suggests that Ruby3 or higher may have problems.
 
-[https://gorails.com/setup/ubuntu/22.04](https://gorails.com/setup/ubuntu/22.04)
+[https://gorails.com/setup/ubuntu/22.04](https://gorails.com/setup/ubuntu/22.04) - I had a 22.04 instance which failed. So I recommend 22.04
 
-[https://gorails.com/setup/ubuntu/20.04](https://gorails.com/setup/ubuntu/20.04) - this failed for me on Ruby 3.3.1
-
-```bash
-
-asdf install ruby 3.3.1
-
-# fiddle:
-#        Could not be configured. It will not be installed.
-#        /tmp/ruby-build.20240425165908.8723.ssnzTU/ruby-3.3.1/ext/fiddle/extconf.rb:78: missing libffi. Please install libffi or use --with-libffi-source-dir with libffi source location.
-
-# after feeding the error into chatgpt
-sudo apt-get install libffi-dev
-
-sudo apt-get install libssl-dev
-
-sudo apt-get install libyaml-dev
-
-gem install psych
-
-# then it worked!kk
-
-# but doing a gem update --system
-
-# bu then doing a gem install rails is linked to Ruby 2.7 ahh
-
-```
 
 ## Install Ubuntu 22.04
 
@@ -224,7 +198,7 @@ Windows Store, Ubuntu 22.04.3 LTS (Orange Icon), Get, Open
 
 Then open a terminal and it should be there. Settings, Profile, Ubuntu 22.04, Appearance, Front size 9
 
-import my `vim ~/.bash_aliases` file which is linked from `~/.bashrc`
+Create my `vim ~/.bash_aliases` file which is linked from `~/.bashrc`
 
 ```bash
 alias cdd='cd ~/djhmateer.github.io'
@@ -254,8 +228,9 @@ alias up='sudo apt update && sudo apt upgrade -y'
 alias d='/mnt/c/sharedtools/OpenVSSolution/d.exe'
 ```
 
+## Ruby
 
-
+[GoRails Setup](https://gorails.com/setup/windows/10) is where I got this:
 
 
 ```bash
@@ -305,8 +280,8 @@ npm install -g yarn
 
 # NOT DONE HERE END
 
-# latest is 7.1.3.2
-gem install rails -v 7.1.3
+# this installs the latest ie 7.1.3.2 on 29th Apr 2024
+gem install rails
 
 # 7.1.3
 rails -v
@@ -318,6 +293,12 @@ sudo apt install postgresql libpq-dev
 sudo service postgresql start
 
 **HERE - trying to get it installed on Ubuntu side for user dave
+sudo -u postgres createuser chris -s
+#could not change directory to "/home/dave": Permission denied
+#createuser: error: creation of new role failed: ERROR:  role "chris" already exists
+
+rails new myapp -d postgresql
+
 ```
 
 ## Code
@@ -370,3 +351,6 @@ rails db:migrate
 
 
 
+## Rails 6 - 7
+
+Uses Hotire by default now for javascript
