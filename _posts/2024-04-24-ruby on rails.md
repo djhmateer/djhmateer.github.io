@@ -292,12 +292,41 @@ sudo apt install postgresql libpq-dev
 
 sudo service postgresql start
 
-**HERE - trying to get it installed on Ubuntu side for user dave
-sudo -u postgres createuser chris -s
+
+sudo -i -u postgres
+psql
+CREATE ROLE bob WITH LOGIN PASSWORD 'password';
+CREATE DATABASE test OWNER bob;
+ALTER USER username CREATEDB;
+
+
+# test the connection
+psql postgresql://bob:password@localhost:5432/test
+
+#**HERE - trying to get it installed on Ubuntu side for user dave
+#sudo -u postgres createuser chris -s
 #could not change directory to "/home/dave": Permission denied
 #createuser: error: creation of new role failed: ERROR:  role "chris" already exists
 
 rails new myapp -d postgresql
+
+# config/database.yml
+
+sudo vim /etc/postgres/14/main/pg_hba.conf
+
+# change local local from peer to md5
+
+sudo service postgresql stop
+sudo service postgresql start
+
+# db needs to be created
+# rails server will run migrations
+rails db:create
+
+\list # list all databases
+
+DROP DATABASE myapp2_development
+
 
 ```
 
