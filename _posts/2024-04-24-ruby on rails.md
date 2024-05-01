@@ -26,6 +26,8 @@ Saying how he is moving away fom Javascript front end frameworks (which he'd bee
 
 Is Rails is having a resurgence?!
 
+Is this useful technology to develop sites fast?
+
 ## What is Ruby on Rails
 
 [Ruby on Rails](https://rubyonrails.org/) (Rails) is a web application framework written meant to mean to 'compress the complexity' of modern web apps.
@@ -49,7 +51,7 @@ Is Rails is having a resurgence?!
 
 [https://news.ycombinator.com/item?id=40150045](https://news.ycombinator.com/item?id=40150045) some of  shopify team are on the core Rails/Ruby team
 
-## Why consider?
+## Why Consider?
 
 - Convention over configuration principle - so can build apps quickly with less boilerplate
 - Rich ecosystem with gems (libraries)
@@ -70,7 +72,7 @@ I like to
 
 [exit plan](https://a.bigmachine.io/posts/what-s-your-exit-plan)
 
-## Why not consider?
+## Why Not Consider?
 
 - Learning curve
 - Less trendy? eg Node.js or Django.
@@ -111,7 +113,7 @@ AI - everything I do now I'm using [https://chat.openai.com/](https://chat.opena
 I prefer apt, but can't remember why. So it turns out apt-get is older, but prefered for scripting as it is more reliable (and wont change)
 
 
-## Where to Start?????
+## Where to Start?
 
 Okay so after being bitten by the crazyness of Python package management and different versions on the same system, I'm being careful with Ruby.
 
@@ -127,6 +129,7 @@ ChatGPT4 says to use
 
 [https://gorails.com/setup/ubuntu/22.04](https://gorails.com/setup/ubuntu/22.04) - they used ASDF as a package manager to install  (over rbenv) as will use it to install Node.js as well
 
+- [asdf](https://asdf-vm.com/) - version manager
 
 
 ## Rewrite existing app
@@ -147,7 +150,6 @@ What is
 - [https://hmsoftware.co.uk/](https://hmsoftware.co.uk/) - Consulting as a service (product) company.  CMS. Auth. Email.
 
 - New crud site on music. Logins / async back end webservice calling. Fast react style type ahead.
-
 
 
 - [https://osr4rightstools.org/](https://osr4rightstools.org/) - no this has very deep hooks into Azure using custom libraries. Uses login forms (with spam protection).
