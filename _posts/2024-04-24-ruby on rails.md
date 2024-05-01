@@ -131,8 +131,7 @@ ChatGPT4 says to use
 - [asdf](https://asdf-vm.com/) - version manager
 
 
-
-## Setup Ruby
+## Install Ruby
 
 [GoRails Setup](https://gorails.com/setup/windows/10) is where I got this:
 
@@ -175,25 +174,28 @@ gem update --system
 # 3.3.1
 ruby -v
 
-# 20.12.2 is latest LTS version on nodejs
-# why do we need nodejs - handling Javascript in our Rails apps?
-# NOT DONE HERE START
-asdf install nodejs 20.11.0
-asdf global nodejs 20.11.0
+# 20.12.2 is latest LTS version on nodejs on 1st May 2024
+asdf install nodejs 20.12.2
+asdf global nodejs 20.12.2
 
 which node
 #=> /home/username/.asdf/shims/node
+
+# may need to restart terninal to get correct node version
 node -v
 #=> 20.11.0
 
-# Install yarn for Rails jsbundling/cssbundling or webpacker
-npm install -g yarn
+# npm and npmx 10.3.0 / 10.7.0 on nodejs 20.11.0
+# npm and npx 10.5.0 on nodejs 20.12.2
+npm -v
 
-# NOT DONE HERE END
+
+# Install yarn for Rails jsbundling/cssbundling or webpacker
+# npm install -g yarn
 
 ```
 
-## Setup Rails
+## Install Rails
 
 ```bash
 # this installs the latest ie 7.1.3.2 on 29th Apr 2024
@@ -206,23 +208,36 @@ rails new --help
 ```
 
 
-## PostgreSQL
+## Install PostgreSQL
 
 ```bash
-sudo apt install postgresql libpq-dev
+sudo apt install postgresql postgresql-contrib libpq-dev
 
 # allow passwords on local
 sudo vim /etc/postgres/14/main/pg_hba.conf
 # change local local from peer to md5
 
-# put in bob user
 sudo service postgresql start
 
+sudo service postgresql status
+
+# WSL2 not the same as other distros
+# this will start it
+echo "sudo service postgresql start" >> ~/.bashrc
+
+
+
+# put in bob user - must be a SUPERUSER so can create new db's
 sudo -i -u postgres
 psql
 CREATE ROLE bob WITH LOGIN PASSWORD 'password';
 #CREATE DATABASE test OWNER bob;
 ALTER USER bob CREATEDB;
+
+#OR create a new SUPERUSER
+sudo -u postgres createuser --interactive --pwprompt
+# charlie
+# password
 
 
 # test the connection
@@ -232,9 +247,15 @@ psql postgresql://bob:password@localhost:5432/test
 rails new myapp -d postgresql
 
 # config/database.yml
+default: &default
+  adapter: postgresql
+  encoding: unicode
 
-sudo service postgresql stop
-sudo service postgresql start
+  host: localhost
+  username: bob
+  password: password 
+
+
 
 # db needs to be created
 # rails server will run migrations
@@ -245,6 +266,7 @@ rails db:create
 
 DROP DATABASE myapp2_development
 
+# connect to a database
 \c railz_development
 
 # list all tables
@@ -253,7 +275,7 @@ DROP DATABASE myapp2_development
 
 ## Code
 
-[https://www.youtube.com/watch?v=Hwou03YqH4I](https://www.youtube.com/watch?v=Hwou03YqH4I) this video suggests putting code in `\code` so that it isn't in the Windows filesystem, thus will be much faster.
+[https://www.youtube.com/watch?v=Hwou03YqH4I](https://www.youtube.com/watch?v=Hwou03YqH4I) this video suggests putting code in `\code` so that it isn't in the Windows filesystem, thus will be much faster. I'm using `~/code`
 
 
 [![alt text](/assets/2024-04-25/3.jpg "email"){:width="500px"}](/assets/2024-04-25/3.jpg)
@@ -286,18 +308,91 @@ rails new railz -d posgresql -c tailwind
 
 # short for server
 rails s
+```
 
-# http://localhost:3000
+## Rails g
 
-# common postgres error is that the service isn't acutally working
-service postgresql start
+[https://tailblocks.cc/](https://tailblocks.cc/) - Ready to use tailwind blocks which doesn't seem to be maintained? But looks good. Taking a header and hero from here.
 
-rails g scaffold post title body:text
 
-rails db:migrate
+```bash
 
+# home controller will have 2 actions or endpoints - index and about
+# /home/index
+# /home/about
+
+# /app/views/home/index.html.erb (erb is rails templating)
+# /app/views/home/about.html.erb
+rails g controller home index about
 
 ```
+
+I've set VS Code keybinding to open file to `ctrl ;` by `File, Preferences, Keyboard Shortcuts`
+
+```rb
+# config/routes.rb
+
+root "home#index"
+```
+
+put in header html into the `\app\views\layouts\application.html.erb`
+
+## Tailwind
+
+Tailwind CSS works by scanning all HTML, JS, and templates for class names. It then generates corresponding sytles and writes to a much smaller static CSS.
+
+```bash
+rails s # just runs webserver (Puma)
+
+bin/dev # this starts webserver and tailwind compiler
+
+# don't know how to resolve this warning
+# 13:41:45 css.1  | Browserslist: caniuse-lite is outdated. Please run:
+# 13:41:45 css.1  |   npx update-browserslist-db@latest
+# 13:41:45 css.1  |   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+```
+
+
+Then put in a Hero from Tailblocks.
+
+## VS Code Extension
+
+Ctrl Shift P - format document
+ there is no formatter installed for ruby files (am looking at application.html.erb)
+
+ try Ruby Solargraph - can't get formatter working
+
+[![alt text](/assets/2024-04-25/5.jpg "email"){:width="500px"}](/assets/2024-04-25/5.jpg)
+
+ERB Formatter/Beautify - had to run `gem install htmlbeautifier`
+
+ERB Syntax highlight - seems to work
+
+GH Copilot - hello this is  
+
+
+## Partials - Refactor out layout
+
+As always use more than 1 layout - yep I do that too!
+
+`vieww\layouts\_nav.html.erb`
+
+```rb
+<%=render "layouts/nav" %>
+```
+
+/home/about - want this to be /about
+
+
+
+## Tests and Tools
+
+scripts directory 
+
+.env file - in the root for db settings etc.. Rails has a better way that encrypts stuff but I like this too. Will probably go towards a secrets directory.
+
+Makefile
+
 
 
 
