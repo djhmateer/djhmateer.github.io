@@ -89,7 +89,6 @@ I like to
 - [Ruby on Rails](https://github.com/django/django) - 54.9k stars
 - [ASP.NET Core](https://github.com/dotnet/aspnetcore) - 34.3k stars (but corporate driven)
 
-
 ## Whats wrong with ASP.NET Core
 
 There are some things which bug me about the framework I've used for years:
@@ -100,7 +99,6 @@ There are some things which bug me about the framework I've used for years:
 
 
 Tangentially I've been using Python for non web based work and I really like how easy it is to work with, and how productive it is. Also not having the compile step is handy. Makes in situ updates easy.
-
 
 ## Play
 
@@ -132,105 +130,8 @@ ChatGPT4 says to use
 - [asdf](https://asdf-vm.com/) - version manager
 
 
-## Rewrite existing app
 
-Rob is using:
-
-- Rails 7
-- Spina CMS - so don't have to redeploy for spelling errors
-- Login - magic links and social login (!)
-
-What is
-
-- Hotwire (Turbo under the hood) - sends html over the wire instead of json.. default front end framework for Rails.
-
-
-## What app should I rewrite / write for fun?
-
-- [https://hmsoftware.co.uk/](https://hmsoftware.co.uk/) - Consulting as a service (product) company.  CMS. Auth. Email.
-
-- New crud site on music. Logins / async back end webservice calling. Fast react style type ahead.
-
-
-- [https://osr4rightstools.org/](https://osr4rightstools.org/) - no this has very deep hooks into Azure using custom libraries. Uses login forms (with spam protection).
-
-- [https://auto-archiver.com/](https://auto-archiver.com/) - a marketing site for the auto-archiver. Essentially static site and email sender.
-
-
-- [https://theskatefarmcic.co.uk/](https://theskatefarmcic.co.uk/) - Wordpress site I host on proxmos.. Leave this. 
-
-- [https://hoverflylagoons.co.uk/](https://hoverflylagoons.co.uk/) - Wordpress site I host on proxmos.. Leave this. 
-
-
-
-## Future Projects
-
-- CRUD based
-
-
-## Tech to Try
-
-- Use AI to learn something completely new
-
-- Use AI for fast content generation eg [https://hmsoftware.org/](https://hmsoftware.org/)
-- Try GitHub copilot
-
-[![alt text](/assets/2024-04-24/3.jpg "email"){:width="500px"}](/assets/2024-04-24/3.jpg)
-
-- Solopreneur tech stack 
-
-- Postgres
-- Bash
-
-[![alt text](/assets/2024-04-24/4.jpg "email"){:width="500px"}](/assets/2024-04-24/4.jpg)
-
-
-- Static typing for Ruby eg Sorbet
-
-## Install Rails on WSL2 Ubuntu
-
-It turns out I do use Ruby to generate this Jekyll blog hosted on GH Pages on may laptop (Ubuntu 20.04) and Desktop (Ubuntu 22.04). [Post explainng how I do it](/2020/10/20/running-jekyll-on-wsl2). Looks like I'm using Ruby 2.7.0  [Jekyll install](https://jekyllrb.com/docs/) suggests that Ruby3 or higher may have problems.
-
-[https://gorails.com/setup/ubuntu/22.04](https://gorails.com/setup/ubuntu/22.04) - I had a 22.04 instance which failed. So I recommend 22.04
-
-
-## Install Ubuntu 22.04
-
-Windows Store, Ubuntu 22.04.3 LTS (Orange Icon), Get, Open
-
-Then open a terminal and it should be there. Settings, Profile, Ubuntu 22.04, Appearance, Front size 9
-
-Create my `vim ~/.bash_aliases` file which is linked from `~/.bashrc`
-
-```bash
-alias cdd='cd ~/djhmateer.github.io'
-alias cdl='cd /mnt/c/dev/test'
-
-alias p='git add . && git commit -m "auto" && git push'
-alias gs='git status'
-alias gp='git pull'
-
-# default colours are not good for me (green backgrounds for directories)
-alias ls='ls -lat --color=auto'
-
-alias e='explorer.exe .'
-alias c='code .'
-
-alias js='bundle exec jekyll serve --livereload --unpublished'
-alias jsi='bundle exec jekyll serve --livereload --unpublished --incremental'
-
-# https://uly.me/run-jekyll-in-background/
-alias jsu='bundle exec jekyll serve --livereload --unpublished > /dev/null 2>&1 &'
-alias jsui='bundle exec jekyll serve --livereload --unpublished --incremental > /dev/null 2>&1 &'
-
-alias gj='ps -ef | grep jekyll'
-
-alias up='sudo apt update && sudo apt upgrade -y'
-
-alias d='/mnt/c/sharedtools/OpenVSSolution/d.exe'
-```
-
-## Ruby
+## Setup Ruby and Rails
 
 [GoRails Setup](https://gorails.com/setup/windows/10) is where I got this:
 
@@ -253,13 +154,18 @@ exec $SHELL
 asdf plugin add ruby
 asdf plugin add nodejs
 
+
 # got warnings about can't preserve downloads
 # there is 3.3.1 as of 23rd April 2024
 # downloads come straight from https://www.ruby-lang.org/en/
-asdf install ruby 3.3.0
 asdf install ruby 3.3.1
 
 asdf global ruby 3.3.1
+
+# see all versions of everything installed with asdf
+asdf list 
+# uninstall
+asdf uninstall ruby 3.3.0
 
 gem update --system
 
@@ -382,6 +288,120 @@ rails db:migrate
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## OLD
+
+## Rewrite existing app
+
+Rob is using:
+
+- Rails 7
+- Spina CMS - so don't have to redeploy for spelling errors
+- Login - magic links and social login (!)
+
+What is
+
+- Hotwire (Turbo under the hood) - sends html over the wire instead of json.. default front end framework for Rails.
+
+
+## What app should I rewrite / write for fun?
+
+- [https://hmsoftware.co.uk/](https://hmsoftware.co.uk/) - Consulting as a service (product) company.  CMS. Auth. Email.
+
+- New crud site on music. Logins / async back end webservice calling. Fast react style type ahead.
+
+
+- [https://osr4rightstools.org/](https://osr4rightstools.org/) - no this has very deep hooks into Azure using custom libraries. Uses login forms (with spam protection).
+
+- [https://auto-archiver.com/](https://auto-archiver.com/) - a marketing site for the auto-archiver. Essentially static site and email sender.
+
+
+- [https://theskatefarmcic.co.uk/](https://theskatefarmcic.co.uk/) - Wordpress site I host on proxmos.. Leave this. 
+
+- [https://hoverflylagoons.co.uk/](https://hoverflylagoons.co.uk/) - Wordpress site I host on proxmos.. Leave this. 
+
+
+
+## Future Projects
+
+- CRUD based
+
+
+## Tech to Try
+
+- Use AI to learn something completely new
+
+- Use AI for fast content generation eg [https://hmsoftware.org/](https://hmsoftware.org/)
+- Try GitHub copilot
+
+[![alt text](/assets/2024-04-24/3.jpg "email"){:width="500px"}](/assets/2024-04-24/3.jpg)
+
+- Solopreneur tech stack 
+
+- Postgres
+- Bash
+
+[![alt text](/assets/2024-04-24/4.jpg "email"){:width="500px"}](/assets/2024-04-24/4.jpg)
+
+
+- Static typing for Ruby eg Sorbet
+
+
+## Install Rails on WSL2 Ubuntu
+
+It turns out I do use Ruby to generate this Jekyll blog hosted on GH Pages on may laptop (Ubuntu 20.04) and Desktop (Ubuntu 22.04). [Post explainng how I do it](/2020/10/20/running-jekyll-on-wsl2). Looks like I'm using Ruby 2.7.0  [Jekyll install](https://jekyllrb.com/docs/) suggests that Ruby3 or higher may have problems.
+
+[https://gorails.com/setup/ubuntu/22.04](https://gorails.com/setup/ubuntu/22.04) - I had a 22.04 instance which failed. So I recommend 22.04
+
+
+## Install Ubuntu 22.04
+
+Windows Store, Ubuntu 22.04.3 LTS (Orange Icon), Get, Open
+
+Then open a terminal and it should be there. Settings, Profile, Ubuntu 22.04, Appearance, Front size 9
+
+Create my `vim ~/.bash_aliases` file which is linked from `~/.bashrc`
+
+```bash
+alias cdd='cd ~/djhmateer.github.io'
+alias cdl='cd /mnt/c/dev/test'
+
+alias p='git add . && git commit -m "auto" && git push'
+alias gs='git status'
+alias gp='git pull'
+
+# default colours are not good for me (green backgrounds for directories)
+alias ls='ls -lat --color=auto'
+
+alias e='explorer.exe .'
+alias c='code .'
+
+alias js='bundle exec jekyll serve --livereload --unpublished'
+alias jsi='bundle exec jekyll serve --livereload --unpublished --incremental'
+
+# https://uly.me/run-jekyll-in-background/
+alias jsu='bundle exec jekyll serve --livereload --unpublished > /dev/null 2>&1 &'
+alias jsui='bundle exec jekyll serve --livereload --unpublished --incremental > /dev/null 2>&1 &'
+
+alias gj='ps -ef | grep jekyll'
+
+alias up='sudo apt update && sudo apt upgrade -y'
+
+alias d='/mnt/c/sharedtools/OpenVSSolution/d.exe'
+```
 ## Rails 6 - 7
 
 Uses Hotire by default now for javascript
