@@ -2,7 +2,7 @@
 layout: post
 # title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
-# menu: review
+menu: review
 categories: ror 
 published: true 
 comments: false     
@@ -19,7 +19,8 @@ image: /assets/2024-05-03/4.jpg
 I've been following Rob Conery for many years and respect his technical judgement / entrepreneurial attitude. So when he published [this article](https://bigmachine.io/courses/rails-revisited) it got me thinking:
 
 
-[![alt text](/assets/2024-04-24/5.jpg "email"){:width="500px"}](/assets/2024-04-24/5.jpg)
+<!-- [![alt text](/assets/2024-04-24/5.jpg "email"){:width="500px"}](/assets/2024-04-24/5.jpg) -->
+[![alt text](/assets/2024-04-24/5.jpg "email")](/assets/2024-04-24/5.jpg)
 
 Saying how he is moving away fom Javascript front end frameworks (which he'd been doing since 2017) back to RoR. [blog post](https://a.bigmachine.io/posts/a-strange-thing-happened-when-i-told-myself-to-shut-it)
 
@@ -261,7 +262,8 @@ This is what we're aiming for.
 
 The database needs to be there eg `rails db:create`. I'm getting strange errors after the db is created about auth. But is seems to work.
 
-[![alt text](/assets/2024-04-25/4.jpg "email"){:width="500px"}](/assets/2024-04-25/4.jpg)
+<!-- [![alt text](/assets/2024-04-25/4.jpg "email"){:width="500px"}](/assets/2024-04-25/4.jpg) -->
+[![alt text](/assets/2024-04-25/4.jpg "email")](/assets/2024-04-25/4.jpg)
 
 Then `rails s` will run migrations automatically to populate when the home page is loaded. It just has 2 empty tables.
 
