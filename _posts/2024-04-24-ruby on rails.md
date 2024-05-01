@@ -131,7 +131,7 @@ ChatGPT4 says to use
 
 
 
-## Setup Ruby and Rails
+## Setup Ruby
 
 [GoRails Setup](https://gorails.com/setup/windows/10) is where I got this:
 
@@ -148,6 +148,8 @@ echo '. "$HOME/.asdf/completions/asdf.bash"' >> ~/.bashrc
 echo 'legacy_version_file = yes' >> ~/.asdfrc
 echo 'export EDITOR="code --wait"' >> ~/.bashrc
 exec $SHELL
+
+asdf update
 
 # add plugins
 # nodejs for frontend javascript
@@ -188,41 +190,47 @@ npm install -g yarn
 
 # NOT DONE HERE END
 
+```
+
+## Setup Rails
+
+```bash
 # this installs the latest ie 7.1.3.2 on 29th Apr 2024
 gem install rails
 
-# 7.1.3
+# 7.1.3.2
 rails -v
+
+rails new --help
+```
 
 
 ## PostgreSQL
+
+```bash
 sudo apt install postgresql libpq-dev
 
-sudo service postgresql start
+# allow passwords on local
+sudo vim /etc/postgres/14/main/pg_hba.conf
+# change local local from peer to md5
 
+# put in bob user
+sudo service postgresql start
 
 sudo -i -u postgres
 psql
 CREATE ROLE bob WITH LOGIN PASSWORD 'password';
-CREATE DATABASE test OWNER bob;
-ALTER USER username CREATEDB;
+#CREATE DATABASE test OWNER bob;
+ALTER USER bob CREATEDB;
 
 
 # test the connection
 psql postgresql://bob:password@localhost:5432/test
 
-#**HERE - trying to get it installed on Ubuntu side for user dave
-#sudo -u postgres createuser chris -s
-#could not change directory to "/home/dave": Permission denied
-#createuser: error: creation of new role failed: ERROR:  role "chris" already exists
 
 rails new myapp -d postgresql
 
 # config/database.yml
-
-sudo vim /etc/postgres/14/main/pg_hba.conf
-
-# change local local from peer to md5
 
 sudo service postgresql stop
 sudo service postgresql start
@@ -232,10 +240,14 @@ sudo service postgresql start
 rails db:create
 
 \list # list all databases
+\l # list
 
 DROP DATABASE myapp2_development
 
+\c railz_development
 
+# list all tables
+\dt
 ```
 
 ## Code
@@ -243,35 +255,34 @@ DROP DATABASE myapp2_development
 [https://www.youtube.com/watch?v=Hwou03YqH4I](https://www.youtube.com/watch?v=Hwou03YqH4I) this video suggests putting code in `\code` so that it isn't in the Windows filesystem, thus will be much faster.
 
 
-## VS Code Extensions
+[![alt text](/assets/2024-04-25/3.jpg "email"){:width="500px"}](/assets/2024-04-25/3.jpg)
 
-[https://www.youtube.com/watch?v=4GjXSI6jcLI&t=0s](https://www.youtube.com/watch?v=4GjXSI6jcLI&t=0s)
+This is what we're aiming for. 
 
-- Emmet
-- GitHub Copilot
-- GitLens - to see the changes
-- Prettier - CSS / HTML / JS
-- Ruby - formatting and prettier
-- Ruby extension pack - linter, erb?, symbols
-- Solargraph
+The database needs to be there eg `rails db:create`. I'm getting strange errors after the db is created about auth. But is seems to work.
 
-## Shortcuts
+[![alt text](/assets/2024-04-25/4.jpg "email"){:width="500px"}](/assets/2024-04-25/4.jpg)
 
-Ctrl B - hide side panel
-
-
-## Rails new
+Then `rails s` will run migrations automatically to populate when the home page is loaded. It just has 2 empty tables.
 
 ```bash
+
+rails new --help
+
+rails new --database=postgresql #(mssql is there!)
+rails new -d postgresql
+
+# css prepreprocessor
+rails new --css=tailwind
+rails new -c tailwind
+
+
 # create a new rails app
-rails new hello-world
+rails new railz -d posgresql -c tailwind
 
-# maybe need sqllite?
-sudo apt install libsqlite3-dev
+# runs a bundle install (gem package manager for Ruby which the Gemfile looks after)
 
-bundle install
-
-# start
+# short for server
 rails s
 
 # http://localhost:3000
@@ -302,7 +313,28 @@ rails db:migrate
 
 
 
+
+
+
 ## OLD
+
+
+
+## VS Code Extensions
+
+[https://www.youtube.com/watch?v=4GjXSI6jcLI&t=0s](https://www.youtube.com/watch?v=4GjXSI6jcLI&t=0s)
+
+- Emmet
+- GitHub Copilot
+- GitLens - to see the changes
+- Prettier - CSS / HTML / JS
+- Ruby - formatting and prettier
+- Ruby extension pack - linter, erb?, symbols
+- Solargraph
+
+## Shortcuts
+
+Ctrl B - hide side panel
 
 ## Rewrite existing app
 
