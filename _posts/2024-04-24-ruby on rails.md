@@ -2,12 +2,12 @@
 layout: post
 # title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
-menu: review
+# menu: review
 categories: ror 
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2024-03-03/2.jpg
+image: /assets/2024-05-03/4.jpg
 ---
 
 <!-- [![alt text](/assets/2024-02-01/1.jpg "email"){:width="600px"}](/assets/2024-02-02/1.jpg) -->
