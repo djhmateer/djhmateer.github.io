@@ -101,15 +101,7 @@ There are some things which bug me about the framework I've used for years:
 
 Tangentially I've been using Python for non web based work and I really like how easy it is to work with, and how productive it is. Also not having the compile step is handy. Makes in situ updates easy.
 
-## Play
 
-Sometimes it's important to have fun and play!
-
-AI - everything I do now I'm using [https://chat.openai.com/](https://chat.openai.com/) as a sanity check eg
-
-> should I use apt or apt-get
-
-I prefer apt, but can't remember why. So it turns out apt-get is older, but prefered for scripting as it is more reliable (and wont change)
 
 
 ## Where to Start?
@@ -174,6 +166,11 @@ gem update --system
 # 3.3.1
 ruby -v
 
+```
+
+## Install Nodejs
+
+```bash
 # 20.12.2 is latest LTS version on nodejs on 1st May 2024
 asdf install nodejs 20.12.2
 asdf global nodejs 20.12.2
@@ -189,11 +186,18 @@ node -v
 # npm and npx 10.5.0 on nodejs 20.12.2
 npm -v
 
-
 # Install yarn for Rails jsbundling/cssbundling or webpacker
 # npm install -g yarn
-
 ```
+
+I use Go for another site which uses npx. This install above has broken that pipeline fully. Can't even deploy to Netlify.
+
+hugo v0.92.2+extended linux/amd64 BuildDate=2023-01-31T11:11:57Z VendorInfo=ubuntu:0.92.2-1ubuntu0.1
+ERROR 2024/05/02 11:29:22 Page.URL is deprecated and will be removed in Hugo 0.93.0. Use .Permalink or .RelPermalink. If what you want is the front matter URL value, use .Params.url
+Error: Error building site: POSTCSS: failed to transform "css/styles.css" (text/css): unknown command: npx. Perhaps you have to reshim?
+
+
+I use Jekyll which uses Ruby for another site. This install has broken that too, but I can just deploy to Github Pages and it works there.
 
 ## Install Rails
 
@@ -243,7 +247,6 @@ sudo -u postgres createuser --interactive --pwprompt
 # test the connection
 psql postgresql://bob:password@localhost:5432/test
 
-
 rails new myapp -d postgresql
 
 # config/database.yml
@@ -261,16 +264,13 @@ default: &default
 # rails server will run migrations
 rails db:create
 
-\list # list all databases
-\l # list
+\l # list all databases
 
 DROP DATABASE myapp2_development
 
-# connect to a database
-\c railz_development
-
-# list all tables
-\dt
+\c railz_development # connect to a database
+\dt # list all tables
+\q  # quit
 ```
 
 ## Code
@@ -302,7 +302,7 @@ rails new -c tailwind
 
 
 # create a new rails app
-rails new railz -d posgresql -c tailwind
+rails new railz -d postgresql -c tailwind
 
 # runs a bundle install (gem package manager for Ruby which the Gemfile looks after)
 
@@ -391,7 +391,45 @@ scripts directory
 
 .env file - in the root for db settings etc.. Rails has a better way that encrypts stuff but I like this too. Will probably go towards a secrets directory.
 
-Makefile
+
+```bash
+# Makefile
+
+.PHONY: run test
+
+run:
+    bin/dev
+
+test:
+    rails test
+```
+
+Useful to run `rails routes` to see what are our routes
+
+So our generators created tests:
+
+```rb
+# test/controllers/home_controller_test.rb
+
+require "test_helper"
+
+class HomeControllerTest < ActionDispatch::IntegrationTest
+  test "should get index" do
+    # controller_action_ 
+    # url - absolute
+    # path - relative
+    get home_index_url
+    assert_response :success
+  end
+
+  test "should get about" do
+    get home_about_url
+    assert_response :success
+  end
+end
+```
+
+So this is quite a sensible test ie just make sure that each page returns a 200.
 
 
 
@@ -533,4 +571,17 @@ alias d='/mnt/c/sharedtools/OpenVSSolution/d.exe'
 ```
 ## Rails 6 - 7
 
+
 Uses Hotire by default now for javascript
+
+
+
+## Play
+
+Sometimes it's important to have fun and play!
+
+AI - everything I do now I'm using [https://chat.openai.com/](https://chat.openai.com/) as a sanity check eg
+
+> should I use apt or apt-get
+
+I prefer apt, but can't remember why. So it turns out apt-get is older, but prefered for scripting as it is more reliable (and wont change)
