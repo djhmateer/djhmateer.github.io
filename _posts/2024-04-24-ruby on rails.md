@@ -192,9 +192,10 @@ npm -v
 
 I use Go for another site which uses npx. This install above has broken that pipeline fully. Can't even deploy to Netlify.
 
-hugo v0.92.2+extended linux/amd64 BuildDate=2023-01-31T11:11:57Z VendorInfo=ubuntu:0.92.2-1ubuntu0.1
+
+`hugo v0.92.2+extended linux/amd64 BuildDate=2023-01-31T11:11:57Z VendorInfo=ubuntu:0.92.2-1ubuntu0.1
 ERROR 2024/05/02 11:29:22 Page.URL is deprecated and will be removed in Hugo 0.93.0. Use .Permalink or .RelPermalink. If what you want is the front matter URL value, use .Params.url
-Error: Error building site: POSTCSS: failed to transform "css/styles.css" (text/css): unknown command: npx. Perhaps you have to reshim?
+Error: Error building site: POSTCSS: failed to transform "css/styles.css" (text/css): unknown command: npx. Perhaps you have to reshim?`
 
 
 I use Jekyll which uses Ruby for another site. This install has broken that too, but I can just deploy to Github Pages and it works there.
@@ -235,6 +236,7 @@ echo "sudo service postgresql start" >> ~/.bashrc
 sudo -i -u postgres
 psql
 CREATE ROLE bob WITH LOGIN PASSWORD 'password';
+CREATE ROLE charlie WITH LOGIN PASSWORD 'password' SUPERUSER;
 #CREATE DATABASE test OWNER bob;
 ALTER USER bob CREATEDB;
 
@@ -273,6 +275,18 @@ DROP DATABASE myapp2_development
 \q  # quit
 ```
 
+To see queries in real time (like for mssql - monitor) I need to update 
+
+```bash
+# /etc/postgresql/14/main/postgresql.conf
+
+logging_collector = on
+log_directory = '/var/log/postgresql'
+log_filename = 'raw-postgresql-%Y-%m-%d_%H%M%S.log'     # log file name pattern,
+log_file_mode = 0777 # default is sudo only to read
+
+```
+
 ## Code
 
 [https://www.youtube.com/watch?v=Hwou03YqH4I](https://www.youtube.com/watch?v=Hwou03YqH4I) this video suggests putting code in `\code` so that it isn't in the Windows filesystem, thus will be much faster. I'm using `~/code`
@@ -282,7 +296,7 @@ DROP DATABASE myapp2_development
 
 This is what we're aiming for. 
 
-The database needs to be there eg `rails db:create`. I'm getting strange errors after the db is created about auth. But is seems to work.
+The database needs to be there eg `rails db:create`. I'm getting strange errors after the db is created about auth. The problem was the db needed to be a superuser then the problem went away.
 
 <!-- [![alt text](/assets/2024-04-25/4.jpg "email"){:width="500px"}](/assets/2024-04-25/4.jpg) -->
 [![alt text](/assets/2024-04-25/4.jpg "email")](/assets/2024-04-25/4.jpg)
@@ -310,7 +324,7 @@ rails new railz -d postgresql -c tailwind
 rails s
 ```
 
-## Rails g
+## Rails g Generators
 
 [https://tailblocks.cc/](https://tailblocks.cc/) - Ready to use tailwind blocks which doesn't seem to be maintained? But looks good. Taking a header and hero from here.
 
@@ -368,7 +382,7 @@ ERB Formatter/Beautify - had to run `gem install htmlbeautifier`
 
 ERB Syntax highlight - seems to work
 
-GH Copilot - hello this is  
+GH Copilot - seems very useful so far for code completion.
 
 
 ## Partials - Refactor out layout
@@ -382,8 +396,6 @@ As always use more than 1 layout - yep I do that too!
 ```
 
 /home/about - want this to be /about
-
-
 
 ## Tests and Tools
 
@@ -432,12 +444,237 @@ end
 So this is quite a sensible test ie just make sure that each page returns a 200.
 
 
+## Scaffold
+
+`rails g scaffold user email:uniq name`
+
+[![alt text](/assets/2024-04-25/6.jpg "email"){:width="500px"}](/assets/2024-04-25/6.jpg)
+
+- db migration
+- model - a user
+- tests
+- fixutre?
+- route
+- controller
+- helpers / jbuilder
+
+`rails destroy scaffold user`
+
+wow this is good to delete everything!
+
+`rails g scaffold user email:uniq name --no-jbuilder`
 
 
+[![alt text](/assets/2024-04-25/7.jpg "email"){:width="500px"}](/assets/2024-04-25/7.jpg)
+
+CRUD! UI is tailwind
 
 
+[![alt text](/assets/2024-04-25/8.jpg "email"){:width="500px"}](/assets/2024-04-25/8.jpg)
+
+```sql
+sudo -i -u postgres
+psql
+
+-- list all databases
+\l
+\c railz2_development
+select * from users;
+```
+
+There are bits and bobs behind the scenes which are created.
+
+- test\models\user_test.rb - stubbed 
+- test\system\users_test.rb - like a UI test. They are brittle. Looking for elements like H1's etc..
+- test\fixtures\users.yml - data to run tests
 
 
+```rb
+# test\system\users_test.rb
+class UsersTest < ApplicationSystemTestCase
+  setup do
+    # :one is a symbol an is immutable. Lighter than string value. Used to represent thing eg variables, methods, keys
+    @user = users(:one)
+  end
+```
+
+seems like I had to change
+
+```yml
+one:
+  email: MyString
+  name: MyString
+
+two:
+  email: MyString2
+  name: MyString2
+```
+
+After updating the two above I was still getting a failing test. Looking at pg in real time (see setup above for turning on loggin) I saw the error being a conflict.
+
+```sql
+ LOG:  execute <unnamed>: INSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"
+2024-05-03 12:09:30.794 BST [100574] charlie@railz2_test DETAIL:  parameters: $1 = 'MyString', $2 = 'MyString', $3 = '2024-05-03 11:09:30.794441', $4 = '2024-05-03 11:09:30.794441'
+2024-05-03 12:09:30.795 BST [100574] charlie@railz2_test ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2024-05-03 12:09:30.795 BST [100574] charlie@railz2_test DETAIL:  Key (email)=(MyString) already exists.
+2024-05-03 12:09:30.795 BST [100574] charlie@railz2_test STATEMENT:  INSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"
+2024-05-03 12:09:30.795 BST [100574] charlie@railz2_test LOG:  statement: ROLLBACK TO SAVEPOINT active_record_1
+```
+and from ruby side
+
+```rb
+Error:
+UsersControllerTest#test_should_create_user:
+ActiveRecord::RecordNotUnique: PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=(MyString) already exists.
+```
+Interesting.
+
+
+## Spina CMS
+
+Important to be able to manage content as a solopreneur which is why Wordpress is so popular.
+
+[Spina CMS](https://github.com/spinacms/spina) 2.2k stars and very active. A modern Ruby on Rails CMS with Hotwire
+
+[Prismic](https://prismic.io/) is an alternative. HEadless CMS ie just serves json back. but this is hosted, so if they go down, I go down.
+
+
+[Installing Spina](https://spinacms.com/docs/getting-started/installing-spina)
+
+```bash
+# handles uploads
+# default location is in \storage
+# can change storage to be S3 or Azure or another CDN
+rails active_storage:install
+
+# Gemfile at end
+# or could say: bundle add spina
+gem 'spina'
+
+bundle
+
+# this is a rake task (the spina:install notation)
+rails spina:install
+```
+
+However I got this
+
+`rails spina:install
+Unrecognized command "spina:install" (Rails::Command::UnrecognizedCommandError)
+Did you mean?  yarn:install`
+
+```bash
+# /home/dave/gems/gems/spina-2.5.0
+bundle info spina
+```
+
+### Gem version
+
+The problem was the version of the gem
+
+`gem info spina` gave me 2.5.0
+
+[https://rubygems.org/gems/spina](https://rubygems.org/gems/spina) yet here the latest 2.18
+
+
+So in the `Gemfile`
+
+```rb
+# force the latest
+gem "spina", "~> 2.18"
+
+bundle
+```
+
+[![alt text](/assets/2024-04-25/9.jpg "email"){:width="500px"}](/assets/2024-04-25/9.jpg)
+
+Ah so turbo-rails is now downgrading to 1.5 from 2.0.5
+
+## Spina
+
+[![alt text](/assets/2024-04-25/10.jpg "email"){:width="500px"}](/assets/2024-04-25/10.jpg)
+
+active_storage and spina have added lots of tables.
+
+
+[http://localhost:3000/admin](http://localhost:3000/admin) is our CMS admin
+
+
+<!-- [![alt text](/assets/2024-04-25/11.jpg "email"){:width="500px"}](/assets/2024-04-25/11.jpg) -->
+[![alt text](/assets/2024-04-25/11.jpg "email")](/assets/2024-04-25/11.jpg)
+Added another page on the backend, and it has hijacked our /about route.
+
+It's using
+
+```bash
+# default is the template name
+# homepage template is only for the homepage
+- app/views/default/pages/homepage.html.erb
+
+# shared is for all others
+- show.html.erb
+```
+
+In `routes.rb` we can change the order so that some pages are served by Rails and others by the CMS.
+
+We could also mount spina off a subroot like /blog
+
+`git checkout -b spina` - working in a branch.
+
+## Spina Layout
+
+Our /about page is now powered by Spina (in routes.rb)
+
+Spina application layout is in `app/views/layouts/default/application.html.erb`
+
+```html
+<!DOCTYPE html>
+<!-- spina application template -->
+<html>
+  <head>
+    <title><%= current_spina_account.name %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <%= render "layouts/nav" %>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
+  </body>
+</html>
+```
+
+Original non Spina layout is in `app/views/layouts/application.html.erb` and partial in `_nav.html.erb`
+
+```html
+<!DOCTYPE html>
+<!-- rails application template -->
+<html>
+  <head>
+    <title>Railz2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <%= render "layouts/nav" %>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
+  </body>
+</html>
+```
+
+## Customise Spina so H1's etc are rendered by Tailwind
+
+We're going to get separate parts of the page editable by the backend as the editor [Trix]() only generates vanilla html tags with no classes.
 
 
 
