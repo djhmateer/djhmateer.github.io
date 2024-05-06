@@ -577,7 +577,6 @@ The problem was the version of the gem
 
 [https://rubygems.org/gems/spina](https://rubygems.org/gems/spina) yet here the latest 2.18
 
-
 So in the `Gemfile`
 
 ```rb
@@ -675,6 +674,202 @@ Original non Spina layout is in `app/views/layouts/application.html.erb` and par
 ## Customise Spina so H1's etc are rendered by Tailwind
 
 We're going to get separate parts of the page editable by the backend as the editor [Trix]() only generates vanilla html tags with no classes.
+
+
+`config/initializers/themes/default.rb` - tweak theme settings.. including spina.
+
+Add a new `theme.part` called summary.
+
+Add summary
+`{name: "show", title: "Page", parts: %w[text summary]}`
+
+%w is words - dont need quotes or commas
+
+
+[![alt text](/assets/2024-04-25/12.jpg "email"){:width="500px"}](/assets/2024-04-25/12.jpg)
+
+Nice - we get a new part of the CMS
+
+Data is saved as Jsonb (binary) in postgres
+
+`/app/views/default/pages/show.html.erb` - 
+
+## Can't see image previews
+
+```bash
+
+# am getting these errors on uploading and trying to view an image
+
+# 08:31:16 web.1  | LoadError (Could not open library 'vips.so.42': vips.so.42: cannot open shared object file: No such file or directory.
+# 08:31:16 web.1  | Could not open library 'libvips.so.42': libvips.so.42: cannot open shared object file: No such file or directory.
+# 08:31:16 web.1  | Searched in <system library path>, /usr/lib, /usr/local/lib, /opt/local/lib):
+
+# Gemfile
+# uncommented gem "image_processing", "~> 1.2"
+
+sudo apt-get install libvips42
+
+```
+
+Installing libvips42 did the trick. Didn't need the gemfile update?
+
+
+## Editing the show.html.erb template
+asdf
+
+# Creating dedicated templates
+
+So this is important - having a CMS that can edit the front of the site well. And not have to worry about shipping new templates all the time.
+
+[https://bigmachine.io/courses/rails-revisited/creating-a-sales-page-the-repeater](https://bigmachine.io/courses/rails-revisited/creating-a-sales-page-the-repeater)
+
+[sales-page.png](https://copywritingcrew.com/wp-content/uploads/2021/11/sales-page.png)
+
+There is a formula, so lets use this formula in the CMS
+
+
+```html
+<!-- /app/views/default/pages/sales.html.erb -->
+<!-- what problem are you trying to solve -->
+<section id="hook">
+</section>
+
+<!-- further define the problem -->
+<section id="problem">
+
+<section id="empathy">
+</section>
+
+<!-- so I made this thing -->
+<section id="solution"></section>
+<!-- these are the benefits for you -->
+<section id="benefits"></section>
+<!-- who am I -->
+<section id="cred"></section>
+<section id="proof"></section>
+<!-- here is my offer to you today -->
+<section id="offer"></section>
+<section id="guarantee"></section>
+<section id="cta"></section>
+```
+
+How do we do sections like above in Spina?
+
+`/config/initializers/themes/default.rb` - Theme configuration file. Define everything that's editable in Spina.
+
+- can't use part eg a Hero part - as we're allowed only 1 part type eg ::Text, ::Line
+- can't use view_template as this corresponds to a page
+- could use a custom part.. but repeater easier
+- 
+
+```rb
+#/config/initializers/themes/default.rb
+  theme.parts = [
+    {name: "text", title: "Body", hint: "Your main content", part_type: "Spina::Parts::Text"},
+    {name: "title", title: "Title", part_type: "Spina::Parts::Line"},
+    {name: "summary", title: "Summary", hint: "A summary for your page", part_type: "Spina::Parts::Line"},
+    {name: "image", title: "Image", hint: "An image for your stuff", part_type: "Spina::Parts::Image"},
+    {name: "link", title: "Link", hint: "A URL", part_type: "Spina::Parts::Line"},
+    {name: "linktext", title: "Link Text", hint: "The text for a link", part_type: "Spina::Parts::Line"},
+    {name: "problem", title: "Problem", part_type: "Spina::Parts::Repeater", parts: %w[title text image link linktext]},
+    {name: "empathy", title: "Empathy", part_type: "Spina::Parts::Repeater", parts: %w[title text image link linktext]},
+  ]
+
+  # View templates
+  # Every page has a view template stored in app/views/my_theme/pages/*
+  # You define which parts you want to enable for every view template
+  # by referencing them from the theme.parts configuration above.
+  theme.view_templates = [
+    {name: "homepage", title: "Homepage", parts: %w[text]},
+    {name: "show", title: "Page", parts: %w[summary text image link linktext]},
+    {name: "sales", title: "Sales Page", parts: %w[summary text image link linktext problem empathy]},
+  ]
+```
+
+## Sales Page - The Layout
+
+Make a hero partial `app/views/spina/pages/_hero.html.erb`
+
+[![alt text](/assets/2024-04-25/13.jpg "email"){:width="500px"}](/assets/2024-04-25/13.jpg)
+
+Notice the slug is now `\widgets` rathen than the long title.
+
+View Template called Sales which is selected when we create a New Page.
+
+Which has a `Parts` called 
+
+- title (every page has to have a title)
+- summary::Line
+- text named Body ::Text
+- image ::Image
+- link ::Line
+- linktext ::Line
+- problem ::Repeater
+- empathy ::Repeater
+
+`problem` repeater and `empathy` repeater contain multiple parts.
+
+- title
+- text named Body
+- image 
+- link
+- linktext
+
+Then in `app/views/default/pages/sales.html.erb` we can wire it up so it can display many problems.
+
+```html
+<section id="hook">
+  <%=render("hero")%>
+</section>
+
+<%if(current_page.content(:problem))%>
+<section id="problem">
+<%current_page.content(:problem).each do |problem|%>
+<section class="text-gray-600 body-font">
+  <div class="container px-5  mx-auto">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+        <%=problem.content(:title)%>
+      </h1>
+      <div class="lg:w-2/3 mx-auto leading-relaxed text-base">
+        <%=problem.content.html(:text)%>
+      </div>
+    </div>
+  </div>
+</section>
+<%end%>
+</section>
+<%end%>
+
+<section id="empathy">
+
+</section>
+<section id="solution"></section>
+<section id="benefits"></section>
+<section id="cred"></section>
+<section id="proof"></section>
+<section id="offer"></section>
+<section id="guarantee"></section>
+<section id="cta"></section>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
