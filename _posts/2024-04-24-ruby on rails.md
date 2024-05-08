@@ -920,7 +920,7 @@ rails db:migrate
 
 ```
 
-## PGAdmin
+## PGAdmin 
 
 [https://www.postgresql.org/ftp/pgadmin/pgadmin4/](https://www.postgresql.org/ftp/pgadmin/pgadmin4/)
 
@@ -928,11 +928,9 @@ rails db:migrate
 # sudo nano /etc/postgresql/14/main/postgresql.conf
 listen_addresses = '*'
 
-
 # sudo vim pg_hba.conf
 # add to end to allow password authentication from any IP
 host    all             all             0.0.0.0/0               md5
-
 
 sudo systemctl restart postgresql
 
@@ -944,10 +942,10 @@ ip addr show eth0
 
 Nice to have a viewer of the db. Running on Windows, talking to WSL2 instance of Postgres.
 
-courses table
+Courses table
 
-- id
-- name
+- id (I'm a fan of course_id) name here. but lets see... Identity. Int or Bigint
+- name. Text or varchar (character varying)
 
 ```sql
 ALTER TABLE courses
@@ -960,12 +958,16 @@ CREATE TABLE courses
     CONSTRAINT courses_pkey PRIMARY KEY (id)
 )
 
-
 -- right click on table, backup, Table Options: Use Column Inserts.
 INSERT INTO public.courses (id, name) VALUES (1, 'Computer Science Fundamentals');
 INSERT INTO public.courses (id, name) VALUES (2, 'Going Out on Your Own as a Solo Programmer');
 ```
-asdf
+
+[![alt text](/assets/2024-04-25/18.jpg "email"){:width="500px"}](/assets/2024-04-25/18.jpg)
+
+PGAdmin showing how to create an Identity column Lessons, Right Click Properties, Columns, Edit id, Constraints.
+
+FK addition is on the table level top menu of window: Constraints.
 
 ```bash
 # redo a migration
@@ -1009,15 +1011,12 @@ class AddCoursesAndLessonsToSpina < ActiveRecord::Migration[7.1]
     Spina::Resource.find_by(name: "courses").destroy
   end
 
-
 end
 ```
 
 [![alt text](/assets/2024-04-25/16.jpg "email"){:width="500px"}](/assets/2024-04-25/16.jpg)
 
 Imported data into the CMS using little ETL migration. All using ActiveRecord ORM.
-
-
 
 create a new page template
 
@@ -1028,7 +1027,6 @@ create a new page template
 ```
 
 So we're making sure we can edit course material in the CMS
-
 
 Need to edit the theme
 
@@ -1058,8 +1056,6 @@ Need to edit the theme
     {name: "sales", title: "Sales Page", parts: %w[summary text image link linktext problem empathy]},
     {name: "course", title: "Course Page", parts: %w[slug summary body]},
   ]
-
-
 ```
 
 [![alt text](/assets/2024-04-25/17.jpg "email"){:width="500px"}](/assets/2024-04-25/17.jpg)
@@ -1067,6 +1063,112 @@ Need to edit the theme
 Have added a new Resource called Courses. Imported data into Spina tables using a migration, and now we can edit Course text using the CMS.
 
 Have also added Pages based off this new Resource where we've hacked in the correct json.
+
+
+## Lessons
+
+A Course can contain multiple Lessons. I've setup a new table with an FK Constraint.
+
+`app/views/default/pages/lesson.htm.erb` - ```<h1>lesson</h1>``` - Page template (for front end)
+
+`config/initializers/themes/default.rb` - Spina CMS where you define everything that is editable
+
+- new view_template called lesson. With parts: slug vimeo summary body
+- new part vimeo which is a Line.
+
+`db/migrate/20241234_add_courses_and_lessons_to_spina.rb` - migration.
+
+```bash
+# down
+rails db:rollback
+
+# up
+rails db:migrate
+
+# both
+rails db:migrate:redo
+
+```
+
+[![alt text](/assets/2024-04-25/19.jpg "email"){:width="500px"}](/assets/2024-04-25/19.jpg)
+
+Have got a 1 to many relationship now in the CMS.
+
+
+[![alt text](/assets/2024-04-25/20.jpg "email"){:width="500px"}](/assets/2024-04-25/20.jpg)
+
+Can embed an image with the Trix editor which uploads to ActiveStorage. A Rails plugin. In dev it stores data on disk. In prod it can be S3, GCS, Azure etc.. look in `config/storage.yml`
+
+
+## Making an Embed
+
+
+[https://spinacms.com/docs/rendering-content/rich-text](https://spinacms.com/docs/rendering-content/rich-text) 
+
+
+[![alt text](/assets/2024-04-25/21.jpg "email"){:width="500px"}](/assets/2024-04-25/21.jpg)
+
+`/config/initializers/themes/default.rb` at the bottom put in `  theme.embeds = %w(button youtube vimeo)`
+
+
+
+### create a gist
+
+
+```bash
+ rails g spina:embed gist url
+
+#create  app/models/spina/embeds/gist.rb
+#create  app/views/spina/embeds/gists/_gist_fields.html.erb
+#create  app/views/spina/embeds/gists/_gist.html.erb
+```
+
+[![alt text](/assets/2024-04-25/22.jpg "email"){:width="500px"}](/assets/2024-04-25/22.jpg)
+
+The CMS input form
+
+[![alt text](/assets/2024-04-25/23.jpg "email"){:width="500px"}](/assets/2024-04-25/23.jpg)
+
+The output
+
+Rob has a raw html embed too.
+
+
+## Real world - routing
+
+Lets have Spina only doing the bits I want and I'll handle the rest of the site so can keep control.
+
+`/app/views/layouts/application.html.erb` - rails application template
+
+`/app/views/layouts/default/application.html.erb` - spina application template
+
+`/config/routes.rb` - eg /home/index, /, and the rest is spina
+
+
+We scaffolded out /users etc.. above. `rails g scaffold user email:uniq name --no-jbuilder`
+
+which gave us a UI and CRUD.
+
+```rb
+# /config/initializers/spina.rb
+config.disable_frontend_routes = true
+```
+
+### Catch_all and thoughts
+
+Nice feature to try and serach for older routes coming in.
+
+Have also got pwned and pwned2 rendering html from a view as a special page (not Spina)
+
+
+**bits are not working in the catch_all
+
+Use whatever headless cms.. just get content out of templates so can scale your business.
+
+
+
+
+
 
 
 

@@ -2,12 +2,12 @@
 layout: post
 # title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
-menu: review
+# menu: review
 categories: mssql 
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2024-03-03/2.jpg
+image: /assets/2024-04-25/1.jpg
 ---
 
 <!-- [![alt text](/assets/2024-02-01/1.jpg "email"){:width="600px"}](/assets/2024-02-02/1.jpg) -->
@@ -255,3 +255,7 @@ From our error message above we're looking for an LSN of - 182195700010476440000
 - Target   -1047644
 
 So we need a trn file written after 1745  and before 0700. Perhaps an 1800 one which isn't working?
+
+## Veeam
+
+Turns out the problem was another backup solution which somehow looked at the log files, thus breaking the chain. Once it was disabled for the log files, this restore worked. I only managed to restore the bak and all trn files together, not separate which should be possible.
