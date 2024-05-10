@@ -1166,6 +1166,204 @@ Have also got pwned and pwned2 rendering html from a view as a special page (not
 Use whatever headless cms.. just get content out of templates so can scale your business.
 
 
+ ## Authentication with Devise
+
+[![alt text](/assets/2024-04-25/24.jpg "email"){:width="500px"}](/assets/2024-04-25/24.jpg)
+
+Spina has it's own simple authentication, handled by spina_users table.
+
+[Devise](https://github.com/heartcombo/devise) is a Rails authentication solution. 23.7k stars. [install](https://github.com/heartcombo/devise#getting-started)
+
+```bash
+# adds a line in Gemfile
+bundle add devise
+
+# creates config/initializers/devise.rb
+# config/locales/devise.en.yml
+rails generate devise:install
+
+# follow instructions
+
+# add this line into /config/environments/development.rb
+# just so that emails have the correct url port.. not relative... but absolute.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+```
+
+Rails has an alerts system called Flash which can output messages.
+
+```html
+<!-- add to /app/views.layouts/application.html.erb -->
+<!-- rails application template -->
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+```
+
+`rails generate devise User` - creates a migration. Using our existing User model which we defined at the start.
+
+Also it created a route. `devise_for :users`
+
+In the migration, leave the core stuff ie email and password.
+
+Change the migration as we have the email address column and index already.
+
+`rails db:migrate`
+
+
+`rails routes` - we we can see the new routes that devise has setup with teh `devise_for :users` in routes.rb
+
+/users/sign_in
+/users/sign_up
+/users/sign_out
+
+Why go passwordless
+
+- so in a databreach we don't lose the users password
+- poor mans 2FA ie send email and get them to click a link
+
+### devise-passwordless
+
+Am not using.. (have commented out the passwordless commands)
+
+[https://github.com/abevoelker/devise-passwordless](https://github.com/abevoelker/devise-passwordless) 189 stars
+
+Send an email to the user, they click a link, then they are logged in.
+
+```bash
+# show all the generators we have
+rails g
+
+# generates tons of views in /aoo/views/devise/
+rails g devise:views
+
+# we could see the logic in the controllers
+# rails g devise:controllers
+
+# app/views/devise/sessions/new.html.erb
+# login page
+
+# Gemfile
+# gem "devise-passwordless"
+
+# bundle
+
+# rails g devise:passwordless:install
+
+# inserted something into /config/initializers/devise.rb - this is entire config for devise
+change `config.mailer_sender` to "dave@hmsoftware.co.uk" in devise.rb
+
+# created: app/views/devise/mailer/magic_link.html.erb
+# inserted: config/locales/devise.en.yml
+
+```
+
+### Mailers setup
+
+`config/initializers/devise.rb` - this is entire config for devise. Change `config.mailer_sender` to "dave@hmsoftware.co.uk"
+
+`app/mailers/application_mailer.rb` - change the from address here to `dave@hmsoftware.co.uk`
+
+Application mailer view is in `app/views/layouts/mailer.html.erb` and also the text 
+
+Devise mailer is what we'll be using.
+
+```bash
+# .env
+SMTP_ADDRESS=smtp.postmarkapp.com
+SMTP_USER= big_guid
+SMTP_PASSWORD= big_guid
+
+# config/environments/development.rb
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.perform_caching = false
+
+  # DM added this so that even in dev it will send an email
+  config.action_mailer.smtp_settings = {
+    address: ENV['SMTP_ADDRESS'],
+    user_name: ENV['SMTP_USER'],
+    password: ENV['SMTP_PASSWORD'],
+  }
+```
+
+We want to change the text as it gets into spam: magic, link, download are all flags
+
+
+### Passwordless
+
+I've not done this 
+
+```rb
+#app/models/user.rb
+
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  devise :database_authenticatable, :registerable,
+ # devise :magic_link_authenticatable,
+         :recoverable, :rememberable, :validatable
+         #:validatable
+end
+
+
+# config/routes.rb
+ resources :users,
+    #controllers: { sessions: "devise/passwordless/sessions" }
+
+#then delete devise passwords
+
+#rm -rf app/views/devise/passwords
+#rm -f app/views/devise/mailer/password_change.html.erb
+#rm -f app/views/devise/mailer/reset_password_instructions.html.erb
+
+# update nav template to links to the new session ie login page
+ <a href="<%= new_user_session_path %>" 
+
+```
+
+
+For passwordsless I got - `Invalid Email or password.` prompt. So something isn't wired up right. Let's revert back to the simple version of only devise username and password flow.
+
+For standard devise I got a successful sign in but no email sent by default?
+
+Also I can't so a /users/sign_out
+
+- davemateer@gmail.com - is my default user.. 
+- djhmateer@hotmail.com / letmein is test
+- djhmateer@outlook.com / letmein is test
+
+Reset password did work to email (went to junk though)
+
+## Logging Out
+
+Add this to `_nav.html.erb`
+
+```html
+    <!-- rubyism ? means returning true or false -->
+    <%if(user_signed_in?)%>
+
+    <%=link_to "Logout", destroy_user_session_path, method: :delete, class: "inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"%>
+
+    <%else%>
+    <a href="<%= new_user_session_path %>" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Login
+    </a>
+    <%end%>
+```
+
+But it doesn't work.. turbolinks is somehow sending it to get insead of delete verb.
+
+> Error: Couldn't find User with 'id'=sign_out
+
+Solution was to change to `button_to` instead of a href. [More info](https://github.com/heartcombo/devise?tab=readme-ov-file#hotwireturbo) on another workaround.
+
+
+## Adding social login
+
+HERE
+
+## Integrating Devise and Spina
+
+**we do have a problem**
 
 
 
