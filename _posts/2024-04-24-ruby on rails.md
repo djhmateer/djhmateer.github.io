@@ -1945,8 +1945,64 @@ Useful!!! Good to test this happy path as they are just there for us.
 
 Rails controller have the concept of a filter eg before an action is called, after or around.
 
-
 So we are redirected to a login page if we're not logged in and want to see albums.
+
+```rb
+class AlbumsController < ApplicationController
+  # before_action filter.
+  # authenticate_user! is a devise method that checks if the user is logged in
+  before_action :authenticate_user!
+
+  # calls method set_album to get the album from the db
+  # so we don't have to do it in every method
+  before_action :set_album, only: %i[ show edit update destroy ]
+```
+
+### is_admin authorization
+
+```rb
+# /app/controllers/albums_controller.rb
+class AlbumsController < ApplicationController
+  # before_action filter.
+  # authenticate_user! is a devise method that checks if the user is logged in
+  # is_admin is our method
+  
+  before_action :is_admin!, except: %i[ index show ]
+
+# /app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
+  
+  def is_admin!
+    redirect_to root_path unless user_signed_in? && current_user.is_admin?
+  end
+
+end
+
+
+# /app/models/user.rb
+class User < ApplicationRecord
+   # ...  
+   def is_admin?
+    return true if email == "davemateer@gmail.com"
+   end
+```
+
+
+## Tips
+
+[https://tenderlovemaking.com/2014/02/19/adequaterecord-pro-like-activerecord.html](https://tenderlovemaking.com/2014/02/19/adequaterecord-pro-like-activerecord.html) caching for ActiveRecord
+
+
+[Ruby Object Mapper](https://rom-rb.org/) which used to be called Ruby Data Mapper. Fast alternative to ActiveRecord.
+
+[Ahoy](https://github.com/ankane/ahoy) from Andrew Kane. tracker of visits. Just like my code.
+
+
+
+## Shippinh the application!
+
+
+
 
 
 
