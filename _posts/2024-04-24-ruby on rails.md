@@ -219,10 +219,13 @@ rails new --help
 sudo apt install postgresql postgresql-contrib libpq-dev
 
 # allow passwords on local
-sudo vim /etc/postgres/14/main/pg_hba.conf
-# change local local from peer to md5
+sudo vim /etc/postgresql/14/main/pg_hba.conf
+# change local local from peer to md5 **IF you want to be prompted
+# change local local from peer to trust **better
+# also do the postgrest local all to trust at top
 
 sudo service postgresql start
+sudo service postgresql restart
 
 sudo service postgresql status
 
@@ -457,6 +460,14 @@ So this is quite a sensible test ie just make sure that each page returns a 200.
 - route
 - controller
 - helpers / jbuilder
+
+Notice said
+
+- scaffold user command
+- db table is users (plural)
+- /users - index
+- /users/1 - view
+- /users/3/edit  
 
 `rails destroy scaffold user`
 
@@ -1357,25 +1368,585 @@ But it doesn't work.. turbolinks is somehow sending it to get insead of delete v
 Solution was to change to `button_to` instead of a href. [More info](https://github.com/heartcombo/devise?tab=readme-ov-file#hotwireturbo) on another workaround.
 
 
-## Adding social login
+## Adding social login - OmniAuth
 
 HERE
+[https://github.com/settings/developers](https://github.com/settings/developers) Setup an OAuth application.
+
+- Callback URL:
+- Enable Device Flow - tick this
+
+```bash
+#env
+GITHUB_ID
+GITHUB_SECRET
+```
+
+Also setup on Google OAuth app as well.
+
+[https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview)
+
+
+```bash
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
+
+bundle
+
+# shorthand generator command
+# want to add fields provider and uid
+rails g migration AddOmniauthToUsers provider:string uid:string
+
+rake db:migrate
+
+# declare provider in config/initializers/devise.rb
+# GH need to ask it to send back the email
+# Google don't need this
+config.omniauth :github, ENV["GITHUB_ID"], ENV["GITHUB_SECRET"], scope: "user:email"
+
+# app/models/user.rb
+devise :omniauthable, omniauth_providers: %i[facebook]
+
+## NEED TO DO PAGE
+# app/views/devise/sessions/new.html.erb
+# add outside the form as we're not posting and email or password from user
+# Rob disabled turnolinks for entire project as was getting in the way
+<%= button_to "Sign in with GitHub", user_github_omniauth_authorize_path, data: { turbo: false } %>
+
+# routes.rb
+ devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+# create new controller controller/users/omniauth_callbacks_controller.rb
+asdf
+
+
+# implement in model - user.rb
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[github]
+  
+   # self. is static
+   def self.from_omniauth(auth)
+    user = User.find_by(email: auth.info.email)
+
+    # if we don't have a user..
+    unless user
+      user = User.create!(
+        email: auth.info.email, 
+        provider: auth.provider,
+        uid: auth.uid,
+        # user.name: auth.info.name,
+        name: auth.info.name,
+        )
+     end
+     user
+   end
+end
+```
+
+I noticed that it deleted my encrypted password (as I'd signed up before as a User).
+
 
 ## Integrating Devise and Spina
 
-**we do have a problem**
+Currently looking in `spina_users` table.
+
+[https://spinacms.com/docs/advanced/authentication](https://spinacms.com/docs/advanced/authentication)
+
+
+/config/initializers gets loaded first
+
+the everything in /lib (which is meant for anyting outside normal rails eg service classes)
+
+So put authentication module in initalizers. `bigauth.rb`
+
+```rb
+# /initializers/bigauth.rb
+# frozen_string_literal: true
+
+# Used as Spina's authentication module
+module BigAuth
+    extend ActiveSupport::Concern
+  
+    included do
+      helper_method :current_spina_user
+      helper_method :logged_in?
+      helper_method :logout_path
+    end
+  
+    # Spina user falls back to devise user session in the case there is one and it is of a superadmin.
+    def current_spina_user
+      Spina::Current.user ||= current_user if current_user.is_admin?
+    end
+  
+    # Returns falsy unless there is a logged in superadmin
+    def logged_in?
+      return current_spina_user if user_signed_in?
+      false
+    end
+  
+    # Not used
+    def logout_path
+      spina.admin_logout_path
+    end
+  
+    private
+  
+    # Redirects user to sign in if not logged in as a superadmin
+    def authenticate
+      # paths and routes are not available in the initializer so hard code
+      redirect_to "/login" unless logged_in?
+    end
+  end
+
+```
+
+then in 
+
+```rb
+# app/models/users.rb
+   def is_admin?
+    return true if email == "davemateer@gmail.com"
+   end
+   
+```
+
+then
+
+```rb
+# initializers/spina.rb
+# our module 
+config.authentication = "BigAuth"
+```
+
+### login and logout
+
+```rb
+# config/routes.rb
+  devise_for :users, 
+    path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+```
+
+- /login
+- /logout
+- /register
+
+
+## The Rewrite
+
+pgdump out existing database and put into `/db/db.sql` - I've used the [Chinook sample db](https://github.com/lerocha/chinook-database/releases/tag/v1.4.5) here.
+
+I've used a modified version of the db so all table names are plural (Rails convention)
+
+```sql
+-- generate sql to drop all tables in db
+SELECT 'DROP TABLE IF EXISTS "' || tablename || '" CASCADE;' 
+FROM pg_tables 
+WHERE schemaname NOT IN ('pg_catalog', 'information_schema');
+
+DROP TABLE IF EXISTS "artist" CASCADE;
+DROP TABLE IF EXISTS "employee" CASCADE;
+DROP TABLE IF EXISTS "customer" CASCADE;
+DROP TABLE IF EXISTS "invoice" CASCADE;
+DROP TABLE IF EXISTS "invoice_line" CASCADE;
+DROP TABLE IF EXISTS "track" CASCADE;
+DROP TABLE IF EXISTS "playlist" CASCADE;
+DROP TABLE IF EXISTS "playlist_track" CASCADE;
+DROP TABLE IF EXISTS "genre" CASCADE;
+DROP TABLE IF EXISTS "media_type" CASCADE;
+DROP TABLE IF EXISTS "album" CASCADE;
+```
+
+then do any changes in `/db/change.sql`
+
+```sql
+-- /db/change.sql
+alter table album
+add price numeric(10,2) not null default 0;
+```
+
+
+```bash
+# Makefile
+# WATCH OUT FOR TABS and SPACE - use chatgpt to sanity check the file.
+
+# Targets which build things. EVerntually they are all supposed to go together
+# to build final software eg rebuild
+
+# Recipes eg db:migrate
+
+# Dependencies eg dev change schema migrate
+
+# if I run make the first command will be executed
+# and this will do recipes in order
+.PHONY: run test rebuild dev change schema migrate
+
+rebuild: dev change schema migrate
+
+# drops and recreates the chinook table of our railz2_development database
+# putting in all data too
+dev:
+	psql -q railz2_development < db.sql
+
+change:
+	psql -q railz2_development < change.sql
+
+schema:
+	rails db:schema:dump
+
+migrate:
+	rails db:migrate
+```
+
+Could use migrations - but I agree with Rob, that this is a great way to move fast and easily.
+
+### schema.rb
+
+`rails db:schema:dump` - writes to /db/schema.rb
+
+This is generated every time you run a migration or you run this command above. This is how activerecord knows what it is doing.
+
+so if we don't want sku
+
+```sql
+-- /db/change.sql
+alter table albums
+drop sku;
+
+-- then run rails db:schema:dump
+
+-- we don't have that in our app / activerecord anymore
+```
+
+## Scaffold Existing Data - Plural Table Names
+
+Create new directory in the root called scripts
+
+```bash
+# /scripts/scaffolds.sh
+# do  order that want to see on form
+rails g scaffold customer first_name last_name email:uniq company address city state country postal_code phone fax  --no-migration --no-jbuilder
+
+# /scripts/xscaffolds.sh
+rails destroy scaffold customer
+```
+
+My chinook database had customer instead of customers as the table name. By convention Rails expects db table names to be plural. So I changed all table names.
+
+- scaffold customer command
+- db table is customers (plural)
+- /customers - index
+- /customers/1 - view
+- /customers/3/edit  
+- /customers/new
+
+Now we have CRUD forms
+
+So lets build our our app using these RESTful routes.
+
+[tailblocks.cc](https://tailblocks.cc/) Team element to show a grid of our customers
+
+
+[![alt text](/assets/2024-04-25/25.jpg "email"){:width="500px"}](/assets/2024-04-25/25.jpg)
+
+Can see our customers as we edited the `app/views/customers/index.html.erb` file. Click a link takes us to the edit page.
+
+
+## Scaffold Everything
+
+Here is a FK in albums
+
+```bash
+# scripts/scaffolds.sh
+
+# do order that want to see on form
+rails g scaffold customer first_name last_name email:uniq company address city state country postal_code phone fax  --no-migration --no-jbuilder
+
+# references tells us about the FK
+# hint about the price being decimal 
+rails g scaffold album title artist:references price:decimal --no-migration --no-jbuilder
+
+
+rails g scaffold artist name:uniq --no-migration  --no-jbuilder
+
+rails g scaffold employee first_name last_name email:uniq title reports_to:int birth_date:date hire_date:date address city state country postal_code phone fax  --no-migration --no-jbuilder
+
+rails g scaffold genre name:uniq --no-migration  --no-jbuilder
+
+# 1 to many - ie 1 customer has many invoices (setup here)
+# 1 to many - ie 1 invoice can have many invoice_lines (not setup here)
+# so the items by hand later and not in scaffold
+# scaffolding is good to think about what forms we want
+rails g scaffold invoice customer:references invoice_date:date billing_address billing_city billing_state billing_country billing_postal_code total:decimal --no-migration  --no-jbuilder
+
+
+rails g scaffold media_type name:uniq --no-migration --no-jbuilder
+
+# paylist_tracks is a many to many relationship
+# so that table doesn't need a scaffold
+rails g scaffold playlist name:uniq --no-migration --no-jbuilder
+
+rails g scaffold track name composer milliseconds:integer bytes:integer unit_price:decimal album:references media_type:references genre:references --no-migration  --no-jbuilder
+```
+
+remember to have the destroy script there too. But don't want to be running destroy once we've started editing the views.
+
+```bash
+# /scripts/xscaffold.sh
+
+# have worked on view so comment this out as dont want to destroy it
+# rails destroy scaffold customer
+
+rails destroy scaffold album
+rails destroy scaffold artist
+rails destroy scaffold employee
+rails destroy scaffold genre
+rails destroy scaffold invoice
+rails destroy scaffold media_type
+rails destroy scaffold playlist
+rails destroy scaffold track
+```
+
+to run the script:
+
+`source scripts/scaffold.sh`
+
+Now we have
+
+- /artists
+- /albums
+- /genres
+- /invoices
+- /media_types
+- /playlists
+- /tracks
+
+`source scripts/xscaffold.sh`
+
+`git commit -am "all scaffolds"`
+
+
+## Many to Many Assoc
+
+[db diagram](https://private-user-images.githubusercontent.com/135025/299867754-cea7a05a-5c36-40cd-84c7-488307a123f4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTU0MDM5OTIsIm5iZiI6MTcxNTQwMzY5MiwicGF0aCI6Ii8xMzUwMjUvMjk5ODY3NzU0LWNlYTdhMDVhLTVjMzYtNDBjZC04NGM3LTQ4ODMwN2ExMjNmNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDUxMVQwNTAxMzJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05MzU0N2RkMTU2NWFiOWYxODUyODE4YTFhNzc4ZDdhNjIwMWYxY2IyNzc5ZmJhNDVlOWY4YThhYzMwZmJmY2M5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.7etCGDOeaQLWirg9czUmQaT5vi26tXAGuRCFsFoIE6k)
+
+Between Tracks and Playlists is a many to many, so how to we add tracks to a playlist?
+
+We already have a 1 to many with
+
+```rb
+class Invoice < ApplicationRecord
+  # 1 Customer can have many Invoices
+  # association method
+  belongs_to :customer
+end
 
 
 
+class Playlist < ApplicationRecord
+  # 1 to many relationships
+  # has_many
+  # belongs_to
+
+  # notice I have to link up on both sides
+  # convention: rails looks for link table
+  # called playlists_tracks (has to be alphabetical order)
+
+  # 1 playlist can have many trakcs
+  # 1 track can be in many playlists
+  has_and_belongs_to_many :tracks
+  
+end
 
 
+class Track < ApplicationRecord
+  # these were put in here by our scaffolding
+  # 1 album can have many tracks
+  belongs_to :album
+  # 1 media type can have many tracks
+  belongs_to :media_type
+  # 1 genre can have many tracks
+  belongs_to :genre
+
+  # 1 playlist can have many trakcs
+  # 1 track can be in many playlists
+  # link table is playlists_tracks
+  has_and_belongs_to_many :playlists
+end
+```
+
+can test associations with 
+
+```bash
+rails c
+
+t = Track.first
+p = Playlist.first
+
+# tracks is a method on the instance of p 
+# that returns a collection of Tracks
+# << is add an item to a collection
+# we get an error as this track has been added already to the playlist
+# dupe key on playlists_tracks
+
+p.tracks << t
+
+```
+
+## Editing many to many - form
+
+Playlists view
+
+- _form.html.erb -  1 button (form.submit helper). Displays Create or Update Playlist
+- _playlist.html.erb - just shows 
+
+- edit.html.erb - edit. Has 3 buttons. Update Playlist, Show this playlist, Back to playlists
+- index.html.erb - all the playlists
+- new.html.erb - new. 1 button - Back to playlists
+- show.html.erb - show. Has 3 buttons - Edit, Back, Destroy
 
 
+```html
+  <h2>Tracks</h2>
+  <table>
+  <!-- collection_check_boxes method is used to create checkboxes for a collection of objects. -->
+  <!-- track_ids is the name of the checkbox -->
+  <!-- when post it back it will send an array to our controller 
+    Track.all is the data - so we will do all of them
+    :id is the value of the checkbox
+    :name is the label of the checkbox
+  -->
+    <%=form.collection_check_boxes :track_ids, Track.all, :id, :name do |b| %>
+      <tr>
+        <td><%= b.check_box %></td>
+        <td><%= b.label %></td>
+      </tr>
+    <% end %>
+```
+
+Notice `track_ids` not `tracks_ids`
+
+[![alt text](/assets/2024-04-25/26.jpg "email"){:width="500px"}](/assets/2024-04-25/26.jpg)
+
+This is brilliant - have spent many hours in other frameworks getting this right.
 
 
+```rb
+# app/controllers/playlists_controller.rb
+# Only allow a list of trusted parameters through.
+def playlist_params
+  # params.require(:playlist).permit(:name)
+  # to prevent overposting we need to permit the track_ids
+  params.require(:playlist).permit(:name, track_ids: [])
+    end
+```
+
+[![alt text](/assets/2024-04-25/27.jpg "email"){:width="500px"}](/assets/2024-04-25/27.jpg)
+
+Brilliant!
+
+Added the view code, then allowed the posting via the controller.
 
 
+## More complex many to many
 
+Essentially a realtionship without a link table.
+
+1 Artist has many albums
+
+```rb
+class Artist < ApplicationRecord
+    # strange that this is not generated by scaffold
+    has_many :albums
+    has_many :tracks, through: :albums
+end
+
+# our 'link' table
+class Album < ApplicationRecord
+  # 1 artist can have many albums
+  # generated by scaffold
+  belongs_to :artist
+
+  has_many :tracks
+end
+
+class Track < ApplicationRecord
+  belongs_to :album
+  # these were put in here by our scaffolding
+  # 1 album can have many tracks
+  belongs_to :album
+  # 1 media type can have many tracks
+  belongs_to :media_type
+  # 1 genre can have many tracks
+  belongs_to :genre
+
+  # 1 track can be in many playlists
+  # 1 playlist can have many tracks
+  # link table is playlists_tracks
+  has_and_belongs_to_many :playlists
+
+  # 1 track can have many artists (ie cover versions)
+  # 1 artist can have many tracks
+  has_many :artists, through: :album
+end
+```
+
+testing:
+
+```bash
+# For those about to rock we salute you
+t = Track.first
+
+# AC/DC are the only band to play
+t.artists
+
+# AC/DC
+a=Artist.first
+
+# Can see all AC/DC tracks
+a.tracks.inspect
+```
+
+
+## TDD
+
+If we do a scaffold it will create controller tests for us.
+
+```rb
+# test/controllers
+
+# test/fixtures/albums.yml
+# if we have unique constraint say on album title this will fail
+
+one:
+  title: MyString # this can be scripted eg SecureRandom.alphanumeric(12)
+  artist: one
+  price: 9.99
+
+two:
+  title: MyString
+  artist: two
+  price: 9.99
+
+# test/models
+```
+
+Tests: Get, New, Create, Show, Edit, Update, Destroy
+
+Useful!!! Good to test this happy path as they are just there for us.
+
+
+## Filtering Routes
+
+Rails controller have the concept of a filter eg before an action is called, after or around.
+
+
+So we are redirected to a login page if we're not logged in and want to see albums.
 
 
 
