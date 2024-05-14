@@ -102,8 +102,6 @@ There are some things which bug me about the framework I've used for years:
 Tangentially I've been using Python for non web based work and I really like how easy it is to work with, and how productive it is. Also not having the compile step is handy. Makes in situ updates easy.
 
 
-
-
 ## Where to Start?
 
 Okay so after being bitten by the crazyness of Python package management and different versions on the same system, I'm being careful with Ruby.
@@ -129,7 +127,6 @@ ChatGPT4 says to use
 
 
 ```bash
-
 sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
 
 # Install Ruby using version manager called ASDF
@@ -165,7 +162,6 @@ gem update --system
 
 # 3.3.1
 ruby -v
-
 ```
 
 ## Install Nodejs
@@ -212,7 +208,6 @@ rails -v
 rails new --help
 ```
 
-
 ## Install PostgreSQL
 
 ```bash
@@ -233,8 +228,6 @@ sudo service postgresql status
 # this will start it
 echo "sudo service postgresql start" >> ~/.bashrc
 
-
-
 # put in bob user - must be a SUPERUSER so can create new db's
 sudo -i -u postgres
 psql
@@ -247,7 +240,6 @@ ALTER USER bob CREATEDB;
 sudo -u postgres createuser --interactive --pwprompt
 # charlie
 # password
-
 
 # test the connection
 psql postgresql://bob:password@localhost:5432/test
@@ -262,7 +254,6 @@ default: &default
   host: localhost
   username: bob
   password: password 
-
 
 
 # db needs to be created
@@ -287,7 +278,6 @@ logging_collector = on
 log_directory = '/var/log/postgresql'
 log_filename = 'raw-postgresql-%Y-%m-%d_%H%M%S.log'     # log file name pattern,
 log_file_mode = 0777 # default is sudo only to read
-
 ```
 
 ## Code
@@ -1746,8 +1736,6 @@ class Invoice < ApplicationRecord
   belongs_to :customer
 end
 
-
-
 class Playlist < ApplicationRecord
   # 1 to many relationships
   # has_many
@@ -1762,7 +1750,6 @@ class Playlist < ApplicationRecord
   has_and_belongs_to_many :tracks
   
 end
-
 
 class Track < ApplicationRecord
   # these were put in here by our scaffolding
@@ -1795,7 +1782,6 @@ p = Playlist.first
 # dupe key on playlists_tracks
 
 p.tracks << t
-
 ```
 
 ## Editing many to many - form
@@ -1912,7 +1898,6 @@ a=Artist.first
 a.tracks.inspect
 ```
 
-
 ## TDD
 
 If we do a scaffold it will create controller tests for us.
@@ -1990,7 +1975,7 @@ class User < ApplicationRecord
 
 ## Tips
 
-[https://tenderlovemaking.com/2014/02/19/adequaterecord-pro-like-activerecord.html](https://tenderlovemaking.com/2014/02/19/adequaterecord-pro-like-activerecord.html) caching for ActiveRecord
+[https://tenderlovemaking.com/2014/02/19/adequaterecord-pro-like-activerecord.html](https://tenderlovemaking.com/2014/02/19/adequaterecord-pro-like-activerecord.html) caching for ActiveRecord. I think this was merged into Rails.
 
 
 [Ruby Object Mapper](https://rom-rb.org/) which used to be called Ruby Data Mapper. Fast alternative to ActiveRecord.
@@ -1999,7 +1984,288 @@ class User < ApplicationRecord
 
 
 
-## Shippinh the application!
+## Deploying the application!
+
+Rob is going
+
+- Simple as possible
+- Watching costs.
+
+[https://dokku.com/](https://dokku.com/) - Open source PaaS alternative to Heroku.
+
+Dokku 
+
+- Dokku postgres is a good plugin
+- Backs up to Amazon S3
+
+He uses NewRelic for monitoring (free). Gem install 
+
+- understand health infra
+- log anytime the app has an error
+- email anytime an error
+
+- can see what rails transactions are taking the most time
+
+note taking [https://obsidian.md/](https://obsidian.md/)
+
+He is using [https://www.digitalocean.com/](https://www.digitalocean.com/) which use their own data centres.
+
+
+### Create new Droplet
+
+Marketplace, Dokku on 0.30.6 on Ubuntu 22.04
+
+
+- Size - Shared CPU, Basic, AMD, SSD, 8GB for $56/mo
+- SSH Key add. `~/.ssh/id_rsa.pub`
+- hostname - rails.hmsoftware.uk
+- create droplet
+
+[setup dokku on do](https://bigmachine.io/courses/rails-revisited/setting-up-a-dokku-app-and-database)
+
+```bash
+# once droplet is created get the IP from 
+# https://cloud.digitalocean.com/droplets
+ssh root@137.184.188.228
+
+# copy and paste ~/.ssh/id_rsa.pub into here 
+vim ssh.txt
+
+cat ssh.txt | dokku ssh-keys:add admin
+
+dokku apps:create railz2 
+
+# on the Dokku host
+# install the postgres plugin
+# plugin installation requires root, hence the user change
+sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git
+
+# this pulled postgres 16.2 on docker 
+
+dockku postgres:create railz2db
+
+dokku postgres:link railz2db railz2
+
+# it gives us the db url
+# put in project db/dokku.sh
+# postgres://postgres:c07b603f96c1f907edf7fae4af48a26e@dokku-postgres-railz2db:5432/railz2db
+
+# expose to outside on random port
+# Service railz2db exposed on port(s) [container->host]: 5432->709
+dokku postgres:expose railz2db
+
+# db/dokku.sh
+# db.sql is structure and data of chinook db
+psql postgres://postgres:c07b603f96c1f907edf7fae4af48a26e@137.184.188.228:709/railz2db < db.sql
+
+
+source dokku.sh
+
+# Create A record for 137.184.188.228 to hmsoftware.uk
+
+dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
+
+dokku domains:set railz2 hmsoftware.uk
+
+dokku letsencrypt:set railz2 email davemateer@gmail.com
+
+dokku letsencrypt:enable railz2
+
+dokku letsencrypt:cron-job --add 
+
+# add a remote
+# could use domain name - rob not as using cloudflare
+git remote add dokku dokku@137.184.188.228:railz2
+
+# we use main, dokku uses master
+# *Not yet
+git push dokku main:master
+
+```
+
+### Procfile
+
+When we start `bin/dev` this calls Procfile.dev which starts the webserver `rails serer` and css watcher. 
+
+We want a profile when we deploy to live to run migrations and start webserver.
+
+```bash
+web: bundle exec puma -C config/puma.rb
+release: bundle exec rails db:migrate
+```
+
+In `bin/docker-entrypoint`
+
+db:prepare in Docker image will erase db (so will bork all data we have pumped into it)
+
+Comment this out.
+
+Also `/Dockerfile` rename to xxx so Dokku doesn't try to use it.
+
+Also
+
+```bash
+dokku config:set railz2 DATABASE_URL=postgres://postgres:c07b603f96c1f907edf7fae4af48a26e@dokku-postgres-railz2db:5432/railz2db
+
+dokku config:set railz2 SMTP_ADDRESS=
+dokku config:set railz2 SMTP_USER
+dokku config:set railz2 SMTP_PASSWORD=
+
+dokku config:set railz2 GITHUB_ID=
+dokku config:set railz2 SMTP_PASSWORD=
+
+
+```
+
+remote:  !     railz2 currently has a deploy lock in place. Exiting...
+remote:  !     Run 'apps:unlock' to release the existing deploy lock
+To 137.184.188.228:railz2
+
+`dokku apps:unlock railz2` to fix this.
+
+### secret_key_base
+
+My webserver can't start due to 
+
+```bash
+ArgumentError: Missing `secret_key_base` for 'production' environment, set this string with `bin/rails credentials:edit` (ArgumentError)
+raise ArgumentError, "Missing `secret_key_base` for '#{Rails.env}' environment, set this string with `bin/rails credentials:edit`"
+```
+
+To fix
+
+```bash
+# on local machine generate a random number
+ruby -r securerandom -e "puts SecureRandom.hex(64)"
+
+# on server
+dokku config:set railz2 SECRET_KEY_BASE=asdf
+
+
+git push dokku main:master
+```
+
+## Spina stuff
+
+Potentially in `spina_accounts` we may need to hack a record in.
+
+### config\environments\production.rb
+
+```rb
+    # DM added this in for devise
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.default_url_options = { host: 'hmsoftware.uk' }
+    config.action_mailer.perform_caching = false
+    # DM added this so that even in dev it will send an email
+    config.action_mailer.smtp_settings = {
+      address: ENV['SMTP_ADDRESS'],
+      user_name: ENV['SMTP_USER'],
+      password: ENV['SMTP_PASSWORD'],
+    }
+
+
+git push dokku main:master
+
+```
+
+uses herokuish to build on the server
+
+bundle 2.3.25
+
+using Ruby 3.3.1
+
+rake asssets:precompile
+
+
+bundle exec db:migrate
+
+
+hmm can't see our migration on git push
+
+```rb
+rails g migration AddSpinaNeedful
+
+class AddSpinaNeedful < ActiveRecord::Migration[7.1]
+  def up
+    #We need an account - this will also create a page for us
+    Spina::Account.create!(name: "Railzzz", theme: "default")
+    Spina::Navigation.create!(
+      name: "mains",
+      label: "Main menu"
+    )
+  end
+  def down 
+    Spina::Account.destroy_all
+    Spina::Navigation.destroy_all
+    page = Spina::Page.where(name: "homepage").destroy_all
+  end
+end
+```
+
+Spina /admin page is broken, but backend /admin is all working.
+
+Showing /home/dave/code/railz2/app/views/layouts/_nav.html.erb where line #21 raised:
+
+```rb
+undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x00007fcf0144aca0>
+              
+<%if(user_signed_in?)%>
+
+<%=button_to "Logout", destroy_user_session_path, method: :delete, class: "inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"%>
+```
+
+The page works when I take out the button code
+
+In `rails routes` I typed in `rails routes | grep destroy_user_session` and it is correct with /logout
+
+In `rails c` I typed in `app.destroy_user_session_path` and it gave the correct output of `"/logout"`
+
+
+# OAuth
+
+set
+[https://github.com/settings/applications/2573852](https://github.com/settings/applications/2573852) set callback url to `https://hmsoftware.uk/` rather than `http://localhost:3000`
+
+### S3 Storage
+
+everything in `\storage` was not pushed up live. This is where we need S3 to store images.
+
+```bash
+gem 'aws-sdk-s3'
+bundle install
+
+# config/storage.yml
+# put in env variables in here
+
+# config/production.rb
+active_storeage.service = :amazon
+```
+
+## Conclusion
+
+Business perspective - nope. But good to keep skills sharp.
+
+But simplifying definately.
+
+But great to build things and get in there and get hands dirty.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
