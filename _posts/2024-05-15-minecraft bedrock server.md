@@ -40,7 +40,13 @@ sudo apt install unzip
 
 unzip bedrock-server-*.zip
 
-LD_LIBRARY_PATH=. ./bedrock_server
+
+# Makefile
+run:
+    LD_LIBRARY_PATH=. ./bedrock_server
+
+.PHONY: run
+
 
 ```
 
