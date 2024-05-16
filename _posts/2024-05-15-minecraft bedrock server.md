@@ -62,7 +62,7 @@ my davemateerxps@outlook.com wkw NavyNutria51319 - I've created an xbox account
 
 file:///C:/Users/djhma/Downloads/bedrock-server-1.21.0.25/bedrock_server_how_to.html
 
-
+**try kindle fire versions..ps3 version?
 
 ## Switch version
 

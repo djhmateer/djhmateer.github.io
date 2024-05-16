@@ -65,7 +65,6 @@ test:
 
 # create /scripts directory for working with db
 # create .env for db settings
-
 ```
 
 ## Scaffolding
@@ -104,10 +103,72 @@ rails spina:install
 
 [http://localhost:3000/admin](http://localhost:3000/admin)
 
-app/views/default (this is the spina default template)
+- views/layouts/default/application.html.erb - spina application template. Renders _nav
+- views/layouts/application.html.erb - rails application template. Renders _nav
+- views/layouts/_nav.html.erb - nav partial
 
-homepage.html.erb - dedicated template
-show.html.erb - for all other pages
+in spina
+
+- views/default/pages/show.html.erb - h1, render summary, buttons, layout, render text etc.. wrapped by spina application template
+
+in rails
+
+- views/default/home/dave.html.erb - page content. which is wrapped by rails application template
 
 routes.rb - move spina to the bottom so now we have a choice of which routes eg spina or rails.
 
+## Spina customise about page
+
+config/initializers/themes/default.rb
+
+- Part eg text, summary
+- A Part has Part Types eg Line, Test, Image...
+- A View Template eg show has Parts eg text, summary
+
+Get the Tailwind CSS correct in app template
+
+- Add parts for the form
+- summary, image, link, linktext
+
+Then patch into `show.html.erb` - the spina all pages template
+
+[![alt text](/assets/2024-05-16/1.jpg "email"){:width="500px"}](/assets/2024-05-16/1.jpg)
+
+Image, Title, Summary, Link, LinkText, Body - all editable on the CMS.
+
+## Spina customise a product Sales page view template
+
+```html
+<section id="hook"></section>
+<section id="problem"></section>
+<section id="empathy"></section>
+<section id="solution"></section>
+<section id="benefits"></section>
+<section id="cred"></section>
+<section id="proof"></section>
+<section id="offer"></section>
+<section id="guarantee"></section>
+<section id="cta"></section>
+```
+
+Each section needs: Title, Image, Summary, Text
+
+- Part - a single thing like Text
+- View template - multiple Parts - corresponds to a page
+
+- New View Template called sales which is a has all ususal parts including repeater
+
+eg /widgets
+
+[![alt text](/assets/2024-05-16/2.jpg "email"){:width="500px"}](/assets/2024-05-16/2.jpg)
+
+- View template - sales
+- Which has many Parts eg Title, Summary
+- Including a Repeater Part called Problem and Empathy
+- which have Parts on them.
+
+[![alt text](/assets/2024-05-16/3.jpg "email"){:width="500px"}](/assets/2024-05-16/3.jpg)
+
+A sales page with problems that we can edit on the CMS.
+
+**HERE at Importing data with migrations**
