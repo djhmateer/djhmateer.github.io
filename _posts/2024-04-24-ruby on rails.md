@@ -10,20 +10,12 @@ sitemap: false
 image: /assets/2024-05-03/4.jpg
 ---
 
-<!-- [![alt text](/assets/2024-02-01/1.jpg "email"){:width="600px"}](/assets/2024-02-02/1.jpg) -->
-<!-- [![alt text](/assets/2024-03-03/2.jpg "email"){:width="800px"}](/assets/2024-03-03/2.jpg) -->
-<!-- [![alt text](/assets/2024-03-03/2.jpg "email")](/assets/2024-03-03/2.jpg) -->
-
-<!-- [![alt text](/assets/2024-04-24/1.jpg "email")](/assets/2024-04-24/1.jpg) -->
-
 I've been following Rob Conery for many years and respect his technical judgement / entrepreneurial attitude. So when he published [this article](https://bigmachine.io/courses/rails-revisited) it got me thinking:
-
 
 <!-- [![alt text](/assets/2024-04-24/5.jpg "email"){:width="500px"}](/assets/2024-04-24/5.jpg) -->
 [![alt text](/assets/2024-04-24/5.jpg "email")](/assets/2024-04-24/5.jpg)
 
 Saying how he is moving away fom Javascript front end frameworks (which he'd been doing since 2017) back to RoR. [blog post](https://a.bigmachine.io/posts/a-strange-thing-happened-when-i-told-myself-to-shut-it)
-
 
 Is Rails is having a resurgence?!
 
@@ -43,14 +35,7 @@ Is this useful technology to develop sites fast?
 - [Basecamp](https://basecamp.com/) - Project Management Software
 - [GitHub](https://github.com/) - [good discussion](https://github.blog/2023-04-06-building-github-with-ruby-and-rails/)
 - [https://www.shopify.com/uk](https://www.shopify.com/uk)
-
-## Discussions
-
-[https://news.ycombinator.com/item?id=29577897](https://news.ycombinator.com/item?id=29577897)
-
-[Building GH with Rails](https://news.ycombinator.com/item?id=35478884)
-
-[https://news.ycombinator.com/item?id=40150045](https://news.ycombinator.com/item?id=40150045) some of  shopify team are on the core Rails/Ruby team
+- Modern day - good fit for solopreneurs / people building apps fast
 
 ## Why Consider?
 
@@ -58,7 +43,6 @@ Is this useful technology to develop sites fast?
 - Rich ecosystem with gems (libraries)
 - Testing - comes with own framework built in
 - Active Record ORM
-
 - King of effeciecy and productivity eg CRUD
 
 Conventions, generators, tooling
@@ -158,7 +142,12 @@ asdf list
 # uninstall
 asdf uninstall ruby 3.3.0
 
+
+# updates rubygems - 3.5.10 as of 15th May 2024
 gem update --system
+
+# update all installed gmes
+gem update
 
 # 3.3.1
 ruby -v
@@ -280,7 +269,7 @@ log_filename = 'raw-postgresql-%Y-%m-%d_%H%M%S.log'     # log file name pattern,
 log_file_mode = 0777 # default is sudo only to read
 ```
 
-## Code
+## Rails New 
 
 [https://www.youtube.com/watch?v=Hwou03YqH4I](https://www.youtube.com/watch?v=Hwou03YqH4I) this video suggests putting code in `\code` so that it isn't in the Windows filesystem, thus will be much faster. I'm using `~/code`
 
@@ -297,7 +286,6 @@ The database needs to be there eg `rails db:create`. I'm getting strange errors 
 Then `rails s` will run migrations automatically to populate when the home page is loaded. It just has 2 empty tables.
 
 ```bash
-
 rails new --help
 
 rails new --database=postgresql #(mssql is there!)
@@ -308,7 +296,7 @@ rails new --css=tailwind
 rails new -c tailwind
 
 
-# create a new rails app
+# Create a new rails app
 rails new railz -d postgresql -c tailwind
 
 # runs a bundle install (gem package manager for Ruby which the Gemfile looks after)
@@ -317,10 +305,20 @@ rails new railz -d postgresql -c tailwind
 rails s
 ```
 
+## Design
+
+[https://themes.getbootstrap.com/](https://themes.getbootstrap.com/) - Rob uses a bought theme (they are beautiful on here)
+
+
+[https://tailblocks.cc/](https://tailblocks.cc/) to help
+
+[https://tailwindcss.com/](https://tailwindcss.com/)
+
+
+[https://tailwindui.com/templates#browse](https://tailwindui.com/templates#browse) - commerical templates and components
+
+
 ## Rails g Generators
-
-[https://tailblocks.cc/](https://tailblocks.cc/) - Ready to use tailwind blocks which doesn't seem to be maintained? But looks good. Taking a header and hero from here.
-
 
 ```bash
 
@@ -2409,3 +2407,11 @@ AI - everything I do now I'm using [https://chat.openai.com/](https://chat.opena
 > should I use apt or apt-get
 
 I prefer apt, but can't remember why. So it turns out apt-get is older, but prefered for scripting as it is more reliable (and wont change)
+
+## Discussions
+
+[https://news.ycombinator.com/item?id=29577897](https://news.ycombinator.com/item?id=29577897)
+
+[Building GH with Rails](https://news.ycombinator.com/item?id=35478884)
+
+[https://news.ycombinator.com/item?id=40150045](https://news.ycombinator.com/item?id=40150045) some of  shopify team are on the core Rails/Ruby team
