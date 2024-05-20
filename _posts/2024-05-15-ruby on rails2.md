@@ -17,9 +17,13 @@ image: /assets/2024-05-03/4.jpg
 # version manager for Ruby
 asdf update
 
+asdf install ruby
+
 # ignores version constraints from Gemfile and update to latest versions available
 # eg rails is installed globally
 gem update --system
+
+bundle update
 
 # in ~/code/
 rails new railz3 -d postgresql -c tailwind
@@ -337,7 +341,102 @@ config.authentication = "BigAuth"
 
 So I can now login to the site and Spina admin is integrated.
 
-However if I go to a Spina page I get this error:
+## Error
+
+However if I go to any Spina rendered page which renders login and logout via the _nav partial I get this error:
+
+` undefined local variable or method `destroy_user_session_path' 
+
+```html
+<!-- destroy_user_session_path is a devise helper but for some reason isn't working so hard coded path -->
+<%=button_to "Logout","/logout", method: :delete,
+```
+
+## Authorise
+
+```rb
+class HomeController < ApplicationController
+  # this puts auth on for all pages on home controller
+  # before_action :authenticate_user!
+
+  # only on the secret page do we want to authenticate
+  # before_action :authenticate_user!, only: [:secret]
+
+  # needs to be an admin to see secret page otherwise redirect to root
+  before_action :is_admin!, only: [:secret]
+
+  def is_admin!
+    redirect_to root_path unless user_signed_in? && current_user.is_admin?
+  end
+
+  def index
+  end
+
+  def dave
+  end
+
+  def secret
+  end
+end
+```
+
+## Deploy
+
+Let's deploy to a standard VM. I run nginx on my proxmox server to handle ssl from certbot. So here I'll deploy to a simple 
+
+[https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04) - one I used
+
+
+[https://gorails.com/deploy/ubuntu/22.04](https://gorails.com/deploy/ubuntu/22.04) a good guide
+
+[https://www.phusionpassenger.com/docs/tutorials/deploy_to_production/installations/oss/ownserver/ruby/nginx/](https://www.phusionpassenger.com/docs/tutorials/deploy_to_production/installations/oss/ownserver/ruby/nginx/) some updates through this guide which is good
+
+
+**HERE trying to get a simple install**
+
+```bash
+# use a non root user
+
+# A few Rails features eg Asset Pipeline needs the javascript runtime so may have to install nodejs
+
+sudo apt update
+
+# dependencies to install Ruby
+sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev
+
+# rbenv
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+
+# can take time here
+rbenv install 3.3.1
+
+rbenv global 3.3.1
+
+# gems
+
+# no documnentation to turn off the generation so to speed up installs of gems
+
+
+
+
+
+
+
+gem update --system
+
+gem install bundler
+```
+
+
+webservers
+
+- Puma - which is the webserver I use in dev. Rails comes with a config/puma.rb config file.
+- Passenger - integrates with nginx
+
 
 
 
