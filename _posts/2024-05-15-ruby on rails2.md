@@ -421,6 +421,8 @@ rbenv global 3.3.1
 # no documnentation to turn off the generation so to speed up installs of gems
 
 
+*********HERE****
+https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04#step-3-working-with-gems
 
 
 
