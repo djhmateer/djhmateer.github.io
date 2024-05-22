@@ -382,29 +382,23 @@ end
 
 ## Deploy
 
-Let's deploy to a standard VM. I run nginx on my proxmox server to handle ssl from certbot. So here I'll deploy to a simple 
+Let's deploy to a standard Ubuntu 22.04 VM. I use proxmox and nginx on another vm to handle ssl via certbot (LetsEncrypt)
 
-[https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04) - one I used
+[https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04) - one I used without Nodejs
 
-
-[https://gorails.com/deploy/ubuntu/22.04](https://gorails.com/deploy/ubuntu/22.04) a good guide
-
-[https://www.phusionpassenger.com/docs/tutorials/deploy_to_production/installations/oss/ownserver/ruby/nginx/](https://www.phusionpassenger.com/docs/tutorials/deploy_to_production/installations/oss/ownserver/ruby/nginx/) some updates through this guide which is good
-
-
-**HERE trying to get a simple install**
 
 ```bash
 # use a non root user
 
 # A few Rails features eg Asset Pipeline needs the javascript runtime so may have to install nodejs
 
+## Ruby via rbenv
 sudo apt update
 
 # dependencies to install Ruby
-sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev
+sudo apt install -y git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev
 
-# rbenv
+# rbenv - install specific versin of Ruby globally, and can update
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
 
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -412,27 +406,78 @@ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 
 # can take time here
+# 22nd May 24 - up to date version
 rbenv install 3.3.1
 
 rbenv global 3.3.1
 
-# gems
-
+## Gems
 # no documnentation to turn off the generation so to speed up installs of gems
+echo "gem: --no-document" > ~/.gemrc
 
+# manages gem dependencies for projects
 
-*********HERE****
-https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04#step-3-working-with-gems
+# A new release of RubyGems is available: 3.5.9 → 3.5.10!
+# Run `gem update --system 3.5.10` to update your installation.
+gem install bundler
 
-
-
-
-
+# updated to rubygems-udpate-3.5.10
+# bundler 2.5.10
 gem update --system
 
-gem install bundler
+# gems being installed to /home/dave/.rbenv/versions/3.3.1/lib/ruby/gems/3.3.0
+# gem env home
+
+
+## Rails
+
+# install latest version - 7.1.3.3 as of 22nd May 24
+gem install rails
+
+# update ruby version shims
+rbenv rehash
 ```
 
+Now we have Ruby and Rails installed. With Gems configured and it's bundler which 
+
+### PostgreSQL
+
+
+```bash
+# 14.11
+sudo apt-get -y install postgresql postgresql-contrib libpq-dev 
+
+sudo vim /etc/postgresql/14/main/pg_hba.conf
+# allow postgres user to connect locally without password
+# local   all             postgres                                trust
+
+# allow any local user to connect withouth password eg railz
+# local   all             all                                     trust
+
+# allow any user from anywhere with no password!
+# host    all             all             0.0.0.0/0               trust
+
+
+# listen_addresses = "*" if want to connect from dev machine for example
+sudo vim /etc/postgresql/14/main/postgresql.conf
+
+# need to start this service automatically
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+
+sudo -iu postgres
+psql
+# CREATE ROLE dave WITH LOGIN PASSWORD 'password' SUPERUSER;
+
+# nice convention of the site name needing a user with same name
+CREATE ROLE railz WITH LOGIN PASSWORD 'password' SUPERUSER;
+
+```
+
+I've port forwarded port 5432 to my proxmox server then the vm. Through pfsense, firewall, NAT. Only from local network. 5432 is not open via my external router.
+
+
+### Webserver
 
 webservers
 
@@ -440,6 +485,108 @@ webservers
 - Passenger - integrates with nginx
 
 
+```bash
+rails new railz3 -d postgresql -c tailwind
+
+# on first run this creates a config/puma.rb
+# rails server
+
+# create db manually
+# bin/rails db:create
+
+# runs tailwind css
+# bin/dev 
+
+
+# expects a user called railz - cool bit of convention
+RAILS_ENV=production bin/rails db:create
+RAILS_ENV=production bin/rails db:migrate
+
+# check postgres.. did it connect to the correct db by default?
+# no it used sqllit in storage/development.sqlite3
+sudo -iu postgres
+psql
+\l
+
+# Precompile assets
+# RAILS_ENV=production bundle exec rails assets:precompile
+
+# Start the server in production mode
+# had to change config/environmnets/production to no redirect to ssl
+RAILS_ENV=production bundle exec rails server
+
+
+# in another terminal
+# this ran migrations
+curl localhost:3000
+
+## auto start on reboot
+sudo vim /etc/systemd/system/railz.service
+
+# Add the following content to the service file (replace placeholders)
+[Unit]
+Description=My Rails Application
+
+After=network.target
+
+[Service]
+Type=simple
+User=dave
+WorkingDirectory=/home/dave/railz
+
+# Ensure rbenv is properly initialized
+Environment="RBENV_ROOT=/home/dave/.rbenv"
+Environment="PATH=/home/dave/.rbenv/shims:/home/dave/.rbenv/bin:/usr/local/bin:/usr/bin:/bin"
+
+# Command to start the Rails server
+ExecStart=/home/dave/.rbenv/shims/bundle exec puma -C /home/dave/railz/config/puma.rb
+
+Restart=always
+Environment="RAILS_ENV=production"
+
+# Output to syslog
+#StandardOutput=syslog
+#StandardError=syslog
+StandardOutput=append:/home/dave/railz/log/rails_app_stdout.log
+StandardError=append:/home/dave/railz/log/rails_app_stderr.log
+
+SyslogIdentifier=railz
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl start railz.service
+sudo systemctl start railz.service
+
+# enable on boot
+sudo systemctl enable railz.service
+sudo systemctl disable railz.service
+
+sudo systemctl status railz.service
+```
+
+Wire up
+
+```bash
+# ssh to reverse proxy nginx
+sudo vim /etc/nginx/sites-available/default
+
+# wire up proxy_pass to new internal vm IP eg 172.16.44.120:3000
+# check certbot is there
+
+rails g controller home index about
+
+# config/routes.rb
+root "home#index"
+```
 
 
 
+
+
+## OLD
+
+[https://gorails.com/deploy/ubuntu/22.04](https://gorails.com/deploy/ubuntu/22.04) a good guide
+
+[https://www.phusionpassenger.com/docs/tutorials/deploy_to_production/installations/oss/ownserver/ruby/nginx/](https://www.phusionpassenger.com/docs/tutorials/deploy_to_production/installations/oss/ownserver/ruby/nginx/) some updates through this guide which is good
