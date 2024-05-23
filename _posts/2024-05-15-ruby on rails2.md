@@ -581,6 +581,33 @@ rails g controller home index about
 root "home#index"
 ```
 
+## Git update on production
+
+```bash
+git pull
+
+# update .env file using filezilla
+# \\wsl.localhost\Ubuntu\home\dave\code\railz3
+
+# get gems just for this project
+bundle install
+
+# generate
+# rails secrets
+EDITOR="vim" bin/rails credentials:edit
+# created a config/master.key
+# if this doesn't work delete the master.key and credentials.yml.enc
+
+
+
+RAILS_ENV=production bin/rails db:create
+
+RAILS_ENV=production bin/rails db:migrate
+
+RAILS_ENV=production bundle exec rails server
+```
+
+
 
 
 
