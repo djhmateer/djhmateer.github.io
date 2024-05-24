@@ -13,6 +13,26 @@ image: /assets/2024-05-03/4.jpg
 <!-- [![alt text](/assets/2024-04-24/5.jpg "email"){:width="500px"}](/assets/2024-04-24/5.jpg) -->
 <!-- [![alt text](/assets/2024-04-24/5.jpg "email")](/assets/2024-04-24/5.jpg) -->
 
+[![alt text](/assets/2024-05-23/1.jpg "email"){:width="500px"}](/assets/2024-05-23/1.jpg)
+
+A production Rails site
+
+- Ubuntu 22.04
+- Postgres 14 on server
+- Puma webserver listening on port 3000 in production
+- systemd running puma and logging to log/production.log
+- railz3_production database the railz3 user
+- source on github
+- secrets inside systemd config file as envionment variables
+- crud rails
+- devise for authentication and password resets etc.
+- standard username and password
+- devise filter for secret pages (ie have to be logged in to see)
+- spina cms for content (only hard coded admin user can see)
+- images are working yet
+
+- SSL handled by nginx revserse proxy
+
 ```bash
 # version manager for Ruby
 asdf update
@@ -436,6 +456,9 @@ gem install rails
 
 # update ruby version shims
 rbenv rehash
+
+# images
+sudo apt-get install libvips42
 ```
 
 Now we have Ruby and Rails installed. With Gems configured and it's bundler which 
@@ -479,11 +502,8 @@ I've port forwarded port 5432 to my proxmox server then the vm. Through pfsense,
 
 ### Webserver
 
-webservers
-
 - Puma - which is the webserver I use in dev. Rails comes with a config/puma.rb config file.
 - Passenger - integrates with nginx
-
 
 ```bash
 rails new railz3 -d postgresql -c tailwind
@@ -494,16 +514,14 @@ rails new railz3 -d postgresql -c tailwind
 # create db manually
 # bin/rails db:create
 
-# runs tailwind css
+# runs tailwind css compiler
 # bin/dev 
-
 
 # expects a user called railz - cool bit of convention
 RAILS_ENV=production bin/rails db:create
 RAILS_ENV=production bin/rails db:migrate
 
 # check postgres.. did it connect to the correct db by default?
-# no it used sqllit in storage/development.sqlite3
 sudo -iu postgres
 psql
 \l
@@ -515,13 +533,12 @@ psql
 # had to change config/environmnets/production to no redirect to ssl
 RAILS_ENV=production bundle exec rails server
 
-
 # in another terminal
 # this ran migrations
 curl localhost:3000
 
 ## auto start on reboot
-sudo vim /etc/systemd/system/railz.service
+sudo vim /etc/systemd/system/railz3.service
 
 # Add the following content to the service file (replace placeholders)
 [Unit]
@@ -544,11 +561,16 @@ ExecStart=/home/dave/.rbenv/shims/bundle exec puma -C /home/dave/railz/config/pu
 Restart=always
 Environment="RAILS_ENV=production"
 
+# found that reading from .env file hard so easier to pass like this
+Environment="SMTP_ADDRESS=smtp.postmarkapp.com"
+Environment="SMTP_USER=big_guid"
+Environment="SMTP_PASSWORD=big_guid"
+
 # Output to syslog
 #StandardOutput=syslog
 #StandardError=syslog
-StandardOutput=append:/home/dave/railz/log/rails_app_stdout.log
-StandardError=append:/home/dave/railz/log/rails_app_stderr.log
+# StandardOutput=append:/home/dave/railz/log/rails_app_stdout.log
+# StandardError=append:/home/dave/railz/log/rails_app_stderr.log
 
 SyslogIdentifier=railz
 
@@ -557,7 +579,7 @@ WantedBy=multi-user.target
 
 sudo systemctl daemon-reload
 sudo systemctl start railz.service
-sudo systemctl start railz.service
+sudo systemctl restart railz.service
 
 # enable on boot
 sudo systemctl enable railz.service
@@ -581,13 +603,14 @@ rails g controller home index about
 root "home#index"
 ```
 
-## Git update on production
+## Git on production
+
+Pull for the first time a site that works on dev. And to update the site when changed are made on dev.
 
 ```bash
 git pull
 
-# update .env file using filezilla
-# \\wsl.localhost\Ubuntu\home\dave\code\railz3
+# copy .env file settings into the systemd file above
 
 # get gems just for this project
 bundle install
@@ -599,13 +622,32 @@ EDITOR="vim" bin/rails credentials:edit
 # if this doesn't work delete the master.key and credentials.yml.enc
 
 
+CREATE ROLE railz3 WITH LOGIN PASSWORD 'password' SUPERUSER;
 
 RAILS_ENV=production bin/rails db:create
 
 RAILS_ENV=production bin/rails db:migrate
 
-RAILS_ENV=production bundle exec rails server
+# put in data for cms to work properly
+# inserts data even though trying to craete tables
+# todo fix this so only data
+PGPASSWORD='password' pg_dump -U charlie -h localhost railz3_development > backup.sql
+
+PGPASSWORD='password' psql -U railz3 -h localhost -p 5432 -d railz3_production < backup.sql
+
+
+RAILS_ENV=production bundle exec rails assets:precompile
+
+# Will find the config/puma.rb file
+RAILS_ENV=production bundle exec puma 
+
+sudo systemctl restart railz3.service
+
+# remember to open up port 25 outbound
 ```
+
+## Images
+
 
 
 
