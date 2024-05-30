@@ -34,7 +34,10 @@ A production Rails site
 - SSL handled by nginx revserse proxy
 
 ```bash
+# Dev setup
+
 # version manager for Ruby
+# am using rbenv for production as seems simpler
 asdf update
 
 asdf install ruby
@@ -119,7 +122,7 @@ gem 'spina', '~> 2.18'
 bundle update
 
 # handles file uploads (default is in /storage)
-rails active_record:install
+rails active_storage:install
 
 # spina:install is rake task runner notation
 rails spina:install
@@ -457,7 +460,7 @@ gem install rails
 # update ruby version shims
 rbenv rehash
 
-# images
+# need to render thumbnails of images in Spina
 sudo apt-get install libvips42
 ```
 
@@ -546,6 +549,9 @@ Description=My Rails Application
 
 After=network.target
 
+StartLimitBurst=5
+StartLimitIntervalSec=600
+
 [Service]
 Type=simple
 User=dave
@@ -556,9 +562,13 @@ Environment="RBENV_ROOT=/home/dave/.rbenv"
 Environment="PATH=/home/dave/.rbenv/shims:/home/dave/.rbenv/bin:/usr/local/bin:/usr/bin:/bin"
 
 # Command to start the Rails server
-ExecStart=/home/dave/.rbenv/shims/bundle exec puma -C /home/dave/railz/config/puma.rb
+ExecStart=/home/dave/.rbenv/shims/bundle exec puma -C /home/dave/railz3/config/puma.rb
 
+# I have see this keep restarting and not stop after 5.. strange
+# expecially with an encrypted key problem
+# had to git stash pop the credentials.yml.enc file back.
 Restart=always
+
 Environment="RAILS_ENV=production"
 
 # found that reading from .env file hard so easier to pass like this
@@ -576,6 +586,7 @@ SyslogIdentifier=railz
 
 [Install]
 WantedBy=multi-user.target
+
 
 sudo systemctl daemon-reload
 sudo systemctl start railz.service
@@ -636,21 +647,49 @@ PGPASSWORD='password' pg_dump -U charlie -h localhost railz3_development > backu
 PGPASSWORD='password' psql -U railz3 -h localhost -p 5432 -d railz3_production < backup.sql
 
 
+```
+
+### Useful prod commands
+
+```bash
+git stash 
+
+git stash pop
+
+# if have updated Gemfile
+bundle install
+
+# if need to run migrations
+RAILS_ENV=production bin/rails db:migrate
+
+# /logs/production.log
+
+# I need this for application to start
+# maybe put in .bashrc?
+export AZURE_ACCESS_KEY=
 RAILS_ENV=production bundle exec rails assets:precompile
 
-# Will find the config/puma.rb file
+
+# start from command
 RAILS_ENV=production bundle exec puma 
 
+sudo vim /etc/systemd/system/railz3.service
+
+sudo systemctl daemon-reload
+
+# **remember to restart service to get latest changes**
 sudo systemctl restart railz3.service
+
+sudo systemctl stop railz3.service
+sudo systemctl start railz3.service
+
+sudo systemctl status railz3.service
 
 # remember to open up port 25 outbound
 ```
 
-## Images
 
-
-
-
+oo
 
 
 
