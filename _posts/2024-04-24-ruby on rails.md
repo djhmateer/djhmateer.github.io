@@ -358,7 +358,8 @@ bin/dev # this starts webserver and tailwind compiler
 ```
 
 
-Then put in a Hero from Tailblocks.
+
+Then put in a Header then Hero from Tailblocks.
 
 ## VS Code Extension
 
