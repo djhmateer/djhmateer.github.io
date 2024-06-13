@@ -103,7 +103,6 @@ The above is a good sample - be careful as there are other examples which use th
 
 Similar to [https://otplink.icc-cpi.int/](https://otplink.icc-cpi.int/)
 
-
 I've got a 
 
 - Nav bar with mobile
@@ -116,7 +115,6 @@ I've got a
 
 So I can do a full page bg image via:
 
-
 ```html
 <!-- height and width are full-->
 <div class="flex h-screen w-full">
@@ -126,6 +124,12 @@ So I can do a full page bg image via:
    <!-- no repeat -->
   <div class="flex-1 bg-hero bg-cover bg-center bg-no-repeat"></div>
 </div>
+```
+
+Chat GPT was excellent at helping with this. I ended up with
+
+```html
+
 ```
 
 
