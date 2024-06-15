@@ -5,7 +5,7 @@ description: Changing UK Phone providers - some simple tests of the 4 physical n
 #menu: review
 categories: Phone 
 published: true 
-comments: true     
+comments: false     
 sitemap: true
 image: /assets/2020-02-03/30.jpg
 ---
