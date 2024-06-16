@@ -105,5 +105,9 @@ has One Number - so my eSim phone and feature phone could have the same number. 
 
 Although this seems to be for: smartwatches and tablets to share data allowance
 
+## Recommendations for phones
+
+[Phones for kids](https://www.vodafone.co.uk/mobile/best-for/kids-and-teenagers#best-basic-phones) 
+
 
 
