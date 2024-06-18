@@ -38,30 +38,51 @@ A production Rails site
 
 # version manager for Ruby
 # am using rbenv for production as seems simpler
+# see Deploy section further down on this page
+
+# 17th Jun 2024 - 0.10.0
 asdf update
 
-asdf install ruby
+# 3.3.3 on 17th Jul 2024
+asdf plugin add ruby
+asdf plugin-update ruby # for updates
+asdf install ruby latest
+
+asdf global ruby 3.3.3
+asdf reshim
+# restart shell
 
 # ignores version constraints from Gemfile and update to latest versions available
 # eg rails is installed globally
 gem update --system
 
+# update system wide gems
+gem update
+# removes older version
+gem cleanup
+
+# updates project gems ie gemfile
 bundle update
 
+# 7.1.3.4 on 17th Jun 2024
+gem install rails
+
 # in ~/code/
-rails new railz3 -d postgresql -c tailwind
+# rails new railz3 -d postgresql -c tailwind
+
+# am not using turbo and have complex file updloads so skip
+rails new golfsubmit -d postgresql -c tailwind --skip-hotwire
 
 # add to git which is ready initialised
 
 # creates the 2 db's (development and test) in postgres
 rails db:create 
-
-# http://localhost:3000/  
-
-# home controller with 2 actions/endpoint of index and about
-rails g controller home index about
-
 rails db:mirate
+
+# http://localhost:3000/   to see the splash page
+
+# home controller with actions/endpoint of index and a view
+rails g controller home index 
 
 # config/routes.rb
 root "home#index"
@@ -407,6 +428,8 @@ end
 
 Let's deploy to a standard Ubuntu 22.04 VM. I use proxmox and nginx on another vm to handle ssl via certbot (LetsEncrypt)
 
+**note to myself - look in golfsubmit project for auto build**
+
 [https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04) - one I used without Nodejs
 
 
@@ -424,8 +447,9 @@ sudo apt install -y git curl libssl-dev libreadline-dev zlib1g-dev autoconf biso
 # rbenv - install specific versin of Ruby globally, and can update
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
 
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+# I don't think I need to do these 2
+# echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+# echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 
 # can take time here
@@ -493,7 +517,6 @@ sudo systemctl start postgresql
 
 sudo -iu postgres
 psql
-# CREATE ROLE dave WITH LOGIN PASSWORD 'password' SUPERUSER;
 
 # nice convention of the site name needing a user with same name
 CREATE ROLE railz WITH LOGIN PASSWORD 'password' SUPERUSER;
