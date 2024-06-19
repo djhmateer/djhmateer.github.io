@@ -38,18 +38,19 @@ A production Rails site
 
 # version manager for Ruby
 # am using rbenv for production as seems simpler
+# **NOTE USING ASDF any more as couldn't update to newer version**
 # see Deploy section further down on this page
 
 # 17th Jun 2024 - 0.10.0
-asdf update
+# asdf update
 
 # 3.3.3 on 17th Jul 2024
-asdf plugin add ruby
-asdf plugin-update ruby # for updates
-asdf install ruby latest
+# asdf plugin add ruby
+# asdf plugin-update ruby # for updates
+# asdf install ruby latest
 
-asdf global ruby 3.3.3
-asdf reshim
+# asdf global ruby 3.3.3
+# asdf reshim
 # restart shell
 
 # ignores version constraints from Gemfile and update to latest versions available
@@ -456,9 +457,17 @@ source ~/.bashrc
 # 22nd May 24 - up to date version
 rbenv install 3.3.1
 
+# 19th Jun 2024
+rbenv install 3.3.3
+
 rbenv global 3.3.1
 
 ## Gems
+
+# Can delete the ~/gems directory to flush if getting weird errors from
+# previous versions of Ruby or Rails.make
+
+
 # no documnentation to turn off the generation so to speed up installs of gems
 echo "gem: --no-document" > ~/.gemrc
 
@@ -479,6 +488,7 @@ gem update --system
 ## Rails
 
 # install latest version - 7.1.3.3 as of 22nd May 24
+# 7.1.3.4 on 19th Jun2024
 gem install rails
 
 # update ruby version shims
