@@ -164,7 +164,7 @@ I like to automate my Azure deployments via bash and keep in the /infra director
 [Rails2 - Deploy]()
 
 
-\l - list databases
+
 
 
 
