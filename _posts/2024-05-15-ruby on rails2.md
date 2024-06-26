@@ -651,36 +651,6 @@ root "home#index"
 
 I'm using Azure Storage for this project to store files, so lets use that to keep a copy of certbot issued letsencrypt certs.
 
-Keys are stored
-
-```bash
-# /etc/nginx/sites-available/default
-ssl_certificate /etc/letsencrypt/live/hmsoftware.org/fullchain.pem;
-ssl_certificate_key /etc/letsencrypt/live/hmsoftware.org/privkey.pem;
-
-# config is stored in /etc/letsencrypt/renewal/hmsoftware.org.conf
-# to disable can put renew_before_expiry = 0
-```
-
-running it manually
-
-
-```bash
-sudo snap install --classic certbot
-
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
-
-# entered email address, and lots of y/n questions
-sudo certbot --nginx
-```
-
-lets copy the cert to dev
-
-and the nginx config
-
-```
-
-```
 
 
 
