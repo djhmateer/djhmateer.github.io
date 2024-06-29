@@ -30,7 +30,6 @@ I'm on the Three network in the UK which does not support 2G and like other netw
 
 4G LTE (Long Term Evolution) is entirely IP based. This means all communication including voice is transmitted as data packets.
 
-
 ## Nokia 105 - Feature Phone (returned was sent 2G version)
 
 [https://www.amazon.co.uk/dp/B09K4CTJMJ](https://www.amazon.co.uk/dp/B09K4CTJMJ) Nokia 105 4G - was £20 when I bought it.
@@ -60,11 +59,19 @@ I didn't like:
 
 [https://www.amazon.co.uk/Nokia-Feature-Bluetooth-Long-Lasting-Pre-loaded/dp/B0C49SH5TC/?th=1](https://www.amazon.co.uk/Nokia-Feature-Bluetooth-Long-Lasting-Pre-loaded/dp/B0C49SH5TC/?th=1)
 
+[![alt text](/assets/2024-06-29/1.jpg "email"){:width="500px"}](/assets/2024-06-29/1.jpg)
+
 Have ordered this for £29.95
 
 TA-1543 I received
 
+2 nano (great same as my new Google pixel 7a) sim cards and an SD card.
 
+Great I can get 4G on the Three network
+
+### Button Tones
+
+Settings, Profiles, Normal. Three bars, Settings, Adjust Volume, Key tone (I have mine on 0)
 
 
 
@@ -98,7 +105,7 @@ According to chatgpt
 
 - Standard  aka mini. 25mm * 15mm 
 - Micro - 15mm * 12mm
-- Nano - 12mm * 8mm
+- Nano - 12mm * 8mm (iPhone and new Androids)
 
 ## Divert Calls to feature phone
 asdf
