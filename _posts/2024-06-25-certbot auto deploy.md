@@ -161,7 +161,8 @@ Running `sudo certbot renew --dry-run` on the server looks promising
 
 Log files are in `/var/log/letsencrypt`
 
-[![alt text](/assets/2024-06-26/2.jpg "email"){:width="500px"}](/assets/2024-06-26/2.jpg)
+<!-- [![alt text](/assets/2024-06-26/2.jpg "email"){:width="500px"}](/assets/2024-06-26/2.jpg) -->
+[![alt text](/assets/2024-06-26/2.jpg "email")](/assets/2024-06-26/2.jpg)
 
 Looks good - nothing to do and it has checked automatically.
 
@@ -171,6 +172,8 @@ It checks twice per day by default, and will renew when it has less than 30 days
 
 
 ## 4 URLs Check
+
+[https://www.digicert.com/help/](https://www.digicert.com/help/) is a good checker for www and apex ie do both.
 
 ```bash
 # 200
@@ -218,7 +221,67 @@ sudo certbot certonly --nginx -d hmsoftware.org -d www.hmsoftware.org --email da
 ```
 
 ## Store certs in Azure Storage
-asdf
+
+I could mount the certs as a fileshare in AzureStorage
+
+But I prefer backing up to blob storage for speed and simpicity.
+
+Have got a script on the prod server writing the certs to Azure Blob storage every 12 hours.
+
+```py
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+import os
+from azure.storage.blob import BlobServiceClient
+
+# got this from Azure Storage Explorer right clicking on the container I created under Blob Containers.
+# then got shared access signature
+sas_url = "https://xxxstorageaccount.blob.core.windows.net/gl ..."
+blob_service_client = BlobServiceClient(account_url=sas_url)
+
+container_name = "hmsoftwareorg"
+
+container_client = blob_service_client.get_container_client(container_name)
+
+# prod
+certbot_path = '/etc/letsencrypt/archive/hmsoftware.org/'  # Path to Certbot certificates
+
+# dev testing
+# certbot_path = "/home/dave/code/golfsubmit/secrets/letsencrypt/archive/hmsoftware.org/"
+
+# Upload files
+for root, dirs, files in os.walk(certbot_path):
+    for file in files:
+        file_path = os.path.join(root, file)
+        blob_client = container_client.get_blob_client(file_path.replace(certbot_path, ''))
+        with open(file_path, "rb") as data:
+            blob_client.upload_blob(data, overwrite=True)
+            # print(f"Uploaded {file_path} to Azure Storage.")
+
+# print("All files uploaded successfully.")
+```
+then
+
+```bash
+# setup a cron job to backup ssl certs all the time to azure
+cd /home/dave
+
+cat <<EOT >> run-backup-certbot-to-azure
+# this is every 2 minutes
+# */2 * * * * dave cd /home/dave/secrets && pipenv run python /home/dave/secrets/backup-certbot-to-azure.py
+
+# every 12 hours 
+
+# send stdout and stderr to syslog via logger
+* */12 * * * dave cd /home/dave/secrets && pipenv run python /home/dave/secrets/backup-certbot-to-azure.py 2>&1 | /usr/bin/logger -t certbot-backup
+EOT
+
+sudo mv run-backup-certbot-to-azure /etc/cron.d
+
+sudo chown root /etc/cron.d/run-backup-certbot-to-azure
+sudo chmod 600 /etc/cron.d/run-backup-certbot-to-azure
+```
+
+
 
 ## Delete a website from certbot
 
@@ -227,8 +290,9 @@ asdf
 sudo certbot delete --cert-name yourdomain.com
 ```
 
-## Other
+## Commands
 
+Some useful commands
 
 ```bash
 
@@ -244,9 +308,17 @@ sudo certbot certonly --nginx -d hmsoftware.org -d www.hmsoftware.org --email da
 # makes /etc/letsencrypt/renewal-hooks
  sudo certbot register -d hmsoftware.org --email davemateer@gmail.com --agree-tos --non-interactive --no-eff-email
 
-
-
-
 # can force a renew
 sudo certbot renew --force-renewal
 ```
+
+## Summary
+
+To deploy
+
+- Check Azure storage for new certs from current vm and copy to Dev vm
+- Deploy a new VM with certs from Dev VM
+- Copy certs every 12 hours to Azure Storage from live
+- When live VM needs a new cert it gets it
+
+

@@ -729,6 +729,8 @@ Telethon - needs an API Key otherwise prompts to enter phone number or key on co
 
 `anon.session` is written to the filesystem
 
+2024 update - the new code doesn't seem to do the flow easily. I've got some OLDAuto-archiver code in c@\dev which does create the file.
+
 ## Facebook
 
 Facebook with video works with the screenshot showing the cookie page
