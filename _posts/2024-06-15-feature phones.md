@@ -73,6 +73,8 @@ I'm on the Three network in the UK which does not support 2G and like other netw
 
 ## Nokia 110 4G
 
+[Official url](https://www.hmd.com/en_int/support/nokia-110-4g-user-guide/keys-and-parts)
+
 [https://www.amazon.co.uk/Nokia-Feature-Bluetooth-Long-Lasting-Pre-loaded/dp/B0C49SH5TC/?th=1](https://www.amazon.co.uk/Nokia-Feature-Bluetooth-Long-Lasting-Pre-loaded/dp/B0C49SH5TC/?th=1)
 
 [![alt text](/assets/2024-06-29/1.jpg "email"){:width="500px"}](/assets/2024-06-29/1.jpg)
