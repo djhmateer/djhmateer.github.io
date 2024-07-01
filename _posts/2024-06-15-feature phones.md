@@ -21,8 +21,20 @@ I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try 
 - To see if it makes me feel better not being connected - ie work email, internet browsing, weather. I don't do X, Instagram on phone anyway
 - As a role model for my kids to get me to stop looking at my phone
 
+**Update after 1 day** 
 
-Which one to try?
+- Sending text message on the feature phone is so slow!
+- Real feeling of liberation not having smart phone is pocket (like the ring in Lord of the Rings) in the house and outside.
+- Annoying not being able to take notes
+- Feel like I've got more time, as not being interrupted
+- WhatsApp I use on desktop and laptop at home.. which I prefer anyway.
+- Kids don't bug me to play games on my smartphone
+- Battery life brilliant
+- Monzo 2FA...??
+- Have to carry a wallet now!
+
+
+## Which one to try?
 
 I'm on the Three network in the UK which does not support 2G and like other networks in the UK they are [phasing out 3G](https://www.three.co.uk/support/network-and-coverage/our-plans-to-switch-off-3g). So I need a feature phone that supports 4G calling.
 
@@ -69,20 +81,21 @@ TA-1543 I received
 
 Great I can get 4G on the Three network
 
+Games - you have to pay for them! No snake.
+
 ### Button Tones
 
 Settings, Profiles, Normal. Three bars, Settings, Adjust Volume, Key tone (I have mine on 0)
-
 
 
 ## UK Phone Network summary
 
 There are 4 physical phone networks MNO (Major Mobile Network Operators) in the UK. Others such as Tesco piggyback.
 
-- EE (part of BT Group merger of Orange and T-Mobile)
-- Three
-- O2 (giffgaff)
-- Vodaphone
+- EE (part of BT Group merger of Orange and T-Mobile) - got sim card on order
+- Three - my current provdier
+- O2 (giffgaff) - my wifes (nearly got wifi). great website. got sim on order
+- Vodaphone - got a sim card on order
 
 ## Mobile Virtual Network Operators
 
@@ -100,7 +113,6 @@ According to chatgpt
 - Lebara Mobile: Uses the Vodafone network.
 - Lycamobile: Uses the O2 network.
 
-
 ## SIM card sizes
 
 - Standard  aka mini. 25mm * 15mm 
@@ -115,9 +127,28 @@ has One Number - so my eSim phone and feature phone could have the same number. 
 
 Although this seems to be for: smartwatches and tablets to share data allowance
 
+Have ordered a free sim just to experiment with their coverage at my house and in village with bad coverage.
+
+
+## Wifi Calling
+
+- EE - yes (not confirmed)
+- Three - have got it already on my PAYG plan (about £10pm)
+- O2 (giffgaff) - [update may 2024](https://community.giffgaff.com/d/34049108-an-update-on-wifi-calling-and-volte)
+- Vodaphone - yes 
+
+
 ## Recommendations for phones
 
 [Phones for kids](https://www.vodafone.co.uk/mobile/best-for/kids-and-teenagers#best-basic-phones) 
 
+
+## TODO
+
+explore different networks - which is better for my house village
+
+can I take off icons?
+
+can I put on snake or free games?
 
 
