@@ -23,16 +23,20 @@ I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try 
 
 **Update after 1 day** 
 
-- Sending text message on the feature phone is so slow!
+### good points
+
 - Real feeling of liberation not having smart phone is pocket (like the ring in Lord of the Rings) in the house and outside.
-- Annoying not being able to take notes
 - Feel like I've got more time, as not being interrupted
 - WhatsApp I use on desktop and laptop at home.. which I prefer anyway.
 - Kids don't bug me to play games on my smartphone
 - Battery life brilliant
-- Monzo 2FA...??
-- Have to carry a wallet now!
 
+### bad points
+
+- Sending text message on the feature phone is so slow!
+- no wifi calling so terrible signal in my house (will try the other 3 providers)
+- Annoying not being able to take notes
+- Have to carry a wallet now with bank cards
 
 ## Which one to try?
 
@@ -42,30 +46,6 @@ I'm on the Three network in the UK which does not support 2G and like other netw
 
 4G LTE (Long Term Evolution) is entirely IP based. This means all communication including voice is transmitted as data packets.
 
-## Nokia 105 - Feature Phone (returned was sent 2G version)
-
-[https://www.amazon.co.uk/dp/B09K4CTJMJ](https://www.amazon.co.uk/dp/B09K4CTJMJ) Nokia 105 4G - was £20 when I bought it.
-
-Date first available 2021
-
-This version should work with 4G LTE (Long Term Evolution) which is what the Three network runs on in the UK.
-
-This is what is should have been [https://www.hmd.com/en_int/nokia-105-4g/specs?sku=1GF018TPA1H01](https://www.hmd.com/en_int/nokia-105-4g/specs?sku=1GF018TPA1H01) but it wasn't
-
-I was sent the TA-1416 which is the 2G version 
-
-[![alt text](/assets/2024-06-15/1.jpg "email"){:width="500px"}](/assets/2024-06-15/1.jpg)
-
-I liked the
-
-- simplicity
-- torch
-- a few games for fun
-
-I didn't like:
-
-- sim card hard to take out (and was not a micro sim so had to use an adapter)
-- hard to take flimsy case off the at the back and felt like it might break
 
 ## Nokia 110 4G
 
@@ -142,6 +122,31 @@ Have ordered a free sim just to experiment with their coverage at my house and i
 
 [Phones for kids](https://www.vodafone.co.uk/mobile/best-for/kids-and-teenagers#best-basic-phones) 
 
+
+## Nokia 105 - Feature Phone (returned was sent 2G version)
+
+[https://www.amazon.co.uk/dp/B09K4CTJMJ](https://www.amazon.co.uk/dp/B09K4CTJMJ) Nokia 105 4G - was £20 when I bought it.
+
+Date first available 2021
+
+This version should work with 4G LTE (Long Term Evolution) which is what the Three network runs on in the UK.
+
+This is what is should have been [https://www.hmd.com/en_int/nokia-105-4g/specs?sku=1GF018TPA1H01](https://www.hmd.com/en_int/nokia-105-4g/specs?sku=1GF018TPA1H01) but it wasn't
+
+I was sent the TA-1416 which is the 2G version 
+
+[![alt text](/assets/2024-06-15/1.jpg "email"){:width="500px"}](/assets/2024-06-15/1.jpg)
+
+I liked the
+
+- simplicity
+- torch
+- a few games for fun
+
+I didn't like:
+
+- sim card hard to take out (and was not a micro sim so had to use an adapter)
+- hard to take flimsy case off the at the back and felt like it might break
 
 ## TODO
 
