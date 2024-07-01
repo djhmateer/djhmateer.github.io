@@ -21,7 +21,7 @@ I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try 
 - To see if it makes me feel better not being connected - ie work email, internet browsing, weather. I don't do X, Instagram on phone anyway
 - As a role model for my kids to get me to stop looking at my phone
 
-**Update after 1 day** 
+## Update after 2 days
 
 ### good points
 
@@ -37,6 +37,19 @@ I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try 
 - no wifi calling so terrible signal in my house (will try the other 3 providers)
 - Annoying not being able to take notes
 - Have to carry a wallet now with bank cards
+
+## TODO
+
+explore different networks - which is better for my house/village
+
+is there wifi calling on any device?
+
+should I try the number clone strategy from Vodaphone?
+  so then I can answer calls on my smart phone at home
+
+can I take off icons?
+
+can I put on snake or free games?
 
 ## Which one to try?
 
@@ -148,12 +161,5 @@ I didn't like:
 - sim card hard to take out (and was not a micro sim so had to use an adapter)
 - hard to take flimsy case off the at the back and felt like it might break
 
-## TODO
-
-explore different networks - which is better for my house village
-
-can I take off icons?
-
-can I put on snake or free games?
 
 
