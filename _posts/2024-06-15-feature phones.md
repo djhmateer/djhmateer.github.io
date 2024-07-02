@@ -51,6 +51,17 @@ can I take off icons?
 
 can I put on snake or free games?
 
+try putting music on it - need a micro usb up to 32GB
+
+try headphones for music?
+
+try browser (!) ahhh hope not
+
+try bluetooth
+
+try radio
+
+
 ## Which one to try?
 
 I'm on the Three network in the UK which does not support 2G and like other networks in the UK they are [phasing out 3G](https://www.three.co.uk/support/network-and-coverage/our-plans-to-switch-off-3g). So I need a feature phone that supports 4G calling.
@@ -62,19 +73,26 @@ I'm on the Three network in the UK which does not support 2G and like other netw
 
 ## Nokia 110 4G
 
+[Official url](https://www.hmd.com/en_int/support/nokia-110-4g-user-guide/keys-and-parts)
+
 [https://www.amazon.co.uk/Nokia-Feature-Bluetooth-Long-Lasting-Pre-loaded/dp/B0C49SH5TC/?th=1](https://www.amazon.co.uk/Nokia-Feature-Bluetooth-Long-Lasting-Pre-loaded/dp/B0C49SH5TC/?th=1)
 
 [![alt text](/assets/2024-06-29/1.jpg "email"){:width="500px"}](/assets/2024-06-29/1.jpg)
 
 Have ordered this for £29.95
 
-TA-1543 I received
+TA-1543 I received (2023 version [i think here](https://www.gsmchoice.com/es/catalogo/nokia/1104g2023dualsim/)?)
 
 2 nano (great same as my new Google pixel 7a) sim cards and an SD card.
 
 Great I can get 4G on the Three network
 
 Games - you have to pay for them! No snake.
+
+[tech specs](https://www.hmd.com/en_int/nokia-110-4g/specs?sku=1GF018LPE1H01)
+
+[more specs](https://manual24.co.uk/nokia-110-4g-2023-dual-sim-manual-user-guide)
+
 
 ### Button Tones
 
