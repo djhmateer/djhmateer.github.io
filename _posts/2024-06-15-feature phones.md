@@ -34,7 +34,7 @@ I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try 
 ### bad points
 
 - Sending text message on the feature phone is so slow!
-- no wifi calling so terrible signal in my house (will try the other 3 providers)
+- no wifi calling so terrible signal in my house on Three (will try the other 3 providers)
 - Annoying not being able to take notes
 - Have to carry a wallet now with bank cards
 

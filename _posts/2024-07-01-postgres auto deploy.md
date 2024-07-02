@@ -56,15 +56,19 @@ do
     fi
 done
 
+# normal 
+DB_FILENAME_TO_RESTORE="golfsubmit_production.dump"
+
+# restore from Azure storage - copy file to /secrets on dev"
+# DB_FILENAME_TO_RESTORE="2024-07-01__11_45_01.dump"
+
 # copy db dump file to new vm
-scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null /home/dave/code/golfsubmit/secrets/golfsubmit_production.dump dave@${dnsname}.westeurope.cloudapp.azure.com:/home/dave/ 
+scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null /home/dave/code/golfsubmit/secrets/${DB_FILENAME_TO_RESTORE} dave@${dnsname}.westeurope.cloudapp.azure.com:/home/dave/db.dump
 
 # restore on new vm
 # --clean is drop objects before creating
 # --if-exists is only drop if exists
-ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null dave@${dnsname}.westeurope.cloudapp.azure.com 'pg_restore -U postgres --clean --if-exists -v -d golfsubmit_production golfsubmit_production.dump'
-
-
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null dave@${dnsname}.westeurope.cloudapp.azure.com 'pg_restore -U postgres --clean --if-exists -v -d golfsubmit_production db.dump'
 ```
 
 ## Backup every x minutes on vm and copy to azure

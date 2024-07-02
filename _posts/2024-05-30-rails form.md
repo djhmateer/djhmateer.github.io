@@ -163,12 +163,9 @@ I like to automate my Azure deployments via bash and keep in the /infra director
 
 [Rails2 - Deploy]()
 
-
 [Certbot auto deploy]()
 
-
-
-
+[Postgres auto deploy]()
 
 
 ## Rails
@@ -238,5 +235,8 @@ class AddNotNullConstraintToInvestigationName < ActiveRecord::Migration[6.1]
     change_column_null :investigations, :name, false
   end
 end
-
 ```
+
+## Rails file upload to Storage
+
+[Rails file upload]()
