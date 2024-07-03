@@ -90,7 +90,8 @@ TA-1543 I received (2023 version [i think here](https://www.gsmchoice.com/es/cat
 
 Great I can get 4G on the Three network
 
-Games - you have to pay for them! No snake.
+Games - Snake is available from the Go To menu. Other games can be bought or side loaded
+
 
 [tech specs](https://www.hmd.com/en_int/nokia-110-4g/specs?sku=1GF018LPE1H01)
 
@@ -100,6 +101,8 @@ Games - you have to pay for them! No snake.
 ### Button Tones
 
 Settings, Profiles, Normal. Three bars, Settings, Adjust Volume, Key tone (I have mine on 0)
+
+Also turn down all volumes as it is loud.
 
 
 ## UK Phone Network summary
