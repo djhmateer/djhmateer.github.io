@@ -28,8 +28,9 @@ I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try 
 - Be in the moment as can't 'just check email' or WhatsApp messages
 - Not worried about losing/dropping my phone - at £30 it doesn't really matter!
 - Not worried about security - all my 2FA etc is not at risk if I lose the phone
-- Real feeling of liberation not having smart phone is pocket (like the ring in Lord of the Rings) in the house and outside.
+- Feeling of freedom, liberation (like the ring in Lord of the Rings) in the house and outside.
 - Feel like I've got more time, as not being interrupted
+- Nostalgia from when I had a lot of time?
 - WhatsApp I use on desktop and laptop at home.. which I prefer anyway.
 - Kids don't bug me to play games on my smartphone
 - Battery life brilliant (charged fully on Mon 1st July in afternoon... lets see)

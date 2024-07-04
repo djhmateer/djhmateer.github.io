@@ -237,8 +237,11 @@ My first site is going to be a 1 page portfolio site so lets go to auth.
 [Devise]()
 
 ```bash
+# adds to Gemfile - 4.9 on 2nd July 2024
 bundle add devise
 
+# adds a devise.rb initialiser
+# config/locales/devise.en.yml
 rails generate devise:install
 
 # /config/environments/development.rb
