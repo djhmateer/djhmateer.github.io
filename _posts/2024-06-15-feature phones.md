@@ -15,6 +15,8 @@ image: /assets/2024-05-03/4.jpg
 
 <!-- [![alt text](/assets/2024-05-23/1.jpg "email"){:width="500px"}](/assets/2024-05-23/1.jpg) -->
 
+[![alt text](/assets/2024-06-29/1.jpg "email"){:width="400px"}](/assets/2024-06-29/1.jpg)
+
 I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try for
 
 - Running as they are super light and great battery life
@@ -33,7 +35,7 @@ I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try 
 - Nostalgia from when I had a lot of time?
 - WhatsApp I use on desktop and laptop at home.. which I prefer anyway.
 - Kids don't bug me to play games on my smartphone
-- Battery life brilliant (charged fully on Mon 1st July in afternoon... lets see)
+- Battery life brilliant (charged fully on Mon 1st July in afternoon... I charged on Friday night and had a few bars left. 4 days)
 
 ### bad points
 
@@ -41,6 +43,31 @@ I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try 
 - no wifi calling so terrible signal in my house on Three (will try the other 3 providers)
 - Annoying not being able to take notes
 - Have to carry a wallet now with bank cards
+
+## Update after a week
+
+After moving my nano sim over to the Nokia, I've not felt the need to move it back for anything!
+
+### good
+
+- I had a lot of free time now...really!
+- I tend to be in the moment more as can't just check my device
+- a friend took a photo of my phone as thinks it is a great idea!
+- Don't worry as much about phone as only costs £30 so no problem if I lose it
+- Kids engage more as don't ask me to play games on my phone
+- Friends kids see my phone and they are getting Nokia's too (so good for them to see grown ups using them)
+- It's nice make phone calls and not WhatsApp messages. 
+
+### bad
+
+- no idea when bus times are 
+- had to remember how to get somewhere as no satnav
+- no idea about traffic conditions
+- calling my wife hard as her cellphone coverage bad / data is fine
+- nervoud about monzo card failing (so am carrying a spare visa card)
+- will start carrrying cash
+- reception in my house is terrrible and demo sim cards not arrived yet.
+
 
 ## TODO
 
