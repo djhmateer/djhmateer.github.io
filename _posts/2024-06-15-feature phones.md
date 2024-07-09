@@ -68,30 +68,12 @@ After moving my nano sim over to the Nokia, I've not felt the need to move it ba
 - will start carrrying cash
 - reception in my house is terrrible and demo sim cards not arrived yet.
 
-
 ## TODO
 
-explore different networks - which is better for my house/village
-
-is there wifi calling on any device?
+Is there wifi calling on any feature phone device?
 
 should I try the number clone strategy from Vodaphone?
   so then I can answer calls on my smart phone at home
-
-can I take off icons?
-
-can I put on snake or free games?
-
-try putting music on it - need a micro usb up to 32GB
-
-try headphones for music?
-
-try browser (!) ahhh hope not
-
-try bluetooth
-
-try radio
-
 
 ## Which one to try?
 
@@ -120,7 +102,6 @@ Great I can get 4G on the Three network
 
 Games - Snake is available from the Go To menu. Other games can be bought or side loaded
 
-
 [tech specs](https://www.hmd.com/en_int/nokia-110-4g/specs?sku=1GF018LPE1H01)
 
 [more specs](https://manual24.co.uk/nokia-110-4g-2023-dual-sim-manual-user-guide)
@@ -135,12 +116,15 @@ Also turn down all volumes as it is loud.
 
 ## UK Phone Network summary
 
-There are 4 physical phone networks MNO (Major Mobile Network Operators) in the UK. Others such as Tesco piggyback.
+There are 4 physical phone networks MNO (Major Mobile Network Operators) in the UK. Others such as Tesco piggyback. SIM cards are generally.
 
-- EE (part of BT Group merger of Orange and T-Mobile) - got sim card on order
-- Three - my current provdier
-- O2 (giffgaff) - my wifes (nearly got wifi). great website. got sim on order
-- Vodaphone - got a sim card on order
+- Three - my current provdier. Sporadic coverage in my house. Okay beside windows.
+- EE (part of BT Group merger of Orange and T-Mobile). SLighter better in some parts as downgrades to 3G/2G compared with Three. Worse in other parts.
+- Vodaphone - slightly better in some parts of house. Same massive black spot in living room.
+- O2 (giffgaff) - my wifes (wifi calling not working yet). great website. 
+
+In summary we've got bad network coverage in our village and none of the networks are good enough to run without wifi calling.
+
 
 ## Mobile Virtual Network Operators
 
