@@ -3,17 +3,115 @@ layout: post
 # title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
 menu: review
-categories: ror 
+categories: rails 
 published: true 
 comments: false     
 sitemap: false
 image: /assets/2024-05-03/4.jpg
 ---
 
-<!-- [![alt text](/assets/2024-04-24/5.jpg "email"){:width="500px"}](/assets/2024-04-24/5.jpg) -->
-<!-- [![alt text](/assets/2024-04-24/5.jpg "email")](/assets/2024-04-24/5.jpg) -->
+Uploading files on any web framework can be hard. Especially if there are: multiple files, large files, network interruptions, cancellations, resumes, and the want to show nice progress bars.
 
-<!-- [![alt text](/assets/2024-05-23/1.jpg "email"){:width="500px"}](/assets/2024-05-23/1.jpg) -->
+So lets guide the user into the pit of success.
+
+## Strategy
+
+Only do file uploads after everything else is saved 
+
+Allow the user a backup method of getting files to you eg [https://wetransfer.com/](https://wetransfer.com/)
+
+Allow the user an easy way to try again.
+
+Do minimal javascript (as my clients may be on old devices)
+
+## Demo Codebase
+
+This codebase shows
+
+- Form upload with single file
+- Form upload with multi files
+
+- JS upload
+- JS upload with progress bar and percentage and multi files
+
+- JS direct upload to Azure
+- JS direct upload to S3 (Digital Ocean)
+
+
+## Form Upload with single file
+
+```bash
+# check updates (be careful the version of ruby is what rails wants)
+
+# update rbenv
+cd ~/.rbenv
+git pull
+
+# will get latest ruby build bits
+cd ~/.rbenv/plugins/ruby-build
+git pull
+
+# list
+rbenv install -l
+
+rbenv install 3.3.4
+
+rbenv global 3.3.4
+rbenv rehash
+
+# verify version
+ruby -v
+
+# Rails - 7.1.3.4
+gem update --system
+
+gem install rails
+
+rails new uploadtest -d postgresql -c tailwind --skip-hotwire --skip-jbuilder
+
+# Makefile
+run:
+	bin/dev
+
+.PHONY: run
+
+rails db:create
+rails db:migrate
+
+# controller and view
+rails g controller home index 
+
+# config/routes.rb
+root "home#index"
+
+# creates migrations for 3 tables
+rails active_storage:install
+
+# single attachment of a model called communication
+# creates CRUD
+rails g scaffold communication name:string image:attachment --no-jbuilder
+
+# views/layouts/application
+# put in _nav.html.erb for /communications
+
+```
+
+Now lets change where it saves the file (it uses local by default)
+
+I'm going to be using files stores like DigitalOcean and Azure Blob Storage as I don't want to be storing the files on the webserver.
+
+
+## S3 Digital Ocean
+
+```bash
+# config/environments/development.rb
+
+```
+
+CORS [comment by Trav](https://www.digitalocean.com/community/tutorials/how-to-use-activestorage-in-rails-6-with-digitalocean-spaces) helped me.
+
+
+## Frameworks
 
 - ActiveStorage - part of Rails.
 - Carrierwave 8k stars, Mar 2024 - rackspace / Google cloud
@@ -21,19 +119,16 @@ image: /assets/2024-05-03/4.jpg
 - Refile - 2.5k. 4 years ago.
 - Shine - 3k, 1 month ago. Disk, S3, Google. [https://shrinerb.com/docs/advantages#direct-uploads](https://shrinerb.com/docs/advantages#direct-uploads)
 
-
 then the JS front ends for
 
 - resumable file uploads
 - multiple uploads at the same time
-
 
 **check out S3 sdk (js?) and azure
 
 then
 
 - [https://github.com/transloadit/uppy](https://github.com/transloadit/uppy)
-
 
 [https://edgeguides.rubyonrails.org/active_storage_overview.html](https://edgeguides.rubyonrails.org/active_storage_overview.html)
 
