@@ -324,6 +324,7 @@ sudo -iu postgres
 psql
 
 \l -list dbs
+\du - list roles (users)
 
 \c railz_development # connect to a database
 \dt # list all tables

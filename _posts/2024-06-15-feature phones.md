@@ -166,6 +166,11 @@ Have ordered a free sim just to experiment with their coverage at my house and i
 - O2 (giffgaff) - [update may 2024](https://community.giffgaff.com/d/34049108-an-update-on-wifi-calling-and-volte)
 - Vodaphone - yes 
 
+## Nokia 235
+
+[https://www.hmd.com/en_gb/nokia-235-4g-2024?sku=1GF026GPG3L02](https://www.hmd.com/en_gb/nokia-235-4g-2024?sku=1GF026GPG3L02) - a favourite with year 6 kids. £65
+
+
 
 ## Recommendations for phones
 
