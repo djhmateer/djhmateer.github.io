@@ -40,6 +40,8 @@ This codebase shows
 
 ## Form Upload with single file
 
+Here is a Rails build script to demo a single file upload
+
 ```bash
 # check updates (be careful the version of ruby is what rails wants)
 
@@ -54,9 +56,9 @@ git pull
 # list
 rbenv install -l
 
-rbenv install 3.3.4
+rbenv install 3.3.3
 
-rbenv global 3.3.4
+rbenv global 3.3.3
 rbenv rehash
 
 # verify version
@@ -108,7 +110,20 @@ I'm going to be using files stores like DigitalOcean and Azure Blob Storage as I
 
 ```
 
+[![alt text](/assets/2024-07-11/1.jpg "email"){:width="500px"}](/assets/2024-07-11/1.jpg)
+
 CORS [comment by Trav](https://www.digitalocean.com/community/tutorials/how-to-use-activestorage-in-rails-6-with-digitalocean-spaces) helped me.
+
+
+## Azure 
+asdfsd
+
+
+## Direct Uploads
+
+asdf
+
+
 
 
 ## Frameworks

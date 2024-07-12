@@ -60,6 +60,8 @@ After moving my nano sim over to the Nokia, I've not felt the need to move it ba
 
 ### bad
 
+- missed a call due to not hearing (as low volume and phone in bag)
+- didn't see messages about missed call due to small screen and not checking
 - no idea when bus times are 
 - had to remember how to get somewhere as no satnav
 - no idea about traffic conditions
@@ -111,7 +113,9 @@ Games - Snake is available from the Go To menu. Other games can be bought or sid
 
 Settings, Profiles, Normal. Three bars, Settings, Adjust Volume, Key tone (I have mine on 0)
 
-Also turn down all volumes as it is loud.
+Also turn down all volumes as it is loud. - turned back up as missed calls
+
+
 
 
 ## UK Phone Network summary
