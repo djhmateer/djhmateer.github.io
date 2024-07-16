@@ -16,6 +16,7 @@ image: /assets/2024-05-03/4.jpg
 <!-- [![alt text](/assets/2024-05-23/1.jpg "email"){:width="500px"}](/assets/2024-05-23/1.jpg) -->
 
 [![alt text](/assets/2024-06-29/1.jpg "email"){:width="400px"}](/assets/2024-06-29/1.jpg)
+
 My second feature phone - love it! But no wifi calling which is a dealbreaker for where I live.
 
 I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try for
