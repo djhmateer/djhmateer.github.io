@@ -80,13 +80,17 @@ After moving my nano sim over to the Nokia, I've not felt the need to move it ba
 So I'm returning with much sadness my Nokia 110 (Amazon return policy a brilliant) as I can't use it as a phone with no receiption
 
 
-## Version 3 - Next to Try
+## Version 3 - CAT S22 Flip
 
 What I want:
 
 - wifi calling
 - light (so I can run with it)
 - not a smartphone to inspire kids that it is okay not to have a smartphone
+
+[CAT S22 Flip](https://www.amazon.co.uk/gp/product/B0BTTQGVVW/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
+
+My options were:
 
 [2024 state of play](https://www.reddit.com/r/dumbphones/comments/18xm09m/state_of_the_dumbphone_2024_read_this_first/)
 
@@ -99,15 +103,6 @@ What I want:
 
 
 [https://dumbphones.pory.app/europe](https://dumbphones.pory.app/europe)
-
-CAT S22 Flip
-https://www.amazon.co.uk/Flip-16GB-Free-Smartphone-CS22F-DAB-RON-NN/dp/B0BTTQGVVW
-
-BUT this is bulky
-hmmmmm
-
-maybe try iphone dumbed down like they talk about.
-
 
 
 
