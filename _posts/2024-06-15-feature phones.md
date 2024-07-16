@@ -77,7 +77,16 @@ After moving my nano sim over to the Nokia, I've not felt the need to move it ba
 - And it is too easy to call 999 by accident
 - Camera is terrible.
 
-## Next to Try
+So I'm returning with much sadness my Nokia 110 (Amazon return policy a brilliant) as I can't use it as a phone with no receiption
+
+
+## Version 3 - Next to Try
+
+What I want:
+
+- wifi calling
+- light (so I can run with it)
+- not a smartphone to inspire kids that it is okay not to have a smartphone
 
 [2024 state of play](https://www.reddit.com/r/dumbphones/comments/18xm09m/state_of_the_dumbphone_2024_read_this_first/)
 
