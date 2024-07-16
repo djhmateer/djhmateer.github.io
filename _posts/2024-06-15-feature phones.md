@@ -123,7 +123,7 @@ I'm on the Three network in the UK which does not support 2G and like other netw
 
 4G LTE (Long Term Evolution) is entirely IP based. This means all communication including voice is transmitted as data packets.
 
-## Try 2 - Nokia 110 4G
+## Phone 2 - Nokia 110 4G
 
 [Official url](https://www.hmd.com/en_int/support/nokia-110-4g-user-guide/keys-and-parts)
 
