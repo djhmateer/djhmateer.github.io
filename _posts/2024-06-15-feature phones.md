@@ -90,7 +90,16 @@ What I want:
 
 [2024 state of play](https://www.reddit.com/r/dumbphones/comments/18xm09m/state_of_the_dumbphone_2024_read_this_first/)
 
+- CAT S22 - flip
+- Xiaomi F21 - candybar
+- Jelly Star - mini smartphone
+- Kyocera DuraXV Extreme or Sunbeam F1 Pro on Verizon. 
+- Nokia 2720V
+
+
+
 [https://dumbphones.pory.app/europe](https://dumbphones.pory.app/europe)
+
 CAT S22 Flip
 https://www.amazon.co.uk/Flip-16GB-Free-Smartphone-CS22F-DAB-RON-NN/dp/B0BTTQGVVW
 
