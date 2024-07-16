@@ -2,7 +2,7 @@
 layout: post
 # title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
-menu: review
+#menu: review
 categories: rails 
 published: true 
 comments: false     
@@ -31,6 +31,8 @@ This codebase shows
 - Form upload with single file
 - Form upload with multi files
 
+- Text input then file upload on next page (no - we don't need it)
+
 - JS upload
 - JS upload with progress bar and percentage and multi files
 
@@ -38,7 +40,7 @@ This codebase shows
 - JS direct upload to S3 (Digital Ocean)
 
 
-## Form Upload with single file
+## Form Uploads
 
 Here is a Rails build script to demo a single file upload
 
@@ -96,6 +98,9 @@ rails g scaffold communication name:string image:attachment --no-jbuilder
 # views/layouts/application
 # put in _nav.html.erb for /communications
 
+# multiple files attached
+# https://edgeguides.rubyonrails.org/active_storage_overview.html#has-many-attached
+rails g scaffold message name:string files:attachments --no-jbuilder
 ```
 
 Now lets change where it saves the file (it uses local by default)
@@ -103,27 +108,66 @@ Now lets change where it saves the file (it uses local by default)
 I'm going to be using files stores like DigitalOcean and Azure Blob Storage as I don't want to be storing the files on the webserver.
 
 
-## S3 Digital Ocean
-
-```bash
-# config/environments/development.rb
-
-```
-
-[![alt text](/assets/2024-07-11/1.jpg "email"){:width="500px"}](/assets/2024-07-11/1.jpg)
-
-CORS [comment by Trav](https://www.digitalocean.com/community/tutorials/how-to-use-activestorage-in-rails-6-with-digitalocean-spaces) helped me.
-
 
 ## Azure 
-asdfsd
+
+azure-storage-ruby is being deprecated soon 
+[https://github.com/Azure/azure-storage-ruby](https://github.com/Azure/azure-storage-ruby) - gem is called [azure-storage-blob](https://rubygems.org/gems/azure-storage-blob)
+
+
+I'm using rails 7.1.3.4  on Ruby 3.3.3 (locked on this as latest 3.3.4 not good for rails yet)
+
+[https://edgeguides.rubyonrails.org/active_storage_overview.html](https://edgeguides.rubyonrails.org/active_storage_overview.html) edge guide doesn't talk about near deprecation
+
+[https://github.com/rails/rails/issues/49983](https://github.com/rails/rails/issues/49983) discussion
+
+There is now an external gem file called [https://github.com/testdouble/azure-blob](https://github.com/testdouble/azure-blob)
+
+```bash
+# setup a .env file with
+
+# primary_key look in properties in Azure Storage Explorer
+AZURE_ACCESS_KEY=HUmoV+eqgRC72whm etc..
+
+# add a container called uploadtest-development
+
+# also remember CORS
+
+# storage.yml
+microsoft:
+  # old one
+  # service: AzureStorage
+  # new one
+  service: AzureBlob
+
+  storage_account_name: functionsdm2storage
+  storage_access_key: <%= ENV['AZURE_ACCESS_KEY'] %>
+  container: uploadtest-<%= Rails.env %>
+
+# add to gemfile
+# old deprecated one
+# gem 'azure-storage-blob', '~> 2.0', '>= 2.0.3'
+
+# new one
+gem 'azure-blob'
+
+bundle update
+
+# change AzureStorage service to AzureBLog in storage
+```
+
+## Separate page for file upload
+
+We never want to lose data, so lets make sure the initial form is successfully submitted.
+
+Actually rails does a great job of this out of the box. As far as I can tell it does a good job of saving form data before doing uploads, and even the js library does retries.
 
 
 ## Direct Uploads
 
-asdf
 
 
+## Other info
 
 
 ## Frameworks
@@ -200,7 +244,7 @@ to render onscreen:
 ```html
 ```
 
-### New
+### Data Structure
 
 Insert records
 
@@ -208,103 +252,6 @@ Insert records
 - `active_storage_attachments` - join on Communication model table to blobs eg record_type = Communication, record_id is the communication pk.
 
 Stores file in local /storage in a directory like `/aa/cc/aaccr414lboisl6a9moto2ptc540` which we can get from blobs table.
-
-
-### Destroy
-
-Does a hard delete
-
-
-## Microsoft Azure
-
-```bash
-# Gemfile
-gem 'azure-storage-blob', '~> 2.0', '>= 2.0.3'
-
-bundle update
-
-# config/environments/development.rb
-# Store uploaded files on the local file system (see config/storage.yml for options).
-# config.active_storage.service = :local
-config.active_storage.service = :microsoft
-
-# config/storage.yml
-microsoft:
-  service: AzureStorage
-  storage_account_name: functionsdm2storage
-  # primary_key look in functionsdm2stoage and properties in Azure Storage Explorer
-  storage_access_key: <%= ENV['AZURE_ACCESS_KEY'] %>
-  # useful so don't cross contaminate development and production on Azure.
-  container: railz3-<%= Rails.env %>
-
-# .env for secrest on dev
-# service file for prod
-# sudo vim /etc/systemd/system/railz3.service
-```
-
-[https://github.com/Azure/azure-storage-ruby](https://github.com/Azure/azure-storage-ruby) support is being [deprecated by MS](https://azure.microsoft.com/en-gb/updates/retirement-notice-the-azure-storage-ruby-client-libraries-will-be-retired-on-13-september-2024/) in favour of the REST API.
-
-[https://azure.github.io/azure-sdk/policies_support.html#package-lifecycle](https://azure.github.io/azure-sdk/policies_support.html#package-lifecycle) annoying they are not supporting Ruby libraries.
-
-
-[![alt text](/assets/2024-05-29/2.jpg "email"){:width="500px"}](/assets/2024-05-29/2.jpg)
-
-Successful upload from dev to railz3-development. Also from production to railz3-production.
-
-When delete from UI, it hard deletes from storage.
-
-
-## File Types and Sizes 
-
-- png party 2.7MB
-- jpg rainbow 221kb
-- webp landscape 151kb
-- tiff 1.1MB (didn't render properly - browsers don't natively support)
-- zip 200MB (can see file being uploaded to webserver, then uploaded to storage). Works fine. Interestingly the download works straight to the browser through a link like: https://hmsoftware.uk/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MzYsInB1ciI6ImJsb2JfaWQifX0=--d368a421c553a01298a34c41c03502b8f3972a0f/glan.zip?disposition=attachment
-
-- pdf - no preview
-- docx - strange filename 
-- xlxs - 12k
-- ad1 - fine
-- csv - fine
-- pptx - fine
-- mp4  - 259MB
-- zip - 4.6GB nginx 500 server error
-- zip - 700MB nginx 500 error
-- b mov - 694kb - worked
-
-
-[![alt text](/assets/2024-05-29/3.jpg "email"){:width="500px"}](/assets/2024-05-29/3.jpg)
-
-`iftop` is the name of the tool. `sudo apt-get install iftop` then run with sudo.
-
-200MB file - can see it being received by the webserver. Then slowly being transmitted.  The webserver is on a fast internal network and a slow uplink to Azure.
-
-Larger files like 700MB caused the reverse proxy to fail which was writing the file to disk. It was actually an out of disk space error on the proxy.
-
-
-## Multiple attachments
-
-```bash
-# https://edgeguides.rubyonrails.org/active_storage_overview.html#has-many-attached
-
-# each message has many images
-rails g scaffold message name:string images:attachments --no-jbuilder
-
-```
-
-asdf
-
-```rb
-class Message < ApplicationRecord
-  has_many_attached :images
-end
-
-```
-
-[![alt text](/assets/2024-05-29/4.jpg "email"){:width="500px"}](/assets/2024-05-29/4.jpg)
-
-Attaching 25 files over 1.3GB in total. Uploading the from server to Azure storage is taking > 20 minutes, and the connections are all staying open and not failing. Very impressive.
 
 
 ## Direct Uploads
@@ -360,10 +307,11 @@ rails assets:precompile
 
 ## Direct Upload Progress
 
+**todo - see golfsubmit project**
+
 Let's show the user a progress bar or something
 
 [Here is some simple js](https://edgeguides.rubyonrails.org/active_storage_overview.html#example) on the rails guiide.
-
 
 ```bash
 # javascript/direct_uploads.js
@@ -377,40 +325,18 @@ import "direct_uploads"
 ```
 
 
-## Javascript
+## S3 Digital Ocean
 
-- Drag and drop files
-- Upload progress
-- Resume
-- Upload direct
+**todo - but works just like azure**
 
-[https://github.com/dropzone/dropzone](https://github.com/dropzone/dropzone) - 17.9k not maintained
+```bash
+# config/environments/development.rb
 
+```
 
-[![alt text](/assets/2024-05-29/7.jpg "email"){:width="500px"}](/assets/2024-05-29/7.jpg)
+[![alt text](/assets/2024-07-11/1.jpg "email"){:width="500px"}](/assets/2024-07-11/1.jpg)
 
-Uploading multiple files. Showing progress with a bar. However on large uploads the bar isn't progressing ie it is at 0% or 100%
+CORS [comment by Trav](https://www.digitalocean.com/community/tutorials/how-to-use-activestorage-in-rails-6-with-digitalocean-spaces) helped me.
 
-So there is a problem in the CSS / js..
-
-I can do it properly in c:\foo\index
-
-is turbo causing issues?
-could put percentage on the end too 
-
-maybe time to look at design????
-
-
-## Retries?
-
-
-
-## Debug
-
-
-
-## Active Storage
-
-[https://edgeguides.rubyonrails.org/configuring.html#configuring-active-storage](https://edgeguides.rubyonrails.org/configuring.html#configuring-active-storage) - detailed config.
 
 
