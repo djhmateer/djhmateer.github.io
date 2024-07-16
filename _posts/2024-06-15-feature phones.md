@@ -85,6 +85,11 @@ After moving my nano sim over to the Nokia, I've not felt the need to move it ba
 CAT S22 Flip
 https://www.amazon.co.uk/Flip-16GB-Free-Smartphone-CS22F-DAB-RON-NN/dp/B0BTTQGVVW
 
+BUT this is bulky
+hmmmmm
+
+maybe try iphone dumbed down like they talk about.
+
 
 
 
