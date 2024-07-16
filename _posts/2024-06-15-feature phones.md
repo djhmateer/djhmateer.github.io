@@ -70,6 +70,29 @@ After moving my nano sim over to the Nokia, I've not felt the need to move it ba
 - will start carrrying cash
 - reception in my house is terrrible and demo sim cards not arrived yet.
 
+## Update after 2 weeks
+
+- I love my feature phone
+- But no wifi calling is a deal breaker
+- And it is too easy to call 999 by accident
+- Camera is terrible.
+
+## Next to Try
+
+[2024 state of play](https://www.reddit.com/r/dumbphones/comments/18xm09m/state_of_the_dumbphone_2024_read_this_first/)
+
+[https://dumbphones.pory.app/europe](https://dumbphones.pory.app/europe)
+CAT S22 Flip
+https://www.amazon.co.uk/Flip-16GB-Free-Smartphone-CS22F-DAB-RON-NN/dp/B0BTTQGVVW
+
+BUT this is bulky
+hmmmmm
+
+maybe try iphone dumbed down like they talk about.
+
+
+
+
 ## TODO
 
 Is there wifi calling on any feature phone device?
