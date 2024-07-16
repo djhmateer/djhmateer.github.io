@@ -16,6 +16,7 @@ image: /assets/2024-05-03/4.jpg
 <!-- [![alt text](/assets/2024-05-23/1.jpg "email"){:width="500px"}](/assets/2024-05-23/1.jpg) -->
 
 [![alt text](/assets/2024-06-29/1.jpg "email"){:width="400px"}](/assets/2024-06-29/1.jpg)
+My second feature phone - love it! But no wifi calling which is a dealbreaker for where I live.
 
 I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try for
 
@@ -80,7 +81,7 @@ After moving my nano sim over to the Nokia, I've not felt the need to move it ba
 So I'm returning with much sadness my Nokia 110 (Amazon return policy a brilliant) as I can't use it as a phone with no receiption
 
 
-## Version 3 - CAT S22 Flip
+## Phone 3 - CAT S22 Flip
 
 What I want:
 
@@ -90,6 +91,10 @@ What I want:
 
 [CAT S22 Flip](https://www.amazon.co.uk/gp/product/B0BTTQGVVW/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
 
+As before I'm buying from Amazon as their returns policy is great.
+
+
+### Options
 My options were:
 
 [2024 state of play](https://www.reddit.com/r/dumbphones/comments/18xm09m/state_of_the_dumbphone_2024_read_this_first/)
@@ -100,15 +105,11 @@ My options were:
 - Kyocera DuraXV Extreme or Sunbeam F1 Pro on Verizon. 
 - Nokia 2720V
 
-
-
 [https://dumbphones.pory.app/europe](https://dumbphones.pory.app/europe)
 
 
 
 ## TODO
-
-Is there wifi calling on any feature phone device?
 
 should I try the number clone strategy from Vodaphone?
   so then I can answer calls on my smart phone at home
@@ -121,8 +122,7 @@ I'm on the Three network in the UK which does not support 2G and like other netw
 
 4G LTE (Long Term Evolution) is entirely IP based. This means all communication including voice is transmitted as data packets.
 
-
-## Nokia 110 4G
+## Try 2 - Nokia 110 4G
 
 [Official url](https://www.hmd.com/en_int/support/nokia-110-4g-user-guide/keys-and-parts)
 
@@ -150,9 +150,6 @@ Games - Snake is available from the Go To menu. Other games can be bought or sid
 Settings, Profiles, Normal. Three bars, Settings, Adjust Volume, Key tone (I have mine on 0)
 
 Also turn down all volumes as it is loud. - turned back up as missed calls
-
-
-
 
 ## UK Phone Network summary
 
@@ -211,13 +208,12 @@ Have ordered a free sim just to experiment with their coverage at my house and i
 [https://www.hmd.com/en_gb/nokia-235-4g-2024?sku=1GF026GPG3L02](https://www.hmd.com/en_gb/nokia-235-4g-2024?sku=1GF026GPG3L02) - a favourite with year 6 kids. £65
 
 
-
 ## Recommendations for phones
 
 [Phones for kids](https://www.vodafone.co.uk/mobile/best-for/kids-and-teenagers#best-basic-phones) 
 
 
-## Nokia 105 - Feature Phone (returned was sent 2G version)
+## Try 1 - Nokia 105 - Feature Phone (returned was sent 2G version)
 
 [https://www.amazon.co.uk/dp/B09K4CTJMJ](https://www.amazon.co.uk/dp/B09K4CTJMJ) Nokia 105 4G - was £20 when I bought it.
 
@@ -242,5 +238,19 @@ I didn't like:
 - sim card hard to take out (and was not a micro sim so had to use an adapter)
 - hard to take flimsy case off the at the back and felt like it might break
 
+## Naming
+
+I've heard this style of phone called:
+
+- Button phone
+- Feature phone
+- Brick
+- Drug dealer phone
+- Nokia
+- Burner
+- Dumb
+- 1980's phone
+
+Noone really knows.
 
 
