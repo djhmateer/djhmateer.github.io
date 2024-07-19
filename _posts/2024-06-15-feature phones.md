@@ -81,6 +81,12 @@ After moving my nano sim over to the Nokia, I've not felt the need to move it ba
 
 So I'm returning with much sadness my Nokia 110 (Amazon return policy a brilliant) as I can't use it as a phone with no receiption
 
+## TODO
+
+[https://www.bbc.co.uk/reel/video/p0jbqf2p/would-you-ditch-a-smartphone-for-a-dumbphone-](https://www.bbc.co.uk/reel/video/p0jbqf2p/would-you-ditch-a-smartphone-for-a-dumbphone-) watch
+
+play with new CAT phone
+
 
 ## Phone 3 - CAT S22 Flip
 

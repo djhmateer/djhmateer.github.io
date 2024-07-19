@@ -72,7 +72,7 @@ in rails
 
 Lets customise and make a repeater, so we've got full control of the css, but can change any of the text.
 
-```json
+```bash
 # this is where we define our content types.
 # /config/themes/default.rb
 
@@ -111,7 +111,28 @@ theme.view_templates = [
 
 ## Deploy to Production
 
-It would be handy tp deploy all of `spina_` table data to production. I do auto backups when a new vm is created so a very simple way to deploy spina is just to get it started, then just remember the db changes I've made and updated on prod whilst developing.
+I tried a few ways to get this right
+
+A vanilla deploy without any data write to 2 tables
+
+- ar_internal_metadata (1 rows) environment = production!
+- schema_migrations (23 rows)
+- spina_ are all empty which is bad as I need a way to login!
+
+So lets just do a raw SQL dump from dev and run on prod. Except for ar_internal_metadata and schema_migrations
+
+
+```bash
+# in secrets directory
+ pg_dump -U postgres -d golfsubmit_development --clean --exclude-table=ar_internal_metadata --exclude-table=schema_migrations  -f - | sed 's/OWNER TO dave/OWNER TO golfsubmit/g' > dev_backup.sql
+
+# scp to server
+
+# run
+psql -U postgres -d golfsubmit_production -f /home/dave/secrets/dev_backup.sql
+```
+
+useful commands:
 
 ```bash
 sudo -iu postgres
@@ -119,52 +140,73 @@ psql
 
 \c golfsubmit_development
 \dt # show all tables
+```
 
-# show all spina tables
-SELECT tablename FROM pg_tables WHERE tablename LIKE 'spina_%';
+## Use Devise for Auth into Spina
 
-# example
-pg_dump -U postgres -d golfsubmit_development -t spina_accounts -f spina_backup.sql
+```rb
+# config/initializers/bigauth.rb
+# Used as Spina's authentication module
+module BigAuth
+  extend ActiveSupport::Concern
 
-# Run on DEV
-# --clean include drop table if exists
-pg_dump -U postgres -d golfsubmit_development --clean \
--t spina_accounts \
--t spina_attachment_collections \
--t spina_attachment_collections_attachments \
--t spina_attachments \
--t spina_layout_parts \
--t spina_lines \
--t spina_page_parts \
--t spina_pages \
--t spina_structure_items \
--t spina_structure_parts \
--t spina_structures \
--t spina_texts \
--t spina_users \
--t spina_rewrite_rules \
--t spina_page_translations \
--t spina_line_translations \
--t spina_text_translations \
--t spina_navigations \
--t spina_options \
--t spina_settings \
--t spina_media_folders \
--t spina_images \
--t spina_image_collections \
--t spina_image_collections_images \
--t spina_resources \
--t spina_navigation_items \
--f spina_backup.sql
+  included do
+    helper_method :current_spina_user
+    helper_method :logged_in?
+    helper_method :logout_path
+  end
 
-# spina_accounts
-# spina_navigations
-# spina_page_translations
-# spina_pages ie 2 simple pages. json_attributes contains the page definition. jsonb
-# spina_rewrite_rules ie faq2 to faq slug
-# spina_users - davemateer user with a le... password (will put in devise soon)
+  # Spina user falls back to devise user session in the case there is one and it is of a superadmin.
+  def current_spina_user
+    Spina::Current.user ||= current_user if current_user.is_admin?
+  end
 
-# Run of PROD
-psql -U postgres -d golfsubmit_production < /home/dave/spina_backup.sql
+  # Returns falsy unless there is a logged in superadmin
+  def logged_in?
+    return current_spina_user if user_signed_in?
+    false
+  end
+
+  # Not used
+  def logout_path
+    spina.admin_logout_path
+  end
+
+  private
+
+  # Redirects user to sign in if not logged in as a superadmin
+  def authenticate
+    redirect_to "/login" unless logged_in?
+  end
+end
 
 ```
+
+then 
+
+```rb
+# user.rb
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, #:registerable,
+         :recoverable, :rememberable, :validatable
+
+  def is_admin?
+    return true if email =="davemateer@gmail.com"
+    return true if email =="foo@gmail.com"
+  end
+end
+
+```
+
+then
+
+```rb
+#initializers/spina.rb
+config.authentication = "BigAuth"
+```
+
+## Outbound email templates
+
+
