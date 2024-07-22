@@ -100,6 +100,22 @@ What I want:
 
 As before I'm buying from Amazon as their returns policy is great.
 
+### Good
+
+- Front screen good to see if I have missed calls or messages
+- Great can see if on silent or volume (way better than pixel)
+- Don't have to link to Google Account / no 2FA on it ie no security risk
+- Wifi calling
+- £70 nice.. so don't really care if lose it
+
+### Bad
+
+- It feels heavy.. 231g (my Pixel 7a is 271g with case so not bad, and 176g for iphone7) 
+- Buttons feel cluncky
+- Cluncky
+- It is a tough phone, so not totally styled.
+
+
 
 ### Options
 My options were:
