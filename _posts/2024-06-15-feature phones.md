@@ -112,6 +112,11 @@ My options were:
 
 ## TODO
 
+[https://www.bbc.co.uk/reel/video/p0jbqf2p/would-you-ditch-a-smartphone-for-a-dumbphone-](https://www.bbc.co.uk/reel/video/p0jbqf2p/would-you-ditch-a-smartphone-for-a-dumbphone-)
+
+[https://6days.exmosis.net/2024/07/15/empty-tech-experiments-alt-android-accounts/](https://6days.exmosis.net/2024/07/15/empty-tech-experiments-alt-android-accounts/) Graham's journey which involved locking down a smartphone
+
+
 should I try the number clone strategy from Vodaphone?
   so then I can answer calls on my smart phone at home
 
