@@ -2,7 +2,7 @@
 layout: post
 # title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
-#menu: review
+menu: review
 categories: rails 
 published: true 
 comments: false     
@@ -207,6 +207,5 @@ then
 config.authentication = "BigAuth"
 ```
 
-## Outbound email templates
 
 
