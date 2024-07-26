@@ -15,9 +15,9 @@ image: /assets/2024-05-03/4.jpg
 
 <!-- [![alt text](/assets/2024-05-23/1.jpg "email"){:width="500px"}](/assets/2024-05-23/1.jpg) -->
 
-[![alt text](/assets/2024-06-29/1.jpg "email"){:width="400px"}](/assets/2024-06-29/1.jpg)
+<!-- [![alt text](/assets/2024-06-29/1.jpg "email"){:width="400px"}](/assets/2024-06-29/1.jpg) -->
 
-My second feature phone - love it! But no wifi calling which is a dealbreaker for where I live.
+<!-- My second feature phone - love it! But no wifi calling which is a dealbreaker for where I live. -->
 
 I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try for
 
@@ -90,6 +90,8 @@ play with new CAT phone
 
 ## Phone 3 - CAT S22 Flip
 
+[![alt text](/assets/2024-07-26/1.jpg "email"){:width="400px"}](/assets/2024-07-26/1.jpg)
+
 What I want:
 
 - wifi calling
@@ -107,6 +109,7 @@ As before I'm buying from Amazon as their returns policy is great.
 - Don't have to link to Google Account / no 2FA on it ie no security risk
 - Wifi calling
 - £70 nice.. so don't really care if lose it
+- Battery life brilliant (3 or 4 days)
 
 ### Bad
 
@@ -114,6 +117,7 @@ As before I'm buying from Amazon as their returns policy is great.
 - Buttons feel cluncky
 - Cluncky
 - It is a tough phone, so not totally styled.
+- Speaker phone not good
 
 
 
