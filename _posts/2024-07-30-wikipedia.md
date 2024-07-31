@@ -26,7 +26,7 @@ And how to deal with
 
 ## What is Wikipedia
 
-[source](https://en.wikipedia.org/wiki/Help:Introduction_to_Wikipedia )Wikipedia is a free encyclopedia, written collaboratively by the people who use it. Since 2001, it has grown rapidly to become the world's largest reference website, with 6.9 million articles in English attracting billions of views every month. For a more detailed account of the project, see About Wikipedia.
+[Wikipedia](https://en.wikipedia.org/wiki/Help:Introduction_to_Wikipedia ) is a free encyclopedia, written collaboratively by the people who use it. Since 2001, it has grown rapidly to become the world's largest reference website, with 6.9 million articles in English attracting billions of views every month. For a more detailed account of the project, see About Wikipedia.
 
 Founded on 5 principles
 
@@ -50,19 +50,19 @@ Process was very easy, and in fact you can edit wikipedia just on IP address alo
 
 [https://en.wikipedia.org/wiki/Help:Introduction](https://en.wikipedia.org/wiki/Help:Introduction)
 
-## Do an edit on a page
+## Edit a page
 
-Unexpectedly it turned out to be very easy to do an edit on a page. The visual whyiwyg editor was pretty good, and there was a plain text editor there too.
+Unexpectedly it turned out to be very easy to do an edit on a page. The visual wysiwyg editor was pretty good, and there was a plain text editor there too.
 
-[Edit that I did at 1956](https://en.wikipedia.org/w/index.php?title=Rat-tailed_maggot&oldid=1237642615) - I had Graham sitting next to me saying what to write
+[Edit that I did at 19:56](https://en.wikipedia.org/w/index.php?title=Rat-tailed_maggot&oldid=1237642615) - I had Graham sitting next to me saying what to write
 
 I then 'subscribed to the page'.. but interestingly I didn't receive an email when the page was updated.
 
 
-[Next edit at 2013](https://en.wikipedia.org/w/index.php?title=Rat-tailed_maggot&oldid=1237645561) by Graham who is a world expert on hoverflies. It was very easy to get him started on editing.
+[Next edit at 20:13](https://en.wikipedia.org/w/index.php?title=Rat-tailed_maggot&oldid=1237645561) by Graham who is a world expert on hoverflies. It was very easy to get him started on editing.
 
 
-[Next edit at 2055 by an unknown person](https://en.wikipedia.org/w/index.php?title=Rat-tailed_maggot&oldid=1237653825) with the comment (not an improvement)
+[Next edit at 20:55 by an unknown person](https://en.wikipedia.org/w/index.php?title=Rat-tailed_maggot&oldid=1237653825) with the comment (not an improvement)
 
 Well this is interesting. Lets see what they changed. The compare selected revisions tool was initially hard to see what changed
 
