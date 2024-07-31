@@ -30,7 +30,7 @@ And how to deal with
 
 Founded on 5 principles
 
-##
+## Etymology
 
 - content
 - references
@@ -66,7 +66,7 @@ I then 'subscribed to the page'.. but interestingly I didn't receive an email wh
 
 Well this is interesting. Lets see what they changed. The compare selected revisions tool was initially hard to see what changed
 
-[![alt text](/assets/2024-07-23/31.jpg "email"){:width="500px"}](/assets/2024-07-31/1.jpg)
+[![alt text](/assets/2024-07-31/1.jpg "email"){:width="500px"}](/assets/2024-07-31/1.jpg)
 
 So it looks like the person [PlantDrew](https://en.wikipedia.org/wiki/User:Plantdrew) and [https://en.wikipedia.org/wiki/Special:Contributions/Plantdrew](https://en.wikipedia.org/wiki/Special:Contributions/Plantdrew) has done 600k edits on wikipedia.
 
