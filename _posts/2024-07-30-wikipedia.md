@@ -78,18 +78,13 @@ So it looks like the person [PlantDrew](https://en.wikipedia.org/wiki/User:Plant
 
 - they are a plant expert, but are reverting changes from an expert entomologist with a comment 'not an improvement' which doesn't seem helpful for the entire edit. In fact doesn't make sense. Maybe it was the revert, so they were commenting on the previous edit.
 
-- they have a section called 'Rant' on their profile - perhaps prickly person? 
 
-todo
+## Todo
 
 - dig deeper into how it all works and guidelines/principles
 - what to do when you disagree with someones edits
 - need to dig into how scientific the tone should be on articles.
 - find out about tagging (ie)
+- create a new page for hoverfly lagoons
 
 
-## Create a new page
-asdf
-
-
-## Tagging
