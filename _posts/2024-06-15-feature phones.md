@@ -231,8 +231,8 @@ Have ordered a free sim just to experiment with their coverage at my house and i
 
 ## Wifi Calling
 
-- EE - yes (not confirmed)
-- Three - have got it already on my PAYG plan (about £10pm)
+- EE - yes this is what my wife now uses (about £15pm)
+- Three - have got it already on my PAYG plan (about £10pm) - 
 - O2 (giffgaff) - [update may 2024](https://community.giffgaff.com/d/34049108-an-update-on-wifi-calling-and-volte) - didn't work for us yet
 - Vodaphone - yes 
 
