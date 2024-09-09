@@ -196,6 +196,15 @@ There are 4 physical phone networks MNO (Major Mobile Network Operators) in the 
 In summary we've got bad network coverage in our village and none of the networks are good enough to run without wifi calling.
 
 
+## Sept 2024
+
+Three include roaming. Dave using on Pixel phone.
+
+EE have to pay to roam in the EU. Ellie using. £15pm
+
+Vodaphone I'm losing signal with my CAT phone after going to Europe?. Dave using on CAT phone
+
+
 ## Mobile Virtual Network Operators
 
 According to chatgpt
@@ -219,7 +228,9 @@ According to chatgpt
 - Nano - 12mm * 8mm (iPhone and new Androids)
 
 ## Divert Calls to feature phone
-asdf
+
+Tried this until it didn't go to answerphoe on CAT phone.
+#
 
 ## Vodaphone
 has One Number - so my eSim phone and feature phone could have the same number. But txt messages only go to 
