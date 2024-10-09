@@ -40,3 +40,8 @@ However I did get stability issues with the above messages in Diagnostics. Suppo
 
 ## ProtonVPN
 
+Has been recommended
+
+## Others
+
+mullvad
