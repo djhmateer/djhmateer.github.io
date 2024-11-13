@@ -19,7 +19,7 @@ HTML emails (and associative text ones) are tough to get right with their inline
 
 [https://react.email/](https://react.email/) - is it good?
 
-## Hello World
+## react-email-starter 
 
 [https://react.email/docs/getting-started/automatic-setup](https://react.email/docs/getting-started/automatic-setup)
 
@@ -51,11 +51,14 @@ Already wired up to send via [resend]()
 
 [![alt text](/assets/2024-11-12/2.jpg "email")](/assets/2024-11-12/2.jpg)
 
-Broken logo in the sample.
+Broken logo in the sample. Interestingly it is broken too sending to hotmail (and it arrived in spam)
+
 
 [![alt text](/assets/2024-11-12/3.jpg "email")](/assets/2024-11-12/3.jpg)
 
 Same problem with this sample.
+
+## Simple Next.js
 
 ## Resend
 
