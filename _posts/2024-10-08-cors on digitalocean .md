@@ -3,7 +3,7 @@ layout: post
 # title: LLM Run Locally with CPU and Text Generation WebUI 
 description: 
 # menu: review
-categories: games
+categories: storage
 published: true 
 comments: false     
 sitemap: false
