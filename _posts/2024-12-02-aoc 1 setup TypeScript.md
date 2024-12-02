@@ -113,3 +113,15 @@ Debug Console in VS Code - this is the output! VS Code always defaulting to the 
 
 Annoying that ctrl F5 doesn't show the output always!
 
+`Ctrl , or File Preferences Settings`
+
+then
+
+`Debug: Internal Console Always Reveal` change from openOnFirstSessionStart to openOnSessionStart... phew
+
+## AOC 1
+
+
+
+
+
