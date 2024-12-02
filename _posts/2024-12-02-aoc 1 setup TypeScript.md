@@ -19,7 +19,7 @@ For the joy of finding things out, I thought I'd try AoC
 
 Other challenges like [Project Euler]() are [here]( https://github.com/NoelJacob/advent-and-other-calandars)
 
-## Javascript / Typescript
+## JavaScript / TypeScript
 
 I've never really tried out the JS/TS world, so this is an opportunity.
 
