@@ -204,10 +204,7 @@ Bind time:                  0.33s
 Total time:                 1.32s
 ```
 
-Better but still a bit laggy.. 0.92s is normal with no code changes. Here it is on my more powerful desktop machine:
-
-```bash
-```
+Better but still a bit laggy.. 0.92s is normal with no code changes. On more powerful desktop machine it is 0.38s / 0.29s with changes / no changes.
 
 ## Day 1 Part 1
 
@@ -246,8 +243,12 @@ const data: number[][] = fileContent
 const leftList: number[] = data.map(row => row[0]); // [3, 4, 2, 1, 3, 3]
 const rightList = data.map(row => row[1]); // [4, 3, 5, 3, 9, 3]
 
-// this mutates the  leftList?!
-const leftListSorted = leftList.sort((a, b) => a - b); // [1, 2, 3, 3, 3, 4]
+// this mutates the original array!
+// The array's contents can be modified, but the reference itself cannot point to a new array. 
+// const leftListSorted = leftList.sort((a, b) => a - b); // [1, 2, 3, 3, 3, 4]
+
+// makes a copy of original array
+const leftListSorted = [...leftList].sort((a, b) => a - b); // [1, 2, 3, 3, 3, 4]
 const rightListSorted = rightList.sort((a, b) => a - b); // [3, 3, 3, 4, 5, 9]
 
 // Calculate the differences and sum them up
