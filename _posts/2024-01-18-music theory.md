@@ -166,6 +166,33 @@ G Am Bm  C  D Em
 The dominant (V) of Em Key is B. Which resolves back to the their relative tonic chord ie root I ie Em
 
 
+
+## Dec 24 - Vampire
+
+Section 1
+
+Same chord progression as above
+
+I III IV and iv   - the iv is a minor. 
+
+So in C it would be: C E F Fm
+
+But how would I write it in F?
+
+F A Bb Bbm
+
+[David Bennett](https://youtu.be/NyiEMdbfjG8?si=qVEJ7YmF9q8Lxsp4)
+
+
+Section 2 is Gm then C
+
+
+
+
+
+
+
+
 ##
 bass chifre
 - figured bass
