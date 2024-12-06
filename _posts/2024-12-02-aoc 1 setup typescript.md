@@ -247,9 +247,10 @@ const rightList = data.map(row => row[1]); // [4, 3, 5, 3, 9, 3]
 // The array's contents can be modified, but the reference itself cannot point to a new array. 
 // const leftListSorted = leftList.sort((a, b) => a - b); // [1, 2, 3, 3, 3, 4]
 
-// makes a copy of original array
+// ...  spread operator makes a shallow copy of leftList
+// so as not to mutate the original array
 const leftListSorted = [...leftList].sort((a, b) => a - b); // [1, 2, 3, 3, 3, 4]
-const rightListSorted = rightList.sort((a, b) => a - b); // [3, 3, 3, 4, 5, 9]
+const rightListSorted =[...rightList].sort((a, b) => a - b); // [3, 3, 3, 4, 5, 9]
 
 // Calculate the differences and sum them up
 let totalDifference = 0;
@@ -262,5 +263,62 @@ for (let i = 0; i < leftListSorted.length; i++) {
 
 // The answer 
 console.log(`Total difference: ${totalDifference}`);
+```
+
+## Const
+
+Const ensures the variable binding cannot be reassigned to a different value.  eg cannot assign data to another array 
+
+Const Arrays can be sorted, pop'd, pushed in place.
+
+
+Strings are immutable with `const` ie any change could create a new string, thus with const can't be changed
+
+## Immutability
+
+Could use external libraries like `immutable.js` to help
+
+## Part 2
+
+```ts
+// How many times does the number 1 appear in the right list
+// eg first number 3 appears 3 times in right list
+// so similarity score is 3 * 3 = 9
+// 4 is 4 * 1 = 4
+// 2 is 2 * 0 = 0
+
+let totalSimilarityScore = 0;
+
+for (let i = 0; i < leftList.length; i++) {
+    const numberToFind = leftList[i];
+    
+    // Count how many times the current number appears in the right list
+    const countInRightList = rightList.filter(x => x === numberToFind).length;
+    
+    // Calculate the similarity score for the current number
+    const similarityScore = numberToFind * countInRightList;
+    
+    // Add the similarity score to the total
+    totalSimilarityScore += similarityScore;
+}
+
+// smilarity score is 31 for test data
+// real answer 21328497
+console.log(`Total similarity score: ${totalSimilarityScore}`);
+```
+
+I like this easy to understand and well commented code.
+
+```ts
+// ES6 way to iterate over arrays, strings, maps, etc.
+for (const numberToFind of leftList) {
+    // Count occurrences of the current number in the right list
+    const countInRightList = rightList
+        .filter(value => value === numberToFind)
+        .length;
+
+    // Calculate and add the similarity score for this number
+    totalSimilarityScore += numberToFind * countInRightList;
+}
 ```
 
