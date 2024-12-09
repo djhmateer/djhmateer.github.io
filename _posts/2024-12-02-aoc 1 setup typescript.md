@@ -306,8 +306,7 @@ for (let i = 0; i < leftList.length; i++) {
 // real answer 21328497
 console.log(`Total similarity score: ${totalSimilarityScore}`);
 ```
-
-I like this easy to understand and well commented code.
+classic way of iterating
 
 ```ts
 // ES6 way to iterate over arrays, strings, maps, etc.
@@ -321,4 +320,242 @@ for (const numberToFind of leftList) {
     totalSimilarityScore += numberToFind * countInRightList;
 }
 ```
+
+I like this easy to understand and well commented code.
+
+## AoC Day 2
+
+Prettier code formatter - after doing `Shift Alt F` to format, I couldn't go back to VS code formatter `Ctrl ,` settings then. So I uninstalled prettier
+
+- make it work
+- make it right
+- makt it fast
+
+Here is my code which I refactored through ChatGPT.
+
+- Focus on the art of beautiful code
+- Favoured understandability over brevity eg no &&, no functions
+- Explicitly declared variables as can be undefined as this is their startig state
+
+
+```ts
+// kebab-case.ts for filenames
+import * as fs from "fs";
+
+const fileContent: string = fs.readFileSync('2.txt', 'utf-8');
+
+const data: number[][] = fileContent
+  .split('\n')            // Split the content into lines
+  .map(line =>            // Process each line
+    line.split(/\s+/)     // Split the line by one or more whitespace characters
+        .map(Number)      // Convert each part into a number
+  );
+
+
+// const data: number[][] = [
+//   [7, 6, 4, 2, 1],
+//   [1, 2, 7, 8, 9],
+//   [9, 7, 6, 2, 1],
+//   [1, 3, 2, 4, 5],
+//   [8, 6, 4, 4, 1],
+//   [1, 3, 6, 7, 9],
+// ];
+
+// PascalCase for class names and types
+type Direction = "flat" | "up" | "down";
+
+// camelCase for variables and functions
+let totalSafe = 0;
+
+// Take each row into an array
+for (const row of data) {
+
+  let rowSafe = true; // Track if the current row is safe
+  let lastElement: number | undefined; // Previous element in the row
+  let lastDirection: Direction | undefined; // Previous direction
+
+  // Iterate over each element in the row
+  for (let i = 0; i < row.length; i++) {
+    const element = row[i];
+
+    if (i === 0) {
+      // Initialize the first element and continue to the next
+      lastElement = element;
+      continue; 
+    }
+
+    // 1. Current element is smaller than the last
+    if (element < lastElement) {
+      if (i > 1) {
+        if (lastDirection != "down") {
+          rowSafe = false;
+          // break out of the loop as the row is not safe becuase the direction is not down
+          break;
+        }
+      }
+
+      const difference = lastElement - element;
+      if (difference > 3) {
+        rowSafe = false; // Unsafe due to a difference greater than 3
+        break;
+      }
+      lastElement = element;
+      lastDirection = "down";
+    }
+
+    // 2. Element is larger than the last element
+    else if (element > lastElement) {
+      if (i > 1) {
+        if (lastDirection != "up") {
+          rowSafe = false; // Unsafe due to a inconsistent direction with last element
+          break;
+        }
+      }
+
+      const difference = element - lastElement;
+      if (difference > 3) {
+        rowSafe = false; // Unsafe due to a difference greater than 3
+        break
+      }
+      lastElement = element;
+      lastDirection = "up";
+    }
+
+    // Element is the same as the last element
+    else {
+      rowSafe = false; // Unsafe due to consecutive identical elements
+      break;
+    }
+  }
+
+  if (rowSafe) {
+    totalSafe += 1;
+  }
+}
+
+console.log(`Total safe rows: ${totalSafe}`);
+```
+
+## AoC Day 2 Part 2
+
+Using ChatGPT to help with syntax - actually GH Copilot guessed I needed the splice remove function. What a superpower!
+
+Interestingly GPT 4o and 01-preview thought there was a bug as I wasn't catching a case where [7,7,1,2,3] but I am.
+
+```ts
+import * as fs from "fs";
+
+const fileContent: string = fs.readFileSync('2.txt', 'utf-8');
+
+const data: number[][] = fileContent
+  .split('\n')            // Split the content into lines
+  .map(line =>            // Process each line
+    line.split(/\s+/)     // Split the line by one or more whitespace characters
+        .map(Number)      // Convert each part into a number
+  );
+
+
+// const data: number[][] = [
+//   [7, 6, 4, 2, 1],
+//   [1, 2, 7, 8, 9],
+//   [9, 7, 6, 2, 1],
+//   [1, 3, 2, 4, 5],
+//   [8, 6, 4, 4, 1],
+//   [1, 3, 6, 7, 9],
+// ];
+
+type Direction = "flat" | "up" | "down";
+
+let totalSafe = 0;
+
+// Take each row into an array
+for (const row of data) {
+
+  // Part 2 - Problem Dampener.
+  //  make new array with take out 0 then first etc.. elements... to see if it is safe
+  //  if safe then exit
+
+  // A section
+  for (let j = -1; j < row.length; j++) {
+    const rowCopy = [...row]; // Make copy of array
+
+    if (j === -1) {
+      // Do nothing skip the first element as want to leave array as is to see if safe
+    } else {
+      rowCopy.splice(j, 1); // Remove element at index j to see if problem dampener works
+    }
+
+    let rowSafe = true; // Track if the current row is safe
+    let lastElement: number | undefined; // Previous element in the row
+    let lastDirection: Direction | undefined; // Previous direction
+
+    // B section
+    // Iterate over each element in rowCopy 
+    for (let i = 0; i < rowCopy.length; i++) {
+      const element = rowCopy[i];
+
+      if (i === 0) {
+        // Initialize the first element and continue to the next
+        lastElement = element;
+        continue;
+      }
+
+      // 1. Current element is smaller than the last
+      if (element < lastElement) {
+        if (i > 1) {
+          if (lastDirection != "down") {
+            rowSafe = false;
+            // break out of the B loop as the row is not safe because the direction is not down
+            break;
+          }
+        }
+
+        const difference = lastElement - element;
+        if (difference > 3) {
+          rowSafe = false; // Unsafe due to a difference greater than 3
+          break;
+        }
+        lastElement = element;
+        lastDirection = "down";
+      }
+
+      // 2. Current element is larger than the last element
+      else if (element > lastElement) {
+        if (i > 1) {
+          if (lastDirection != "up") {
+            rowSafe = false; // Unsafe due to a inconsistent direction with last element
+            break;
+          }
+        }
+
+        const difference = element - lastElement;
+        if (difference > 3) {
+          rowSafe = false; // Unsafe due to a difference greater than 3
+          break
+        }
+        lastElement = element;
+        lastDirection = "up";
+      }
+
+      // Current element is the same as the last element
+      else {
+        rowSafe = false; // Unsafe due to consecutive identical elements
+        break;
+      }
+    }
+
+    if (rowSafe) {
+      totalSafe += 1;
+      break; // Exit out of A loop as row is safe
+    }
+  } // end of B section
+} // end of A section
+
+// 561
+console.log(`Total safe rows: ${totalSafe}`);
+```
+
+Am favouring more declaritive programming style as it makes it easier to reason about, and debug.
+
+
 
