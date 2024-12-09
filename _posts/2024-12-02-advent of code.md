@@ -555,7 +555,12 @@ for (const row of data) {
 console.log(`Total safe rows: ${totalSafe}`);
 ```
 
-Am favouring more declaritive programming style as it makes it easier to reason about, and debug.
+Am favouring more declaritive programming style as it makes it easier to reason about (IMO), and debug.
 
+But this is getting verbose, so time to abstract out logic into functions.
+
+Interestingly I've found it quite simple to step through this screenful of code and write logic. Not too congnitibely abstract.
+
+**todo - lets find others solution in TS**
 
 
