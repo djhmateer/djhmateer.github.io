@@ -119,7 +119,7 @@ then
 
 `Debug: Internal Console Always Reveal` change from openOnFirstSessionStart to openOnSessionStart... phew
 
-## AOC 1
+## AOC Day 1
 
 ```ts
 // fs is a built-in module in Node.js for file system operations
@@ -323,7 +323,7 @@ for (const numberToFind of leftList) {
 
 I like this easy to understand and well commented code.
 
-## AoC Day 2
+## Day 2
 
 Prettier code formatter - after doing `Shift Alt F` to format, I couldn't go back to VS code formatter `Ctrl ,` settings then. So I uninstalled prettier
 
@@ -436,7 +436,7 @@ for (const row of data) {
 console.log(`Total safe rows: ${totalSafe}`);
 ```
 
-## AoC Day 2 Part 2
+## Day 2 Part 2
 
 Using ChatGPT to help with syntax - actually GH Copilot guessed I needed the splice remove function. What a superpower!
 
@@ -562,5 +562,19 @@ But this is getting verbose, so time to abstract out logic into functions.
 Interestingly I've found it quite simple to step through this screenful of code and write logic. Not too congnitibely abstract.
 
 **todo - lets find others solution in TS**
+
+## Day 3 - regex
+
+[Day 3](https://github.com/djhmateer/aoc/blob/main/3.ts)
+
+ChatGPT is pretty good at getting regex's
+
+
+## Day 3 - part 2 - pop and push
+
+[Day 3 part 2](https://github.com/djhmateer/aoc/blob/main/3part2.ts)
+
+Splitting apart a problem into very small steps was worth it here. It really helped me figure out and understand the problem.
+
 
 
