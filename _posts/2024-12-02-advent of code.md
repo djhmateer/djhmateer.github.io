@@ -576,5 +576,37 @@ ChatGPT is pretty good at getting regex's
 
 Splitting apart a problem into very small steps was worth it here. It really helped me figure out and understand the problem.
 
+## Day 4
 
+Rename symbol shortcut - F2
 
+Quick fix copilot - ctrl .
+
+Got an issue where the debugger was going to the .js file whilst stepping through code:
+
+```ts
+
+let counter = 0;
+// 1. make a string - horizontal
+for (let rowNumber = 0; rowNumber < data.length; rowNumber++) {
+
+    // why does debugger go into the js file here?
+    const stringToCheck: string = data[rowNumber].join('');
+
+    let xmasIndex = stringToCheck.indexOf('XMAS');
+    console.log(xmasIndex);
+
+    while (xmasIndex > -1) {
+        counter++;
+        // Continue searching from the next position after the current match
+        xmasIndex = stringToCheck.indexOf('XMAS', xmasIndex + 1);
+    }
+
+}
+```
+
+the out/4.js.map file looks like it is generated fine.
+
+had conflicting foo variable in differet scopes 
+
+Making a function 
