@@ -610,3 +610,10 @@ the out/4.js.map file looks like it is generated fine.
 had conflicting foo variable in differet scopes 
 
 Making a function 
+
+
+Word search solving strategy has been fun
+
+- horizontal is fine (and reverse)
+- vertical is fine (and reverse)
+- diagonal - fun!
