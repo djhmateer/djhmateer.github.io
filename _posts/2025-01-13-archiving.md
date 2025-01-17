@@ -111,14 +111,29 @@ Built at the internet archive. A subscription service. [https://en.wikipedia.org
 
 [https://webrecorder.net/browsertrix/](https://webrecorder.net/browsertrix/) - Cloud based archiving - more towards crawling too?  Tried to do a trial but got stuck after active card check. Under the hood it is just running a wacz, so all the problems that the auto-archiver has (eg Instagram) are the same here.
 
+[![alt text](/assets/2025-01-13/3.jpg "email")](/assets/2025-01-13/3.jpg)
 
-**HERE - sussex innovation
+[https://archivebox.io/](https://archivebox.io/) 23k stars on GH. Similar to auto-archiver.. uses Chrome, wget, yt-dlp, submits to archive.org. They also offer a commerical service..
+
+## Enterprise Archiving Tools
+
+**HERE**
+
+
+
+[https://www.pagefreezer.com/](https://www.pagefreezer.com/) - 
+
+[https://www.proofpoint.com/us/resources/data-sheets/archivepoint](https://www.proofpoint.com/us/resources/data-sheets/archivepoint)
+
+[https://www.mirrorweb.com/](https://www.mirrorweb.com/) - 
 
 
 
 
+[https://www.perplexity.ai/](https://www.perplexity.ai/) -    
 
 
+## Specific Platform Archical Tools 
 
 ## Instagram
 
@@ -139,9 +154,6 @@ asdf
 19th Jan 2025 [shutdown in the US](https://www.reuters.com/technology/tiktok-preparing-us-shut-off-sunday-information-reports-2025-01-15/)
 
 
-
-
-
 ## WARC
 
 Web ARChive files.
@@ -152,8 +164,23 @@ Saves everything that a pages gives back to you in a WACZ format.
 
 Then can be viewed on [replayweb.page](https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/dia018/cccbd090f5814c159b8ce767.wacz#view=pages&url=https%3A%2F%2Fx.com%2Fdave_mateer%2Fstatus%2F1524341442738638848&ts=20241219150615)
 
+## MHTML
+
+MIME HTML - essentially a webpage single page archive in a single file.
+
+[https://davemateer.com/assets/Instagram.mhtml](https://davemateer.com/assets/Instagram.mhtml) shows Instagram being archived well.
+
 
 ## Manually Archiving
+
+For instagram can't right click on the image to download it. 
+
+Chrome save as PDF. Works well and gets long viewport pages.
+
+Save as MHTML works well, then can right click and save as image..
+
+
+
 
 [getgreenshot.org](https://getgreenshot.org/) for screenshots on a PC. Mac use Cmd Shift 5 
 
