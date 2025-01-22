@@ -24,12 +24,18 @@ I'm using [pipenv](https://github.com/pypa/pipenv) to isolate dependencies in Py
 # is pipenv up to date?
 # it will tell you what to run if update needed
 # on my Ubuntu 22.04 I've only got 3.10 installed
+# 21st Jan25:  pipenv-2024.4.0
+# it told me to update pip 24.1.2 -> 24.3.1
 pip install --upgrade pipenv
 
 # setup a new environment
 # as 3.12 is not available on my machine, it downgrades to 3.10
 # creates a new Pipfile to put in dependencies
 pipenv --python 3.12
+# 21st Jan 25 - am using this for testing as the AA is using this.
+pipenv --python 3.10
+
+pipenv shell
 ```
 
 ## LLM

@@ -12,7 +12,7 @@ image: /assets/2024-11-12/1.jpg
 
 If you have a URL single link, and want to archive the page contents, what tools are available?
 
-Am not looking at [crawling]() nor [investigation management systems]() - which page archiving can be a part of.
+Am not looking at [multi page web crawling]() nor [investigation management systems]() - which single page archiving can be a part of.
 
 ## Archive - What output do you want?
 
@@ -35,7 +35,7 @@ Me - I have a commerical business selling hosted versions of the auto-archiver. 
 
 - Are there any better products out there?
 - Are my customers getting their money's worth?
-- Should I partner with other organisations to sell something?
+- Should I partner with other organisations to sell their products?
 - Who needs archiving help?
 
 ## What sites do you want to archive?
@@ -54,8 +54,12 @@ In the research for this article I came up with specific links to test which hav
 
 [Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg)
 
-## Auto-archiver
-sdf
+## General Archival Tools
+
+- Wayback Machine
+- Archive.today
+- Auto-archiver (which is a colleciton of specific tools)
+- PageFreezer (commercial)
 
 ## Internet Archive aka Wayback Machine
 
@@ -81,7 +85,6 @@ If you ever get strange issues (eg site not loading, or even welcome to nginx pa
 [archive.is](https://archive.is) aka [archive.today](https://archive.today) aka [archive.ph](https://archive.ph) and their [faq](https://archive.ph/faq)
 
 [![alt text](/assets/2025-01-13/2.jpg "email")](/assets/2025-01-13/2.jpg)
-
 
 
 ## Enterprise Archiving Tools
@@ -110,7 +113,9 @@ If you ever get strange issues (eg site not loading, or even welcome to nginx pa
 
 ## Specific Platform Archival Tools and Lower Level Libraries
 
-## Instagram
+There are some excellent libraries for archiving specific platforms. The auto-archiver uses many of these tools and brings them together.
+
+### Instagram
 
 - public account eg [https://www.instagram.com/farmersguardian/](https://www.instagram.com/farmersguardian/) 
 
@@ -119,14 +124,22 @@ If you ever get strange issues (eg site not loading, or even welcome to nginx pa
 In the auto-archiver we use [https://hikerapi.com/](https://hikerapi.com/) to get Instagram public data.
 
 
+### Instagram Private - Instagrapi
 
+[https://github.com/subzeroid/instagrapi](https://github.com/subzeroid/instagrapi) 4.6k stars from the makers of HikerAPI.
 
+[https://subzeroid.github.io/instagrapi/](https://subzeroid.github.io/instagrapi/) documentation.
+
+This is a good library, with some excellent tips on how to use it in the documentation. I wrote a POC of this for the auto-archiver.
 
 
 ## Facebook
 
+I wrote an integration for the auto-archiver for Facebook specifically for images
+
 
 ## TikTok
+
 
 
 ## WARC
