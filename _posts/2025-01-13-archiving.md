@@ -63,6 +63,10 @@ I'm going to cover
 
 This is an opinionated list and I wont mention the tools that are not useful for me! [awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
 
+**HERE - I've tried all the tools in Acquisition**
+Monolity very popular - raw downloader
+SingleFile popular - extension which saves a single file.
+
 ## General Archival Tools
 
 - Wayback Machine
@@ -131,7 +135,9 @@ Conversely, Chrome’s “Save as MHTML” creates an MHTML file, which is a spe
 
 [https://www.proofpoint.com/us/resources/data-sheets/archivepoint](https://www.proofpoint.com/us/resources/data-sheets/archivepoint)
 
-[https://www.mirrorweb.com/](https://www.mirrorweb.com/) - 
+[https://www.mirrorweb.com/](https://www.mirrorweb.com/) - has the [national records of Scotland](https://www.mirrorweb.com/national-records-of-scotland) web archive. And the [UK Parliament Web Archive](https://webarchive.parliament.uk/)
+
+**HERE - explore more of mirrorweb or proofpoint**???
 
 
 [https://www.perplexity.ai/](https://www.perplexity.ai/) -    
