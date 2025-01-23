@@ -114,7 +114,9 @@ Conversely, Chrome’s “Save as MHTML” creates an MHTML file, which is a spe
 
 - [https://github.com/harvard-lil/scoop](https://github.com/harvard-lil/scoop) - new project looking at provinence.
 
-[https://perma.cc/](https://perma.cc/) - used by academics, law and libraries. $10 per month for 10 links. $100 for 500 links. Built by Harvard Library Innovation Lab with Ilya.
+- [https://perma.cc/](https://perma.cc/) - used by academics, law and libraries. $10 per month for 10 links. $100 for 500 links. Built by Harvard Library Innovation Lab with Ilya.
+
+
 
 ## Enterprise Archiving Tools
 
@@ -212,9 +214,21 @@ Saving a video from [YouTuvbe]() - [https://gb.savefrom.net/](https://gb.savefro
 
 ## Chrome Extensions
 
-[SingleFile](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en) - 200k users. 4.3stars. 965 ratings. Saves as .html includes images and formatting. Works with Facebook.
+[![alt text](/assets/2025-01-13/4.jpg "email"){:width="500px"}](/assets/2025-01-13/4.jpg) 
 
-[Save Page WE](https://chromewebstore.google.com/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof/reviews) 100k users. 4.4 rating. 399 ratings. Saves a page
+[SingleFile](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en) - [https://github.com/gildas-lormeau/SingleFile](https://github.com/gildas-lormeau/SingleFile) 16.6k stars. 200k users. 4.3stars. 965 ratings. Saves as .html includes images and formatting. Notice notes and highlighting.
+
+This is different to save-as mhtml as
+
+-singlefile is designed to preserve the fidelity whereas mhtml is less consistent with dynamic/interactive pages.
+-singlefile can adjust timing, do autosave and more config. mhtml has much less config.
+-singlefile is cross browser. mhtml is chrome only.
+
+
+
+
+
+[Save Page WE](https://chromewebstore.google.com/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof/reviews) 100k users. 4.4 rating. 399 ratings. Saves a page.
 
 
 
