@@ -12,9 +12,7 @@ image: /assets/2024-11-12/1.jpg
 
 If you have a URL single link, and want to archive the page contents, what tools are available?
 
-Am not looking at [multi page web crawling]() nor [investigation management systems]() - which single page archiving can be a part of.
-
-## Archive - What output do you want?
+## What output do you want?
 
 - Screenshot of the page
 - An actual html version of the page (so can read all the text)
@@ -31,7 +29,7 @@ I've worked for the past 4 years in Human Rights archiving, where the focus has 
 - Insurance investigators
 - Discussion websites eg Hacker news - to get around paywalls
 
-Me - I have a commerical business selling hosted versions of the auto-archiver. I want to know
+Me - I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I want to know
 
 - Are there any better products out there?
 - Are my customers getting their money's worth?
@@ -54,12 +52,24 @@ In the research for this article I came up with specific links to test which hav
 
 [Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg)
 
+## Plan
+
+I'm going to cover
+
+- General Archival Tools
+- Specific Archival Tools
+- Screenshots
+- Manual Archival (including browser extensions)
+
+This is an opinionated list and I wont mention the tools that are not useful for me! [awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
+
 ## General Archival Tools
 
 - Wayback Machine
 - Archive.today
-- Auto-archiver (which is a colleciton of specific tools)
 - PageFreezer (commercial)
+- Auto-archiver (which is a colleciton of specific tools)
+
 
 ## Internet Archive aka Wayback Machine
 
@@ -69,7 +79,7 @@ In the research for this article I came up with specific links to test which hav
 
 There is an API so can post to here (we do this in the auto-archiver) 
 
-[![alt text](/assets/2025-01-13/1.png "email")](/assets/2025-01-13/1.png)
+<!-- [![alt text](/assets/2025-01-13/1.png "email")](/assets/2025-01-13/1.png) -->
 
 There is also a crawler (it's main method of getting data?)
 
@@ -86,6 +96,25 @@ If you ever get strange issues (eg site not loading, or even welcome to nginx pa
 
 [![alt text](/assets/2025-01-13/2.jpg "email")](/assets/2025-01-13/2.jpg)
 
+
+
+## RELEVANT GENERAL ARCHIVING TOOLS I'VE TRIED 
+
+- [https://github.com/ArchiveBox/ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) - fully featured 23k stars. Self hosted with website. Like the auto-archiver but not as specific. Much better self hosting.
+
+- [https://webrecorder.net/archivewebpage/](https://webrecorder.net/archivewebpage/) - chrome extension based save as WARC / WACZ. Ilya project who makes the excellent [https://github.com/webrecorder/browsertrix-crawler](https://github.com/webrecorder/browsertrix-crawler) which we use the auto-archiver to save a WACZ.
+
+- [https://github.com/internetarchive/heritrix3](https://github.com/internetarchive/heritrix3) - 2.9k stars. 45 contributers. Internet Archive's web crawler project. Interesting, but output is just the same as the Wayback Machine (I assume)
+
+- [https://github.com/Y2Z/monolith](https://github.com/Y2Z/monolith) - 12.4k stars. 28 contributers. Rust. Embeds CSS, images and JS assets. Good for general cases. 
+
+The monolith tool differs from simply doing a “Save as MHTML” in that it inlines all external resources directly within a single HTML file (via data URIs and similar techniques). This means everything—CSS, JavaScript, fonts and images—gets folded into the HTML source itself, producing a standalone file that doesn’t rely on the MHTML format.
+
+Conversely, Chrome’s “Save as MHTML” creates an MHTML file, which is a special archive-like format bundling external resources. Although it’s also a single file, MHTML support can vary between browsers and requires a programme or browser that understands the format. A monolithic HTML file (as produced by monolith) is still just a normal HTML file and is typically more portable and accessible across different platforms and tools without needing MHTML support.
+
+- [https://github.com/harvard-lil/scoop](https://github.com/harvard-lil/scoop) - new project looking at provinence.
+
+[https://perma.cc/](https://perma.cc/) - used by academics, law and libraries. $10 per month for 10 links. $100 for 500 links. Built by Harvard Library Innovation Lab with Ilya.
 
 ## Enterprise Archiving Tools
 
@@ -123,7 +152,6 @@ There are some excellent libraries for archiving specific platforms. The auto-ar
 
 In the auto-archiver we use [https://hikerapi.com/](https://hikerapi.com/) to get Instagram public data.
 
-
 ### Instagram Private - Instagrapi
 
 [https://github.com/subzeroid/instagrapi](https://github.com/subzeroid/instagrapi) 4.6k stars from the makers of HikerAPI.
@@ -137,26 +165,29 @@ This is a good library, with some excellent tips on how to use it in the documen
 
 I wrote an integration for the auto-archiver for Facebook specifically for images
 
+## Telegram
 
-## TikTok
+Auto-archiver has an integration for Telegram via the library called Telethon [https://github.com/bellingcat/auto-archiver/blob/main/src/auto_archiver/archivers/telethon_archiver.py](https://github.com/bellingcat/auto-archiver/blob/main/src/auto_archiver/archivers/telethon_archiver.py)
+
+## X / Twitter
+
+As of Jan 2025, [https://github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp) is a good tool for archiving X/Twitter. The paid API is good for a backup.
+
+## Videos eg YouTube TikTok
+
+[https://github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp) is excellent.
+
+
+## VK
+
+Auto-archiver has an integration for VK via [https://github.com/bellingcat/vk-url-scraper](https://github.com/bellingcat/vk-url-scraper)
 
 
 
-## WARC
 
-Web ARChive files.
+## Screenshots
 
-## WACZ
-
-Saves everything that a pages gives back to you in a WACZ format.
-
-Then can be viewed on [replayweb.page](https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/dia018/cccbd090f5814c159b8ce767.wacz#view=pages&url=https%3A%2F%2Fx.com%2Fdave_mateer%2Fstatus%2F1524341442738638848&ts=20241219150615)
-
-## MHTML
-
-MIME HTML - essentially a webpage single page archive in a single file.
-
-[https://davemateer.com/assets/Instagram.mhtml](https://davemateer.com/assets/Instagram.mhtml) shows Instagram being archived well.
+[Playwright](https://playwright.dev/) is excellent. I use it in a headfull (ie not headless as this is detected often) manner to get screenshots. I use [xvfb-run](https://manpages.debian.org/bullseye/xvfb/xvfb-run.1.en.html) to run it in a virtual framebuffer on my linux servers to run playwright headfully.
 
 
 ## Manually Archiving
@@ -179,14 +210,18 @@ Saving a video from [YouTuvbe]() - [https://gb.savefrom.net/](https://gb.savefro
 
 [Wayback Machine](https://chromewebstore.google.com/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak) submits to wayback machine.
 
+## Chrome Extensions
+
+[SingleFile](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en) - 200k users. 4.3stars. 965 ratings. Saves as .html includes images and formatting. Works with Facebook.
+
+[Save Page WE](https://chromewebstore.google.com/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof/reviews) 100k users. 4.4 rating. 399 ratings. Saves a page
 
 
 
-## General Tool Lists and Groups
 
-Any generic tools wont work well for big platforms like X. FB etc..
 
-[awesome-web-archiving](https://github.com/iipc/awesome-web-archiving)
+
+
 
 
 
@@ -234,13 +269,30 @@ list of awesome - archiving?
 [https://archivebox.io/](https://archivebox.io/) 23k stars on GH. Similar to auto-archiver.. uses Chrome, wget, yt-dlp, submits to archive.org. They also offer a commerical service..
 
 
-## Chrome Extensions
 
-[SingleFile](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en) - 200k users. 4.3stars. 965 ratings. Saves as .html includes images and formatting. Works with Facebook.
 
-[Save Page WE](https://chromewebstore.google.com/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof/reviews) 100k users. 4.4 rating. 399 ratings. Saves a page
+## Manual Archival
 
 
 
 <!-- !-- [![alt text](/assets/2024-09-04/1.jpg "email"){:width="500px"}](/assets/2024-09-04/1.jpg) --> 
 <!-- [![alt text](/assets/2024-09-04/1.jpg "email")](/assets/2024-09-04/1.jpg) -->
+
+Am not looking at [multi page web crawling]() nor [investigation management systems]() - which single page archiving can be a part of.
+
+## WARC
+
+Web ARChive files.
+
+## WACZ
+
+Saves everything that a pages gives back to you in a WACZ format.
+
+Then can be viewed on [replayweb.page](https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/dia018/cccbd090f5814c159b8ce767.wacz#view=pages&url=https%3A%2F%2Fx.com%2Fdave_mateer%2Fstatus%2F1524341442738638848&ts=20241219150615)
+
+## MHTML
+
+MIME HTML - essentially a webpage single page archive in a single file.
+
+[https://davemateer.com/assets/Instagram.mhtml](https://davemateer.com/assets/Instagram.mhtml) shows Instagram being archived well.
+
