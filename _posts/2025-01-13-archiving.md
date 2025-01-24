@@ -15,11 +15,20 @@ image: /assets/2024-11-12/1.jpg
 [![Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>](/assets/2025-01-13/5.jpg "email"){:width="500px"}](/assets/2025-01-13/5.jpg) 
 
 
-      
+If you have a URL single link, and want to archive the page contents, how do I do it? 
 
-If you have a URL single link, and want to archive the page contents, what tools are available?
+In this article I'll cover:
 
-## Why Archive? 
+- 1. Why archive?
+- 2. General Archival Tools
+- 3. Specific (platform) Archival Tools
+- 4. Manual Archival (including browser extensions)
+- 5. Appendix
+
+
+## 1. Why and What to Archive? 
+
+Firstly lets consider backgroud, motivation and goals.
 
 You may be come from these areas:
 
@@ -31,28 +40,47 @@ You may be come from these areas:
 - Other investigative organisations
 - Discussion websites eg Hacker news - to get around paywalls
 
-Depending on your use case, you may want to archive different things.
+And you may wish to achieve different things.
 
 - Screenshot of the page
 - HTML version of the page (so can read it)
 - Images (perhaps for evidence)
 - Videos
-- All the assets eg CSS / JS / HTML
+- Text
 - WARC / WACZ so you can replay the page (perhaps showing changes over time)
+- Hashes of all assets (for proof)
 
+## How do I enter my links (ie Input)
 
-For example I've worked for the past 4 years in Human Rights archiving, where the focus has been on images and video archiving (before it gets taken down by large platforms).
+<!-- [![alt text](/assets/2025-01-13/6.jpg "email"){:width="500px"}](/assets/2025-01-13/6.jpg)  -->
+[![alt text](/assets/2025-01-13/6.jpg "email")](/assets/2025-01-13/6.jpg) 
+
+So how do you prefer to work? I've been a big fan of Google Spreadsheets over the last 4 years. It is free, and the collaboration is excellent. I work on sheets with 60k rows (it does take memory and horespower!) and I've seen 10 people work on the sheet at once. 
+
+## How do I store my archives (ie Output)
+
+- S3 storage eg [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)
+- Google Drive 
+- Local/Network storage
+
+DigitalOcean Spaces is good in public mode as can host any file and view online eg [instagram auto-archiver output](https://testhashing.fra1.cdn.digitaloceanspaces.com/dia031/c87e98048a2f4a09a66e1ea3.html)
+
+Google Drive is excellent as it gives full domain user contraol over files. But you can't serve a webpage from it nor direct link an image.
+
+## Human Rights Archiving
+
+I've worked for the past 4 years in Human Rights archiving, where the focus has been on images and video archiving (before it gets taken down by large platforms).
 
 Screenshots are important for context. Everything is hashed and Tweeted (as a Tweet is considered immutable). Text content and reading of the websites is less important.
 
-Me - I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I want to know
+I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I want to know
 
 - Are there any better products out there?
 - Are my customers getting their money's worth?
 - Should I partner with other organisations to sell their products?
 - Who needs archiving help?
 
-## What sites do you want to archive?
+## What platforms do you want to archive?
 
 - [Instagram](https://instagram.com)
 - [Facebook](https://facebook.com)
@@ -61,29 +89,14 @@ Me - I have a commerical business selling hosted versions of the [auto-archiver]
 - [TikTok](https://tiktok.com)
 - [YouTube](https://youtube.com)
 - [vk.com](https://vk.com)
-
-Specific page from a general websites eg [davemateer.com Advent of Code](https://davemateer.com/2024/12/02/advent-of-code)
+- [General Websites](https://davemateer.com/2024/12/02/advent-of-code)
 
 In the research for this article I came up with specific links to test which have specific use cases eg number of images, size of page etc..
 
 [Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg)
 
-## Plan
 
-I'm going to cover
-
-- General Archival Tools
-- Specific Archival Tools
-- Screenshots
-- Manual Archival (including browser extensions)
-
-This is an opinionated list and I wont mention the tools that are not useful for me! [awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
-
-**HERE - I've tried all the tools in Acquisition**
-Monolity very popular - raw downloader
-SingleFile popular - extension which saves a single file.
-
-## General Archival Tools
+## 2. General Archival Tools
 
 - Wayback Machine
 - Archive.today
@@ -312,10 +325,24 @@ list of awesome - archiving?
 
 
 
+## 5. Summary
+
+Auto-archiver is a lower level tools which gets the best results for Image and Video.
+
+archive.ph is the best for getting around paywalls.
+
+
+
+Monolity very popular - raw downloader
+SingleFile popular - extension which saves a single file.
+
+
 <!-- !-- [![alt text](/assets/2024-09-04/1.jpg "email"){:width="500px"}](/assets/2024-09-04/1.jpg) --> 
 <!-- [![alt text](/assets/2024-09-04/1.jpg "email")](/assets/2024-09-04/1.jpg) -->
 
-## Appendix
+## 5. Appendix
+
+This is an opinionated list and I wont mention the tools that are not useful for me! [awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
 
 Am not looking at [multi page web crawling]() nor [investigation/evidence management systems]() - which archiving is often a part of.
 
