@@ -12,7 +12,7 @@ image: /assets/2024-11-12/1.jpg
 
 <!-- [![alt text](/assets/2025-01-13/5.jpg "email"){:width="500px"}](/assets/2025-01-13/5.jpg)  -->
 
-[![Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>](/assets/2025-01-13/5.jpg "Keep information safe"){:width="500px"}](/assets/2025-01-13/5.jpg) 
+[![Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>](/assets/2025-01-13/5.jpg "Keep information safe"){:width="400px"}](/assets/2025-01-13/5.jpg) 
 
 
 If you have a URL single link, and want to archive the page contents, how do I do it? 
@@ -50,14 +50,20 @@ And you may wish to achieve different things.
 - WARC / WACZ so you can replay the page (perhaps showing changes over time)
 - Hashes of all assets (for proof)
 
-## How do I enter my links (ie Input)
+## How do I enter my links (Input)
 
 <!-- [![alt text](/assets/2025-01-13/6.jpg "email"){:width="500px"}](/assets/2025-01-13/6.jpg)  -->
 [![alt text](/assets/2025-01-13/6.jpg "email")](/assets/2025-01-13/6.jpg) 
 
-So how do you prefer to work? I've been a big fan of Google Spreadsheets over the last 4 years. It is free, and the collaboration is excellent. I work on sheets with 60k rows (it does take memory and horespower!) and I've seen 10 people work on the sheet at once. 
+So how do you prefer to work? 
 
-## How do I store my archives (ie Output)
+I've been a big fan of [Google Spreadsheets](https://docs.google.com/). 
+
+It is free, and the collaboration is excellent. 
+
+I work on sheets with 60k rows (it does take memory and horespower!) and I've seen 10 people work on the sheet at once. 
+
+## How do I store my archives (Output)
 
 - S3 storage eg [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)
 - Google Drive 
@@ -73,12 +79,6 @@ I've worked for the past 4 years in Human Rights archiving, where the focus has 
 
 Screenshots are important for context. Everything is hashed and Tweeted (as a Tweet is considered immutable). Text content and reading of the websites is less important.
 
-I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I want to know
-
-- Are there any better products out there?
-- Are my customers getting their money's worth?
-- Should I partner with other organisations to sell their products?
-- Who needs archiving help?
 
 ## What platforms do you want to archive?
 
@@ -95,14 +95,12 @@ In the research for this article I came up with specific links to test which hav
 
 [Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg)
 
-
 ## 2. General Archival Tools
 
 - Wayback Machine
 - Archive.today
 - PageFreezer (commercial)
 - Auto-archiver (which is a colleciton of specific tools)
-
 
 ## Internet Archive aka Wayback Machine
 
@@ -362,3 +360,17 @@ MIME HTML - essentially a webpage single page archive in a single file.
 
 [https://davemateer.com/assets/Instagram.mhtml](https://davemateer.com/assets/Instagram.mhtml) shows Instagram being archived well.
 
+
+
+[![alt text](/assets/2025-01-13/7.jpg "email")](/assets/2025-01-13/7.jpg) 
+
+Google Console - graphs showing my auto-archivers polling the Google Spreadsheets. This is an amazing service where you can see I'm currently querying 2 times per second consistently with no major issues.
+
+## Why did I write this article?
+
+I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I want to know
+
+- Are there any better products out there?
+- Are my customers getting their money's worth?
+- Should I partner with other organisations to sell their products?
+- Who needs archiving help?
