@@ -10,24 +10,38 @@ sitemap: false
 image: /assets/2024-11-12/1.jpg
 ---
 
+[![alt text](/assets/2025-01-13/5.jpg "email"){:width="500px"}](/assets/2025-01-13/5.jpg) 
+
+Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      
+
 If you have a URL single link, and want to archive the page contents, what tools are available?
 
-## What output do you want?
+## Why Archive? 
+
+You may be come from these areas:
+
+- Human rights investigative organisations
+- Investigative Journalists
+- Insurance Investigators
+- Law Enforcement
+- Legal firms
+- Other investigative organisations
+- Discussion websites eg Hacker news - to get around paywalls
+
+Depending on your use case, you may want to archive different things.
 
 - Screenshot of the page
-- An actual html version of the page (so can read all the text)
-- Images downloaded
-- Videos downloaded
+- HTML version of the page (so can read it)
+- Images (perhaps for evidence)
+- Videos
 - All the assets eg CSS / JS / HTML
+- WARC / WACZ so you can replay the page (perhaps showing changes over time)
 
-## Who are the customers (of this article)?
 
-I've worked for the past 4 years in Human Rights archiving, where the focus has been on images and video archiving. Screenshots are important for context. Everything is hashed and Tweeted (as a Tweet is considered immutable). Text content and reading of the websites is less important.
+For example I've worked for the past 4 years in Human Rights archiving, where the focus has been on images and video archiving (before it gets taken down by large platforms).
 
-- Human rights organisations
-- Journalists
-- Insurance investigators
-- Discussion websites eg Hacker news - to get around paywalls
+Screenshots are important for context. Everything is hashed and Tweeted (as a Tweet is considered immutable). Text content and reading of the websites is less important.
 
 Me - I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I want to know
 
@@ -127,9 +141,15 @@ Conversely, Chrome’s “Save as MHTML” creates an MHTML file, which is a spe
 [https://www.pagefreezer.com/](https://www.pagefreezer.com/) - 
 
  PageFreezer
- WebPreserver - reliable, automated preservation of social media and web evidence (browser plugin - need subscription)
 
-**ahh annoying - they want to call me to do a demo**
+ WebPreserver - reliable, automated preservation of social media and web evidence (browser plugin - need subscription). Export to ocr pdf, mhtml or warc.
+
+ Facebook - bulk capture. Headless crawl of all links in a timeline? 
+ Twitter
+ LinkedIn
+ YouTube
+
+They sell to law enforcement agencies, legal firms and investigators 
 
 
 
@@ -226,11 +246,9 @@ Saving a video from [YouTuvbe]() - [https://gb.savefrom.net/](https://gb.savefro
 
 This is different to save-as mhtml as
 
--singlefile is designed to preserve the fidelity whereas mhtml is less consistent with dynamic/interactive pages.
--singlefile can adjust timing, do autosave and more config. mhtml has much less config.
--singlefile is cross browser. mhtml is chrome only.
-
-
+- Singlefile is designed to preserve the look and feel fidelity whereas mhtml is less consistent with dynamic/interactive pages.
+- Singlefile can adjust timing, do autosave and more config. MHTML has much less config.
+- However MHTML preserves the page better (as singlefile changes it to embed binary data)
 
 
 
@@ -291,14 +309,13 @@ list of awesome - archiving?
 
 
 
-## Manual Archival
-
-
 
 <!-- !-- [![alt text](/assets/2024-09-04/1.jpg "email"){:width="500px"}](/assets/2024-09-04/1.jpg) --> 
 <!-- [![alt text](/assets/2024-09-04/1.jpg "email")](/assets/2024-09-04/1.jpg) -->
 
-Am not looking at [multi page web crawling]() nor [investigation management systems]() - which single page archiving can be a part of.
+## Appendix
+
+Am not looking at [multi page web crawling]() nor [investigation/evidence management systems]() - which archiving is often a part of.
 
 ## WARC
 
