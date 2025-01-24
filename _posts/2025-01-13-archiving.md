@@ -199,7 +199,7 @@ Sales pipelines are very long in the enterprise space (and expensive for the ven
 
 A 50-100 person company based in Vancouver. I've dealt with a nice nice person there.
 
- PageFreezer
+ PageFreezer - this is all about capturing changes in pages over time and giving a UI to view them (like the Wayback Machine)
 
  WebPreserver - reliable, automated preservation of social media and web evidence (browser plugin - need subscription). Export to ocr pdf, mhtml or warc.
 
