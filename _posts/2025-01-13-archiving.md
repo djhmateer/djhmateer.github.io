@@ -12,7 +12,7 @@ image: /assets/2024-11-12/1.jpg
 
 <!-- [![alt text](/assets/2025-01-13/5.jpg "email"){:width="500px"}](/assets/2025-01-13/5.jpg)  -->
 
-[![Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>](/assets/2025-01-13/5.jpg "Keep information safe"){:width="400px"}](/assets/2025-01-13/5.jpg) 
+[![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="400px"}](/assets/2025-01-13/5.jpg) 
 
 
 If you have a URL single link, and want to archive the page contents, how do I do it? 
@@ -97,39 +97,72 @@ In the research for this article I came up with specific links to test which hav
 
 ## 2. General Archival Tools
 
-- Wayback Machine
-- Archive.today
+- Wayback Machine (for everything)
+- Auto-archiver (for Instagram, Facebook, X/Twitter, Telegram, TikTok, YouTube, VK, and everything espeically where you need images and video)
+- Archive.ph (for paywalls)
+
 - PageFreezer (commercial)
-- Auto-archiver (which is a colleciton of specific tools)
 
-## Internet Archive aka Wayback Machine
+## 2.1 Wayback Machine
 
-[https://web.archive.org/](https://web.archive.org/) and [wikipedia entry](https://en.wikipedia.org/wiki/Wayback_Machine)
+aka Internet Archive:
 
-[https://web.archive.org/web/20240301234613/https://davemateer.com/2016/10/16/Why-Blog](https://web.archive.org/web/20240301234613/https://davemateer.com/2016/10/16/Why-Blog) Shows it getting text and images from a blog post. Interestingly it didn't get the disqus comments.
+[![alt text](/assets/2025-01-13/8.jpg "email")](/assets/2025-01-13/8.jpg) 
 
-There is an API so can post to here (we do this in the auto-archiver) 
+[web.archive.org](https://web.archive.org/) is free, and the most popular archival tool. Whatever I do, I always submit to the Wayback Machine (usually by their [API](https://archive.org/account/s3.php)). This is an amazing service by the non profit Internet Archive.
 
-<!-- [![alt text](/assets/2025-01-13/1.png "email")](/assets/2025-01-13/1.png) -->
+Currently there are sites which are not archived by the Wayback Machine. eg
 
-There is also a crawler (it's main method of getting data?)
+- Instagram
+
+And other sites like Facebook are quite limited.
 
 
-## Archive.today aka archive.ph
+## 2.2 Auto-archiver
 
-This is excellent at getting around paywalls eg [https://archive.ph/FlcDl](https://archive.ph/FlcDl)
+The auto-archiver is a collection of tools written the by amazing team at [Bellingcat](https://www.bellingcat.com/resources/2022/09/22/preserve-vital-online-content-with-bellingcats-auto-archiver-tool/)
 
-If you ever get strange issues (eg site not loading, or even welcome to nginx page), try deleting the site cookie in Chrome. 
+I've been using and contributing to this project for the past 3 years, and offer it as a [hosted service](https://auto-archiver.com/)
 
-[wikipedia](https://en.wikipedia.org/wiki/Archive.today)
+It is essentially a set of tools which allows you to archive specific platforms
 
-[archive.is](https://archive.is) aka [archive.today](https://archive.today) aka [archive.ph](https://archive.ph) and their [faq](https://archive.ph/faq)
+- Instagram
+- Facebook
+- X/Twitter
+- Telegram
+- TikTok
+- YouTube
+- VK
+
+The downsides are that
+
+- It is hard to setup properly. 
+- There is no UI 
+- It doesn't have a massive user base
+
+The upsides ar that
+
+- There is nothing better for raw results.
+- You can get commerical support and talk to source contributers (me!) 
+- It is stable and have been running for 4 years on many different platforms. (AWS / Azure / Bare Metal)
+
+
+## 2.3 Archive.ph
 
 [![alt text](/assets/2025-01-13/2.jpg "email")](/assets/2025-01-13/2.jpg)
 
+This is excellent at getting around paywalls eg [here](https://archive.ph/FlcDl) and I've found none better.
+
+There are many pseudonyms for this site eg [archive.today](https://archive.today), [archive.is](https://archive.is) which all redirect.
+
+If you ever get strange issues (eg site not loading, or even welcome to nginx page), try deleting the site cookie in Chrome. 
+
+[faq](https://archive.ph/faq) - also the owner of the site and effort is hidden (I'm surmising they keep their identity private as they are breaching EULAs heavily by getting around paywalls)
 
 
-## RELEVANT GENERAL ARCHIVING TOOLS I'VE TRIED 
+## 2.4 Other relevant general archiving tools
+
+These are interesting, but not useful for me. I prefer the auto-archiver which is described above 
 
 - [https://github.com/ArchiveBox/ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) - fully featured 23k stars. Self hosted with website. Like the auto-archiver but not as specific. Much better self hosting.
 
@@ -139,19 +172,32 @@ If you ever get strange issues (eg site not loading, or even welcome to nginx pa
 
 - [https://github.com/Y2Z/monolith](https://github.com/Y2Z/monolith) - 12.4k stars. 28 contributers. Rust. Embeds CSS, images and JS assets. Good for general cases. 
 
-The monolith tool differs from simply doing a “Save as MHTML” in that it inlines all external resources directly within a single HTML file (via data URIs and similar techniques). This means everything—CSS, JavaScript, fonts and images—gets folded into the HTML source itself, producing a standalone file that doesn’t rely on the MHTML format.
-
-Conversely, Chrome’s “Save as MHTML” creates an MHTML file, which is a special archive-like format bundling external resources. Although it’s also a single file, MHTML support can vary between browsers and requires a programme or browser that understands the format. A monolithic HTML file (as produced by monolith) is still just a normal HTML file and is typically more portable and accessible across different platforms and tools without needing MHTML support.
-
 - [https://github.com/harvard-lil/scoop](https://github.com/harvard-lil/scoop) - new project looking at provinence.
 
 - [https://perma.cc/](https://perma.cc/) - used by academics, law and libraries. $10 per month for 10 links. $100 for 500 links. Built by Harvard Library Innovation Lab with Ilya.
 
 
 
-## Enterprise Archiving Tools
+## 2.5 Enterprise Archiving Tools
+
+I've worked in large enterprises and, no surprise, they are needed in the archiving space.
+
+Vendors below are very important because large companies want to to work with other larger companies for 
+
+- (perceived) stability
+- who to sue? 
+- have many support staff so can always get support
+- have many developers so can always get support
+- not reliant on small companies
+- perceived 'better' produts
+- more polished products (which are easier to sell to the board/boss) "Noone every got fired for buying IBM"
+
+Sales pipelines are very long in the enterprise space (and expensive for the vendor).
+
 
 [https://www.pagefreezer.com/](https://www.pagefreezer.com/) - 
+
+A 50-100 person company based in Vancouver. I've dealt with a nice nice person there.
 
  PageFreezer
 
