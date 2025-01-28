@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: LLM Run Locally with CPU and Text Generation WebUI 
+title: Web Page Archiving 
 description: 
 menu: review
 categories: archiving
@@ -30,7 +30,7 @@ In this article I'll cover:
 
 Firstly lets consider backgroud, motivation and goals.
 
-You may be come from these areas:
+You may come from these areas:
 
 - Human rights investigative organisations
 - Investigative Journalists
@@ -50,7 +50,7 @@ And you may wish to achieve different things.
 - WARC / WACZ so you can replay the page (perhaps showing changes over time)
 - Hashes of all assets (for proof)
 
-## How do I enter my links (Input)
+## How to enter links (Input)
 
 <!-- [![alt text](/assets/2025-01-13/6.jpg "email"){:width="500px"}](/assets/2025-01-13/6.jpg)  -->
 [![alt text](/assets/2025-01-13/6.jpg "email")](/assets/2025-01-13/6.jpg) 
@@ -63,7 +63,7 @@ It is free, and the collaboration is excellent.
 
 I work on sheets with 60k rows (it does take memory and horespower!) and I've seen 10 people work on the sheet at once. 
 
-## How do I store my archives (Output)
+## How to store archives (Output)
 
 - S3 storage eg [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)
 - Google Drive 
@@ -105,11 +105,11 @@ In the research for this article I came up with specific links to test which hav
 
 ## 2.1 Wayback Machine
 
-aka Internet Archive:
+aka Internet Archive aka web.archive.org
 
 [![alt text](/assets/2025-01-13/8.jpg "email")](/assets/2025-01-13/8.jpg) 
 
-[web.archive.org](https://web.archive.org/) is free, and the most popular archival tool. Whatever I do, I always submit to the Wayback Machine (usually by their [API](https://archive.org/account/s3.php)). This is an amazing service by the non profit Internet Archive.
+[The Wayback Machine](https://web.archive.org/) is free, and the most popular archival tool. Whatever I do, I always submit here (usually by their [API](https://archive.org/account/s3.php)). This is an amazing service by the non profit Internet Archive.
 
 Currently there are sites which are not archived by the Wayback Machine. eg
 
@@ -195,9 +195,11 @@ Vendors below are very important because large companies want to to work with ot
 Sales pipelines are very long in the enterprise space (and expensive for the vendor).
 
 
+## 2.5.1 PageFreezer
+
 [https://www.pagefreezer.com/](https://www.pagefreezer.com/) - 
 
-A 50-100 person company based in Vancouver. I've dealt with a nice nice person there.
+A 50-100 person company based in Vancouver. I've dealt with Doug who is a nice nice person there!
 
  PageFreezer - this is all about capturing changes in pages over time and giving a UI to view them (like the Wayback Machine)
 
@@ -211,16 +213,18 @@ A 50-100 person company based in Vancouver. I've dealt with a nice nice person t
 They sell to law enforcement agencies, legal firms and investigators 
 
 
-
-[https://www.proofpoint.com/us/resources/data-sheets/archivepoint](https://www.proofpoint.com/us/resources/data-sheets/archivepoint)
-
-[https://www.mirrorweb.com/](https://www.mirrorweb.com/) - has the [national records of Scotland](https://www.mirrorweb.com/national-records-of-scotland) web archive. And the [UK Parliament Web Archive](https://webarchive.parliament.uk/)
-
-**HERE - explore more of mirrorweb or proofpoint**???
+**setting up a live demo as no trial version
 
 
-[https://www.perplexity.ai/](https://www.perplexity.ai/) -    
 
+## 2.5.2 MirrorWeb
+[https://www.mirrorweb.com/](https://www.mirrorweb.com/) - has the [national records of Scotland](https://www.mirrorweb.com/national-records-of-scotland) web archive. And the [UK Parliament Web Archive](https://webarchive.parliament.uk/) and [https://www.nationalarchives.gov.uk/webarchive/](https://www.nationalarchives.gov.uk/webarchive/)
+
+**have emailled**
+
+
+
+## 2.5.3 Archive-it
 
 [https://archive-it.org/](https://archive-it.org/) Built at the internet archive. A subscription service. [https://en.wikipedia.org/wiki/Internet_Archive](https://en.wikipedia.org/wiki/Internet_Archive)
 
@@ -400,12 +404,16 @@ Saves everything that a pages gives back to you in a WACZ format.
 
 Then can be viewed on [replayweb.page](https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/dia018/cccbd090f5814c159b8ce767.wacz#view=pages&url=https%3A%2F%2Fx.com%2Fdave_mateer%2Fstatus%2F1524341442738638848&ts=20241219150615)
 
+
 ## MHTML
 
 MIME HTML - essentially a webpage single page archive in a single file.
 
 [https://davemateer.com/assets/Instagram.mhtml](https://davemateer.com/assets/Instagram.mhtml) shows Instagram being archived well.
 
+## WORM
+
+[https://en.wikipedia.org/wiki/Write_once_read_many](https://en.wikipedia.org/wiki/Write_once_read_many)
 
 
 [![alt text](/assets/2025-01-13/7.jpg "email")](/assets/2025-01-13/7.jpg) 
