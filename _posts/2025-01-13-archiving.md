@@ -12,10 +12,10 @@ image: /assets/2024-11-12/1.jpg
 
 <!-- [![alt text](/assets/2025-01-13/5.jpg "email"){:width="500px"}](/assets/2025-01-13/5.jpg)  -->
 
-[![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="400px"}](/assets/2025-01-13/5.jpg) 
+[![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="300px"}](/assets/2025-01-13/5.jpg) 
 
 
-If you have a URL single link, and want to archive the page contents, how do I do it? 
+If you have a single URL and want to archive the page contents, how do you do it? 
 
 In this article I'll cover:
 
@@ -35,12 +35,13 @@ You may come from these areas:
 - Human rights investigative organisations
 - Investigative Journalists
 - Insurance Investigators
+- Corporate Investigators
 - Law Enforcement
-- Legal firms
+- Legal teams/firms
 - Other investigative organisations
-- Discussion websites eg Hacker news - to get around paywalls
+- Discussion websites
 
-And you may wish to achieve different things.
+And you may wish to archive different things.
 
 - Screenshot of the page
 - HTML version of the page (so can read it)
@@ -49,6 +50,13 @@ And you may wish to achieve different things.
 - Text
 - WARC / WACZ so you can replay the page (perhaps showing changes over time)
 - Hashes of all assets (for proof)
+- Get around paywalls
+
+For the purposes of
+
+- collect evidence
+- preserve evidence
+- analyse evidence
 
 ## How to enter links (Input)
 
@@ -59,9 +67,9 @@ So how do you prefer to work?
 
 I've been a big fan of [Google Spreadsheets](https://docs.google.com/). 
 
-It is free, and the collaboration is excellent. 
+It is free and the collaboration is excellent. 
 
-I work on sheets with 60k rows (it does take memory and horespower!) and I've seen 10 people work on the sheet at once. 
+I work on sheets with 60k+ rows (it does take memory and horespower) and I've seen 10 people work on the sheet at once. 
 
 ## How to store archives (Output)
 
@@ -79,7 +87,6 @@ I've worked for the past 4 years in Human Rights archiving, where the focus has 
 
 Screenshots are important for context. Everything is hashed and Tweeted (as a Tweet is considered immutable). Text content and reading of the websites is less important.
 
-
 ## What platforms do you want to archive?
 
 - [Instagram](https://instagram.com)
@@ -95,13 +102,12 @@ In the research for this article I came up with specific links to test which hav
 
 [Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg)
 
+
 ## 2. General Archival Tools
 
 - Wayback Machine (for everything)
 - Auto-archiver (for Instagram, Facebook, X/Twitter, Telegram, TikTok, YouTube, VK, and everything espeically where you need images and video)
 - Archive.ph (for paywalls)
-
-- PageFreezer (commercial)
 
 ## 2.1 Wayback Machine
 
@@ -176,9 +182,36 @@ These are interesting, but not useful for me. I prefer the auto-archiver which i
 
 - [https://perma.cc/](https://perma.cc/) - used by academics, law and libraries. $10 per month for 10 links. $100 for 500 links. Built by Harvard Library Innovation Lab with Ilya.
 
+- [https://conifer.rhizome.org/](https://conifer.rhizome.org/) - have sent a bug report (29th Jan 25) 
+
+## 2.5 Commercial Archiving Tools
+
+Case / Investigation management systems have some archiving tools built in eg
+
+[https://www.atlos.org/](https://www.atlos.org/) - has a basic screenshot tool (and there is an integration with the auto-archiver)
 
 
-## 2.5 Enterprise Archiving Tools
+[![](/assets/2025-01-13/9.jpg){:width="400px"}](/assets/2025-01-13/9.jpg) 
+
+[https://hunch.ly/](https://hunch.ly/) - App and extension. Captures automatically. OSINT tool focussed on online investigations.
+
+
+## Enterprise
+
+These seem to be focused on 
+
+- compliance
+- governance
+- historical records
+- entire website archiving
+
+
+I've not found any enterprise archiving tools which are useful for my use case of single page investigative archiving.
+
+
+
+
+
 
 I've worked in large enterprises and, no surprise, they are needed in the archiving space.
 
