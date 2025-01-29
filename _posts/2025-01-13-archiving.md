@@ -205,10 +205,10 @@ A 50-100 person company based in Vancouver. I've dealt with Doug who is a nice n
 
  WebPreserver - reliable, automated preservation of social media and web evidence (browser plugin - need subscription). Export to ocr pdf, mhtml or warc.
 
- Facebook - bulk capture. Headless crawl of all links in a timeline? 
- Twitter
- LinkedIn
- YouTube
+ - Facebook - bulk capture. Headless crawl of all links in a timeline? 
+ - Twitter
+ - LinkedIn
+ - YouTube
 
 They sell to law enforcement agencies, legal firms and investigators 
 
@@ -216,17 +216,24 @@ They sell to law enforcement agencies, legal firms and investigators
 **setting up a live demo as no trial version
 
 
-
 ## 2.5.2 MirrorWeb
 [https://www.mirrorweb.com/](https://www.mirrorweb.com/) - has the [national records of Scotland](https://www.mirrorweb.com/national-records-of-scotland) web archive. And the [UK Parliament Web Archive](https://webarchive.parliament.uk/) and [https://www.nationalarchives.gov.uk/webarchive/](https://www.nationalarchives.gov.uk/webarchive/)
 
-**have emailled**
-
+They focus on entire website archiving rather than single pages. Very nice CRO.
 
 
 ## 2.5.3 Archive-it
 
 [https://archive-it.org/](https://archive-it.org/) Built at the internet archive. A subscription service. [https://en.wikipedia.org/wiki/Internet_Archive](https://en.wikipedia.org/wiki/Internet_Archive)
+
+Focussed on entire website archiving over time.
+
+### Other
+
+[https://www.civicplus.com/social-media-archiving/](https://www.civicplus.com/social-media-archiving/) focus on government social media and backing it up. For compliance.
+
+
+[https://www.smarsh.com/solutions/business-need/archiving](https://www.smarsh.com/solutions/business-need/archiving) - company communications governance and archiving.
 
 
 
