@@ -23,7 +23,7 @@ In this article I'll cover:
 2. General Archival Tools
 3. Specific (platform) Archival Tools
 4. Manual Archival (including browser extensions)
-5. Appendix
+5. Appendix.
 
 
 ## 1. Why and What to Archive? 
