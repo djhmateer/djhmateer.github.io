@@ -23,7 +23,7 @@ In this article I'll cover:
 2. General Archival Tools
 3. Specific (platform) Archival Tools
 4. Manual Archival (including browser extensions)
-5. Appendix.
+5. Appendix
 
 
 ## 1. Why and What to Archive? 
@@ -455,6 +455,42 @@ MIME HTML - essentially a webpage single page archive in a single file.
 
 [https://en.wikipedia.org/wiki/Write_once_read_many](https://en.wikipedia.org/wiki/Write_once_read_many)
 
+## Hashes and where to store them
+
+A hash is a unique identifier for a file. It is a single value which can be used to verify the integrity of a file. We use them to verify images and to verify the .html page (which includes singular hashes, so is a hash of hashes)
+
+But where do you store them that is secure and we are sure that they are immutable (ie can't be changed after they are created)?
+
+Options are:
+
+- Blockchains
+- Timestamping Services
+- Write Once, Read-Many (WORM) Storage
+- Git with Cryptographic Signing (Internal Use)
+- Secure DB with Write-Once Constraints
+- Physical Print / Cold Storage
+
+
+[https://opentimestamps.org/](https://opentimestamps.org/) - OpenTimestamps is a protocol for timestamping files and proving their integrity over time.
+
+
+
+
+- [https://en.wikipedia.org/wiki/Hash_function](https://en.wikipedia.org/wiki/Hash_function)
+- [https://en.wikipedia.org/wiki/Cryptographic_hash_function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+
+## Foo
+
+[Archivists saving work from data.gov](https://news.ycombinator.com/item?id=42881367)
+
+[https://github.com/harvard-lil/bag-nabit](https://github.com/harvard-lil/bag-nabit) stamps with cert so people can rclone
+
+
+[BitIt](https://en.wikipedia.org/wiki/BagIt) protocol
+
+
+
+## Google Spreadsheets
 
 [![alt text](/assets/2025-01-13/7.jpg "email")](/assets/2025-01-13/7.jpg) 
 
