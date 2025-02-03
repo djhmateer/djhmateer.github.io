@@ -437,6 +437,9 @@ Am not looking at [multi page web crawling]() nor [investigation/evidence manage
 ## WARC
 
 Web ARChive files.
+asdf
+
+[https://wiki.archiveteam.org/index.php/The_WARC_Ecosystem](https://wiki.archiveteam.org/index.php/The_WARC_Ecosystem)
 
 ## WACZ
 
@@ -487,6 +490,8 @@ Options are:
 
 
 [BitIt](https://en.wikipedia.org/wiki/BagIt) protocol
+
+[Scoop](https://github.com/harvard-lil/scoop) - output to wacz and warc
 
 
 
