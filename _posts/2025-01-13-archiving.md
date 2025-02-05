@@ -458,6 +458,7 @@ MIME HTML - essentially a webpage single page archive in a single file.
 
 [https://en.wikipedia.org/wiki/Write_once_read_many](https://en.wikipedia.org/wiki/Write_once_read_many)
 
+
 ## Hashes and where to store them
 
 A hash is a unique identifier for a file. It is a single value which can be used to verify the integrity of a file. We use them to verify images and to verify the .html page (which includes singular hashes, so is a hash of hashes)
@@ -475,6 +476,8 @@ Options are:
 
 
 [https://opentimestamps.org/](https://opentimestamps.org/) - OpenTimestamps is a protocol for timestamping files and proving their integrity over time.
+
+Bitcoin has been running for 16 years. opentimestamps for 8 years.
 
 
 
