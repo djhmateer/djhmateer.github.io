@@ -77,7 +77,27 @@ Here are some URLs to archive with the columns configured for the auto-archiver
 [![alt text](/assets/2025-01-13/10.jpg "email")](/assets/2025-01-13/10.jpg) 
 
 
-When the archiver starts, it updates the Archive Status column
+The archiver runs out writes the results into the spreadsheet:
+
+[![alt text](/assets/2025-01-13/11.jpg "email")](/assets/2025-01-13/11.jpg) 
+
+
+The archive location contains a [link](https://testhashing.fra1.cdn.digitaloceanspaces.com/iv001/7049ee36a7214ee78846dbfd.html) to a details page:
+
+Note we have the full resolution image here with exif details, and reverse image search links. Also a screenshot.
+
+[![alt text](/assets/2025-01-13/12.jpg "email")](/assets/2025-01-13/12.jpg) 
+
+We also have a timestamped hash of the file, a [wacz]() archive of the page, and full text content of this Tweet.
+
+[![alt text](/assets/2025-01-13/13.jpg "email")](/assets/2025-01-13/13.jpg) 
+
+
+
+
+
+
+
 
 
 I've been a big fan of [Google Spreadsheets](https://docs.google.com/). 
