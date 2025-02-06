@@ -19,14 +19,14 @@ If you have a single URL and want to archive the page contents, how do you do it
 
 In this article I'll cover:
 
-1. Why archive?
+1. Why Archive?
 2. General Archival Tools
 3. Specific (platform) Archival Tools
 4. Manual Archival (including browser extensions)
 5. Appendix
 
 
-## 1. Why and What to Archive? 
+## 1. Why Archive? 
 
 Firstly lets consider backgroud, motivation and goals.
 
@@ -58,12 +58,12 @@ For the purposes of
 - preserve evidence
 - analyse evidence
 
-## How to enter links (Input)
+## What to Archive (Input)
+
+Perhaps in your investigation you come across a page eg [https://twitter.com/dave_mateer/status/1524341442738638848](https://twitter.com/dave_mateer/status/1524341442738638848) and you want all details
 
 <!-- [![alt text](/assets/2025-01-13/6.jpg "email"){:width="500px"}](/assets/2025-01-13/6.jpg)  -->
 [![alt text](/assets/2025-01-13/6.jpg "email")](/assets/2025-01-13/6.jpg) 
-
-So how do you prefer to work? 
 
 I've been a big fan of [Google Spreadsheets](https://docs.google.com/). 
 
@@ -437,7 +437,6 @@ Am not looking at [multi page web crawling]() nor [investigation/evidence manage
 ## WARC
 
 Web ARChive files.
-asdf
 
 [https://wiki.archiveteam.org/index.php/The_WARC_Ecosystem](https://wiki.archiveteam.org/index.php/The_WARC_Ecosystem)
 
@@ -493,7 +492,7 @@ Options are:
 - Secure DB with Write-Once Constraints
 - Physical Print / Cold Storage
 
-Twitter has been a good options, but is recently falling out of favour politically and trustworthyness. Accounts can be blocked, tweets removed and thus would remove proof. (thank you to another colleague for thoughts)
+Twitter has been a good options, but is recently falling out of favour politically and with trustworthyness. Accounts can be blocked, tweets removed and thus would remove proof. (thank you to another colleague for thoughts)
 
 ### Timestamping
 
