@@ -459,31 +459,53 @@ MIME HTML - essentially a webpage single page archive in a single file.
 [https://en.wikipedia.org/wiki/Write_once_read_many](https://en.wikipedia.org/wiki/Write_once_read_many)
 
 
-## Hashes and where to store them
+## Hashing
 
-A hash is a unique identifier for a file. It is a single value which can be used to verify the integrity of a file. We use them to verify images and to verify the .html page (which includes singular hashes, so is a hash of hashes)
+A hash is a unique identifier for a file. It is a single value which can be used to verify the integrity of a file. 
+
+We use them to verify images (haven't changed) and to verify the .html page (which includes singular hashes, so is a hash of hashes) hasn't changed.
+
+### Why Hash
+
+Lets back up and consider why we are archiving.
+
+(these views are by a colleague in the legal sector)
+
+If it is for the purposes of future legal proceedings, there is an argument that private retention of data is more than sufficient.
+
+"I feel these kinds of systems overcomplicate an already trustworthy process which is accepted by courts across the world for the safe management of digital evidence.
+
+The courts are pragmatic, if you are happy to stand up and say that you performed this action and this time which resulted in this data being produced, the risk of a two year stretch for contempt of court is more than enough to dissuade manipulation.
+
+Adding further complexity isn’t going to add trust but remove the ability of the investigators, jury, or judiciary to understand how these processes work and why they are performed."
+
+### Options for Hashing
 
 But where do you store them that is secure and we are sure that they are immutable (ie can't be changed after they are created)?
 
 Options are:
 
 - Blockchains
+- Immutable blog services eg Twitter
 - Timestamping Services
 - Write Once, Read-Many (WORM) Storage
 - Git with Cryptographic Signing (Internal Use)
 - Secure DB with Write-Once Constraints
 - Physical Print / Cold Storage
 
+Twitter has been a good options, but is recently falling out of favour politically and trustworthyness. Accounts can be blocked, tweets removed and thus would remove proof. (thank you to another colleague for thoughts)
 
-[https://opentimestamps.org/](https://opentimestamps.org/) - OpenTimestamps is a protocol for timestamping files and proving their integrity over time.
+### Timestamping
 
-Bitcoin has been running for 16 years. opentimestamps for 8 years.
+> This can be used to prove that a certain file existed at a certain time, useful for legal purposes, for example, to prove that a certain file was not tampered with after a certain date.
 
+Timestamping via external timestamp authorities that obey RFC3161 eg [auto archiver implementation](https://github.com/bellingcat/auto-archiver/blob/e8138eac1c79626c4c16226dcda8eb644db119e4/src/auto_archiver/enrichers/timestamping_enricher.py#L17-L23)
 
+> In summary, while a hash confirms that a file has not been altered, timestamping provides a trustworthy record of when the file existed. Timestamping essentially uses the hash as a foundational element but adds the crucial element of time, which is especially valuable in legal, archival, or compliance contexts.
 
+### OpenTimestamps
 
-- [https://en.wikipedia.org/wiki/Hash_function](https://en.wikipedia.org/wiki/Hash_function)
-- [https://en.wikipedia.org/wiki/Cryptographic_hash_function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+[https://opentimestamps.org/](https://opentimestamps.org/) - OpenTimestamps is a protocol for timestamping files and proving their integrity over time. It puts on the hash onto a blockchain eg Bitcoin has been running for 16 years. opentimestamps for 8 years.
 
 ## Foo
 
