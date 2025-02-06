@@ -15,7 +15,7 @@ image: /assets/2024-11-12/1.jpg
 [![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="300px"}](/assets/2025-01-13/5.jpg) 
 
 
-If you have a single URL and want to archive the page contents, how do you do it? 
+If you have a single URL and want to archive the page contents, **how do you do it**?
 
 In this article I'll cover:
 
@@ -24,6 +24,12 @@ In this article I'll cover:
 3. Specific (platform) Archival Tools
 4. Manual Archival (including browser extensions)
 5. Appendix
+
+TL;DR
+
+- [Wayback Machine](https://web.archive.org/save) - Always use this (Twitter/Instagram/Facebook probably wont work well)
+- [archive.ph](https://archive.ph/) - Best for getting around paywalls
+- [Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver) - Best at archiving X/Instagram/Facebook/YouTube/Telegram/VK/TikTok
 
 
 ## 1. Why Archive? 
@@ -60,10 +66,19 @@ For the purposes of
 
 ## What to Archive (Input)
 
-Perhaps in your investigation you come across a page eg [https://twitter.com/dave_mateer/status/1524341442738638848](https://twitter.com/dave_mateer/status/1524341442738638848) and you want all details
+Perhaps in your investigation you come across a page eg [https://twitter.com/dave_mateer/status/1524341442738638848](https://twitter.com/dave_mateer/status/1524341442738638848) and you want to archiver all the details 
+
+The [auto-archiver]() tool can accept the URL(s) by a Google Spreadsheet. 
+
+Here are some URLs to archive with the columns configured for the auto-archiver
 
 <!-- [![alt text](/assets/2025-01-13/6.jpg "email"){:width="500px"}](/assets/2025-01-13/6.jpg)  -->
-[![alt text](/assets/2025-01-13/6.jpg "email")](/assets/2025-01-13/6.jpg) 
+<!-- [![alt text](/assets/2025-01-13/6.jpg "email")](/assets/2025-01-13/6.jpg)  -->
+[![alt text](/assets/2025-01-13/10.jpg "email")](/assets/2025-01-13/10.jpg) 
+
+
+When the archiver starts, it updates the Archive Status column
+
 
 I've been a big fan of [Google Spreadsheets](https://docs.google.com/). 
 
