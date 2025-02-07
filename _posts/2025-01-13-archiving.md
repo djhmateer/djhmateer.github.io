@@ -66,6 +66,10 @@ For the purposes of
 - Analysis 
 - Preservation for articles / reports / cases 
 
+I've worked for the past 4 years in Human Rights archiving, where the focus has been on images and video archiving (before it gets taken down by large platforms).
+
+Screenshots are important for context. Everything is hashed and Tweeted (as a Tweet is considered immutable). Text content and reading of the websites is less important.
+
 ## What to Archive (Input)
 
 Perhaps in your investigation you come across a page eg [https://twitter.com/dave_mateer/status/1524341442738638848](https://twitter.com/dave_mateer/status/1524341442738638848) and you want to archive all the details 
@@ -94,10 +98,14 @@ We also have a timestamped hash of the file, a [wacz]() archive of the page, and
 
 [![alt text](/assets/2025-01-13/13.jpg "email")](/assets/2025-01-13/13.jpg) 
 
-
-
-
 I've found that [Google Spreadsheets](https://docs.google.com/) is flexable, free and the collaboration is excellent.  I work on sheets with 70k+ rows (it does take memory and horespower) and I've seen > 10 people work on big sheets at once. 
+
+In the research for this article I came up with specific links to test which have specific use cases eg number of images, size of page etc..
+
+[Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg). Get in touch: davemateer@gmail.com if you'd like me to test links to be archived.
+
+It became apparent that to archive specific large platforms (which is what the majority of my work is) then you need targeted archivers.
+
 
 ## How to store archives (Output)
 
@@ -114,29 +122,6 @@ Google Drive is excellent as it gives full domain user control over files. But y
 [![alt text](/assets/2025-01-13/14.jpg "email")](/assets/2025-01-13/14.jpg) 
 
 [Cyberduck S3 Viewer](https://cyberduck.io/) - great tool to view and copy files to S3.
-
-## Human Rights Archiving
-
-I've worked for the past 4 years in Human Rights archiving, where the focus has been on images and video archiving (before it gets taken down by large platforms).
-
-Screenshots are important for context. Everything is hashed and Tweeted (as a Tweet is considered immutable). Text content and reading of the websites is less important.
-
-## What platforms do you want to archive?
-
-- [Instagram](https://instagram.com)
-- [Facebook](https://facebook.com)
-- [X/Twitter](https://x.com)
-- [Telegram](https://telegram.com)
-- [TikTok](https://tiktok.com)
-- [YouTube](https://youtube.com)
-- [vk.com](https://vk.com)
-- [General Websites](https://davemateer.com/2024/12/02/advent-of-code)
-
-In the research for this article I came up with specific links to test which have specific use cases eg number of images, size of page etc..
-
-[Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg). Get in touch: davemateer@gmail.com if you'd like me to test links to be archived.
-
-It became apparent that to archive specific large platforms (which is what the majority of my work is) then you need targeted archivers.
 
 
 ## 2. General Archival Tools
@@ -204,7 +189,7 @@ If you ever get strange issues (eg site not loading, or even welcome to nginx pa
 [faq](https://archive.ph/faq) - also the owner of the site and effort is hidden (I'm surmising they keep their identity private as they are breaching EULAs heavily by getting around paywalls)
 
 
-## 2.4 Other relevant general archiving tools
+## 2.4 Other 
 
 These are interesting, but not useful for me. I prefer the auto-archiver which is described above 
 
@@ -226,42 +211,16 @@ These are interesting, but not useful for me. I prefer the auto-archiver which i
 
 Surprisingly there are no tools to my knowledge for single page archiving as good as open source tools.
 
-
 Case / Investigation management systems have some archiving tools built in eg
 
 [https://www.atlos.org/](https://www.atlos.org/) - has a basic screenshot tool (and there is an integration with the auto-archiver)
-
 
 [![](/assets/2025-01-13/9.jpg){:width="400px"}](/assets/2025-01-13/9.jpg) 
 
 [https://hunch.ly/](https://hunch.ly/) - App and extension. Captures automatically. OSINT tool focussed on online investigations.
 
 
-## Summary
-
-These seem to be focused on 
-
-- compliance
-- governance
-- historical records
-- entire website archiving
-
-
 I've not found any enterprise archiving tools which are useful for my use case of single page investigative archiving.
-
-I've worked in large enterprises and, no surprise, they are needed in the archiving space.
-
-Vendors below are very important because large companies want to to work with other larger companies for 
-
-- (perceived) stability
-- who to sue? 
-- have many support staff so can always get support
-- have many developers so can always get support
-- not reliant on small companies
-- perceived 'better' produts
-- more polished products (which are easier to sell to the board/boss) "Noone every got fired for buying IBM"
-
-Sales pipelines are very long in the enterprise space (and expensive for the vendor).
 
 
 ## 2.5.1 PageFreezer
@@ -280,9 +239,6 @@ A 50-100 person company based in Vancouver. I've dealt with Doug who is a nice n
  - YouTube
 
 They sell to law enforcement agencies, legal firms and investigators 
-
-
-**setting up a live demo as no trial version
 
 
 ## 2.5.2 MirrorWeb
@@ -306,7 +262,7 @@ Focussed on entire website archiving over time.
 
 
 
-## Specific Platform Archival Tools and Lower Level Libraries
+## 3. Specific Platform Archival Tools and Lower Level Libraries
 
 There are some excellent libraries for archiving specific platforms. The auto-archiver uses many of these tools and brings them together.
 
@@ -325,7 +281,6 @@ In the auto-archiver we use [https://hikerapi.com/](https://hikerapi.com/) to ge
 [https://subzeroid.github.io/instagrapi/](https://subzeroid.github.io/instagrapi/) documentation.
 
 This is a good library, with some excellent tips on how to use it in the documentation. I wrote a POC of this for the auto-archiver.
-
 
 ## Facebook
 
@@ -349,14 +304,14 @@ As of Jan 2025, [https://github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-
 Auto-archiver has an integration for VK via [https://github.com/bellingcat/vk-url-scraper](https://github.com/bellingcat/vk-url-scraper)
 
 
-
-
 ## Screenshots
 
 [Playwright](https://playwright.dev/) is excellent. I use it in a headfull (ie not headless as this is detected often) manner to get screenshots. I use [xvfb-run](https://manpages.debian.org/bullseye/xvfb/xvfb-run.1.en.html) to run it in a virtual framebuffer on my linux servers to run playwright headfully.
 
+[urlbox.com](https://urlbox.com/) is a very professional screenshotting service.
 
-## Manually Archiving
+
+## 4. Manually Archiving
 
 For instagram can't right click on the image to download it. 
 
@@ -397,9 +352,7 @@ This is different to save-as mhtml as
 
 
 
-
-
-
+## 5. Appendix
 
 
 ## General Strategy
@@ -408,19 +361,6 @@ This is different to save-as mhtml as
 - Always submit to the Wayback Machine (unless it is Facebook or Tiktok which never works Jan 2025)
 - WACZ is always good to try and get
 - For specialised sites, they probabaly don't want you to archive it, so you have to write specific tools, or find ones.
-
-## Where to store your Archives?
-
-- S3 storage eg [DigitalOcean Spaces]()
-- Google Drive 
-
-DO is good in public mode as can host any file and view online.
-
-GD is excellent as it gives full domain user contraol over files. But you can't serve a webpage from it nor direct link an image.
-
-
-
-## TODO
 
 https://archive.is/Fv1yU
 
@@ -445,23 +385,6 @@ list of awesome - archiving?
 [https://archivebox.io/](https://archivebox.io/) 23k stars on GH. Similar to auto-archiver.. uses Chrome, wget, yt-dlp, submits to archive.org. They also offer a commerical service..
 
 
-
-
-
-## 5. Summary
-
-Auto-archiver is a lower level tools which gets the best results for Image and Video.
-
-archive.ph is the best for getting around paywalls.
-
-
-
-Monolity very popular - raw downloader
-SingleFile popular - extension which saves a single file.
-
-
-<!-- !-- [![alt text](/assets/2024-09-04/1.jpg "email"){:width="500px"}](/assets/2024-09-04/1.jpg) --> 
-<!-- [![alt text](/assets/2024-09-04/1.jpg "email")](/assets/2024-09-04/1.jpg) -->
 
 ## 5. Appendix
 
@@ -554,17 +477,24 @@ Timestamping via external timestamp authorities that obey RFC3161 eg [auto archi
 
 
 
-## Google Spreadsheets
+## Google Spreadsheets performance
 
 [![alt text](/assets/2025-01-13/7.jpg "email")](/assets/2025-01-13/7.jpg) 
 
 Google Console - graphs showing my auto-archivers polling the Google Spreadsheets. This is an amazing service where you can see I'm currently querying 2 times per second consistently with no major issues.
 
-## Why did I write this article?
 
-I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I want to know
 
-- Are there any better products out there?
-- Are my customers getting their money's worth?
-- Should I partner with other organisations to sell their products?
-- Who needs archiving help?
+## Conclusion
+
+I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I wanted to know
+
+- Are there any better products out there? (not that I know of!)
+- Are my customers getting their money's worth? (I think so)
+- Should I partner with other organisations to sell their products? (haven't found any)
+- Who needs archiving help? (investigators)
+
+Please email me davemateer@gmail.com if you've any comments
+
+
+
