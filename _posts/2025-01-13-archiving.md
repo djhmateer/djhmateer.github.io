@@ -15,6 +15,31 @@ image: /assets/2024-11-12/1.jpg
 [![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="300px"}](/assets/2025-01-13/5.jpg) 
 
 
+# How to Archive Single URLs: A Comprehensive Guide  
+
+Need to archive a single webpage but unsure of the best method? This guide will walk you through the essential tools and techniques to ensure your links are preserved.  
+
+## In This Article  
+
+1. **Why Archive?** – The importance of preserving webpages.  
+2. **General Archival Tools** – The most reliable solutions.  
+3. **Platform-Specific Archival Tools** – What works best for different sites.  
+4. **Manual Archival Methods** – Including browser extensions.  
+5. **Appendix** – Additional resources and insights.  
+
+## TL;DR  
+
+- **[Wayback Machine](https://web.archive.org/save)** – Always a solid choice (though platforms like X, Instagram, and Facebook may not archive well).  
+- **[archive.ph](https://archive.ph/)** – Best for bypassing paywalls.  
+- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use the hosted version at [auto-archiver.com](https://auto-archiver.com/).  
+
+I originally wrote this article to explore whether there were any technically superior alternatives to Bellingcat’s open-source **auto-archiver**. So far, I haven’t found any. If you know of a better solution or have any thoughts, feel free to reach out at **davemateer@gmail.com**.  
+
+
+
+
+##FOO
+
 If you have single URLs and want to archive them, how do you do it?
 
 In this article I'll cover:
@@ -494,7 +519,7 @@ I have a commerical business selling hosted versions of the [auto-archiver](http
 - Should I partner with other organisations to sell their products? (haven't found any)
 - Who needs archiving help? (investigators)
 
-Please email me davemateer@gmail.com if you've any comments
+Please get in touch davemateer@gmail.com if you've any comments
 
 
 
