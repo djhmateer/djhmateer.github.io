@@ -15,7 +15,7 @@ image: /assets/2024-11-12/1.jpg
 [![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="300px"}](/assets/2025-01-13/5.jpg) 
 
 
-If you have a single URL and want to archive the page contents, how do you do it?
+If you have single URLs and want to archive the pages, how do you do it?
 
 In this article I'll cover:
 
@@ -27,9 +27,9 @@ In this article I'll cover:
 
 TL;DR
 
-- [Wayback Machine](https://web.archive.org/save) - Always use this (Twitter/Instagram/Facebook probably wont work well)
+- [Wayback Machine](https://web.archive.org/save) - Always use this (platforms like X/Instagram/Facebook probably wont work well)
 - [archive.ph](https://archive.ph/) - Best for getting around paywalls
-- [Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver) - Best at archiving X/Instagram/Facebook/YouTube/Telegram/VK/TikTok
+- [Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver) - Best at archiving platforms X/Instagram/Facebook/YouTube/Telegram/VK/TikTok and general
 
 
 ## 1. Why Archive? 
@@ -55,7 +55,7 @@ And you may wish to archive different things.
 - Videos
 - Text
 - WARC / WACZ so you can replay the page (perhaps showing changes over time)
-- Hashes of all assets (for proof)
+- Hashes and timestamps of all assets (for proof of existance at a specific time)
 - Get around paywalls
 
 For the purposes of
@@ -65,7 +65,7 @@ For the purposes of
 
 ## What to Archive (Input)
 
-Perhaps in your investigation you come across a page eg [https://twitter.com/dave_mateer/status/1524341442738638848](https://twitter.com/dave_mateer/status/1524341442738638848) and you want to archiver all the details 
+Perhaps in your investigation you come across a page eg [https://twitter.com/dave_mateer/status/1524341442738638848](https://twitter.com/dave_mateer/status/1524341442738638848) and you want to archive all the details 
 
 The [auto-archiver]() tool can accept the URL(s) by a Google Spreadsheet. 
 
@@ -76,7 +76,7 @@ Here are some URLs to archive with the columns configured for the auto-archiver
 [![alt text](/assets/2025-01-13/10.jpg "email")](/assets/2025-01-13/10.jpg) 
 
 
-The archiver runs out writes the results into the spreadsheet:
+The archiver runs and writes the results into the spreadsheet:
 
 [![alt text](/assets/2025-01-13/11.jpg "email")](/assets/2025-01-13/11.jpg) 
 
@@ -94,26 +94,23 @@ We also have a timestamped hash of the file, a [wacz]() archive of the page, and
 
 
 
-
-
-
-
-
-I've been a big fan of [Google Spreadsheets](https://docs.google.com/). 
-
-It is free and the collaboration is excellent. 
-
-I work on sheets with 60k+ rows (it does take memory and horespower) and I've seen 10 people work on the sheet at once. 
+I've found that [Google Spreadsheets](https://docs.google.com/) is flexable, free and the collaboration is excellent.  I work on sheets with 70k+ rows (it does take memory and horespower) and I've seen > 10 people work on big sheets at once. 
 
 ## How to store archives (Output)
 
+It depends on the requirements of your organisation and what is in place already.
+
 - S3 storage eg [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)
-- Google Drive 
+- [Google Workspace / Drive](https://workspace.google.com/intl/en_uk/products/drive/)
 - Local/Network storage
 
-DigitalOcean Spaces is good in public mode as can host any file and view online eg [instagram auto-archiver output](https://testhashing.fra1.cdn.digitaloceanspaces.com/dia031/c87e98048a2f4a09a66e1ea3.html)
+DigitalOcean Spaces is good in public mode as can host any file and view online eg [instagram auto-archiver output](https://testhashing.fra1.cdn.digitaloceanspaces.com/dia031/c87e98048a2f4a09a66e1ea3.html). It's also possible using a [CORS policy](/2024/10/08/cors-on-digitalocean) to host wacz files here to use in [https://replayweb.page/](https://replayweb.page/)
 
 Google Drive is excellent as it gives full domain user contraol over files. But you can't serve a webpage from it nor direct link an image.
+
+[![alt text](/assets/2025-01-13/14.jpg "email")](/assets/2025-01-13/14.jpg) 
+
+[Cyberduck S3 Viewer](https://cyberduck.io/) - great tool to view and copy files to S3.
 
 ## Human Rights Archiving
 
@@ -219,6 +216,13 @@ These are interesting, but not useful for me. I prefer the auto-archiver which i
 - [https://conifer.rhizome.org/](https://conifer.rhizome.org/) - have sent a bug report (29th Jan 25) 
 
 ## 2.5 Commercial Archiving Tools
+
+Surprisingly there are no tools to my knowledge for single page archiving as good as open source tools.
+
+https://auto-archiver.com/
+
+****
+
 
 Case / Investigation management systems have some archiving tools built in eg
 
