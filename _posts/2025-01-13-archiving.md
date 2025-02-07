@@ -106,7 +106,7 @@ It depends on the requirements of your organisation and what is in place already
 
 DigitalOcean Spaces is good in public mode as can host any file and view online eg [instagram auto-archiver output](https://testhashing.fra1.cdn.digitaloceanspaces.com/dia031/c87e98048a2f4a09a66e1ea3.html). It's also possible using a [CORS policy](/2024/10/08/cors-on-digitalocean) to host wacz files here to use in [https://replayweb.page/](https://replayweb.page/)
 
-Google Drive is excellent as it gives full domain user contraol over files. But you can't serve a webpage from it nor direct link an image.
+Google Drive is excellent as it gives full domain user control over files. But you can't serve a webpage from it nor direct link an image.
 
 [![alt text](/assets/2025-01-13/14.jpg "email")](/assets/2025-01-13/14.jpg) 
 
