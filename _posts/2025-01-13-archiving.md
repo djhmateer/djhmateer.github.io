@@ -36,30 +36,6 @@ Need to archive a single webpage but unsure of the best method? This guide will 
 I originally wrote this article to explore whether there were any technically superior alternatives to Bellingcat’s open-source **auto-archiver**. So far, I haven’t found any. If you know of a better solution or have any thoughts, feel free to reach out at **davemateer@gmail.com**.  
 
 
-
-
-##FOO
-
-If you have single URLs and want to archive them, how do you do it?
-
-In this article I'll cover:
-
-1. Why Archive?
-2. General Archival Tools
-3. Specific (platform) Archival Tools
-4. Manual Archival (including browser extensions)
-5. Appendix
-
-TL;DR
-
-- [Wayback Machine](https://web.archive.org/save) - Always use this (platforms like X/Instagram/Facebook probably wont work well)
-- [archive.ph](https://archive.ph/) - Best for getting around paywalls
-- [Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver) - Best at archiving. [auto-archiver.com](https://auto-archiver.com/) is a commerical hosted setup I offer.
-
-
-I wrote this article to see there were any technical better archiving solutions than Bellingcat's open source auto-archiver. There are none that I've found. contact me on davemateer@gmail.com please if you know of any or have comments.
-
-
 ## 1. Why Archive? 
 
 Firstly lets consider backgroud, motivation and goals.
