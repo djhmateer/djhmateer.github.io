@@ -38,7 +38,7 @@ Firstly lets consider backgroud, motivation and goals.
 
 You may come from these areas:
 
-- Human rights investigative organisations
+- Human rights investigative organisations - this is what I do and [we have won awards](https://www.swansea.ac.uk/press-office/news-events/news/2024/11/research-on-using-mobile-phone-evidence-in-human-rights-cases-wins-prestigious-impact-prize.php)
 - Investigative Journalists
 - Insurance Investigators
 - Corporate Investigators
