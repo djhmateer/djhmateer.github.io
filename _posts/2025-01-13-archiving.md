@@ -15,7 +15,7 @@ image: /assets/2024-11-12/1.jpg
 [![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="300px"}](/assets/2025-01-13/5.jpg) 
 
 
-If you have <mark>single URLs</mark> and want to archive the pages, `how do you do it`?
+If you have <mark>single URLs</mark> and want to ✨archive the✨ pages, `how do you do it`?
 
 In this article I'll cover:
 
