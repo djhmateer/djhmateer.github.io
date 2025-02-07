@@ -17,7 +17,9 @@ image: /assets/2024-11-12/1.jpg
 
 # How to Archive Single URLs: A Comprehensive Guide  
 
-Need to archive a single webpage but unsure of the best method? This guide will walk you through the essential tools and techniques to ensure your links are preserved.  
+Need to archive webpages but are unsure of the best method? 
+
+This guide will walk you through my favourite tools and techniques to ensure your links are preserved.  
 
 ## In This Article  
 
@@ -31,9 +33,9 @@ Need to archive a single webpage but unsure of the best method? This guide will 
 
 - **[Wayback Machine](https://web.archive.org/save)** – Always a solid choice (though platforms like X, Instagram, and Facebook may not archive well).  
 - **[archive.ph](https://archive.ph/)** – Best for bypassing paywalls.  
-- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use the hosted version at [auto-archiver.com](https://auto-archiver.com/).  
+- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use my hosted version at [auto-archiver.com](https://auto-archiver.com/).  
 
-I originally wrote this article to explore whether there were any technically superior alternatives to Bellingcat’s open-source **auto-archiver**. So far, I haven’t found any. If you know of a better solution or have any thoughts, feel free to reach out at **davemateer@gmail.com**.  
+I originally wrote this article to explore whether there were any technically superior alternatives to Bellingcat’s open-source **auto-archiver**. So far, I haven’t found any. If you know of a better solution or have any thoughts, please get in touch at **davemateer@gmail.com**.  
 
 
 ## 1. Why Archive? 
