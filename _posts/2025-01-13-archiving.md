@@ -219,7 +219,7 @@ These are interesting, but not useful for me. I prefer the auto-archiver which i
 
 - [https://github.com/ArchiveBox/ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) - fully featured 23k stars. Self hosted with website. Like the auto-archiver but not as specific. Much better self hosting.
 
-- [https://webrecorder.net/archivewebpage/](https://webrecorder.net/archivewebpage/) - chrome extension based save as WARC / WACZ. Ilya project who makes the excellent [https://github.com/webrecorder/browsertrix-crawler](https://github.com/webrecorder/browsertrix-crawler) which we use the auto-archiver to save a WACZ.
+- [https://webrecorder.net/archivewebpage/](https://webrecorder.net/archivewebpage/) - chrome extension based save as WARC / WACZ. Ilya project who makes the excellent [https://github.com/webrecorder/browsertrix-crawler](https://github.com/webrecorder/browsertrix-crawler) 702 stars which we use the auto-archiver to save a WACZ.
 
 - [https://github.com/internetarchive/heritrix3](https://github.com/internetarchive/heritrix3) - 2.9k stars. 45 contributers. Internet Archive's web crawler project. Interesting, but output is just the same as the Wayback Machine (I assume)
 
@@ -235,10 +235,6 @@ These are interesting, but not useful for me. I prefer the auto-archiver which i
 
 Surprisingly there are no tools to my knowledge for single page archiving as good as open source tools.
 
-https://auto-archiver.com/
-
-****
-
 
 Case / Investigation management systems have some archiving tools built in eg
 
@@ -250,7 +246,7 @@ Case / Investigation management systems have some archiving tools built in eg
 [https://hunch.ly/](https://hunch.ly/) - App and extension. Captures automatically. OSINT tool focussed on online investigations.
 
 
-## Enterprise
+## Summary
 
 These seem to be focused on 
 
@@ -261,11 +257,6 @@ These seem to be focused on
 
 
 I've not found any enterprise archiving tools which are useful for my use case of single page investigative archiving.
-
-
-
-
-
 
 I've worked in large enterprises and, no surprise, they are needed in the archiving space.
 
@@ -321,7 +312,6 @@ Focussed on entire website archiving over time.
 
 
 [https://www.smarsh.com/solutions/business-need/archiving](https://www.smarsh.com/solutions/business-need/archiving) - company communications governance and archiving.
-
 
 
 
