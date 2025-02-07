@@ -17,7 +17,7 @@ image: /assets/2024-11-12/1.jpg
 
 If you have <mark>single URLs</mark> and want to ✨archive the✨ pages, `how do you do it`?
 
-In this article I'll cover:
+<span class="highlight">In this article I'll cover:</span>
 
 1. Why Archive?
 2. General Archival Tools
