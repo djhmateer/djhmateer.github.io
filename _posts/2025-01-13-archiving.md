@@ -21,6 +21,13 @@ If you have <mark>single URLs</mark> and want to ✨archive the✨ pages, `how d
 
 > **Important:** This is a highlighted note.
 
+*this is 1 star*
+
+**this is a highlight**
+
+***this is 3 stars***
+
+
 1. Why Archive?
 2. General Archival Tools
 3. Specific (platform) Archival Tools
