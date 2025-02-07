@@ -19,6 +19,8 @@ If you have <mark>single URLs</mark> and want to ✨archive the✨ pages, `how d
 
 <span class="highlight">In this article I'll cover:</span>
 
+> **Important:** This is a highlighted note.
+
 1. Why Archive?
 2. General Archival Tools
 3. Specific (platform) Archival Tools
