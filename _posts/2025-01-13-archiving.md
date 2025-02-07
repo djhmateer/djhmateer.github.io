@@ -38,6 +38,48 @@ This guide will walk you through my favourite tools and techniques to ensure you
 I originally wrote this article to explore whether there were any technically superior alternatives to Bellingcat’s open-source **auto-archiver**. So far, I haven’t found any. If you know of a better solution or have any thoughts, please get in touch at **davemateer@gmail.com**.  
 
 
+## 1. Why Archive?
+
+Before we dive into the methods of archiving single URLs, it is essential to understand the motivation behind preserving webpages. In our ever-changing digital landscape, online content can vanish as quickly as it appears. For professionals working in investigative fields, ensuring that a verifiable record of web pages exists is paramount.
+
+### Who Might Benefit?
+
+If you work in any of these areas, archiving is likely to be an invaluable tool:
+
+- **Human Rights Investigative Organisations** – This is my own field, where our work has been [recognised with an award](https://www.swansea.ac.uk/press-office/news-events/news/2024/11/research-on-using-mobile-phone-evidence-in-human-rights-cases-wins-prestigious-impact-prize.php)
+- **Investigative Journalism**
+- **Insurance Investigations**
+- **Corporate Investigations**
+- **Law Enforcement**
+- **Legal Teams and Firms**
+- **Other Investigative Organisations**
+- **Online Discussion Forums**
+
+### What Should You Archive?
+
+Depending on your requirements, there are various elements you may wish to preserve:
+
+- **Screenshots** – To capture the exact visual context of a webpage.
+- **HTML Versions** – Keeping the structure and content accessible even if the original site is altered.
+- **Images and Videos** – Particularly important for evidence, especially in human rights cases.
+- **Text Content** – While secondary to visual evidence, it still offers valuable context.
+- **WARC or WACZ Files** – Enabling you to replay the entire page and observe changes over time.
+- **Hashes and Timestamps** – Providing proof of an asset’s existence at a specific moment.
+- **Bypassing Paywalls** – Allowing access to content that might otherwise be restricted.
+
+### The Purpose Behind Archiving
+
+The core reasons for archiving webpages include:
+
+- **Analysis** – Facilitating detailed reviews and investigations long after the original content has been updated or removed.
+- **Preservation** – Maintaining a reliable record for articles, reports, or legal cases.
+
+Over the past four years, I have dedicated myself to human rights archiving, focusing on safeguarding images and videos before they are removed by major platforms. While text is valuable, it is often the visual evidence—captured through screenshots and preserved multimedia—that provides the most compelling support for an investigation.
+
+
+By utilising techniques such as hashing and recording on immutable platforms, we can ensure that these records remain untampered. This guide will help you select the best tools and methods to archive single URLs effectively, ensuring your links are preserved for thorough analysis and long-term reference.
+
+
 ## 1. Why Archive? 
 
 Firstly lets consider backgroud, motivation and goals.
@@ -192,7 +234,7 @@ If you ever get strange issues (eg site not loading, or even welcome to nginx pa
 [faq](https://archive.ph/faq) - also the owner of the site and effort is hidden (I'm surmising they keep their identity private as they are breaching EULAs heavily by getting around paywalls)
 
 
-## 2.4 Other 
+## 2.4 Other Open Source
 
 These are interesting, but not useful for me. I prefer the auto-archiver which is described above 
 
@@ -210,7 +252,7 @@ These are interesting, but not useful for me. I prefer the auto-archiver which i
 
 - [https://conifer.rhizome.org/](https://conifer.rhizome.org/) - have sent a bug report (29th Jan 25) 
 
-## 2.5 Commercial Archiving Tools
+## 2.5 Other Commercial Archiving Tools
 
 Surprisingly there are no tools to my knowledge for single page archiving as good as open source tools.
 
