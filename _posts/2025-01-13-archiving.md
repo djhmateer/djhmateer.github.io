@@ -143,28 +143,28 @@ Screenshots are important for context. Everything is hashed and Tweeted (as a Tw
 
 In the research for this article I came up with specific links to test which have specific use cases eg number of images, size of page etc..
 
-[Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg)
+[Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg). Get in touch: davemateer@gmail.com if you'd like me to test links to be archived.
+
+It became apparent that to archive specific large platforms (which is what the majority of my work is) then you need targeted archivers.
 
 
 ## 2. General Archival Tools
 
-- Wayback Machine (for everything)
-- Auto-archiver (for Instagram, Facebook, X/Twitter, Telegram, TikTok, YouTube, VK, and everything espeically where you need images and video)
-- Archive.ph (for paywalls)
-
 ## 2.1 Wayback Machine
 
-aka Internet Archive aka web.archive.org
+aka Internet Archive aka web.archive.org 
 
 [![alt text](/assets/2025-01-13/8.jpg "email")](/assets/2025-01-13/8.jpg) 
 
+[web.archive.org/save](https://web.archive.org/save) is a good link to follow to save.
+
 [The Wayback Machine](https://web.archive.org/) is free, and the most popular archival tool. Whatever I do, I always submit here (usually by their [API](https://archive.org/account/s3.php)). This is an amazing service by the non profit Internet Archive.
 
-Currently there are sites which are not archived by the Wayback Machine. eg
+Currently there are sites which are not archived by the Wayback Machine. eg Instagram And other sites like Facebook are quite limited.
 
-- Instagram
+[![alt text](/assets/2025-01-13/15.jpg "email")](/assets/2025-01-13/.jpg) 
 
-And other sites like Facebook are quite limited.
+This service does get overloaded! The API can take 5 minutes to come back with a success.
 
 
 ## 2.2 Auto-archiver
@@ -188,6 +188,7 @@ The downsides are that
 - It is hard to setup properly. 
 - There is no UI 
 - It doesn't have a massive user base
+- It needs constant tweaking to keep on top of platform changes
 
 The upsides ar that
 
@@ -196,11 +197,14 @@ The upsides ar that
 - It is stable and have been running for 4 years on many different platforms. (AWS / Azure / Bare Metal)
 
 
-## 2.3 Archive.ph
+## 2.3 Archive.today
 
-[![alt text](/assets/2025-01-13/2.jpg "email")](/assets/2025-01-13/2.jpg)
+aka archive.ph
 
-This is excellent at getting around paywalls eg [here](https://archive.ph/FlcDl) and I've found none better.
+<!-- [![alt text](/assets/2025-01-13/2.jpg "email")](/assets/2025-01-13/2.jpg) -->
+[![alt text](/assets/2025-01-13/16.jpg "email")](/assets/2025-01-13/16.jpg)
+
+This is excellent at getting around paywalls eg [here](https://archive.ph/FlcDl) and I've found none better. [Hacker News](https://news.ycombinator.com/) commonly uses this for linked articles which are paywalled.
 
 There are many pseudonyms for this site eg [archive.today](https://archive.today), [archive.is](https://archive.is) which all redirect.
 
