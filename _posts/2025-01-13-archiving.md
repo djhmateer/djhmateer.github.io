@@ -15,7 +15,7 @@ image: /assets/2024-11-12/1.jpg
 [![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="300px"}](/assets/2025-01-13/5.jpg) 
 
 
-If you have single URLs and want to archive the pages, how do you do it?
+If you have <mark>single URLs</mark> and want to archive the pages, `how do you do it`?
 
 In this article I'll cover:
 
@@ -29,7 +29,10 @@ TL;DR
 
 - [Wayback Machine](https://web.archive.org/save) - Always use this (platforms like X/Instagram/Facebook probably wont work well)
 - [archive.ph](https://archive.ph/) - Best for getting around paywalls
-- [Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver) - Best at archiving platforms X/Instagram/Facebook/YouTube/Telegram/VK/TikTok and general
+- [Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver) - Best at archiving. [auto-archiver.com](https://auto-archiver.com/) is a commerical hosted setup I offer.
+
+
+I wrote this article to see there were any technical better archiving solutions than Bellingcat's open source auto-archiver. There are none that I've found. contact me on davemateer@gmail.com please if you know of any or have comments.
 
 
 ## 1. Why Archive? 
