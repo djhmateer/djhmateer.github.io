@@ -15,7 +15,7 @@ image: /assets/2024-11-12/1.jpg
 [![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="300px"}](/assets/2025-01-13/5.jpg) 
 
 
-# How to Archive Single URLs: A Comprehensive Guide  
+# How to Archive Single URLs: A Guide  
 
 Need to archive webpages but are unsure of the best method? 
 
@@ -29,13 +29,13 @@ This guide will walk you through my favourite tools and techniques to ensure you
 4. **Manual Archival Methods** – Including browser extensions.  
 5. **Appendix** – Additional resources and insights.  
 
-## TL;DR  
+## Key Summary
 
 - **[Wayback Machine](https://web.archive.org/save)** – Always a solid choice (though platforms like X, Instagram, and Facebook may not archive well).  
 - **[archive.ph](https://archive.ph/)** – Best for bypassing paywalls.  
 - **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use my hosted version at [auto-archiver.com](https://auto-archiver.com/).  
 
-I originally wrote this article to explore whether there were any technically superior alternatives to Bellingcat’s open-source **auto-archiver**. So far, I haven’t found any. If you know of a better solution or have any thoughts, please get in touch at **davemateer@gmail.com**.  
+This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver**. To date, I have not found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
 
 
 ## 1. Why Archive?
