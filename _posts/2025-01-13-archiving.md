@@ -151,141 +151,164 @@ For those managing S3 storage, [Cyberduck S3 Viewer](https://cyberduck.io/) is a
 
 
 
-## 2. General Archival Tools
+
+# 2. General Archival Tools
 
 ## 2.1 Wayback Machine
 
-aka Internet Archive aka web.archive.org 
+Also known as the Internet Archive or simply [web.archive.org](https://web.archive.org/), the Wayback Machine is one of the most popular and free archival tools available today.
 
-[![alt text](/assets/2025-01-13/8.jpg "email")](/assets/2025-01-13/8.jpg) 
+![Wayback Machine Interface](/assets/2025-01-13/8.jpg "Wayback Machine Interface")
 
-[web.archive.org/save](https://web.archive.org/save) is a good link to follow to save.
+If you want to save a webpage, a great starting point is [web.archive.org/save](https://web.archive.org/save). I always make it a point to submit my archived content here—often through their [API](https://archive.org/account/s3.php). This invaluable service, provided by the non-profit Internet Archive, has helped preserve [hundreds of billions](https://en.wikipedia.org/wiki/Wayback_Machine) of pages over the last 23 years.
 
-[The Wayback Machine](https://web.archive.org/) is free, and the most popular archival tool. Whatever I do, I always submit here (usually by their [API](https://archive.org/account/s3.php)). This is an amazing service by the non profit Internet Archive.
+However, it's important to note that the Wayback Machine doesn't capture every site. For instance, platforms like Instagram and Facebook often have limitations or might not be archived at all.
 
-Currently there are sites which are not archived by the Wayback Machine. eg Instagram And other sites like Facebook are quite limited.
+![Overloaded API Warning](/assets/2025-01-13/15.jpg "Overloaded API Warning")
 
-[![alt text](/assets/2025-01-13/15.jpg "email")](/assets/2025-01-13/.jpg) 
+Keep in mind that the service can sometimes get overloaded. The API, in particular, might take up to 5 minutes to confirm a successful save.
 
-This service does get overloaded! The API can take 5 minutes to come back with a success.
 
 
 ## 2.2 Auto-archiver
 
-The auto-archiver is a collection of tools written the by amazing team at [Bellingcat](https://www.bellingcat.com/resources/2022/09/22/preserve-vital-online-content-with-bellingcats-auto-archiver-tool/)
+The auto-archiver is a robust collection of tools developed by the amazing team at [Bellingcat](https://www.bellingcat.com/resources/2022/09/22/preserve-vital-online-content-with-bellingcats-auto-archiver-tool/). I've been using and contributing to this project for the past three years, and I even offer it as a [hosted service](https://auto-archiver.com/).
 
-I've been using and contributing to this project for the past 3 years, and offer it as a [hosted service](https://auto-archiver.com/)
+This suite of tools is designed to help you archive content from several specific platforms, including:
 
-It is essentially a set of tools which allows you to archive specific platforms
+- **Instagram**
+- **Facebook**
+- **X/Twitter**
+- **Telegram**
+- **TikTok**
+- **YouTube**
+- **VK**
 
-- Instagram
-- Facebook
-- X/Twitter
-- Telegram
-- TikTok
-- YouTube
-- VK
+### Downsides
 
-The downsides are that
+While the auto-archiver is exceptional for capturing raw data, there are some challenges to keep in mind:
 
-- It is hard to setup properly. 
-- There is no UI 
-- It doesn't have a massive user base
-- It needs constant tweaking to keep on top of platform changes
+- **Complex Setup:** It can be hard to configure properly.
+- **No UI:** There isn’t a user-friendly interface available.
+- **Limited User Base:** It doesn't have a massive following yet.
+- **Constant Tweaking:** It requires ongoing adjustments to keep pace with platform changes.
 
-The upsides ar that
+### Upsides
 
-- There is nothing better for raw results.
-- You can get commerical support and talk to source contributers (me!) 
-- It is stable and have been running for 4 years on many different platforms. (AWS / Azure / Bare Metal)
+Despite these challenges, the auto-archiver offers several significant advantages:
+
+- **Unmatched Raw Results:** There is nothing better for capturing pure archival data.
+- **Commercial Support:** You can get direct support and even speak with the source contributors (including me!).
+- **Proven Stability:** It has been running reliably for over four years across various platforms (AWS, Azure, and bare metal).
 
 
 ## 2.3 Archive.today
 
-aka archive.ph
+[archive.today](https://archive.today) is known by several names, including:
 
-<!-- [![alt text](/assets/2025-01-13/2.jpg "email")](/assets/2025-01-13/2.jpg) -->
-[![alt text](/assets/2025-01-13/16.jpg "email")](/assets/2025-01-13/16.jpg)
+- [archive.ph](https://archive.ph)
+- [archive.is](https://archive.is)
 
-This is excellent at getting around paywalls eg [here](https://archive.ph/FlcDl) and I've found none better. [Hacker News](https://news.ycombinator.com/) commonly uses this for linked articles which are paywalled.
 
-There are many pseudonyms for this site eg [archive.today](https://archive.today), [archive.is](https://archive.is) which all redirect.
+All these URLs redirect to the same service.
 
-If you ever get strange issues (eg site not loading, or even welcome to nginx page), try deleting the site cookie in Chrome. 
+[![Archive.today Screenshot](/assets/2025-01-13/16.jpg "Archive.today Screenshot")](#)
 
-[faq](https://archive.ph/faq) - also the owner of the site and effort is hidden (I'm surmising they keep their identity private as they are breaching EULAs heavily by getting around paywalls)
+This service is particularly effective at getting around paywalls—for example, take a look at [this archived page](https://archive.ph/FlcDl). I've found nothing better for accessing paywalled content, which is why [Hacker News](https://news.ycombinator.com/) often links to articles saved via Archive.today.
+If you ever run into issues—such as the site not loading or seeing a "Welcome to nginx" page—try deleting the site cookie in Chrome.
+
+For more information, you can check out their [FAQ](https://archive.ph/faq). It's worth noting that the identity of the site's owner is kept under wraps, likely due to the controversial nature of bypassing paywalls and potential breaches of EULAs.
 
 
 ## 2.4 Other Open Source
 
-These are interesting, but not useful for me. I prefer the auto-archiver which is described above 
+These tools are interesting, but not as useful for my specific needs—I prefer the auto-archiver described above. Nevertheless, here are some noteworthy open source archiving projects:
 
-- [https://github.com/ArchiveBox/ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) - fully featured 23k stars. Self hosted with website. Like the auto-archiver but not as specific. Much better self hosting.
+- **[ArchiveBox](https://github.com/ArchiveBox/ArchiveBox)**  
+  A fully featured self-hosted solution with a dedicated website. With 23k stars, it’s similar to the auto-archiver but less specialized, and it's excellent for self-hosting.
 
-- [https://webrecorder.net/archivewebpage/](https://webrecorder.net/archivewebpage/) - chrome extension based save as WARC / WACZ. Ilya project who makes the excellent [https://github.com/webrecorder/browsertrix-crawler](https://github.com/webrecorder/browsertrix-crawler) 702 stars which we use the auto-archiver to save a WACZ.
+- **[Webrecorder](https://webrecorder.net/archivewebpage/)**  
+  A Chrome extension that saves pages as WARC/WACZ files. This project is by Ilya, the same mind behind the impressive [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler) (702 stars), which we use with the auto-archiver to save WACZ files.
 
-- [https://github.com/internetarchive/heritrix3](https://github.com/internetarchive/heritrix3) - 2.9k stars. 45 contributers. Internet Archive's web crawler project. Interesting, but output is just the same as the Wayback Machine (I assume)
+- **[Heritrix 3](https://github.com/internetarchive/heritrix3)**  
+  The Internet Archive’s web crawler project with 2.9k stars and 45 contributors. Its output is largely similar to what the Wayback Machine produces.
 
-- [https://github.com/Y2Z/monolith](https://github.com/Y2Z/monolith) - 12.4k stars. 28 contributers. Rust. Embeds CSS, images and JS assets. Good for general cases. 
+- **[Monolith](https://github.com/Y2Z/monolith)**  
+  A Rust-based tool with 12.4k stars and 28 contributors that embeds CSS, images, and JavaScript assets into a single HTML file—ideal for general archiving cases.
 
-- [https://github.com/harvard-lil/scoop](https://github.com/harvard-lil/scoop) - new project looking at provinence.
+- **[Scoop](https://github.com/harvard-lil/scoop)**  
+  A new project focused on provenance.
 
-- [https://perma.cc/](https://perma.cc/) - used by academics, law and libraries. $10 per month for 10 links. $100 for 500 links. Built by Harvard Library Innovation Lab with Ilya.
+- **[Perma.cc](https://perma.cc/)**  
+  Widely used by academics, legal professionals, and libraries. It costs $10 per month for 10 links or $100 for 500 links. This service is built by the Harvard Library Innovation Lab in collaboration with Ilya.
 
-- [https://conifer.rhizome.org/](https://conifer.rhizome.org/) - have sent a bug report (29th Jan 25) 
+- **[Conifer](https://conifer.rhizome.org/)**  
+  Note: I’ve already submitted a bug report (as of January 29, 2025).
 
-## 2.5 Other Commercial Archiving Tools
+## Other Commercial Archiving Tools
 
-Surprisingly there are no tools to my knowledge for single page archiving as good as open source tools.
+Surprisingly, there aren’t many commercial tools that can archive single pages as effectively as the open source options. However, some case/investigation management systems include basic archiving tools:
 
-Case / Investigation management systems have some archiving tools built in eg
+- **[Atlos](https://www.atlos.org/)**  
+  This platform includes a basic screenshot tool and even integrates with the auto-archiver.
+  
+  <img src="/assets/2025-01-13/9.jpg" alt="Atlos Screenshot" width="400" />
 
-[https://www.atlos.org/](https://www.atlos.org/) - has a basic screenshot tool (and there is an integration with the auto-archiver)
+- **[Hunch.ly](https://hunch.ly/)**  
+  An OSINT tool designed for online investigations, available as both an app and an extension. It automatically captures content during your investigative process.
 
-[![](/assets/2025-01-13/9.jpg){:width="400px"}](/assets/2025-01-13/9.jpg) 
+So far, I haven’t encountered any enterprise archiving tools that meet the needs of single-page investigative archiving as effectively as these solutions.
 
-[https://hunch.ly/](https://hunch.ly/) - App and extension. Captures automatically. OSINT tool focussed on online investigations.
+### 2.5.1 PageFreezer
 
+**[PageFreezer](https://www.pagefreezer.com/)** is a Vancouver-based company with around 50-100 employees. I’ve had the pleasure of interacting with Doug, who is incredibly friendly and helpful!  
 
-I've not found any enterprise archiving tools which are useful for my use case of single page investigative archiving.
+PageFreezer specializes in capturing changes to web pages over time and provides a user-friendly interface to view these changes, similar to the Wayback Machine. Their services are particularly useful for legal and investigative purposes.  
 
+They offer two main products:  
 
-## 2.5.1 PageFreezer
+1. **PageFreezer**: Focuses on tracking and visualizing changes to web pages over time.  
+2. **WebPreserver**: A reliable, automated tool for preserving social media and web evidence. It’s a browser plugin that requires a subscription and allows exports in OCR PDF, MHTML, or WARC formats.  
 
-[https://www.pagefreezer.com/](https://www.pagefreezer.com/) - 
+#### Key Features:  
+- **Social Media Preservation**:  
+  - **Facebook**: Bulk capture capabilities, including headless crawling of all links in a timeline.  
+  - **Twitter**: Comprehensive archiving of tweets and threads.  
+  - **LinkedIn**: Preservation of profiles and posts.  
+  - **YouTube**: Capturing video metadata and content.  
 
-A 50-100 person company based in Vancouver. I've dealt with Doug who is a nice nice person there!
+PageFreezer primarily caters to law enforcement agencies, legal firms, and investigators, making it a go-to solution for professionals who need reliable and legally admissible web and social media archiving.  
+### 2.5.2 MirrorWeb
 
- PageFreezer - this is all about capturing changes in pages over time and giving a UI to view them (like the Wayback Machine)
+**[MirrorWeb](https://www.mirrorweb.com/)** is a prominent player in the web archiving space, focusing on large-scale website archiving rather than single-page preservation. They are trusted by prestigious organizations, including:  
 
- WebPreserver - reliable, automated preservation of social media and web evidence (browser plugin - need subscription). Export to ocr pdf, mhtml or warc.
+- **[National Records of Scotland](https://www.mirrorweb.com/national-records-of-scotland)**  
+- **[UK Parliament Web Archive](https://webarchive.parliament.uk/)**  
+- **[UK National Archives Web Archive](https://www.nationalarchives.gov.uk/webarchive/)**  
 
- - Facebook - bulk capture. Headless crawl of all links in a timeline? 
- - Twitter
- - LinkedIn
- - YouTube
+MirrorWeb’s strength lies in its ability to archive entire websites comprehensively, making it an ideal solution for institutions that need to preserve large volumes of web content for historical or legal purposes.  
 
-They sell to law enforcement agencies, legal firms and investigators 
+Their Chief Revenue Officer (CRO) is also exceptionally friendly and approachable, which adds to the overall positive experience of working with them.  
 
-
-## 2.5.2 MirrorWeb
-[https://www.mirrorweb.com/](https://www.mirrorweb.com/) - has the [national records of Scotland](https://www.mirrorweb.com/national-records-of-scotland) web archive. And the [UK Parliament Web Archive](https://webarchive.parliament.uk/) and [https://www.nationalarchives.gov.uk/webarchive/](https://www.nationalarchives.gov.uk/webarchive/)
-
-They focus on entire website archiving rather than single pages. Very nice CRO.
+If your needs involve archiving entire websites rather than individual pages, MirrorWeb is a solid choice.  
 
 
 ## 2.5.3 Archive-it
 
-[https://archive-it.org/](https://archive-it.org/) Built at the internet archive. A subscription service. [https://en.wikipedia.org/wiki/Internet_Archive](https://en.wikipedia.org/wiki/Internet_Archive)
+[Archive-it](https://archive-it.org/) is a subscription service built by the Internet Archive (see [Wikipedia](https://en.wikipedia.org/wiki/Internet_Archive) for more details). It is designed for archiving entire websites over time, capturing their evolution and preserving historical snapshots.
+  
 
-Focussed on entire website archiving over time.
+### Other Tools
 
-### Other
+Here are a couple of additional tools worth mentioning, though they cater to more specific use cases:
 
-[https://www.civicplus.com/social-media-archiving/](https://www.civicplus.com/social-media-archiving/) focus on government social media and backing it up. For compliance.
+- **[CivicPlus Social Media Archiving](https://www.civicplus.com/social-media-archiving/)**:  
+  This tool focuses on **government social media archiving** and compliance. It’s designed to help government agencies back up and manage their social media content to meet regulatory requirements.  
 
+- **[Smarsh](https://www.smarsh.com/solutions/business-need/archiving)**:  
+  Smarsh specializes in **company communications governance and archiving**. It’s a comprehensive solution for businesses that need to archive and manage communications (e.g., emails, chats, and social media) for compliance, legal, or regulatory purposes.  
 
-[https://www.smarsh.com/solutions/business-need/archiving](https://www.smarsh.com/solutions/business-need/archiving) - company communications governance and archiving.
+While these tools are highly specialized, they serve important roles in their respective domains—government compliance and enterprise communications governance.  
 
 
 
