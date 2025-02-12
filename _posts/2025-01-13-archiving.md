@@ -34,6 +34,7 @@ This guide will walk you through my favourite tools and techniques to ensure you
 - **[Wayback Machine](https://web.archive.org/save)** – Always a solid choice (though platforms like X, Instagram, and Facebook may not archive well).  
 - **[archive.ph](https://archive.ph/)** – Best for bypassing paywalls.  
 - **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use my hosted version at [auto-archiver.com](https://auto-archiver.com/).  
+- **[webrecorder](https://webrecorder.net/)** - The best tool for crawling sites
 
 This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver**. To date, I have not found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
 
