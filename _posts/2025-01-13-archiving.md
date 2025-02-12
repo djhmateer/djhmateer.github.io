@@ -433,6 +433,17 @@ list of awesome - archiving?
 
 ## 5. Appendix
 
+[Andrew Jackson](https://anjackson.net/about/) - [Digital Preservation Coalition](https://www.dpconline.org/about/contact-us) Technical Architect.
+
+
+[Archiving Social Media with Browsertrix](https://blogs.bl.uk/webarchive/2024/10/archiving-social-media-with-browsertrix.html)
+
+**HERE**
+
+
+
+
+
 This is an opinionated list and I wont mention the tools that are not useful for me! [awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
 
 Am not looking at [multi page web crawling]() nor [investigation/evidence management systems]() - which archiving is often a part of.
