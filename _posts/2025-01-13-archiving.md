@@ -310,31 +310,42 @@ Here are a couple of additional tools worth mentioning, though they cater to mor
 
 While these tools are highly specialized, they serve important roles in their respective domains—government compliance and enterprise communications governance.  
 
+## 3. Platform-Specific Archival Tools and Libraries
 
-
-## 3. Specific Platform Archival Tools and Lower Level Libraries
-
-There are some excellent libraries for archiving specific platforms. The auto-archiver uses many of these tools and brings them together.
+For archiving content from specific platforms, there are several excellent libraries available. The **auto-archiver** leverages many of these tools, integrating them into a unified solution. Below, I’ll highlight some of the key tools and libraries used for specific platforms.
 
 ### Instagram
 
-- public account eg [https://www.instagram.com/farmersguardian/](https://www.instagram.com/farmersguardian/) 
+Instagram archiving can be divided into two categories: **public accounts** and **private accounts**.  
 
-- private account eg you need to accept someone before they can see your posts. eg  [https://www.instagram.com/davemateer/](https://www.instagram.com/davemateer/)
+- **Public Accounts**:  
+  Example: [Farmers Guardian](https://www.instagram.com/farmersguardian/)  
+  These accounts are accessible to anyone without requiring permission.  
 
-In the auto-archiver we use [https://hikerapi.com/](https://hikerapi.com/) to get Instagram public data.
+- **Private Accounts**:  
+  Example: [Dave Mateer](https://www.instagram.com/davemateer/)  
+  Access to these accounts requires approval from the account owner.  
 
-### Instagram Private - Instagrapi
+In the auto-archiver, we use **[HikerAPI](https://hikerapi.com/)** to retrieve data from public Instagram accounts.  
 
-[https://github.com/subzeroid/instagrapi](https://github.com/subzeroid/instagrapi) 4.6k stars from the makers of HikerAPI.
+#### Instagram Private - Instagrapi
 
-[https://subzeroid.github.io/instagrapi/](https://subzeroid.github.io/instagrapi/) documentation.
+For private Instagram accounts, we rely on **[Instagrapi](https://github.com/subzeroid/instagrapi)**, a library developed by the creators of HikerAPI. With 4.6k stars on GitHub, it’s a robust tool for accessing private Instagram data.  
 
-This is a good library, with some excellent tips on how to use it in the documentation. I wrote a POC of this for the auto-archiver.
+- **Documentation**: [Instagrapi Docs](https://subzeroid.github.io/instagrapi/)  
+- **Usage**: The documentation provides excellent tips and guidance. I’ve also developed a proof-of-concept (POC) for integrating Instagrapi into the auto-archiver.  
 
-## Facebook
+### Facebook
 
-I wrote an integration for the auto-archiver for Facebook specifically for images
+For Facebook, I created a custom integration in the auto-archiver specifically designed to archive **images**. This functionality ensures that visual content from Facebook can be preserved effectively.  
+
+These tools and libraries demonstrate the flexibility and power of the auto-archiver, which combines specialized solutions to handle a variety of archiving needs across different platforms.  
+
+
+
+
+
+
 
 ## Telegram
 
