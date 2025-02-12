@@ -12,14 +12,14 @@ image: /assets/2024-11-12/1.jpg
 
 <!-- [![alt text](/assets/2025-01-13/5.jpg "email"){:width="500px"}](/assets/2025-01-13/5.jpg)  -->
 
-[![](/assets/2025-01-13/5.jpg "Photo by <a href="https://unsplash.com/@eyed?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abinash Jothimani</a> on <a href="https://unsplash.com/photos/an-open-book-sitting-on-top-of-a-table-P4KX6qSaBcY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>"){:width="300px"}](/assets/2025-01-13/5.jpg) 
+[![](/assets/2025-01-13/5.jpg "Photo by https://unsplash.com/@eyed"){:width="300px"}](/assets/2025-01-13/5.jpg) 
 
 
 # How to Archive Single URLs: A Guide  
 
 Need to archive webpages but are unsure of the best method? 
 
-This guide will walk you through my favourite tools and techniques to ensure your links are preserved.  
+This guide will walk you through **my favourite tools and techniques** to ensure your links are preserved.  
 
 ## In This Article  
 
@@ -36,7 +36,7 @@ This guide will walk you through my favourite tools and techniques to ensure you
 - **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use my hosted version at [auto-archiver.com](https://auto-archiver.com/).  
 - **[webrecorder](https://webrecorder.net/)** - The best tool for crawling sites
 
-This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver**. To date, I have not found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
+This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver** which I use a lot. To date, I have not found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
 
 
 ## 1. Why Archive?
@@ -47,14 +47,16 @@ Before we dive into the methods of archiving single URLs, it is essential to und
 
 If you work in any of these areas, archiving is likely to be an invaluable tool:
 
-- **Human Rights Investigative Organisations** – This is my own field, where our work has been [recognised with an award](https://www.swansea.ac.uk/press-office/news-events/news/2024/11/research-on-using-mobile-phone-evidence-in-human-rights-cases-wins-prestigious-impact-prize.php)
+- **Human Rights Investigative Organisations** – This is my own field, where our work has been [recognised with an international award which we are very proud of!](https://www.swansea.ac.uk/press-office/news-events/news/2024/11/research-on-using-mobile-phone-evidence-in-human-rights-cases-wins-prestigious-impact-prize.php)
 - **Investigative Journalism**
 - **Insurance Investigations**
 - **Corporate Investigations**
 - **Law Enforcement**
 - **Legal Teams and Firms**
 - **Other Investigative Organisations**
-- **Online Discussion Forums**
+- **Online Discussion Forums** eg [Hacker News](https://news.ycombinator.com)
+- **Digital Preservation** eg [Digital Preservation Coalition](https://www.dpconline.org/) or any of their su
+
 
 ### What Should You Archive?
 
@@ -81,93 +83,72 @@ Over the past four years, I have dedicated myself to human rights archiving, foc
 By utilising techniques such as hashing and recording on immutable platforms, we can ensure that these records remain untampered. This guide will help you select the best tools and methods to archive single URLs effectively, ensuring your links are preserved for thorough analysis and long-term reference.
 
 
-## 1. Why Archive? 
 
-Firstly lets consider backgroud, motivation and goals.
+# 1.1 What to Archive (Input)
 
-You may come from these areas:
+When you're deep into an investigation, you come across [this tweet](https://twitter.com/dave_mateer/status/1524341442738638848)—and wonder how to capture every detail. That's where the auto-archiver tool comes in. It pulls URLs from a Google Spreadsheet, letting you archive content with ease.
 
-- Human rights investigative organisations - this is what I do and [we have won awards](https://www.swansea.ac.uk/press-office/news-events/news/2024/11/research-on-using-mobile-phone-evidence-in-human-rights-cases-wins-prestigious-impact-prize.php)
-- Investigative Journalists
-- Insurance Investigators
-- Corporate Investigators
-- Law Enforcement
-- Legal teams/firms
-- Other investigative organisations
-- Discussion websites
+## Setting Up Your Archive Input
 
-And you may wish to archive different things.
+Imagine you have a list of URLs organised in a spreadsheet with columns already configured for the auto-archiver. Here’s an example screenshot of such a setup:
 
-- Screenshot of the page
-- HTML version of the page (so can read it)
-- Images (perhaps for evidence)
-- Videos
-- Text
-- WARC / WACZ so you can replay the page (perhaps showing changes over time)
-- Hashes and timestamps of all assets (for proof of existance at a specific time)
-- Get around paywalls
+[![Spreadsheet Setup](/assets/2025-01-13/10.jpg "Spreadsheet Setup")](#)
 
-For the purposes of
+Once the archiving kicks off (within a minute), the tool processes these URLs and writes the results directly back into the spreadsheet:
 
-- Analysis 
-- Preservation for articles / reports / cases 
+[![Archiver Output](/assets/2025-01-13/11.jpg "Archiver Output")](#)
 
-I've worked for the past 4 years in Human Rights archiving, where the focus has been on images and video archiving (before it gets taken down by large platforms).
+## Exploring the Archive Details
 
-Screenshots are important for context. Everything is hashed and Tweeted (as a Tweet is considered immutable). Text content and reading of the websites is less important.
+Every archived page includes a details page, which you can access via a direct [link](https://testhashing.fra1.cdn.digitaloceanspaces.com/iv001/7049ee36a7214ee78846dbfd.html). On this page, you’ll find:
 
-## What to Archive (Input)
+- **Full Resolution Images:** Complete with EXIF metadata.
+- **Reverse Image Search Links:** Helping you track the image’s origins.
+- **Screenshots:** A visual capture of the page at the time of archiving.
 
-Perhaps in your investigation you come across a page eg [https://twitter.com/dave_mateer/status/1524341442738638848](https://twitter.com/dave_mateer/status/1524341442738638848) and you want to archive all the details 
+Take a look at this snapshot:
 
-The [auto-archiver]() tool can accept the URL(s) by a Google Spreadsheet. 
+[![Details Page](/assets/2025-01-13/12.jpg "Details Page")](#)
 
-Here are some URLs to archive with the columns configured for the auto-archiver
+Moreover, the archive also stores a timestamped hash of the file, a [WACZ archive]() of the entire page, and the full text content of the Tweet:
 
-<!-- [![alt text](/assets/2025-01-13/6.jpg "email"){:width="500px"}](/assets/2025-01-13/6.jpg)  -->
-<!-- [![alt text](/assets/2025-01-13/6.jpg "email")](/assets/2025-01-13/6.jpg)  -->
-[![alt text](/assets/2025-01-13/10.jpg "email")](/assets/2025-01-13/10.jpg) 
+[![Additional Archive Details](/assets/2025-01-13/13.jpg "Additional Archive Details")](#)
+
+## Why Google Spreadsheets?
+
+I’ve found that [Google Spreadsheets](https://docs.google.com/) is flexible and free, and fantastic for collaboration. Whether you’re handling a sheet with 70,000+ rows or collaborating with over 10 people at once, Google Sheets can handle the heavy lifting—albeit with a bit of extra memory and horsepower required.
+
+## Curated Test Links for Archiving
+
+During my research, I compiled a list of test links that covers various scenarios—ranging from pages with numerous images to those with extensive content. You can check out the [Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg) to see these examples in action. If you have any interesting links you'd like to have archived, feel free to drop me a line at **davemateer@gmail.com**.
+
+## Final Thoughts on inputs
+
+It quickly became apparent that archiving large platforms—where most of my work is concentrated—often demands specialized, targeted archivers. Whether you're preserving social media posts, digital images, or comprehensive web pages, the right tools make all the difference.
 
 
-The archiver runs and writes the results into the spreadsheet:
+# 1.3 How to Store Archives (Output)
 
-[![alt text](/assets/2025-01-13/11.jpg "email")](/assets/2025-01-13/11.jpg) 
+When it comes to storing your archives, the best option depends on your organisation's needs and the infrastructure you already have in place. Here are some common storage solutions I work with:
 
+- **S3 Storage:** For instance, [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/).
+- **Google Workspace/Drive:** Utilize [Google Drive](https://workspace.google.com/intl/en_uk/products/drive/).
+- **Local/Network Storage:** Use your own servers or network storage for complete control.
 
-The archive location contains a [link](https://testhashing.fra1.cdn.digitaloceanspaces.com/iv001/7049ee36a7214ee78846dbfd.html) to a details page:
+## DigitalOcean Spaces
 
-Note we have the full resolution image here with exif details, and reverse image search links. Also a screenshot.
+DigitalOcean Spaces is particularly effective in public mode. It can host any file and make it viewable online. For example, check out this [Instagram auto-archiver output](https://testhashing.fra1.cdn.digitaloceanspaces.com/dia031/c87e98048a2f4a09a66e1ea3.html). Additionally, you can set up a [CORS policy](/2024/10/08/cors-on-digitalocean) to host WACZ files and use them with [ReplayWeb](https://replayweb.page/) for viewing the captured page.
 
-[![alt text](/assets/2025-01-13/12.jpg "email")](/assets/2025-01-13/12.jpg) 
+## Google Drive
 
-We also have a timestamped hash of the file, a [wacz]() archive of the page, and full text content of this Tweet.
+Google Drive offers excellent control over files within your domain. However, it's important to note that while it's great for file management, you cannot serve a webpage directly from it or use it for direct image linking.
 
-[![alt text](/assets/2025-01-13/13.jpg "email")](/assets/2025-01-13/13.jpg) 
+![Google Drive Example](/assets/2025-01-13/14.jpg "Google Drive Example")
 
-I've found that [Google Spreadsheets](https://docs.google.com/) is flexable, free and the collaboration is excellent.  I work on sheets with 70k+ rows (it does take memory and horespower) and I've seen > 10 people work on big sheets at once. 
+## Additional Tools
 
-In the research for this article I came up with specific links to test which have specific use cases eg number of images, size of page etc..
+For those managing S3 storage, [Cyberduck S3 Viewer](https://cyberduck.io/) is a great tool to view and copy files to your S3 buckets
 
-[Google Spreadsheet of Test Links](https://docs.google.com/spreadsheets/d/1X7yqklWh2AnzzdILtoKeJgzx2L2PfwWJqIQ4UhhRYHg). Get in touch: davemateer@gmail.com if you'd like me to test links to be archived.
-
-It became apparent that to archive specific large platforms (which is what the majority of my work is) then you need targeted archivers.
-
-
-## How to store archives (Output)
-
-It depends on the requirements of your organisation and what is in place already.
-
-- S3 storage eg [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)
-- [Google Workspace / Drive](https://workspace.google.com/intl/en_uk/products/drive/)
-- Local/Network storage
-
-DigitalOcean Spaces is good in public mode as can host any file and view online eg [instagram auto-archiver output](https://testhashing.fra1.cdn.digitaloceanspaces.com/dia031/c87e98048a2f4a09a66e1ea3.html). It's also possible using a [CORS policy](/2024/10/08/cors-on-digitalocean) to host wacz files here to use in [https://replayweb.page/](https://replayweb.page/)
-
-Google Drive is excellent as it gives full domain user control over files. But you can't serve a webpage from it nor direct link an image.
-
-[![alt text](/assets/2025-01-13/14.jpg "email")](/assets/2025-01-13/14.jpg) 
-
-[Cyberduck S3 Viewer](https://cyberduck.io/) - great tool to view and copy files to S3.
 
 
 ## 2. General Archival Tools
