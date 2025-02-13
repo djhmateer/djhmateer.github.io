@@ -410,14 +410,11 @@ When it comes to manually archiving content, here are some practical tips and to
 
 ## 5. Appendix
 
-This is an opinionated list and I wont mention the tools that are not useful for me! [awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
+This article is an opinionated list and I wont mention the tools that are not useful for me! 
 
 Am not looking at [multi page web crawling]() nor [investigation/evidence management systems]() - which archiving is often a part of.
 
-
-[Andrew Jackson](https://anjackson.net/about/) - [Digital Preservation Coalition](https://www.dpconline.org/about/contact-us) Technical Architect.
-
-[Archiving Social Media with Browsertrix](https://blogs.bl.uk/webarchive/2024/10/archiving-social-media-with-browsertrix.html)
+[awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
 
 
 ## WARC and WACZ file formats
@@ -455,75 +452,59 @@ If the objective is to support future legal proceedings, there is an argument th
 > The courts are pragmatic; if you can confidently state that you performed a particular action at a specific time, resulting in the production of certain data, the risk of a two-year sentence for contempt of court is more than enough to deter any manipulation.
 > 
 > Adding further complexity doesn’t necessarily build trust—it can instead hinder the ability of investigators, juries, or the judiciary to understand the processes and their purposes."
-
 ### Options for Hashing
 
-But where can you store these hashes in a secure and immutable manner (i.e. ensuring they cannot be altered after creation)? Consider the following options:
+But where can you store these hashes in a secure and immutable manner—that is, ensuring they cannot be altered after creation? Consider the following options:
 
 - **Blockchains**
 - **Immutable Blog Services** (e.g. Twitter)
 - **Timestamping Services**
-- **Write Once, Read-Many (WORM) Storage**
+- **Write Once, Read Many (WORM) Storage**
 - **Git with Cryptographic Signing (Internal Use)**
 - **Secure Databases with Write-Once Constraints**
 - **Physical Print / Cold Storage**
 
-While Twitter has been a reliable option in the past, it is increasingly falling out of favour politically and in terms of trustworthiness. Accounts can be blocked, tweets removed, and this could undermine the proof.
+Although Twitter has been a reliable option in the past, it is increasingly falling out of favour both politically and in terms of trustworthiness. Accounts can be blocked and tweets removed, which may undermine the evidence.
 
 ### Timestamping
 
-Timestamping is a method that can prove a file existed at a specific moment, which is invaluable for legal purposes—such as confirming that a file has not been altered after a given date.
+Timestamping is a method that can prove a file existed at a specific moment in time, which is invaluable for legal purposes—such as confirming that a file has not been altered after a given date.
 
 One approach is to use external timestamp authorities that adhere to RFC3161, as illustrated by the [auto-archiver implementation](https://github.com/bellingcat/auto-archiver/blob/e8138eac1c79626c4c16226dcda8eb644db119e4/src/auto_archiver/enrichers/timestamping_enricher.py#L17-L23).
 
-> In summary, while a hash verifies that a file remains unaltered, timestamping adds a trustworthy record of when the file existed. It essentially builds upon the hash by incorporating the crucial element of time—a feature especially valuable in legal, archival, or compliance contexts.
+> In summary, while a hash confirms that a file remains unaltered, timestamping provides a reliable record of when the file existed. It essentially builds upon the hash by incorporating the crucial element of time—a feature that is especially valuable in legal, archival, or compliance contexts.
+
+[Technical details on verifying timestamps](https://github.com/bellingcat/auto-archiver/issues/187)
 
 ### OpenTimestamps
 
+The timestamping method described above relies on the authority of various trusted root entities.
+
 [OpenTimestamps](https://opentimestamps.org/) is a protocol designed for timestamping files and proving their integrity over time. It embeds the hash onto a blockchain—Bitcoin has been operational for 16 years, and OpenTimestamps has been around for 8 years.
 
+## People and Interesting Articles
 
-
-
-
-
-
-
-
-
-
-
-
-## Foo
-
-[Archivists saving work from data.gov](https://news.ycombinator.com/item?id=42881367)
-
-[https://github.com/harvard-lil/bag-nabit](https://github.com/harvard-lil/bag-nabit) stamps with cert so people can rclone
-
-
-[BitIt](https://en.wikipedia.org/wiki/BagIt) protocol
-
-[Scoop](https://github.com/harvard-lil/scoop) - output to wacz and warc
-
-
-
-## Google Spreadsheets performance
-
-[![alt text](/assets/2025-01-13/7.jpg "email")](/assets/2025-01-13/7.jpg) 
-
-Google Console - graphs showing my auto-archivers polling the Google Spreadsheets. This is an amazing service where you can see I'm currently querying 2 times per second consistently with no major issues.
-
-
+- [Andrew Jackson](https://anjackson.net/about/) – Technical Architect at the [Digital Preservation Coalition](https://www.dpconline.org/about/contact-us).
+- [Archiving Social Media with Browsertrix](https://blogs.bl.uk/webarchive/2024/10/archiving-social-media-with-browsertrix.html)
+- [Archivists Saving Work from data.gov](https://news.ycombinator.com/item?id=42881367)
+- [bag-nabit](https://github.com/harvard-lil/bag-nabit) – Stamps with a certificate so that people can use rclone.
+- [BitIt](https://en.wikipedia.org/wiki/BagIt) protocol
+- [Scoop](https://github.com/harvard-lil/scoop) – Outputs to WACZ and WARC.
 
 ## Conclusion
 
-I have a commerical business selling hosted versions of the [auto-archiver](https://github.com/bellingcat/auto-archiver). I wanted to know
+I run a business called [**Auto-Archiver.com**](https://auto-archiver.com/), which offers hosted versions of the [**Auto-Archiver**](https://github.com/bellingcat/auto-archiver) tool. As I continue to develop and refine this service, I’ve been reflecting on a few key questions:  
 
-- Are there any better products out there? (not that I know of!)
-- Are my customers getting their money's worth? (I think so)
-- Should I partner with other organisations to sell their products? (haven't found any)
-- Who needs archiving help? (investigators)
+- **Are there better products out there?** (Not that I know of!)  
+- **Are my customers getting their money’s worth?** (I believe so!)  
+- **Should I partner with other organisations to sell their products?** (maybe)  
+- **Who needs archiving help?** (Investigators, researchers, and organisations dealing with sensitive or time-sensitive data.) 
 
-Please get in touch davemateer@gmail.com if you've any comments
+Please get in touch at **davemateer@gmail.com** if you have any comments.
+
+---
+
+This blog post is a snapshot of my journey in the world of archiving, the tools I’ve encountered, and the questions I’m pondering as I grow my business. If you’re passionate about digital preservation or have insights to share, don’t hesitate to reach out!
+
 
 
