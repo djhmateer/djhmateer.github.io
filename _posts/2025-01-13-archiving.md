@@ -17,7 +17,7 @@ image: /assets/2024-11-12/1.jpg
 
 # How to Archive Single URLs: A Guide  
 
-Need to archive webpages but are unsure of the best method? 
+Need to archive webpages but are unsure how to go about it? 
 
 This guide will walk you through **my favourite tools and techniques** to ensure your links are preserved.  
 
@@ -27,13 +27,13 @@ This guide will walk you through **my favourite tools and techniques** to ensure
 2. **General Archival Tools** – The most reliable solutions.  
 3. **Platform-Specific Archival Tools** – What works best for different sites.  
 4. **Manual Archival Methods** – Including browser extensions.  
-5. **Appendix** – Additional resources and insights.  
+5. **Appendix** – Additional resources and thoughts.  
 
 ## Key Summary
 
+- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use my hosted version at [auto-archiver.com](https://auto-archiver.com/).  
 - **[Wayback Machine](https://web.archive.org/save)** – Always a solid choice (though platforms like X, Instagram, and Facebook may not archive well).  
 - **[archive.ph](https://archive.ph/)** – Best for bypassing paywalls.  
-- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use my hosted version at [auto-archiver.com](https://auto-archiver.com/).  
 - **[webrecorder](https://webrecorder.net/)** - The best tool for crawling sites
 
 This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver** which I use a lot. To date, I have not found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
@@ -55,7 +55,7 @@ If you work in any of these areas, archiving is likely to be an invaluable tool:
 - **Legal Teams and Firms**
 - **Other Investigative Organisations**
 - **Online Discussion Forums** eg [Hacker News](https://news.ycombinator.com)
-- **Digital Preservation** eg [Digital Preservation Coalition](https://www.dpconline.org/) or any of their su
+- **Digital Preservation** eg [Digital Preservation Coalition](https://www.dpconline.org/) or any of their supporters
 
 
 ### What Should You Archive?
@@ -68,19 +68,18 @@ Depending on your requirements, there are various elements you may wish to prese
 - **Text Content** – While secondary to visual evidence, it still offers valuable context.
 - **WARC or WACZ Files** – Enabling you to replay the entire page and observe changes over time.
 - **Hashes and Timestamps** – Providing proof of an asset’s existence at a specific moment.
-- **Bypassing Paywalls** – Allowing access to content that might otherwise be restricted.
 
 ### The Purpose Behind Archiving
 
-The core reasons for archiving webpages include:
+Archiving webpages is crucial for two main reasons:
 
-- **Analysis** – Facilitating detailed reviews and investigations long after the original content has been updated or removed.
-- **Preservation** – Maintaining a reliable record for articles, reports, or legal cases.
+- **Analysis:** It allows us to conduct detailed reviews and investigations long after the original content has been updated or removed.
+- **Preservation:** It helps maintain a reliable record for articles, reports, or even legal cases.
 
-Over the past four years, I have dedicated myself to human rights archiving, focusing on safeguarding images and videos before they are removed by major platforms. While text is valuable, it is often the visual evidence—captured through screenshots and preserved multimedia—that provides the most compelling support for an investigation.
+For the past four years, I have dedicated myself to human rights archiving, focusing on safeguarding images and videos before they vanish from major platforms. While text is undoubtedly valuable, it is often the visual evidence—captured through screenshots or preserved multimedia—that offers the most compelling support for an investigation.
 
+By utilising techniques such as hashing and recording on immutable platforms, we can ensure that these records remain untampered. In this guide, I’ll show you how to select the best tools and methods to archive individual URLs effectively, ensuring your links are preserved for thorough analysis and long-term reference.
 
-By utilising techniques such as hashing and recording on immutable platforms, we can ensure that these records remain untampered. This guide will help you select the best tools and methods to archive single URLs effectively, ensuring your links are preserved for thorough analysis and long-term reference.
 
 
 
@@ -224,11 +223,14 @@ For more information, you can check out their [FAQ](https://archive.ph/faq). It'
 
 These tools are interesting, but not as useful for my specific needs—I prefer the auto-archiver described above. Nevertheless, here are some noteworthy open source archiving projects:
 
+[![alt text](/assets/2025-01-13/3.jpg "Archivebox")]{:width="300px"}(/assets/2025-01-13/3.jpg)
+Archivebox
+
 - **[ArchiveBox](https://github.com/ArchiveBox/ArchiveBox)**  
   A fully featured self-hosted solution with a dedicated website. With 23k stars, it’s similar to the auto-archiver but less specialized, and it's excellent for self-hosting.
 
 - **[Webrecorder](https://webrecorder.net/archivewebpage/)**  
-  A Chrome extension that saves pages as WARC/WACZ files. This project is by Ilya, the same mind behind the impressive [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler) (702 stars), which we use with the auto-archiver to save WACZ files.
+  A Chrome extension that saves pages as WARC/WACZ files. This project is by [Ilya Kreymer](https://www.linkedin.com/in/ilya-kreymer-55110093/), the same person behind the great [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler) (702 stars), which we use with the auto-archiver to save WACZ files.
 
 - **[Heritrix 3](https://github.com/internetarchive/heritrix3)**  
   The Internet Archive’s web crawler project with 2.9k stars and 45 contributors. Its output is largely similar to what the Wayback Machine produces.
@@ -267,8 +269,8 @@ PageFreezer specializes in capturing changes to web pages over time and provides
 
 They offer two main products:  
 
-1. **PageFreezer**: Focuses on tracking and visualizing changes to web pages over time.  
-2. **WebPreserver**: A reliable, automated tool for preserving social media and web evidence. It’s a browser plugin that requires a subscription and allows exports in OCR PDF, MHTML, or WARC formats.  
+1. **PageFreezer**: Focuses on tracking and visualizing changes to web pages over time.  This crawls.
+2. **WebPreserver**: An automated tool for preserving social media and web evidence. It’s a chromium browser plugin that requires a subscription and allows exports in OCR PDF, MHTML, or WARC formats. Bulk capture on Facebook, Instagram, TikTok (all on date ranges)
 
 #### Key Features:  
 - **Social Media Preservation**:  
@@ -276,8 +278,18 @@ They offer two main products:
   - **Twitter**: Comprehensive archiving of tweets and threads.  
   - **LinkedIn**: Preservation of profiles and posts.  
   - **YouTube**: Capturing video metadata and content.  
+  - **TikTok**
+  - **Reddit**
+  - **Instagram**
+  - **Rumble**
+  - **TruthSocial**
+  - **BlueSky**
+  - **Threads**
 
 PageFreezer primarily caters to law enforcement agencies, legal firms, and investigators, making it a go-to solution for professionals who need reliable and legally admissible web and social media archiving.  
+
+Pricing is around the $3350per year for a single user.
+
 ### 2.5.2 MirrorWeb
 
 **[MirrorWeb](https://www.mirrorweb.com/)** is a prominent player in the web archiving space, focusing on large-scale website archiving rather than single-page preservation. They are trusted by prestigious organizations, including:  
@@ -342,71 +354,54 @@ For Facebook, I created a custom integration in the auto-archiver specifically d
 These tools and libraries demonstrate the flexibility and power of the auto-archiver, which combines specialized solutions to handle a variety of archiving needs across different platforms.  
 
 
-
-
-
-
-
 ## Telegram
 
-Auto-archiver has an integration for Telegram via the library called Telethon [https://github.com/bellingcat/auto-archiver/blob/main/src/auto_archiver/archivers/telethon_archiver.py](https://github.com/bellingcat/auto-archiver/blob/main/src/auto_archiver/archivers/telethon_archiver.py)
+The Auto-archiver now features seamless integration with Telegram, utilising the Telethon library. You can explore the implementation [here](https://github.com/bellingcat/auto-archiver/blob/main/src/auto_archiver/archivers/telethon_archiver.py).
 
 ## X / Twitter
 
-As of Jan 2025, [https://github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp) is a good tool for archiving X/Twitter. The paid API is good for a backup.
+As of January 2025, [yt-dlp](https://github.com/yt-dlp/yt-dlp) is a fantastic tool for archiving content from X (formerly Twitter). For an extra layer of reliability, the paid API serves as a dependable backup.
 
-## Videos eg YouTube TikTok
+## Videos (e.g. YouTube, TikTok)
 
-[https://github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp) is excellent.
-
+When it comes to video archiving, [yt-dlp](https://github.com/yt-dlp/yt-dlp) continues to impress with its robust performance.
 
 ## VK
 
-Auto-archiver has an integration for VK via [https://github.com/bellingcat/vk-url-scraper](https://github.com/bellingcat/vk-url-scraper)
-
+The Auto-archiver also integrates with VK through the [VK URL Scraper](https://github.com/bellingcat/vk-url-scraper), ensuring that content from this platform is preserved efficiently.
 
 ## Screenshots
 
-[Playwright](https://playwright.dev/) is excellent. I use it in a headfull (ie not headless as this is detected often) manner to get screenshots. I use [xvfb-run](https://manpages.debian.org/bullseye/xvfb/xvfb-run.1.en.html) to run it in a virtual framebuffer on my linux servers to run playwright headfully.
+For capturing screenshots, [Playwright](https://playwright.dev/) is superb. I typically run it in headful mode (rather than headless, as the latter is often easily detected) to obtain more reliable captures. On my Linux servers, I utilise [xvfb-run](https://manpages.debian.org/bullseye/xvfb/xvfb-run.1.en.html) to operate within a virtual framebuffer.
 
-[urlbox.com](https://urlbox.com/) is a very professional screenshotting service.
+For a professional solution, [urlbox.com](https://urlbox.com/) offers a top-tier screenshotting service.
+
 
 
 ## 4. Manually Archiving
 
-For instagram can't right click on the image to download it. 
+When it comes to manually archiving content, here are some practical tips and tools to consider:
 
-Chrome save as PDF. Works well and gets long viewport pages.
+### Images
 
-Chrome save as MHTML works well, then can right click and save as image..
+- **Instagram:** Since Instagram doesn’t allow you to right-click and download images directly, you'll need to explore alternative methods.
+- **Chrome Save as PDF:** This feature works well, especially for capturing long, scrolling pages.
+- **Chrome Save as MHTML:** This option is also effective. Once the page is saved as MHTML, you can right-click to save any images you need.
+- **Screenshots:** 
+  - On a PC, [Greenshot](https://getgreenshot.org/) is an excellent tool.
+  - On a Mac, simply use the shortcut `Cmd + Shift + 5` for capturing screenshots.
+- **Direct Save:** When available, you can right-click an image to save it directly, or use the F12 developer tools to locate and extract the image source.
 
-[getgreenshot.org](https://getgreenshot.org/) for screenshots on a PC. Mac use Cmd Shift 5 
+### Videos
 
-Right click to save an image (or use F12 developer tools to track down the image)
+- **YouTube and Similar Platforms:** Note that while [gb.savefrom.net](https://gb.savefrom.net/) is currently down, [yt1d.com](https://yt1d.com/) is operational and can be used to save videos effectively.
 
-Saving a video from [YouTuvbe]() - [https://gb.savefrom.net/](https://gb.savefrom.net/) are down. [https://yt1d.com/](https://yt1d.com/) is up and saves videos.
+### Archiving Entire Web Pages
 
-
-
-[Archive Page (archive.ph)](https://chromewebstore.google.com/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia) 90k users. 4.4stars. 123 ratings. Just submits to archive.ph.
-
-[Wayback Machine](https://chromewebstore.google.com/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak) submits to wayback machine.
-
-## Chrome Extensions
-
-[![alt text](/assets/2025-01-13/4.jpg "email"){:width="500px"}](/assets/2025-01-13/4.jpg) 
-
-[SingleFile](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en) - [https://github.com/gildas-lormeau/SingleFile](https://github.com/gildas-lormeau/SingleFile) 16.6k stars. 200k users. 4.3stars. 965 ratings. Saves as .html includes images and formatting. Notice notes and highlighting.
-
-This is different to save-as mhtml as
-
-- Singlefile is designed to preserve the look and feel fidelity whereas mhtml is less consistent with dynamic/interactive pages.
-- Singlefile can adjust timing, do autosave and more config. MHTML has much less config.
-- However MHTML preserves the page better (as singlefile changes it to embed binary data)
+- **Archive Page (archive.ph):** This Chrome extension, with 90k users, a 4.4-star rating, and 123 reviews, simply submits pages to archive.ph.
+- **Wayback Machine:** This extension allows you to submit pages directly to the Wayback Machine, ensuring they are preserved for future reference.
 
 
-
-[Save Page WE](https://chromewebstore.google.com/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof/reviews) 100k users. 4.4 rating. 399 ratings. Saves a page.
 
 
 
@@ -414,127 +409,90 @@ This is different to save-as mhtml as
 
 
 ## 5. Appendix
-
-
-## General Strategy
-
-- Is there API access eg X/Twitter
-- Always submit to the Wayback Machine (unless it is Facebook or Tiktok which never works Jan 2025)
-- WACZ is always good to try and get
-- For specialised sites, they probabaly don't want you to archive it, so you have to write specific tools, or find ones.
-
-https://archive.is/Fv1yU
-
-https://archive.today/cLcWH
-
-
-using Tor to get around IP blocking on YT
-https://github.com/rinvii/yt-transcript
-
-list of awesome - archiving?
-
-## Other web sites which archive (not useful for me)
-
-[https://perma.cc/](https://perma.cc/) - used by academics, law and libraries. $10 per month for 10 links. $100 for 500 links. Built by Harvard Library Innovation Lab.
-
-[https://www.freezepage.com/](https://www.freezepage.com/) - generic... didn't work for me.
-
-[https://webrecorder.net/browsertrix/](https://webrecorder.net/browsertrix/) - Cloud based archiving - more towards crawling too?  Tried to do a trial but got stuck after active card check. Under the hood it is just running a wacz, so all the problems that the auto-archiver has (eg Instagram) are the same here.
-
-[![alt text](/assets/2025-01-13/3.jpg "email")](/assets/2025-01-13/3.jpg)
-
-[https://archivebox.io/](https://archivebox.io/) 23k stars on GH. Similar to auto-archiver.. uses Chrome, wget, yt-dlp, submits to archive.org. They also offer a commerical service..
-
-
-
-## 5. Appendix
-
-[Andrew Jackson](https://anjackson.net/about/) - [Digital Preservation Coalition](https://www.dpconline.org/about/contact-us) Technical Architect.
-
-
-[Archiving Social Media with Browsertrix](https://blogs.bl.uk/webarchive/2024/10/archiving-social-media-with-browsertrix.html)
-
-**HERE**
-
-
-
-
 
 This is an opinionated list and I wont mention the tools that are not useful for me! [awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
 
 Am not looking at [multi page web crawling]() nor [investigation/evidence management systems]() - which archiving is often a part of.
 
-## WARC
+
+[Andrew Jackson](https://anjackson.net/about/) - [Digital Preservation Coalition](https://www.dpconline.org/about/contact-us) Technical Architect.
+
+[Archiving Social Media with Browsertrix](https://blogs.bl.uk/webarchive/2024/10/archiving-social-media-with-browsertrix.html)
+
+
+## WARC and WACZ file formats
+
+The WACZ format is a more recent development, designed to simplify the sharing and replay of web archives. It is essentially a zipped collection of WARC files, along with additional metadata and an index to facilitate easier access and replay of the archived content.
 
 Web ARChive files.
 
 [https://wiki.archiveteam.org/index.php/The_WARC_Ecosystem](https://wiki.archiveteam.org/index.php/The_WARC_Ecosystem)
 
-## WACZ
 
-Saves everything that a pages gives back to you in a WACZ format.
-
-Then can be viewed on [replayweb.page](https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/dia018/cccbd090f5814c159b8ce767.wacz#view=pages&url=https%3A%2F%2Fx.com%2Fdave_mateer%2Fstatus%2F1524341442738638848&ts=20241219150615)
+Both file formats can be viewed on [replayweb.page](https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/dia018/cccbd090f5814c159b8ce767.wacz#view=pages&url=https%3A%2F%2Fx.com%2Fdave_mateer%2Fstatus%2F1524341442738638848&ts=20241219150615)
 
 
 ## MHTML
 
-MIME HTML - essentially a webpage single page archive in a single file.
+MIME HTML - essentially a webpage single page archive in a single file which can be very useful. Chromium browsers can do this manually using a right click.
 
 [https://davemateer.com/assets/Instagram.mhtml](https://davemateer.com/assets/Instagram.mhtml) shows Instagram being archived well.
 
-## WORM
-
-[https://en.wikipedia.org/wiki/Write_once_read_many](https://en.wikipedia.org/wiki/Write_once_read_many)
-
+In comparison to the SinglePage open source projects which rewrites the page assets into a single file.
 
 ## Hashing
 
-A hash is a unique identifier for a file. It is a single value which can be used to verify the integrity of a file. 
+A hash serves as a unique identifier for a file—a single value that confirms the file's integrity. We use hashes to ensure that images remain unchanged and to verify that our HTML pages (which incorporate individual hashes, effectively a hash of hashes) have not been tampered with.
 
-We use them to verify images (haven't changed) and to verify the .html page (which includes singular hashes, so is a hash of hashes) hasn't changed.
+Before proceeding, it’s worth reflecting on why we archive content in the first place.
 
-### Why Hash
+*(The following insights come from a colleague in the legal sector)*
 
-Lets back up and consider why we are archiving.
+If the objective is to support future legal proceedings, there is an argument that private retention of data may be more than sufficient:
 
-(these views are by a colleague in the legal sector)
-
-If it is for the purposes of future legal proceedings, there is an argument that private retention of data is more than sufficient.
-
-"I feel these kinds of systems overcomplicate an already trustworthy process which is accepted by courts across the world for the safe management of digital evidence.
-
-The courts are pragmatic, if you are happy to stand up and say that you performed this action and this time which resulted in this data being produced, the risk of a two year stretch for contempt of court is more than enough to dissuade manipulation.
-
-Adding further complexity isn’t going to add trust but remove the ability of the investigators, jury, or judiciary to understand how these processes work and why they are performed."
+> "I feel these kinds of systems overcomplicate an already reliable process, one that is accepted by courts around the world for the safe management of digital evidence.
+> 
+> The courts are pragmatic; if you can confidently state that you performed a particular action at a specific time, resulting in the production of certain data, the risk of a two-year sentence for contempt of court is more than enough to deter any manipulation.
+> 
+> Adding further complexity doesn’t necessarily build trust—it can instead hinder the ability of investigators, juries, or the judiciary to understand the processes and their purposes."
 
 ### Options for Hashing
 
-But where do you store them that is secure and we are sure that they are immutable (ie can't be changed after they are created)?
+But where can you store these hashes in a secure and immutable manner (i.e. ensuring they cannot be altered after creation)? Consider the following options:
 
-Options are:
+- **Blockchains**
+- **Immutable Blog Services** (e.g. Twitter)
+- **Timestamping Services**
+- **Write Once, Read-Many (WORM) Storage**
+- **Git with Cryptographic Signing (Internal Use)**
+- **Secure Databases with Write-Once Constraints**
+- **Physical Print / Cold Storage**
 
-- Blockchains
-- Immutable blog services eg Twitter
-- Timestamping Services
-- Write Once, Read-Many (WORM) Storage
-- Git with Cryptographic Signing (Internal Use)
-- Secure DB with Write-Once Constraints
-- Physical Print / Cold Storage
-
-Twitter has been a good options, but is recently falling out of favour politically and with trustworthyness. Accounts can be blocked, tweets removed and thus would remove proof. (thank you to another colleague for thoughts)
+While Twitter has been a reliable option in the past, it is increasingly falling out of favour politically and in terms of trustworthiness. Accounts can be blocked, tweets removed, and this could undermine the proof.
 
 ### Timestamping
 
-> This can be used to prove that a certain file existed at a certain time, useful for legal purposes, for example, to prove that a certain file was not tampered with after a certain date.
+Timestamping is a method that can prove a file existed at a specific moment, which is invaluable for legal purposes—such as confirming that a file has not been altered after a given date.
 
-Timestamping via external timestamp authorities that obey RFC3161 eg [auto archiver implementation](https://github.com/bellingcat/auto-archiver/blob/e8138eac1c79626c4c16226dcda8eb644db119e4/src/auto_archiver/enrichers/timestamping_enricher.py#L17-L23)
+One approach is to use external timestamp authorities that adhere to RFC3161, as illustrated by the [auto-archiver implementation](https://github.com/bellingcat/auto-archiver/blob/e8138eac1c79626c4c16226dcda8eb644db119e4/src/auto_archiver/enrichers/timestamping_enricher.py#L17-L23).
 
-> In summary, while a hash confirms that a file has not been altered, timestamping provides a trustworthy record of when the file existed. Timestamping essentially uses the hash as a foundational element but adds the crucial element of time, which is especially valuable in legal, archival, or compliance contexts.
+> In summary, while a hash verifies that a file remains unaltered, timestamping adds a trustworthy record of when the file existed. It essentially builds upon the hash by incorporating the crucial element of time—a feature especially valuable in legal, archival, or compliance contexts.
 
 ### OpenTimestamps
 
-[https://opentimestamps.org/](https://opentimestamps.org/) - OpenTimestamps is a protocol for timestamping files and proving their integrity over time. It puts on the hash onto a blockchain eg Bitcoin has been running for 16 years. opentimestamps for 8 years.
+[OpenTimestamps](https://opentimestamps.org/) is a protocol designed for timestamping files and proving their integrity over time. It embeds the hash onto a blockchain—Bitcoin has been operational for 16 years, and OpenTimestamps has been around for 8 years.
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Foo
 
@@ -567,6 +525,5 @@ I have a commerical business selling hosted versions of the [auto-archiver](http
 - Who needs archiving help? (investigators)
 
 Please get in touch davemateer@gmail.com if you've any comments
-
 
 
