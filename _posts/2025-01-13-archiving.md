@@ -408,12 +408,16 @@ Again the machine is offline viewing this.
 
 **Here is another computer, not logged into Instagram
 
+[![](/assets/2025-01-13/20.jpg "Non logged in machine viewing wacz"){:width="300px"}](/assets/2025-01-13/20.jpg) 
+
 Here is that same computer viewing the wacz of the logged in the machine.
 
 
 ArchiveWeb.page allows users to archive what they browse, storing captured data directly in the browser. Users can download this data as files to their hard drive. Users can also delete any and all archived data at any time. ArchiveWeb.page does not collect any usage or tracking data
 
 
+[![](/assets/2025-01-13/21.jpg "Facebook logged in"){:width="300px"}](/assets/2025-01-13/21.jpg) 
+Facebook logged in capturing the page.
 
 - **SingleFile** This [extension](https://github.com/webrecorder/archiveweb.page) archives webpages as WACZ files.
 
