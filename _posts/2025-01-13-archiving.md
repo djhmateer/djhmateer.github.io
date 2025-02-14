@@ -419,6 +419,9 @@ ArchiveWeb.page allows users to archive what they browse, storing captured data 
 [![](/assets/2025-01-13/21.jpg "Facebook logged in"){:width="300px"}](/assets/2025-01-13/21.jpg) 
 Facebook logged in capturing the page.
 
+[![](/assets/2025-01-13/22.jpg "Facebook view on different machine"){:width="300px"}](/assets/2025-01-13/22.jpg) 
+Downloaded and uploaded wacz to different machine and got a good render. The comment
+
 - **SingleFile** This [extension](https://github.com/webrecorder/archiveweb.page) archives webpages as WACZ files.
 
 
