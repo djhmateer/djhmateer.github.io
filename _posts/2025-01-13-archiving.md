@@ -399,17 +399,21 @@ When it comes to manually archiving content start simple and see what works for 
 
 - **Webrecorder Archive Webpage:** This [extension](https://github.com/webrecorder/archiveweb.page) archives webpages as a WACZ files or WARC.
 
-[![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard"){:width="700px"}](/assets/2025-01-13/18.jpg) 
+<!-- [![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard"){:width="700px"}](/assets/2025-01-13/18.jpg)  -->
+[![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard")](/assets/2025-01-13/18.jpg) 
 Archive Webpage dashboard. This is offline using browser local storage to view the saved session.
 
-[![](/assets/2025-01-13/17.jpg "Archive view"){:width="700px"}](/assets/2025-01-13/17.jpg) 
+<!-- [![](/assets/2025-01-13/17.jpg "Archive view"){:width="700px"}](/assets/2025-01-13/17.jpg)  -->
+[![](/assets/2025-01-13/17.jpg "Archive view")(/assets/2025-01-13/17.jpg) 
 Again the machine is offline viewing this.
 
-[![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine"){:width="700px"}](/assets/2025-01-13/19.jpg) 
+<!-- [![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine"){:width="700px"}](/assets/2025-01-13/19.jpg)  -->
+[![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine")](/assets/2025-01-13/19.jpg) 
 
 **Here is another computer, not logged into Instagram
 
-[![](/assets/2025-01-13/20.jpg "Non logged in machine viewing wacz"){:width="700px"}](/assets/2025-01-13/20.jpg) 
+<!-- [![](/assets/2025-01-13/20.jpg "Non logged in machine viewing wacz"){:width="700px"}](/assets/2025-01-13/20.jpg)  -->
+[![](/assets/2025-01-13/20.jpg "Non logged in machine viewing wacz")](/assets/2025-01-13/20.jpg) 
 
 Here is that same computer viewing the wacz of the logged in the machine.
 
@@ -417,16 +421,17 @@ Here is that same computer viewing the wacz of the logged in the machine.
 ArchiveWeb.page allows users to archive what they browse, storing captured data directly in the browser. Users can download this data as files to their hard drive. Users can also delete any and all archived data at any time. ArchiveWeb.page does not collect any usage or tracking data
 
 
-[![](/assets/2025-01-13/21.jpg "Facebook logged in"){:width="700px"}](/assets/2025-01-13/21.jpg) 
+<!-- [![](/assets/2025-01-13/21.jpg "Facebook logged in"){:width="700px"}](/assets/2025-01-13/21.jpg)  -->
+[![](/assets/2025-01-13/21.jpg "Facebook logged in"){}](/assets/2025-01-13/21.jpg) 
 Facebook logged in capturing the page.
 
-[![](/assets/2025-01-13/22.jpg "Facebook view on different machine"){:width="700px"}](/assets/2025-01-13/22.jpg) 
-Downloaded and uploaded wacz to different machine and got a good render. The comment
+<!-- [![](/assets/2025-01-13/22.jpg "Facebook view on different machine"){:width="700px"}](/assets/2025-01-13/22.jpg)  -->
+[![](/assets/2025-01-13/22.jpg "Facebook view on different machine")](/assets/2025-01-13/22.jpg) 
+Downloaded and uploaded wacz to different machine and got a good render. The infinite scroll comments do not work properly.
+
+I'm excited about this tool as it gives the great feature of being logged into sites, and saving exactly what the users sees.
 
 - **SingleFile** This [extension](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en-US&utm_source=ext_sidebar) 200k users, saves the complete webpage as a singlefile, changing the html to embed assets. 
-
-
-
 
 
 ## 5. Appendix
