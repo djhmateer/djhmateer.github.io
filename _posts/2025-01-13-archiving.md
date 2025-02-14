@@ -274,10 +274,10 @@ They offer two main products:
 
 #### Key Features:  
 - **Social Media Preservation**:  
-  - **Facebook**: Bulk capture capabilities, including headless crawling of all links in a timeline.  
-  - **Twitter**: Comprehensive archiving of tweets and threads.  
-  - **LinkedIn**: Preservation of profiles and posts.  
-  - **YouTube**: Capturing video metadata and content.  
+  - **Facebook**: Bulk capture capabilities including all posts on a timeline.  
+  - **Twitter**: 
+  - **LinkedIn**: 
+  - **YouTube**: 
   - **TikTok**
   - **Reddit**
   - **Instagram**
@@ -370,26 +370,50 @@ For a professional solution, [urlbox.com](https://urlbox.com/) offers a top-tier
 
 ## 4. Manually Archiving
 
-When it comes to manually archiving content, here are some practical tips and tools to consider:
+When it comes to manually archiving content start simple and see what works for you.
 
 ### Images
 
 - **Chrome Save as PDF:** This feature works well, especially for capturing long, scrolling pages.
 - **Chrome Save as MHTML:** This option is also effective. Once the page is saved as MHTML, you can right-click to save any images you need.
 - **Screenshots:** 
-  - On a PC, [Greenshot](https://getgreenshot.org/) is an excellent tool.
-  - On a Mac, simply use the shortcut `Cmd + Shift + 5` for capturing screenshots.
-- **Direct Save:** When available, you can right-click an image to save it directly, or use the F12 developer tools to locate and extract the image source.
+  - On a PC, [Greenshot](https://getgreenshot.org/) is an excellent free tool.
+  - On a Mac, simply use the shortcut `Cmd + Shift + 5` or other variants for capturing screenshots.
+- **Image Save As:** When available, you can right-click an image to save it directly, or use the F12 developer tools to locate and extract the image source.
 
 ### Videos
 
-- **YouTube and Similar Platforms:** Note that while [gb.savefrom.net](https://gb.savefrom.net/) is currently down from the UK, [yt1d.com](https://yt1d.com/) is operational and can be used to save videos effectively.
+- **YouTube and Similar Platforms:** Note that while [gb.savefrom.net](https://gb.savefrom.net/) is currently blocked from the UK, [yt1d.com](https://yt1d.com/) is operational and can be used to save non copyrighted videos.
 
 
-### Archiving Entire Web Pages - Chromium Extensions
+### Chromium Extensions
+
+These extensions submit to archiving services:
 
 - **Archive Page (archive.ph):** This [Chrome extension](https://chromewebstore.google.com/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia), with 90k users, a 4.4-star rating, and 123 reviews, simply submits pages to archive.ph.
 - **Wayback Machine:** This [extension](https://chromewebstore.google.com/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak) allows you to submit pages directly to the Wayback Machine
+
+
+These extensions attempt to save the web page themselves:
+
+- **Webrecorder Archive Webpage:** This [extension](https://github.com/webrecorder/archiveweb.page) archives webpages as a WACZ files or WARC.
+
+[![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard"){:width="300px"}](/assets/2025-01-13/18.jpg) 
+Archive Webpage dashboard. This is offline using browser local storage to view the saved session.
+
+[![](/assets/2025-01-13/17.jpg "Atlos Screenshot"){:width="300px"}](/assets/2025-01-13/17.jpg) 
+Again the machine is offline viewing this.
+
+
+**Here is another computer, not logged into Instagram
+
+ArchiveWeb.page allows users to archive what they browse, storing captured data directly in the browser. Users can download this data as files to their hard drive. Users can also delete any and all archived data at any time. ArchiveWeb.page does not collect any usage or tracking data
+
+
+
+- **SingleFile** This [extension](https://github.com/webrecorder/archiveweb.page) archives webpages as WACZ files.
+
+
 
 
 
@@ -413,6 +437,7 @@ Web ARChive files.
 
 Both file formats can be viewed on [replayweb.page](https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/dia018/cccbd090f5814c159b8ce767.wacz#view=pages&url=https%3A%2F%2Fx.com%2Fdave_mateer%2Fstatus%2F1524341442738638848&ts=20241219150615)
 
+**HERE - can it be done offline.. really offline?**
 
 ## MHTML
 
