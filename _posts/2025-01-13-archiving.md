@@ -401,11 +401,15 @@ These extensions attempt to save the web page themselves:
 [![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard"){:width="300px"}](/assets/2025-01-13/18.jpg) 
 Archive Webpage dashboard. This is offline using browser local storage to view the saved session.
 
-[![](/assets/2025-01-13/17.jpg "Atlos Screenshot"){:width="300px"}](/assets/2025-01-13/17.jpg) 
+[![](/assets/2025-01-13/17.jpg "Archive view"){:width="300px"}](/assets/2025-01-13/17.jpg) 
 Again the machine is offline viewing this.
 
+[![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine"){:width="300px"}](/assets/2025-01-13/19.jpg) 
 
 **Here is another computer, not logged into Instagram
+
+Here is that same computer viewing the wacz of the logged in the machine.
+
 
 ArchiveWeb.page allows users to archive what they browse, storing captured data directly in the browser. Users can download this data as files to their hard drive. Users can also delete any and all archived data at any time. ArchiveWeb.page does not collect any usage or tracking data
 
