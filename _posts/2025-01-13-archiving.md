@@ -19,7 +19,7 @@ image: /assets/2024-11-12/1.jpg
 
 Need to archive webpages but are unsure how to go about it? 
 
-This guide will walk you through **my favourite tools and techniques** to ensure your links are preserved.  
+This guide will walk you through **my favourite tools and techniques** to ensure your links are archived in the best way possible.  
 
 ## In This Article  
 
@@ -33,8 +33,8 @@ This guide will walk you through **my favourite tools and techniques** to ensure
 
 - **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving I know of. Shameless plug: I have a hosted version [auto-archiver.com](https://auto-archiver.com/).  
 - **[Wayback Machine](https://web.archive.org/save)** – I always submit URLs here (though platforms like X, Instagram, and Facebook may not archive well).  
-- **[archive.ph](https://archive.ph/)** – Best for bypassing paywalls.  
-- **[webrecorder](https://webrecorder.net/)** - The best tool for crawling sites
+- **[Archive.ph](https://archive.ph/)** – Very good and better that auto-archiver or wayback for bypassing paywalls.  
+- **[Webrecorder](https://webrecorder.net/)** - The best tool for crawling sites
 
 This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver** which I use a lot. To date, I haven't found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
 
@@ -84,7 +84,7 @@ By utilising techniques such as hashing and recording on immutable platforms (wh
 
 # 1.1 What to Archive (Input)
 
-When you're deep into an investigation, you come across [this tweet](https://twitter.com/dave_mateer/status/1524341442738638848)—and wonder how to capture every detail. That's where the auto-archiver tool comes in. It pulls URLs from a Google Spreadsheet, letting you archive content with ease.
+ If you're deep into an investigation, and come [a tweet](https://twitter.com/dave_mateer/status/1524341442738638848) which is important, then paste it into a spreadsheet. That's where the auto-archiver tool comes in. It pulls URLs from a Google Spreadsheet, then archived it.
 
 ## Setting Up Your Archive Input
 
@@ -92,7 +92,7 @@ Imagine you have a list of URLs organised in a spreadsheet with columns already 
 
 [![Spreadsheet Setup](/assets/2025-01-13/10.jpg "Spreadsheet Setup")](#)
 
-Once the archiving kicks off (within a minute), the tool processes these URLs and writes the results directly back into the spreadsheet:
+Once the archiving kicks off (usually within a minute), the tool processes these URLs and writes the results directly back into the spreadsheet:
 
 [![Archiver Output](/assets/2025-01-13/11.jpg "Archiver Output")](#)
 
@@ -100,9 +100,10 @@ Once the archiving kicks off (within a minute), the tool processes these URLs an
 
 Every archived page includes a details page, which you can access via a direct [link](https://testhashing.fra1.cdn.digitaloceanspaces.com/iv001/7049ee36a7214ee78846dbfd.html). On this page, you’ll find:
 
-- **Full Resolution Images:** Complete with EXIF metadata.
-- **Reverse Image Search Links:** Helping you track the image’s origins.
+- **Full Resolution Images:** Complete with EXIF metadata and hashes
 - **Screenshots:** A visual capture of the page at the time of archiving.
+- **Reverse Image Search Links:** Helping you track the image’s origins.
+- **A timestamp hash:** Which proves the content at this moment in time. 
 
 Take a look at this snapshot:
 
@@ -114,7 +115,7 @@ Moreover, the archive also stores a timestamped hash of the file, a [WACZ archiv
 
 ## Why Google Spreadsheets?
 
-I’ve found that [Google Spreadsheets](https://docs.google.com/) is flexible and free, and fantastic for collaboration. Whether you’re handling a sheet with 70,000+ rows or collaborating with over 10 people at once, Google Sheets can handle the heavy lifting—albeit with a bit of extra memory and horsepower required.
+I’ve found that [Google Spreadsheets](https://docs.google.com/) is flexible and free, and fantastic for collaboration. I worked on sheets with 70,000+ rows (per tab) and collaborating with over 10 people at once. It can use significant resources on my machine, and can slow down, but is extremely impressive. 
 
 ## Curated Test Links for Archiving
 
@@ -122,7 +123,7 @@ During my research, I compiled a list of test links that covers various scenario
 
 ## Final Thoughts on inputs
 
-It quickly became apparent that archiving large platforms—where most of my work is concentrated—often demands specialized, targeted archivers. Whether you're preserving social media posts, digital images, or comprehensive web pages, the right tools make all the difference.
+It quickly became apparent that archiving large platforms—where most of my work is concentrated—often demands specialised, targeted archivers. That is why the auto-archiver worked well (as it has plugins for each platform). 
 
 
 # 1.3 How to Store Archives (Output)
@@ -130,8 +131,8 @@ It quickly became apparent that archiving large platforms—where most of my wor
 When it comes to storing your archives, the best option depends on your organisation's needs and the infrastructure you already have in place. Here are some common storage solutions I work with:
 
 - **S3 Storage:** For instance, [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/).
-- **Google Workspace/Drive:** Utilize [Google Drive](https://workspace.google.com/intl/en_uk/products/drive/).
-- **Local/Network Storage:** Use your own servers or network storage for complete control.
+- **Google Workspace/Drive:** [Google Drive](https://workspace.google.com/intl/en_uk/products/drive/).
+- **Local/Network Storage:** Use your own servers or network storage.
 
 ## DigitalOcean Spaces
 
@@ -139,7 +140,7 @@ DigitalOcean Spaces is particularly effective in public mode. It can host any fi
 
 ## Google Drive
 
-Google Drive offers excellent control over files within your domain. However, it's important to note that while it's great for file management, you cannot serve a webpage directly from it or use it for direct image linking.
+Google Drive offers excellent control over files within your domain. However, it's important to note that while it's great for file management, you cannot serve a webpage directly from it / use it for direct image linking.
 
 ![Google Drive Example](/assets/2025-01-13/14.jpg "Google Drive Example")
 
@@ -154,23 +155,22 @@ For those managing S3 storage, [Cyberduck S3 Viewer](https://cyberduck.io/) is a
 
 ## 2.1 Wayback Machine
 
-Also known as the Internet Archive or simply [web.archive.org](https://web.archive.org/), the Wayback Machine is one of the most popular and free archival tools available today.
+The Wayback Machine from the Internet Archive or simply [web.archive.org](https://web.archive.org/), is the most popular free archival tool available today.
 
 ![Wayback Machine Interface](/assets/2025-01-13/8.jpg "Wayback Machine Interface")
 
-If you want to save a webpage, a great starting point is [web.archive.org/save](https://web.archive.org/save). I always make it a point to submit my archived content here—often through their [API](https://archive.org/account/s3.php). This invaluable service, provided by the non-profit Internet Archive, has helped preserve [hundreds of billions](https://en.wikipedia.org/wiki/Wayback_Machine) of pages over the last 23 years.
+I always submit my archived urls here—often through their [API](https://archive.org/account/s3.php). This invaluable service, provided by the non-profit Internet Archive, has helped preserve [hundreds of billions](https://en.wikipedia.org/wiki/Wayback_Machine) of pages over the last 23 years.
 
-However, it's important to note that the Wayback Machine doesn't capture every site. For instance, platforms like Instagram and Facebook often have limitations or might not be archived at all.
+However, it's important to note that the Wayback Machine doesn't work well with larger platforms like Instagram (currently blocked) and Facebook. Your mileage may vary.
 
 ![Overloaded API Warning](/assets/2025-01-13/15.jpg "Overloaded API Warning")
 
-Keep in mind that the service can sometimes get overloaded. The API, in particular, might take up to 5 minutes to confirm a successful save.
-
+Keep in mind that the service can sometimes get overloaded. The API, in particular, might take up to 5 minutes to confirm a successful save and you can see above a 21 minute wait from the web UI.
 
 
 ## 2.2 Auto-archiver
 
-The auto-archiver is a robust collection of tools developed by the amazing team at [Bellingcat](https://www.bellingcat.com/resources/2022/09/22/preserve-vital-online-content-with-bellingcats-auto-archiver-tool/). I've been using and contributing to this project for the past three years, and I even offer it as a [hosted service](https://auto-archiver.com/).
+The auto-archiver is a great knitting together of the best open source tools (which is continually evolving) by the amazing team at [Bellingcat](https://www.bellingcat.com/resources/2022/09/22/preserve-vital-online-content-with-bellingcats-auto-archiver-tool/). I've been using and contributing to this project for the past three years, and I even offer it as a [hosted service](https://auto-archiver.com/).
 
 This suite of tools is designed to help you archive content from several specific platforms, including:
 
@@ -184,9 +184,9 @@ This suite of tools is designed to help you archive content from several specifi
 
 ### Downsides
 
-While the auto-archiver is exceptional for capturing raw data, there are some challenges to keep in mind:
+While the auto-archiver is the best at what it does, there are some challenges to keep in mind:
 
-- **Complex Setup:** It can be hard to configure properly.
+- **Complex Setup:** It can be hard to configure properly (currently being worked on - Feb 2025)
 - **No UI:** There isn’t a user-friendly interface available.
 - **Limited User Base:** It doesn't have a massive following yet.
 - **Constant Tweaking:** It requires ongoing adjustments to keep pace with platform changes.
@@ -198,6 +198,7 @@ Despite these challenges, the auto-archiver offers several significant advantage
 - **Unmatched Raw Results:** There is nothing better for capturing pure archival data.
 - **Commercial Support:** You can get direct support and even speak with the source contributors (including me!).
 - **Proven Stability:** It has been running reliably for over four years across various platforms (AWS, Azure, and bare metal).
+- **Python:** It is written in Python, so can be easily understoon, and worked on by others.
 
 
 ## 2.3 Archive.today
@@ -218,15 +219,15 @@ If you ever run into issues—such as the site not loading or seeing a "Welcome 
 For more information, you can check out their [FAQ](https://archive.ph/faq). It's worth noting that the identity of the site's owner is kept under wraps, likely due to the controversial nature of bypassing paywalls and potential breaches of EULAs.
 
 
-## 2.4 Other Open Source
+## 2.4 Open Source
 
 These tools are interesting, but not as useful for my specific needs—I prefer the auto-archiver described above. Nevertheless, here are some noteworthy open source archiving projects:
 
-[![alt text](/assets/2025-01-13/3.jpg "Archivebox")]{:width="300px"}(/assets/2025-01-13/3.jpg)
-Archivebox
+[![alt text](/assets/2025-01-13/3.jpg "Archivebox"){:width="300px"}](/assets/2025-01-13/3.jpg)
+Screenshot from Archivebox - notice the common problem of popups on large platforms
 
 - **[ArchiveBox](https://github.com/ArchiveBox/ArchiveBox)**  
-  A fully featured self-hosted solution with a dedicated website. With 23k stars, it’s similar to the auto-archiver but less specialized, and it's excellent for self-hosting.
+  A fully featured self-hosted solution with a dedicated website. With 23k stars, it’s similar to the auto-archiver (with a nice front end) but less specialised, and it's excellent for self-hosting.
 
 - **[Webrecorder](https://webrecorder.net/archivewebpage/)**  
   A Chrome extension that saves pages as WARC/WACZ files. This project is by [Ilya Kreymer](https://www.linkedin.com/in/ilya-kreymer-55110093/), the same person behind the great [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler) (702 stars), which we use with the auto-archiver to save WACZ files.
@@ -246,25 +247,25 @@ Archivebox
 - **[Conifer](https://conifer.rhizome.org/)**  
   Note: I’ve already submitted a bug report (as of January 29, 2025).
 
-## Other Commercial Archiving Tools
+## Commercial Archiving Tools
 
 Surprisingly, there aren’t many commercial tools that can archive single pages as effectively as the open source options. However, some case/investigation management systems include basic archiving tools:
 
 - **[Atlos](https://www.atlos.org/)**  
   This platform includes a basic screenshot tool and even integrates with the auto-archiver.
   
-  <img src="/assets/2025-01-13/9.jpg" alt="Atlos Screenshot" width="400" />
+[![](/assets/2025-01-13/9.jpg "Atlos Screenshot"){:width="300px"}](/assets/2025-01-13/9.jpg) 
 
 - **[Hunch.ly](https://hunch.ly/)**  
-  An OSINT tool designed for online investigations, available as both an app and an extension. It automatically captures content during your investigative process.
+  An OSINT tool designed for online investigations, available as both an app and an extension. It automatically captures content during your investigative process. $110 per year.
 
 So far, I haven’t encountered any enterprise archiving tools that meet the needs of single-page investigative archiving as effectively as these solutions.
 
 ### 2.5.1 PageFreezer
 
-**[PageFreezer](https://www.pagefreezer.com/)** is a Vancouver-based company with around 50-100 employees. I’ve had the pleasure of interacting with Doug, who is incredibly friendly and helpful!  
+**[PageFreezer](https://www.pagefreezer.com/)** is a Vancouver-based company with around 50-100 employees. I chatted to Doug, who is incredibly friendly and helpful showing me how their products work.
 
-PageFreezer specializes in capturing changes to web pages over time and provides a user-friendly interface to view these changes, similar to the Wayback Machine. Their services are particularly useful for legal and investigative purposes.  
+PageFreezer specializes in capturing changes to web pages over time and provides a user-friendly interface to view these changes, similar to the Wayback Machine. 
 
 They offer two main products:  
 
@@ -285,23 +286,17 @@ They offer two main products:
   - **BlueSky**
   - **Threads**
 
-PageFreezer primarily caters to law enforcement agencies, legal firms, and investigators, making it a go-to solution for professionals who need reliable and legally admissible web and social media archiving.  
+PageFreezer primarily caters to law enforcement agencies, government agencies, legal firms, and investigators.
 
 Pricing is around the $3350per year for a single user.
 
 ### 2.5.2 MirrorWeb
 
-**[MirrorWeb](https://www.mirrorweb.com/)** is a prominent player in the web archiving space, focusing on large-scale website archiving rather than single-page preservation. They are trusted by prestigious organizations, including:  
+**[MirrorWeb](https://www.mirrorweb.com/)** is a focusses on large-scale website archiving rather than single-page preservation. They have large clients like: 
 
 - **[National Records of Scotland](https://www.mirrorweb.com/national-records-of-scotland)**  
 - **[UK Parliament Web Archive](https://webarchive.parliament.uk/)**  
 - **[UK National Archives Web Archive](https://www.nationalarchives.gov.uk/webarchive/)**  
-
-MirrorWeb’s strength lies in its ability to archive entire websites comprehensively, making it an ideal solution for institutions that need to preserve large volumes of web content for historical or legal purposes.  
-
-Their Chief Revenue Officer (CRO) is also exceptionally friendly and approachable, which adds to the overall positive experience of working with them.  
-
-If your needs involve archiving entire websites rather than individual pages, MirrorWeb is a solid choice.  
 
 
 ## 2.5.3 Archive-it
@@ -319,11 +314,10 @@ Here are a couple of additional tools worth mentioning, though they cater to mor
 - **[Smarsh](https://www.smarsh.com/solutions/business-need/archiving)**:  
   Smarsh specializes in **company communications governance and archiving**. It’s a comprehensive solution for businesses that need to archive and manage communications (e.g., emails, chats, and social media) for compliance, legal, or regulatory purposes.  
 
-While these tools are highly specialized, they serve important roles in their respective domains—government compliance and enterprise communications governance.  
 
 ## 3. Platform-Specific Archival Tools and Libraries
 
-For archiving content from specific platforms, there are several excellent libraries available. The **auto-archiver** leverages many of these tools, integrating them into a unified solution. Below, I’ll highlight some of the key tools and libraries used for specific platforms.
+For archiving content from specific platforms, there are several excellent libraries available. The **auto-archiver** leverages many of these tools.
 
 ### Instagram
 
@@ -348,9 +342,7 @@ For private Instagram accounts, we rely on **[Instagrapi](https://github.com/sub
 
 ### Facebook
 
-For Facebook, I created a custom integration in the auto-archiver specifically designed to archive **images**. This functionality ensures that visual content from Facebook can be preserved effectively.  
-
-These tools and libraries demonstrate the flexibility and power of the auto-archiver, which combines specialized solutions to handle a variety of archiving needs across different platforms.  
+For Facebook, I created a custom integration in the auto-archiver specifically designed to archive **images**. This functionality ensures that images from Facebook can be preserved.
 
 
 ## Telegram
@@ -359,15 +351,15 @@ The Auto-archiver now features seamless integration with Telegram, utilising the
 
 ## X / Twitter
 
-As of January 2025, [yt-dlp](https://github.com/yt-dlp/yt-dlp) is a fantastic tool for archiving content from X (formerly Twitter). For an extra layer of reliability, the paid API serves as a dependable backup.
+As of January 2025, [yt-dlp](https://github.com/yt-dlp/yt-dlp) is a fantastic tool for archiving content from X (formerly Twitter). For an extra layer of reliability, the paid API serves as a backup.
 
 ## Videos (e.g. YouTube, TikTok)
 
-When it comes to video archiving, [yt-dlp](https://github.com/yt-dlp/yt-dlp) continues to impress with its robust performance.
+When it comes to video archiving, [yt-dlp](https://github.com/yt-dlp/yt-dlp) is the standard tool.
 
 ## VK
 
-The Auto-archiver also integrates with VK through the [VK URL Scraper](https://github.com/bellingcat/vk-url-scraper), ensuring that content from this platform is preserved efficiently.
+The Auto-archiver also integrates with VK through the [VK URL Scraper](https://github.com/bellingcat/vk-url-scraper)
 
 ## Screenshots
 
@@ -376,14 +368,12 @@ For capturing screenshots, [Playwright](https://playwright.dev/) is superb. I ty
 For a professional solution, [urlbox.com](https://urlbox.com/) offers a top-tier screenshotting service.
 
 
-
 ## 4. Manually Archiving
 
 When it comes to manually archiving content, here are some practical tips and tools to consider:
 
 ### Images
 
-- **Instagram:** Since Instagram doesn’t allow you to right-click and download images directly, you'll need to explore alternative methods.
 - **Chrome Save as PDF:** This feature works well, especially for capturing long, scrolling pages.
 - **Chrome Save as MHTML:** This option is also effective. Once the page is saved as MHTML, you can right-click to save any images you need.
 - **Screenshots:** 
@@ -393,17 +383,13 @@ When it comes to manually archiving content, here are some practical tips and to
 
 ### Videos
 
-- **YouTube and Similar Platforms:** Note that while [gb.savefrom.net](https://gb.savefrom.net/) is currently down, [yt1d.com](https://yt1d.com/) is operational and can be used to save videos effectively.
-
-### Archiving Entire Web Pages
-
-- **Archive Page (archive.ph):** This Chrome extension, with 90k users, a 4.4-star rating, and 123 reviews, simply submits pages to archive.ph.
-- **Wayback Machine:** This extension allows you to submit pages directly to the Wayback Machine, ensuring they are preserved for future reference.
+- **YouTube and Similar Platforms:** Note that while [gb.savefrom.net](https://gb.savefrom.net/) is currently down from the UK, [yt1d.com](https://yt1d.com/) is operational and can be used to save videos effectively.
 
 
+### Archiving Entire Web Pages - Chromium Extensions
 
-
-
+- **Archive Page (archive.ph):** This [Chrome extension](https://chromewebstore.google.com/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia), with 90k users, a 4.4-star rating, and 123 reviews, simply submits pages to archive.ph.
+- **Wayback Machine:** This [extension](https://chromewebstore.google.com/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak) allows you to submit pages directly to the Wayback Machine
 
 
 
