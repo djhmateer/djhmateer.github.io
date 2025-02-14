@@ -31,21 +31,21 @@ This guide will walk you through **my favourite tools and techniques** to ensure
 
 ## Key Summary
 
-- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving. You can also use my hosted version at [auto-archiver.com](https://auto-archiver.com/).  
-- **[Wayback Machine](https://web.archive.org/save)** – Always a solid choice (though platforms like X, Instagram, and Facebook may not archive well).  
+- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving I know of. Shameless plug: I have a hosted version [auto-archiver.com](https://auto-archiver.com/).  
+- **[Wayback Machine](https://web.archive.org/save)** – I always submit URLs here (though platforms like X, Instagram, and Facebook may not archive well).  
 - **[archive.ph](https://archive.ph/)** – Best for bypassing paywalls.  
 - **[webrecorder](https://webrecorder.net/)** - The best tool for crawling sites
 
-This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver** which I use a lot. To date, I have not found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
+This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver** which I use a lot. To date, I haven't found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
 
 
 ## 1. Why Archive?
 
-Before we dive into the methods of archiving single URLs, it is essential to understand the motivation behind preserving webpages. In our ever-changing digital landscape, online content can vanish as quickly as it appears. For professionals working in investigative fields, ensuring that a verifiable record of web pages exists is paramount.
+Before we dive into the methods of archiving single URLs, it is essential to understand the motivation behind preserving webpages. In our ever-changing digital landscape, online content can disappear (often very quickly from large platforms). For professionals working in investigative fields, ensuring that this content is preserved is paramount.
 
 ### Who Might Benefit?
 
-If you work in any of these areas, archiving is likely to be an invaluable tool:
+I've found that archiving is useful for a wide range of professionals:
 
 - **Human Rights Investigative Organisations** – This is my own field, where our work has been [recognised with an international award which we are very proud of!](https://www.swansea.ac.uk/press-office/news-events/news/2024/11/research-on-using-mobile-phone-evidence-in-human-rights-cases-wins-prestigious-impact-prize.php)
 - **Investigative Journalism**
@@ -65,7 +65,7 @@ Depending on your requirements, there are various elements you may wish to prese
 - **Screenshots** – To capture the exact visual context of a webpage.
 - **HTML Versions** – Keeping the structure and content accessible even if the original site is altered.
 - **Images and Videos** – Particularly important for evidence, especially in human rights cases.
-- **Text Content** – While secondary to visual evidence, it still offers valuable context.
+- **Text Content** – Valuable context.
 - **WARC or WACZ Files** – Enabling you to replay the entire page and observe changes over time.
 - **Hashes and Timestamps** – Providing proof of an asset’s existence at a specific moment.
 
@@ -76,10 +76,9 @@ Archiving webpages is crucial for two main reasons:
 - **Analysis:** It allows us to conduct detailed reviews and investigations long after the original content has been updated or removed.
 - **Preservation:** It helps maintain a reliable record for articles, reports, or even legal cases.
 
-For the past four years, I have dedicated myself to human rights archiving, focusing on safeguarding images and videos before they vanish from major platforms. While text is undoubtedly valuable, it is often the visual evidence—captured through screenshots or preserved multimedia—that offers the most compelling support for an investigation.
+For the past four years, I have been involved in human rights archiving, focusing on safeguarding images and videos before they vanish from major platforms. While text is valuable, it is often the visual evidence—captured through screenshots or preserved multimedia—that offers the most compelling support for an investigation.
 
-By utilising techniques such as hashing and recording on immutable platforms, we can ensure that these records remain untampered. In this guide, I’ll show you how to select the best tools and methods to archive individual URLs effectively, ensuring your links are preserved for thorough analysis and long-term reference.
-
+By utilising techniques such as hashing and recording on immutable platforms (which we are stopping in favour of timestamping), we can ensure that these records remain untampered.
 
 
 
