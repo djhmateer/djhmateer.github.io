@@ -388,27 +388,27 @@ When it comes to manually archiving content start simple and see what works for 
 
 ### Chromium Extensions
 
-These extensions submit to archiving services:
+#### These extensions submit to archiving services:
 
 - **Archive Page (archive.ph):** This [Chrome extension](https://chromewebstore.google.com/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia), with 90k users, a 4.4-star rating, and 123 reviews, simply submits pages to archive.ph.
 - **Wayback Machine:** This [extension](https://chromewebstore.google.com/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak) allows you to submit pages directly to the Wayback Machine
 
 
-These extensions attempt to save the web page themselves:
+####  These extensions attempt to save the web page themselves:
 
 - **Webrecorder Archive Webpage:** This [extension](https://github.com/webrecorder/archiveweb.page) archives webpages as a WACZ files or WARC.
 
-[![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard"){:width="300px"}](/assets/2025-01-13/18.jpg) 
+[![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard"){:width="500px"}](/assets/2025-01-13/18.jpg) 
 Archive Webpage dashboard. This is offline using browser local storage to view the saved session.
 
-[![](/assets/2025-01-13/17.jpg "Archive view"){:width="300px"}](/assets/2025-01-13/17.jpg) 
+[![](/assets/2025-01-13/17.jpg "Archive view"){:width="500px"}](/assets/2025-01-13/17.jpg) 
 Again the machine is offline viewing this.
 
-[![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine"){:width="300px"}](/assets/2025-01-13/19.jpg) 
+[![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine"){:width="500px"}](/assets/2025-01-13/19.jpg) 
 
 **Here is another computer, not logged into Instagram
 
-[![](/assets/2025-01-13/20.jpg "Non logged in machine viewing wacz"){:width="300px"}](/assets/2025-01-13/20.jpg) 
+[![](/assets/2025-01-13/20.jpg "Non logged in machine viewing wacz"){:width="500px"}](/assets/2025-01-13/20.jpg) 
 
 Here is that same computer viewing the wacz of the logged in the machine.
 
@@ -422,7 +422,7 @@ Facebook logged in capturing the page.
 [![](/assets/2025-01-13/22.jpg "Facebook view on different machine"){:width="300px"}](/assets/2025-01-13/22.jpg) 
 Downloaded and uploaded wacz to different machine and got a good render. The comment
 
-- **SingleFile** This [extension](https://github.com/webrecorder/archiveweb.page) archives webpages as WACZ files.
+- **SingleFile** This [extension](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en-US&utm_source=ext_sidebar) 200k users, saves the complete webpage as a singlefile, changing the html to embed assets. 
 
 
 
@@ -430,9 +430,7 @@ Downloaded and uploaded wacz to different machine and got a good render. The com
 
 ## 5. Appendix
 
-This article is an opinionated list and I wont mention the tools that are not useful for me! 
-
-Am not looking at [multi page web crawling]() nor [investigation/evidence management systems]() - which archiving is often a part of.
+This article is an opinionated list and I wont mention the tools that are not useful for me! I am not looking at multi page web crawling nor investigation/evidence/case management systems - which archiving is often a part of.
 
 [awesome-web-archiving](https://github.com/iipc/awesome-web-archiving) contains more with a much broader scope.
 
@@ -448,7 +446,7 @@ Web ARChive files.
 
 Both file formats can be viewed on [replayweb.page](https://replayweb.page/?source=https%3A//testhashing.fra1.cdn.digitaloceanspaces.com/dia018/cccbd090f5814c159b8ce767.wacz#view=pages&url=https%3A%2F%2Fx.com%2Fdave_mateer%2Fstatus%2F1524341442738638848&ts=20241219150615)
 
-**HERE - can it be done offline.. really offline?**
+Replay web is somewhat confusing (when I started). But with testing I found that it really does work offline, viewing well what was captured at the time the wacz/warc was captured.
 
 ## MHTML
 
@@ -466,19 +464,19 @@ Before proceeding, it’s worth reflecting on why we archive content in the firs
 
 *(The following insights come from a colleague in the legal sector)*
 
-If the objective is to support future legal proceedings, there is an argument that private retention of data may be more than sufficient:
-
+> If the objective is to support future legal proceedings, there is an argument that private retention of data may be more than sufficient:
 > "I feel these kinds of systems overcomplicate an already reliable process, one that is accepted by courts around the world for the safe management of digital evidence.
 > 
 > The courts are pragmatic; if you can confidently state that you performed a particular action at a specific time, resulting in the production of certain data, the risk of a two-year sentence for contempt of court is more than enough to deter any manipulation.
 > 
 > Adding further complexity doesn’t necessarily build trust—it can instead hinder the ability of investigators, juries, or the judiciary to understand the processes and their purposes."
+
 ### Options for Hashing
 
 But where can you store these hashes in a secure and immutable manner—that is, ensuring they cannot be altered after creation? Consider the following options:
 
 - **Blockchains**
-- **Immutable Blog Services** (e.g. Twitter)
+- **Immutable Blog Services** (e.g. X/Twitter)
 - **Timestamping Services**
 - **Write Once, Read Many (WORM) Storage**
 - **Git with Cryptographic Signing (Internal Use)**
@@ -518,14 +516,13 @@ I run a business called [**Auto-Archiver.com**](https://auto-archiver.com/), whi
 
 - **Are there better products out there?** (Not that I know of!)  
 - **Are my customers getting their money’s worth?** (I believe so!)  
-- **Should I partner with other organisations to sell their products?** (maybe)  
+- **Should I partner with other organisations to sell their products?** (maybe - I want to see if https://archiveweb.page/ is useful to my clients )  
 - **Who needs archiving help?** (Investigators, researchers, and organisations dealing with sensitive or time-sensitive data.) 
 
-Please get in touch at **davemateer@gmail.com** if you have any comments.
 
 ---
 
-This blog post is a snapshot of my journey in the world of archiving, the tools I’ve encountered, and the questions I’m pondering as I grow my business. If you’re passionate about digital preservation or have insights to share, don’t hesitate to reach out!
+This blog post is a snapshot of my journey in the world of archiving, the tools I’ve encountered, and the questions I’m asking as I grow my business. If you’re passionate about digital preservation or have insights to share please get in touch at **davemateer@gmail.com**.
 
 
 
