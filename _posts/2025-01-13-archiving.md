@@ -31,10 +31,10 @@ This guide will walk you through **my favourite tools and techniques** to ensure
 
 ## Key Summary
 
-- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving I know of. Shameless plug: I have a hosted version [auto-archiver.com](https://auto-archiver.com/).  
+- **[Bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver)** – The most effective solution for comprehensive archiving I know of. Shameless plug: I have a [hosted version](https://auto-archiver.com/).  
 - **[Wayback Machine](https://web.archive.org/save)** – I always submit URLs here (though platforms like X, Instagram, and Facebook may not archive well).  
-- **[Archive.ph](https://archive.ph/)** – Very good and better that auto-archiver or wayback for bypassing paywalls.  
-- **[Webrecorder](https://webrecorder.net/)** - The best tool for crawling sites
+- **[Archive.ph](https://archive.ph/)** – Very good and better than auto-archiver or wayback for bypassing paywalls.  
+- **[Webrecorder](https://webrecorder.net/)** - Good tool for crawling sites
 
 This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver** which I use a lot. To date, I haven't found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
 
@@ -84,7 +84,7 @@ By utilising techniques such as hashing and recording on immutable platforms (wh
 
 # 1.1 What to Archive (Input)
 
- If you're deep into an investigation, and come [a tweet](https://twitter.com/dave_mateer/status/1524341442738638848) which is important, then paste it into a spreadsheet. That's where the auto-archiver tool comes in. It pulls URLs from a Google Spreadsheet, then archived it.
+ If you're deep into an investigation, and come across [a tweet](https://twitter.com/dave_mateer/status/1524341442738638848) which is important, then paste it into a spreadsheet. That's where the auto-archiver tool comes in. It pulls URLs from a Google Spreadsheet, then archives it.
 
 ## Setting Up Your Archive Input
 
@@ -223,14 +223,15 @@ For more information, you can check out their [FAQ](https://archive.ph/faq). It'
 
 These tools are interesting, but not as useful for my specific needs—I prefer the auto-archiver described above. Nevertheless, here are some noteworthy open source archiving projects:
 
-[![alt text](/assets/2025-01-13/3.jpg "Archivebox"){:width="300px"}](/assets/2025-01-13/3.jpg)
+[![alt text](/assets/2025-01-13/3.jpg "Archivebox"){:width="500px"}](/assets/2025-01-13/3.jpg)
+
 Screenshot from Archivebox - notice the common problem of popups on large platforms
 
 - **[ArchiveBox](https://github.com/ArchiveBox/ArchiveBox)**  
   A fully featured self-hosted solution with a dedicated website. With 23k stars, it’s similar to the auto-archiver (with a nice front end) but less specialised, and it's excellent for self-hosting.
 
 - **[Webrecorder](https://webrecorder.net/archivewebpage/)**  
-  A Chrome extension that saves pages as WARC/WACZ files. This project is by [Ilya Kreymer](https://www.linkedin.com/in/ilya-kreymer-55110093/), the same person behind the great [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler) (702 stars), which we use with the auto-archiver to save WACZ files.
+  A Chrome extension that saves pages as WARC/WACZ files. This project is by [Ilya Kreymer](https://www.linkedin.com/in/ilya-kreymer-55110093/), the same person behind the great [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler) (702 stars), which we use with the auto-archiver to save WACZ files. See the end of this article for more on this.
 
 - **[Heritrix 3](https://github.com/internetarchive/heritrix3)**  
   The Internet Archive’s web crawler project with 2.9k stars and 45 contributors. Its output is largely similar to what the Wayback Machine produces.
@@ -254,7 +255,7 @@ Surprisingly, there aren’t many commercial tools that can archive single pages
 - **[Atlos](https://www.atlos.org/)**  
   This platform includes a basic screenshot tool and even integrates with the auto-archiver.
   
-[![](/assets/2025-01-13/9.jpg "Atlos Screenshot"){:width="300px"}](/assets/2025-01-13/9.jpg) 
+[![](/assets/2025-01-13/9.jpg "Atlos Screenshot"){:width="500px"}](/assets/2025-01-13/9.jpg) 
 
 - **[Hunch.ly](https://hunch.ly/)**  
   An OSINT tool designed for online investigations, available as both an app and an extension. It automatically captures content during your investigative process. $110 per year.
@@ -398,17 +399,17 @@ When it comes to manually archiving content start simple and see what works for 
 
 - **Webrecorder Archive Webpage:** This [extension](https://github.com/webrecorder/archiveweb.page) archives webpages as a WACZ files or WARC.
 
-[![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard"){:width="500px"}](/assets/2025-01-13/18.jpg) 
+[![](/assets/2025-01-13/18.jpg "Archive Webpage dashboard"){:width="700px"}](/assets/2025-01-13/18.jpg) 
 Archive Webpage dashboard. This is offline using browser local storage to view the saved session.
 
-[![](/assets/2025-01-13/17.jpg "Archive view"){:width="500px"}](/assets/2025-01-13/17.jpg) 
+[![](/assets/2025-01-13/17.jpg "Archive view"){:width="700px"}](/assets/2025-01-13/17.jpg) 
 Again the machine is offline viewing this.
 
-[![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine"){:width="500px"}](/assets/2025-01-13/19.jpg) 
+[![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine"){:width="700px"}](/assets/2025-01-13/19.jpg) 
 
 **Here is another computer, not logged into Instagram
 
-[![](/assets/2025-01-13/20.jpg "Non logged in machine viewing wacz"){:width="500px"}](/assets/2025-01-13/20.jpg) 
+[![](/assets/2025-01-13/20.jpg "Non logged in machine viewing wacz"){:width="700px"}](/assets/2025-01-13/20.jpg) 
 
 Here is that same computer viewing the wacz of the logged in the machine.
 
@@ -416,10 +417,10 @@ Here is that same computer viewing the wacz of the logged in the machine.
 ArchiveWeb.page allows users to archive what they browse, storing captured data directly in the browser. Users can download this data as files to their hard drive. Users can also delete any and all archived data at any time. ArchiveWeb.page does not collect any usage or tracking data
 
 
-[![](/assets/2025-01-13/21.jpg "Facebook logged in"){:width="300px"}](/assets/2025-01-13/21.jpg) 
+[![](/assets/2025-01-13/21.jpg "Facebook logged in"){:width="700px"}](/assets/2025-01-13/21.jpg) 
 Facebook logged in capturing the page.
 
-[![](/assets/2025-01-13/22.jpg "Facebook view on different machine"){:width="300px"}](/assets/2025-01-13/22.jpg) 
+[![](/assets/2025-01-13/22.jpg "Facebook view on different machine"){:width="700px"}](/assets/2025-01-13/22.jpg) 
 Downloaded and uploaded wacz to different machine and got a good render. The comment
 
 - **SingleFile** This [extension](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en-US&utm_source=ext_sidebar) 200k users, saves the complete webpage as a singlefile, changing the html to embed assets. 
