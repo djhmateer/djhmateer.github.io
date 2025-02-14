@@ -525,8 +525,13 @@ I run a business called [**Auto-Archiver.com**](https://auto-archiver.com/), whi
 - **Should I partner with other organisations to sell their products?** (maybe - I want to see if https://archiveweb.page/ is useful to my clients )  
 - **Who needs archiving help?** (Investigators, researchers, and organisations dealing with sensitive or time-sensitive data.) 
 
+<br />
+<br />
 
 ---
+
+<br />
+<br />
 
 This blog post is a snapshot of my journey in the world of archiving, the tools I’ve encountered, and the questions I’m asking as I grow my business. If you’re passionate about digital preservation or have insights to share please get in touch at **davemateer@gmail.com**.
 
