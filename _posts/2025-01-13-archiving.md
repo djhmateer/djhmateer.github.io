@@ -515,16 +515,19 @@ The timestamping method described above relies on the authority of various trust
 
 ## Conclusion
 
-I run a business called [**Auto-Archiver.com**](https://auto-archiver.com/), which offers hosted versions of the [**Bellingcat Auto-Archiver**](https://github.com/bellingcat/auto-archiver) tool. As I continue to develop and refine this service, I’ve been reflecting on a few key questions:  
+I run a business called [**Auto-Archiver.com**](https://auto-archiver.com/), which offers hosted versions of the [**Bellingcat Auto-Archiver**](https://github.com/bellingcat/auto-archiver) tool. As an entrepreneur I'm asking 
 
-- **Are there better products out there?** (Not that I know of! ArchiveWeb.page is a great tool I want to explore more)  
-- **Are my customers getting their money’s worth?** (I believe so!)  
-- **Should I partner with other organisations to sell their products?** (undecided yet!)
+- **Are there better products out there?** (Not that I know of! Although ArchiveWeb.page is a great tool I want to explore more)  
+- **Are my customers getting their money’s worth?** (I believe so)  
+- **Should I partner with other organisations to sell their products?** (undecided yet)
 - **Who needs archiving help?** (Investigators, researchers, and organisations dealing with sensitive or time-sensitive data.) 
 
 <br />
 
-This post is a snapshot of my journey in the world of archiving, the tools I’ve encountered, and the questions I’m asking as I grow my business and how I'm helping others. If you’re passionate about digital preservation, need advice, or have insights to share please get in touch at **davemateer@gmail.com**.
+This post is a reflection of my journey in the world of archiving, the tools I’ve encountered, and the questions I’m asking as I grow my business and how I'm helping others. 
+
+If you’re passionate about digital preservation, need advice, or have insights please get in touch at **davemateer@gmail.com**.
+
 
 
 
