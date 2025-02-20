@@ -104,11 +104,11 @@ Every archived page includes a details page, which you can access via a direct [
 
 Take a look at this snapshot:
 
-[![Details Page](/assets/2025-01-13/12.jpg "Details Page")](#)
+[![Details Page](/assets/2025-01-13/12.jpg "Details Page")](/assets/2025-01-13/12.jpg)
 
-Moreover, the archive also stores a timestamped hash of the file, a [WACZ archive]() of the entire page, and the full text content of the Tweet:
+Moreover, the archive also stores a timestamped hash of the file, a [WACZ archive](#warc-and-wacz-file-formats) of the entire page, and the full text content of the Tweet:
 
-[![Additional Archive Details](/assets/2025-01-13/13.jpg "Additional Archive Details")](#)
+[![Additional Archive Details](/assets/2025-01-13/13.jpg "Additional Archive Details")](/assets/2025-01-13/13.jpg)
 
 ## Why Google Spreadsheets?
 
@@ -139,7 +139,7 @@ DigitalOcean Spaces is particularly effective in public mode. It can host any fi
 
 Google Drive offers excellent control over files within your domain. However, it's important to note that while it's great for file management, you cannot serve a webpage directly from it / use it for direct image linking.
 
-![Google Drive Example](/assets/2025-01-13/14.jpg "Google Drive Example")
+![Google Drive Example](/assets/2025-01-13/14.jpg "Google Drive Example")(/assets/2025-01-13/14.jpg)
 
 ## Additional Tools
 
@@ -154,13 +154,13 @@ For those managing S3 storage, [Cyberduck S3 Viewer](https://cyberduck.io/) is a
 
 The Wayback Machine from the Internet Archive or simply [web.archive.org](https://web.archive.org/), is the most popular free archival tool available today.
 
-![Wayback Machine Interface](/assets/2025-01-13/8.jpg "Wayback Machine Interface")
+![Wayback Machine Interface](/assets/2025-01-13/8.jpg "Wayback Machine Interface")(/assets/2025-01-13/8.jpg)
 
 I always submit my archived urls here—often through their [API](https://archive.org/account/s3.php). This invaluable service, provided by the non-profit Internet Archive, has helped preserve [hundreds of billions](https://en.wikipedia.org/wiki/Wayback_Machine) of pages over the last 23 years.
 
 However, it's important to note that the Wayback Machine doesn't work well with larger platforms like Instagram (currently blocked) and Facebook. Your mileage may vary.
 
-![Overloaded API Warning](/assets/2025-01-13/15.jpg "Overloaded API Warning")
+![Overloaded API Warning](/assets/2025-01-13/15.jpg "Overloaded API Warning")(/assets/2025-01-13/15.jpg)
 
 Keep in mind that the service can sometimes get overloaded. The API, in particular, might take up to 5 minutes to confirm a successful save and you can see above a 21 minute wait from the web UI.
 
@@ -195,7 +195,7 @@ Despite these challenges, the auto-archiver offers several significant advantage
 - **Unmatched Raw Results:** There is nothing better for capturing pure archival data.
 - **Commercial Support:** You can get direct support and even speak with the source contributors (including me!).
 - **Proven Stability:** It has been running reliably for over four years across various platforms (AWS, Azure, and bare metal).
-- **Python:** It is written in Python, so can be easily understoon, and worked on by others.
+- **Python:** It is written in Python, so can be easily understood, and worked on by others.
 
 
 ## 2.3 Archive.today
@@ -208,7 +208,7 @@ Despite these challenges, the auto-archiver offers several significant advantage
 
 All these URLs redirect to the same service.
 
-[![Archive.today Screenshot](/assets/2025-01-13/16.jpg "Archive.today Screenshot")](#)
+[![Archive.today Screenshot](/assets/2025-01-13/16.jpg "Archive.today Screenshot")](/assets/2025-01-13/16.jpg)
 
 This service is particularly effective at getting around paywalls—for example, take a look at [this archived page](https://archive.ph/FlcDl). I've found nothing better for accessing paywalled content, which is why [Hacker News](https://news.ycombinator.com/) often links to articles saved via Archive.today.
 If you ever run into issues—such as the site not loading or seeing a "Welcome to nginx" page—try deleting the site cookie in Chrome.
