@@ -10,10 +10,7 @@ sitemap: false
 image: /assets/2024-11-12/1.jpg
 ---
 
-<!-- [![alt text](/assets/2025-01-13/5.jpg "email"){:width="500px"}](/assets/2025-01-13/5.jpg)  -->
-
 [![](/assets/2025-01-13/5.jpg "Photo by https://unsplash.com/@eyed"){:width="300px"}](/assets/2025-01-13/5.jpg) 
-
 
 # How to Archive Single URLs: A Guide  
 
@@ -36,16 +33,16 @@ This guide will walk you through **my favourite tools and techniques** to ensure
 - **[Archive.ph](https://archive.ph/)** – Very good and better than auto-archiver or wayback for bypassing paywalls.  
 - **[Webrecorder](https://webrecorder.net/)** - Good tool for crawling sites
 
-This article was written to explore alternatives to Bellingcat’s open-source **auto-archiver** which I use a lot. To date, I haven't found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
+This article was written to explore alternatives to the auto-archiver which I use a lot. I haven't found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
 
 
 ## 1. Why Archive?
 
-Before we dive into the methods of archiving single URLs, it is essential to understand the motivation behind preserving webpages. In our ever-changing digital landscape, online content can disappear (often very quickly from large platforms). For professionals working in investigative fields, ensuring that this content is preserved is paramount.
+Before we dive into the methods of archiving single URLs, it is essential to understand the motivation behind why you may be doing it. In our ever-changing digital landscape, online content can disappear (often very quickly from large platforms). This is a big problem.
 
 ### Who Might Benefit?
 
-I've found that archiving is useful for a wide range of professionals:
+I've found that archiving is useful for:
 
 - **Human Rights Investigative Organisations** – This is my own field, where our work has been [recognised with an international award which we are very proud of!](https://www.swansea.ac.uk/press-office/news-events/news/2024/11/research-on-using-mobile-phone-evidence-in-human-rights-cases-wins-prestigious-impact-prize.php)
 - **Investigative Journalism**
@@ -60,7 +57,7 @@ I've found that archiving is useful for a wide range of professionals:
 
 ### What Should You Archive?
 
-Depending on your requirements, there are various elements you may wish to preserve:
+Depending on your requirements, here are various elements you may wish to preserve:
 
 - **Screenshots** – To capture the exact visual context of a webpage.
 - **HTML Versions** – Keeping the structure and content accessible even if the original site is altered.
@@ -73,26 +70,26 @@ Depending on your requirements, there are various elements you may wish to prese
 
 Archiving webpages is crucial for two main reasons:
 
-- **Analysis:** It allows us to conduct detailed reviews and investigations long after the original content has been updated or removed.
-- **Preservation:** It helps maintain a reliable record for articles, reports, or even legal cases.
+- **Analysis:** It allows us to conduct detailed reviews and investigations long after the original content was removed or changed.
+- **Preservation:** It helps maintain a reliable record for articles, reports or legal cases.
 
-For the past four years, I have been involved in human rights archiving, focusing on safeguarding images and videos before they vanish from major platforms. While text is valuable, it is often the visual evidence—captured through screenshots or preserved multimedia—that offers the most compelling support for an investigation.
+For the past four years, I have been involved in human rights archiving, focusing on safeguarding images and videos. While text is valuable, it is the visual evidence that is the most important. 
 
-By utilising techniques such as hashing and recording on immutable platforms (which we are stopping in favour of timestamping), we can ensure that these records remain untampered.
-
+By utilising hashing and publishing on immutable platforms (which we are stopping in favour of timestamping), we can ensure that these records have a strong degree of reliability.
 
 
 # 1.1 What to Archive (Input)
 
- If you're deep into an investigation, and come across [a tweet](https://twitter.com/dave_mateer/status/1524341442738638848) which is important, then paste it into a spreadsheet. That's where the auto-archiver tool comes in. It pulls URLs from a Google Spreadsheet, then archives it.
+ Let's take an example of [a tweet](https://twitter.com/dave_mateer/status/1524341442738638848) which is important and you want to archive it using the auto-archiver.
 
 ## Setting Up Your Archive Input
 
-Imagine you have a list of URLs organised in a spreadsheet with columns already configured for the auto-archiver. Here’s an example screenshot of such a setup:
+
+Put the URL into a spreadsheet.
 
 [![Spreadsheet Setup](/assets/2025-01-13/10.jpg "Spreadsheet Setup")](#)
 
-Once the archiving kicks off (usually within a minute), the tool processes these URLs and writes the results directly back into the spreadsheet:
+Once the archiving kicks off (usually within a minute), the archiver processes these URLs and writes the results directly back into the spreadsheet:
 
 [![Archiver Output](/assets/2025-01-13/11.jpg "Archiver Output")](#)
 
@@ -404,7 +401,7 @@ When it comes to manually archiving content start simple and see what works for 
 Archive Webpage dashboard. This is offline using browser local storage to view the saved session.
 
 <!-- [![](/assets/2025-01-13/17.jpg "Archive view"){:width="700px"}](/assets/2025-01-13/17.jpg)  -->
-[![](/assets/2025-01-13/17.jpg "Archive view")(/assets/2025-01-13/17.jpg) 
+[![](/assets/2025-01-13/17.jpg "Archive view")](/assets/2025-01-13/17.jpg) 
 Again the machine is offline viewing this.
 
 <!-- [![](/assets/2025-01-13/19.jpg "Instagram on a non logged in machine"){:width="700px"}](/assets/2025-01-13/19.jpg)  -->
