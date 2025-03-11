@@ -33,12 +33,12 @@ This guide will walk you through **my favourite tools and techniques** to ensure
 - **[Archive.ph](https://archive.ph/)** – Very good and better than auto-archiver or wayback for bypassing paywalls.  
 - **[Webrecorder](https://webrecorder.net/)** - Good tool for crawling sites
 
-This article was written to explore alternatives to the auto-archiver which I use a lot. I haven't found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**.
+This article was written to explore alternatives to the auto-archiver which I use a lot. I haven't found a better solution. If you have suggestions or thoughts, please get in touch: **davemateer@gmail.com**
 
 
 ## 1. Why Archive?
 
-Before we dive into the methods of archiving single URLs, it is essential to understand the motivation behind why you may be doing it. In our ever-changing digital landscape, online content can disappear (often very quickly from large platforms). This is a big problem.
+Before we dive into the methods of archiving single URLs, it is essential to understand why you may be doing it. In our ever-changing online world, online content can disappear (often very quickly from large platforms). This is a big problem and is one of the main reasons we archive.
 
 ### Who Might Benefit?
 
@@ -80,22 +80,22 @@ By utilising hashing and publishing on immutable platforms (which we are stoppin
 
 # 1.1 What to Archive (Input)
 
- Let's take an example of [a tweet](https://twitter.com/dave_mateer/status/1524341442738638848) which is important and you want to archive it using the auto-archiver.
+ Let's take an example of [an X/a Tweet](https://twitter.com/dave_mateer/status/1524341442738638848) which is important and you want to archive it using the auto-archiver.
 
 ## Setting Up Your Archive Input
 
 
 Put the URL into a spreadsheet.
 
-[![Spreadsheet Setup](/assets/2025-01-13/10.jpg "Spreadsheet Setup")](#)
+[![Spreadsheet Setup](/assets/2025-01-13/10.jpg "Spreadsheet Setup")](/assets/2025-01-13/10.jpg)
 
 Once the archiving kicks off (usually within a minute), the archiver processes these URLs and writes the results directly back into the spreadsheet:
 
-[![Archiver Output](/assets/2025-01-13/11.jpg "Archiver Output")](#)
+[![Archiver Output](/assets/2025-01-13/11.jpg "Archiver Output")](/assets/2025-01-13/11.jpg)
 
 ## Exploring the Archive Details
 
-Every archived page includes a details page, which you can access via a direct [link](https://testhashing.fra1.cdn.digitaloceanspaces.com/iv001/7049ee36a7214ee78846dbfd.html). On this page, you’ll find:
+Every archived page includes a details page, which you can access via a direct [link](https://testhashing.fra1.cdn.digitaloceanspaces.com/dia019/61f5a5363bce449a8684a02d.html). On this page, you’ll find:
 
 - **Full Resolution Images:** Complete with EXIF metadata and hashes
 - **Screenshots:** A visual capture of the page at the time of archiving.
