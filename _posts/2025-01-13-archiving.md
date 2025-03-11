@@ -139,13 +139,11 @@ DigitalOcean Spaces is particularly effective in public mode. It can host any fi
 
 Google Drive offers excellent control over files within your domain. However, it's important to note that while it's great for file management, you cannot serve a webpage directly from it / use it for direct image linking.
 
-![Google Drive Example](/assets/2025-01-13/14.jpg "Google Drive Example")(/assets/2025-01-13/14.jpg)
+[![Google Drive Example](/assets/2025-01-13/14.jpg "Google Drive Example")](/assets/2025-01-13/14.jpg)
 
 ## Additional Tools
 
 For those managing S3 storage, [Cyberduck S3 Viewer](https://cyberduck.io/) is a great tool to view and copy files to your S3 buckets
-
-
 
 
 # 2. General Archival Tools
@@ -154,13 +152,13 @@ For those managing S3 storage, [Cyberduck S3 Viewer](https://cyberduck.io/) is a
 
 The Wayback Machine from the Internet Archive or simply [web.archive.org](https://web.archive.org/), is the most popular free archival tool available today.
 
-![Wayback Machine Interface](/assets/2025-01-13/8.jpg "Wayback Machine Interface")(/assets/2025-01-13/8.jpg)
+[![Wayback Machine Interface](/assets/2025-01-13/8.jpg "Wayback Machine Interface")](/assets/2025-01-13/8.jpg)
 
 I always submit my archived urls here—often through their [API](https://archive.org/account/s3.php). This invaluable service, provided by the non-profit Internet Archive, has helped preserve [hundreds of billions](https://en.wikipedia.org/wiki/Wayback_Machine) of pages over the last 23 years.
 
 However, it's important to note that the Wayback Machine doesn't work well with larger platforms like Instagram (currently blocked) and Facebook. Your mileage may vary.
 
-![Overloaded API Warning](/assets/2025-01-13/15.jpg "Overloaded API Warning")(/assets/2025-01-13/15.jpg)
+[![Overloaded API Warning](/assets/2025-01-13/15.jpg "Overloaded API Warning")](/assets/2025-01-13/15.jpg)
 
 Keep in mind that the service can sometimes get overloaded. The API, in particular, might take up to 5 minutes to confirm a successful save and you can see above a 21 minute wait from the web UI.
 
@@ -526,7 +524,7 @@ I run a business called [**Auto-Archiver.com**](https://auto-archiver.com/), whi
 
 This post is a reflection of my journey in the world of archiving, the tools I’ve encountered, and the questions I’m asking as I grow my business and how I'm helping others. 
 
-If you’re passionate about digital preservation, need advice, or have insights please get in touch at **davemateer@gmail.com**.
+If you’re passionate about digital preservation, need advice, or have insights please get in touch at **davemateer@gmail.com**
 
 
 
