@@ -235,7 +235,7 @@ Screenshot from Archivebox - notice the common problem of popups on large platfo
   A Rust-based tool with 12.4k stars and 28 contributors that embeds CSS, images, and JavaScript assets into a single HTML file—ideal for general archiving cases.
 
 - **[Scoop](https://github.com/harvard-lil/scoop)**  
-  A new project focused on provenance.
+  A new project focused on provenance. [https://github.com/bellingcat/auto-archiver/issues/248](https://github.com/bellingcat/auto-archiver/issues/248) potential though to use it instead of browsertrix-crawler.
 
 - **[Perma.cc](https://perma.cc/)**  
   Widely used by academics, legal professionals, and libraries. It costs $10 per month for 10 links or $100 for 500 links. This service is built by the Harvard Library Innovation Lab in collaboration with Ilya.
