@@ -502,6 +502,18 @@ The timestamping method described above relies on the authority of various trust
 
 [OpenTimestamps](https://opentimestamps.org/) is a protocol designed for timestamping files and proving their integrity over time. It embeds the hash onto a blockchain—Bitcoin has been operational for 16 years, and OpenTimestamps has been around for 8 years.
 
+## The Berkeley Protocol
+
+> international protocol outlining the minimum professional standards for the identification, collection, preservation, verification, and analysis of digital open source information, with an aim toward improving its effective use in international criminal, humanitarian and human rights investigations.
+
+[berkeley.edu](https://humanrights.berkeley.edu/projects/developing-the-berkeley-protocol-on-digital-open-source-investigations/)
+
+[TBP](https://www.ohchr.org/en/publications/policy-and-methodological-publications/berkeley-protocol-digital-open-source)
+
+
+TODO: how the AA hits the collection criteria... and do other ways of archiving do it any better?
+
+
 ## People and Interesting Articles
 
 - [Andrew Jackson](https://anjackson.net/about/) – Technical Architect at the [Digital Preservation Coalition](https://www.dpconline.org/about/contact-us).
