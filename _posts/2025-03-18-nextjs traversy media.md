@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Next.js 
+title: Travery Media Next.js 15
 description: 
 menu: review
 categories: js 
