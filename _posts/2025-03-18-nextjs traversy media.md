@@ -256,12 +256,123 @@ Icons from [lucide-react](https://lucide.dev/guide/packages/lucide-react)
 
 `components/footer.tsx` for the Footer which isn't shared. Nicer naming convention!
 
+Lots of TailwindCSS and Flexbox getting the design setup including not displaying the name on smaller screensizes.
+
+<Link> component with a <Image> inside for logo
+
+<Button> component to have nice hover over states using Ghost theme with <Link> inside
 
 
 
 [![alt text](/assets/2025-03-19/2.jpg "email"){:width="600px"}](/assets/2025-03-19/2.jpg) 
 
 
+
+## 2.6 Theme Mode
+
+`pnpm add next-themes` for helping switch between light and dark modes
+
+`pnpm dlx shadcn@latest add dropdown-menu` for drop down. adds in `components/ui/dropdown-menu.tsx`
+
+In AopLayout import that ThemeProvider from next-themes
+
+
+Going to be using somme client hooks from next-themes, so need to be a client side component
+
+```tsx
+// components/shared/header/mode-toggle.tsx
+
+```
+
+
+[![alt text](/assets/2025-03-19/3.jpg "email"){:width="700px"}](/assets/2025-03-19/3.jpg) 
+
+The server doesn't have a window, so that is the problem. The `suppressHydrationWarning` on the root html tag doesn't suppress this warning alone.
+
+we need to make sure the component is mounted before it uses or changes the theme.
+
+```tsx
+"use client";
+
+// for hydration warning fix
+import { useState, useEffect } from "react";
+
+// hooks from next-themes
+import { useTheme } from "next-themes";
+
+// for dropdown menu
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuContent,
+  DropdownMenuCheckboxItem,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { SunIcon, MoonIcon, SunMoon } from "lucide-react";
+
+const ModeToggle = () => {
+  // hydration warning fix
+  const [mounted, setMounted] = useState(false);
+
+  // setTheme called from onClick on dropdown menu from chadcn ui
+  const { theme, setTheme } = useTheme();
+
+  // useEffect to prevent hydration warning
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) return null;
+
+  return (
+    // https://ui.shadcn.com/docs/components/dropdown-menu
+    <DropdownMenu>
+      {/* asChild as we've got a butotn inside of it */}
+      <DropdownMenuTrigger asChild>
+        {/* border on icon get rid of */}
+        <Button
+          variant="ghost"
+          className="focus-visible:ring-0 focus-visible:ring-offset-0"
+        >
+          {theme === "system" ? (
+            <SunMoon />
+          ) : theme === "dark" ? (
+            <MoonIcon />
+          ) : (
+            <SunIcon />
+          )}
+        </Button>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent>
+        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuCheckboxItem
+          checked={theme === "system"}
+          onClick={() => setTheme("system")}
+        >
+          System
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={theme === "dark"}
+          onClick={() => setTheme("dark")}
+        >
+          Dark
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={theme === "light"}
+          onClick={() => setTheme("light")}
+        >
+          Light
+        </DropdownMenuCheckboxItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
+
+export default ModeToggle;
+```
 
 
 
