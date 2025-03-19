@@ -374,6 +374,408 @@ const ModeToggle = () => {
 export default ModeToggle;
 ```
 
+2.6 Loading and Not Found
+
+```tsx
+// app/loading.tsx
+// sfc
+import Image from "next/image";
+import loader from "@/assets/loader.gif";
+
+const Loading = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
+      <Image src={loader} width={150} height={150} alt="Loading..." />
+    </div>
+  );
+};
+
+export default Loading;
+```
+
+then a test on 
+
+```tsx
+// app/(root)/page.tsx
+import type { Metadata } from "next";
+import { Button } from "@/components/ui/button";
+
+// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export const metadata: Metadata = {
+  title: "Home",
+};
+
+const HomePage = async () => {
+  // await delay(2000);
+
+  // simpler way to delay without the need for the delay function
+  // the resolver function is called when the timeout is up essentially
+  // telling the promise to resolve ie "I'm done now"
+  await new Promise((resolver) => setTimeout(resolver, 2000));
+
+  return (
+    <div>
+      <h1>Hello World</h1>
+      {/* <Button>Click me</Button> */}
+    </div>
+  );
+};
+
+export default HomePage;
+```
+
+### not-found.tsx
+
+```tsx
+// we're using onClick to navigate to the home page
+"use client";
+
+import { APP_NAME } from "@/lib/constants";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+
+const NotFound = () => {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen ">
+      <Image
+        priority={true}
+        // public/images/logo.svg
+        src="/images/logo.svg"
+        width={48}
+        height={48}
+        alt={`${APP_NAME} logo`}
+      />
+      <div className="p-6 rounded-lg shadow-md w-1/3 text-center">
+        <h1 className="text-3xl font-bold mb-4">Not Found</h1>
+        {/* destructive is red */}
+        <p className="text-destructive">Could not find requested resource</p>
+        <Button
+          variant="outline"
+          className="mt-4 ml-2"
+          onClick={() => (window.location.href = "/")}
+        >
+          Back to home
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default NotFound;
+```
+
+TODO - why does this have to be client side?? Maybe it is faster / preferable? It could easily be server side?
+
+2.7 Responsive Sheet Menu
+
+[shadcn sheet](https://ui.shadcn.com/docs/components/sheet)
+
+This is for a smaller screen and the 3 dots, menu 'sheet' that flys in.
+
+`pnpm dlx shadcn@latest add sheet `
+
+```tsx
+// components/shared/header/menu.tsx
+import { EllipsisVertical, ShoppingCart, UserIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import Link from 'next/link';
+import ModeToggle from './mode-toggle';
+
+const Menu = () => {
+  return (
+    <>
+      <div className="flex justify-end gap-3">
+        <nav className="md:flex hidden w-full max-w-xs gap-1">
+          {/* Light and dark mode toggle */}
+          <ModeToggle />
+
+          {/* Cart button */}
+          <Button asChild variant="ghost">
+            <Link href="/cart">
+              {/* Shopping cart icon */}
+              <ShoppingCart />
+              Cart
+            </Link>
+          </Button>
+
+          {/* Sign in button */}
+          <Button asChild>
+            <Link href="/sign-in">
+              {/* User icon */}
+              <UserIcon />
+              Sign In
+            </Link>
+          </Button>
+        </nav>
+
+        {/* sheet component for mobile */}
+        <nav className="md:hidden">
+          <Sheet>
+            <SheetTrigger className="align-middle">
+              {/* the vertical dots */}
+              <EllipsisVertical />
+            </SheetTrigger>
+            {/* the sheet menu content */}
+            <SheetContent className="flex flex-col items-start">
+              <SheetTitle>Menu</SheetTitle>
+              {/* light and dark mode toggle */}
+              <ModeToggle />
+              {/* cart button */}
+              <Button asChild variant="ghost">
+                <Link href="/cart">
+                  <ShoppingCart />
+                  Cart
+                </Link>
+              </Button>
+              {/* sign in button - will be in another component soon*/}
+              <Button asChild>
+                <Link href="/sign-in">
+                  <UserIcon />
+                  Sign In
+                </Link>
+              </Button>
+              {/* need description for the sheet otherwise get a warning */}
+              <SheetDescription></SheetDescription>
+            </SheetContent>
+          </Sheet>
+        </nav>
+      </div>
+    </>
+  );
+};
+
+export default Menu;
+```
+
+and then called from 
+
+```tsx
+// components/shared/header/index.tsx
+import Image from "next/image";
+import Link from "next/link";
+import { APP_NAME } from "@/lib/constants";
+import Menu from "./menu";
+const Header = () => {
+  return (
+    // tailwind is flex columns of width full.
+    //  border-b is a border on the bottom of the element.
+    <header className="w-full border-b">
+      {/* flex-between is a custom class */}
+      {/* flex justify-between items-center; */}
+      <div className="wrapper flex-between">
+        {/* logo on left hand side */}
+        <div className="flex-start">
+          <Link href="/" className="flex-start">
+            {/* public/images/logo.svg */}
+            <Image
+              src="/images/logo.svg"
+              alt={`${APP_NAME} logo`}
+              width={48}
+              height={48}
+              priority={true}
+            />
+            {/* show on large screens and up */}
+            <span className="hidden lg:block font-bold text-2xl ml-3">
+              {APP_NAME}
+            </span>
+          </Link>
+        </div>
+
+        {/* Right hand side menu in its own component */}
+        <Menu />
+        
+      </div>
+    </header>
+  );
+};
+
+export default Header;
+```
+
+[![alt text](/assets/2025-03-19/4.jpg "email"){:width="500px"}](/assets/2025-03-19/4.jpg) 
+There is something a bit off with html styles but all conceptually fine for now (and working!)
+
+## 2.9 List Sample Products
+
+
+```ts
+// simple js objects so we don't need to connect to a db yet
+// db/sample-data.ts
+const sampleData = {
+  products: [
+    {
+      name: 'Polo Sporting Stretch Shirt',
+      slug: 'polo-sporting-stretch-shirt',
+      category: "Men's Dress Shirts",
+      description: 'Classic Polo style with modern comfort',
+      images: [
+        '/images/sample-products/p1-1.jpg',
+        '/images/sample-products/p1-2.jpg',
+      ],
+      price: 59.99,
+      brand: 'Polo',
+      rating: 4.5,
+      numReviews: 10,
+      stock: 5,
+      isFeatured: true,
+      banner: 'banner-1.jpg',
+    },
+// ...
+```
+
+then 
+
+```tsx
+// components/shared/product/product-list.tsx
+// sfc
+
+// any is used because later we will create a product type (zod?)
+// title is optional so use a ?
+// limit is optional and a number
+const ProductList = ({ data, title, limit }: { data: any; title?: string; limit?: number }) => {
+  // if limit is provided, slice the data to the limit
+  const limitedData = limit ? data.slice(0, limit) : data;
+  return (
+    <div className="my-10">
+      <h2 className="h2-bold mb-4">{title}</h2>
+      {data.length > 0 ? (
+        // mobile - 1 column then 2,3,4 columns on larger screens
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {limitedData.map((product: any) => (
+            <div>{product.name}</div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          <p>No product found</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ProductList;
+```
+
+and wired up the home page:
+
+```tsx
+// app/(root)/page.tsx
+import sampleData from "@/db/sample-data";
+import ProductList from "@/components/shared/product/product-list";
+
+const HomePage = () => {
+  console.log(sampleData);
+
+  return (
+      <ProductList data={sampleData.products} title="Newest Arrivals" limit={4} />
+  );
+};
+
+export default HomePage;
+```
+
+## 2.10 Product Card
+
+`pnpm dlx shadcn@latest add card`
+
+```tsx
+// components/shared/product/product-card.tsx
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+
+const ProductCard = ({ product }: { product: any }) => {
+  return (
+    <Card className='w-full max-w-sm'>
+      <CardHeader className='p-0 items-center'>
+        <Link href={`/product/${product.slug}`}>
+          <Image
+            priority={true}
+            src={product.images![0]}
+            alt={product.name}
+            className='aspect-square object-cover rounded'
+            height={300}
+            width={300}
+          />
+        </Link>
+      </CardHeader>
+      <CardContent className='p-4 grid gap-4'>
+          <div className='text-xs'>{product.brand}</div>
+          <Link href={`/product/${product.slug}`}>
+            <h2 className='text-sm font-medium'>{product.name}</h2>
+          </Link>
+        <div className='flex-between gap-4'>
+          <p>{product.rating} stars</p>
+          {product.stock > 0 ? (
+            <p className='font-bold'>${product.price}</p>
+          ) : (
+            <p className='text-destructive'>Out of Stock</p>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default ProductCard;
+```
+
+and this is called from `product-list.tsx`
+
+```tsx
+// components/shared/product/product-list.tsx
+import ProductCard from './product-card';
+
+// any is used because later we will create a product type (zod?)
+// title is optional so use a ?
+// limit is optional and a number
+const ProductList = ({ data, title, limit }: { data: any; title?: string; limit?: number }) => {
+  // if limit is provided, slice the data to the limit
+  const limitedData = limit ? data.slice(0, limit) : data;
+  return (
+    <div className="my-10">
+      <h2 className="h2-bold mb-4">{title}</h2>
+      {data.length > 0 ? (
+        // mobile - 1 column then 2,3,4 columns on larger screens
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {limitedData.map((product: any) => (
+            // <div>{product.name}</div>
+            // need a unique key for each product otherwise error
+            <ProductCard key={product.slug} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div>
+          <p>No product found</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ProductList;
+```
+
+[![alt text](/assets/2025-03-19/5.jpg "email"){:width="800px"}](/assets/2025-03-19/5.jpg) 
+
+So looking good using shadui!
+
+But there is a lot of complexity and files (components) all over the place.
+
+
+## 2.11 Product Price Component
 
 
 
@@ -389,6 +791,7 @@ Thoughts so far
 
 - Naming of files is annoying - lots of page.tsx, index.tsx, layout.tsx. Can't jump straight to files I want.
 
+- there is a lot of complexity and files (components) all over the place.
 
 select with mouse and ctrl c (not insert mode)
 ctrl v (insert mode)
