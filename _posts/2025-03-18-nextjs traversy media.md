@@ -213,6 +213,58 @@ Gives
 
 Good page title.
 
+## 2.5 Header and Footer Components
+
+```tsx
+// components/shared/header/index.tsx
+const Header = () => {
+    return  <>Header</>;
+};
+ 
+export default Header;
+```
+
+then in the layout
+
+```tsx
+// app/(root)/layout.tsx
+import Header from "@/components/shared/header";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    // height of whole screen and flex column
+    <div className="flex h-screen flex-col">
+      {/* header component from components/shared/header/index.tsx */}
+      <Header />
+        {/* wrapper is a utility class in global.css */}
+        <main className="flex-1 wrapper">{children}</main>
+    </div>
+  );
+}
+```
+
+Icons from [lucide-react](https://lucide.dev/guide/packages/lucide-react)
+
+`pnpm install lucide-react`
+
+
+`components/shared/header/index.tsx` for the Header component
+
+`components/footer.tsx` for the Footer which isn't shared. Nicer naming convention!
+
+
+
+
+[![alt text](/assets/2025-03-19/2.jpg "email"){:width="600px"}](/assets/2025-03-19/2.jpg) 
+
+
+
+
+
 
 ## FOO
 
@@ -222,4 +274,11 @@ Thoughts so far
 - I've got 15.2.3 running using this method (15.2.1 on learn example which I can't upgrade)
 - Tailwind v4 has just been released and caused breaking changes
 - (root) layout
+
+
+- Naming of files is annoying - lots of page.tsx, index.tsx, layout.tsx. Can't jump straight to files I want.
+
+
+select with mouse and ctrl c (not insert mode)
+ctrl v (insert mode)
 
