@@ -19,6 +19,29 @@ image: /assets/2024-05-03/4.jpg
 
 <!-- My second feature phone - love it! But no wifi calling which is a dealbreaker for where I live. -->
 
+## Update after 9 months
+
+Have gone back to my smartphone but changed behaviour
+
+I've got a shelf in my house where I keep my phone. It stays there.
+
+Apps are
+
+- WhatsApp for messages (and I don't regularly as a friend put it - you're not that important!)
+- Camera
+- OS Maps for running
+- Google maps for car navigation
+- Strava (my only social media) which inspires me to run and post nice photos
+
+I don't watch YouTube on phone or computers (or doom click on it) anymore as far too addictive. Much more fun to be in the moment, and watch quality entertainment on Netflix / Disney
+
+Have dropped my phone quite a few times and the screen is very cracked but usable.
+
+All my 2FA has SMS backup, so if I lose the phone it isn't a big deal.
+
+
+## Intro
+
 I'm giving a [feature phone](https://en.wikipedia.org/wiki/Feature_phone) a try for
 
 - Running as they are super light and great battery life
