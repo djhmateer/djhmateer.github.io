@@ -285,7 +285,7 @@ Going to be using somme client hooks from next-themes, so need to be a client si
 ```
 
 
-[![alt text](/assets/2025-03-19/3.jpg "email"){:width="700px"}](/assets/2025-03-19/3.jpg) 
+[![alt text](/assets/2025-03-19/3.jpg "email"){:width="800px"}](/assets/2025-03-19/3.jpg) 
 
 The server doesn't have a window, so that is the problem. The `suppressHydrationWarning` on the root html tag doesn't suppress this warning alone.
 
