@@ -141,7 +141,6 @@ const HomePage = () => {
 export default HomePage;
 ```
 
-
 ## 2.4 Root Layout and Constants
 
 We can have multiple layouts which will be very useful for normal and for admin
@@ -777,6 +776,136 @@ But there is a lot of complexity and files (components) all over the place.
 
 ## 2.11 Product Price Component
 
+```tsx
+// components/shared/product/product-price.tsx
+// sfc
+import { cn } from "@/lib/utils";
+
+// takes a value and a className
+// types of number and classname is optional and a string
+const ProductPrice = ({
+  value,
+  className,
+}: {
+  value: number;
+  className?: string;
+}) => {
+  // Ensure two decimal places
+  const stringValue = value.toFixed(2);
+
+  // Get the int/float ie 23 and 99 for $23.99
+  // destructure the integer and decimal with brackets
+  const [intValue, floatValue] = stringValue.split(".");
+
+  // always want to return a class of 2xl, but optionally another class
+  // use utility function in lib/utils for dunmaic classes
+  return (
+    <p className={cn("text-2xl", className)}>
+        {/* dollar sign is smaller and up the top */}
+      <span className="text-xs align-super">$</span>
+      {intValue}
+      {/* float is smaller and up the top */}
+      <span className="text-xs align-super">.{floatValue}</span>
+    </p>
+  );
+};
+
+export default ProductPrice;
+```
+
+and called from 
+
+```tsx
+// components/shared/product/product-card.tsx
+import ProductPrice from "./product-price";
+// ...
+ <ProductPrice value={Number(product.price)} />
+```
+
+[![alt text](/assets/2025-03-19/6.jpg "email"){:width="800px"}](/assets/2025-03-19/6.jpg) 
+
+Now we have the small dollar sign and cents.
+
+### Summary so far 
+
+- pnpm for dependencies
+- Tailwind v4 for CSS
+- Prettier for code formatting great - shift alt F.
+-scaffolding out the UI first out of components from [shadcn](https://ui.shadcn.com/)
+- everything is server side rendered apart from when need hooks eg for changing the `mode-toggle` light and dark theme 
+- lucide.dev for icons
+- a lot of small files containing components (which I'm not liking) - complexity. But maybe they will be reused and make it worth it.
+- a lot of files names page.tsx and layout.tsx. hard to navigate
+- deep structure eg components/shared/product/product-list.tsx - simplify?
+
+
+## 3.1 Database intro
+
+- Neon for cloud Postgres (I have used Supabase)
+- Prisma for ORM
+- Schema and Models that define... 
+- Then can run Migrations that will create db tables
+- Seed data
+- Zod schema validation type validator
+- Home and details page
+
+## 3.2 PostgreSQL and Prisma Setup
+
+[https://neon.tech/pricing](https://neon.tech/pricing) - 10 projects. 10 branches. Max time on non-primary branch: 5 hours.  0.5GB storage, 190 compute hours.
+
+Vercel, Integrations, Storage - Neon or Supabase are the Postgres options.
+
+London, wprostore-db
+
+So, interesting I've created a db, but not inside any project in Vercel.
+
+
+### Prisma
+
+[https://www.prisma.io/](https://www.prisma.io/) - ORM.
+
+```bash
+# dev dependency
+pnpm install prisma --save-dev
+pnpm install @prisma/client --save-dev
+
+# to remove a package (I didn't install as a dev dependency)
+pnpm remove @prisma/client
+
+# pnpm update available 10.6.1 -> 10.6.5  on 20th March 20205
+# I got this but the update worked!
+# Nothing to stop. No server is running for the store at /home/dave/.local/share/pnpm/store/v10
+pnpm self-update
+
+# generated prisma/schema.prisma
+# put in DATABASE_URL in .env
+# need to get from neon (the normal one with pgbouncer)!!!
+pnpx prisma init
+```
+
+Using prisma exention for vscode.
+
+So just a code formatter for `.prisma` files
+
+Ctrl Shift P, Preferences open user settings [JSON]
+
+```json
+ "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
+```
+
+## 3.3 Prisma Models and Migrations
+
+
+
+
+
+
+
+
+
+
 
 
 ## FOO
@@ -796,3 +925,5 @@ Thoughts so far
 select with mouse and ctrl c (not insert mode)
 ctrl v (insert mode)
 
+
+<!-- [![alt text](/assets/2025-03-19/1.jpg "email"){:width="500px"}](/assets/2025-03-19/1.jpg)  -->
