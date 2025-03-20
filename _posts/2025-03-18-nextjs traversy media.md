@@ -897,9 +897,79 @@ Ctrl Shift P, Preferences open user settings [JSON]
 
 ## 3.3 Prisma Models and Migrations
 
+schema - all together
 
+each definition eg User is a model
 
+```json
+// prisma/schema.prisma
+// this whole file is the Schema
 
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// this is a Model
+model Product {
+  // @id means this is the primary key
+  // @default(dbgenerated("")) means this is a db generated UUID with a type of db UUID
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  // Each model must have 1 unique field
+  // index on the db
+  slug        String   @unique(map: "product_slug_idx")
+  category    String
+  images      String[]
+  brand       String
+  description String
+  stock       Int
+  // DM - I prefer to use Int and cents for prices
+  price       Decimal  @default(0) @db.Decimal(12, 2)
+  rating      Decimal  @default(0) @db.Decimal(3, 2)
+  runReviews  Int      @default(0)
+  isFeatured  Boolean  @default(false)
+  banner      String?
+
+  // Timestamp(6) includes milliseconds
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+}
+```
+
+and script to run the schema to re-gen our models before deplay:
+
+```json
+// package.json
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+  },
+```
+then
+
+```bash
+# generated prisma client in node_mofules
+pnpx prisma generate
+
+# creates the prisma/migrations/timestamp_init/migration.sql file
+# runs it on the database!
+pnpm prisma migrate dev --name init
+
+# http://localhost:5555/
+# can view live data, create, delete rows
+pnpx prisma studio
+```
+
+## 3.4 Seed Sample Data
+
+asdf
 
 
 
