@@ -35,7 +35,7 @@ Prisma studio is a web UI for the db
 
 ## 1.3
 
-Prettier (55m) eg puts in forgotton semicolons, or fixes spaces
+Prettier (55m) eg puts in forgotten semicolons, or fixes spaces. Do ctrl alt F to format, then select prettier as the default ts formatter.
 
 
 ESLint (42m) - check code for errors, and enforce a style guide eg if you have a variable declared, but never used, it will let you know
@@ -969,7 +969,503 @@ pnpx prisma studio
 
 ## 3.4 Seed Sample Data
 
-asdf
+
+```ts
+import { PrismaClient } from "@prisma/client";
+import sampleData from "./sample-data";
+
+async function main() {
+  const prisma = new PrismaClient();
+
+  await prisma.product.deleteMany();
+
+  await prisma.product.createMany({
+    data: sampleData.products,
+  });
+
+  console.log("Database seeded successfully");
+}
+
+main();
+```
+
+then to run
+
+```bash
+# am getting strange error about can't find
+# DATABASE_URL - but it is in the root .env file
+# error: Environment variable not found: DATABASE_URL.
+pnpx tsx ./db/seed
+
+# had to run 
+# This will re-establish the link between schema.prisma and .env file.
+pnpx prisma generate
+
+# I had to update the db as typo in prisma.schema
+pnpm prisma migrate dev --name numReviews
+
+pnpx tsx ./db/seed
+
+# check out seeded data
+pnpx prisma studio
+```
+
+## 3.5 Fetch data from DB
+
+Going to be using `Server Actions` - just async functions which are executed on the server.
+
+We're going to get the form to post to a server action.
+
+We'll just use an event to fetch data...mind bend!! Or we'll stick in straight in a component (which is server rendered)
+
+Better than using API routes which is what would have been done in pre Next.js v14 land. API routes still useful if we have a mobile app and a webapp which want to use the same backend. For a monolithic app, then server actions are better/simpler.
+
+
+```ts
+// lib/actions/product.actions.ts
+"use server";
+
+import { PrismaClient } from "@prisma/client";
+
+// Get latest products
+
+export const getLatestProducts = async () => {
+  const prisma = new PrismaClient();
+
+  const data = await prisma.product.findMany({
+    take: 4,
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  // this is a prisma object
+  return data;
+};
+```
+
+and from the homepage
+
+
+```tsx
+// app/(root)/page.tsx
+// import sampleData from "@/db/sample-data";
+import ProductList from "@/components/shared/product/product-list";
+
+// import the action
+import { getLatestProducts } from "@/lib/actions/product.actions";
+
+const HomePage = async () => {
+  const latestProducts = await getLatestProducts();
+  // console.log(sampleData);
+
+  return (
+    // <ProductList data={sampleData.products} title="Newest Arrivals" limit={4} />
+    <ProductList data={latestProducts} title="Newest Arrivals" />
+  );
+};
+
+export default HomePage;
+```
+
+It works! But am getting an error due to decimal type, so lets convert the prisma object to a js object using a wrapper function.
+
+```ts
+// lib/utils.ts
+// Convert a prisma object to a JS object
+// TS generic - T is placeholder eg a string, object, prisma object
+// return type is same as input type
+// eg if a product object, should be a product object returned
+export const convertToPlainObject = <T>(value: T): T => {
+  return JSON.parse(JSON.stringify(value));
+};
+```
+
+and using on the server action:
+
+```ts
+// lib/actions/product.actions.ts
+
+  // convert prisma object to plain JS object
+  return convertToPlainObject(data);
+```
+
+## 3.6 Zod - Validation
+
+Currently we're using the `any` type eg in 
+
+A product-list contains a product-card which contains a product-price.
+
+```tsx
+// components/product/product-card.tsx
+
+// input to the arrow function is product of type any
+// there is no output
+const ProductCard = ({ product }: { product: any }) => {
+```
+
+So when we call the React component ProductCard with a prop like this:
+
+```tsx
+// shared/product/product-list.tsc
+// pass to product card a product js object.
+<ProductCard key={product.slug} product={product} />
+```
+
+[https://zod.dev/](https://zod.dev/)
+
+```ts
+// types/index.ts
+import { z, ZodIntersection } from "zod";
+import { insertProductSchema } from "@/lib/validators";
+
+export type Product = z.infer<typeof insertProductSchema> & {
+    id: string;
+    rating: string;
+    createdAt: Date;
+}
+```
+
+install zod
+
+```bash
+pnpm install zod
+```
+
+```ts
+// lib/validators.ts
+import { z } from "zod";
+
+const currency = z
+.string()
+.refine((value) => /^\d+(\.\d{2})?$/.test(value), {
+  message: 'Price must have exactly 2 decimal places',
+})
+
+// Schema for inserting products
+export const insertProductSchema = z.object({
+  name: z.string().min(3, 'Name must be at least 3 characters'),
+  slug: z.string().min(3, 'Slug must be at least 3 characters'),
+  category: z.string().min(3, 'Category must be at least 3 characters'),
+  brand: z.string().min(3, 'Brand must be at least 3 characters'),
+  description: z.string().min(3, 'Description must be at least 1 character'),
+  stock: z.coerce.number(),
+  images: z.array(z.string()).min(1, 'Product must have have at least 1 image is required'),
+  isFeatured: z.boolean(),
+  banner: z.string().optional(),
+  price: currency,
+});
+```
+
+Multiple cursor case preserve - extension.. recommends
+
+
+```ts
+// lib/utils.ts
+// Format a number to 2 decimal places
+export function formatNumberWithDecimals(num: number): string {
+  const [int, decimal] = num.toString().split('.');
+  return decimal ? `${int}.${decimal.padEnd(2, '0')}` : `${int}.00`;
+}
+```
+
+Now we can use our new type
+
+
+```tsx
+// components/shared/product/product-card.tsx
+import { Product } from "@/types";
+
+const ProductCard = ({ product }: { product: Product }) => {
+  return (
+```
+
+[![alt text](/assets/2025-03-19/7.jpg "email"){:width="800px"}](/assets/2025-03-19/7.jpg) 
+
+We get a warning in vscode that can't find the type product.slug if the zod schema doesn't define it. File turns red in tree layout to show problems.
+
+However the app still ran.. just didn't
+
+
+## 3.7 Serverless Environment Config
+
+[Neon Serverless driver](https://neon.tech/docs/serverless/serverless-driver)
+
+Vercel is a serverless (just means multi servers?) environment. We need some config to help
+
+Neon Serverless driver supports Connect to the db via WebSockets
+
+Traditionally db's maintained persistent TCP connections, but serverless is designed to scale, so can't persist connections between invocations.
+
+
+- Neon - need to install serverless driver
+- Prisma adapter
+- WebSockets package
+
+
+```bash
+# 0.10.4 on 21st Mar 25
+pnpm i @neondatabase/serverless 
+# 6.5.0 on 21st Mar 25
+pnpm i @prisma/adapter-neon
+# 8.18.1
+pnpm i ws
+
+# dev dependencies
+# 8.18.0
+pnpm i @types/ws --save-dev
+
+# 4.0.9
+pnpm i bufferutil --save-dev
+```
+
+To use the prisma adaper 
+
+```json
+// prisma/schema.adapter
+
+generator client {
+  provider = "prisma-client-js"
+  // so can use the prisma adapter for neon
+  // which will allow websockets
+  previewFeatures = ["driverAdapters"]
+}
+```
+
+then 
+
+```bash
+# when we change the prisma schema adapter need to regenerate
+pnpmx prisma generate
+```
+
+then need some config
+
+```ts
+// db/prisma.ts
+import { Pool, neonConfig } from '@neondatabase/serverless';
+import { PrismaNeon } from '@prisma/adapter-neon';
+import { PrismaClient } from '@prisma/client';
+import ws from 'ws';
+
+// Sets up WebSocket connections, which enables Neon to use WebSocket communication.
+neonConfig.webSocketConstructor = ws;
+const connectionString = `${process.env.DATABASE_URL}`;
+
+// Creates a new connection pool using the provided connection string, allowing multiple concurrent connections.
+const pool = new Pool({ connectionString });
+
+// Instantiates the Prisma adapter using the Neon connection pool to handle the connection between Prisma and Neon.
+const adapter = new PrismaNeon(pool);
+
+// Extends the PrismaClient with a custom result transformer to convert the price and rating fields to strings.
+export const prisma = new PrismaClient({ adapter }).$extends({
+  result: {
+    product: {
+      price: {
+        compute(product) {
+          return product.price.toString();
+        },
+      },
+      rating: {
+        compute(product) {
+          return product.rating.toString();
+        },
+      },
+    },
+  },
+});
+```
+
+Notice above we're instantiating the client. So we can use this in our server function so don't have to new up each time:
+
+```ts
+// lib/actions/product.actions.ts
+// import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/db/prisma";
+import { convertToPlainObject } from "../utils";
+import { LATEST_PRODUCTS_LIMIT } from "../constants";
+
+// Get latest products
+export const getLatestProducts = async () => {
+//   const prisma = new PrismaClient();
+
+  const data = await prisma.product.findMany({
+    take: LATEST_PRODUCTS_LIMIT,
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  // convert prisma object to plain JS object
+  return convertToPlainObject(data);
+};
+```
+
+Nice wrapper.
+
+If problems delete the `.next` folder and rerun `pnpm dev`
+
+TODO - is there something similar for Supabase? I've just used raw TCP connections when need a transaction... otherwise pooler.. find out best practise here.
+
+[Looks good](https://github.com/supabase/supabase/blob/master/apps/docs/content/guides/database/connecting-to-postgres/serverless-drivers.mdx)
+
+[reddit complexity](https://www.reddit.com/r/nextjs/comments/1hwd49d/the_best_way_to_use_supabase_with_vercel_nextjs/)
+
+Chat about rpc above
+
+## 3.8 Product Details Page
+
+
+```ts
+// lib/actions/product.actions.ts
+
+// Get single product by slug
+export const getProductBySlug = async (slug: string) => {
+  return await prisma.product.findFirst({
+    where: { slug: slug },
+  });
+};
+```
+
+create a new page to handing the dynamic slug routing
+
+[http://localhost:3000/product/polo-sporting-stretch-shirt](http://localhost:3000/product/polo-sporting-stretch-shirt)
+
+In Next 15 it is a bit different to get the query params (not search params which are after the ?)
+
+```tsx
+// app/(root)/product/[slug]/page.tsx
+import { getProductBySlug } from "@/lib/actions/product.actions";
+import { notFound } from "next/navigation";
+
+const ProductDetailPage = async (props: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await props.params;
+
+  const product = await getProductBySlug(slug);
+
+  if (!product) notFound(); 
+
+  return <div>{product.name}</div>;
+};
+
+export default ProductDetailPage;
+```
+
+`pnpx shadcn@latest add badge`
+
+and now some more UI code to display the product details page:
+
+```tsx
+// app/(root)/product/[slug]/page.tsx
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import ProductPrice from "@/components/shared/product/product-price";
+
+import { getProductBySlug } from "@/lib/actions/product.actions";
+import { notFound } from "next/navigation";
+
+const ProductDetailPage = async (props: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await props.params;
+
+  const product = await getProductBySlug(slug);
+
+  if (!product) notFound();
+
+  return (
+    <>
+      <section>
+        <div className="grid grid-cols-1 md:grid-cols-5">
+          {/* Images Column */}
+          <div className="col-span-2">
+            {/* <ProductImages images={product.images} /> */}
+          </div>
+          {/* Details Column */}
+          <div className="col-span-2 p-5">
+            <div className="flex flex-col gap-6">
+              <p>
+                {product.brand} {product.category}
+              </p>
+              <h1 className="h3-bold">{product.name}</h1>
+              {/* <Rating value={Number(product.rating)} /> */}
+              <p>{product.numReviews} reviews</p>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                <ProductPrice
+                  value={Number(product.price)}
+                  className="w-24 rounded-full bg-green-100 text-green-700 px-5 py-2"
+                />
+              </div>
+            </div>
+            <div className="mt-10">
+              <p className="font-semibold">Description</p>
+              <p>{product.description}</p>
+            </div>
+          </div>
+          {/* Action Column */}
+          <div>
+            <Card>
+              <CardContent className="p-4">
+                <div className="mb-2 flex justify-between">
+                  <div>Price</div>
+                  <div>
+                    <ProductPrice value={Number(product.price)} />
+                  </div>
+                </div>
+                <div className="mb-2 flex justify-between">
+                  <div>Status</div>
+                  {product.stock > 0 ? (
+                    <Badge variant="outline">In Stock</Badge>
+                  ) : (
+                    <Badge variant="destructive">Out Of Stock</Badge>
+                  )}
+                </div>
+                {/* {product.stock > 0 && (
+                  <div className="flex-center">
+                    <AddToCart
+                      cart={cart}
+                      item={{
+                        productId: product.id,
+                        name: product.name,
+                        slug: product.slug,
+                        price: product.price,
+                        qty: 1,
+                        image: product.images![0],
+                      }}
+                    />
+                  </div>
+                )} */}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+      <section className="mt-10">
+        <h2 className="h2-bold mb-5">Customer Reviews</h2>
+        {/* <ReviewList
+          userId={userId || ""}
+          productId={product.id}
+          productSlug={product.slug}
+        /> */}
+      </section>
+    </>
+  );
+};
+
+export default ProductDetailPage;
+```
+
+
+[![alt text](/assets/2025-03-19/8.jpg "email"){:width="800px"}](/assets/2025-03-19/8.jpg) 
+
+Coming together well using shadcn/ui components and flex and tailwind. DB calls happening from dev to live db using websockets (probably) and prisma ORM
+
+## 3.9 Images
+
+
+
 
 
 
@@ -979,6 +1475,7 @@ asdf
 
 
 ## FOO
+
 
 Thoughts so far
 
@@ -994,6 +1491,7 @@ Thoughts so far
 
 select with mouse and ctrl c (not insert mode)
 ctrl v (insert mode)
+
 
 
 <!-- [![alt text](/assets/2025-03-19/1.jpg "email"){:width="500px"}](/assets/2025-03-19/1.jpg)  -->
