@@ -1151,7 +1151,9 @@ export const insertProductSchema = z.object({
   stock: z.coerce.number(),
   images: z.array(z.string()).min(1, 'Product must have have at least 1 image is required'),
   isFeatured: z.boolean(),
-  banner: z.string().optional(),
+  // video said this
+//   banner: z.string().optional(),
+  banner: z.string().nullable(),
   price: currency,
 });
 ```
@@ -1183,7 +1185,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
 We get a warning in vscode that can't find the type product.slug if the zod schema doesn't define it. File turns red in tree layout to show problems.
 
-However the app still ran.. just didn't
+However the app still ran.. it was a banner type problem.
 
 
 ## 3.7 Serverless Environment Config
@@ -1196,11 +1198,9 @@ Neon Serverless driver supports Connect to the db via WebSockets
 
 Traditionally db's maintained persistent TCP connections, but serverless is designed to scale, so can't persist connections between invocations.
 
-
 - Neon - need to install serverless driver
 - Prisma adapter
 - WebSockets package
-
 
 ```bash
 # 0.10.4 on 21st Mar 25
@@ -1464,9 +1464,55 @@ Coming together well using shadcn/ui components and flex and tailwind. DB calls 
 
 ## 3.9 Images
 
+```tsx
+// components/shared/product/product-images.tsx
+// take in a prop of images (an array of strings)
+//  and return a list of images
+const ProductImages = ({ images }: { images: string[] }) => {
+    // console.log(images);
+    return (
+        <>pimages</>
+    );
+}
+ 
+export default ProductImages;
+```
+
+and wire this up to the product detail page:
+
+```tsx
+// app/(root)/product/[slug]/page.tsx
+import ProductImages from "@/components/shared/product/product-images";
+///...
+
+const ProductDetailPage = async (props: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await props.params;
+
+  const product = await getProductBySlug(slug);
+
+  if (!product) notFound();
+
+  return (
+    <>
+      <section>
+        <div className="grid grid-cols-1 md:grid-cols-5">
+          {/* Images Column */}
+          <div className="col-span-2">
+            <ProductImages images={product.images} />
+          </div>
+```
+
+Interestingly we're going to set the product-images component to be `use client` as we're going to use a `useState` hook.
 
 
 
+[![alt text](/assets/2025-03-19/9.jpg "email"){:width="800px"}](/assets/2025-03-19/9.jpg) 
+
+So it works and when I click on an image it changes on the client.
+
+## 3.10
 
 
 
