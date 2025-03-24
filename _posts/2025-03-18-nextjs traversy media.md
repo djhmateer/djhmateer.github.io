@@ -1507,16 +1507,36 @@ const ProductDetailPage = async (props: {
 Interestingly we're going to set the product-images component to be `use client` as we're going to use a `useState` hook.
 
 
-
 [![alt text](/assets/2025-03-19/9.jpg "email"){:width="800px"}](/assets/2025-03-19/9.jpg) 
 
 So it works and when I click on an image it changes on the client.
 
-## 3.10
+## 3.10 Initial Deployment
+
+```bash
+# to see if it works!
+# goes through eslint rules - very useful
+pnpm run build 
+
+## next.config.ts
+## if errors annoying, then add
+ignoreBuildErrors: true
+```
+
+Add new project to vercel
+
+Paste in the .env text into `Environment Variables` section of the inital setup form - nice!
+
+Once deployed get the url and put into settings, environment variables and update the env setting.
 
 
 
+4.1 Authentication
 
+[NextAuth.js](https://next-auth.js.org/) is becoming Auth.js
+
+
+**here - have live errors ***
 
 
 
