@@ -1643,12 +1643,6 @@ pnpx prisma studio
 
 ## 4.2 Sample Data
 
-```ts
-// db/sample-data.ts
-
-
-```
-
 Using `bcrypt-ts-edge` which will be useful for later as using Vercel Edge Function (similar to Cloudflare Worker) that don't support Node. ie is is just TypeScript.
 
 [npmjs.com package](https://www.npmjs.com/package/bcrypt-ts-edge) and 2 years old. Only 1000 downloads per week. 
@@ -1663,8 +1657,73 @@ Interestingly [nextjs.org/learn](https://nextjs.org/learn/dashboard-app/adding-a
 pnpm install bcrypt-ts-edge
 ```
 
+add in sample data:
+
+```ts
+// db/sample-data.ts
+import { hashSync } from 'bcrypt-ts-edge'; 
+
+const sampleData = {
+
+  users: [
+    {
+      name: 'John',
+      email: 'admin@example.com',
+      password: hashSync('123456', 10),
+      role: 'admin',
+    },
+    {
+      name: 'Jane',
+      email: 'jane@example.com',
+      password: hashSync('123456', 10),
+      role: 'user',
+    },
+  ],
+```
+
+10 is salt rounds - a salt is a random value added to the password before hashing it to amke it more secure. So even if 2 users have the same password, the hash outputs are different. 10 is the complexity of the process.
 
 
+and update the ts file we will run
+
+```ts
+// db/seed.ts
+import { PrismaClient } from "@prisma/client";
+import sampleData from "./sample-data";
+
+async function main() {
+  const prisma = new PrismaClient();
+
+  await prisma.product.deleteMany();
+  await prisma.account.deleteMany();
+  await prisma.session.deleteMany();
+  await prisma.verificationToken.deleteMany();
+  await prisma.user.deleteMany();
+
+  await prisma.product.createMany({ data: sampleData.products });
+
+  await prisma.user.createMany({ data: sampleData.users });
+
+  console.log("Database seeded successfully");
+}
+
+main();
+```
+
+and lets run it
+
+```bash
+pnpx tsx ./db/seed
+
+pnpm prisma studio
+```
+
+[![alt text](/assets/2025-03-19/10.jpg "email"){:width="800px"}](/assets/2025-03-19/10.jpg) 
+
+The hashed passwords are different (even though they are the same 123456) because of the salt.
+
+
+## 4.3 Setup Auth.js
 
 
 ## FOO
@@ -1684,6 +1743,12 @@ Thoughts so far
 
 select with mouse and ctrl c (not insert mode)
 ctrl v (insert mode)
+
+move away from auth using edge functions.
+
+Are vercel and cloud db... really worth it?
+ - how about a VM running everything?
+
 
 
 
