@@ -1517,6 +1517,8 @@ So it works and when I click on an image it changes on the client.
 # to see if it works!
 # goes through eslint rules - very useful
 pnpm run build 
+# nice shortcut
+pnpm build
 
 ## next.config.ts
 ## if errors annoying, then add
@@ -1529,14 +1531,139 @@ Paste in the .env text into `Environment Variables` section of the inital setup 
 
 Once deployed get the url and put into settings, environment variables and update the env setting.
 
+My DB is in London and webserver on the East Coast. Let's try to deploy the webserver to London:
+
+[https://vercel.com/docs/project-configuration#regions](https://vercel.com/docs/project-configuration#regions)
+
+
+[Region List](https://vercel.com/docs/edge-network/regions#region-list)
+
+```json
+// vercel.json
+{
+  "regions": ["lhr1"]
+}
+```
 
 
 4.1 Authentication
 
-[NextAuth.js](https://next-auth.js.org/) is becoming Auth.js
+[https://authjs.dev/](https://authjs.dev/) was called NextAuth.js 
+
+[https://authjs.dev/getting-started/adapters/prisma#schema](https://authjs.dev/getting-started/adapters/prisma#schema)
+
+There is good detail in here on edge compatibility and specific driver types eg for Neon.
 
 
-**here - have live errors ***
+```tsx
+// prisma/schema.prisma
+
+model User {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String    @default("NO_NAME")
+  email         String    @unique(map: "user_email_idx")
+  // optional eg no password for magic link 
+  password      String?
+  // user or admin
+  role          String    @default("user")
+  emailVerified DateTime? @db.Timestamp(6)
+  image         String?
+  // notice the Json type
+  address       Json?     @db.Json
+  // paypal, stripe, COD
+  paymentMethod String?
+  createdAt     DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt     DateTime  @updatedAt
+  // add account field here so the 1 to many relationship is created
+  // ie 1 user can have many accounts eg Email, Google
+  account       Account[]
+  // 1 user can have many sessions eg multiple devices
+  session       Session[]
+}
+
+// eg Google OAuth, Email 
+model Account {
+  // the FK back to the User model
+  userId            String  @db.Uuid
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // user field is mapped to the User model
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "account_userId_user_id_fk")
+
+  // a composite unique primary key
+  // eg Google, then an id from Google.
+  @@id([provider, providerAccountId], map: "account_provider_providerAccountId_pk")
+}
+
+// eg session token
+model Session {
+  // the PK
+  sessionToken String   @id
+  userId       String   @db.Uuid
+  expires      DateTime @db.Timestamp(6)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "session_userId_user_id_fk")
+}
+
+// what no relation to User??
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  // a composite unique primary key
+  @@id([identifier, token])
+}
+```
+
+then
+
+```bash
+# as we've edited the prisma schema we need to regenerate our prisma client
+# with these new models
+pnpx prisma generate
+
+# also need to create the migrations to create the tables
+# this will physically run the mnigration on the db
+pnpx prisma migrate dev --name add_user_based_tables
+
+pnpx prisma studio
+
+```
+
+## 4.2 Sample Data
+
+```ts
+// db/sample-data.ts
+
+
+```
+
+Using `bcrypt-ts-edge` which will be useful for later as using Vercel Edge Function (similar to Cloudflare Worker) that don't support Node. ie is is just TypeScript.
+
+[npmjs.com package](https://www.npmjs.com/package/bcrypt-ts-edge) and 2 years old. Only 1000 downloads per week. 
+
+This strategy doesn't seem that well used.
+
+Interestingly [nextjs.org/learn](https://nextjs.org/learn/dashboard-app/adding-authentication) uses Auth.js and bcrypt. I found I had to use [bcryptjs](https://www.npmjs.com/package/bcryptjs) which has 2.7m weekly downloads. Looks like bcrypt-ts-edge is similar...forked? 
+
+
+```bash
+# 3.0.1 on 25th Mar 2025
+pnpm install bcrypt-ts-edge
+```
+
+
 
 
 
