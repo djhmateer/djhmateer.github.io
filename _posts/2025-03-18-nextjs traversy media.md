@@ -26,6 +26,8 @@ A commercial course $15 with a Stack
 - Jest Testing
 - Vercel Deployment
 
+Note - my code is in `wprostore`
+
 ## 1.2
 
 [https://prostore-one.vercel.app/](https://prostore-one.vercel.app/)
