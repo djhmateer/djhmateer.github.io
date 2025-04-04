@@ -12,9 +12,9 @@ image: /assets/2024-11-12/1.jpg
 
 <!-- [![alt text](/assets/2025-03-05/2.jpg "email"){:width="700px"}](/assets/2025-03-05/2.jpg)  -->
 
-code repo is in ~/code/ts-testing
+code repo [https://github.com/djhmateer/ts-testing](https://github.com/djhmateer/ts-testing)
 
-[TypeScript](https://www.typescriptlang.org/) is JaveScript with syntax for types.
+[TypeScript](https://www.typescriptlang.org/) is JavaScript with syntax for types.
 
 ## Language Server
 
@@ -86,4 +86,25 @@ I like autosave of files, so disable format on save. Ctrl+, save, Disable format
 
 I like keeping the _star_ synatx rather then _underscore_ markdown syntax, which we can change:
 
+
 ## Linter
+
+Linting analyses code without executing it, identifying possible errors, bugs.
+
+[ESLint](https://eslint.org/) - JavaScript! Statically analyses your code to find problems.
+
+```bash
+# eslint 9.23.0
+# pnpm 10.7.0
+# Generates a package.json (if not there)
+pnpm install eslint
+
+
+pnpx eslint --init
+
+```
+
+
+[![alt text](/assets/2025-04-03/5.jpg "email")](/assets/2025-04-03/5.jpg)
+
+Successfully got linting working with eslint, TypeScript project, 
