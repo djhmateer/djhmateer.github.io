@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: VSCode TypeScript tsserver Prettier and ESlint
 description:
 menu: review
 categories: typescript
@@ -86,7 +86,6 @@ I like autosave of files, so disable format on save. Ctrl+, save, Disable format
 
 I like keeping the _star_ synatx rather then _underscore_ markdown syntax, which we can change:
 
-
 ## Linter
 
 Linting analyses code without executing it, identifying possible errors, bugs.
@@ -104,7 +103,6 @@ pnpx eslint --init
 
 ```
 
-
 [![alt text](/assets/2025-04-03/5.jpg "email")](/assets/2025-04-03/5.jpg)
 
-Successfully got linting working with eslint, TypeScript project, 
+Successfully got linting working with eslint, TypeScript project,
