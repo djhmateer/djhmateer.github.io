@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Typescript
-description: 
+description:
 menu: review
-categories: typescript 
-published: true 
-comments: false     
+categories: typescript
+published: true
+comments: false
 sitemap: false
 image: /assets/2024-11-12/1.jpg
 ---
@@ -20,11 +20,9 @@ code repo is in ~/code/ts-testing
 
 <!-- [![alt text](/assets/2025-04-03/2.jpg "email"){:width="700px"}](/assets/2025-04-03/2.jpg)  -->
 
-
 VSCode / Cursor integrates with TypeScript via the Language Server Protocol using a Node.js based language server called tsserver. [More Deatil on MS Github](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-%28tsserver%29#visual-studio-code)
 
-
-[![alt text](/assets/2025-04-03/2.jpg "email")](/assets/2025-04-03/2.jpg) 
+[![alt text](/assets/2025-04-03/2.jpg "email")](/assets/2025-04-03/2.jpg)
 
 tsserver giving an error that the constant cannot be reassigned.
 
@@ -53,11 +51,12 @@ node foo.js
 ```
 
 <!-- [![alt text](/assets/2025-04-03/3.jpg "email"){:width="700px"}](/assets/2025-04-03/3.jpg)  -->
-[![alt text](/assets/2025-04-03/3.jpg "email")](/assets/2025-04-03/3.jpg) 
+
+[![alt text](/assets/2025-04-03/3.jpg "email")](/assets/2025-04-03/3.jpg)
 
 Manually running tsc giving the same error as the TS Language server which is what Cursor/VSCode is running.
 
-[![alt text](/assets/2025-04-03/4.jpg "email")](/assets/2025-04-03/4.jpg) 
+[![alt text](/assets/2025-04-03/4.jpg "email")](/assets/2025-04-03/4.jpg)
 
 This is failing JavaScript, which only fails at runtime. In TypeScript this produces a compile error.
 
@@ -69,11 +68,11 @@ then
 
 `Debug: Internal Console Always Reveal` change from openOnFirstSessionStart to openOnSessionStart.
 
-
 ## Code Formatter eg Prettier
 
 <!-- [![alt text](/assets/2025-04-03/1.jpg "email"){:width="700px"}](/assets/2025-04-03/1.jpg)  -->
-[![alt text](/assets/2025-04-03/1.jpg "email")](/assets/2025-04-03/1.jpg) 
+
+[![alt text](/assets/2025-04-03/1.jpg "email")](/assets/2025-04-03/1.jpg)
 
 Prettier will fix the indentation problem, Ctrl Alt F (Format)
 
@@ -85,11 +84,6 @@ const bar = 1;
 
 I like autosave of files, so disable format on save. Ctrl+, save, Disable format on save.
 
-I like keeping the *star* synatx rather then _underscore_ markdown syntax, which we can change:
-
-
+I like keeping the _star_ synatx rather then _underscore_ markdown syntax, which we can change:
 
 ## Linter
-
-
-
