@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Typescript
+title: 
 description:
 menu: review
 categories: typescript
