@@ -114,3 +114,26 @@ Unused value found above.
 Ctrl+Shift+M to see problems panel to give a summary of tsc and linting issues.
 
 Successfully got linting working with eslint, TypeScript project,
+
+
+## Auto Suggest Extensions 
+
+[https://stackoverflow.com/questions/35929746/automatically-install-extensions-in-vs-code](https://stackoverflow.com/questions/35929746/automatically-install-extensions-in-vs-code) shows how to use the `.vscode/extensions.json` file to automatically suggest extensions
+
+```json
+// .vscode/extensions.json
+{
+    "recommendations": [
+      // prettier
+      "esbenp.prettier-vscode",
+      // tailwindcss
+      "bradlc.vscode-tailwindcss",
+      // eslint
+      "dbaeumer.vscode-eslint",
+      // pretty-ts-errors
+      "yoavbls.pretty-ts-errors"
+    ]
+}
+```
+
+[Pretty TypeScript Errors](https://github.com/yoavbls/pretty-ts-errors) todo - come up with some examples of it working. It does seem like it makes errors more readable.
