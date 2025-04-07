@@ -82,6 +82,8 @@ TypeScript is a superset of JavaScript that compiles to plain JavaScript
 
 ## VSCode
 
+[I wrote about this](/2025/04/01/vscode-typescript-tsserver-formatting-and-linting) which is an update of what I did here.
+
 How do I setup VSCode to run (and debug) TS?
 
 [By default](https://code.visualstudio.com/docs/typescript/typescript-tutorial) it comes with Intellisense, Syntax Highlighting and debugging. It does not include the compiler.
