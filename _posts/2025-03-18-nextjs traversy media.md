@@ -35,7 +35,9 @@ Note - my code is in `wprostore`
 Prisma studio is a web UI for the db
 
 
-## 1.3
+## 1.3 Environment
+
+I've blogged about these in more detail [here](/2025/04/01/vscode-typescript-tsserver-formatting-and-linting)
 
 Prettier (55m) eg puts in forgotten semicolons, or fixes spaces. Do ctrl alt F to format, then select prettier as the default ts formatter.
 
