@@ -2,7 +2,7 @@
 layout: post
 title: VSCode TypeScript tsserver Prettier and ESlint
 description:
-menu: review
+# menu: review
 categories: typescript
 published: true
 comments: false
@@ -12,19 +12,23 @@ image: /assets/2024-11-12/1.jpg
 
 <!-- [![alt text](/assets/2025-03-05/2.jpg "email"){:width="700px"}](/assets/2025-03-05/2.jpg)  -->
 
-code repo [https://github.com/djhmateer/ts-testing](https://github.com/djhmateer/ts-testing)
+A look into how [TypeScript](https://www.typescriptlang.org/) validation works in VSCode/Cursor
 
-[TypeScript](https://www.typescriptlang.org/) is JavaScript with syntax for types.
+1. Language Server - tsc
+2. Code Formatter - Prettier
+3. Linter - ESLint
+
+Code repo [https://github.com/djhmateer/ts-testing](https://github.com/djhmateer/ts-testing)
 
 ## Language Server
 
 <!-- [![alt text](/assets/2025-04-03/2.jpg "email"){:width="700px"}](/assets/2025-04-03/2.jpg)  -->
 
-VSCode / Cursor integrates with TypeScript via the Language Server Protocol using a Node.js based language server called tsserver. [More Deatil on MS Github](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-%28tsserver%29#visual-studio-code)
+VSCode / Cursor integrates with TypeScript via the Language Server Protocol using a Node.js based language server called tsserver. [More Detail on MS Github](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-%28tsserver%29#visual-studio-code)
 
 [![alt text](/assets/2025-04-03/2.jpg "email")](/assets/2025-04-03/2.jpg)
 
-tsserver giving an error that the constant cannot be reassigned.
+Above tsserver giving an error that the constant cannot be reassigned.
 
 - IntelliSense - autocompletion, parameter hints, type information
 - Diagnostics (squiggly lines) - TypeScript errors and warning
@@ -84,7 +88,7 @@ const bar = 1;
 
 I like autosave of files, so disable format on save. Ctrl+, save, Disable format on save.
 
-I like keeping the _star_ synatx rather then _underscore_ markdown syntax, which we can change:
+I like keeping the _star_ synatx rather then _underscore_ markdown syntax, which I can't find an easy way to fix. 
 
 ## Linter
 
@@ -98,11 +102,15 @@ Linting analyses code without executing it, identifying possible errors, bugs.
 # Generates a package.json (if not there)
 pnpm install eslint
 
-
 pnpx eslint --init
-
 ```
 
 [![alt text](/assets/2025-04-03/5.jpg "email")](/assets/2025-04-03/5.jpg)
+
+Unused value found above.
+
+[![alt text](/assets/2025-04-03/6.jpg "email")](/assets/2025-04-03/6.jpg)
+
+Ctrl+Shift+M to see problems panel to give a summary of tsc and linting issues.
 
 Successfully got linting working with eslint, TypeScript project,
