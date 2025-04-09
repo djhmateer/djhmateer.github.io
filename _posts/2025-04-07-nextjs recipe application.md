@@ -20,8 +20,8 @@ I'm working with a client who has a business application close to v1 release usi
 - pnpm
 - Next.js (although we may be changing as have long compile times.. and don't use Next much.. what?)
 - ShadCN UI
-- Zod
 - Drizzle
+- Zod
 - tRPC
 - Vercel for hosting
 - Supabase for Postgres and Auth (including SSO)
@@ -279,12 +279,17 @@ import ProductList from "@/components/product-list";
 const Homepage = async () => {
   return (
     <>
-      <ProductList data={sampleData.products} title="Newest Arrivals" limit={4} />
+      <ProductList
+        data={sampleData.products}
+        title="Newest Arrivals"
+        limit={4}
+      />
     </>
   );
 };
 export default Homepage;
 ```
+
 and
 
 ```tsx
@@ -330,6 +335,7 @@ Notice we don't have typing yet for `product` or `data` which is really `product
 # adds components/ui/card.tsx
 pnpx shadcn@latest add card
 ```
+
 As performance is a big deal in React and Next, I want to be sure to focus on the UI library and interactions too. Understanding what is happening and where, is very important.
 
 However so is simplicity, so lets try and refactor as I go.
@@ -338,9 +344,8 @@ Currently have
 
 - ProductList component on home screen which gets products data passed to it, and a title and limit property.
 - ProductList handles all its own rendering
-- Brad wants to create a ProductCard component ie a single Card... possible don't need?
+- create a ProductCard component ie a single Card... possible don't need?
 - He also wants to create a ProductPrice component - no!
-
 
 ## Updates
 
@@ -358,14 +363,28 @@ I find that using LLM's to comment the tailwind to be useful, espeically when it
 
 Ctrl Shift L - Open up new chat window on current file
 
+## 3. Database - Supabase and Vercel
 
+I've created a new [Vercel.com](https://vercel.com/) project by pushing to GitHub and linking up.
 
+```ts
+// next.config.ts
+const nextConfig: NextConfig = {
+  // show warnings in console but wont break production build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
+```
 
+Create a new Supabase from the vercel side. West EU (London) called cooking-db
 
-## Vibe Coding
+Don't worry about connection strings yet.
 
-[https://en.wikipedia.org/wiki/Vibe_coding](https://en.wikipedia.org/wiki/Vibe_coding)
+### Drizzle
 
-An AI dependent programming technique where you describe a problem to an LLM tuned for coding.
+orm.drizzle.team/docs/tutorials/drizzle-with-supabase](https://orm.drizzle.team/docs/tutorials/drizzle-with-supabase)
 
-**Try this for moving quickly**
+[https://vercel.com/guides/connection-pooling-with-serverless-functions#http-database-apis](https://vercel.com/guides/connection-pooling-with-serverless-functions#http-database-apis) uses PostgREST
+
+_HERE_ - need to look for best practise / advice on Supabase Drizzle and Vercel. 
