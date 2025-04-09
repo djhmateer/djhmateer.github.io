@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  Vim
-categories: Vim 
-published: true 
-redirect_from: vim/2018/02/21/VIM.html 
+title: Vim
+categories: Vim
+published: true
+redirect_from: vim/2018/02/21/VIM.html
 sitemap: true
 ---
+
 After 8 months of using Vim here are my most used commands. I now find it easier and more enjoyable to edit text in Vim than in any other editor.
 
 ## Vim 2025
@@ -46,7 +47,6 @@ Ctrl + Shift + P to open the Command Palette.
     }
 ```
 
-
 ## Vim 2023
 
 ```bash
@@ -61,8 +61,9 @@ q - stop recording and save
 ```
 
 ## Vim commands
+
 ```
-h,j,k,l - j (down), h (left), k (right), l (up) 
+h,j,k,l - j (down), h (left), k (right), l (up)
 
 i - insert
 I - insert at the beginning of line
@@ -98,8 +99,8 @@ shift R - replace mode
 
 ce - change word
 c$ - change to end of line
-ci" - change all text inside " " on line 
-f" - find next " on this line 
+ci" - change all text inside " " on line
+f" - find next " on this line
 
 dd - delete line (or cut line)
 D - delete to end of line
@@ -154,10 +155,13 @@ qa! - quit all (buffers)
 / - search for a file
 
 ```
+
 ## Surround plugin
+
 clone https://github.com/tpope/vim-surround  
 copy docs to \users\davidma\.vim\docs  
-copy plugin to \users\davidma\.vim\plugins  
+copy plugin to \users\davidma\.vim\plugins
+
 ```
 ## using Surround plugin
 VS<p> - surround with <p></p>
@@ -168,22 +172,27 @@ cs'" - change surrounding ' to "
 V... :jk norm yss<p>  - all lines selected, surround with <p> tag and </p> on each line
 
 ```
+
 ## Macros
+
 ```
 q<letter><commands>q
 <number>@<letter>
 ```
 
-
 ## Config
+
 Showing line numbers
+
 ```
 set number
 set nonumber
 ```
 
-## _vimrc
+## \_vimrc
+
 This optional config file on a windows machine is in c:\users\dave
+
 ```
 " This is a comment in c:\users\dave\_vimrc
 colo desert
@@ -198,21 +207,26 @@ set belloff=all
 " If working on dos files a lot this stops the ^M line endings marker being shown
 set ffs=dos
 ```
+
 ## Cmder
+
 I used Cmder as my shell in Windows and really like it. Running Vim inside it was annoying as keyboard binding were confliced - specifically Ctrl W for new split windows. I mapped Ctrl W to Ctrl Shift W in Cmder as [shown](https://www.cs.oberlin.edu/~kuperman/help/vim/windows.html).
 
 Interestinly Ctrl WV doesnt work but :vs works fine. I use Ctrl WW to switch between windows.
 
-
 ## AutoHotKey
+
 As escape is a long way up and left, it is closer to use the caps lock key as the escape key.  
 [Wikia Caps Lock](http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_Windows#AutoHotkey). And [my article on this blog]({%post_url 2018-04-10-Autohotkey %})
+
 - create new file on desktop called caps.ahk
-- Capslock::Esc  
+- Capslock::Esc
 - Right click and run the script
 
 ## VSCode
+
 Sometimes the plugin stops working. [Deleting the extensions directory](https://stackoverflow.com/a/36751445/26086) seems to work
 
 ## Vimtutor
+
 Is an application installed. Essentially a text file that you go through in Vim teaching you about Vim :-) I get to it by typing windows key, Vim Tutor
