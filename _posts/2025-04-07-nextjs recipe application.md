@@ -239,8 +239,7 @@ Am using a `use client` directive as using an onClick event javascript. Much sim
 
 ## Sheet menu (for small screen menu flyout)
 
-asdf
-
+Am not doing this for now.
 
 ## Sample Data
 
@@ -272,8 +271,93 @@ const sampleData = {
 
 Use this to get a UI going, then will use this to seed a database with.
 
+```tsx
+// app/(root)/page.tsx
+import sampleData from "@/db/sample-data";
+import ProductList from "@/components/product-list";
 
-**am in product-list.tsx
+const Homepage = async () => {
+  return (
+    <>
+      <ProductList data={sampleData.products} title="Newest Arrivals" limit={4} />
+    </>
+  );
+};
+export default Homepage;
+```
+and
+
+```tsx
+// components/product-list.tsx
+const ProductList = ({
+  data,
+  title,
+  limit,
+}: {
+  data: any;
+  title?: string;
+  limit?: number;
+}) => {
+  const limitedData = limit ? data.slice(0, limit) : data;
+
+  return (
+    <div className="my-10">
+      <h2 className="h2-bold mb-4">{title}</h2>
+      {data.length > 0 ? (
+        // mobile - 1 column then small 2, medium 3, large 4 columns and up
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {limitedData.map((product: any) => (
+            <div key={product.id}>{product.name}</div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          <p>No product found</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ProductList;
+```
+
+Notice we don't have typing yet for `product` or `data` which is really `products`
+
+## Card
+
+```bash
+# adds components/ui/card.tsx
+pnpx shadcn@latest add card
+```
+As performance is a big deal in React and Next, I want to be sure to focus on the UI library and interactions too. Understanding what is happening and where, is very important.
+
+However so is simplicity, so lets try and refactor as I go.
+
+Currently have
+
+- ProductList component on home screen which gets products data passed to it, and a title and limit property.
+- ProductList handles all its own rendering
+- Brad wants to create a ProductCard component ie a single Card... possible don't need?
+- He also wants to create a ProductPrice component - no!
+
+
+## Updates
+
+```bash
+# next from 15.2.4 to 15.2.5
+# eslint the same as above
+# node typoes from 20.17.30 to 22.14.0 (22.14.4 is latest lts)
+
+pnpm up --latest
+```
+
+## Tailwind
+
+I find that using LLM's to comment the tailwind to be useful, espeically when it is hidden inside the `globals.css` class.
+
+Ctrl Shift L - Open up new chat window on current file
+
 
 
 

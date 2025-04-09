@@ -12,7 +12,39 @@ After 8 months of using Vim here are my most used commands. I now find it easier
 
 [Vim clip](https://stackoverflow.com/a/61066089/26086) in VSCode/Cursor
 
-Ctrk , (settings) - vim: clip - use system clipboard for unnamed register
+Ctrl , (settings) - vim: clip - use system clipboard for unnamed register
+
+Ctrl + Shift + P to open the Command Palette.
+“Preferences: Open Keyboard Shortcuts (JSON)”
+
+```json
+   // ctrl c when something is selected
+    {
+        "key": "ctrl+c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    // ctrl v when something is selected ie overwrite
+    {
+        "key": "ctrl+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    // when nothing selected just want to paste
+    {
+        "key": "ctrl+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    // mapping visual block mode just in case I need it
+    {
+        "key": "ctrl+q",
+        "command": "vim.remap",
+        "when": "editorTextFocus && vim.mode == 'Normal'",
+        "args": {
+            "after": ["<C-v>"]
+    }
+```
 
 
 ## Vim 2023
