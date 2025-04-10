@@ -9,7 +9,7 @@ sitemap: true
 
 After 8 months of using Vim here are my most used commands. I now find it easier and more enjoyable to edit text in Vim than in any other editor.
 
-## Vim 2025
+## Vim 2025 - Copy and Paste
 
 [Vim clip](https://stackoverflow.com/a/61066089/26086) in VSCode/Cursor
 

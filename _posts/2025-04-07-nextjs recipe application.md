@@ -381,10 +381,108 @@ Create a new Supabase from the vercel side. West EU (London) called cooking-db
 
 Don't worry about connection strings yet.
 
-### Drizzle
+### Databases
 
+```bash
+# 0.41.0 (client on 0.39.1)
+pnpm add drizzle-orm 
+
+# 3.4.5 (client on 3.4.5)
+pnpm add postgres
+
+# 0.30.6 (client on 0.30.4)
+# I got a warning: Ignored build scripts: esbuild.      
+# Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.  
+# but then missed the approval step
+# to revert check pnpm-workspace.yaml and delete the changed ignored part
+pnpm add -D drizzle-kit
+
+# 10.9.2 - have added to easily run ts as a console app
+pnpm add -D ts-node
+# 4.19.3
+pnpm add -D tsx
+
+# can then run this typescript console application
+npx tsx db/seed
+
+# to load in .env
+pnpm install -D dotenv
+```
+
+Here is a test of creating the schema using a direct SQL connection to the non pooling side ie so I can run a transaction and be sure that all the queries work.
+
+```ts
+/ db/seed.ts
+// To run this console script
+// npx tsx db/seed
+
+// Lets go direct to the database using no ORM
+import "dotenv/config";
+import postgres from "postgres";
+// from nextjs-dashboard project
+import { customers } from "./placeholder-data";
+
+const sql = postgres(process.env.POSTGRES_URL_NON_POOLING!, { ssl: "require" });
+
+async function seedCustomers() {
+  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+  await sql`
+    CREATE TABLE IF NOT EXISTS customers (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      image_url VARCHAR(255) NOT NULL
+    );
+  `;
+
+  const insertedCustomers = await Promise.all(
+    customers.map(
+      (customer) => sql`
+        INSERT INTO customers (id, name, email, image_url)
+        VALUES (${customer.id}, ${customer.name}, ${customer.email}, ${customer.image_url})
+        ON CONFLICT (id) DO NOTHING;
+      `
+    )
+  );
+  return insertedCustomers;
+}
+
+async function main() {
+  // Drop all existing tables
+  console.log("dropping and creating public schema");
+  await sql`DROP SCHEMA public CASCADE;`;
+  await sql`CREATE SCHEMA public;`;
+
+  console.log("begin transaction");
+  try {
+    const result = await sql.begin((sql) => [
+      seedCustomers(),
+    ]);
+    console.log("result of sql transaction: ", result);
+    console.log("Database seeded successfully");
+  } catch (error) {
+    console.error("error", error);
+  }
+  console.log("end transaction");
+}
+
+main();
+```
+
+
+
+
+
+
+## Foo
 orm.drizzle.team/docs/tutorials/drizzle-with-supabase](https://orm.drizzle.team/docs/tutorials/drizzle-with-supabase)
 
 [https://vercel.com/guides/connection-pooling-with-serverless-functions#http-database-apis](https://vercel.com/guides/connection-pooling-with-serverless-functions#http-database-apis) uses PostgREST
 
 _HERE_ - need to look for best practise / advice on Supabase Drizzle and Vercel. 
+
+client is using: drizzle-orm, drizzle-kit which includes DB schema and zod bindings
+
+packages/db/package.json
+
