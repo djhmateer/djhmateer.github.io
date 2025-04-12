@@ -703,8 +703,30 @@ POSTGRES_PRISMA_URL (don't need)
 
 ## Drizzle
 
+## Bar
 
 **HERE**
+When I hammer a page, and get 30sec timeouts
+ eg seedroute
+why am I getting a 200 back?
+
+This is the error on vercel side. Probably due to max (?) direct connections - have seen 20.
+```json
+error Error: write CONNECT_TIMEOUT undefined:undefined
+    at <unknown> (.next/server/chunks/748.js:1:9526)
+    at Timeout.n [as _onTimeout] (.next/server/chunks/748.js:11:2361) {
+  code: 'CONNECT_TIMEOUT',
+  errno: 'CONNECT_TIMEOUT',
+  address: undefined,
+  port: undefined
+}
+```
+
+[![alt text](/assets/2025-04-03/10.jpg "email")](/assets/2025-04-03/10.jpg)
+
+Using the pooler I can get more db connections. But this is under extreme load of 30 concurrent connections hitting massive inserts.
+
+
 get data coming into a page - use the prostore example
 
 can I use raw sql.. is there an object mapper to a type?
