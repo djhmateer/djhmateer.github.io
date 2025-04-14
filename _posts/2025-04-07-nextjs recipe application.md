@@ -706,9 +706,6 @@ POSTGRES_PRISMA_URL (don't need)
 ## Bar
 
 **HERE**
-When I hammer a page, and get 30sec timeouts
- eg seedroute
-why am I getting a 200 back?
 
 This is the error on vercel side. Probably due to max (?) direct connections - have seen 20.
 ```json
@@ -722,7 +719,7 @@ error Error: write CONNECT_TIMEOUT undefined:undefined
 }
 ```
 
-[![alt text](/assets/2025-04-03/10.jpg "email")](/assets/2025-04-03/10.jpg)
+[![alt text](/assets/2025-04-07/10.jpg "email")](/assets/2025-04-07/10.jpg)
 
 Using the pooler I can get more db connections. But this is under extreme load of 30 concurrent connections hitting massive inserts.
 
