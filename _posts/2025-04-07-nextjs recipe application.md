@@ -738,6 +738,19 @@ export default function GlobalError({
 
 # Logging
 
+eg events, errors, user actions.
+
+Lets consider why log?  
+
+- Monitoring of the system for warnings, performance, errors
+- Debugging in production - being able to see what happened at a specific time.
+- Auditing - what a person did and when.
+
+I leave on trace level logging on my production systems because I can. It logs to disk (I run VM's on custom infrastructure with fast SSD disks). I backup logs.
+
+I'd like to have a dashboard so clients can see errors and warnings. Also to see the load of the systems (it what is currently processing)
+
+
 My favourite .NET logging library is [Serilog](https://serilog.net/) using [log levels](https://github.com/serilog/serilog/wiki/Configuration-Basics#minimum-level) of
 
 - Verbose
@@ -747,21 +760,73 @@ My favourite .NET logging library is [Serilog](https://serilog.net/) using [log 
 - Error - Service unavailable or expectation are broken.
 - Fatal - Demands immediate attention
 
-I run production servers using VMs, so log to the filesystem.
+Vercel can show:
+
+- console.log - yes
+- console.info - not differentiated in vercel. same as log
+- console.warn - yes..
+- console.error - yes..
+
+I run production servers using VMs, so log to the filesystem. Using a IaaS we need to write to something less ephemeral.
 
 [![alt text](/assets/2025-04-07/11.jpg "vercel logs")](/assets/2025-04-07/11.jpg)
 
-Can use console.log, console.warn and console.error in vercel. These logs are only kept for 1 hour on the free tier, 1 day on pro and 3 dasy on enterprise.
+Can use console.log, console.warn and console.error in vercel. These logs are only kept for 1 hour on the free tier, 1 day on pro and 3 dasy on enterprise. Vercel can ship logs to other services (paid for) Vercel can ship logs to other services (paid for)
 
-[Pino](https://getpino.io/) - 15k stars. It is a node.js logger. [arcjet blog](https://blog.arcjet.com/structured-logging-in-json-for-next-js/)
+[Pino](https://getpino.io/) - 15k stars. It is a node.js logger. [arcjet blog](https://blog.arcjet.com/structured-logging-in-json-for-next-js/) - it can do client side logging as well.
 
-Winston
+[Winston](https://github.com/winstonjs/winston). 3.17.0 (5 months old - 15th Apr 2025). 13m weekly downloads on npm.
 
-posthog
+###  Transports
+
+[https://github.com/winstonjs/winston/blob/master/docs/transports.md](https://github.com/winstonjs/winston/blob/master/docs/transports.md) 
+
+[https://github.com/paulelie/winston-pg-native](https://github.com/paulelie/winston-pg-native) 18 stars
+
+[https://github.com/jpoon/winston-azuretable](https://github.com/jpoon/winston-azuretable) 7 stars
+
+## Pino
+
+Pino (for Next.js logging) + Fluentd + Loki + Grafana.
+
+```bash
+pnpm install pino pino-pretty
+```
+
+
+[![alt text](/assets/2025-04-07/12.jpg "pino on vercel logs")](/assets/2025-04-07/12.jpg)
+
+Can see the structured logs coming into the stdout.
+
+
+## Where to log to?
+
 
 ### Log Collector
 
+[https://logflare.app/](https://logflare.app/) - part of Supabase. 3 days free.
+
+[https://betterstack.com/pricing](https://betterstack.com/pricing) - formerly Logtail. 3 days for free.
+
+
 [https://baselime.io/](https://baselime.io/) 7 days log retention and free.
+
+
+## Metrics
+
+eg performance, timings, resources - Promethius and Grafana
+
+[https://grafana.com/pricing/](https://grafana.com/pricing/) 14 days retention. Open source data visualisation platform.
+
+### Grafana
+
+[https://github.com/grafana/grafana?pg=oss-graf&plcmt=hero-btn-3](https://github.com/grafana/grafana?pg=oss-graf&plcmt=hero-btn-3) data visualisation from promethius, loki, elastic search, postgres
+
+[https://grafana.com/grafana/plugins/grafana-vercel-datasource](https://grafana.com/grafana/plugins/grafana-vercel-datasource) - Vercel plugin
+
+
+[https://github.com/prometheus/prometheus](https://github.com/prometheus/prometheus) - time series database and monitoring system. Metrics and Alerts. Also visualisation.
+
 
 ### Error only
 
@@ -794,11 +859,6 @@ can I use raw sql.. is there an object mapper to a type? Can drizzle do this?
 
 
 ## BAR
-
-console.log - yes
-console.info - not differentiated in vercel. same as log
-console.warn - yes..
-console.error - yes..
 
 
 ## Foo
