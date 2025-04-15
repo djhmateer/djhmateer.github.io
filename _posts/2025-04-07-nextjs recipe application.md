@@ -91,6 +91,9 @@ pnpm approve-builds
 
 # short for run dev
 pnpm dev
+
+# update to latest version on next.js which is 15.3.0 on 14th April 25
+pnpm update next@latest
 ```
 
 and first page
@@ -701,11 +704,71 @@ NEXT_PUBLIC_SUPABASE_ANON_KEYNEXT
 
 POSTGRES_PRISMA_URL (don't need)
 
-## Drizzle
 
-## Bar
+## Error Handling
 
-**HERE**
+asdf
+
+[https://nextjs.org/docs/app/building-your-application/routing/error-handling](https://nextjs.org/docs/app/building-your-application/routing/error-handling)
+
+
+```tsx
+// app/global-error.tsx
+'use client' // Error boundaries must be Client Components
+ 
+export default function GlobalError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
+  return (
+    // global-error must include html and body tags
+    <html>
+      <body>
+        <h2>Something went wrong!</h2>
+        <button onClick={() => reset()}>Try again</button>
+      </body>
+    </html>
+  )
+}
+
+```
+
+# Logging
+
+My favourite .NET logging library is [Serilog](https://serilog.net/) using [log levels](https://github.com/serilog/serilog/wiki/Configuration-Basics#minimum-level) of
+
+- Verbose
+- Debug - internal system events.
+- Information - Things happening in the system that correspond to responsibilities. Generally observable actions the system can perform.
+- Warning - Service is degraded or behaving outside expected parameters
+- Error - Service unavailable or expectation are broken.
+- Fatal - Demands immediate attention
+
+I run production servers using VMs, so log to the filesystem.
+
+[![alt text](/assets/2025-04-07/11.jpg "vercel logs")](/assets/2025-04-07/11.jpg)
+
+Can use console.log, console.warn and console.error in vercel. These logs are only kept for 1 hour on the free tier, 1 day on pro and 3 dasy on enterprise.
+
+[Pino](https://getpino.io/) - 15k stars. It is a node.js logger. [arcjet blog](https://blog.arcjet.com/structured-logging-in-json-for-next-js/)
+
+Winston
+
+posthog
+
+### Log Collector
+
+[https://baselime.io/](https://baselime.io/) 7 days log retention and free.
+
+### Error only
+
+[sentry](https://docs.sentry.io/platforms/javascript/guides/nextjs/) - this is about logging errors. Includes client and server.
+
+
+
 
 This is the error on vercel side. Probably due to max (?) direct connections - have seen 20.
 ```json
@@ -718,15 +781,13 @@ error Error: write CONNECT_TIMEOUT undefined:undefined
   port: undefined
 }
 ```
-
 [![alt text](/assets/2025-04-07/10.jpg "email")](/assets/2025-04-07/10.jpg)
 
 Using the pooler I can get more db connections. But this is under extreme load of 30 concurrent connections hitting massive inserts.
 
+## TODO
 
-get data coming into a page - use the prostore example
-
-can I use raw sql.. is there an object mapper to a type?
+can I use raw sql.. is there an object mapper to a type? Can drizzle do this?
 
 
 
