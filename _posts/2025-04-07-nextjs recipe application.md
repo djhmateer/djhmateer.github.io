@@ -732,6 +732,13 @@ can I use raw sql.. is there an object mapper to a type?
 
 
 
+## BAR
+
+console.log - yes
+console.info - not differentiated in vercel. same as log
+console.warn - yes..
+console.error - yes..
+
 
 ## Foo
 orm.drizzle.team/docs/tutorials/drizzle-with-supabase](https://orm.drizzle.team/docs/tutorials/drizzle-with-supabase)
