@@ -798,6 +798,9 @@ pnpm install pino pino-pretty
 
 Can see the structured logs coming into the stdout.
 
+[cannot find module with pretty](https://stackoverflow.com/questions/78200117/how-to-implement-pino-logger-in-a-next-js-typescript-monorepo-for-both-client) fix.
+
+
 
 ## Where to log to?
 
