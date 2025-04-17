@@ -800,9 +800,40 @@ Can see the structured logs coming into the stdout.
 
 [cannot find module with pretty](https://stackoverflow.com/questions/78200117/how-to-implement-pino-logger-in-a-next-js-typescript-monorepo-for-both-client) fix.
 
-
+- trace (10)
+- debug (20)
+- info (30)
+- warning (40)
+- error (50)
+- fatal (60)
 
 ## Where to log to?
+
+As Vecel is 'severless' I can't write to the filesystem (not really).
+
+## Foo
+
+Grafana
+
+[![alt text](/assets/2025-04-07/13.jpg "grafana hosted")](/assets/2025-04-07/13.jpg)
+
+davemateer.grafana.net (deployed into UK)
+
+
+towards - pino to loki to grafana (self host?)
+
+promtail which reads system logs from files. (so don't need on serverless)
+
+```bash
+# https://www.npmjs.com/package/pino-loki
+pnpm install pino-loki
+
+# what grafana suggested I use
+pnpm install @miketako3/cloki
+```
+
+It looks like I'm sending logs, but can't see them on the UI.
+
 
 
 ### Log Collector
@@ -852,6 +883,13 @@ error Error: write CONNECT_TIMEOUT undefined:undefined
 [![alt text](/assets/2025-04-07/10.jpg "email")](/assets/2025-04-07/10.jpg)
 
 Using the pooler I can get more db connections. But this is under extreme load of 30 concurrent connections hitting massive inserts.
+
+
+## Web Analytics (Vercel) and Speed Insights
+
+Essentially a javascript that sends usage and perf data.
+
+
 
 ## TODO
 
