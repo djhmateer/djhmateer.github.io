@@ -868,6 +868,8 @@ Production needed: [https://github.com/logtail/logtail-js/issues/129](https://gi
 
 Pino to Loki
 
+[lnav](https://lnav.org/) - command line log file nagivator
+
 
 ### Log Collector
 
