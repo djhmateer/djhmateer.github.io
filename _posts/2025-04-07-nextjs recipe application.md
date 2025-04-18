@@ -811,14 +811,14 @@ Can see the structured logs coming into the stdout.
 
 As Vecel is 'severless' I can't write to the filesystem (not really).
 
-## Foo
+## Grafana
 
-Grafana
+I couldn't get this working. No events being ingested into loki
+
 
 [![alt text](/assets/2025-04-07/13.jpg "grafana hosted")](/assets/2025-04-07/13.jpg)
 
 davemateer.grafana.net (deployed into UK)
-
 
 towards - pino to loki to grafana (self host?)
 
@@ -834,6 +834,39 @@ pnpm install @miketako3/cloki
 
 It looks like I'm sending logs, but can't see them on the UI.
 
+## Better Stack aka Logtail
+
+[video demo](https://www.youtube.com/watch?v=fluDEkA1h6w&t=1325s)
+
+[https://betterstack.com/docs/logs/javascript/](https://betterstack.com/docs/logs/javascript/)
+
+```bash
+# 0.5.4 on 17th Apr
+pnpm i @logtail/pino
+```
+
+Sources represent services you want to collect logs from.
+
+Source - JavaScript - Node.js
+
+
+Production needed: [https://github.com/logtail/logtail-js/issues/129](https://github.com/logtail/logtail-js/issues/129) ie adding to next.config.ts
+
+
+## others
+
+[OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/)
+
+[SizNoz](https://signoz.io/)
+
+[https://opstrace.com/](https://opstrace.com/) - now gitlab
+
+
+[https://github.com/grafana/grafana](https://github.com/grafana/grafana) - 67k stars. data vis platform. sources like: promethius, logi, elasticsearch, Postgres
+
+[https://prometheus.io/](https://prometheus.io/) - DB for logs and metrics. There is an exporter for Plex Media Server [https://github.com/axsuul/plex-media-server-exporter](https://github.com/axsuul/plex-media-server-exporter) and Proxmos [https://forum.proxmox.com/threads/is-prometheus-an-optimal-option-to-monitor-proxmox.151726/](https://forum.proxmox.com/threads/is-prometheus-an-optimal-option-to-monitor-proxmox.151726/)
+
+Pino to Loki
 
 
 ### Log Collector
