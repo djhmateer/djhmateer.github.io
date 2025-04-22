@@ -836,6 +836,9 @@ It looks like I'm sending logs, but can't see them on the UI.
 
 ## Better Stack aka Logtail
 
+[https://betterstack.com/docs/logs/vercel/automatic-integration/](https://betterstack.com/docs/logs/vercel/automatic-integration/) Interestingly they recommend using the paid log drain from Vercel.
+
+
 [video demo](https://www.youtube.com/watch?v=fluDEkA1h6w&t=1325s)
 
 [https://betterstack.com/docs/logs/javascript/](https://betterstack.com/docs/logs/javascript/)
@@ -850,7 +853,143 @@ Sources represent services you want to collect logs from.
 Source - JavaScript - Node.js
 
 
-Production needed: [https://github.com/logtail/logtail-js/issues/129](https://github.com/logtail/logtail-js/issues/129) ie adding to next.config.ts
+Production needed: [https://github.com/logtail/logtail-js/issues/129](https://github.com/logtail/logtail-js/issues/129) ie adding to next.config.ts. Also [here](https://medium.com/@sibteali786/debugging-pino-logger-issues-in-a-next-js-4e0c3368ef14)
+
+I also came across an error from Vercel side:
+
+`(node:4) ExperimentalWarning: vm.USE_MAIN_CONTEXT_DEFAULT_LOADER is an experimental feature and might change at any time`
+
+And my log entry wasn't being sent to logtail.
+
+```ts
+// can get structured data to the conole
+const log = pino(pino.destination({ sync: true }));
+
+//
+```
+Okay, log entries work okay on pino being sent to the console.
+
+
+## What is Vercel Serverless
+
+Vercel functions are meant to be run quickly and teminate.
+
+Serverless functions must flush logs before returning responses, as the environment ends immediately after the response is returned.
+
+## Winston Logging
+
+[https://github.com/winstonjs/winston](https://github.com/winstonjs/winston)
+
+```bash
+pnpm install winston
+```
+
+[betterstack aka logtail docs](https://betterstack.com/community/guides/logging/how-to-install-setup-and-use-winston-and-morgan-to-log-node-js-applications/)
+
+
+[betterstack winston transport](https://betterstack.com/docs/logs/javascript/winston/)
+
+```bash
+pnpm install @logtail/winston @logtail/node
+```
+
+I can get this to work and send logs to logtail but only by handling it by myself:
+
+
+```ts
+import postgres from "postgres";
+
+import winston from "winston";
+import { Logtail } from "@logtail/node";
+import { LogtailTransport } from "@logtail/winston";
+
+const sql = postgres(process.env.POSTGRES_URL_NON_POOLING!);
+
+// Create a function to get a fresh logger instance
+function createLogger() {
+  const ingestingHost = process.env.LOGTAIL_INGESTING_HOST ?? "";
+  const sourceToken = process.env.LOGTAIL_SOURCE_TOKEN ?? "";
+
+  const logtail = new Logtail(sourceToken, { endpoint: ingestingHost });
+
+  return winston.createLogger({
+    transports: [
+      new LogtailTransport(logtail),
+      new winston.transports.Console(),
+    ],
+  });
+}
+
+export async function GET() {
+  // Create a new logger instance for each request
+  const log = createLogger();
+  try {
+    const start = Date.now();
+    log.info("insert starting");
+    // await transactionInsert();
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Add 1 second delay
+    log.info("insert end");
+    const end = Date.now();
+    const duration = end - start;
+
+    log.info(`seedroutepino duration: ${duration}ms`);
+
+    // Create a promise that resolves when logs are flushed
+    const flushPromise = new Promise<void>((resolve) => {
+      log.on("finish", () => resolve());
+      log.end();
+    });
+
+    // Wait for logs to flush (with a timeout)
+    await Promise.race([
+      flushPromise,
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Log flush timeout")), 1000)
+      ),
+    ]);
+
+    // log.end(); // Explicitly end Winston logging stream but after 2 calls it locks up
+
+    return Response.json({
+      message: `seeded successfully from route in ${duration} milliseconds`,
+    });
+  } catch (error) {
+    // console.error("stderr: Seed route error:", error);
+    // console.log("stdout: GET function", error);
+    // log.error("error caught in seedroutepino GET");
+    throw error;
+    return Response.json({ error }, { status: 500 });
+  }
+}
+```
+
+You can see my iniital try of log.end() but after 2 calls it locks with an error:
+
+
+**HERE** - okay so this is not good code, but maybe a solution of sorts.
+
+TODO - try Axiom as maybe slightly more supported?
+
+
+## Axiom
+
+[https://axiom.co/docs/apps/vercel#what-is-vercel](https://axiom.co/docs/apps/vercel#migrate-from-vercel-app-to-next-axiom)
+
+They talk about the cost rise from Vercel of using Log Drains and suggest using their `await log.flush()` for server components.
+
+
+[https://app.axiom.co/](https://app.axiom.co/) is the front end for Axiom. I created a new Dataset, then a new Token.
+
+
+```bash
+# next-axiom library
+pnpm install next-axiom
+```
+
+
+[https://www.imakewebsites.ca/posts/axiom-logging-nextjs-api-routes/](https://www.imakewebsites.ca/posts/axiom-logging-nextjs-api-routes/)
+
+
 
 
 ## others
