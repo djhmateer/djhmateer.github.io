@@ -23,6 +23,11 @@ I'm working with a client who has a business application close to v1 release usi
 
 One of the big issues with Logging and Monitoring on this stack is the [Serverless]() environment. Follow this link to my article on it.
 
+## TLDR;
+
+I got Axiom working - but am choosing not to use.
+
+
 # Logging
 
 eg events, errors, user actions.
@@ -346,14 +351,6 @@ export async function GET() {
 [https://www.imakewebsites.ca/posts/axiom-logging-nextjs-api-routes/](https://www.imakewebsites.ca/posts/axiom-logging-nextjs-api-routes/)
 
 
-## Sentry
-
-[sentry.io](https://sentry.io)
-
-There is an [integration on the Vercel side](https://vercel.com/marketplace/sentry)
-
-
-
 ## others
 
 [OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/)
@@ -398,27 +395,79 @@ eg performance, timings, resources - Promethius and Grafana
 [https://github.com/prometheus/prometheus](https://github.com/prometheus/prometheus) - time series database and monitoring system. Metrics and Alerts. Also visualisation.
 
 
-### Error only
+### Sentry - Error only
 
 [sentry](https://docs.sentry.io/platforms/javascript/guides/nextjs/) - this is about logging errors. Includes client and server.
 
+Setup a new Project (Next.js) in the dashboard.
 
+```bash
+pnpx @sentry/wizard@latest -i nextjs --saas --org hmsoftware --project cooking
 
+# then authenticate using web browser
 
-This is the error on vercel side. Probably due to max (?) direct connections - have seen 20.
-```json
-error Error: write CONNECT_TIMEOUT undefined:undefined
-    at <unknown> (.next/server/chunks/748.js:1:9526)
-    at Timeout.n [as _onTimeout] (.next/server/chunks/748.js:11:2361) {
-  code: 'CONNECT_TIMEOUT',
-  errno: 'CONNECT_TIMEOUT',
-  address: undefined,
-  port: undefined
+# do you want to route Sentry requests in the browser through your Next.js server to avoid ad blockers? - yes
+# tracing to track the perf - yes
+# session replay - yes
+```
+
+then
+
+```ts
+// global-error.tsx
+"use client"; // Error boundaries must be Client Components
+import Link from "next/link";
+import * as Sentry from "@sentry/nextjs";
+import Error from "next/error";
+import { useEffect } from "react";
+
+export default function GlobalError({ error }: { error: Error }) {
+  useEffect(() => {
+    Sentry.captureException(error);
+  }, [error]);
+
+  return (
+    <div>
+      <h2>Something went wrong!</h2>
+      <Link href="/">Go Home</Link>
+    </div>
+  );
 }
 ```
-[![alt text](/assets/2025-04-07/10.jpg "email")](/assets/2025-04-07/10.jpg)
 
-Using the pooler I can get more db connections. But this is under extreme load of 30 concurrent connections hitting massive inserts.
+[![alt text](/assets/2025-04-07/14.jpg "email")](/assets/2025-04-07/14.jpg)
+
+Sentry added `/sentry-example-page` which successfully sent an error in the dev.
+
+Build time on Vercel went up from 47s to 1:43.
+
+`.env.sentry-build-plugin` move the key to `.env` and plug into Vercel environment variables.
+
+## Remove Sentry
+
+It is very chatty, so to remove:
+
+- .env.sentry-build-plugin
+- instrumentation-client.ts
+- instrumentation.ts
+- sentry.edge.config.ys
+- sentry.server.config.ts
+- app/sentry-example-page
+
+## Update next.js
+
+```bash
+pnpm install next@latest react@latest react-dom@latest
+```
+
+## Vercel Logging
+
+
+[![alt text](/assets/2025-04-07/15.jpg "email")](/assets/2025-04-07/15.jpg)
+
+3 levels of logging is good enough. Can easily filter.
+
+Errors are sent to Sentry.
 
 
 ## Web Analytics (Vercel) and Speed Insights

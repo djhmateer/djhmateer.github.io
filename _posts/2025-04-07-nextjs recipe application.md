@@ -101,6 +101,7 @@ and first page
 ```tsx
 // app/page.tsx
 // sfc - Stateless Function Component
+// notice this isn't async. only use async when need to to avoid double page request
 const Homepage = () => {
   return <>Cooking</>;
 };
@@ -109,6 +110,40 @@ export default Homepage;
 ```
 
 Traversy does some CSS bits (Tailwind 4)
+
+## Debugging
+
+```bash
+pnpm dev
+
+pnpm build
+pnpm run start
+
+
+```
+
+and 
+
+```ts
+// middleware.ts
+// to see http requests on dev like in vercel
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+export function middleware(request: NextRequest) {
+  console.log(`[Middleware] ${request.method} ${request.nextUrl.pathname}`)
+  return NextResponse.next()
+}
+```
+
+To see the requests that are happening on dev side.
+
+### VERCEL_FORCE_NO_BUILD_CACHE
+
+put in as an environment variable = 1 if you this is message below and you don't like some of the build:
+
+> Restored build cache from previous deployment
+
 
 ## ShadCN UI
 
