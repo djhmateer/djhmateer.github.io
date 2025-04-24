@@ -78,7 +78,7 @@ npx create-next-app@latest
 # tailwind (yes - default)
 # src directory (no - default)
 # App Router (yes - default)
-# Turbopack for next dev (no)
+# Turbopack for next dev (no). I'm now prefering this.
 # Customize aliases (no - default)
 
 # These are my default - same as above just using pnpm
@@ -118,8 +118,6 @@ pnpm dev
 
 pnpm build
 pnpm run start
-
-
 ```
 
 and 
@@ -143,6 +141,8 @@ To see the requests that are happening on dev side.
 put in as an environment variable = 1 if you this is message below and you don't like some of the build:
 
 > Restored build cache from previous deployment
+
+I had found that I'd taked out some packages, and they were still in the cached build assets on vercel. They probably didn't do anything, but wanted to get rid of them.
 
 
 ## ShadCN UI
@@ -401,6 +401,24 @@ pnpm up --latest
 I find that using LLM's to comment the tailwind to be useful, espeically when it is hidden inside the `globals.css` class.
 
 Ctrl Shift L - Open up new chat window on current file
+
+
+## Page Lifecycle etc
+
+If a there is a normal static page which is linked from the homepage, it will be pre fetched therefore will do no network request when the page is clicked. A SPA.
+
+```ts
+// page is always rendered fresh on the server for each request
+// page isn't cached at build time.
+export const dynamic = "force-dynamic";
+```
+
+If you link to a page which isn't currently linked.. it does a full page load 
+
+If you link a page which is dynamic it does a request (but only that but not full page ie 800bytes for my test) 
+
+
+
 
 ## 3. Database - Supabase and Vercel
 
