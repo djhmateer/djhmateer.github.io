@@ -743,33 +743,66 @@ POSTGRES_PRISMA_URL (don't need)
 
 [https://nextjs.org/docs/app/building-your-application/routing/error-handling](https://nextjs.org/docs/app/building-your-application/routing/error-handling)
 
-
 ```tsx
 // app/global-error.tsx
-'use client' // Error boundaries must be Client Components
- 
-export default function GlobalError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string }
-  reset: () => void
-}) {
+"use client"; // Error boundaries must be Client Components
+
+// this is for handing errors on the client side
+import Link from "next/link";
+import Error from "next/error";
+import { useEffect } from "react";
+
+export default function GlobalError({ error }: { error: Error }) {
+  useEffect(() => {
+    // should send to Sentry or something!
+    // Sentry.captureException(error);
+
+    console.error("Logged to developer tools from global-error.tsx - sorry about this!");
+  }, [error]);
+
   return (
-    // global-error must include html and body tags
-    <html>
-      <body>
-        <h2>Something went wrong!</h2>
-        <button onClick={() => reset()}>Try again</button>
-      </body>
-    </html>
-  )
+    <div>
+      <h2>This is the client side global error page ie global-error.tsx.</h2>
+      <Link href="/">Go Home</Link>
+    </div>
+  );
 }
 ```
 
-Note this will display a nice page, but not a 500 on Vercel. Vercel can filter, and it does show this as an 'error'
+Note this will display a nice page, but not a 500 on Vercel. 
 
 There is also error.tsx for finer grained.
+
+Here is my sample server component page to throw an error:
+
+```tsx
+// app/(root)/sample-error/page.tsx
+
+// always render the page on the server
+// skip all forms of caching
+// this is the opposite of static pages which are generated at build time and cached 
+export const dynamic = "force-dynamic";
+
+// not async unless need it
+export default function SampleErrorPage() { 
+  try { 
+    // this gets logged to the console on vercel
+    throw new Error("sample error in theserver component");
+  } catch (error) {
+    // this gets logged first in the sample function error
+    // console.error("in try catch.. with caught error included ", error);
+    console.error("in try catch.. don't need to output the error again");
+    throw error;
+  }
+  return <>Sample Error Page text</>;
+}
+```
+
+and here is the error on vercel:
+
+[![alt text](/assets/2025-04-07/17.jpg "email")](/assets/2025-04-07/17.jpg)
+
+
 
 ## Logging and Monitoring
 
