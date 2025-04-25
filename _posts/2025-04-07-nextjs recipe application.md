@@ -803,6 +803,14 @@ and here is the error on vercel:
 [![alt text](/assets/2025-04-07/17.jpg "email")](/assets/2025-04-07/17.jpg)
 
 
+## Use-client and Use-server
+
+[https://overreacted.io/what-does-use-client-do/#two-worlds-two-doors](https://overreacted.io/what-does-use-client-do/#two-worlds-two-doors)
+
+**good explanation of what is going on**?????
+
+
+
 
 ## Logging and Monitoring
 
