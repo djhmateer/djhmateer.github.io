@@ -41,7 +41,15 @@ To be able to accomplish the above a properly understand the stack, I always lik
 
 It is also a lot of fun to explore new technology (and the reason I'm in this job!)
 
-This starts off the same as the [Traversy]() course as it is good for pnpm, next.js, shadcn, zod
+This starts off with the same as the [Traversy](https://www.traversymedia.com/products/next-js-ecommerce/categories/2156730994) course as it is good for pnpm, next.js, shadcn, zod
+
+## Benefits of Next.js vs .NET/Python/Rails
+
+- The person doing all the development knowns Next.js really well (this is super important!)
+- Next.js is popular and well supported - [Stackoverflow 2024 Survey](https://survey.stackoverflow.co/2024/technology#most-popular-technologies-webframe)
+- Vercel is very good
+
+We shall see.
 
 ## Next.js
 
@@ -92,6 +100,11 @@ pnpm approve-builds
 # short for run dev
 pnpm dev
 
+# build optimised prod build (I used webpack - can change in packages.json)
+pnpm build
+# run as prod
+pnpm run start
+
 # update to latest version on next.js which is 15.3.0 on 14th April 25
 pnpm update next@latest
 ```
@@ -110,39 +123,7 @@ export default Homepage;
 ```
 
 Traversy does some CSS bits (Tailwind 4)
-
-## Debugging
-
-```bash
-pnpm dev
-
-pnpm build
-pnpm run start
-```
-
-and 
-
-```ts
-// middleware.ts
-// to see http requests on dev like in vercel
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-
-export function middleware(request: NextRequest) {
-  console.log(`[Middleware] ${request.method} ${request.nextUrl.pathname}`)
-  return NextResponse.next()
-}
-```
-
-To see the requests that are happening on dev side.
-
-### VERCEL_FORCE_NO_BUILD_CACHE
-
-put in as an environment variable = 1 if you this is message below and you don't like some of the build:
-
-> Restored build cache from previous deployment
-
-I had found that I'd taked out some packages, and they were still in the cached build assets on vercel. They probably didn't do anything, but wanted to get rid of them.
+kG
 
 
 ## ShadCN UI
@@ -760,8 +741,6 @@ POSTGRES_PRISMA_URL (don't need)
 
 ## Error Handling
 
-asdf
-
 [https://nextjs.org/docs/app/building-your-application/routing/error-handling](https://nextjs.org/docs/app/building-your-application/routing/error-handling)
 
 
@@ -788,6 +767,10 @@ export default function GlobalError({
 }
 ```
 
+Note this will display a nice page, but not a 500 on Vercel. Vercel can filter, and it does show this as an 'error'
+
+There is also error.tsx for finer grained.
+
 ## Logging and Monitoring
 
 [Nextjs logging]() article
@@ -810,3 +793,35 @@ client is using: drizzle-orm, drizzle-kit which includes DB schema and zod bindi
 
 packages/db/package.json
 
+
+## Debugging
+
+```ts
+// middleware.ts
+// to see http requests on dev like in vercel if we run in prod ie pnpm run start (after a pnpm build)
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+export function middleware(request: NextRequest) {
+  console.log(`[Middleware] ${request.method} ${request.nextUrl.pathname}`)
+  return NextResponse.next()
+}
+```
+
+To see the requests that are happening on dev side.
+
+[![alt text](/assets/2025-04-07/16.jpg "email")](/assets/2025-04-07/16.jpg)
+
+Also be careful that disable cache is unticked. Then we can see the cache being hit and minimal calls back to server (only when dynamic like in SeedPage above)
+
+If it's an async funciton, then can hit the disk cache instead. But in not async, then no requests are made at all.
+
+
+
+### VERCEL_FORCE_NO_BUILD_CACHE
+
+put in as an environment variable = 1 if you this is message below and you don't like some of the build:
+
+> Restored build cache from previous deployment
+
+I had found that I'd taked out some packages, and they were still in the cached build assets on vercel. They probably didn't do anything, but wanted to get rid of them.
