@@ -1,0 +1,1528 @@
+---
+layout: post
+title: Next.js Family Cooking Sample App
+description:
+menu: review
+categories: nextjs
+published: true
+comments: false
+sitemap: false
+image: /assets/2025-04-07/10.jpg
+---
+
+<!-- [![alt text](/assets/2025-04-03/1.jpg "email"){:width="700px"}](/assets/2025-04-03/1.jpg)  -->
+
+<!-- [![alt text](/assets/2025-04-07/1.jpg "email")](/assets/2025-04-07/1.jpg) -->
+
+## Background
+
+I'm working with a client who has a business application close to v1 release using this stack:
+
+- pnpm
+- Next.js (although we may be changing as have long compile times.. and don't use Next much.. what?)
+- ShadCN UI
+- Drizzle
+- Zod
+- React Hook Form (ShadCN Form)
+- Vercel for hosting
+- Supabase for Postgres and Auth (including SSO)
+- tRPC
+
+It has been an impressive development effort by a talented single young developer in the company (of around 150 people).
+
+As the application is at the core of what the company does, the risk of all the knowledge being with a single developer is large.
+
+I've been brought in to
+
+- Get the project released ie v1 - essentially get the developer focussed on the remaining large features to do
+- Make sure the app is secure, does what the business needs to etc..
+- Write documentation so that the I / others can support it and develop on it
+
+To be able to accomplish the above a properly understand the stack, I always like to have side projects to test what is happening. This is one of these projects.
+
+It is also a lot of fun to explore new technology (and the reason I'm in this job!)
+
+This starts off with the same as the [Traversy](https://www.traversymedia.com/products/next-js-ecommerce/categories/2156730994) course as it is good for pnpm, next.js, shadcn, zod
+
+## Benefits of Next.js vs .NET/Python/Rails
+
+- The person doing all the development knowns Next.js really well (this is super important!)
+- Next.js is popular and well supported - [Stackoverflow 2024 Survey](https://survey.stackoverflow.co/2024/technology#most-popular-technologies-webframe)
+- Vercel is very good
+- Same language (and framework) on client and server blurring the network boundary - interseting concept 
+
+We shall see.
+
+## Next.js
+
+[en.wikipedia.org/wiki/Next.js](https://en.wikipedia.org/wiki/Next.js) is a React framework which enables extra features including Server Side Rendering. [github.com/vercel/next.js](https://github.com/vercel/next.js) 131k stars on GH. It is a solid framework used by many of the worlds largest companies.
+
+[react.dev](https://react.dev/) recommends a full stack framework like Next.js or Remix to do routing and data fetching.
+
+### Problems and Alternatives
+
+Compilation times in Next are slow, issues with the App router, random compilation bugs, and some state management weirdness
+
+[tanstack.com/start/latest](https://tanstack.com/start/latest) - very new (still in Beta). 10k downloads per month on [npm](https://www.npmjs.com/package/@tanstack/start)
+
+[github.com/remix-run/react-router](https://github.com/remix-run/react-router) - 54k stars on GH. No server side rendering?
+
+[https://wasp.sh/](https://wasp.sh/) looks interesting. 16.6k stars. React, Node and Prisma. Rails-like framework.
+
+## Hello world
+
+See [blog here](/2025/03/05/nextjs) to get latest version of node via nvm. Also npm and pnpm.
+
+I've started back here at the beginning multiple times on
+
+- empty-next 
+- cooking - went too far down track with abstracted generic elements which I didn't like
+- family-cooking
+
+simple react snippets -sfc. Stateless Function arrow Component
+
+`/code/premium-docs`
+
+```bash
+# Next 15.2.4 as of 7th Apr 25
+npx create-next-app@latest
+# prostore
+# typescript (yes - default)
+# eslint (yes)
+# tailwind (yes - default)
+# src directory (no - default)
+# App Router (yes - default)
+# Turbopack for next dev (no). I'm now prefering this.
+# Customize aliases (no - default)
+
+# These are my default - same as above just using pnpm
+# pnpx create-next-app@latest cooking --ts --eslint --tailwind --no-src-dir --app --no-turbopack --no-import-alias --use-pnpm
+# pnpx create-next-app@latest empty-next --ts --eslint --tailwind --no-src-dir --app --turbopack --no-import-alias --use-pnpm
+pnpx create-next-app@latest family-cooking --ts --eslint --tailwind --no-src-dir --app --turbopack --no-import-alias --use-pnpm
+
+cd cooking
+# approve the build step for the warning I got
+# node_modules/.pnpm/sharp@0.33.5/node_modules/sharp: Running install script, done in 949ms
+# writes to pnpm-workspace-yaml
+pnpm approve-builds
+
+# short for run dev
+pnpm dev
+
+# build optimised prod build (I used webpack - can change in packages.json)
+pnpm build
+# run as prod
+pnpm run start
+
+# update to latest version on next.js which is 15.3.0 on 14th April 25
+pnpm update next@latest
+```
+
+and first page
+
+```tsx
+// app/page.tsx
+// sfc - Stateless Function Component
+// notice this isn't async. only use async when need to to avoid double page request
+const Homepage = () => {
+  return <>Cooking</>;
+};
+
+export default Homepage;
+```
+
+Traversy does some CSS bits (Tailwind 4)
+kG
+
+## ShadCN UI
+
+Lets use [ui.shadcn.com](https://ui.shadcn.com/) components to help speed up the build process
+
+[Installation](https://ui.shadcn.com/docs/installation/next)
+
+```bash
+# slate as base colour
+pnpm dlx shadcn@latest init
+
+# add a button
+pnpm dlx shadcn@latest add button
+```
+
+then to see the component
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+const Homepage = () => {
+  // return <>Cooking</>;
+  return <Button>Click me</Button>;
+};
+
+export default Homepage;
+```
+
+## Layout Groups
+
+Just a grouping of pages ie for admin or normal layouts
+
+`app/(root)/layout.tsx`
+
+I don't link this (root) name as it is confusing to the Main `app/layout.tsx` layout.
+
+(authorised) is a good name.
+
+## Constants
+
+I'm not doing these for now
+
+## Header and Footer
+
+`components/shared/header/index.tsx` - would be simpler to drop the shared, and rename to header.tsx.. easier to find the file as well. Am now using `components/header.tsx`. Shared did represent components which contained components, but I prefer simplicity.
+
+Using icons from [lucide.dev/guide/packages/lucide-react](https://lucide.dev/guide/packages/lucide-react)
+
+```bash
+pnpm install lucide-react
+```
+
+<!-- [![alt text](/assets/2025-04-07/1.jpg "email"){:width="700px"}](/assets/2025-04-07/1.jpg)  -->
+
+[![alt text](/assets/2025-04-07/1.jpg "email")](/assets/2025-04-07/1.jpg)
+
+Using tailwind and flexbox for responsive UI.
+
+[![alt text](/assets/2025-04-07/2.jpg "email")](/assets/2025-04-07/2.jpg)
+
+Smaller screens don't show the text title
+
+Footer is a simple component in `components/footer.tsx` which is linked to in the `app/(root)/layout.tsx`
+
+## Dropdown menu
+
+```bash
+# adds in components/ui/dropdown-menu.tsx
+pnpx shadcn@latest add dropdown-menu
+```
+
+## Loading and Notfound
+
+`app/loading.tsx` sfc.
+
+Could use [npmjs.com/package/react-spinners](https://www.npmjs.com/package/react-spinners)
+
+Or a simple loader.gif file
+
+```tsx
+// app/loading.tsx
+import Image from "next/image";
+import loader from "@/assets/loader.gif";
+
+const Loading = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
+      <Image src={loader} width={100} height={100} alt="Loading..." />
+    </div>
+  );
+};
+export default Loading;
+```
+
+and a nice test on the homepage:
+
+```tsx
+// app/(root)/page.tsx
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const Homepage = async () => {
+  await delay(2000);
+  return <>Homepage</>;
+```
+
+```tsx
+// app/not-found.tsx
+```
+
+Am using a `use client` directive as using an onClick event javascript. Much simpler to just use a <Link> component, or a Button with a Link:
+
+```tsx
+// app/not-found.tsx
+
+<div className="mt-4 ml-0">
+  {/* <Button asChild variant="ghost"> */}
+  <Button asChild>
+    <Link href="/">Go Home</Link>
+  </Button>
+</div>
+```
+
+## Sheet menu (for small screen menu flyout)
+
+Am not doing this for now.
+
+## Sample Data
+
+```ts
+// db/sample-data.ts
+const sampleData = {
+  products: [
+    {
+      name: 'Polo Sporting Stretch Shirt',
+      slug: 'polo-sporting-stretch-shirt',
+      category: "Men's Dress Shirts",
+      description: 'Classic Polo style with modern comfort',
+      images: [
+        '/images/sample-products/p1-1.jpg',
+        '/images/sample-products/p1-2.jpg',
+      ],
+      price: 59.99,
+      brand: 'Polo',
+      rating: 4.5,
+      numReviews: 10,
+      stock: 5,
+      isFeatured: true,
+      banner: 'banner-1.jpg',
+    },
+    {
+      name: 'Brooks Brothers Long Sleeved Shirt',
+      slug: 'brooks-brothers-long-sleeved-shirt',
+```
+
+Use this to get a UI going, then will use this to seed a database with.
+
+```tsx
+// app/(root)/page.tsx
+import sampleData from "@/db/sample-data";
+import ProductList from "@/components/product-list";
+
+const Homepage = async () => {
+  return (
+    <>
+      <ProductList
+        data={sampleData.products}
+        title="Newest Arrivals"
+        limit={4}
+      />
+    </>
+  );
+};
+export default Homepage;
+```
+
+and
+
+```tsx
+// components/product-list.tsx
+const ProductList = ({
+  data,
+  title,
+  limit,
+}: {
+  data: any;
+  title?: string;
+  limit?: number;
+}) => {
+  const limitedData = limit ? data.slice(0, limit) : data;
+
+  return (
+    <div className="my-10">
+      <h2 className="h2-bold mb-4">{title}</h2>
+      {data.length > 0 ? (
+        // mobile - 1 column then small 2, medium 3, large 4 columns and up
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {limitedData.map((product: any) => (
+            <div key={product.id}>{product.name}</div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          <p>No product found</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ProductList;
+```
+
+Notice we don't have typing yet for `product` or `data` which is really `products`
+
+## Card
+
+```bash
+# adds components/ui/card.tsx
+pnpx shadcn@latest add card
+```
+
+As performance is a big deal in React and Next, I want to be sure to focus on the UI library and interactions too. Understanding what is happening and where, is very important.
+
+However so is simplicity, so lets try and refactor as I go.
+
+Currently have
+
+- ProductList component on home screen which gets products data passed to it, and a title and limit property.
+- ProductList handles all its own rendering
+- create a ProductCard component ie a single Card... possible don't need?
+- He also wants to create a ProductPrice component - no!
+
+## Updates
+
+```bash
+# next from 15.2.4 to 15.2.5
+# eslint the same as above
+# node typoes from 20.17.30 to 22.14.0 (22.14.4 is latest lts)
+
+pnpm up --latest
+```
+
+## Tailwind
+
+I find that using LLM's to comment the tailwind to be useful, espeically when it is hidden inside the `globals.css` class.
+
+Ctrl Shift L - Open up new chat window on current file
+
+## Caching and Network Requests
+
+If a there is a page (server or client side) which is linked from the homepage, it will be pre fetched therefore will do no network request when the page is clicked. A SPA.
+
+It will not be fetched if it is marked "force-dynamic"
+
+[https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)
+
+```ts
+// page is always rendered fresh on the server for each request
+// page isn't cached at build time.
+// 'auto' default. cache as much as possible while allowing components to opt into dynamic behaviour. Why do I get a network request if the is default. and don't when this isn't specified?
+// 'force-static'.  want to make sure page is completely static.
+// 'error'. force static and throw an error if any components use dynamic
+// 'force-dynamic' - need fresh data on every request
+export const dynamic = "force-dynamic";
+```
+
+If you link to a page which isn't currently linked.. it does a full page load
+
+If you link a page which is dynamic it does a request (but only that but not full page ie 800bytes for my test)
+
+### use server or use client
+
+Note that having a "use server" directive doesn't mean there is a network request to the server.
+
+Use server pattern used when need to be an auto generated api on the server to fetch data.
+
+[https://overreacted.io/what-does-use-client-do/#two-worlds-two-doors](https://overreacted.io/what-does-use-client-do/#two-worlds-two-doors)
+
+```ts
+// global-error.tsx
+// by default Next.js uses Server Components, so have to say if need client
+
+// all functions in the file are to be executed on the server (default)
+// "use server";
+"use client";
+
+// export default function AboutPage() {
+// "use server" has to be async
+export default async function AboutPage() {
+```
+
+### Server Components
+
+asdf
+
+This allows client side code to call an automatically generated API to get some data.
+
+Essentially we have a single program split between two machines.
+
+However I'm going towards using tRPC. Will get all working with components, drizzle and zod first.
+
+### Server Functions
+
+asdf
+
+## Linting
+
+As a reminder here are the safeguards in TS:
+
+1. Language Server - tsc
+2. Code Formatter - Prettier
+3. Linter - ESLint
+
+I've created a new [Vercel.com](https://vercel.com/) project by pushing to GitHub and linking up.
+
+```ts
+// next.config.ts
+const nextConfig: NextConfig = {
+  // show warnings in console but wont break production build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
+```
+
+To run the linter `pnpm lint` - also need to get rid of ' in html. I prefer to run the linter.
+
+## Package.json
+
+To see what packages need updating
+
+[![alt text](/assets/2025-04-07/18.jpg "email")](/assets/2025-04-07/18.jpg)
+
+delete the node_modules folder and pnpm-lock.yaml then run pnpn install
+
+I then just update manually the package.json file to whatever version I need then run pnpm i again.
+
+## 3. Database - Supabase and Vercel
+
+Create a new Supabase from the vercel side. West EU (London) called cooking-db
+
+```bash
+# 0.41.0 (client on 0.39.1). 0.43.1 on 28th Apr 25
+# https://github.com/drizzle-team/drizzle-orm
+# pnpm update didn't get latest
+pnpm add drizzle-orm
+
+# 3.4.5 (client on 3.4.5)
+# https://github.com/porsager/postgres
+pnpm add postgres
+
+# 0.30.6 (client on 0.30.4)
+# I got a warning: Ignored build scripts: esbuild.
+# Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.
+# but then missed the approval step
+# to revert check pnpm-workspace.yaml and delete the changed ignored part
+pnpm add -D drizzle-kit
+
+# 10.9.2 - have added to easily run ts as a console app
+pnpm add -D ts-node
+# 4.19.3
+pnpm add -D tsx
+
+# can then run this typescript console application
+npx tsx db/seed
+
+# to load in .env
+pnpm install -D dotenv
+```
+
+### DB Summary
+
+See [here]() for detailed post on my experimentation with Supabase and Vercel and Next.js.
+
+[drizzle supabase docs](https://orm.drizzle.team/docs/get-started/supabase-new)
+
+Essentially:
+
+Use the direct POSTGRES_URL_NON_POOLING connection. Faster with prepared statements. Can use transactions. Works with Vercel.
+
+I seem to get more performance using transactions for multiple inserts. Strange.
+
+If use the pooler, need to use prepare: false, otherwise under load from many requests it wont be able to find prepared statment.
+
+## ENV Variables in Vercel
+
+### postgres driver (need)
+
+- POSTGRES_URL
+- POSTGRES_URL_NON_POOLING - direct connection. Use this.
+
+## Simple DB Connection Check
+
+```ts
+// db/seed-simple.ts
+// To run this console script
+// npx tsx db/seed-simple
+
+import "dotenv/config";
+import postgres from "postgres";
+// from nextjs-dashboard project
+import { customers } from "./placeholder-data";
+
+const client = postgres(process.env.POSTGRES_URL_NON_POOLING!);
+
+async function seedCustomers() {
+  await client`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+  await client`
+    CREATE TABLE IF NOT EXISTS customers (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      image_url VARCHAR(255) NOT NULL
+    );
+  `;
+
+  for (const customer of customers) {
+    console.log("inserting customer", customer.name);
+    await client`
+      INSERT INTO customers (id, name, email, image_url)
+      VALUES (${customer.id}, ${customer.name}, ${customer.email}, ${customer.image_url})
+      ON CONFLICT (id) DO NOTHING;
+    `;
+  }
+}
+
+async function main() {
+  console.log("dropping and creating public schema");
+  await client`DROP SCHEMA public CASCADE;`;
+  await client`CREATE SCHEMA public;`;
+
+  console.log("begin transaction");
+  try {
+    await seedCustomers();
+  } catch (error) {
+    console.error("error", error);
+  }
+  console.log("end transaction");
+  // close the connection so that the console app can exit
+  await client.end();
+}
+
+main();
+```
+
+Warning - this does drop and recreate.
+
+## Drizzle ORM Models and Migrations
+
+Lets explore
+
+- Drizzle and how it works
+- Can it just be a micro orm ie a mapper for raw SQL queries like Dapper?
+- Explore the migrations
+- I do want to use this as an orm as that is what my sample prod project is
+
+[https://orm.drizzle.team/docs/get-started/supabase-new](https://orm.drizzle.team/docs/get-started/supabase-new)
+
+```bash
+# 0.43.1 on 29th Apr 25
+pnpm i drizzle-orm
+# 3.4.5 on 29th Apr 25
+# https://www.npmjs.com/package/postgres  - porsager
+pnpm i postgres
+
+# Dev dependency
+# 0.31.0 on 29th Apr 25
+pnpm i -D drizzle-kit
+
+# Run typescript files in a node environment
+# 4.19.3 on 29th Apr 25
+pnpm i -D tsx
+
+# Drizzle command line (tsx) needs this.
+# 16.5.0 on 29th Apr 25
+pnpm i -D dotenv
+```
+
+then
+
+```ts
+// ./drizzle.config.ts
+import "dotenv/config";
+import { defineConfig } from "drizzle-kit";
+
+// Used by Drizzle Kit
+export default defineConfig({
+  out: "./drizzle",
+  schema: "./db/schema.ts",
+  dialect: "postgresql",
+  dbCredentials: {
+    url: process.env.POSTGRES_URL_NON_POOLING!,
+  },
+});
+```
+
+then
+
+```ts
+// db/schema.ts
+import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+
+export const usersTable = pgTable("users", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  name: varchar({ length: 255 }).notNull(),
+  age: integer().notNull(),
+  email: varchar({ length: 255 }).notNull().unique(),
+});
+```
+
+then
+
+```bash
+# make changes but doesn't create migration files.
+# can create files by running generate
+npx drizzle-kit push
+
+# or
+# generate migrations
+npx drizzle-kit generate
+
+# apply
+npx drizzle-kit migrate
+```
+
+and then I can use drizzle:
+
+```ts
+// db/seed-drizzle.ts
+// npx tsx db/seed-drizzle
+
+// npx drizzle-kit push
+
+// npx drizzle-kit generate
+// npx drizzle-kit migrate
+
+import "dotenv/config";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { eq } from "drizzle-orm";
+import { usersTable } from "./schema";
+
+const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
+
+async function main() {
+  const user: typeof usersTable.$inferInsert = {
+    name: "John",
+    age: 30,
+    email: "john@example.com",
+  };
+  await db.insert(usersTable).values(user);
+  console.log("New user created!");
+  const users = await db.select().from(usersTable);
+  console.log("Getting all users from the database: ", users);
+  /*
+  const users: {
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+  }[]
+  */
+  await db
+    .update(usersTable)
+    .set({
+      age: 31,
+    })
+    .where(eq(usersTable.email, user.email));
+  console.log("User info updated!");
+  // await db.delete(usersTable).where(eq(usersTable.email, user.email));
+  // console.log('User deleted!')
+  // hack to exit the process
+  process.exit(0);
+}
+// need to do client.end() to end but this involves getting underlying postgres client
+main();
+```
+
+### Add columns
+
+Just add into the schema
+
+```ts
+  email: varchar({ length: 255 }).notNull(),
+  stuff: varchar({ length: 255 }),
+```
+
+then run `npx drizzle-kit push` or generate files and migrate to update the db.
+
+### Remove column
+
+Update the schema definition and push.
+
+Get a nice message about "THIS ACTION WILL CAUSE DATA LOSS AND CANNOT BE REVERTED"
+
+You can get out of sync by pushing a change.. then generating a migration and migrating.
+
+### Types
+
+Drizzle does give this, which gives properties.
+
+```ts
+export type InsertUser = typeof usersTable.$inferInsert;
+export type SelectUser = typeof usersTable.$inferSelect;
+```
+
+## User Stories
+
+This is a neat feature I saw in Dave Gray's video series
+[Dave Gray](https://www.youtube.com/watch?v=tiSm8ZjFQP0)
+
+[source](https://github.com/gitdagray/nextjs-full-stack-project)
+
+### UserStories.md
+
+put in repo so can see the progress, and what to do next. Agreed with the customer.
+
+1. [x] Replace current sticky note system
+2. [ ] Add a public facing page with basic contact info
+3. [ ] Add a passwordless employee login to the app
+4. [ ] Show a real-time open tickets page after login
+5. [ ] Provide easy navigation & search for customers & tickets
+6. [ ] Provide a logout option
+7. [ ] Require users to login at least once per week
+8. [ ] Provide a way to remove employee access asap if needed
+9. [ ] Customers have an ID, full address, phone, email & notes
+10. [ ] Tickets have an ID, title, notes, created & updated dates
+11. [ ] Tickets are either OPEN or COMPLETED
+12. [ ] Tickets are assigned to specific employees
+13. [ ] Users can have Employee, Manager, or Admin permissions
+14. [ ] All users can create and view tickets
+15. [ ] All users can create, edit and view customers
+16. [ ] Employees can only edit their assigned tickets
+17. [ ] Managers and Admins can view, edit, and complete all tickets
+18. [ ] Desktop mode is most important but the app should be usable on tablet devices as well.
+19. [ ] Light / Dark mode option requested by employees
+20. [ ] Expects quick support if anything goes wrong with the app
+
+## Drizzle with React Components
+
+from Dave Gray video
+
+```ts
+// db/index.ts
+// todo - rename this file!?
+
+import { drizzle } from "drizzle-orm/postgres-js";
+import { config } from "dotenv";
+
+// config({ path: ".env.local" });
+config({ path: ".env" });
+
+const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
+
+// drizzle logger
+// const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!, {
+//   logger: true,
+// });
+
+export { db };
+```
+
+Drizzle connection abstraction.
+
+```ts
+// db/schema.ts
+// Drizzle schema
+
+import {
+  pgTable,
+  serial,
+  varchar,
+  boolean,
+  timestamp,
+  integer,
+  text,
+} from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
+
+export const customers = pgTable("customers", {
+  id: serial("id").primaryKey(),
+  firstName: varchar("first_name", { length: 255 }).notNull(),
+  lastName: varchar("last_name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).unique().notNull(),
+  phone: varchar("phone", { length: 255 }).unique().notNull(),
+  address1: varchar("address1", { length: 255 }).notNull(),
+  address2: varchar("address2", { length: 255 }),
+  city: varchar("city", { length: 255 }).notNull(),
+  state: varchar("state", { length: 2 }).notNull(),
+  zip: varchar("zip", { length: 10 }).notNull(),
+  notes: text("notes"),
+  active: boolean("active").notNull().default(true),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at")
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+export const tickets = pgTable("tickets", {
+  id: serial("id").primaryKey(),
+  customerId: integer("customer_id")
+    .notNull()
+    .references(() => customers.id),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  completed: boolean("completed").notNull().default(false),
+  tech: varchar("tech", { length: 255 }).notNull().default("unassigned"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at")
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+// create relations
+// 1 customer can have many tickets
+export const customersRelations = relations(customers, ({ many }) => ({
+  tickets: many(tickets),
+}));
+
+export const ticketsRelations = relations(tickets, ({ one }) => ({
+  customer: one(customers, {
+    fields: [tickets.customerId],
+    references: [customers.id],
+  }),
+}));
+```
+
+Drizzle schema definition which allows
+
+-migrations
+-querying
+
+```json
+// useful in the package.json scripts
+// I use g and m shortcuts
+"db:generate": "drizzle-kit generate",
+// "db:migrate": "npx tsx db/migrate.ts"
+```
+
+or
+
+```bash
+# this gives nice warnings on what it is about to do
+# and can say yes or no
+npx drizzle-kit generate
+npx drizzle-kit migrate
+
+# looks like an alternate way to call migration
+npx tsx db/migrate
+
+# shortcut way for fast dev work without using migration files
+npx drizzle-kit push
+```
+
+then
+
+```sql
+-- Useful SQL
+
+--DROP SCHEMA drizzle CASCADE;
+--CREATE SCHEMA public;
+
+--DROP SCHEMA public CASCADE;
+--CREATE SCHEMA public;
+```
+
+He saw sample data in [repo](https://github.com/gitdagray/nextjs-full-stack-project/blob/lesson-13/data/customers.sql)
+
+Also good idea - use AI to generate sample data!
+
+## Queries
+
+```ts
+// lib/queries/getCustomer.ts
+
+import { db } from "@/db";
+import { customers } from "@/db/schema";
+import { eq } from "drizzle-orm";
+
+export async function getCustomer(id: number) {
+  const customer = await db
+    .select()
+    .from(customers)
+    .where(eq(customers.id, id));
+
+  // to force the only customer and not an array of 1
+  return customer[0];
+}
+```
+
+and
+
+```tsx
+// app/(root)/customer/form/page.tsx
+import { getCustomer } from "@/lib/queries/getCustomer";
+
+export default async function CustomerFormPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
+  try {
+    const { customerId } = await searchParams;
+
+    // Edit customer form
+    if (customerId) {
+      const customer = await getCustomer(parseInt(customerId));
+
+      if (!customer) {
+        return (
+          <>
+            <h2 className="text-2xl mb-2">
+              Customer ID #{customerId} not found
+            </h2>
+          </>
+        );
+      }
+      console.log(customer);
+      // put customer form component
+    } else {
+      // new customer form component
+    }
+  } catch (e) {
+    // will get ouptutted to the console ie vercel logs
+    throw e;
+  }
+}
+```
+
+Using a Search Param:
+
+[http://localhost:3000/customers/form?customerId=4](http://localhost:3000/customer/form?customerId=4)
+
+We can see the customer returned in the console.
+
+### Tickets
+
+They are more interesting as
+
+- no customerId and no ticketId - error
+- customerId - Create a new ticket for this customer
+- ticketId - Edit this ticket
+
+[http://localhost:3000/tickets/form?ticketId=2](http://localhost:3000/tickets/form?ticketId=2)
+
+```tsx
+// (root)/tickets/form/page.tsx
+
+import { getCustomer } from "@/lib/queries/getCustomer";
+import { getTicket } from "@/lib/queries/getTicket";
+
+export default async function TicketFormPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
+  try {
+    const { customerId, ticketId } = await searchParams;
+
+    // if no customerId or ticketId, return error
+    if (!customerId && !ticketId) {
+      return (
+        <>
+          <h2 className="text-2xl mb-2">
+            Ticket ID or Customer ID required to load ticket form
+          </h2>
+        </>
+      );
+    }
+
+    // New ticket form ie a customerId is provided
+    if (customerId) {
+      const customer = await getCustomer(parseInt(customerId));
+
+      if (!customer) {
+        return (
+          <>
+            <h2 className="text-2xl mb-2">
+              Customer ID #{customerId} not found
+            </h2>
+          </>
+        );
+      }
+
+      // if customer is not active, return error
+      if (!customer.active) {
+        return (
+          <>
+            <h2 className="text-2xl mb-2">
+              Customer ID #{customerId} is not active.
+            </h2>
+          </>
+        );
+      }
+
+      // return new ticket form
+      console.log(customer);
+    }
+
+    // Edit ticket form
+    if (ticketId) {
+      const ticket = await getTicket(parseInt(ticketId));
+
+      if (!ticket) {
+        return (
+          <>
+            <h2 className="text-2xl mb-2">Ticket ID #{ticketId} not found</h2>
+          </>
+        );
+      }
+
+      const customer = await getCustomer(ticket.customerId);
+
+      // return edit ticket form
+      console.log("ticket: ", ticket);
+      console.log("customer: ", customer);
+    }
+  } catch (e) {
+    throw e;
+  }
+}
+```
+
+Logical, but don't know if I like this complexity.
+
+## Zod
+
+[https://www.youtube.com/watch?v=bg6KyucKd88](https://www.youtube.com/watch?v=bg6KyucKd88) Next.js with React-Hook-Form, Drizzle-Zod and ShadCN/ui
+
+I'm following this Dave Gray video now
+
+```ts
+// zod-schemas/customer.ts
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { customers } from "@/db/schema";
+
+export const insertCustomerSchema = createInsertSchema(customers, {
+  firstName: (schema) => schema.min(1, "First name is required"),
+  lastName: (schema) => schema.min(1, "Last name is required"),
+  address1: (schema) => schema.min(1, "Address is required"),
+  city: (schema) => schema.min(1, "City is required"),
+  state: (schema) => schema.length(2, "State must be exactly 2 characters"),
+  email: (schema) => schema.email("Invalid email address"),
+  zip: (schema) =>
+    schema.regex(
+      /^\d{5}(-\d{4})?$/,
+      "Invalid Zip code. Use 5 digits or 5 digits followed by a hyphen and 4 digits"
+    ),
+  phone: (schema) =>
+    schema.regex(
+      /^\d{3}-\d{3}-\d{4}$/,
+      "Invalid phone number format. Use XXX-XXX-XXXX"
+    ),
+});
+
+export const selectCustomerSchema = createSelectSchema(customers);
+
+export type insertCustomerSchemaType = typeof insertCustomerSchema._type;
+
+export type selectCustomerSchemaType = typeof selectCustomerSchema._type;
+```
+
+Nice to have built in email validation (it is hard to get right)
+
+Lets see if this wires up well
+
+## React Hook Form (shadcn form)
+
+[https://ui.shadcn.com/docs/components/form](https://ui.shadcn.com/docs/components/form) Shadcn From wraps react-hook-form
+
+> Forms are tricky
+
+I agree with this quote from shadcn.
+
+Why not the new Next Form in Next.js 15?
+
+This is client and server side validation of the form
+
+Lets colocate the "use client" component (as its not being used anywhere else)
+
+```tsx
+// app/(root)/customers/form/CustomerForm.tsx
+"use client";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form, FormField } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+
+import {
+  insertCustomerSchema,
+  type insertCustomerSchemaType,
+  type selectCustomerSchemaType,
+} from "@/zod-schemas/customer";
+
+type Props = {
+  customer?: selectCustomerSchemaType;
+};
+
+export default function CustomerForm({ customer }: Props) {
+  const defaultValues: insertCustomerSchemaType = {
+    // null coalescing operator
+    // better choice than (or) || short circuit operator which accepts first truthy value
+    id: customer?.id ?? 0,
+    firstName: customer?.firstName ?? "",
+    lastName: customer?.lastName ?? "",
+    email: customer?.email ?? "",
+    phone: customer?.phone ?? "",
+    address1: customer?.address1 ?? "",
+    address2: customer?.address2 ?? "",
+    city: customer?.city ?? "",
+    state: customer?.state ?? "",
+    zip: customer?.zip ?? "",
+    notes: customer?.notes ?? "",
+  };
+
+  const form = useForm<insertCustomerSchemaType>({
+    // when tab out of a field, it will validate
+    mode: "onBlur",
+    resolver: zodResolver(insertCustomerSchema),
+    defaultValues,
+  });
+
+  async function submitForm(data: insertCustomerSchemaType) {
+    console.log(data);
+  }
+
+  return (
+    <div className="flex flex-col gap-1 sm:px-8">
+      <div>
+        <h2 className="text-2xl font-bold">
+          {customer?.id ? "Edit" : "New"} Customer Form
+        </h2>
+      </div>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(submitForm)}
+          className="flex flex-col sm:flex-row gap-4 sm:gap-8"
+        >
+          <p>{JSON.stringify(form.getValues())}</p>
+        </form>
+      </Form>
+    </div>
+  );
+}
+```
+
+which is called from:
+
+```tsx
+// app/(root)/customer/form/page.tsx
+import { getCustomer } from "@/lib/queries/getCustomer";
+import CustomerForm from "@/app/(root)/customers/form/CustomerForm";
+
+export default async function CustomerFormPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
+  try {
+    const { customerId } = await searchParams;
+
+    // Edit customer form
+    if (customerId) {
+      const customer = await getCustomer(parseInt(customerId));
+
+      if (!customer) {
+        return (
+          <>
+            <h2 className="text-2xl mb-2">
+              Customer ID #{customerId} not found
+            </h2>
+          </>
+        );
+      }
+      console.log(customer);
+      // update customer
+      return <CustomerForm customer={customer} />;
+    } else {
+      // create customer
+      return <CustomerForm />;
+    }
+  } catch (e) {
+    // will get ouptutted to the console ie vercel logs
+    throw e;
+  }
+}
+```
+
+
+## Create the Form Elements
+
+```bash
+npx shadcn@latest add input select textarea checkbox
+```
+
+Lets abstract out
+
+
+```tsx
+// components/inputs/InputWithLabel.tsx
+
+// https://ui.shadcn.com/docs/components/form
+// we're abstracting out the anatomy of every input form as described in link above
+
+"use client";
+
+import { useFormContext } from "react-hook-form";
+
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { InputHTMLAttributes } from "react";
+
+import { cn } from "@/lib/utils";
+
+// typescript generics
+// s is for schema
+type Props<S> = {
+    fieldTitle: string;
+    nameInSchema: keyof S & string;
+    className?: string;
+} & InputHTMLAttributes<HTMLInputElement>;
+
+export function InputWithLabel<S>({
+    fieldTitle,
+    nameInSchema,
+    className,
+    ...props
+}: Props<S>) {
+
+    const form = useFormContext();
+
+    return (
+        <FormField
+        control={form.control}
+        name={nameInSchema}
+        render={({ field }) => (
+            <FormItem>
+                <FormLabel
+                    className="text-base"
+                    htmlFor={nameInSchema}
+                >
+                    {fieldTitle}
+                </FormLabel>
+
+                <FormControl>
+                    <Input
+                        id={nameInSchema}
+                        className={`w-full max-w-xs disabled:text-blue-500 dark:disabled:text-green-500 disabled:opacity-75 ${className}`}
+                        {...props}
+                        {...field}
+                    />
+                </FormControl>
+
+                <FormMessage />
+            </FormItem>
+        )}
+    />
+    )
+
+}
+```
+
+## Customer Create and Edit
+
+Both now work.. and Edit populates the form as expected. Including the Select List which is great.
+
+Also on edit when I do a reset, it populates the original data. Nice.
+
+## Tickets need Checkbox
+
+Am not liking the abstracted complexity of the form elements.
+
+
+
+## Authentication and Authorisation
+
+[https://www.youtube.com/watch?v=VueEcnP9LZg](https://www.youtube.com/watch?v=VueEcnP9LZg)
+
+Using Kinde which I don't want
+
+
+## Submit to Server Action
+
+Type safe server actions?
+
+[https://next-safe-action.dev/(https://next-safe-action.dev/)] mutations.
+
+[https://www.youtube.com/watch?v=4IJonW24uck](https://www.youtube.com/watch?v=4IJonW24uck)
+
+
+
+
+
+
+
+
+
+
+
+
+
+[![alt text](/assets/2025-04-07/20.jpg "email")](/assets/2025-04-07/20.jpg)
+
+Form with validation working. Goes to 1 column on smaller screens.
+
+
+We've also created a TextAreaWithLabel, SelectWithLabel
+
+Am not liking the complexity of these abstractions.
+
+
+
+
+
+
+
+and this works for
+
+[![alt text](/assets/2025-04-07/19.jpg "email")](/assets/2025-04-07/19.jpg)
+
+[http://localhost:3000/customers/form?customerId=2](http://localhost:3000/customers/form?customerId=2)
+
+and
+
+[http://localhost:3000/customers/form](http://localhost:3000/customers/form)
+
+This seems to be powerful as it allows
+
+- validation over the whole stack - including on forms
+- granular eg must be 3 letters or more..
+
+There is a [plugin for Drizzle](https://orm.drizzle.team/docs/zod) that allows you to generate Zod schemas from Drizzle ORM schemas.
+
+[https://zod.dev/?id=installation](https://zod.dev/?id=installation)
+
+[https://github.com/colinhacks/zod](https://github.com/colinhacks/zod)
+
+[https://github.com/drizzle-team/drizzle-orm/tree/main/drizzle-zod](https://github.com/drizzle-team/drizzle-orm/tree/main/drizzle-zod)
+
+```bash
+pnpm add zod
+
+pnpm add drizzle-zod
+
+# 7.56.1 on 29th Apr 25
+pnpm add react-hook-form
+
+# 5.0.1 on 29th Apr 25
+pnpm add @hookform/resolvers
+
+# 2.5.0 on 29th Apr 25
+# added in componenets/ui/form.tsx and label.tsx
+npx shadcn@latest add form
+```
+
+**HERE** using traversy Zod validation.. video
+**ALSO** https://orm.drizzle.team/docs/zod generate zod schemas from drizzle orm?????
+
+[https://www.youtube.com/watch?v=djDgTYrFMAY](https://www.youtube.com/watch?v=djDgTYrFMAY) Dave Gray video series. 13 videos each about 1:30 long.
+
+He is using: ShadCN, Lucide icons, [Kinde](https://kinde.com/) for authentication and authorization.
+
+## Loading Spinner
+
+loading.tsx
+
+For some reason my spinner works for direct page, but not if clicked on internally.
+
+## Error Handling
+
+[https://nextjs.org/docs/app/building-your-application/routing/error-handling](https://nextjs.org/docs/app/building-your-application/routing/error-handling)
+
+```tsx
+// app/global-error.tsx
+"use client"; // Error boundaries must be Client Components
+
+// this is for handing errors on the client side
+import Link from "next/link";
+import Error from "next/error";
+import { useEffect } from "react";
+
+export default function GlobalError({ error }: { error: Error }) {
+  useEffect(() => {
+    // should send to Sentry or something!
+    // Sentry.captureException(error);
+
+    console.error(
+      "Logged to developer tools from global-error.tsx - sorry about this!"
+    );
+  }, [error]);
+
+  return (
+    <div>
+      <h2>This is the client side global error page ie global-error.tsx.</h2>
+      <Link href="/">Go Home</Link>
+    </div>
+  );
+}
+```
+
+Note this will display a nice page, but not a 500 on Vercel.
+
+There is also error.tsx for finer grained.
+
+Here is my sample server component page to throw an error:
+
+```tsx
+// app/(root)/sample-error/page.tsx
+
+// always render the page on the server
+// skip all forms of caching
+// this is the opposite of static pages which are generated at build time and cached
+export const dynamic = "force-dynamic";
+
+// not async unless need it
+export default function SampleErrorPage() {
+  try {
+    // this gets logged to the console on vercel
+    throw new Error("sample error in theserver component");
+  } catch (error) {
+    // this gets logged first in the sample function error
+    // console.error("in try catch.. with caught error included ", error);
+    console.error("in try catch.. don't need to output the error again");
+    throw error;
+  }
+  return <>Sample Error Page text</>;
+}
+```
+
+and here is the error on vercel:
+
+[![alt text](/assets/2025-04-07/17.jpg "email")](/assets/2025-04-07/17.jpg)
+
+## Logging and Monitoring
+
+[Nextjs logging]() article
+
+## TODO
+
+can I use raw sql.. is there an object mapper to a type? Can drizzle do this?
+
+## Foo
+
+orm.drizzle.team/docs/tutorials/drizzle-with-supabase](https://orm.drizzle.team/docs/tutorials/drizzle-with-supabase)
+
+[https://vercel.com/guides/connection-pooling-with-serverless-functions#http-database-apis](https://vercel.com/guides/connection-pooling-with-serverless-functions#http-database-apis) uses PostgREST
+
+_HERE_ - need to look for best practise / advice on Supabase Drizzle and Vercel.
+
+client is using: drizzle-orm, drizzle-kit which includes DB schema and zod bindings
+
+packages/db/package.json
+
+## Debugging
+
+```ts
+// middleware.ts
+// to see http requests on dev like in vercel if we run in prod ie pnpm run start (after a pnpm build)
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+  console.log(`[Middleware] ${request.method} ${request.nextUrl.pathname}`);
+  return NextResponse.next();
+}
+```
+
+To see the requests that are happening on dev side.
+
+[![alt text](/assets/2025-04-07/16.jpg "email")](/assets/2025-04-07/16.jpg)
+
+Also be careful that disable cache is unticked. Then we can see the cache being hit and minimal calls back to server (only when dynamic like in SeedPage above)
+
+If it's an async funciton, then can hit the disk cache instead. But in not async, then no requests are made at all.
+
+### VERCEL_FORCE_NO_BUILD_CACHE
+
+put in as an environment variable = 1 if you this is message below and you don't like some of the build:
+
+> Restored build cache from previous deployment
+
+I had found that I'd taked out some packages, and they were still in the cached build assets on vercel. They probably didn't do anything, but wanted to get rid of them.

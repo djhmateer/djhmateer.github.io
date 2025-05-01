@@ -137,3 +137,7 @@ Successfully got linting working with eslint, TypeScript project,
 ```
 
 [Pretty TypeScript Errors](https://github.com/yoavbls/pretty-ts-errors) todo - come up with some examples of it working. It does seem like it makes errors more readable.
+
+## VScode icons
+
+Nice db icons etc..
