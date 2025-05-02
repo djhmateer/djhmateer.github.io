@@ -131,8 +131,11 @@ const Homepage = () => {
 export default Homepage;
 ```
 
+I'm going to try the new Geist font (default) as this is what comes with Next15. No I'm not - the old way has less code
+
 Traversy does some CSS bits (Tailwind 4)
-kG
+
+Hello world comes in at 431kB total. 
 
 ## ShadCN UI
 
@@ -161,7 +164,7 @@ const Homepage = () => {
 export default Homepage;
 ```
 
-## Layout Groups
+## Groups and Layouts
 
 Just a grouping of pages ie for admin or normal layouts
 
@@ -169,15 +172,12 @@ Just a grouping of pages ie for admin or normal layouts
 
 I don't link this (root) name as it is confusing to the Main `app/layout.tsx` layout.
 
-(authorised) is a good name.
+- (admin) or (authorised) is a good name.
+- (site) is good for the actual site
 
-## Constants
-
-I'm not doing these for now
+However for simplicity, lets try **no layout groups**. So all layout will go in `app/layout.tsx`. This will mean the same header and footer in all pages, but fine. I've also put all header and footer info in there for simplicity. Much nicer for a small site!
 
 ## Header and Footer
-
-`components/shared/header/index.tsx` - would be simpler to drop the shared, and rename to header.tsx.. easier to find the file as well. Am now using `components/header.tsx`. Shared did represent components which contained components, but I prefer simplicity.
 
 Using icons from [lucide.dev/guide/packages/lucide-react](https://lucide.dev/guide/packages/lucide-react)
 
@@ -186,16 +186,20 @@ pnpm install lucide-react
 ```
 
 <!-- [![alt text](/assets/2025-04-07/1.jpg "email"){:width="700px"}](/assets/2025-04-07/1.jpg)  -->
-
+<!-- 
 [![alt text](/assets/2025-04-07/1.jpg "email")](/assets/2025-04-07/1.jpg)
 
 Using tailwind and flexbox for responsive UI.
-
-[![alt text](/assets/2025-04-07/2.jpg "email")](/assets/2025-04-07/2.jpg)
+ -->
+<!-- [![alt text](/assets/2025-04-07/2.jpg "email")](/assets/2025-04-07/2.jpg) -->
 
 Smaller screens don't show the text title
 
-Footer is a simple component in `components/footer.tsx` which is linked to in the `app/(root)/layout.tsx`
+<!-- Footer is a simple component in `components/footer.tsx` which is linked to in the `app/(root)/layout.tsx` -->
+
+[![alt text](/assets/2025-04-07/21.jpg "email")](/assets/2025-04-07/21.jpg)
+
+Sample layout derived from traversy.
 
 ## Dropdown menu
 
@@ -204,7 +208,11 @@ Footer is a simple component in `components/footer.tsx` which is linked to in th
 pnpx shadcn@latest add dropdown-menu
 ```
 
+I've not implemented this yet
+
 ## Loading and Notfound
+
+**HERE**
 
 `app/loading.tsx` sfc.
 
