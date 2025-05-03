@@ -116,6 +116,9 @@ pnpm run start
 
 # update to latest version on next.js which is 15.3.0 on 14th April 25
 pnpm update next@latest
+
+# update all packages to latest 
+pnpm up --latest
 ```
 
 and first page
@@ -201,18 +204,7 @@ Smaller screens don't show the text title
 
 Sample layout derived from traversy.
 
-## Dropdown menu
-
-```bash
-# adds in components/ui/dropdown-menu.tsx
-pnpx shadcn@latest add dropdown-menu
-```
-
-I've not implemented this yet
-
-## Loading and Notfound
-
-**HERE**
+## Loading 
 
 `app/loading.tsx` sfc.
 
@@ -222,31 +214,23 @@ Or a simple loader.gif file
 
 ```tsx
 // app/loading.tsx
-import Image from "next/image";
-import loader from "@/assets/loader.gif";
-
 const Loading = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
-      <Image src={loader} width={100} height={100} alt="Loading..." />
+    <div className="flex flex-col items-center justify-center min-h-screen ">
+      <div className="p-6  w-1/3 text-center">
+        <h1 className="text-2xl mb-4">Loading....</h1>
+      </div>
     </div>
   );
 };
+
 export default Loading;
 ```
 
 and a nice test on the homepage:
 
 ```tsx
-// app/(root)/page.tsx
+// app/page.tsx
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Homepage = async () => {
@@ -254,22 +238,188 @@ const Homepage = async () => {
   return <>Homepage</>;
 ```
 
-```tsx
-// app/not-found.tsx
-```
+However on production, this page will be cached, so lets force it to be rerendered every time.
 
-Am using a `use client` directive as using an onClick event javascript. Much simpler to just use a <Link> component, or a Button with a Link:
+## Not Found
 
 ```tsx
 // app/not-found.tsx
+'use client';
 
-<div className="mt-4 ml-0">
-  {/* <Button asChild variant="ghost"> */}
-  <Button asChild>
-    <Link href="/">Go Home</Link>
-  </Button>
-</div>
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+
+export default function NotFound() {
+  return (
+    <div className='flex flex-col items-center justify-center min-h-screen '>
+      <Image
+        priority={true}
+        src='/images/logo.svg'
+        width={48}
+        height={48}
+        alt={`Family-Cooking logo`}
+      />
+      <div className='p-6 rounded-lg shadow-md w-1/3 text-center'>
+        <h1 className='text-3xl font-bold mb-4'>Not Found</h1>
+        <p className='text-destructive'>Could not find requested resource</p>
+        <Button
+          variant='outline'
+          className='mt-4 ml-2'
+          onClick={() => (window.location.href = '/')}
+        >
+          Back to home
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 ```
+
+Am using a `use client` directive as using an onClick event javascript. Much simpler to just use a <Link> component, or a Button with a Link:. Or is it?
+
+## Linting errors ignore
+
+```ts
+// next.config.ts
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
+
+export default nextConfig;
+```
+
+## Images in Public or assets
+
+Public is just public ie foo.com/image.jpg
+
+- want to keep large files out of the JS bundle
+- don't need optimisation on dynamic imports
+
+Assets 
+
+- allows bundling, type-checking
+
+
+## Tailwind v4
+
+We created our app with 
+
+```bash
+pnpx create-next-app@latest family-cooking --ts --eslint --tailwind --no-src-dir --app --turbopack --no-import-alias --use-pnpm
+```
+
+```tsx
+// postcss.config.json
+const config = {
+  plugins: ["@tailwindcss/postcss"],
+};
+
+export default config;
+```
+
+then
+```css
+@import "tailwindcss";
+
+/* sets up tailwind bits with variables defined below in :root */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* setting variables for the theme eg background colour, text-foreground */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+/* setting up the base styles from variables defined above */
+/* based off traversy media tutorial */
+/* used to have a dark theme which is defined in the theme inline here */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+```
+
+Notice above I'm not using an utility classes in the css, so all code will be raw Tailwind v4.
+
+[![alt text](/assets/2025-04-07/22.jpg "email")](/assets/2025-04-07/22.jpg)
+
+Layout with good padding, muted lines, icons, buttons, header with media queries so title disappears on smaller screens. A centered footer.
+
 
 ## Sheet menu (for small screen menu flyout)
 
@@ -305,90 +455,18 @@ const sampleData = {
 
 Use this to get a UI going, then will use this to seed a database with.
 
-```tsx
-// app/(root)/page.tsx
-import sampleData from "@/db/sample-data";
-import ProductList from "@/components/product-list";
 
-const Homepage = async () => {
-  return (
-    <>
-      <ProductList
-        data={sampleData.products}
-        title="Newest Arrivals"
-        limit={4}
-      />
-    </>
-  );
-};
-export default Homepage;
-```
+Traversy abstracted out
 
-and
+- ProductList
+- ProductCard
+- ProductPrice
 
-```tsx
-// components/product-list.tsx
-const ProductList = ({
-  data,
-  title,
-  limit,
-}: {
-  data: any;
-  title?: string;
-  limit?: number;
-}) => {
-  const limitedData = limit ? data.slice(0, limit) : data;
-
-  return (
-    <div className="my-10">
-      <h2 className="h2-bold mb-4">{title}</h2>
-      {data.length > 0 ? (
-        // mobile - 1 column then small 2, medium 3, large 4 columns and up
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {limitedData.map((product: any) => (
-            <div key={product.id}>{product.name}</div>
-          ))}
-        </div>
-      ) : (
-        <div>
-          <p>No product found</p>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default ProductList;
-```
-
-Notice we don't have typing yet for `product` or `data` which is really `products`
-
-## Card
+For simplicity, I've merged all these together into the home page to see what happens. It's certaily made cognitive load easier.
 
 ```bash
 # adds components/ui/card.tsx
 pnpx shadcn@latest add card
-```
-
-As performance is a big deal in React and Next, I want to be sure to focus on the UI library and interactions too. Understanding what is happening and where, is very important.
-
-However so is simplicity, so lets try and refactor as I go.
-
-Currently have
-
-- ProductList component on home screen which gets products data passed to it, and a title and limit property.
-- ProductList handles all its own rendering
-- create a ProductCard component ie a single Card... possible don't need?
-- He also wants to create a ProductPrice component - no!
-
-## Updates
-
-```bash
-# next from 15.2.4 to 15.2.5
-# eslint the same as above
-# node typoes from 20.17.30 to 22.14.0 (22.14.4 is latest lts)
-
-pnpm up --latest
 ```
 
 ## Tailwind
@@ -442,8 +520,6 @@ export default async function AboutPage() {
 
 ### Server Components
 
-asdf
-
 This allows client side code to call an automatically generated API to get some data.
 
 Essentially we have a single program split between two machines.
@@ -486,6 +562,7 @@ delete the node_modules folder and pnpm-lock.yaml then run pnpn install
 
 I then just update manually the package.json file to whatever version I need then run pnpm i again.
 
+
 ## 3. Database - Supabase and Vercel
 
 Create a new Supabase from the vercel side. West EU (London) called cooking-db
@@ -508,15 +585,17 @@ pnpm add postgres
 pnpm add -D drizzle-kit
 
 # 10.9.2 - have added to easily run ts as a console app
-pnpm add -D ts-node
-# 4.19.3
+# pnpm add -D ts-node
+
+# 4.19.4 on 3rd May 25
 pnpm add -D tsx
+
+# to load in .env
+# 16.5.0 on 3rd May 25
+pnpm install -D dotenv
 
 # can then run this typescript console application
 npx tsx db/seed
-
-# to load in .env
-pnpm install -D dotenv
 ```
 
 ### DB Summary
@@ -540,7 +619,7 @@ If use the pooler, need to use prepare: false, otherwise under load from many re
 - POSTGRES_URL
 - POSTGRES_URL_NON_POOLING - direct connection. Use this.
 
-## Simple DB Connection Check
+## Simple DB Connection and Insert
 
 ```ts
 // db/seed-simple.ts
@@ -549,29 +628,24 @@ If use the pooler, need to use prepare: false, otherwise under load from many re
 
 import "dotenv/config";
 import postgres from "postgres";
-// from nextjs-dashboard project
-import { customers } from "./placeholder-data";
+import sampleData from "./traversy-sample-data";
 
 const client = postgres(process.env.POSTGRES_URL_NON_POOLING!);
 
-async function seedCustomers() {
-  await client`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-
+async function seedProducts() {
   await client`
-    CREATE TABLE IF NOT EXISTS customers (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    CREATE TABLE IF NOT EXISTS products (
+      id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
-      email VARCHAR(255) NOT NULL,
       image_url VARCHAR(255) NOT NULL
     );
   `;
 
-  for (const customer of customers) {
-    console.log("inserting customer", customer.name);
+  for (const product of sampleData.products) {
+    console.log("inserting product", product.name);
     await client`
-      INSERT INTO customers (id, name, email, image_url)
-      VALUES (${customer.id}, ${customer.name}, ${customer.email}, ${customer.image_url})
-      ON CONFLICT (id) DO NOTHING;
+      INSERT INTO products (name, image_url)
+      VALUES (${product.name}, ${product.images[0]});
     `;
   }
 }
@@ -583,7 +657,7 @@ async function main() {
 
   console.log("begin transaction");
   try {
-    await seedCustomers();
+    await seedProducts();
   } catch (error) {
     console.error("error", error);
   }
@@ -597,6 +671,11 @@ main();
 
 Warning - this does drop and recreate.
 
+[![alt text](/assets/2025-04-07/23.jpg "email")](/assets/2025-04-07/23.jpg)
+
+Successful SQL Insert using int's instead of UUID's which I'm not a fan of.
+
+
 ## Drizzle ORM Models and Migrations
 
 Lets explore
@@ -608,27 +687,6 @@ Lets explore
 
 [https://orm.drizzle.team/docs/get-started/supabase-new](https://orm.drizzle.team/docs/get-started/supabase-new)
 
-```bash
-# 0.43.1 on 29th Apr 25
-pnpm i drizzle-orm
-# 3.4.5 on 29th Apr 25
-# https://www.npmjs.com/package/postgres  - porsager
-pnpm i postgres
-
-# Dev dependency
-# 0.31.0 on 29th Apr 25
-pnpm i -D drizzle-kit
-
-# Run typescript files in a node environment
-# 4.19.3 on 29th Apr 25
-pnpm i -D tsx
-
-# Drizzle command line (tsx) needs this.
-# 16.5.0 on 29th Apr 25
-pnpm i -D dotenv
-```
-
-then
 
 ```ts
 // ./drizzle.config.ts
@@ -637,8 +695,8 @@ import { defineConfig } from "drizzle-kit";
 
 // Used by Drizzle Kit
 export default defineConfig({
-  out: "./drizzle",
   schema: "./db/schema.ts",
+  out: "./db/migrations",
   dialect: "postgresql",
   dbCredentials: {
     url: process.env.POSTGRES_URL_NON_POOLING!,
@@ -649,7 +707,7 @@ export default defineConfig({
 then
 
 ```ts
-// db/schema.ts
+// db/schema.ts (just a sample - not the real products one)
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
@@ -659,8 +717,6 @@ export const usersTable = pgTable("users", {
   email: varchar({ length: 255 }).notNull().unique(),
 });
 ```
-
-then
 
 ```bash
 # make changes but doesn't create migration files.
@@ -675,57 +731,124 @@ npx drizzle-kit generate
 npx drizzle-kit migrate
 ```
 
-and then I can use drizzle:
+## Products schema
+
+I used AI to help generate this schema:
 
 ```ts
-// db/seed-drizzle.ts
-// npx tsx db/seed-drizzle
+// ./db/drizzle-schema.ts
+import {
+  pgTable,
+  varchar,
+  text,
+  integer,
+  decimal,
+  boolean,
+  timestamp,
+  jsonb,
+} from "drizzle-orm/pg-core";
 
-// npx drizzle-kit push
+export const productsTable = pgTable("products", {
+  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  name: varchar("name", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).notNull(),
+  category: varchar("category", { length: 255 }).notNull(),
+  images: jsonb("images"), // Store array of image paths as JSON
+  brand: varchar("brand", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  stock: integer("stock").notNull(),
+  price: decimal("price", { precision: 12, scale: 2 }).notNull().default("0"),
+  rating: decimal("rating", { precision: 3, scale: 2 }).notNull().default("0"),
+  numReviews: integer("num_reviews").notNull().default(0),
+  isFeatured: boolean("is_featured").notNull().default(false),
+  banner: varchar("banner", { length: 255 }),
+  createdAt: timestamp("created_at", { precision: 6 }).defaultNow().notNull(),
+});
+```
 
-// npx drizzle-kit generate
-// npx drizzle-kit migrate
+then 2 different ways of inserting - both with type safety giving red squiggly.
+
+```ts
+// To run this console script
+// npx tsx db/console-seed-drizzle
 
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/postgres-js";
-import { eq } from "drizzle-orm";
-import { usersTable } from "./schema";
+// import sampleData from "./traversy-sample-data";
+import { productsTable } from "./drizzle-schema";
 
 const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
 
 async function main() {
-  const user: typeof usersTable.$inferInsert = {
-    name: "John",
-    age: 30,
-    email: "john@example.com",
+  const product: typeof productsTable.$inferInsert = {
+    name: "Polo Sporting Stretch Shirt",
+    slug: "polo-sporting-stretch-shirt",
+    category: "Men's Dress Shirts",
+    brand: "Polo",
+    description: "Classic Polo style with modern comfort",
+    images: [
+      "/images/sample-products/p1-1.jpg",
+      "/images/sample-products/p1-2.jpg",
+    ], //jsonb
+    stock: 5,
+    price: "59.99", //
+    rating: "4.5", //
+    numReviews: 10,
+    isFeatured: true,
+    banner: "banner-1.jpg",
+    //this gets red squiggly here
+    // foo: "bar",
   };
-  await db.insert(usersTable).values(user);
-  console.log("New user created!");
-  const users = await db.select().from(usersTable);
-  console.log("Getting all users from the database: ", users);
-  /*
-  const users: {
-    id: number;
-    name: string;
-    age: number;
-    email: string;
-  }[]
-  */
-  await db
-    .update(usersTable)
-    .set({
-      age: 31,
-    })
-    .where(eq(usersTable.email, user.email));
-  console.log("User info updated!");
+
+  await db.insert(productsTable).values(product);
+  console.log("New product created!");
+
+  await db.insert(productsTable).values({
+    name: "Polo Sporting Stretch Shirt2",
+    slug: "polo-sporting-stretch-shirt",
+    category: "Men's Dress Shirts",
+    brand: "Polo",
+    description: "Classic Polo style with modern comfort",
+    images: [
+      "/images/sample-products/p1-1.jpg",
+      "/images/sample-products/p1-2.jpg",
+    ],
+    stock: 5,
+    price: "59.99",
+    rating: "4.5",
+    numReviews: 10,
+    isFeatured: true,
+    banner: "banner-1.jpg",
+    // this doesn't get red squiggly but values above does, and foo is in the error
+    // foo: "bar",
+  });
+  console.log("New product2 created!");
+
+  // update
+  // const users = await db.select().from(productsTable);
+  // console.log('Getting all users from the database: ', users)
+
+  // await db
+  //   .update(usersTable)
+  //   .set({
+  //     age: 31,
+  //   })
+  //   .where(eq(usersTable.email, user.email));
+  // console.log('User info updated!')
   // await db.delete(usersTable).where(eq(usersTable.email, user.email));
   // console.log('User deleted!')
   // hack to exit the process
   process.exit(0);
 }
-// need to do client.end() to end but this involves getting underlying postgres client
+// note this will hang
+// need to do client.end() but this involves getting underlying postgres client
 main();
 ```
+
+
+**HERE** try migrations.
+
+
 
 ### Add columns
 
