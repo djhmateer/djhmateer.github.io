@@ -52,7 +52,7 @@ This is a work in progress article with next steps to be:
 - AI is brilliant helping you learn a new framework/language - I used cursor (Claude) all the time to help me with syntax and to explain cocncepts like when a type is generated.
 
 
-- Logging and Error handling are inherintly complex in this blurred network boundary abstraction.
+- Logging and Error handling are inherintly complex in this blurred network boundary abstraction..
 
 ## Big Picture thoughts
 
