@@ -14,60 +14,58 @@ image: /assets/2025-04-07/10.jpg
 
 <!-- [![alt text](/assets/2025-04-07/1.jpg "email")](/assets/2025-04-07/1.jpg) -->
 
-## Background
+In this article I'll exploring and demoing:
 
-I'm working with a client who has a business application close to v1 release using this stack:
+- Creating a Next.js app with create-next-app
+- Deploying to Vercel
+- ShadCN/UI for UI components
+- How to use Groups and Layouts (and how to simplify)
+- Lucide icons
+- Layout
+- Loading and not-found pages
+- Tailwind v4 for css classes
+- Caching, network requests and the network boundary
+- TypeScript safefuards eg Language Server tsc, Code Formatter Prettier and Linter ESLint
+- Postgres (Supabase) - pooling vs direct connects
+- Drizzle ORM - mapping and migrations
+- Using postgres driver and drizzle and drizzle with sql to seed (ie console app)
+- Using drizzle with page.tsx and a server Action to select data
+- Using drizzle generated Select and Insert types to give type safety
+- Logging and Error handling
 
-- pnpm
-- Next.js (although we may be changing as have long compile times.. and don't use Next much.. what?)
-- ShadCN UI
-- Drizzle
-- Zod
-- React Hook Form (ShadCN Form)
-- Vercel for hosting
-- Supabase for Postgres and Auth (including SSO)
-- tRPC
+This is a work in progress article with next steps to be:
 
-It has been an impressive development effort by a talented single young developer in the company (of around 150 people).
+- zod
+- react hook forms
+- validation
+- multiple tables in db
+- edit and create forms combinations (and how to avoid compleity)
+- authentication and authorisation
 
-As the application is at the core of what the company does, the risk of all the knowledge being with a single developer is large.
 
-I've been brought in to
+## Thoughts
 
-- Get the project released ie v1 - essentially get the developer focussed on the remaining large features to do
-- Make sure the app is secure, does what the business needs to etc..
-- Write documentation so that the I / others can support it and develop on it
+- Complexity creeps into the sample apps I've followed 
+- Pairing the sample codebase down to a minimum makes things much easier to deal with as a 'beginner' 
+- Some of the best codebases I've worked on have been the simplest to understand. Thats where this codebase is heading
 
-To be able to accomplish the above a properly understand the stack, I always like to have side projects to test what is happening. This is one of these projects.
+- AI is brilliant helping you learn a new framework/language - I used cursor (Claude) all the time to help me with syntax and to explain cocncepts like when a type is generated.
 
-It is also a lot of fun to explore new technology (and the reason I'm in this job!)
 
-This starts off with the same as the [Traversy](https://www.traversymedia.com/products/next-js-ecommerce/categories/2156730994) course as it is good for pnpm, next.js, shadcn, zod
+- Logging and Error handling are inherintly complex in this blurred network boundary abstraction
 
-## Benefits of Next.js vs .NET/Python/Rails
+## Big Picture thoughts
 
-- The person doing all the development knowns Next.js really well (this is super important!)
-- Next.js is popular and well supported - [Stackoverflow 2024 Survey](https://survey.stackoverflow.co/2024/technology#most-popular-technologies-webframe)
-- Vercel is very good
-- Same language (and framework) on client and server blurring the network boundary - interseting concept 
+Next.js is a complex abstraction of client/server boundaries
 
-We shall see.
+It feels somewhat like Flash / Flex in that using the same language for the client and server.
 
-## Next.js
+What is next.js / react really good for?
 
-[en.wikipedia.org/wiki/Next.js](https://en.wikipedia.org/wiki/Next.js) is a React framework which enables extra features including Server Side Rendering. [github.com/vercel/next.js](https://github.com/vercel/next.js) 131k stars on GH. It is a solid framework used by many of the worlds largest companies.
+Does a business CRUD application need this?
 
-[react.dev](https://react.dev/) recommends a full stack framework like Next.js or Remix to do routing and data fetching.
+When working with a team of people of mixed abilties should we try for simpler abstractions in react/next
 
-### Problems and Alternatives
-
-Compilation times in Next are slow, issues with the App router, random compilation bugs, and some state management weirdness
-
-[tanstack.com/start/latest](https://tanstack.com/start/latest) - very new (still in Beta). 10k downloads per month on [npm](https://www.npmjs.com/package/@tanstack/start)
-
-[github.com/remix-run/react-router](https://github.com/remix-run/react-router) - 54k stars on GH. No server side rendering?
-
-[https://wasp.sh/](https://wasp.sh/) looks interesting. 16.6k stars. React, Node and Prisma. Rails-like framework.
 
 ## Hello world
 
@@ -1159,6 +1157,7 @@ export async function getLatestProducts() {
 In the page, lets just use drizzle and not zod
 
 
+**HERE** - this is the limit of where I got to.
 
 
 ## Zod
@@ -1222,18 +1221,6 @@ and lets test the zod schema
 
 
 createSelectSchema(productsTable) automatically generates a Zod schema that matches the shape of a row selected from the productsTable in your database.
-
-**HERE**
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1851,3 +1838,62 @@ put in as an environment variable = 1 if you this is message below and you don't
 > Restored build cache from previous deployment
 
 I had found that I'd taked out some packages, and they were still in the cached build assets on vercel. They probably didn't do anything, but wanted to get rid of them.
+
+
+
+## FOO
+
+## Background
+
+I'm working with a client who has a business application close to v1 release using this stack:
+
+- pnpm
+- Next.js (although we may be changing as have long compile times.. and don't use Next much.. what?)
+- ShadCN UI
+- Drizzle
+- Zod
+- React Hook Form (ShadCN Form)
+- Vercel for hosting
+- Supabase for Postgres and Auth (including SSO)
+- tRPC
+
+It has been an impressive development effort by a talented single young developer in the company (of around 150 people).
+
+As the application is at the core of what the company does, the risk of all the knowledge being with a single developer is large.
+
+I've been brought in to
+
+- Get the project released ie v1 - essentially get the developer focussed on the remaining large features to do
+- Make sure the app is secure, does what the business needs to etc..
+- Write documentation so that the I / others can support it and develop on it
+
+To be able to accomplish the above a properly understand the stack, I always like to have side projects to test what is happening. This is one of these projects.
+
+It is also a lot of fun to explore new technology (and the reason I'm in this job!)
+
+This starts off with the same as the [Traversy](https://www.traversymedia.com/products/next-js-ecommerce/categories/2156730994) course as it is good for pnpm, next.js, shadcn, zod
+
+## Benefits of Next.js vs .NET/Python/Rails
+
+- The person doing all the development knowns Next.js really well (this is super important!)
+- Next.js is popular and well supported - [Stackoverflow 2024 Survey](https://survey.stackoverflow.co/2024/technology#most-popular-technologies-webframe)
+- Vercel is very good
+- Same language (and framework) on client and server blurring the network boundary - interesting concept 
+
+We shall see.
+
+## Next.js
+
+[en.wikipedia.org/wiki/Next.js](https://en.wikipedia.org/wiki/Next.js) is a React framework which enables extra features including Server Side Rendering. [github.com/vercel/next.js](https://github.com/vercel/next.js) 131k stars on GH. It is a solid framework used by many of the worlds largest companies.
+
+[react.dev](https://react.dev/) recommends a full stack framework like Next.js or Remix to do routing and data fetching.
+
+### Problems and Alternatives
+
+Compilation times in Next are slow, issues with the App router, random compilation bugs, and some state management weirdness
+
+[tanstack.com/start/latest](https://tanstack.com/start/latest) - very new (still in Beta). 10k downloads per month on [npm](https://www.npmjs.com/package/@tanstack/start)
+
+[github.com/remix-run/react-router](https://github.com/remix-run/react-router) - 54k stars on GH. No server side rendering?
+
+[https://wasp.sh/](https://wasp.sh/) looks interesting. 16.6k stars. React, Node and Prisma. Rails-like framework.
