@@ -622,9 +622,9 @@ If use the pooler, need to use prepare: false, otherwise under load from many re
 ## Simple DB Connection and Insert
 
 ```ts
-// db/seed-simple.ts
-// To run this console script
-// npx tsx db/seed-simple
+// db/seed/console-seed-sql.ts
+
+// npx tsx db/seed/console-seed-sql
 
 import "dotenv/config";
 import postgres from "postgres";
@@ -673,7 +673,7 @@ Warning - this does drop and recreate.
 
 [![alt text](/assets/2025-04-07/23.jpg "email")](/assets/2025-04-07/23.jpg)
 
-Successful SQL Insert using int's instead of UUID's which I'm not a fan of.
+Successful SQL Insert.
 
 
 ## Drizzle ORM Models and Migrations
@@ -684,6 +684,7 @@ Lets explore
 - Can it just be a micro orm ie a mapper for raw SQL queries like Dapper?
 - Explore the migrations
 - I do want to use this as an orm as that is what my sample prod project is
+
 
 [https://orm.drizzle.team/docs/get-started/supabase-new](https://orm.drizzle.team/docs/get-started/supabase-new)
 
@@ -768,9 +769,11 @@ export const productsTable = pgTable("products", {
 
 then 2 different ways of inserting - both with type safety giving red squiggly.
 
+I prefer the first way as it gives more detail on which are the type problems ie squiggly is on connect line rather than hovering over.
+
 ```ts
 // To run this console script
-// npx tsx db/console-seed-drizzle
+// npx tsx db/seed/console-seed-drizzle
 
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/postgres-js";
@@ -824,31 +827,38 @@ async function main() {
   });
   console.log("New product2 created!");
 
-  // update
-  // const users = await db.select().from(productsTable);
-  // console.log('Getting all users from the database: ', users)
 
-  // await db
-  //   .update(usersTable)
-  //   .set({
-  //     age: 31,
-  //   })
-  //   .where(eq(usersTable.email, user.email));
-  // console.log('User info updated!')
-  // await db.delete(usersTable).where(eq(usersTable.email, user.email));
-  // console.log('User deleted!')
-  // hack to exit the process
+  for (const product of sampleData.products) {
+    console.log("inserting product", product.name);
+
+    // useful to use $insertInsert to debug type problems
+    const productFoo: typeof productsTable.$inferInsert = {
+      name: product.name,
+      slug: product.slug,
+      category: product.category,
+      brand: product.brand,
+      description: product.description,
+      // an array stored as jsonb in postgres
+      images: product.images,
+      stock: product.stock,
+      // pass to drizzle as string even though it expects a numeric type
+      price: String(product.price),
+      // minefield, and will probably store prices as pence/cents anyway to avoid this. 
+      // price: Number(product.price),
+      rating: String(product.rating),
+      numReviews: product.numReviews,
+      isFeatured: product.isFeatured,
+      banner: product.banner,
+    };
+
+    await db.insert(productsTable).values(productFoo);
+
+  }
+
   process.exit(0);
 }
-// note this will hang
-// need to do client.end() but this involves getting underlying postgres client
 main();
 ```
-
-
-**HERE** try migrations.
-
-
 
 ### Add columns
 
@@ -869,14 +879,23 @@ Get a nice message about "THIS ACTION WILL CAUSE DATA LOSS AND CANNOT BE REVERTE
 
 You can get out of sync by pushing a change.. then generating a migration and migrating.
 
-### Types
+### Migrations
 
-Drizzle does give this, which gives properties.
+```bash
+# creates the files (I like in db/migrations)
+npx drizzle-kit generate
 
-```ts
-export type InsertUser = typeof usersTable.$inferInsert;
-export type SelectUser = typeof usersTable.$inferSelect;
+# run the migrations live
+npx drizzle-kit migrate
 ```
+
+If you already have your db up to date, with test data using `npx drizzle-kit push` then you can mark the migration as already applied:
+
+[https://github.com/drizzle-team/drizzle-orm/discussions/1604](https://github.com/drizzle-team/drizzle-orm/discussions/1604)
+
+Seems like not the thing to do.
+
+Lets not do a push, unless am happy to blow the database away.
 
 ## User Stories
 
@@ -1001,48 +1020,223 @@ export const ticketsRelations = relations(tickets, ({ one }) => ({
 }));
 ```
 
-Drizzle schema definition which allows
+Also good idea - use AI to generate sample data!
 
--migrations
--querying
 
-```json
-// useful in the package.json scripts
-// I use g and m shortcuts
-"db:generate": "drizzle-kit generate",
-// "db:migrate": "npx tsx db/migrate.ts"
+## Load Products from Database
+
+Using Server Action ie async functions that are executed on the server.
+
+We can submit a form to these actions (ie they generate a API under the hood)
+
+```ts
+// db/product.actions.ts
+"use server";
+
+import { productsTable } from "./drizzle-schema";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { desc } from "drizzle-orm";
+// import all tables needed for Object Based Syntax
+import * as schema from "./drizzle-schema";
+
+export async function getLatestProducts() {
+
+  // Query builder syntax
+  //   const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
+  //   const products = await db
+  //     .select()
+  //     .from(productsTable)
+  //     .orderBy(desc(productsTable.createdAt))
+  //     .limit(3);
+
+  // Object Based Syntax which is more type safe
+  const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!, { schema });
+  const products = await db.query.productsTable.findMany({
+    orderBy: [desc(productsTable.createdAt)],
+    limit: 5,
+
+  });
+  return products;
+}
 ```
 
-or
+and page
+
+```tsx
+// app/page.tsx
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+
+// import sampleData from "@/db/traversy-sample-data";
+import { getLatestProducts } from "@/db/product.actions";
+
+const HomePage = async () => {
+  const latestProducts = await getLatestProducts();
+  // ...
+```
+
+## Drizzle Select and Insert Type
+
+By using inferSelect we can get the type from the drizzle-schema of the returned object:
+
+```ts
+// db/seed/console-seed-drizzle.ts
+
+ // SELECT
+  const bar = await db.query.productsTable.findFirst({
+    orderBy: [desc(productsTable.createdAt)],
+  });
+
+  // the type of bar is productsTable.$inferSelect or undefined
+  console.log("bar", bar?.name);
+
+  // forcing it to be defined
+  const bar2 = bar!
+  console.log("bar2", bar2.name);
+
+  // specifically typed
+  // $inferSelect is a type generated by Drizzle ORM to represent the shape
+  // of the data returned from a select query. This is attached to the productsTable object here.
+  const firstProduct: typeof productsTable.$inferSelect = bar!;
+  console.log("firstProduct name", firstProduct.name);
+```
+
+[docs](https://orm.drizzle.team/docs/goodies#type-api)
+
+
+## Drizzle Raw SQL (like Dapper)
+
+[https://orm.drizzle.team/docs/goodies#raw-sql-queries-execution](https://orm.drizzle.team/docs/goodies#raw-sql-queries-execution)
+
+```ts
+// SELECT SQL
+const result = await db.execute<typeof productsTable.$inferSelect>(
+  sql`SELECT * FROM products ORDER BY created_at DESC`
+);
+console.log("name of last inserted product", result[0].name);
+```
+
+## Drizzle in a Server Action
+
+I've got a page which needs data selected from the Products table.
+
+
+```ts
+// db/product.actions.ts
+"use server";
+
+import { productsTable } from "./drizzle-schema";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { desc } from "drizzle-orm";
+// import all tables needed for Object Based Syntax
+import * as schema from "./drizzle-schema";
+
+export async function getLatestProducts() {
+
+  // Query builder syntax
+  //   const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
+  //   const products = await db
+  //     .select()
+  //     .from(productsTable)
+  //     .orderBy(desc(productsTable.createdAt))
+  //     .limit(3);
+
+  // Object Based Syntax which is more type safe
+  const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!, { schema });
+  
+  const products = await db.query.productsTable.findMany({
+    orderBy: [desc(productsTable.createdAt)],
+    limit: 5,
+  });
+
+  // this is typed from drizzle productsTable.$inferSelect
+  // console.log("products", products[0].name);
+  return products;
+}
+```
+
+In the page, lets just use drizzle and not zod
+
+
+
+
+## Zod
+
+Lets create types eg when I display on the homepage I want an array of Product not any.  `let limitedData: any[];`
+
+- compile time checking
+- run time checking (which will allow us to have form validation)
+
+Eg we want a name to have at least 3 characters.
 
 ```bash
-# this gives nice warnings on what it is about to do
-# and can say yes or no
-npx drizzle-kit generate
-npx drizzle-kit migrate
+# 0.7.1 on 4th May 25
+pnpm install drizzle-zod
 
-# looks like an alternate way to call migration
-npx tsx db/migrate
-
-# shortcut way for fast dev work without using migration files
-npx drizzle-kit push
+# 3.24.3 on 4th May 25
+pnpm install zod
 ```
 
-then
+and zod-schema:
 
-```sql
--- Useful SQL
+```ts
+// zod-schemas/product.ts
 
---DROP SCHEMA drizzle CASCADE;
---CREATE SCHEMA public;
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { productsTable } from "@/db/drizzle-schema";
 
---DROP SCHEMA public CASCADE;
---CREATE SCHEMA public;
+// don't need some fields for insert new product
+// eg createdAt, updatedAt, id, rating...
+// so a separate schema for insert
+export const insertProductSchema = createInsertSchema(productsTable, {
+  name: (s) => s.min(3, "Name of product at least 3 characters"),
+  slug: (s) => s.min(3, "Slug of product at least 3 characters"),
+  category: (s) => s.min(3, "Category of product at least 3 characters"),
+  // TODO test
+  // images is an array of strings, stored as jsonb in db
+  images: (s) => s.array().nonempty("At least 1 image is required"),
+  brand: (s) => s.min(3, "Brand of product at least 3 characters"),
+  description: (s) => s.min(10, "Description at least 10 characters"),
+  // TODO test
+  stock: (s) => s.min(0, "Stock of product greater than 0..test this!"),
+  price: (s) => s.min(0, "Price of product greater than 0...test this!"),
+  // no need for rating
+  // no need for numReviews
+  // no need for isFeatured
+  // no need for banner
+  // no need for createdAt (auto generated)
+});
+
+// createSelectSchema(productsTable) automatically generates a Zod schema
+// that matches the shape of a row selected from the productsTable in your database.
+export const selectProductSchema = createSelectSchema(productsTable);
+
+
+
+export type insertProductSchemaType = typeof insertProductSchema._type;
+
+export type selectProductSchemaType = typeof selectProductSchema._type;
 ```
+and lets test the zod schema
 
-He saw sample data in [repo](https://github.com/gitdagray/nextjs-full-stack-project/blob/lesson-13/data/customers.sql)
 
-Also good idea - use AI to generate sample data!
+createSelectSchema(productsTable) automatically generates a Zod schema that matches the shape of a row selected from the productsTable in your database.
+
+**HERE**
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Queries
 
