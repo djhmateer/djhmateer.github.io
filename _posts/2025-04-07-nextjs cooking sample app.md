@@ -1158,6 +1158,35 @@ export async function getLatestProducts() {
 
 In the page, lets just use drizzle and not zod
 
+## Page.tsx
+
+```tsx
+// app/page.tsx
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+
+import { getLatestProducts } from "@/db/db.actions";
+// import { selectProductSchemaType } from "@/zod-schemas/product";
+import { productsTable } from "@/db/drizzle-schema";
+const HomePage = async () => {
+  const latestProducts = await getLatestProducts();
+
+  // zod
+  // let limitedData: selectProductSchemaType[];
+
+  // drizzle
+  let limitedData: typeof productsTable.$inferSelect[];
+
+  let showData = true;
+  if (latestProducts.length > 0) {
+    limitedData = latestProducts.slice(0, 5);
+  } else {
+    showData = false;
+  }
+```
+
+A wire up of drizzle to the `product.actions.ts` where the api has been created behind the scenes.
 
 
 
