@@ -41,6 +41,7 @@ This is a work in progress article with next steps to be:
 - multiple tables in db
 - edit and create forms combinations (and how to avoid compleity)
 - authentication and authorisation
+- image upload to storage
 
 
 ## Thoughts
