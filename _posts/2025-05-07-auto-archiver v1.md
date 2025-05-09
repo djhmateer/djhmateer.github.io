@@ -50,6 +50,28 @@ pipx install pipx
 ```
 
 
+**HERE**
+
+
+
+## Docker Run
+
+First run it will generate a 
+
+```bash
+docker run -it --rm -v $PWD/secrets:/app/secrets -v $PWD/local_archive:/app/local_archive bellingcat/auto-archiver -- "https://example.com/1/"
+```
+
+[![alt text](/assets/2025-05-08/1.jpg "x")](/assets/2025-05-08/1.jpg)
+
+I wasn't expecting this. Looks like a mix of docker and local bits.
+
+[![alt text](/assets/2025-05-08/2.jpg "x")](/assets/2025-05-08/2.jpg)
+
+Create a nice `orchestration.yaml` file.
+
+
+
 ## Python and Pipenv
 
 I'm using [pipenv](https://github.com/pypa/pipenv) to isolate dependencies in Python projects.
