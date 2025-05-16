@@ -133,8 +133,25 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install ffmpeg -y
 
-# Firefox
+
+# Firefox - don't do this way!
+# it uses the snap version which doesn't work well with geckodriver
+#sudo apt install firefox -y
+# https://www.omgubuntu.co.uk/2022/04/how-to-install-firefox-deb-apt-ubuntu-22-04
+
+cd ~
+sudo add-apt-repository ppa:mozillateam/ppa -y
+
+echo '
+Package: *
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
+' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+
+echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
+
 sudo apt install firefox -y
+
 
 # Geckdriver
 # https://github.com/mozilla/geckodriver/releases/
@@ -351,11 +368,21 @@ If `allow_playlist: true` then any video linked if it is part of a playlist then
 
 Comments wont come through as doesn't make sense for lots of videos
 
-
 Seems more directed for single video
 
+I've put in an issue for fixing the extensions [https://github.com/bellingcat/auto-archiver/issues/305](https://github.com/bellingcat/auto-archiver/issues/305)
 
 
+### Youtube Live stream
+
+A lot of live streams are 1 - 12 hours long.
+
+
+### YouTube inappropriate content
+
+have not tested yet - need to be logged in to view this?
+
+need to find a good sample video that is not bad.
 
 
 ### Youtube - POT Tokens
@@ -383,6 +410,51 @@ docker run --name bgutil-provider -d -p 4416:4416 brainicism/bgutil-ytdlp-pot-pr
 [https://auto-archiver.readthedocs.io/en/settings_page/how_to/authentication_how_to.html](https://auto-archiver.readthedocs.io/en/settings_page/how_to/authentication_how_to.html) were out of date. Best to look at: 
 
 [https://github.com/bellingcat/auto-archiver/blob/main/docs/source/how_to/authentication_how_to.md](https://github.com/bellingcat/auto-archiver/blob/main/docs/source/how_to/authentication_how_to.md)
+
+
+
+## Facebook
+
+Direct link videos can be downloaded fine.
+
+
+## Facebook Non video
+
+In generic_extractor, download_for_extractor, dropin_submodule which calls `facebook.py`
+
+self.get_metadata_for_post
+
+then it goes into
+
+facebook.py/extract_post
+
+download_webpage()
+
+
+yt-dlp has a module called FacebookIE (IE is Info Extractor)
+
+[https://github.com/yt-dlp/yt-dlp/blob/586b557b124f954d3f625360ebe970989022ad97/yt_dlp/extractor/facebook.py#L34](https://github.com/yt-dlp/yt-dlp/blob/586b557b124f954d3f625360ebe970989022ad97/yt_dlp/extractor/facebook.py#L34)
+
+
+
+## Twitter / X
+
+works fine using yt-dlp for a basic tweet.
+
+there is a dropin submodule for this.
+
+### Screenshots
+
+If you have problems with firefox profiles, check you don't have the snap version of firefox installed.
+
+
+
+
+
+
+
+
+
 
 
 ### Storage
