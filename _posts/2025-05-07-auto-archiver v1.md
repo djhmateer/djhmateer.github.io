@@ -413,12 +413,12 @@ docker run --name bgutil-provider -d -p 4416:4416 brainicism/bgutil-ytdlp-pot-pr
 
 
 
-## Facebook
+### yt-dlp - Facebook
 
 Direct link videos can be downloaded fine.
 
 
-## Facebook Non video
+## yt-dlp Non video
 
 In generic_extractor, download_for_extractor, dropin_submodule which calls `facebook.py`
 
@@ -437,11 +437,12 @@ yt-dlp has a module called FacebookIE (IE is Info Extractor)
 
 
 
-## Twitter / X
+## yt-dlp Twitter / X
 
 works fine using yt-dlp for a basic tweet.
 
 there is a dropin submodule for this.
+
 
 ### Screenshots
 
