@@ -10,6 +10,25 @@ sitemap: false
 image: /assets/2024-05-03/4.jpg
 ---
 
+## Summary of v0.11.3 to v1 changes for Auto Archiver
+
+### Extractors
+
+- Youtube - comments capture with a max, more meta data items, pop up cookie click improvements. Playlists. Cover page image of video. Subtitles.
+- Facebook - improved screenshot get rid of cookie popup,
+- Twitter/X
+- TikTok
+
+Generic information - content on generic sites.
+
+## Enrichers
+
+- Wayback - better handling of lags.
+
+
+
+## Source
+
 [https://github.com/bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver) AA source.
 
 there has been a big change in early 2025 marking the 1.0.0 release. I've forked and used the 0.11.3 release for a few years.
@@ -22,7 +41,8 @@ As of 7th May 2025 the current LTS is 24.04.2 LTS so I'm moving to this for AA 1
 
 ## Docker Run
 
-First run it will generate a 
+summary - couldn't get this working as expected so moved onto running python.
+
 
 ```bash
 docker run -it --rm -v $PWD/secrets:/app/secrets -v $PWD/local_archive:/app/local_archive bellingcat/auto-archiver -- "https://example.com"
@@ -115,6 +135,8 @@ poetry install
 # we could run poetry-shell-plugin to and run poetry shell to activate the virtual environment. 
 # so wouldn't have to prefix: poetry run
 poetry run auto-archiver
+
+poetry update
 ```
 
 ## Local Requirments 
@@ -444,10 +466,17 @@ works fine using yt-dlp for a basic tweet.
 there is a dropin submodule for this.
 
 
-### Screenshots
+## 3.Enrichers
+
+### Hash Enricher
+
+eg SHA256
+
+### Screenshot Enricher
 
 If you have problems with firefox profiles, check you don't have the snap version of firefox installed.
 
+## Wayback Enricher and Extractor
 
 
 
@@ -455,10 +484,7 @@ If you have problems with firefox profiles, check you don't have the snap versio
 
 
 
-
-
-
-### Storage
+## 4. Storage
 
 S3 and Google Drive storage used to be able to a saved URL like:
 
@@ -484,6 +510,14 @@ https://aademomain.fra1.cdn.digitaloceanspaces.com/dia019/aa-demo-main/sheet1/3b
 
 
 
+## 5. Database
+
+eg gsheet_db
+
+
+## 6. formatters
+
+eg html
 
 
 ### Wayback
