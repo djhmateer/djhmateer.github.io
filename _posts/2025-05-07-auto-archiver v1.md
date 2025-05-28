@@ -14,16 +14,66 @@ image: /assets/2024-05-03/4.jpg
 
 ### Extractors
 
-- Youtube - comments capture with a max, more meta data items, pop up cookie click improvements. Playlists. Cover page image of video. Subtitles.
-- Facebook - improved screenshot get rid of cookie popup,
-- Twitter/X
-- TikTok
+### yt-dlp Generic
 
-Generic information - content on generic sites.
+AA relies on yt-dlp which has Information Extractors for many sites eg [telegram](https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/extractor/telegram.py) for handling video
+
+AA has dropin helpers for these which help to extract more meta data and content from these video pages eg Facebook
+
+- Youtube - comments capture with a max, more meta data items, pop up cookie click improvements. Playlists. Cover page image of video. Subtitles.
+- Facebook - improved screenshot get rid of cookie popup, improved screenshots on video - "sorry we're having trouble with playing this video" message. Comments and content coming in for some pages as text via dropin
+- Twitter/X - dropin giving good title and content. Screenshots working well for x.com and fine with wacz screenshotter (using a profile.tar.gz)
+- TikTok - much better handling of downloading images and video.
+- Instagram
+
+- Telegram - multi video download
+- VK - better screenshotting, multi images.
+
+aa doen't overwrite anything in the spreadsheet - which could cause new issues!
+
+## AA Custom Extractors
+
+- Telethon (for Telegram)
+- Wayback - much better handling of large times.
+
 
 ## Enrichers
 
-- Wayback - better handling of lags.
+- Screenshot - much better screenshotting and getting rid of pop ups.
+- Wayback - better handling of wayback server workflow
+- WACZ - extrats media and puts into the html. Can use profile (as before).
+- SSL_Certificate - new enricher to get the certificate chain of the webserver
+- opentimestamps_enricher - new enricher providing proof of existence at a specific time, blockchain backed.
+- timestamping_enricher - new enricher providing same as above backed by Certificate Authorities.
+- meta_enricher - time taken and size of archive
+- whisper_enricher - https://whisperapi.com/ audio transcription
+
+
+
+## Authentication
+
+[Logging in to sites](https://auto-archiver.readthedocs.io/en/latest/how_to/authentication_how_to.html)
+
+There is a new authentication framework in aa which works with
+
+- Generic Extrator (ie yt-dlp)
+- Screenshot Enricher
+
+It supports
+
+- Username and password - 
+- API
+- Cookies
+
+The recommended way is to use cookies to get a cookies.jar file 
+
+[Get cookies.txt LOCALLY](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc) Chrome extension.
+
+Use it for
+
+- facebook so the aa screenshotter works
+- facebook so content and comments works via Facebook.IE in yt-dlp
+
 
 
 
@@ -189,6 +239,9 @@ sudo apt install fonts-noto -y
 
 # Docker
 docker pull webrecorder/browsertrix-crawler:latest
+
+# exif
+
 
 ```
 
