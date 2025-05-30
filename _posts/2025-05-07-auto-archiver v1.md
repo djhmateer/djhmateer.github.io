@@ -24,9 +24,9 @@ AA has dropin helpers for these which help to extract more meta data and content
 - Facebook - improved screenshot get rid of cookie popup, improved screenshots on video - "sorry we're having trouble with playing this video" message. Comments and content coming in for some pages as text via dropin
 - Twitter/X - dropin giving good title and content. Screenshots working well for x.com and fine with wacz screenshotter (using a profile.tar.gz)
 - TikTok - much better handling of downloading images and video.
-- Instagram
+- Instagram - Improvments on content and title via yt-dlp. Images from hikerapi. Can get private video as passing auth to yt-dlp.
 
-- Telegram - multi video download
+- Telegram - multi video download?, using yt-dlp Information Extractor now for better content and title.
 - VK - better screenshotting, multi images.
 
 aa doen't overwrite anything in the spreadsheet - which could cause new issues!
