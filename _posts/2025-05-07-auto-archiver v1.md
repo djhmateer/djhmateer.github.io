@@ -22,19 +22,18 @@ AA has dropin helpers for these which help to extract more meta data and content
 
 - Youtube - comments capture with a max, more meta data items, pop up cookie click improvements. Playlists. Cover page image of video. Subtitles.
 - Facebook - improved screenshot get rid of cookie popup, improved screenshots on video - "sorry we're having trouble with playing this video" message. Comments and content coming in for some pages as text via dropin
-- Twitter/X - dropin giving good title and content. Screenshots working well for x.com and fine with wacz screenshotter (using a profile.tar.gz)
+- Twitter/X - dropin giving good title and content. Screenshots working well for x.com and fine with wacz screenshotter (using a profile.tar.gz). Twitter.com screenshots not working for main screenshotter (but x.com fine which is the new standard)
 - TikTok - much better handling of downloading images and video.
-- Instagram - Improvments on content and title via yt-dlp. Images from hikerapi. Can get private video as passing auth to yt-dlp.
+- Instagram - Improvements on content and title via yt-dlp. Images from hikerapi. Can get private video as passing auth to yt-dlp.
 
-- Telegram - multi video download?, using yt-dlp Information Extractor now for better content and title.
+- Telegram - multi video download (playlist - suggest not), using yt-dlp Information Extractor now for better content and title.
 - VK - better screenshotting, multi images.
 
-aa doen't overwrite anything in the spreadsheet - which could cause new issues!
 
 ## AA Custom Extractors
 
 - Telethon (for Telegram)
-- Wayback - much better handling of large times.
+- Wayback - much better handling of large times with linear backoff. Handles X (which it will try but currently fail), Instagram and Telegram private (which don't work)
 
 
 ## Enrichers
@@ -48,7 +47,7 @@ aa doen't overwrite anything in the spreadsheet - which could cause new issues!
 - meta_enricher - time taken and size of archive
 - whisper_enricher - https://whisperapi.com/ audio transcription
 
-
+Have turned off automatic translations on Facebook.
 
 ## Authentication
 
@@ -73,9 +72,6 @@ Use it for
 
 - facebook so the aa screenshotter works
 - facebook so content and comments works via Facebook.IE in yt-dlp
-
-
-
 
 ## Source
 
@@ -166,7 +162,7 @@ Poetry is a tool for dependency management and packaging. It is more similar to 
 [https://python-poetry.org/docs/](https://python-poetry.org/docs/)
 
 ```bash
-# 2.1.3 on 9th May 25
+# Poetry install 2.1.3 on 9th May 25
 curl -sSL https://install.python-poetry.org | python3 -
 
 # in auto-archiver directory
@@ -189,7 +185,7 @@ poetry run auto-archiver
 poetry update
 ```
 
-## Local Requirments 
+## Local Requirements 
 
 [https://auto-archiver.readthedocs.io/en/latest/installation/installation.html#installing-local-requirements](https://auto-archiver.readthedocs.io/en/latest/installation/installation.html#installing-local-requirements)
 
@@ -627,6 +623,7 @@ I've got a simple commit https://github.com/djhmateer/auto-archiver/commit/062d6
 ```
 
 
+## OLD
 ## Python and Pipenv
 
 I'm using [pipenv](https://github.com/pypa/pipenv) to isolate dependencies in Python projects.
@@ -665,3 +662,10 @@ pipenv shell
 
 [https://github.com/bellingcat/auto-archiver](https://github.com/bellingcat/auto-archiver) there has been a big change in early 2025 marking the 1.0.0 release. I've forked and used the 0.11.3 release for a few years.
 
+## Versions
+
+```bash
+# pyproject.toml - update the version in here eg 1.0.1+dm.1
+
+poetry install
+```
