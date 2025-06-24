@@ -603,7 +603,7 @@ I'm working on my fork, on a branch called:
 
 I've got a branch called
 
-- dev-upstream
+- dev-upstream (which is badly named as should be main-upstream)
 
 which is what bellingcat is.
 
@@ -621,6 +621,49 @@ I've got a simple commit https://github.com/djhmateer/auto-archiver/commit/062d6
 
 # then on GH I can do the PR to upstream.
 ```
+
+## Git
+
+```bash
+git remote add upstream https://github.com/bellingcat/auto-archiver.git
+
+git fetch
+
+git checkout -b v1-dm-changes upstream/dev
+
+git push origin v1-dm-changes
+```
+
+[![alt text](/assets/2025-05-08/3.jpg "x")](/assets/2025-05-08/3.jpg)
+
+Source Control Graph is part of VS Code.
+
+I'm on v1-dm-changes (which is a branch of upstream/dev). I'm comparing to v1-test which is where all my changes are. 
+
+It works, but I can't edit a file.
+
+### Git Graph extension
+asdfasdf
+
+
+
+## Antibot
+
+v1.1.0 of auto-archiver (currently on the dev branch) now uses antibot instead of screenshot_enricher. It uses Chrome instead of firefox.
+
+```bash
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+# got problems here - fixe below
+# 137.0.7151.103 on 16th Jun 2025
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+# fix dependencies on install above
+sudo apt-get install -f
+
+# had to click a lot on UI to get going.
+```
+
 
 
 ## OLD
