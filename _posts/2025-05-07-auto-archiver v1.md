@@ -649,7 +649,7 @@ asdfasdf
 
 ## Antibot
 
-v1.1.0 of auto-archiver (currently on the dev branch) now uses antibot instead of screenshot_enricher. It uses Chrome instead of firefox.
+v1.1.0 of auto-archiver (currently on v1.1.1) now uses antibot instead of screenshot_enricher. It uses Chrome instead of firefox.
 
 ```bash
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
