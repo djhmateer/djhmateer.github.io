@@ -12,6 +12,8 @@ image: /assets/2024-05-03/4.jpg
 
 How good is AI at getting to an MVP (Minimum Viable Product) stage?
 
+[Source on GH of this MVP](https://github.com/djhmateer/tldw)
+
 Lets assume 
 
 - we know who the customers are
@@ -19,6 +21,7 @@ Lets assume
 - they want to 'Give us their money'
 
 So lets build an MVP 
+
 
 ## MVP of Application
 
