@@ -22,15 +22,14 @@ Lets assume
 
 So lets build an MVP 
 
-
 ## MVP of Application
 
 Lets also assume it will
 
-- have a database
-- a web application
-- have reasonable design
-- be reasonably simple
+- Have a database
+- Be a web application
+- Have reasonably professional design
+- Be as simple to understand as possible by a developer
 
 ## AI
 
@@ -47,8 +46,9 @@ I'm working with an experienced front end developer, so I'm going to focus on th
 
 ### Notes so far
 
-- ChatGPT great a solving directed problems (eg engineering) - python versions, pyenv, poetry
-- Cursor when I asked for a simple project for FastAPI gave me some outdated dependency management which I knew I didn't like (pip install)
+- ChatGPT good at coming up with frameworks to consider 
+- ChatGPT great a solving specific problems (eg engineering) - python versions, pyenv, poetry
+- Cursor (Claude) when I asked for a simple project for FastAPI gave me some outdated dependency management which I knew I didn't like (pip install)
 
 
 ## Python
@@ -217,7 +217,6 @@ async def get_items_foo():
 
 **TODO** next is see how AI get generate 
 
-- put under source control (for laptop!)
 - get going on a laptop?
 - sample CRUD endpoints 
 - a lightweight ORM (dapper style?) connector to local postgres
