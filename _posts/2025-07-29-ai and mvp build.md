@@ -177,7 +177,6 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 Also [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc) an alternative, but not interactive ie can't test. Can generate an OpenAPI.json file [http://127.0.0.1:8000/openapi.json](http://127.0.0.1:8000/openapi.json) which can be used by Postman or code generators.
 
----
 
 Okay now I understand what is going on, lets get AI to generate a new endpoing. It does it very well! /items/foo
 
@@ -212,6 +211,16 @@ async def get_items_foo():
 
 
 [![alt text](/assets/2025-07-31/3.jpg "AI generated simple items/foo endpoint")](/assets/2025-07-31/3.jpg)
+
+**TODO** next is see how AI get generate 
+
+- sample CRUD endpoints 
+- a lightweight ORM (dapper style?) connector to local postgres
+- front end generators like  FastAPI-Admin / Piccolo_admin 
+- or custom svelte/vue/ raw html/css/js
+
+---
+---
 
 
 **DEV NOTES BELOW NOT DONE**
