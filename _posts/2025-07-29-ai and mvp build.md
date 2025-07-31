@@ -150,14 +150,89 @@ A test app making sure I have cursor working with the correct version of python.
 
 ## FastAPI
 
-iasdfasdf
+As I know what I'm doing (roughly), lets see if the docs can get me going faster than AI
+
+"FastAPI is a modern, fast (high-performance), web framework for building APIs with Python based on standard Python type hints"
+
+[https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 
 
+```bash
 
+# this wont work - need fastapi[standard] extras
+fastapi dev main.py
+
+# an ASGI server - what runs the FastAPI app and serves on http://127.0.0.1:8000/
+uvicorn main:app --reload
+
+# prod
+# looks like could use gunicorn to handle multiple workers, but raw okay if managed using systemd and small/medium apps
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+
+[![alt text](/assets/2025-07-31/2.jpg "API Swagger Docs")](/assets/2025-07-31/2.jpg)
+
+[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) - interactive Swagger UI which lets you test the endpoints.
+
+Also [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc) an alternative, but not interactive ie can't test. Can generate an OpenAPI.json file [http://127.0.0.1:8000/openapi.json](http://127.0.0.1:8000/openapi.json) which can be used by Postman or code generators.
 
 ---
 
+Okay now I understand what is going on, lets get AI to generate a new endpoing. It does it very well! /items/foo
+
+```py
+# FastAPI class inherts from Starlette which is an ASGI framework for building async web services in Python
+from fastapi import FastAPI
+
+# create an instance of the FastAPI class
+app = FastAPI()
+
+# path operation decorator
+# path is also called an endpoint or route
+
+# operation refers to one of the http methods eg get, post, put, delete
+@app.get("/")
+# path operation function
+
+# https://fastapi.tiangolo.com/tutorial/first-steps/#define-a-path-operation-decorator
+
+# could be that we don't need async eg db call
+# https://fastapi.tiangolo.com/async/#in-a-hurry
+async def root():
+    return {"message": "Hello World"}
+
+
+# Define a new GET endpoint for /items/foo
+@app.get("/items/foo")
+async def get_items_foo():
+    # Return a JSON response with item information
+    return {"item_id": "foo", "item_name": "Foo Item", "description": "This is the foo item"}
+```
+
+
+[![alt text](/assets/2025-07-31/3.jpg "AI generated simple items/foo endpoint")](/assets/2025-07-31/3.jpg)
+
+
 **DEV NOTES BELOW NOT DONE**
+
+## Next
+nginx
+ and use certbot to handle ssl certs
+
+
+swagger client / tests?
+
+
+try a gui builder like FastAPI-Admin
+or piccolo_admin
+or use svelte
+
+or html/css/js
+Jinja2
+
+
+
 
 ## All in one Vibe coding sites
 
