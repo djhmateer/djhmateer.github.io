@@ -154,12 +154,14 @@ A test app making sure I have cursor working with the correct version of python.
 
 ## FastAPI
 
+iasdfasdf
 
 
 
 
+---
 
-**NOTES BELOW**
+**DEV NOTES BELOW NOT DONE**
 
 ## All in one Vibe coding sites
 
