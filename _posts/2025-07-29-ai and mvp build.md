@@ -42,15 +42,11 @@ I'm working with an experienced front end developer, so I'm going to focus on th
 - Can I use a different framework (eg FastAPI which looks reasonable) which I've never seen
 - Can I use a language (Python) which I'm only reasonably familiar with, but I know AI tools have a lot of knowledge about.
 
-Cursor now in a blank project
+### Notes so far
 
-> can you make me a very simple hello world application using FastAPI  - @https://github.com/fastapi/fastapi 
+- ChatGPT great a solving directed problems (eg engineering) - python versions, pyenv, poetry
+- Cursor when I asked for a simple project for FastAPI gave me some outdated dependency management which I knew I didn't like (pip install)
 
-It make some files
-
-- requirements.txt to feed into pip install
-
-But I didn't like this as I knew that I wanted a more recent dependency management system.
 
 ## Python
 
