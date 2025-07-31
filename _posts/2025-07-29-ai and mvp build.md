@@ -214,6 +214,8 @@ async def get_items_foo():
 
 **TODO** next is see how AI get generate 
 
+- put under source control (for laptop!)
+- get going on a laptop?
 - sample CRUD endpoints 
 - a lightweight ORM (dapper style?) connector to local postgres
 - front end generators like  FastAPI-Admin / Piccolo_admin 
