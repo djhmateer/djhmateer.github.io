@@ -36,6 +36,29 @@ chatgpt
 
 cursor (Claude?)
 
+## FOO
+
+for a complex webapp:
+
+v0
+
+shadcn/ui uses radixui 
+tailwindcss
+
+next - lots of pages... 
+(and react).
+ these are the 'defaults' of AI
+
+**try different tech stacks with AI
+
+full JS - svelte... next?
+full server - .NET, Python, RoR, PHP, Rust?
+
+
+- Simple
+- No ORMs!
+- Only a few devs, so can be agile and lean
+
 
 ## MVP of Application
 
@@ -57,6 +80,7 @@ single page website saying what we're doing, to get a launch list of email addre
 
 have screenshots of final product (mock ups?)
 
+https://www.figma.com/sites/
 
 
 

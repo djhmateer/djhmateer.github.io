@@ -15,7 +15,7 @@ image: /assets/2024-11-12/1.jpg
 
 <!-- [![alt text](/assets/2025-04-07/1.jpg "email")](/assets/2025-04-07/1.jpg) -->
 
-supabase.com/docs/guides/database/connecting-to-postgres](https://supabase.com/docs/guides/database/connecting-to-postgres) - good summary of Supabase connections strategies.
+[supabase.com/docs/guides/database/connecting-to-postgres](https://supabase.com/docs/guides/database/connecting-to-postgres) - good summary of Supabase connections strategies.
 
 [![alt text](/assets/2025-04-07/3.jpg "email")](/assets/2025-04-07/3.jpg)
 
