@@ -253,7 +253,9 @@ https://bolt.new/~/stackblitz-starters-zotmtg6q
 
 https://v0.dev
 
-Interesting, but....
+synthesia
+
+
 
 ## AI's
 
