@@ -31,7 +31,87 @@ Lets also assume it will
 - Have reasonably professional design
 - Be as simple to understand as possible by a developer
 
-## AI
+## AI - start with spec.md
+
+https://chatgpt.com/c/68906d91-77b0-8322-ba39-225489d9551f
+
+This was my start with this prompt:
+
+```md
+you are an expert software developer. Describe in detail how to go through the process of using ChatGPT to rapidly develop a new proof of concept web application.
+
+I will give AI a sample project structure which includes:
+
+- python and fastAPI for the backend
+- postgres database which I'll host on my own vm
+- front end html/css and javascript
+- front end includes a sample page with css grid for layout, tailwind 4 
+
+what I want to focus on is the AI process ie
+
+- develop md files with a project spec in it (or mdc files?)
+- develop coding style guidelines for ai
+- use browsertools mcp (with cursor) to test the javascript
+- do screenshots of the app to help in testing
+- setup .cursorrules file
+- setup <xmltag>code here</xmltag> style to help AI understand what is code 
+- a spec.md file
+- what is an llms.txt file
+```
+
+Then next prompt all around `spec.md`
+https://chatgpt.com/c/68906e88-9690-8321-a597-ddc20e4d2e5a
+
+```md
+please help me develop a spec.md file to use in developing a mvp
+
+the spec is around a project called TLDW - too long didn't write
+
+go into great detail - I want to know each step of this spec.md process
+
+<oldprompt>
+in relation to this prompt:
+you are an expert software developer. Describe in detail how to go through the process of using ChatGPT to rapidly develop a new proof of concept web application.
+
+I will give AI a sample project structure which includes:
+
+- python and fastAPI for the backend
+- postgres database which I'll host on my own vm
+- front end html/css and javascript
+- front end includes a sample page with css grid for layout, tailwind 4 
+
+what I want to focus on is the AI process ie
+
+- develop md files with a project spec in it (or mdc files?)
+- develop coding style guidelines for ai
+- use browsertools mcp (with cursor) to test the javascript
+- do screenshots of the app to help in testing
+- setup .cursorrules file
+- setup <xmltag>code here</xmltag> style to help AI understand what is code 
+- a spec.md file
+- what is an llms.txt file
+</oldprompt>
+
+```
+
+start with a `sped.md` file
+
+Go through each section with an LLM iterating
+
+1.Project Overview
+2.Core Features Checklist (which I'll use to get the AI tick off when done)
+3.User Flow - eg new user, returning user, ai assist, templates
+4.Technical stack
+5.Data Models
+6.API endpoints
+7.UI Layout
+
+Interestingly I don't have a good sample project yet for this full stack, only a partial FastAPI project. Let's start with the and see what happens.
+
+
+
+
+## AI - start with engineering ie scaffold out
 
 [https://chatgpt.com/share/6889f8be-dd00-8006-b640-76e80c748d94](https://chatgpt.com/share/6889f8be-dd00-8006-b640-76e80c748d94) 
 
@@ -72,6 +152,8 @@ I'm going to try 3.13.5 but need to isolate it, as I use 3.12.3 for other projec
 https://github.com/pyenv/pyenv
 
 ```bash
+# pyenv to have different versions of python
+# maybe don't need on production but do on dev
 curl -fsSL https://pyenv.run | bash
 
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
@@ -95,10 +177,10 @@ libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-d
 
 # list available versions
 # there is a t version, which means tuned. don't use yet.
-pyenv install -l
+# pyenv install -l
 
 # this downloads and compiles the python version
-pyenv install 3.12.3
+#pyenv install 3.12.3
 pyenv install 3.13.5
 
 # should see 3 including system
@@ -145,6 +227,8 @@ poetry add fastapi uvicorn
 # it was tldw_app.main
 # but a mix of tldw-app folder, and tldw_app class... don't want.. so try none
 poetry run uvicorn tldw.main:app --reload
+# or if in the tldw folder
+poetry run uvicorn main:app --reload
 ```
 
 [![alt text](/assets/2025-07-31/1.jpg "Dependencies")](/assets/2025-07-31/1.jpg)
@@ -217,7 +301,10 @@ async def get_items_foo():
 
 **TODO** next is see how AI get generate 
 
-- get going on a laptop?
+- ask AI how to work with AI
+- youtube how to do this thing like paddy
+
+- get python going on a laptop?
 - sample CRUD endpoints 
 - a lightweight ORM (dapper style?) connector to local postgres
 - front end generators like  FastAPI-Admin / Piccolo_admin 
