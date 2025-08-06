@@ -31,6 +31,25 @@ Lets also assume it will
 - Have reasonably professional design
 - Be as simple to understand as possible by a developer
 
+## How much to auto-gen?
+
+20+ years of experience of CRUD app builders, many languages and many different codebases (yes enterprise applications specifically) have left me with strong opinions
+
+- huge layers of abstrations in case you need this increase cognitive load
+- I prefer the simplest possible solution
+- repeating yourself a few times is okay in a code base to reduce complexity
+- I prefer technology I can understand (no black magic Next.js)
+- complexity always comes back to haunt you
+
+So although I could do a super fast build using React (which I don't know) and Express on the backend (which I don't know) or Next.js everywhere... I'm not going to
+
+Even though this is an MVP
+
+- yes MVP's have a habit of staying in production :-)
+
+I enjoy the artistic beauty of simplicity.
+
+
 ## AI - start with spec.md
 
 https://chatgpt.com/c/68906d91-77b0-8322-ba39-225489d9551f
