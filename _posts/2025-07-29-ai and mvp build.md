@@ -14,11 +14,11 @@ How good is AI at getting to an MVP (Minimum Viable Product) stage?
 
 ## What is an MVP?
 
-Prototype - interactive mockups eg Figma..or code to validate concept and flow. Often doesn't have backend logic
+**Prototype** - interactive mockups eg Figma..or code to validate concept and flow. Often doesn't have backend logic
 
-Proof of Concept - feasability of idea.. not User Experience or scale.
+**Proof of Concept** - feasability of idea.. not User Experience or scale.
 
-MVP - smallest thing that delivers value. Should work reliably enough. Avoids tech debt so massive that can't iterate
+**MVP** - smallest thing that delivers value. Should work reliably enough. Avoids tech debt so massive that can't iterate
 
 
 ## Foo
@@ -138,11 +138,9 @@ Interestingly I don't have a good sample project yet for this full stack, only a
 
 So I now have a spec.md file with a good amount of detail.
 
-I have a working Python FastAPI backend working on my laptop
+I have a working Python FastAPI backend working on my laptop with uvicorn as the webserver.
 
 Next step is to get a frontend working.
-
-If I ask AI to 
 
 ```
 Generate a front end based on @spec.md
@@ -156,6 +154,40 @@ Options
 
 - API's - lets just try this as I want to.
 
+### Prototype (no db backend) - file structure
+
+So, we're dong prototype, PoC, MVP
+
+[![alt text](/assets/2025-08-07/1.jpg "Cursor prototype")](/assets/2025-08-07/1.jpg)
+
+vscode running uvicorn via ctrl F5. Uvicorn serving up index.html, and the api routes which are running FastAPI.
+
+[![alt text](/assets/2025-08-07/2.jpg "Hello world")](/assets/2025-08-07/2.jpg)
+
+/docs are the Swagger docs, which are interactive ie I can run the route, and even post data.
+
+
+### API testing (no UX)
+
+
+how to get data from the API and display on page
+- button click on page
+- return json from API
+- render on page
+
+[![alt text](/assets/2025-08-07/2.jpg "Hello world")](/assets/2025-08-07/2.jpg)
+
+Raw javascript getting data. Tailwind 4 css (with no bundling)
+
+**HERE** next up probably patch in Typescript 
+
+
+
+
+I wonder if I should use a framework here?
+
+- securing the API
+- POSTing
 
 ## 2. AI - start with engineering ie scaffold out
 
