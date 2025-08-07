@@ -12,6 +12,17 @@ image: /assets/2024-05-03/4.jpg
 
 How good is AI at getting to an MVP (Minimum Viable Product) stage?
 
+## What is an MVP?
+
+Prototype - interactive mockups eg Figma..or code to validate concept and flow. Often doesn't have backend logic
+
+Proof of Concept - feasability of idea.. not User Experience or scale.
+
+MVP - smallest thing that delivers value. Should work reliably enough. Avoids tech debt so massive that can't iterate
+
+
+## Foo
+
 [Source on GH of this MVP](https://github.com/djhmateer/tldw)
 
 Lets assume 
@@ -22,7 +33,7 @@ Lets assume
 
 So lets build an MVP 
 
-## MVP of Application
+## What is the sample application
 
 Lets also assume it will
 
@@ -43,16 +54,14 @@ Lets also assume it will
 
 So although I could do a super fast build using React (which I don't know) and Express on the backend (which I don't know) or Next.js everywhere... I'm not going to
 
-Even though this is an MVP
+This is an MVP so tech debt is important.
 
-- yes MVP's have a habit of staying in production :-)
-
-I enjoy the artistic beauty of simplicity.
+I also enjoy the artistic beauty of simplicity.
 
 
-## AI - start with spec.md
+## 1. AI - start with spec.md
 
-https://chatgpt.com/c/68906d91-77b0-8322-ba39-225489d9551f
+[Initial ChatGPT conversation about AI development process](https://chatgpt.com/c/68906d91-77b0-8322-ba39-225489d9551f)
 
 This was my start with this prompt:
 
@@ -79,7 +88,7 @@ what I want to focus on is the AI process ie
 ```
 
 Then next prompt all around `spec.md`
-https://chatgpt.com/c/68906e88-9690-8321-a597-ddc20e4d2e5a
+[ChatGPT conversation about developing spec.md](https://chatgpt.com/c/68906e88-9690-8321-a597-ddc20e4d2e5a)
 
 ```md
 please help me develop a spec.md file to use in developing a mvp
@@ -117,20 +126,38 @@ start with a `sped.md` file
 
 Go through each section with an LLM iterating
 
-1.Project Overview
-2.Core Features Checklist (which I'll use to get the AI tick off when done)
-3.User Flow - eg new user, returning user, ai assist, templates
-4.Technical stack
-5.Data Models
-6.API endpoints
-7.UI Layout
+1. Project Overview
+2. Core Features Checklist (which I'll use to get the AI tick off when done)
+3. User Flow - eg new user, returning user, ai assist, templates
+4. Technical stack
+5. Data Models
+6. API endpoints
+7. UI Layout
 
 Interestingly I don't have a good sample project yet for this full stack, only a partial FastAPI project. Let's start with the and see what happens.
 
+So I now have a spec.md file with a good amount of detail.
+
+I have a working Python FastAPI backend working on my laptop
+
+Next step is to get a frontend working.
+
+If I ask AI to 
+
+```
+Generate a front end based on @spec.md
+```
+
+It will generate tons of code, which may well work. But...
+
+Options
+
+- Full server side rendered eg .NET.. I know I could do this, but want to explore a more modern way, and it will probably fit the use case better using an API
+
+- API's - lets just try this as I want to.
 
 
-
-## AI - start with engineering ie scaffold out
+## 2. AI - start with engineering ie scaffold out
 
 [https://chatgpt.com/share/6889f8be-dd00-8006-b640-76e80c748d94](https://chatgpt.com/share/6889f8be-dd00-8006-b640-76e80c748d94) 
 
@@ -262,9 +289,7 @@ As I know what I'm doing (roughly), lets see if the docs can get me going faster
 
 [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 
-
 ```bash
-
 # this wont work - need fastapi[standard] extras
 fastapi dev main.py
 
