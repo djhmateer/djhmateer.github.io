@@ -46,11 +46,11 @@ Lets also assume it will
 
 20+ years of experience of CRUD app builders, many languages and many different codebases (yes enterprise applications specifically) have left me with strong opinions
 
-- huge layers of abstrations in case you need this increase cognitive load
+- Huge layers of abstrations in case you need it, increases cognitive load
 - I prefer the simplest possible solution
-- repeating yourself a few times is okay in a code base to reduce complexity
-- I prefer technology I can understand (no black magic Next.js)
-- complexity always comes back to haunt you
+- Repeating yourself a few times is okay in a code base to reduce complexity
+- I prefer technology I can understand (no black magic - I'm looking at you Next.js)
+- Complexity always comes back to haunt you
 
 So although I could do a super fast build using React (which I don't know) and Express on the backend (which I don't know) or Next.js everywhere... I'm not going to
 
@@ -122,7 +122,7 @@ what I want to focus on is the AI process ie
 
 ```
 
-start with a `sped.md` file
+Start with a `sped.md` file
 
 Go through each section with an LLM iterating
 
@@ -156,7 +156,7 @@ Options
 
 ### Prototype (no db backend) - file structure
 
-So, we're dong prototype, PoC, MVP
+So, we're doing a Prototype which comes before the PoC and MVP
 
 [![alt text](/assets/2025-08-07/1.jpg "Cursor prototype")](/assets/2025-08-07/1.jpg)
 
@@ -169,19 +169,18 @@ vscode running uvicorn via ctrl F5. Uvicorn serving up index.html, and the api r
 
 ### API testing (no UX)
 
+How to get data from the API and display on page
 
-how to get data from the API and display on page
-- button click on page
-- return json from API
-- render on page
+- Button click on page
+- Return json from API
+- Render on page
 
-[![alt text](/assets/2025-08-07/2.jpg "Hello world")](/assets/2025-08-07/2.jpg)
+[![alt text](/assets/2025-08-07/3.jpg "Hello world")](/assets/2025-08-07/2.jpg)
 
-Raw javascript getting data. Tailwind 4 css (with no bundling)
-
-**HERE** next up probably patch in Typescript 
+Raw javascript getting data using `fetch`. Tailwind 4 CSS (with no bundling)
 
 
+**HERE** probably patch in Typescript 
 
 
 I wonder if I should use a framework here?
@@ -189,7 +188,10 @@ I wonder if I should use a framework here?
 - securing the API
 - POSTing
 
+
 ## 2. AI - start with engineering ie scaffold out
+
+Below are notes on a more classic way of using AI to solve small engineering problems (which it is great at). 
 
 [https://chatgpt.com/share/6889f8be-dd00-8006-b640-76e80c748d94](https://chatgpt.com/share/6889f8be-dd00-8006-b640-76e80c748d94) 
 
