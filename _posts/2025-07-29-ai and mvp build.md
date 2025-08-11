@@ -182,6 +182,7 @@ Raw javascript getting data using `fetch`. Tailwind 4 CSS (with no bundling)
 
 **HERE TODO next**
 - Update spec.md to have a local storage feature so offline works.. rerun the process.
+- Look at Paddy's codebase to see process layout of .md files
 - Patch in Typescript?
 - I wonder if I should use a framework here?
 - securing the API
