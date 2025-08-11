@@ -180,13 +180,12 @@ How to get data from the API and display on page
 Raw javascript getting data using `fetch`. Tailwind 4 CSS (with no bundling)
 
 
-**HERE** probably patch in Typescript 
-
-
-I wonder if I should use a framework here?
-
+**HERE TODO next**
+- Update spec.md to have a local storage feature so offline works.. rerun the process.
+- Patch in Typescript?
+- I wonder if I should use a framework here?
 - securing the API
-- POSTing
+- POSTing data
 
 
 ## 2. AI - start with engineering ie scaffold out
