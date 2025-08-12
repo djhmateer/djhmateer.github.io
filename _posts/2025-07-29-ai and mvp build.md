@@ -175,13 +175,16 @@ How to get data from the API and display on page
 
 Raw javascript getting data using `fetch`. Tailwind 4 CSS (with no bundling)
 
+### Update spec for offline feature
+
+I iterated on this feature for the simplest possible thing to start with ie a message saying offine, then just saves when back online. No local storage or conflict resolution at this stage.
+
 
 **HERE TODO next**
-- Update spec.md to have a local storage feature so offline works.. rerun the process.
+- securing the API (see chatgpt latest conversation)
 - Look at Paddy's codebase to see process layout of .md files
 - Patch in Typescript?
 - I wonder if I should use a framework here?
-- securing the API
 - POSTing data
 
 
