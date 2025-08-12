@@ -21,17 +21,13 @@ How good is AI at getting to an MVP (Minimum Viable Product) stage?
 **MVP** - smallest thing that delivers value. Should work reliably enough. Avoids tech debt so massive that can't iterate
 
 
-## Foo
-
-[Source on GH of this MVP](https://github.com/djhmateer/tldw)
+[Source on GH for this experiment](https://github.com/djhmateer/tldw)
 
 Lets assume 
 
-- we know who the customers are
-- we are solving a problem for them
-- they want to 'Give us their money'
-
-So lets build an MVP 
+- We know who the customers are
+- We are solving a problem for them
+- They want to 'Give us their money'
 
 ## What is the sample application
 
