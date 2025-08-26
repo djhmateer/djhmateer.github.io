@@ -81,3 +81,9 @@ I then could run the site using live server extension in vscode.
 
 [https://wisprflow.ai/downloads](https://wisprflow.ai/downloads)
 
+Ctrl Win - shortcut for voice dictation
+
+
+## Excalidraw for sketchpad
+
+
