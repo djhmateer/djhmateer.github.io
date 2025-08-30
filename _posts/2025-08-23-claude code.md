@@ -26,8 +26,8 @@ account plans - free plan gives access to web and desktop app, but need to pay f
 
 usage limits reset every 5 hours and get a warning when reaching limit.
 
-Opus 4.1 eats through limits much faster
-Sonnet 4 - good default 
+- Sonnet 4 - good default 
+- Opus 4.1 eats through limits much faster
 
 
 ```bash
@@ -43,7 +43,50 @@ claude
 claude --version
 ```
 
+[https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices](https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices) usage limit best practice
+
+[https://support.anthropic.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan#h_50f6dec29d](https://support.anthropic.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan#h_50f6dec29d) - gives rate limit information.
+
+
+I've not found a way in the Pro plan to see when my rate limits are approaching... apparently there are warning messages.
+
+
 `can you provide me with a summary of what this project is`
+
+##asdf
+cursor - snapshots.. ux and workflow
+claude-code - accuracy over speed
+
+##asdf
+authentication
+
+vibe is great for front end work!
+
+**can explain the code???
+
+####fundamental
+leaning of js
+basics of ts
+composition of architecture..tech choices
+
+
+more code and less design for paddy?
+
+landing page
+flashy visuals
+rbac
+
+we know all the above - reskinning known formula
+
+different is when things collide
+
+---
+commm
+design
+develop
+
+
+
     
 ### VS Code
 
@@ -152,34 +195,53 @@ source ~/.bashrc
 export PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH="$(which chrome)"
 ```
 
+## VSCode Shortcuts
+
+ctrl shift ' - open new terminal
 
 ## Downsides of Vibe Coding
 
 I've created this code without touching a line of code in vibe style
 
-
 [![alt text](/assets/2025-08-25/5.jpg "Vibe coding")](/assets/2025-08-25/5.jpg)
 
-It all works.. sort of. There is a subtle bug where it's outputting 'Piece placed in danger zone at y=18'.
+It all works.. sort of. There is a subtle bug where it's outputting to the console 'Piece placed in danger zone at y=18'.
 
-Now 
-**write a test for this?**
+## The realities!
+
+I'm now going through the code and understanding it.. like a professional coder!
+
+Turns out AI is great at 
+
+- putting in comments (although it can be verbose)
+
+## Next Piece Preview
+
+For me this isn't a core of the game, and it adds complexity to the code, so lets take it out.
+
+## Coding assist
+
+- put in comments
+- is there a better way to oranise this code eg mixed concerns, logical grouping of those concerns, global scope pollution
+- renaming functions (and the caller)
+- refactoring comments
+- create a flow diagram using mermaid to show the flow of the game
+- splitting apart complex tasks - eg in Tetris, it is quite involved, so to fully understand how it works, a step by step approach is important eg step1 showing just how the ui is built,
+
+
+## Splitting apart code to understand and improve
 
 
 
 
+## Bugs and Features
+- make it functional (so can test properly!)
 
+- sound
+- faster
+- why sluggish at bottom..when final piece dropping.
+- put in instructions that show that a hard drop earns more points than soft
 
-I really want to see the dev tools in the screenshots, so can see errors / console messages
-
-**keep experimenting with game - how does it really work
-   draw a flow diagram?
- make a better description file... documentation.md?
-
- add features
-  eg sound
- faster
-  why sluggish at bottom..when final piece dropping.
 
 
 
