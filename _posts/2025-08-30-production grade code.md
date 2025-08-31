@@ -21,7 +21,7 @@ When you see it, you know it, and you appreciate it's beauty
 Great code, like art, takes time and concerted practise.
 
 
-I just asked my 9 year old son what his favourite piece of art was haning on the wall. He chose immediately (the volcano)... sort of an inate choosing of which pleased him the most.
+I just asked my 9 year old son what his favourite piece of art was haning on the wall. He chose immediately (the volcano)... sort of an inate choosing of which pleased him the most. Apparently is was due to: lots of detail, the most colours compared to other paintings..
 
 
 ## Shows Intent to the Next Developer
