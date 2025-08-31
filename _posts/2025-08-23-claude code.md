@@ -12,6 +12,10 @@ image: /assets/2024-05-03/4.jpg
 
 <!-- [![alt text](/assets/2025-08-07/1.jpg "Cursor prototype")](/assets/2025-08-07/1.jpg) -->
 
+These are really notes for claude-code
+
+A better article is production grade code.
+
 [https://www.anthropic.com/claude-code](https://www.anthropic.com/claude-code)
 
 [https://www.youtube.com/watch?v=SUysp3sJHbA](https://www.youtube.com/watch?v=SUysp3sJHbA) - british guy
@@ -19,6 +23,8 @@ image: /assets/2024-05-03/4.jpg
 [https://www.youtube.com/watch?v=amEUIuBKwvg](https://www.youtube.com/watch?v=amEUIuBKwvg) - strategies
 
 account plans - free plan gives access to web and desktop app, but need to pay for claude-code.
+
+[https://claude.ai/login](https://claude.ai/login) - this is how you see your account and if you need to upgrade do it here.
 
 - Pro - $17pm (only access to Sonnet 4, no access to Opus 4.1)
 - Max 5x - $100pm (nearly unlimited access to Sonnet 4). Good. 
@@ -29,6 +35,9 @@ usage limits reset every 5 hours and get a warning when reaching limit.
 - Sonnet 4 - good default 
 - Opus 4.1 eats through limits much faster
 
+As of Aug 25 there is a new weekly limit too.
+
+I found that after 5 - 7 hours of moderate use I'd reached limits of the Pro plan, and moved onto Max.
 
 ```bash
 # installs silently - maybe use --v

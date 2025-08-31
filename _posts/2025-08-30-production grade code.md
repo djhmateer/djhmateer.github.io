@@ -21,16 +21,17 @@ When you see it, you know it, and you appreciate it's beauty
 Great code, like art, takes time and concerted practise.
 
 
-I just asked my 9 year old son what his favourite piece of art was haning on the wall. He chose immediately (the volcano)... sort of an inate choosing of which pleased him the most. Apparently is was due to: lots of detail, the most colours compared to other paintings..
+I just asked my 9 year old son what his favourite piece of art was haning on the wall. He chose immediately (the volcano)... sort of an inate choosing of which pleased him the most. Asking for more detail he said it was due to: lots of detail and the most colours. But I think he just liked it!
 
 
 ## Shows Intent to the Next Developer
 
 I love code which is so easy to understand (has low cognitive load) that it takes no brainpower at all.
 
-- comments
-- pleasing to look at
-- naming 
+- Meaningful comments
+- Pleasing to look at
+- Great naming 
+- Programmer has low ego and happy to share 
 
 [cognitive load is what matters](https://news.ycombinator.com/item?id=45074248)
 
@@ -41,6 +42,25 @@ Let's explore how LLMs can help us be intentful with code. I'd like to treat thi
 `Please create index.html, style.css and script.js and link them together. You are a senior professional software developer working at a tier1 (ie largest and most prestigious and competitive tech firm). Please ask any questions until you are 95% confident that you know what you are doing`
 
 `Please just create the boilerplate for an 80s Music website - just put in the title only and hello world as the text.`
+
+### LLM Usage
+
+I've gone from using LLM's as a 
+
+- glorified google
+
+to where I'm loving it:
+
+- doing very specific things to my codebase 
+- helping me explore relevant concepts in that codebase
+
+TODO - [https://www.youtube.com/watch?v=dBWnH0YA6tg](https://www.youtube.com/watch?v=dBWnH0YA6tg) Stop Letting AI Wing It - take control of AI Coding.
+
+Where I'm less keen is vide coding ie letting it do too much
+
+- coding - where you understand every line of code and give alternative ways of doing it
+
+- vibe coding - where you don't understand every line of code. just know that it seems to work
 
 ## Git
 
@@ -302,14 +322,19 @@ TODO eg Webpack?
 
 ## README and CLAUDE.md
 
+CLAUDE.md 
+
+- Developer and AI reference. 
+- A longer explanation of why thing are the way they are. Context, examples and review checklists.
+- Current tasks (checklists)
+
+README.md
+
+- End user
+
 ### CLAUDE.md
 
 `\init` in claude analyses the codebase and comes up with a CLAUDE.md file.
-
-Human and AI reference. 
-
-- A longer explanation of why thing are the way they are. Context, examples and review checklists.
-
 
 ```md
 # CLAUDE.md
@@ -454,7 +479,7 @@ Converted to ES6 modules - we get import and export syntax, and module scoping c
 If a person opens the html file, it won't load the data due to cors permissions. As a professional develop lets trap this error.
 
 
-[![alt text](/assets/2025-08-30/5.jpg "Trap cors")](/assets/2025-08-30/5.png)
+[![alt text](/assets/2025-08-30/5.jpg "Trap cors")](/assets/2025-08-30/5.jpg)
 
 We could trap this error using onerror on the script tag. But for a professional project such as this, we don't need as it will always be serverd from a webserver.
 
@@ -471,9 +496,111 @@ Added in meta name desciption, keywords and author for being descriptive and SEO
 Adding in html5 header and main and footer tags is a semantically good idea - clarity.
 
 
-### ally
+## Accessibility (a11y)
 
-Accessibility
+Professional grade coding must consider concepts like:
+
+- Accessibility for screenreaders - WAI-ARIA (Accessible Rich Internet Applications) and WCAG compliance 
+- Keyboard navigation - ie Tab, Enter, Space, arrow keys and not just a mouse
+- Colour schemes
+
+I asked claude to give an opinion on this (in the context of my codebase), then to put in a checklist of features into claude.md. Then am doing it line by line to make sure I agree.
+
+[![alt text](/assets/2025-08-30/7.jpg "Adding CSS focus indicators for keyboard nav")](/assets/2025-08-30/7.jpg)
+
+Adding CSS focus indicators for keyboard nav task, which is in CLAUDE.md. This task list was generated when I asked it for it's opinion on best practises for a11y.
+
+Interestingly it's made me think of keyboard navigation which I love, and have now implemented too. Not hard. Just professional to do.
+
+
+## Sorting
+
+Features I came up with, then asked if any others recommended
+
+- Lets have sort persistence in the url eg /sortbyname/desc
+- All keyboard and a11y accessibility as above
+- All columns can be sorted independently (not multi level sorting)
+
+then lots more.
+
+I then asked claude to create a Current Tasks checklist in CLAUDE.md. Also update the Completed Tasks checklist in cluade.md so will help with code reviews, audits dev onboarding...
+
+This is all stuff that would be handled by a professional UX library
+
+However for professional grade code, lets do it well, as we've many more features to develop, and am this is a fantastic exercise in using AI to develop from scratch.
+
+[![alt text](/assets/2025-08-30/11.jpg "Sorting on multi columns")](/assets/2025-08-30/11.jpg)
+
+Sorting on multi columns.
+
+Well, one of the areas I'd like to explore more is about vanilla js data structures, looping, sorting etc..
+
+
+## Routes
+
+- /?sort=song&order=asc
+- /?sort=artist&order=desc
+- /?sort=year&order=asc
+
+
+[https://github.com/djhmateer/80s-music/releases/tag/v1.0-js](https://github.com/djhmateer/80s-music/releases/tag/v1.0-js) here is a tag to the final js version of the codebase. Using semantic versioning.
+
+```bash
+# Make sure you're on the main branch and up to date
+git checkout main
+git pull origin main
+
+# Create an annotated tag for the last JS version
+git tag -a v1.0-js -m "Vanilla JavaScript version before TypeScript rewrite"
+
+# Push the tag to GitHub
+git push origin v1.0-js
+```
+
+## Typescript
+
+I'm getting into the depths of JS, putting in type hints to help me build professional code which doesn't break and is solid in the longer term.
+
+```ts
+// Current (messy):
+let currentSortColumn = /** @type {'song'|'artist'|'year'|null} */ (null);
+const tbody = /** @type {HTMLElement} */ (document.getElementById('songs-tbody'));
+
+// TypeScript (clean):
+let currentSortColumn: 'song'|'artist'|'year'|null = null;
+const tbody = document.getElementById('songs-tbody') as HTMLElement;
+```
+
+I'm now fighting JS, and this feels like a good time to move to TS as the added compiler step is now worth it.
+
+
+Lets keep all source ts files in `/src` to separate from distribution artifacts in `/dist`
+
+
+[![alt text](/assets/2025-08-30/12.jpg "Migration to ts")](/assets/2025-08-30/12.jpg)
+
+
+### Approaching 5 hour limit
+
+In the feature branch ts-migration, approaching the 5 hour limits for the £20pm version of claude-code. 
+
+it then said: 5-hour limit reached ∙ resets 6pm
+
+I restarted my editor, and it still says the same message. So it is 5 hours rolling window.
+
+As of late Aug 2025 there is a weekly usage limit as well.
+
+[https://claude.ai/login](https://claude.ai/login) to change plans etc..
+
+## Max Plan 
+
+So now I'm on the Max plan (£100 pm) and it's pretty similar.
+
+My ts project is compiling and giving the correct output. Lets explore each line like a pro developer.
+
+
+
+
 
 
 
