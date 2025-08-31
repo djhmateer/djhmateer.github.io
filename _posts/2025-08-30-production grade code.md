@@ -10,7 +10,7 @@ sitemap: false
 image: /assets/2024-05-03/4.jpg
 ---
 
-<!-- [![alt text](/assets/2025-08-07/1.jpg "Cursor prototype")](/assets/2025-08-07/1.jpg) -->
+[![alt text](/assets/2025-08-30/6.jpg "Volcano")](/assets/2025-08-30/6.jpg)
 
 What does great code / production grade (!) look like?
 
@@ -38,9 +38,7 @@ I love code which is so easy to understand (has low cognitive load) that it take
 
 Let's explore how LLMs can help us be intentful with code. I'd like to treat this as trying a new tool in the artistic toolbox. Perhaps something to consider is that I've mostly worked as a solo developer on projects, and have always wanted to learn off great masters in my craft. Will LLM's help?
 
-`Please create index.html, style.css and script.js and link them together. You are a senior professional software
-developer working at a tier1 (ie largest and most prestigious and competitive tech firm). Please ask any questions
-until you are 95% confident that you know what you are doing`
+`Please create index.html, style.css and script.js and link them together. You are a senior professional software developer working at a tier1 (ie largest and most prestigious and competitive tech firm). Please ask any questions until you are 95% confident that you know what you are doing`
 
 `Please just create the boilerplate for an 80s Music website - just put in the title only and hello world as the text.`
 
@@ -227,13 +225,6 @@ Thinking about code formatting and commenting:
 
 Machine-consumable rules
 
-### CLAUDE.md
-
-Human and AI reference. 
-
-- A longer explanation of why thing are the way they are. Context, examples and review checklists.
-
-
 ## JSDoc format
 
 Common JSDoc tags are picked uo by IDE's like VSCode 
@@ -298,13 +289,191 @@ As this project is still small I'm sticking with js as am getting 90% (???) of t
 
 ## linting
 
-ESLint
+TODO ESLint
 
 ## code formatting
  
-Prettier
+TODO Prettier
+
+## bundler
+
+TODO eg Webpack?
 
 
+## README and CLAUDE.md
+
+### CLAUDE.md
+
+`\init` in claude analyses the codebase and comes up with a CLAUDE.md file.
+
+Human and AI reference. 
+
+- A longer explanation of why thing are the way they are. Context, examples and review checklists.
+
+
+```md
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+This is a simple web application showcasing 80s music data. The project uses vanilla HTML, CSS, and JavaScript with JSDoc type annotations for type safety without compilation overhead.
+
+**Architecture:**
+- `index.html` - Basic HTML structure with title and script inclusion
+- `style.css` - Simple styling with reset and basic typography
+- `script.js` - Main JavaScript with JSDoc-typed song data structures
+- `jsconfig.json` - TypeScript compiler configuration for JavaScript type checking
+
+## Type System
+
+The project uses JSDoc annotations with TypeScript's `checkJs` enabled for type safety:
+
+- **Song interface**: Defined via `@typedef` with `name` (string), `artist` (string), `year` (number 1980-1989)
+- **Type checking**: Enabled through `jsconfig.json` with `checkJs: true` and `strict: true`
+- **IDE integration**: VS Code provides full IntelliSense, error detection, and autocomplete
+
+## Development Standards
+
+The project follows strict coding standards defined in `.claude-rules`:
+
+**Branch naming**: `<type>/<short-description>` (e.g., `feat/display-sample-data`)
+**Commit format**: Conventional Commits with type matching branch type
+**Code style**: Prettier-compatible (2 spaces, trailing commas, semicolons)
+**Variable declarations**: `const` preferred, `let` when reassigned, never `var`
+**Comments**: JSDoc for public APIs and type definitions, single-line for local context only
+
+## Key Files
+
+- `script.js:1-30` - Main typed song data array with JSDoc annotations
+- `jsconfig.json:4-8` - TypeScript compiler options for JavaScript type checking
+- `.claude-rules:55-119` - Comprehensive JavaScript/TypeScript coding standards
+
+## Current State
+
+The project is in active development with sample 80s music data structures in place. The codebase demonstrates proper JSDoc usage for type safety in vanilla JavaScript projects without build complexity.
+```
+
+
+## Displaying Data
+
+
+[![alt text](/assets/2025-08-30/2.jpg "displaying data")](/assets/2025-08-07/2.jpg)
+
+JavaScript displaying data.
+
+```js
+/**
+ * @typedef {Object} Song
+ * @property {string} name - Song title, non-empty string
+ * @property {string} artist - Performing artist or band name
+ * @property {number} year - Release year, must be 1980-1989 inclusive
+ */
+
+/**
+ * Array of 80s songs with enforced structure.
+ * Note: Structure is enforced by IDE/JSDoc only - code will still run without it.
+ * JSDoc + VS Code provide type hints, autocomplete, and error detection for better DX (Developer Experience).
+ * @type {Song[]}
+ */
+const songs = [
+  {
+    name: "Billie Jean",
+    artist: "Michael Jackson",
+    year: 1982,
+  },
+  {
+    name: "Sweet Child O' Mine",
+    artist: "Guns N' Roses",
+    year: 1987,
+  },
+  {
+    name: "Livin' on a Prayer",
+    artist: "Bon Jovi",
+    year: 1986,
+  },
+];
+
+/**
+ * Renders the songs array as table rows in the DOM.
+ * Uses for...of loop with template literals for efficient HTML string building.
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Get table body element with type assertion to satisfy TypeScript null checks
+    const tbody = /** @type {HTMLElement} */ (document.getElementById('songs-tbody'));
+    
+    // Using for...of loop to build HTML string
+    // Preferred over map().join('') as it avoids intermediate array creation
+    // Map is semantically for data transformation, not side effects like string building 
+    // Also preferred over forEach for easier debugging and control flow (break/continue)
+    let html = '';
+    for (const song of songs) {
+        html += `<tr>
+            <td>${song.name}</td>
+            <td>${song.artist}</td>
+            <td>${song.year}</td>
+        </tr>`;
+    }
+    tbody.innerHTML = html;
+});
+```
+
+Notice I put in research into the most professional way to render out this simple data to the screen.
+
+## ES6 Modules 
+
+Converted to ES6 modules - we get import and export syntax, and module scoping creating isolated scopes. 
+
+ Why ES6 modules over global scripts:
+ 1. SCOPED VARIABLES: Variables and functions are module-scoped, not global
+    - Prevents namespace pollution and naming conflicts
+    - Better encapsulation and maintainability
+ 
+ 2. EXPLICIT DEPENDENCIES: Import/export clearly defines what code depends on what
+    - Makes dependencies traceable and debuggable
+    - IDE can provide better autocomplete and refactoring support
+ 
+ 3. STATIC ANALYSIS: Module dependencies are resolved at compile time
+    - Bundlers can perform tree-shaking (remove unused code)
+    - Better tooling support and error detection
+ 
+ 4. MODERN STANDARD: ES6 modules are the official JavaScript module system
+    - Supported natively in all modern browsers
+    - Future-proof approach for web development
+ 
+ Trade-offs:
+ - Requires modern browser or bundler (IE11+ with polyfills)
+ - Functions not automatically global (need event listeners vs onclick)
+ - Slightly more complex setup for simple projects
+
+## Error Handling
+
+[![alt text](/assets/2025-08-30/4.png "CORS file issue")](/assets/2025-08-30/4.png)
+
+If a person opens the html file, it won't load the data due to cors permissions. As a professional develop lets trap this error.
+
+
+[![alt text](/assets/2025-08-30/5.jpg "Trap cors")](/assets/2025-08-30/5.png)
+
+We could trap this error using onerror on the script tag. But for a professional project such as this, we don't need as it will always be serverd from a webserver.
+
+
+### Coding Style
+
+I'm aligning my project to prettier standards and put this into `.claude-rules`
+
+Am using multiple AI's to get different opinions and to see what feels best for me. This is part of the art of coding.. taking time to see what is most beautiful and clean and appropriate to a project.
+
+
+Added in meta name desciption, keywords and author for being descriptive and SEO
+
+Adding in html5 header and main and footer tags is a semantically good idea - clarity.
+
+
+### ally
+
+Accessibility
 
 
 
