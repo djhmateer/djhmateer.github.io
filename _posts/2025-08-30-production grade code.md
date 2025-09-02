@@ -598,6 +598,93 @@ So now I'm on the Max plan (£100 pm) and it's pretty similar.
 
 My ts project is compiling and giving the correct output. Lets explore each line like a pro developer.
 
+## Loading Sample Data
+
+I've got 80's sample data currently like this as `songs.json`
+
+```json
+[
+  {
+    "name": "Billie Jean",
+    "artist": "Michael Jackson",
+    "year": 1982
+  },
+  {
+    "name": "Sweet Child O' Mine",
+    "artist": "Guns N' Roses",
+    "year": 1987
+  },
+  {
+    "name": "Livin' on a Prayer",
+    "artist": "Bon Jovi",
+    "year": 1986
+  }
+]
+```
+
+However I'm going towards client server application, where songs will be in a db, and data served via an API.
+
+This application is all about great production code, so lets head in that direction! 
+
+Firstly I want to fully understand the codebase at the moment and document it well.
+
+### Commenting Style
+
+- Should explain Why (not What) - eg constraints, trade-offs
+- Owner and Dependencies - great to know what code effects
+- Examples - I like this in code (helps with onboarding new devs too)
+- Tooling friendly - TSDoc, so I can create docs and have good ide support
+
+[https://tsdoc.org/](https://tsdoc.org/)
+
+After much prompting on both claude and ChatGPT (to get another opinion) I've got this code for a song-data.ts file
+
+```ts
+/**
+ * Reads songs.json and exports a strongly-typed array of 80s songs for display in the music table.
+ * 
+ * @remarks
+ * Data flow: songs.json → Song[] type validation → exported songs array.
+ * 
+ * @see {@link script.ts} - Primary consumer for table rendering/sorting
+ */
+
+import songData from './songs.json' with { type: "json" };
+
+/**
+ * Shape contract for song objects with compile-time validation.
+ * 
+ * @remarks
+ * Design choices:
+ * - Interface: Best for simple data shapes (current choice)
+ * - Type alias: Similar, better for unions/intersections
+ * - Class: Overkill here - adds runtime overhead for methods we don't need
+ * 
+ * @beta Probably head towards runtime validation for business rules,
+ * but not bringing in external dependencies just yet.
+ */
+export interface Song {
+  /** Song title @example "Billie Jean" */
+  name: string;
+  /** Artist or band name @example "Michael Jackson" */
+  artist: string;
+  /** Release year (1980-1989, not enforced at compile time) */
+  year: number;
+}
+
+/**
+ * Strongly-typed array of Song objects imported from JSON.
+ * 
+ * @remarks
+ * TypeScript catches structural mismatches at compile time:
+ * - Missing field: "Property 'name' is missing in type..."
+ * - Wrong field name: "Type '{ namex: string; }[]' is not assignable to type 'Song[]'"
+ * - Wrong type: "Type 'string' is not assignable to type 'number'"
+ * 
+ * Does NOT validate business rules (e.g., year actually being 1980-1989).
+ */
+export const songs: Song[] = songData;
+```
 
 
 
