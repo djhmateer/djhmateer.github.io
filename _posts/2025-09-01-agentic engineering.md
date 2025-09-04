@@ -18,7 +18,7 @@ Let's make an app for my local speedwatch group
 
 I've got a private GH repo called speedwatch.
 
-I'll be using agentic ai to help me with these phases
+I'll be using agentic AI to help me with these phases
 
 - Researcher
 - Architect - standards and structure. (structure documents eg software principles - DRP, SRP.. hmmm)
@@ -30,7 +30,7 @@ I'll be using agentic ai to help me with these phases
 
 Git init
 
-Good to claude a `CLAUDE.md` file (/init) so can setup defaults like
+Good to give Claude a `CLAUDE.md` file (/init) so can setup defaults like
 
 - Don't commit to source control unless I say
 
@@ -64,9 +64,9 @@ So I signed up my wife as a user to test the flow of the system, and screenshott
 
 [https://www.youtube.com/watch?v=e-uRyFuiK-A](https://www.youtube.com/watch?v=e-uRyFuiK-A)
 
-This is the intro: code of conduct, health and safety and Procedures (2.8k views, 9 years agp)
+This is the intro: code of conduct, health and safety and Procedures (2.8k views, 9 years ago)
 
-After completing quiz a police officer will contact you regarding future practical training sessions.
+After completing the quiz a police officer will contact you regarding future practical training sessions.
 
 ### The Online Quiz
 
@@ -102,7 +102,7 @@ pandoc PRD-summary.md -o PRD-summary.docx --reference-doc=reference-template.doc
 Pandoc not so good
 
 
-[![alt text](/assets/2025-09-04/3.jpg "Latex looking academic")](/assets/2025-09-04/3.jpg)
+[![alt text](/assets/2025-09-04/3.jpg "LaTeX looking academic")](/assets/2025-09-04/3.jpg)
 
 Latex looking academic
 
@@ -111,7 +111,7 @@ Latex looking academic
 
 Export to word works well
 
-[![alt text](/assets/2025-09-04/4.jpg "Word rendered pdf is better")](/assets/2025-09-04/4.jpg)
+[![alt text](/assets/2025-09-04/4.jpg "Word rendered PDF is better")](/assets/2025-09-04/4.jpg)
 
 Word rendered pdf is better
 
