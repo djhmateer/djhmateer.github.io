@@ -70,17 +70,54 @@ After completing quiz a police officer will contact you regarding future practic
 
 ### The Online Quiz
 
-1 - Objectives and purpose of the CSW scheme
-2 - Obligations and behaviour
-3 - Important things to remember about safety
-4 - Procedure, roadside recording, and equipment
+1. Objectives and purpose of the CSW scheme
+2. Obligations and behaviour
+3. Important things to remember about safety
+4. Procedure, roadside recording, and equipment
 
 Each section ends with a short pre-test quiz. You can either test your knowledge after each section, or skip the pre-test quiz before continuing to the next chapter.
 
 You are allowed to make as many attempts as needed to submit all your answers.
 
 
+## Exporting the PRD to show Customers
 
+[![alt text](/assets/2025-09-04/1.jpg "Render of MD really good")](/assets/2025-09-04/1.jpg)
+
+The Markdown file is rendering beautifully
+
+```bash
+pandoc PRD-summary.md -o PRD-summary.pdf --pdf-engine=wkhtmltopdf
+
+sudo apt install texlive-xetex
+
+pandoc PRD-summary.md -o PRD-summary.pdf --pdf-engine=xelatex -V geometry:margin=1in -V fontsize=11pt
+
+# docx with reference styling
+pandoc PRD-summary.md -o PRD-summary.docx --reference-doc=reference-template.docx
+```
+
+[![alt text](/assets/2025-09-04/2.jpg "Pandoc Not so good")](/assets/2025-09-04/2.jpg)
+
+Pandoc not so good
+
+
+[![alt text](/assets/2025-09-04/3.jpg "Latex looking academic")](/assets/2025-09-04/3.jpg)
+
+Latex looking academic
+
+
+[![alt text](/assets/2025-09-04/5.jpg "Export to word works well")](/assets/2025-09-04/5.jpg)
+
+Export to word works well
+
+[![alt text](/assets/2025-09-04/4.jpg "Word rendered pdf is better")](/assets/2025-09-04/4.jpg)
+
+Word rendered pdf is better
+
+[![alt text](/assets/2025-09-04/6.jpg "ChatGPT asked it to help with formatting of docx")](/assets/2025-09-04/6.jpg)
+
+ChatGPT asked it to help with formatting of docx - tables idea is very good
 
 ## Architect
 
