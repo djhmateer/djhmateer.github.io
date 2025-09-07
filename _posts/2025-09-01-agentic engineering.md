@@ -36,9 +36,12 @@ Good to give Claude a `CLAUDE.md` file (/init) so can setup defaults like
 
 This needs to go into a `.claude-rules` file.
 
-## Research
+## 1.Research Phase
 
-PRD - Product Requirements Document
+`research-report.md` is what I'm using for this
+
+Research phase is raw findings, pain points, quotes from users, competitve analysis. It's messy, exploratory and oriented around understanding the problem space.
+
 
 Essentially this is a great idea for any project as it helps you define what you're doing before doing it. 
 
@@ -80,7 +83,7 @@ Each section ends with a short pre-test quiz. You can either test your knowledge
 You are allowed to make as many attempts as needed to submit all your answers.
 
 
-## Exporting the PRD to show Customers
+## Exporting the PRD as PDF and docx
 
 [![alt text](/assets/2025-09-04/1.jpg "Render of MD really good")](/assets/2025-09-04/1.jpg)
 
@@ -118,6 +121,21 @@ Word rendered pdf is better
 [![alt text](/assets/2025-09-04/6.jpg "ChatGPT asked it to help with formatting of docx")](/assets/2025-09-04/6.jpg)
 
 ChatGPT asked it to help with formatting of docx - tables idea is very good
+
+## Research with claude
+
+I'm digging into the details of the speedwatch application and the complexity of the task.
+
+- What is not good is complex questions on moving text and formatting. Better to do manually or ask it to do simple things. eg renaming heading sections it gets okay.
+
+- What I'm finding good is to ask claude to put data into the main prd.md and make it's own mind up as to where
+
+
+## 2.Product Manager Stage
+
+distills research into structured requirements, personas, user stories, success metrics, functional and non-functional requirements, constraints, and roadmap. It frames what should be built and why.
+
+
 
 ## Architect
 
