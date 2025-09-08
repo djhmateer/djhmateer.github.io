@@ -90,18 +90,18 @@ I've not found a way in the Pro plan to see when my rate limits are approaching.
 
 `can you provide me with a summary of what this project is`
 
-##asdf
+## asdf
 cursor - snapshots.. ux and workflow
 claude-code - accuracy over speed
 
-##asdf
+## asdf
 authentication
 
 vibe is great for front end work!
 
-**can explain the code???
+**can explain the code???**
 
-####fundamental
+#### fundamental
 leaning of js
 basics of ts
 composition of architecture..tech choices
@@ -118,7 +118,7 @@ we know all the above - reskinning known formula
 different is when things collide
 
 ---
-commm
+comm
 design
 develop
 
@@ -147,7 +147,7 @@ If run claude inside VSCode then we get an extension which is automatically inst
 
 ## Example 1 - Website Create
 
-`Create a very simple website that is for a habit tracking app. Create some mock-ups for the imagets, keep things super simple, but hink a beautiful design that comes from a designer agency that makes beautiful websites (that maybe cost like $10,000 to $15,000) as a demo for what Claude Code can do`
+`Create a very simple website that is for a habit tracking app. Create some mock-ups for the images, keep things super simple, but think a beautiful design that comes from a designer agency that makes beautiful websites (that maybe cost like $10,000 to $15,000) as a demo for what Claude Code can do`
 
 then
 
@@ -191,7 +191,7 @@ It then created a README-tests.md which documented the tests after I asked it to
 after doing this I did an `/init` to create a CLAUDE.md file
 
 
-**can it do screenshots of the functionality?
+**can it do screenshots of the functionality?**
 
 ### Browser
 
@@ -259,7 +259,7 @@ For me this isn't a core of the game, and it adds complexity to the code, so let
 ## Coding assist
 
 - put in comments
-- is there a better way to oranise this code eg mixed concerns, logical grouping of those concerns, global scope pollution
+- is there a better way to organise this code eg mixed concerns, logical grouping of those concerns, global scope pollution
 - renaming functions (and the caller)
 - refactoring comments
 - create a flow diagram using mermaid to show the flow of the game

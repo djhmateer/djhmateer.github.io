@@ -36,11 +36,11 @@ Good to give Claude a `CLAUDE.md` file (/init) so can setup defaults like
 
 This needs to go into a `.claude-rules` file.
 
-## 1.Research Phase
+## 1. Research Phase
 
 `research-report.md` is what I'm using for this
 
-Research phase is raw findings, pain points, quotes from users, competitve analysis. It's messy, exploratory and oriented around understanding the problem space.
+Research phase is raw findings, pain points, quotes from users, competitive analysis. It's messy, exploratory and oriented around understanding the problem space.
 
 
 Essentially this is a great idea for any project as it helps you define what you're doing before doing it. 
@@ -131,7 +131,7 @@ I'm digging into the details of the speedwatch application and the complexity of
 - What I'm finding good is to ask claude to put data into the main prd.md and make it's own mind up as to where
 
 
-## 2.Product Manager Stage
+## 2. Product Manager Stage
 
 distills research into structured requirements, personas, user stories, success metrics, functional and non-functional requirements, constraints, and roadmap. It frames what should be built and why.
 
