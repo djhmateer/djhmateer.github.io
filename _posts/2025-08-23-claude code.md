@@ -39,6 +39,34 @@ As of Aug 25 there is a new weekly limit too.
 
 I found that after 5 - 7 hours of moderate use I'd reached limits of the Pro plan, and moved onto Max.
 
+**update 8th Sept** - kept on getting claude not working (possibly trying to update and failed)
+
+```bash
+npm install -g @anthropic-ai/claude-code
+npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /home/dave/.nvm/versions/node/v22.11.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /home/dave/.nvm/versions/node/v22.11.0/lib/node_modules/@anthropic-ai/.claude-code-1zlbCPhu
+npm error errno -39
+npm error ENOTEMPTY: directory not empty, rename '/home/dave/.nvm/versions/node/v22.11.0/lib/node_modules/@anthropic-ai/claude-code' -> '/home/dave/.nvm/versions/node/v22.11.0/lib/node_modules/@anthropic-ai/.claude-code-1zlbCPhu'
+npm error A complete log of this run can be found in: /home/dave/.npm/_logs/2025-09-08T08_01_15_081Z-debug-0.log
+```
+
+so switching to native installed:
+
+[https://docs.anthropic.com/en/docs/claude-code/setup#native-binary-installation-beta](https://docs.anthropic.com/en/docs/claude-code/setup#native-binary-installation-beta)
+
+```bash
+# Install stable version
+curl -fsSL https://claude.ai/install.sh | bash
+
+# shows version and auto-updates are true (default)
+claude doctor
+```
+
+
+old
+
 ```bash
 # installs silently - maybe use --v
 # to see what is happening
