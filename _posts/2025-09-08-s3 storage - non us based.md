@@ -1,12 +1,12 @@
 ---
 layout: post
 title: S3 Storage - Non US Based 
-description: 
-menu: review
+description: European S3 storage providers including Hetzner and OVH as alternatives to US-based cloud storage services 
+# menu: review
 categories: s3 
 published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2024-09-16/1.jpg
 ---
 
