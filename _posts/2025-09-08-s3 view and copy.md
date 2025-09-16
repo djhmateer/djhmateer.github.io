@@ -1,6 +1,6 @@
 ---
 layout: post
-title: S3 Viewer 
+title: S3 View and Copy
 description: Comparing S3 storage viewers and tools including Cyberduck, S3 Browser, and rclone for managing large file collections 
 # menu: review
 categories: s3 

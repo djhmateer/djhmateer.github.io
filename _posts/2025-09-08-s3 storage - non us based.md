@@ -27,7 +27,7 @@ I've been using [Digital Ocean Spaces](https://cloud.digitalocean.com/) but need
 
 Will send me a recovery key for 2FA in the post if I lose mine. Have to use my authenticator on mobile phone or to remove 2FA I have keys in password storage.
 
-I've started using this for real with rclone - see [s3 viewer article](/2025/09/08/s3-viewer) 
+I've started using this for real with rclone - see [s3 viewer article](/2025/09/08/s3-view-and-copy) 
 
 ## OVH (France)
 
