@@ -108,6 +108,20 @@ rclone lsd hetzner-fsn1:davetesting
 rclone copy /mnt/f/Backups/DigitalOcean/davetesting hetzner-fsn1:davetesting  --progress
 ```
 
+## Google Drive
+
+[https://rclone.org/drive/#making-your-own-client-id](https://rclone.org/drive/#making-your-own-client-id)
+
+```bash
+rclone config
+
+# gdrive-personal
+# 22 is gdrive
+
+rclone ls gdrive-personal:
+
+rclone copy gdrive-personal: /mnt/f/Backups/gdrive-personal --progress --modify-window 2s
+```
 
 ## Conclusion
 

@@ -21,7 +21,7 @@ image: /assets/2024-05-03/4.jpg
 
 ---
 
-## 🎯 Purpose
+## 1. Purpose
 Replace spreadsheet-based tracking with a robust IMS that:
 - Links **People ↔ Crimes ↔ Evidence ↔ Organisations ↔ Events/Locations** for accountability.
 - Manages large volumes of structured and unstructured information for investigators.
@@ -30,7 +30,7 @@ Replace spreadsheet-based tracking with a robust IMS that:
 
 ---
 
-## ✅ Your Goals → How an IMS Addresses Them
+## 2. Your Goals - How an IMS Addresses Them
 
 1) **Associate a Person with a Crime (for accountability & justice)**  
    - Use a domain model with entities (Person, Crime, Role, Evidence, Organisation, Event).  
@@ -56,7 +56,7 @@ Replace spreadsheet-based tracking with a robust IMS that:
 
 ---
 
-## 🧠 Core Concepts & Data Model
+## 3. Core Concepts & Data Model
 
 ### Key Entities
 - **Person** (identifiers, aliases, roles, affiliations)
@@ -100,7 +100,7 @@ graph TD
 
 ---
 
-## 🧩 Key Capabilities (What Good IMSs Do)
+## 4. Key Capabilities (What Good IMSs Do)
 
 ### 1) Case, Entity & Evidence Management
 - Create cases; link people, crimes, orgs, and events.
@@ -127,7 +127,7 @@ graph TD
 
 ---
 
-## ⚖️ Governance, Security & Compliance (UK/EU)
+## 5. Governance, Security & Compliance (UK/EU)
 - **GDPR / DPA 2018**: lawful basis, purpose limitation, data minimisation, and subject rights.
 - **Security**: encryption at rest & in transit; RBAC; attribute-based access control (ABAC) for sensitive cohorts.
 - **Auditability**: immutable logs, signed exports, clock synchronisation, retention schedules.
@@ -136,7 +136,7 @@ graph TD
 
 ---
 
-## 🏗️ Implementation Approaches
+## 6. Implementation Approaches
 
 ### A) Off‑the‑Shelf / Commercial IMS (policing & investigations)
 - IBM i2 (link analysis), Kaseware, Chorus Intelligence, Altia, NICE Investigate.  
@@ -156,7 +156,7 @@ graph TD
 
 ---
 
-## 🚚 Migration Plan (Spreadsheet → IMS)
+## 7. Migration Plan (Spreadsheet → IMS)
 
 1. **Model**: Finalise entities, relationships, and required fields.  
 2. **Map**: Create a column‑to‑field mapping; define validation rules.  
@@ -168,7 +168,7 @@ graph TD
 
 ---
 
-## 🧪 Minimum Viable IMS (MVP) – Suggested Feature Set
+## 8. Minimum Viable IMS (MVP) - Suggested Feature Set
 - Entity CRUD (Person, Crime, Evidence, Org, Event, Location).  
 - Link management (roles, relationships, confidence, sources).  
 - File/evidence storage with hashing and chain-of-custody.  
@@ -181,7 +181,7 @@ graph TD
 
 ---
 
-## 📊 KPIs & Quality Controls
+## 9. KPIs & Quality Controls
 - % records with complete required fields.  
 - Duplicate rate after resolution.  
 - Time to answer an RFI.  
@@ -191,7 +191,7 @@ graph TD
 
 ---
 
-## ⚠️ Risks & Mitigations
+## 10. Risks & Mitigations
 - **Data quality** → enforce validation & controlled vocabularies.  
 - **Over‑permissive access** → RBAC/ABAC, periodic access reviews.  
 - **Vendor lock‑in** → open formats (CSV/JSON), exportable schema, documented ETL.  
@@ -200,7 +200,7 @@ graph TD
 
 ---
 
-## ▶️ Practical Next Steps
+## 11. Practical Next Steps
 1. **Pick a path**: Evaluate 2–3 vendors **or** proceed to a lean custom MVP.  
 2. **Draft a canonical data model** (entities, fields, relationships).  
 3. **Create an import plan** with test batches and QA metrics.  
