@@ -87,8 +87,15 @@ Notice the base64 encoded header is `ZGF2ZTox` which is [https://www.base64decod
 
 to forget this cached HTTP Basic Auth header in Chrome (it isn't a cookie), just restart chrome, or go ingognito
 
+## Modal popup (or a form)
 
-## Cloudflare Pages
+So next up is to figure out how to do a form post with a password that authenticates.
+
+
+
+## Appendix
+
+### Cloudflare Pages
 
 [https://auth-test-7eo.pages.dev/projects/](https://auth-test-7eo.pages.dev/projects/)
 
