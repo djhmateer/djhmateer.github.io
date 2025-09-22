@@ -123,6 +123,12 @@ rclone ls gdrive-personal:
 rclone copy gdrive-personal: /mnt/f/Backups/gdrive-personal --progress --modify-window 2s
 ```
 
+## Bash script
+
+```bash
+
+```
+
 ## Conclusion
 
 I'm loving the stability of rclone, and its famous diff checking, so I'm not downloading copies all of the time. Huge repositories of files take time. I've got 2 million files which are taking over 3 hours to check.

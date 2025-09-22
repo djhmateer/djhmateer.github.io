@@ -81,7 +81,7 @@ It's annoying all the permissions in claude-code, but here are some so far which
 }
 ```
 
-Created an install.sh file with all next.js dependencies.
+Test project is `green-80's` and created an `install.sh` file with all next.js dependencies.
 
 Refactor directory structure as I go.
 
