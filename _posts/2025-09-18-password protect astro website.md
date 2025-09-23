@@ -351,11 +351,11 @@ Straight VM's:
 
 [Linode](https://www.linode.com/)
 
-### Render
+### Render.com
 
-Would just use Node adapter then the Node server would run.
+[render.com](https://render.com)
 
-[https://auth-test-astro-jwt.onrender.com/](https://auth-test-astro-jwt.onrender.com/) - this is a static site.
+
 
 To get it running as a Web Service I need Node running.
 
@@ -427,9 +427,9 @@ Astro has a [Session](https://docs.astro.build/en/guides/sessions/) concept, so 
 
 [![alt text](/assets/2025-09-18/14.jpg "SSR")](/assets/2025-09-18/14.jpg)
 
-Guest mode on Chrome. 3 dots then near bottom.
+Guest mode on Chrome. My profile, then near bottom.
 
-secret123 is the password.
+1 is the password
 
 - Logging is all there
 - Cookies are stored on the filesystem (it is stateful)
