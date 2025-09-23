@@ -1,7 +1,7 @@
 ---
 layout: post
-# title: Pull Requests 
-description: 
+title: Password Protecting an Astro Website 
+description: Exploring different approaches to add password protection to an Astro website, from basic HTTP auth to JWT tokens and server-side sessions. 
 menu: review
 categories: astro 
 published: true 
@@ -12,14 +12,14 @@ image: /assets/2024-05-03/4.jpg
 
 <!-- [![alt text](/assets/2025-08-30/6.jpg "Volcano")](/assets/2025-08-30/6.jpg) -->
 
-I was asked to help put a password on an astro website. It is for a projects page where my friend only wants people with that password to be able to see that page. He's got good reasons why
+I was asked to help put a password on an Astro website. It is for a projects page where my friend only wants people with that password to be able to see that page. He's got good reasons for wanting this protection.
 
 The project is built in [astro](https://astro.build/) which is
 
 - A JavaScript framework for building fast content-driven sites
 - Renders components on the server by using ahead of time (Static Site) - mostly Astro sites on netlify use this
 
-To have some sort of authentication which is good, ideally it is on the server, so
+To have some sort of authentication which is good, ideally it should be on the server side.
 
 [Netlify](https://www.netlify.com/pricing/#pricing-table) does this but only on Pro plan which is $20pm where you can use a `_headers` file or `netlify.toml` for basic auth - which isn't a great solution.
 
@@ -66,7 +66,7 @@ export default async (req: Request, context: any) => {
 
 then in `netlify.toml`
 
-```yaml
+```toml
 [[edge_functions]]
 path = "/projects/*"
 function = "basic-auth"
@@ -91,7 +91,7 @@ to forget this cached HTTP Basic Auth header in Chrome (it isn't a cookie), just
 
 Essentially using a cookie, just like http session cookies.
 
-Lets explore a friends working project to see 
+Let's explore a friend's working project to see 
 
 - how it works
 - check the AI implementation!
@@ -111,8 +111,6 @@ node -v
 # prefer pnpm
 # 10.17.1
 npm install -g pnpm
-
-**HERE
 
 # 11.6.0 on 19th Sept 2025
 # https://github.com/pnpm/pnpm
@@ -145,7 +143,7 @@ JWT_SECRET=xxxxxxxxxxxxx
 NODE_ENV=production
 ```
 
-in packages.json
+In `package.json`:
 
 @astrojs/netlify - enabling sessions with Netlify Blobs
 
@@ -169,7 +167,7 @@ Can't get it working in dev properly
 
 ## HTML
 
-Lets take out astro from the equation, and start from the beginning to see how this is all put together.
+Let's take Astro out of the equation and start from the beginning to see how this is all put together.
 
 
 project is: auth-test-html-jwt
@@ -217,7 +215,7 @@ JWT token stored in local storage on browser
 
 [https://github.com/djhmateer/auth-test-html-jwt/releases/tag/v1.0-option1](https://github.com/djhmateer/auth-test-html-jwt/releases/tag/v1.0-option1)
 
-Lets try this for fun and see how insecure it is!
+Let's try this for fun and see how insecure it is!
 
   - Visit /login.html and enter password "1"
   - JWT token is generated and stored in localStorage (1 hour expiration)
@@ -244,7 +242,7 @@ AI hadn't put the package in my local repo and had pinned it to latest version (
 
 ## Option 2 - JWT with Netlify Functions as an HTTP Cookie
 
-Using server side validaton, so when JavaScript is turned off we are still not able to see the secret pages.
+Using server-side validation, so when JavaScript is turned off we are still not able to see the secret pages.
 
 AI suggested a very old version of netlify-cli which I need for local testing only. So let's not include. 23.6.0 as of 22nd Sept 25.
 
@@ -263,11 +261,11 @@ First iteration on AI, it works, but there is html being sent back from the func
 
 > To get this to work cleanly I'm having to serve html directly from a function.
 
-Because this is serverless, we need a JWT. If we had asp.net or something with a persistent sesssion (which may need a db to store it). Essentially we're creating the same thing.
+Because this is serverless, we need a JWT. If we had ASP.NET or something with a persistent session (which may need a database to store it), essentially we're creating the same thing.
 
 ## Option 3 - Middleware
 
-Lets use Edge Functions in netlify which will give similar functionality.
+Let's use Edge Functions in Netlify which will give similar functionality.
 
 They run before the request, so ideal for
 
@@ -285,12 +283,12 @@ then
 
 authToken cookie which JS can't read for security.
 
-We could create an endpont /me which returns another cookie called isLogged in which JS can read.
+We could create an endpoint `/me` which returns another cookie called `isLoggedIn` which JS can read.
 
 
 ## Option 4 - Middleware with Astro
 
-I've never used [https://astro.build/](https://astro.build/) before so lets see how fast I can figure it out with AI, and get some password protection on it.
+I've never used [Astro](https://astro.build/) before so let's see how fast I can figure it out with AI and get some password protection on it.
 
 My goal is to fully understand the process and make sure my friends implementation is good enough. 
 
@@ -347,11 +345,11 @@ Managed app hosts:
 
 Straight VM's:
 
-[Hetzner]()
+[Hetzner](https://www.hetzner.com/)
 
-[DigitalOcean]()
+[DigitalOcean](https://www.digitalocean.com/)
 
-[Linode]()
+[Linode](https://www.linode.com/)
 
 ### Render
 
@@ -417,9 +415,9 @@ pnpm add @types/jsonwebtoken
 
 Actually now that I'm using Node.js - is there a session concept so I don't need to use JWT's myself?
 
-Yes - JWT are great fpr stateless cross service auth (eg mobile apps multi apis). However lets use a cookie session. 
+Yes - JWTs are great for stateless cross-service auth (e.g., mobile apps with multiple APIs). However, let's use a cookie session. 
 
-Astro has a [Session](https://docs.astro.build/en/guides/sessions/) concept, so lets try that with the Node adapter.
+Astro has a [Session](https://docs.astro.build/en/guides/sessions/) concept, so let's try that with the Node adapter.
 
 
 [![alt text](/assets/2025-09-18/15.jpg "SSR")](/assets/2025-09-18/15.jpg)
