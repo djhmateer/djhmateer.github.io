@@ -98,12 +98,26 @@ Lets explore a friends working project to see
 
 
 ```bash
-# node 22.19.0 - on 19th Sept 25. 
+# https://github.com/nvm-sh/nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
+# 0.40.3 on 23rd Sept 25
+nvm --version
+
+# node 22.19.0 - on 19th Sept 25 this is LTS
 # I use nvm and this is up to date
 node -v
 
+# prefer pnpm
+# 10.17.1
+npm install -g pnpm
+
+**HERE
+
 # 11.6.0 on 19th Sept 25
+# https://github.com/pnpm/pnpm
 npm install -g npm
+npm -v
 
 npm outdated
 
@@ -247,19 +261,184 @@ First iteration on AI, it works, but there is html being sent back from the func
 [https://www.jwt.io/](https://www.jwt.io/) - useful for decoding the token, especially seeing the expiry date.
 
 
-However to get this to work cleanly I'm having to serve html directly from a function.
+> To get this to work cleanly I'm having to serve html directly from a function.
 
-Because this is serverless, we need a jwt. If we had asp.net or something with a persistent sesssion (which may need a db to store it). Essentially we're creating the same thing.
+Because this is serverless, we need a JWT. If we had asp.net or something with a persistent sesssion (which may need a db to store it). Essentially we're creating the same thing.
 
 ## Option 3 - Middleware
 
 Lets use Edge Functions in netlify which will give similar functionality.
 
-**HERE**
+They run before the request, so ideal for
 
-## Foo
+- Authentication
+- Middleware for the CDN
 
-I wonder if there is a simpler way to do a simple password on netflify. ie using standard http sessions cookies as jwt has a lot of unecessary features and complexity.
+then 
+
+- Netlify functions - run in AWS Lambda suited for API endpoints, DB queries
+- Edge functiosn - run at the CDN edge guited for request/response tweaks.
+
+### JS can't read Http only cookies
+
+[![alt text](/assets/2025-09-18/11.jpg "Auth token")](/assets/2025-09-18/11.jpg)
+
+authToken cookie which JS can't read for security.
+
+We could create an endpont /me which returns another cookie called isLogged in which JS can read.
+
+
+## Option 4 - Middleware with Astro
+
+I've never used [https://astro.build/](https://astro.build/) before so lets see how fast I can figure it out with AI, and get some password protection on it.
+
+My goal is to fully understand the process and make sure my friends implementation is good enough. 
+
+Also I'm heading towards Next.js applications for a technology stack for other projects, so this could be symbiotic.
+
+```bash
+# prefer pnpm
+
+# 5.13.10 on 23rd Sept 25
+pnpm create astro@latest
+
+pnpm dev
+
+# http://localhost:4321/
+
+
+pnpm run build
+
+```
+
+I've deployed to Netlify to start with. [https://auth-test-astro-jwt.netlify.app/](https://auth-test-astro-jwt.netlify.app/)
+
+
+There is a concept of Server Adapters which allow a page be rendered `on-demand` vs `pre-rendered`
+
+- [Netlify](https://docs.astro.build/en/guides/integrations-guide/netlify/) allows their CDN, Sessions
+
+
+
+But a classic server (single VM or long running container) is simpler and less brittle than serverless.
+
+
+
+## Option 5 - Non serverless
+
+I generally need
+
+- Low traffic
+- Don't worry about global latency
+- Need simplicity
+- Observability
+- Don't want to worry about cold start times
+- Don't want to worry about DB connection complexities
+- Don't need to worry about spikes (as know about VM's and can just increase)
+
+
+Managed app hosts:
+
+[fly.io](https://fly.io/) - more control as a tiny vm where you can control it. 
+
+[render.com](https://render.com) - there is a free tier which has an inactivity timeout (up to 50s restart) uses containers. less fine grained than vms
+
+[https://railway.com/](https://railway.com/) - free then $1pm
+
+Straight VM's:
+
+[Hetzner]()
+
+[DigitalOcean]()
+
+[Linode]()
+
+### Render
+
+Would just use Node adapter then the Node server would run.
+
+[https://auth-test-astro-jwt.onrender.com/](https://auth-test-astro-jwt.onrender.com/) - this is a static site.
+
+To get it running as a Web Service I need Node running.
+
+```bash
+pnpm add -D @astrojs/node
+pnpm approve-builds
+
+```
+then in 
+
+```js
+// astro.config.mjs
+// @ts-check
+import { defineConfig } from 'astro/config';
+
+// https://astro.build/config
+import node from '@astrojs/node';
+
+export default defineConfig({
+  output: 'server',          // <-- needed for SSR
+  adapter: node({
+    mode: 'standalone'       // bundles deps so Render can run it easily
+  }),
+});
+```
+then in `package.json` add in start
+
+```json
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "start": "node ./dist/server/entry.mjs"
+  },
+```
+
+[![alt text](/assets/2025-09-18/13.jpg "Live on Render")](/assets/2025-09-18/13.jpg)
+
+[https://auth-test-astro-jwt.onrender.com/](https://auth-test-astro-jwt.onrender.com/) - live site on free tier of render.
+
+```bash
+# to run locally.. astro runs node.js 
+# http://localhost:10000/
+pnpm run dev
+
+```
+
+[![alt text](/assets/2025-09-18/12.jpg "SSR")](/assets/2025-09-18/12.jpg)
+
+Server Side Render showing server time of a page.
+
+```bash
+pnpm add jsonwebtoken
+pnpm add @types/jsonwebtoken
+```
+
+Actually now that I'm using Node.js - is there a session concept so I don't need to use JWT's myself?
+
+Yes - JWT are great fpr stateless cross service auth (eg mobile apps multi apis). However lets use a cookie session. 
+
+Astro has a [Session](https://docs.astro.build/en/guides/sessions/) concept, so lets try that with the Node adapter.
+
+
+[![alt text](/assets/2025-09-18/15.jpg "SSR")](/assets/2025-09-18/15.jpg)
+[https://auth-test-astro-jwt.onrender.com/](https://auth-test-astro-jwt.onrender.com/)  running with no JS
+
+
+
+[![alt text](/assets/2025-09-18/14.jpg "SSR")](/assets/2025-09-18/14.jpg)
+
+Guest mode on Chrome. 3 dots then near bottom.
+
+secret123 is the password.
+
+- Logging is all there
+- Cookies are stored on the filesystem (it is stateful)
+
+
+
+
 
 
 ## Appendix
