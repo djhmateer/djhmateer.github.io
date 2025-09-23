@@ -17,7 +17,7 @@ I was asked to help put a password on an astro website. It is for a projects pag
 The project is built in [astro](https://astro.build/) which is
 
 - A JavaScript framework for building fast content-driven sites
-- Renders components on the server by using ahead of time time (Static Site) - mostly Astro sites on netlify use this
+- Renders components on the server by using ahead of time (Static Site) - mostly Astro sites on netlify use this
 
 To have some sort of authentication which is good, ideally it is on the server, so
 
@@ -85,7 +85,7 @@ Basic HTTP Auth
 
 Notice the base64 encoded header is `ZGF2ZTox` which is [https://www.base64decode.org/](https://www.base64decode.org/) `dave:1` which was the username and password combo
 
-to forget this cached HTTP Basic Auth header in Chrome (it isn't a cookie), just restart chrome, or go ingognito
+to forget this cached HTTP Basic Auth header in Chrome (it isn't a cookie), just restart chrome, or go incognito
 
 ## JWT Strategy with a Form
 
@@ -101,10 +101,10 @@ Lets explore a friends working project to see
 # https://github.com/nvm-sh/nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
-# 0.40.3 on 23rd Sept 25
+# 0.40.3 on 23rd Sept 2025
 nvm --version
 
-# node 22.19.0 - on 19th Sept 25 this is LTS
+# node 22.19.0 - on 19th Sept 2025 this is LTS
 # I use nvm and this is up to date
 node -v
 
@@ -114,7 +114,7 @@ npm install -g pnpm
 
 **HERE
 
-# 11.6.0 on 19th Sept 25
+# 11.6.0 on 19th Sept 2025
 # https://github.com/pnpm/pnpm
 npm install -g npm
 npm -v
@@ -246,7 +246,7 @@ AI hadn't put the package in my local repo and had pinned it to latest version (
 
 Using server side validaton, so when JavaScript is turned off we are still not able to see the secret pages.
 
-AI suggested a very old version of netlify-cli which I need for local testing only. So lets not include. 23.6.0 as of 22nd Sept 25.
+AI suggested a very old version of netlify-cli which I need for local testing only. So let's not include. 23.6.0 as of 22nd Sept 25.
 
 [https://effortless-zabaione-6d6056.netlify.app/](https://effortless-zabaione-6d6056.netlify.app/)
 
@@ -277,7 +277,7 @@ They run before the request, so ideal for
 then 
 
 - Netlify functions - run in AWS Lambda suited for API endpoints, DB queries
-- Edge functiosn - run at the CDN edge guited for request/response tweaks.
+- Edge functions - run at the CDN edge suited for request/response tweaks.
 
 ### JS can't read Http only cookies
 
