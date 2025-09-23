@@ -434,6 +434,9 @@ Guest mode on Chrome. My profile, then near bottom.
 - Logging is all there
 - Cookies are stored on the filesystem (it is stateful)
 
+[![alt text](/assets/2025-09-18/16.jpg "SSR")](/assets/2025-09-18/16.jpg)
+
+HttpOnly cookie (so JS can't read it). Server rendered page showing Login Time (UTC). Server in Germany.
 
 
 
