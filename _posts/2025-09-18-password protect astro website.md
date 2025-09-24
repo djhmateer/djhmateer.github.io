@@ -23,7 +23,7 @@ To have some sort of authentication which is good, ideally it should be on the s
 
 [Netlify](https://www.netlify.com/pricing/#pricing-table) does this but only on Pro plan which is $20pm where you can use a `_headers` file or `netlify.toml` for basic auth - which isn't a great solution.
 
-## Netlify
+## Netlify - Serverless
 
 I deployed my same [auth-test](https://github.com/djhmateer/auth-test) app on netlify [https://auth-test-green.netlify.app/](https://auth-test-green.netlify.app/)
 
@@ -322,7 +322,7 @@ But a classic server (single VM or long running container) is simpler and less b
 
 
 
-## Option 5 - Non serverless
+## Option 5 - Non serverless ie PaaS (server hosting)
 
 I generally need
 
@@ -439,17 +439,41 @@ Guest mode on Chrome. My profile, then near bottom.
 HttpOnly cookie (so JS can't read it). Server rendered page showing Login Time (UTC). Server in Germany.
 
 
+### Render.com in production
+
+Lets see how it survives not being hit. (apparently 15 minutes) and cold start up time. warm page render is 260ms on projects page.
+
+[![alt text](/assets/2025-09-18/17.jpg "SSR")](/assets/2025-09-18/17.jpg)
+
+Cold start.. maybe 30s!
+
+
+Uptimerobot keeps the container alive.
+
+I did notice that the container restarted during the night for no apparent reason.
+
+## HERE
+
+Thoughts from other people in team
+
+How does React come into the mix?
+
+Develop out a marketing site for my company on this stack?
+
+Use a VM - Node!
+
+Get towards Next.js for CRUD projects?
+
+
+## Conclusion
+
+1.Netlify / Vercel - JAMstack (Javascript APIs and Markup) - where dynamic functionality is handled client-side usually with frameworks like React, Svelte or vanilla JS. API's . Most of the site is built ahead of time. Fast. Very common for marketing sites, blogs.
+
+2.Render / Fly.io / Heroku - PaaS (Platform as a Service)
+
+3.AWS / GCO / Azure / Hetzner 
+
+Many teams graduate from Vercel -> Render -> Custom VMs as complexity grows.
 
 
 
-## Appendix
-
-### Cloudflare Pages
-
-[https://auth-test-7eo.pages.dev/projects/](https://auth-test-7eo.pages.dev/projects/)
-
-Careful not to hit the specific deployed version eg [https://b3f0283e.auth-test-7eo.pages.dev/projects/](https://b3f0283e.auth-test-7eo.pages.dev/projects/) which doesn't hit the auth rule.
-
-[![alt text](/assets/2025-09-18/1.jpg "Zero Trust")](/assets/2025-09-18/1.jpg)
-
-It looks like Zero Trust would do it, but heavyweight
