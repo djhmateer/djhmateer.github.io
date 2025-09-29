@@ -304,12 +304,10 @@ pnpm dev
 
 # http://localhost:4321/
 
-
 pnpm run build
-
 ```
 
-I've deployed to Netlify to start with. [https://auth-test-astro-jwt.netlify.app/](https://auth-test-astro-jwt.netlify.app/)
+I've deployed to Netlify to start with. [https://auth-test-astro-netflify.netlify.app/](https://auth-test-astro-netlify.netlify.app/)
 
 
 There is a concept of Server Adapters which allow a page be rendered `on-demand` vs `pre-rendered`
@@ -317,12 +315,55 @@ There is a concept of Server Adapters which allow a page be rendered `on-demand`
 - [Netlify](https://docs.astro.build/en/guides/integrations-guide/netlify/) allows their CDN, Sessions
 
 
+[https://github.com/djhmateer/auth-test-astro-netlify](https://github.com/djhmateer/auth-test-astro-netlify) is a project using the netlify adapter.. however is this the wrong tool? Are we pushing the static site builder (which is what astro is used for mostly)...
 
-But a classic server (single VM or long running container) is simpler and less brittle than serverless.
+Behind the scenes it uses node.js in each lambda function which is one of the most common alongside python. There is a penalty in terms of perf for this.
+
+### 4.1 Netlify Sessions with Blobs
+
+So if I don't want JWT's and just a session, I can put the state in a Netlify blob
+
+https://docs.astro.build/en/guides/sessions/
+
+
+### What is Server Side Rendered mode?
+
+In Static Mode (default) all pages are generated at build time.
+
+SSR pages are on-demand.
+ so can read cookies, headers and auth-status.
+ requires @astrojs/netlify adapter
+
+
+```js
+// astro.config.mjs - for static
+export default defineConfig({
+  output: 'static' // This is default, can omit
+});
+```
+and
+
+```js
+// astro.config.mjs - for server
+import netlify from '@astrojs/netlify';
+
+export default defineConfig({
+  output: 'server',
+  adapter: netlify()
+});
+```
+
+My strategy is to go fully static and make /projects on demand SSR.
+
+I've kept in login.astro and logout.astro as `export const prerender = false;` so that we can handle POST events in the same page for total simplicity.
+
+
 
 
 
 ## Option 5 - Non serverless ie PaaS (server hosting)
+
+But a classic server (single VM or long running container) is simpler and less brittle than serverless.
 
 I generally need
 
@@ -451,6 +492,8 @@ Cold start.. maybe 30s!
 Uptimerobot keeps the container alive.
 
 I did notice that the container restarted during the night for no apparent reason.
+
+I did find the /health endpoint didn't keep it alive after a while. So I've changed to hitting the / for now.
 
 ## HERE
 
