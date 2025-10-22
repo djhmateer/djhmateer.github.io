@@ -454,7 +454,7 @@ I did notice that the container restarted during the night for no apparent reaso
 
 ## HERE
 
-Thoughts from other people in team
+Hosting Thoughts from other people in team
 
 How does React come into the mix?
 
