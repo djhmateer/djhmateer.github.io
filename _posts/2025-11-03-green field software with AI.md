@@ -39,9 +39,7 @@ This is this first step
 - Engineer
 - Tester
 
-Lets assume I've gone through this and have done my reserach
-
-todo: Including looking at alternatives
+Lets assume I've gone through this and have done my research
 
 ## 2.Architect 
 
