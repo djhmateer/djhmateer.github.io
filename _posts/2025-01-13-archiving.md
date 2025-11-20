@@ -6,7 +6,7 @@ description:
 categories: archiving
 published: true 
 comments: false     
-sitemap: false
+sitemap: true
 image: /assets/2025-01-13/5.jpg
 ---
 
