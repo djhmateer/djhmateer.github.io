@@ -2,12 +2,12 @@
 layout: post
 title: Web Page Archiving 
 description: 
-menu: review
+# menu: review
 categories: archiving
 published: true 
 comments: false     
 sitemap: false
-image: /assets/2024-11-12/1.jpg
+image: /assets/2025-01-13/5.jpg
 ---
 
 [![](/assets/2025-01-13/5.jpg "Photo by https://unsplash.com/@eyed"){:width="300px"}](/assets/2025-01-13/5.jpg) 
@@ -511,7 +511,7 @@ The timestamping method described above relies on the authority of various trust
 [TBP](https://www.ohchr.org/en/publications/policy-and-methodological-publications/berkeley-protocol-digital-open-source)
 
 
-TODO: how the AA hits the collection criteria... and do other ways of archiving do it any better?
+A TODO next is how the AA hits the collection criteria... and do other ways of archiving do it any better?
 
 
 ## People and Interesting Articles

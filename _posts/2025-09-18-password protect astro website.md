@@ -101,14 +101,18 @@ Let's explore a friend's working project to see
 # https://github.com/nvm-sh/nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
+nvm install --lts --latest-npm
+
 # 0.40.3 on 23rd Sept 2025
 nvm --version
 
-# node 22.19.0 - on 19th Sept 2025 this is LTS
-# I use nvm and this is up to date
+# 24.11.1 on 17th Nov 25
 node -v
 
-# prefer pnpm
+# 11.6.2
+npm -v  
+
+# prefer pnpm (there is a better way of doing this - see pnpm docs)
 # 10.17.1
 npm install -g pnpm
 
