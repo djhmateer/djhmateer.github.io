@@ -350,8 +350,7 @@ A FastAPI dependency reads the cookie, loads the session from the store, and att
 
 
 
-Why are there no libraris like [https://github.com/better-auth/better-auth](https://github.com/better-auth/better-auth) which is a full TS stack for auth, for react and python?
-
+Why are there no libraries like [https://github.com/better-auth/better-auth](https://github.com/better-auth/better-auth) which is a full TS stack for auth, for react and python?
 
 
 Should I leverage!
@@ -362,9 +361,6 @@ Flask?
 
 
 
-
 ## How to login to front end - authentication and authorisation
-
-
 
 versioning
