@@ -342,7 +342,7 @@ A FastAPI dependency reads the cookie, loads the session from the store, and att
 
 2. JWT access tokens + HTTP-only cookies
 
-[FastAPI-Users](https://github.com/fastapi-users/fastapi-users) - maintenance mode
+[https://github.com/fastapi-users/fastapi-users](https://github.com/fastapi-users/fastapi-users) - maintenance mode
 
 [https://github.com/jordanisaacs/fastapi-sessions/](https://github.com/jordanisaacs/fastapi-sessions/) - maintenance mode
 
@@ -363,4 +363,149 @@ Flask?
 
 ## How to login to front end - authentication and authorisation
 
-versioning
+Session-based authentication is straightforward and secure - the backend maintains session state (in MySQL), sends a session cookie to the browser. Libraries like FastAPI-Sessions handle this cleanly, or you can roll your own with something like itsdangerous for signed cookies.
+
+
+## MySQL
+ 
+[https://pypi.org/project/mysql-connector-python/](https://pypi.org/project/mysql-connector-python/) - 940 stars on GH. async.. Official MySQL driver from Oracle. heavier, slower (pure python and not c)
+
+[https://github.com/PyMySQL/PyMySQL](https://github.com/PyMySQL/PyMySQL) - 7.8k stars.. 1.1.2 on 3 months ago.
+
+[https://github.com/aio-libs/aiomysql](https://github.com/aio-libs/aiomysql) - 1.9k stars. port of above for async.
+
+[https://github.com/PyMySQL/mysqlclient](https://github.com/PyMySQL/mysqlclient) - 2.5k stars. 2.2.7 is 9 months old. 10 years old.
+
+### ORMS
+
+[https://github.com/sqlalchemy/sqlalchemy](https://github.com/sqlalchemy/sqlalchemy) - 11.2k stars. 2.0.44 4 days ago. Uses any driver under the good eg MyMySQL
+
+[https://github.com/fastapi/sqlmodel](https://github.com/fastapi/sqlmodel) 17.2k stars. 0.0.27 1 hour ago. Written by same guy as FastAPI. Based on Python type annotations, and powered by Pydantic and SQLAlchemy.
+
+There is also Peewee and Tortoise ORM.
+
+### lightweight ORMS
+
+[records]() - not maintained
+
+[pugsql](https://github.com/mcfunley/pugsql) - 758 stars
+
+[aiosql]()
+
+[databases]() - not maintained
+
+## abstraction
+
+Have settles for a tiny helper function for now to help with abstractions.
+
+## Security
+
+So lets introduce for route based security.
+
+
+  | Endpoint    | Method | Auth Required | Description                                       |
+  |-------------|--------|---------------|---------------------------------------------------|
+  | /api/login  | POST   | No            | Login with {"username": "...", "password": "..."} |
+  | /api/logout | POST   | No            | Clears session cookie                             |
+  | /api/me     | GET    | Yes           | Returns current user info                         |
+  | /api/users  | GET    | Yes           | Now protected - requires login                    |
+
+  singular table names (although plural is common too in mysql - like in PostgreSQL)
+
+## Session Based Authentication with Secure Cookies
+
+[![alt text](/assets/2025-11-21/3.jpg "Session Based")](/assets/2025-11-21/3.jpg)
+
+session_id cookie
+
+   1. LOGIN                              2. SUBSEQUENT REQUESTS
+      ──────                                ────────────────────
+
+      Client                                Client
+        │                                     │
+        │ POST /api/login                     │ GET /api/users
+        │ {email, password}                   │ Cookie: session_id=abc123xyz...
+        │ credentials: 'include'              │ credentials: 'include'
+        ▼                                     ▼
+      Server                                Server
+        │                                     │
+        │ ① Lookup user by email              │ ① Extract session_id from Cookie
+        │ ② Verify password (Argon2)          │ ② Query DB: SELECT * FROM session
+        │ ③ Generate 32-byte token            │    JOIN user WHERE session_id = ?
+        │    (secrets.token_urlsafe)          │    AND expires_at > NOW()
+        │ ④ INSERT into session table         │ ③ Return user_id, email
+        │    (7-day expiry)                   │
+        │ ⑤ Set HTTP-only cookie              │
+        ▼                                     ▼
+      Client                                Client
+        │                                     │
+        │ Browser stores cookie               │ Request proceeds or 401
+        │ automatically (HTTP-only)           │
+        └─────────────────────────────────────┘
+
+and then key differences to below
+
+  | Opaque Token Header                | This Project (Session Cookie)    |
+  |------------------------------------|----------------------------------|
+  | Token sent in Authorization header | Session ID sent in Cookie header |
+  | Client stores with js-cookie       | Browser stores automatically     |
+  | Client must attach to each request | Browser attaches automatically   |
+  | Accessible to JavaScript           | HTTP-only (no JS access)         |
+
+  ## Opaque Token Authentication
+
+  - pure sessions
+  - JWT
+
+  hybrid approach is opaque token authentication
+  ie essentially stores in js-cookie
+
+  
+    1. LOGIN                          2. SUBSEQUENT REQUESTS
+    ──────                            ────────────────────
+
+    Client                            Client
+      │                                 │
+      │ POST /api/login/                │ GET /api/account/123
+      │ {email, password}               │ Authorization: token:abc123xyz...
+      ▼                                 ▼
+    Server                            Server
+      │                                 │
+      │ ① Lookup user by email          │ ① Extract token from header
+      │ ② Verify password (Argon2id)    │ ② Query DB: SELECT * FROM token
+      │ ③ Generate 30-char token        │    WHERE token = ?
+      │ ④ INSERT into token table       │ ③ Check if valid (expiry bug!)
+      │ ⑤ Return token to client        │ ④ Return user_id, admin flag
+      ▼                                 ▼
+    Client                            Client
+      │                                 │
+      │ Store in cookie (js-cookie)     │ Request proceeds or 401
+      └─────────────────────────────────┘
+
+  Pros of This Approach
+
+  1. Simple to implement - No crypto libraries needed for JWT signing
+  2. Easy revocation - Just delete the token row
+  3. Server controls session - Can invalidate anytime
+  4. No token size bloat - 30 chars vs 300+ for JWT
+  5. User data always fresh - Joins with user table each request
+
+  Cons of This Approach
+
+  1. Database hit every request - Scalability concern
+  2. No built-in expiry mechanism - Must implement manually (and it's broken)
+  3. Token theft = full access - No additional binding (IP, device, etc.)
+  4. Multiple active tokens - No limit on concurrent sessions per user
+
+[https://medium.com/identity-beyond-borders/jwt-vs-opaque-tokens-all-you-need-to-know-307bf19bade8](https://medium.com/identity-beyond-borders/jwt-vs-opaque-tokens-all-you-need-to-know-307bf19bade8)
+
+
+  [https://www.permit.io/blog/a-guide-to-bearer-tokens-jwt-vs-opaque-tokens](https://www.permit.io/blog/a-guide-to-bearer-tokens-jwt-vs-opaque-tokens)
+
+[https://stackoverflow.com/questions/40375508/whats-the-difference-between-jwts-and-a-bearer-token](https://stackoverflow.com/questions/40375508/whats-the-difference-between-jwts-and-a-bearer-token)
+
+[https://zitadel.com/blog/jwt-vs-opaque-tokens](https://zitadel.com/blog/jwt-vs-opaque-tokens)
+
+## External links with Tokens
+
+Okay so I've got a system (currently using session based authentication with secure cookies).
