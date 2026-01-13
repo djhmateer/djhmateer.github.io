@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flames of Fire - Official Band Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="flames-background"></div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Flames of Fire</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#game">Game</a>
+                <a href="#band">Band</a>
+                <a href="#tour">Tour</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="band-name">Flames of Fire</h1>
+            <p class="tagline">Igniting Stages Worldwide</p>
+            <div class="featured-song">
+                <span class="song-label">Featured Track:</span>
+                <span class="song-name">3D Mind</span>
+            </div>
+            <a href="#game" class="cta-button">Play Our Game</a>
+        </div>
+    </section>
+
+    <section id="game" class="game-section">
+        <div class="container">
+            <h2>Flame Catcher</h2>
+            <p class="game-description">Catch the blue flames and avoid the red ones!</p>
+            <div class="game-container">
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
+                <div id="gameOverlay" class="game-overlay">
+                    <h3>Flame Catcher</h3>
+                    <p>Use arrow keys or A/D to move</p>
+                    <p>Catch blue flames, avoid red ones!</p>
+                    <button id="startButton" class="game-button">Start Game</button>
+                </div>
+                <div id="gameStats" class="game-stats">
+                    <div class="stat">Score: <span id="score">0</span></div>
+                    <div class="stat">Lives: <span id="lives">3</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="band" class="band-section">
+        <div class="container">
+            <h2>Meet the Band</h2>
+            <div class="band-members">
+                <div class="member">
+                    <div class="member-icon">🥁</div>
+                    <h3>Hen</h3>
+                    <p class="role">Drums</p>
+                    <p class="bio">The rhythmic heartbeat of Flames of Fire, driving every beat with precision and power.</p>
+                </div>
+                <div class="member">
+                    <div class="member-icon">🎸</div>
+                    <h3>Lozzer</h3>
+                    <p class="role">Guitar</p>
+                    <p class="bio">Shredding riffs and melting faces with electrifying guitar solos that ignite the soul.</p>
+                </div>
+                <div class="member">
+                    <div class="member-icon">🎤</div>
+                    <h3>Fred</h3>
+                    <p class="role">Vocals</p>
+                    <p class="bio">The voice that commands the stage, delivering powerful vocals that resonate with every fan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tour" class="tour-section">
+        <div class="container">
+            <h2>Tour Dates</h2>
+            <div class="tour-dates">
+                <div class="tour-item">
+                    <div class="tour-date">
+                        <span class="month">JAN</span>
+                        <span class="day">25</span>
+                    </div>
+                    <div class="tour-info">
+                        <h3>The Blue Note</h3>
+                        <p>London, UK</p>
+                    </div>
+                    <a href="#" class="ticket-button">Tickets</a>
+                </div>
+                <div class="tour-item">
+                    <div class="tour-date">
+                        <span class="month">FEB</span>
+                        <span class="day">12</span>
+                    </div>
+                    <div class="tour-info">
+                        <h3>Electric Ballroom</h3>
+                        <p>Manchester, UK</p>
+                    </div>
+                    <a href="#" class="ticket-button">Tickets</a>
+                </div>
+                <div class="tour-item">
+                    <div class="tour-date">
+                        <span class="month">MAR</span>
+                        <span class="day">05</span>
+                    </div>
+                    <div class="tour-info">
+                        <h3>The Garage</h3>
+                        <p>Glasgow, UK</p>
+                    </div>
+                    <a href="#" class="ticket-button">Tickets</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <span class="social-icon">📘</span>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-icon">📷</span>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-icon">🐦</span>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-icon">🎵</span>
+                    <span>Spotify</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-icon">📺</span>
+                    <span>YouTube</span>
+                </a>
+            </div>
+            <div class="contact-email">
+                <p>For bookings and inquiries:</p>
+                <a href="mailto:contact@flamesoffire.com">contact@flamesoffire.com</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Flames of Fire. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

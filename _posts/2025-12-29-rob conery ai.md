@@ -223,27 +223,6 @@ I'm always getting the LLM to reivew its own code.. eg
 Thin slice of the app working end to end (and in `production`)
 
 
-## Foo
-
-great thing about AI is being able to swap out ORMS.. then none at all
-
-then take away fields
-
-then ask AI if any suggestions and refactor
-
-same about before but a great tool.
-
-Is AI taking the place of an ORM / Typescript here.. in that I'm using it to scan code. This is obviously dangerous but with tests, it is an interesting experiment.
-
-
-## Bar
-
-This is a lot of fun - see paper notes on philosophy of code being produced.. and how LLM's are making it easy to be
-
-- flexible
-- change parts out quickly (eg logging)
-- 
-
 
 
 
