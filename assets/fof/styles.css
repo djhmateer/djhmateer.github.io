@@ -134,6 +134,15 @@ body {
     animation: fadeInUp 1s ease-out;
 }
 
+.hero-logo {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 30px rgba(0, 150, 255, 0.6));
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
 .band-name {
     font-size: 5rem;
     font-weight: bold;
@@ -283,8 +292,17 @@ h2 {
 
 .game-overlay p {
     font-size: 1.2rem;
-    margin: 0.5rem 0;
+    margin: 0.3rem 0;
     color: #88ccff;
+    line-height: 1.4;
+}
+
+.mode-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .game-button {
@@ -299,6 +317,10 @@ h2 {
     font-weight: bold;
     transition: all 0.3s ease;
     box-shadow: 0 5px 20px rgba(0, 150, 255, 0.4);
+}
+
+.mode-buttons .game-button {
+    margin-top: 0;
 }
 
 .game-button:hover {
@@ -316,6 +338,16 @@ h2 {
     padding: 0.5rem 1rem;
     border-radius: 10px;
     border: 2px solid rgba(0, 150, 255, 0.3);
+}
+
+.player2-stats {
+    left: auto;
+    right: 20px;
+    border-color: rgba(255, 100, 0, 0.3);
+}
+
+.player2-stats .stat {
+    color: #ff8844;
 }
 
 .stat {
@@ -524,6 +556,10 @@ h2 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero-logo {
+        max-width: 300px;
+    }
+
     .band-name {
         font-size: 3rem;
     }

@@ -53,7 +53,7 @@ This worked in about 30 minutes. Firstly I noticed the js bundled.. nice.
 
 - Simple
 - Get into production asap
-- Do small things (or big things break into small steps)
+- Do small things (or big things break into small steps). do backend, then frontend for a feature spec.
 - Use tests so can see regressions
 - Do reviews all the time in claude-code, gemini and codex
 - Be as automated as possible - ie deploy all the time
@@ -70,6 +70,7 @@ Do this in plan-mode which will create a
 
 This did grind hard for 5 minutes using tokens! (on middle model)
 
+Good to iterative inside these spec documents.
 
 
 ## Help the LLM

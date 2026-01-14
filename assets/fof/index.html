@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flames of Fire - Official Band Website</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,7 +26,7 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="band-name">Flames of Fire</h1>
+            <img src="1.png" alt="Flames of Fire Logo" class="hero-logo">
             <p class="tagline">Igniting Stages Worldwide</p>
             <div class="featured-song">
                 <span class="song-label">Featured Track:</span>
@@ -36,19 +38,34 @@
 
     <section id="game" class="game-section">
         <div class="container">
-            <h2>Flame Catcher</h2>
-            <p class="game-description">Catch the blue flames and avoid the red ones!</p>
+            <h2>Flame Shooter</h2>
+            <p class="game-description">Shoot blue targets for points and chain combos for massive multipliers! Watch out - red targets SHOOT BACK! Dodge their fire and collect epic power-ups!</p>
             <div class="game-container">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
-                <div id="gameOverlay" class="game-overlay">
-                    <h3>Flame Catcher</h3>
-                    <p>Use arrow keys or A/D to move</p>
-                    <p>Catch blue flames, avoid red ones!</p>
+                <div id="modeSelect" class="game-overlay">
+                    <h3>Flame Shooter</h3>
+                    <p>Choose your game mode</p>
+                    <div class="mode-buttons">
+                        <button id="singlePlayerBtn" class="game-button">1 Player</button>
+                        <button id="twoPlayerBtn" class="game-button">2 Players</button>
+                    </div>
+                </div>
+                <div id="gameOverlay" class="game-overlay" style="display: none;">
+                    <h3>Flame Shooter</h3>
+                    <p>Move with arrow keys or A/D, shoot with SPACE</p>
+                    <p style="font-size: 1rem;">Shoot blue targets for points! Red targets SHOOT BACK!</p>
+                    <p style="font-size: 0.9rem; color: #ff6600;">Watch for red warning circles - DODGE enemy fire!</p>
+                    <p style="font-size: 0.9rem; color: #ffff00;">Chain hits for COMBO multipliers!</p>
+                    <p style="font-size: 0.9rem; color: #88ccff;">Power-ups: ⚡ Rapid Fire | 🛡️ Shield | ✨ Double Points</p>
                     <button id="startButton" class="game-button">Start Game</button>
                 </div>
                 <div id="gameStats" class="game-stats">
-                    <div class="stat">Score: <span id="score">0</span></div>
-                    <div class="stat">Lives: <span id="lives">3</span></div>
+                    <div class="stat">P1 Score: <span id="score">0</span></div>
+                    <div class="stat">P1 Lives: <span id="lives">3</span></div>
+                </div>
+                <div id="player2Stats" class="game-stats player2-stats" style="display: none;">
+                    <div class="stat">P2 Score: <span id="score2">0</span></div>
+                    <div class="stat">P2 Lives: <span id="lives2">3</span></div>
                 </div>
             </div>
         </div>
