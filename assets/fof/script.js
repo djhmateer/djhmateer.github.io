@@ -25,6 +25,7 @@ const livesDisplay = document.getElementById('lives');
 const score2Display = document.getElementById('score2');
 const lives2Display = document.getElementById('lives2');
 const player2Stats = document.getElementById('player2Stats');
+const highscoreDisplay = document.getElementById('highscore');
 
 let gameRunning = false;
 let gameMode = 'single'; // 'single' or 'two'
@@ -32,6 +33,7 @@ let score = 0;
 let lives = 3;
 let score2 = 0;
 let lives2 = 3;
+let highscore = 0;
 let animationId;
 let targets = [];
 let bullets = [];
@@ -41,6 +43,21 @@ let explosions = [];
 let gameTime = 0;
 let difficultyMultiplier = 1;
 let screenShake = 0;
+
+// Load highscore from localStorage
+function loadHighscore() {
+    const saved = localStorage.getItem('flameShooterHighscore');
+    if (saved) {
+        highscore = parseInt(saved);
+        highscoreDisplay.textContent = highscore;
+    }
+}
+
+// Save highscore to localStorage
+function saveHighscore() {
+    localStorage.setItem('flameShooterHighscore', highscore.toString());
+    highscoreDisplay.textContent = highscore;
+}
 
 let player = {
     x: canvas.width / 2 - 25,
@@ -1062,6 +1079,13 @@ function endGame() {
     gameRunning = false;
     cancelAnimationFrame(animationId);
 
+    // Check and update highscore
+    const finalScore = gameMode === 'two' ? Math.max(score, score2) : score;
+    if (finalScore > highscore) {
+        highscore = finalScore;
+        saveHighscore();
+    }
+
     gameOverlay.style.display = 'flex';
     gameOverlay.querySelector('h3').textContent = 'Game Over!';
 
@@ -1074,10 +1098,11 @@ function endGame() {
         } else {
             winner = 'It\'s a Tie!';
         }
-        gameOverlay.querySelector('p:first-of-type').textContent = `P1: ${score} | P2: ${score2}`;
+        gameOverlay.querySelector('p:first-of-type').textContent = `P1: ${score} | P2: ${score2} | Best: ${highscore}`;
         gameOverlay.querySelector('p:last-of-type').textContent = winner;
     } else {
-        gameOverlay.querySelector('p:first-of-type').textContent = `Final Score: ${score}`;
+        const isNewHighscore = score === highscore && score > 0;
+        gameOverlay.querySelector('p:first-of-type').textContent = `Final Score: ${score}` + (isNewHighscore ? ' 🏆 NEW HIGHSCORE!' : '');
 
         let message = '';
         if (score < 50) {
@@ -1202,3 +1227,618 @@ window.addEventListener('scroll', () => {
         navbar.style.background = 'rgba(0, 0, 0, 0.9)';
     }
 });
+
+// Load highscore when page loads
+loadHighscore();
+
+// ===============================================
+// INFERNO ARENA - Second Game
+// ===============================================
+
+const arenaCanvas = document.getElementById('arenaCanvas');
+const arenaCtx = arenaCanvas.getContext('2d');
+const arenaStartButton = document.getElementById('arenaStartButton');
+const arenaOverlay = document.getElementById('arenaOverlay');
+const arenaScoreDisplay = document.getElementById('arenaScore');
+const arenaHPDisplay = document.getElementById('arenaHP');
+const arenaWaveDisplay = document.getElementById('arenaWave');
+const arenaHighscoreDisplay = document.getElementById('arenaHighscore');
+
+let arenaRunning = false;
+let arenaScore = 0;
+let arenaHP = 100;
+let arenaWave = 1;
+let arenaHighscore = 0;
+let arenaAnimationId;
+let arenaEnemies = [];
+let arenaBullets = [];
+let arenaHealthPacks = [];
+let arenaExplosions = [];
+let arenaParticles = [];
+let arenaTime = 0;
+let arenaSpawnTimer = 0;
+let arenaMouseX = 0;
+let arenaMouseY = 0;
+let arenaMouseDown = false;
+let arenaShootCooldown = 0;
+let arenaScreenShake = 0;
+
+const arenaKeys = {
+    w: false,
+    a: false,
+    s: false,
+    d: false
+};
+
+let arenaPlayer = {
+    x: arenaCanvas.width / 2,
+    y: arenaCanvas.height / 2,
+    radius: 15,
+    speed: 4,
+    angle: 0
+};
+
+// Load arena highscore
+function loadArenaHighscore() {
+    const saved = localStorage.getItem('infernoArenaHighscore');
+    if (saved) {
+        arenaHighscore = parseInt(saved);
+        arenaHighscoreDisplay.textContent = arenaHighscore;
+    }
+}
+
+// Save arena highscore
+function saveArenaHighscore() {
+    localStorage.setItem('infernoArenaHighscore', arenaHighscore.toString());
+    arenaHighscoreDisplay.textContent = arenaHighscore;
+}
+
+// Arena Enemy Class
+class ArenaEnemy {
+    constructor(type, wave) {
+        this.type = type; // 'fast' or 'tank'
+        this.radius = type === 'tank' ? 20 : 12;
+
+        // Spawn from random edge
+        const edge = Math.floor(Math.random() * 4);
+        if (edge === 0) { // Top
+            this.x = Math.random() * arenaCanvas.width;
+            this.y = -this.radius;
+        } else if (edge === 1) { // Right
+            this.x = arenaCanvas.width + this.radius;
+            this.y = Math.random() * arenaCanvas.height;
+        } else if (edge === 2) { // Bottom
+            this.x = Math.random() * arenaCanvas.width;
+            this.y = arenaCanvas.height + this.radius;
+        } else { // Left
+            this.x = -this.radius;
+            this.y = Math.random() * arenaCanvas.height;
+        }
+
+        this.speed = type === 'fast' ? 2.5 + (wave * 0.2) : 1.5 + (wave * 0.1);
+        this.hp = type === 'tank' ? 3 : 1;
+        this.maxHP = this.hp;
+        this.color = type === 'fast' ? '#ff3300' : '#0066ff';
+        this.angle = 0;
+    }
+
+    update() {
+        // Move towards player
+        const dx = arenaPlayer.x - this.x;
+        const dy = arenaPlayer.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist > 0) {
+            this.x += (dx / dist) * this.speed;
+            this.y += (dy / dist) * this.speed;
+            this.angle = Math.atan2(dy, dx);
+        }
+
+        // Create trail particles
+        if (Math.random() > 0.7) {
+            arenaParticles.push({
+                x: this.x,
+                y: this.y,
+                vx: (Math.random() - 0.5) * 2,
+                vy: (Math.random() - 0.5) * 2,
+                life: 1,
+                size: Math.random() * 3 + 1,
+                color: this.color
+            });
+        }
+    }
+
+    draw() {
+        arenaCtx.save();
+        arenaCtx.translate(this.x, this.y);
+        arenaCtx.rotate(this.angle);
+
+        // Draw enemy
+        const gradient = arenaCtx.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+        gradient.addColorStop(0, this.color);
+        gradient.addColorStop(1, this.type === 'fast' ? '#990000' : '#003399');
+
+        arenaCtx.fillStyle = gradient;
+        arenaCtx.shadowBlur = 15;
+        arenaCtx.shadowColor = this.color;
+        arenaCtx.beginPath();
+        arenaCtx.arc(0, 0, this.radius, 0, Math.PI * 2);
+        arenaCtx.fill();
+
+        // Draw eyes/direction indicator
+        arenaCtx.fillStyle = '#ffffff';
+        arenaCtx.shadowBlur = 0;
+        arenaCtx.beginPath();
+        arenaCtx.arc(this.radius / 3, 0, 3, 0, Math.PI * 2);
+        arenaCtx.fill();
+
+        arenaCtx.restore();
+
+        // Draw HP bar for tanks
+        if (this.type === 'tank' && this.hp < this.maxHP) {
+            arenaCtx.fillStyle = '#ff0000';
+            arenaCtx.fillRect(this.x - this.radius, this.y - this.radius - 10, this.radius * 2, 4);
+            arenaCtx.fillStyle = '#00ff00';
+            arenaCtx.fillRect(this.x - this.radius, this.y - this.radius - 10, (this.radius * 2) * (this.hp / this.maxHP), 4);
+        }
+    }
+
+    collidesWithPlayer() {
+        const dx = this.x - arenaPlayer.x;
+        const dy = this.y - arenaPlayer.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        return dist < this.radius + arenaPlayer.radius;
+    }
+
+    hit() {
+        this.hp--;
+        return this.hp <= 0;
+    }
+}
+
+// Arena Bullet Class
+class ArenaBullet {
+    constructor(x, y, angle) {
+        this.x = x;
+        this.y = y;
+        this.angle = angle;
+        this.speed = 12;
+        this.radius = 4;
+        this.life = 1;
+    }
+
+    update() {
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed;
+        this.life -= 0.02;
+    }
+
+    draw() {
+        arenaCtx.fillStyle = `rgba(255, 200, 0, ${this.life})`;
+        arenaCtx.shadowBlur = 15;
+        arenaCtx.shadowColor = '#ffaa00';
+        arenaCtx.beginPath();
+        arenaCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        arenaCtx.fill();
+        arenaCtx.shadowBlur = 0;
+
+        // Bullet trail
+        arenaCtx.fillStyle = `rgba(255, 100, 0, ${this.life * 0.5})`;
+        arenaCtx.beginPath();
+        arenaCtx.arc(
+            this.x - Math.cos(this.angle) * 10,
+            this.y - Math.sin(this.angle) * 10,
+            this.radius / 2,
+            0,
+            Math.PI * 2
+        );
+        arenaCtx.fill();
+    }
+
+    isOffScreen() {
+        return this.x < 0 || this.x > arenaCanvas.width ||
+               this.y < 0 || this.y > arenaCanvas.height ||
+               this.life <= 0;
+    }
+
+    collidesWithEnemy(enemy) {
+        const dx = this.x - enemy.x;
+        const dy = this.y - enemy.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        return dist < this.radius + enemy.radius;
+    }
+}
+
+// Health Pack Class
+class HealthPack {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.radius = 15;
+        this.pulse = 0;
+        this.life = 600; // 10 seconds
+    }
+
+    update() {
+        this.pulse += 0.1;
+        this.life--;
+    }
+
+    draw() {
+        const pulseSize = Math.sin(this.pulse) * 3;
+        arenaCtx.fillStyle = '#00ff00';
+        arenaCtx.shadowBlur = 20 + pulseSize;
+        arenaCtx.shadowColor = '#00ff00';
+        arenaCtx.beginPath();
+        arenaCtx.arc(this.x, this.y, this.radius + pulseSize, 0, Math.PI * 2);
+        arenaCtx.fill();
+
+        // Draw cross
+        arenaCtx.strokeStyle = '#ffffff';
+        arenaCtx.lineWidth = 3;
+        arenaCtx.shadowBlur = 0;
+        arenaCtx.beginPath();
+        arenaCtx.moveTo(this.x - 8, this.y);
+        arenaCtx.lineTo(this.x + 8, this.y);
+        arenaCtx.moveTo(this.x, this.y - 8);
+        arenaCtx.lineTo(this.x, this.y + 8);
+        arenaCtx.stroke();
+    }
+
+    collidesWithPlayer() {
+        const dx = this.x - arenaPlayer.x;
+        const dy = this.y - arenaPlayer.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        return dist < this.radius + arenaPlayer.radius;
+    }
+
+    isExpired() {
+        return this.life <= 0;
+    }
+}
+
+// Draw arena player
+function drawArenaPlayer() {
+    arenaCtx.save();
+    arenaCtx.translate(arenaPlayer.x, arenaPlayer.y);
+    arenaCtx.rotate(arenaPlayer.angle);
+
+    // Draw player body
+    const gradient = arenaCtx.createRadialGradient(0, 0, 0, 0, 0, arenaPlayer.radius);
+    gradient.addColorStop(0, '#00ffff');
+    gradient.addColorStop(1, '#0088ff');
+
+    arenaCtx.fillStyle = gradient;
+    arenaCtx.shadowBlur = 20;
+    arenaCtx.shadowColor = '#00ffff';
+    arenaCtx.beginPath();
+    arenaCtx.arc(0, 0, arenaPlayer.radius, 0, Math.PI * 2);
+    arenaCtx.fill();
+
+    // Draw gun
+    arenaCtx.fillStyle = '#ffffff';
+    arenaCtx.shadowBlur = 10;
+    arenaCtx.fillRect(arenaPlayer.radius / 2, -3, arenaPlayer.radius, 6);
+
+    // Muzzle flash
+    if (arenaShootCooldown > 8) {
+        arenaCtx.fillStyle = '#ffff00';
+        arenaCtx.shadowBlur = 25;
+        arenaCtx.shadowColor = '#ffff00';
+        arenaCtx.beginPath();
+        arenaCtx.arc(arenaPlayer.radius * 1.5, 0, 5, 0, Math.PI * 2);
+        arenaCtx.fill();
+    }
+
+    arenaCtx.restore();
+}
+
+// Update arena game
+function updateArena() {
+    if (!arenaRunning) return;
+
+    arenaCtx.save();
+
+    // Screen shake
+    if (arenaScreenShake > 0) {
+        arenaCtx.translate(
+            (Math.random() - 0.5) * arenaScreenShake,
+            (Math.random() - 0.5) * arenaScreenShake
+        );
+        arenaScreenShake *= 0.9;
+        if (arenaScreenShake < 0.1) arenaScreenShake = 0;
+    }
+
+    // Clear canvas
+    arenaCtx.fillStyle = '#1a0a0a';
+    arenaCtx.fillRect(0, 0, arenaCanvas.width, arenaCanvas.height);
+
+    // Draw arena border
+    arenaCtx.strokeStyle = '#ff3300';
+    arenaCtx.lineWidth = 3;
+    arenaCtx.shadowBlur = 15;
+    arenaCtx.shadowColor = '#ff3300';
+    arenaCtx.strokeRect(10, 10, arenaCanvas.width - 20, arenaCanvas.height - 20);
+    arenaCtx.shadowBlur = 0;
+
+    arenaTime++;
+    if (arenaShootCooldown > 0) arenaShootCooldown--;
+
+    // Move player
+    let moveX = 0;
+    let moveY = 0;
+    if (arenaKeys.w) moveY -= 1;
+    if (arenaKeys.s) moveY += 1;
+    if (arenaKeys.a) moveX -= 1;
+    if (arenaKeys.d) moveX += 1;
+
+    // Normalize diagonal movement
+    if (moveX !== 0 && moveY !== 0) {
+        moveX *= 0.707;
+        moveY *= 0.707;
+    }
+
+    arenaPlayer.x += moveX * arenaPlayer.speed;
+    arenaPlayer.y += moveY * arenaPlayer.speed;
+
+    // Keep player in bounds
+    arenaPlayer.x = Math.max(arenaPlayer.radius + 15, Math.min(arenaCanvas.width - arenaPlayer.radius - 15, arenaPlayer.x));
+    arenaPlayer.y = Math.max(arenaPlayer.radius + 15, Math.min(arenaCanvas.height - arenaPlayer.radius - 15, arenaPlayer.y));
+
+    // Update player angle to face mouse
+    const rect = arenaCanvas.getBoundingClientRect();
+    arenaPlayer.angle = Math.atan2(arenaMouseY - arenaPlayer.y, arenaMouseX - arenaPlayer.x);
+
+    // Auto shoot when mouse down
+    if (arenaMouseDown && arenaShootCooldown === 0) {
+        arenaBullets.push(new ArenaBullet(
+            arenaPlayer.x + Math.cos(arenaPlayer.angle) * arenaPlayer.radius,
+            arenaPlayer.y + Math.sin(arenaPlayer.angle) * arenaPlayer.radius,
+            arenaPlayer.angle
+        ));
+        arenaShootCooldown = 10;
+    }
+
+    // Spawn enemies
+    arenaSpawnTimer++;
+    const spawnRate = Math.max(30, 120 - (arenaWave * 5));
+    if (arenaSpawnTimer > spawnRate) {
+        arenaSpawnTimer = 0;
+        const type = Math.random() < 0.7 ? 'fast' : 'tank';
+        arenaEnemies.push(new ArenaEnemy(type, arenaWave));
+
+        // Check for wave advancement
+        if (arenaEnemies.length % 10 === 0) {
+            arenaWave++;
+            arenaWaveDisplay.textContent = arenaWave;
+            createArenaPopup('WAVE ' + arenaWave, '#ffff00');
+        }
+    }
+
+    // Spawn health packs occasionally
+    if (Math.random() < 0.001 && arenaHealthPacks.length < 2) {
+        arenaHealthPacks.push(new HealthPack(
+            50 + Math.random() * (arenaCanvas.width - 100),
+            50 + Math.random() * (arenaCanvas.height - 100)
+        ));
+    }
+
+    // Update particles
+    arenaParticles = arenaParticles.filter(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.03;
+        p.size *= 0.95;
+
+        arenaCtx.fillStyle = `rgba(${p.color === '#ff3300' ? '255, 50, 0' : '0, 100, 255'}, ${p.life})`;
+        arenaCtx.beginPath();
+        arenaCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        arenaCtx.fill();
+
+        return p.life > 0;
+    });
+
+    // Update and draw bullets
+    arenaBullets = arenaBullets.filter(bullet => {
+        bullet.update();
+        bullet.draw();
+
+        // Check collision with enemies
+        let hit = false;
+        arenaEnemies = arenaEnemies.filter(enemy => {
+            if (bullet.collidesWithEnemy(enemy)) {
+                hit = true;
+                if (enemy.hit()) {
+                    // Enemy destroyed
+                    arenaExplosions.push(new Explosion(enemy.x, enemy.y, enemy.type === 'fast' ? 'red' : 'blue'));
+                    arenaScreenShake = 5;
+                    const points = enemy.type === 'tank' ? 20 : 10;
+                    arenaScore += points;
+                    arenaScoreDisplay.textContent = arenaScore;
+                    createArenaPopup(`+${points}`, '#00ff00', enemy.x, enemy.y);
+                    return false;
+                }
+                return true;
+            }
+            return true;
+        });
+
+        return !hit && !bullet.isOffScreen();
+    });
+
+    // Update and draw enemies
+    arenaEnemies.forEach(enemy => {
+        enemy.update();
+        enemy.draw();
+
+        // Check collision with player
+        if (enemy.collidesWithPlayer()) {
+            arenaHP -= 5;
+            arenaHPDisplay.textContent = Math.max(0, arenaHP);
+            arenaScreenShake = 10;
+            createArenaPopup('-5 HP', '#ff0000', arenaPlayer.x, arenaPlayer.y - 30);
+
+            // Remove enemy
+            const index = arenaEnemies.indexOf(enemy);
+            if (index > -1) {
+                arenaEnemies.splice(index, 1);
+                arenaExplosions.push(new Explosion(enemy.x, enemy.y, 'red'));
+            }
+
+            if (arenaHP <= 0) {
+                endArena();
+            }
+        }
+    });
+
+    // Update and draw health packs
+    arenaHealthPacks = arenaHealthPacks.filter(pack => {
+        pack.update();
+        pack.draw();
+
+        if (pack.collidesWithPlayer() && arenaHP < 100) {
+            arenaHP = Math.min(100, arenaHP + 25);
+            arenaHPDisplay.textContent = arenaHP;
+            createArenaPopup('+25 HP', '#00ff00', arenaPlayer.x, arenaPlayer.y - 30);
+            return false;
+        }
+
+        return !pack.isExpired();
+    });
+
+    // Update and draw explosions
+    arenaExplosions = arenaExplosions.filter(explosion => {
+        explosion.update();
+        explosion.draw();
+        return !explosion.isDead();
+    });
+
+    // Draw player
+    drawArenaPlayer();
+
+    arenaCtx.restore();
+
+    if (arenaRunning) {
+        arenaAnimationId = requestAnimationFrame(updateArena);
+    }
+}
+
+// Create arena popup
+function createArenaPopup(text, color, x = null, y = null) {
+    const popup = document.createElement('div');
+    popup.textContent = text;
+    popup.style.position = 'absolute';
+    popup.style.left = (x !== null ? x : arenaCanvas.width / 2) + 'px';
+    popup.style.top = (y !== null ? y : arenaCanvas.height / 2) + 'px';
+    popup.style.color = color;
+    popup.style.fontSize = '24px';
+    popup.style.fontWeight = 'bold';
+    popup.style.pointerEvents = 'none';
+    popup.style.animation = 'popupFloat 1s ease-out forwards';
+    popup.style.zIndex = '1000';
+    popup.style.textShadow = '2px 2px 4px rgba(0,0,0,0.8)';
+
+    document.querySelector('.game-container:last-of-type').appendChild(popup);
+    setTimeout(() => popup.remove(), 1000);
+}
+
+// Start arena game
+function startArena() {
+    arenaRunning = true;
+    arenaScore = 0;
+    arenaHP = 100;
+    arenaWave = 1;
+    arenaEnemies = [];
+    arenaBullets = [];
+    arenaHealthPacks = [];
+    arenaExplosions = [];
+    arenaParticles = [];
+    arenaTime = 0;
+    arenaSpawnTimer = 0;
+    arenaShootCooldown = 0;
+    arenaScreenShake = 0;
+
+    arenaPlayer.x = arenaCanvas.width / 2;
+    arenaPlayer.y = arenaCanvas.height / 2;
+
+    arenaScoreDisplay.textContent = arenaScore;
+    arenaHPDisplay.textContent = arenaHP;
+    arenaWaveDisplay.textContent = arenaWave;
+    arenaOverlay.style.display = 'none';
+
+    updateArena();
+}
+
+// End arena game
+function endArena() {
+    arenaRunning = false;
+    cancelAnimationFrame(arenaAnimationId);
+
+    if (arenaScore > arenaHighscore) {
+        arenaHighscore = arenaScore;
+        saveArenaHighscore();
+    }
+
+    arenaOverlay.style.display = 'flex';
+    arenaOverlay.querySelector('h3').textContent = 'Game Over!';
+
+    const isNewHighscore = arenaScore === arenaHighscore && arenaScore > 0;
+    arenaOverlay.querySelector('p:first-of-type').textContent = `Final Score: ${arenaScore} | Wave: ${arenaWave}` +
+        (isNewHighscore ? ' 🏆 NEW RECORD!' : '');
+
+    let message = '';
+    if (arenaScore < 100) {
+        message = 'Keep fighting!';
+    } else if (arenaScore < 300) {
+        message = 'Nice battle!';
+    } else if (arenaScore < 600) {
+        message = 'Impressive survival!';
+    } else {
+        message = 'Legendary warrior!';
+    }
+    arenaOverlay.querySelector('p:last-of-type').textContent = message;
+
+    arenaStartButton.textContent = 'Play Again';
+}
+
+// Arena mouse events
+arenaCanvas.addEventListener('mousemove', (e) => {
+    const rect = arenaCanvas.getBoundingClientRect();
+    arenaMouseX = e.clientX - rect.left;
+    arenaMouseY = e.clientY - rect.top;
+});
+
+arenaCanvas.addEventListener('mousedown', (e) => {
+    if (arenaRunning) {
+        arenaMouseDown = true;
+    }
+});
+
+arenaCanvas.addEventListener('mouseup', () => {
+    arenaMouseDown = false;
+});
+
+arenaCanvas.addEventListener('mouseleave', () => {
+    arenaMouseDown = false;
+});
+
+// Arena keyboard events
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'w' || e.key === 'W') arenaKeys.w = true;
+    if (e.key === 'a' || e.key === 'A') arenaKeys.a = true;
+    if (e.key === 's' || e.key === 'S') arenaKeys.s = true;
+    if (e.key === 'd' || e.key === 'D') arenaKeys.d = true;
+});
+
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'w' || e.key === 'W') arenaKeys.w = false;
+    if (e.key === 'a' || e.key === 'A') arenaKeys.a = false;
+    if (e.key === 's' || e.key === 'S') arenaKeys.s = false;
+    if (e.key === 'd' || e.key === 'D') arenaKeys.d = false;
+});
+
+// Arena start button
+arenaStartButton.addEventListener('click', startArena);
+
+// Load arena highscore
+loadArenaHighscore();

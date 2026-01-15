@@ -16,7 +16,8 @@
             <div class="logo">Flames of Fire</div>
             <div class="nav-links">
                 <a href="#home">Home</a>
-                <a href="#game">Game</a>
+                <a href="#game">Flame Shooter</a>
+                <a href="#game2">Inferno Arena</a>
                 <a href="#band">Band</a>
                 <a href="#tour">Tour</a>
                 <a href="#contact">Contact</a>
@@ -62,10 +63,35 @@
                 <div id="gameStats" class="game-stats">
                     <div class="stat">P1 Score: <span id="score">0</span></div>
                     <div class="stat">P1 Lives: <span id="lives">3</span></div>
+                    <div class="stat">Best: <span id="highscore">0</span></div>
                 </div>
                 <div id="player2Stats" class="game-stats player2-stats" style="display: none;">
                     <div class="stat">P2 Score: <span id="score2">0</span></div>
                     <div class="stat">P2 Lives: <span id="lives2">3</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="game2" class="game-section">
+        <div class="container">
+            <h2>Inferno Arena</h2>
+            <p class="game-description">Survive waves of enemies in a fiery arena! Move in all directions with WASD, aim and shoot with your mouse. Collect health packs and power-ups to last longer!</p>
+            <div class="game-container">
+                <canvas id="arenaCanvas" width="800" height="600"></canvas>
+                <div id="arenaOverlay" class="game-overlay">
+                    <h3>Inferno Arena</h3>
+                    <p>Move: WASD | Aim & Shoot: Mouse</p>
+                    <p style="font-size: 1rem;">Enemies spawn faster as you survive longer!</p>
+                    <p style="font-size: 0.9rem; color: #ff6600;">Red enemies are fast! Blue enemies are tough!</p>
+                    <p style="font-size: 0.9rem; color: #00ff00;">Collect green health packs to restore HP!</p>
+                    <button id="arenaStartButton" class="game-button">Start Arena</button>
+                </div>
+                <div id="arenaStats" class="game-stats">
+                    <div class="stat">Score: <span id="arenaScore">0</span></div>
+                    <div class="stat">HP: <span id="arenaHP">100</span></div>
+                    <div class="stat">Wave: <span id="arenaWave">1</span></div>
+                    <div class="stat">Best: <span id="arenaHighscore">0</span></div>
                 </div>
             </div>
         </div>
@@ -78,7 +104,7 @@
                 <div class="member">
                     <div class="member-icon">🥁</div>
                     <h3>Hen</h3>
-                    <p class="role">Drums</p>
+                    <p class="role">Full Kit</p>
                     <p class="bio">The rhythmic heartbeat of Flames of Fire, driving every beat with precision and power.</p>
                 </div>
                 <div class="member">
