@@ -12,6 +12,90 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Audio System
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+let isMuted = false;
+let backgroundMusic = null;
+
+// Sound effect generator
+function playTone(frequency, duration, type = 'sine', volume = 0.3) {
+    if (isMuted) return;
+
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.frequency.value = frequency;
+    oscillator.type = type;
+
+    gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + duration);
+}
+
+// Play shoot sound
+function playShootSound() {
+    playTone(800, 0.1, 'square', 0.2);
+}
+
+// Play hit sound
+function playHitSound(isGood) {
+    if (isGood) {
+        playTone(600, 0.15, 'sine', 0.3);
+        setTimeout(() => playTone(800, 0.1, 'sine', 0.2), 50);
+    } else {
+        playTone(200, 0.2, 'sawtooth', 0.3);
+    }
+}
+
+// Play explosion sound
+function playExplosionSound() {
+    playTone(100, 0.3, 'sawtooth', 0.4);
+}
+
+// Play power-up sound
+function playPowerUpSound() {
+    playTone(400, 0.1, 'sine', 0.2);
+    setTimeout(() => playTone(600, 0.1, 'sine', 0.2), 60);
+    setTimeout(() => playTone(800, 0.15, 'sine', 0.3), 120);
+}
+
+// Background music (simple melody loop)
+function startBackgroundMusic() {
+    if (isMuted || backgroundMusic) return;
+
+    const notes = [523.25, 587.33, 659.25, 783.99, 659.25, 587.33]; // C, D, E, G, E, D
+    let noteIndex = 0;
+
+    backgroundMusic = setInterval(() => {
+        if (!isMuted && gameRunning) {
+            playTone(notes[noteIndex], 0.3, 'triangle', 0.1);
+            noteIndex = (noteIndex + 1) % notes.length;
+        }
+    }, 500);
+}
+
+// Stop background music
+function stopBackgroundMusic() {
+    if (backgroundMusic) {
+        clearInterval(backgroundMusic);
+        backgroundMusic = null;
+    }
+}
+
+// Toggle mute
+function toggleMute() {
+    isMuted = !isMuted;
+    const muteBtn = document.getElementById('muteButton');
+    if (muteBtn) {
+        muteBtn.textContent = isMuted ? '🔇 Unmute' : '🔊 Mute';
+    }
+}
+
 // Game Setup
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -658,6 +742,7 @@ function update() {
             player.color
         ));
         player.shootCooldown = shootCooldown1;
+        playShootSound();
     }
 
     // Move player 2 (if two player mode)
@@ -678,6 +763,7 @@ function update() {
                 player2.color
             ));
             player2.shootCooldown = shootCooldown2;
+            playShootSound();
         }
     }
 
@@ -714,11 +800,13 @@ function update() {
         if (powerUp.collidesWith(player)) {
             activatePowerUp(player, powerUp.type);
             createScorePopup(player.x + player.width / 2, player.y - 20, 'POWER UP!', '#ffff00');
+            playPowerUpSound();
             return false;
         }
         if (gameMode === 'two' && powerUp.collidesWith(player2)) {
             activatePowerUp(player2, powerUp.type);
             createScorePopup(player2.x + player2.width / 2, player2.y - 20, 'POWER UP!', '#ffff00');
+            playPowerUpSound();
             return false;
         }
 
@@ -744,6 +832,8 @@ function update() {
                     target.isGood ? 'blue' : 'red'
                 ));
                 screenShake = 5;
+                playExplosionSound();
+                playHitSound(target.isGood);
 
                 // Determine which player shot the bullet
                 if (bulletColor === player.color) {
@@ -830,6 +920,7 @@ function update() {
         if (lives > 0 && bullet.collidesWith(player)) {
             explosions.push(new Explosion(bullet.x, bullet.y, 'red'));
             screenShake = 8;
+            playExplosionSound();
 
             if (player.shield > 0) {
                 player.shield = 0;
@@ -838,6 +929,7 @@ function update() {
                 lives--;
                 livesDisplay.textContent = lives;
                 createScorePopup(player.x + player.width / 2, player.y, 'HIT!', '#ff0000');
+                playHitSound(false);
 
                 // Break combo
                 player.combo = 0;
@@ -855,6 +947,7 @@ function update() {
         if (gameMode === 'two' && lives2 > 0 && bullet.collidesWith(player2)) {
             explosions.push(new Explosion(bullet.x, bullet.y, 'red'));
             screenShake = 8;
+            playExplosionSound();
 
             if (player2.shield > 0) {
                 player2.shield = 0;
@@ -863,6 +956,7 @@ function update() {
                 lives2--;
                 lives2Display.textContent = lives2;
                 createScorePopup(player2.x + player2.width / 2, player2.y, 'HIT!', '#ff0000');
+                playHitSound(false);
 
                 // Break combo
                 player2.combo = 0;
@@ -1021,6 +1115,9 @@ function startGame() {
     difficultyMultiplier = 1;
     screenShake = 0;
 
+    // Start background music
+    startBackgroundMusic();
+
     // Reset player states
     player.shootCooldown = 0;
     player.rapidFire = 0;
@@ -1078,6 +1175,9 @@ twoPlayerBtn.addEventListener('click', () => selectMode('two'));
 function endGame() {
     gameRunning = false;
     cancelAnimationFrame(animationId);
+
+    // Stop background music
+    stopBackgroundMusic();
 
     // Check and update highscore
     const finalScore = gameMode === 'two' ? Math.max(score, score2) : score;
@@ -1178,6 +1278,12 @@ document.addEventListener('keyup', (e) => {
 // Start button
 startButton.addEventListener('click', startGame);
 
+// Mute button
+const muteButton = document.getElementById('muteButton');
+if (muteButton) {
+    muteButton.addEventListener('click', toggleMute);
+}
+
 // Mobile touch controls
 let touchStartX = 0;
 let touchStartY = 0;
@@ -1246,13 +1352,15 @@ const arenaHighscoreDisplay = document.getElementById('arenaHighscore');
 
 let arenaRunning = false;
 let arenaScore = 0;
-let arenaHP = 100;
+let arenaHP = 80;
 let arenaWave = 1;
 let arenaHighscore = 0;
 let arenaAnimationId;
 let arenaEnemies = [];
 let arenaBullets = [];
+let arenaEnemyBullets = [];
 let arenaHealthPacks = [];
+let arenaPowerUps = [];
 let arenaExplosions = [];
 let arenaParticles = [];
 let arenaTime = 0;
@@ -1262,6 +1370,10 @@ let arenaMouseY = 0;
 let arenaMouseDown = false;
 let arenaShootCooldown = 0;
 let arenaScreenShake = 0;
+let arenaCombo = 0;
+let arenaComboTimer = 0;
+let arenaMultiplier = 1;
+let arenaBossActive = false;
 
 const arenaKeys = {
     w: false,
@@ -1274,8 +1386,12 @@ let arenaPlayer = {
     x: arenaCanvas.width / 2,
     y: arenaCanvas.height / 2,
     radius: 15,
-    speed: 4,
-    angle: 0
+    speed: 3.5,
+    baseSpeed: 3.5,
+    angle: 0,
+    speedBoost: 0,
+    rapidFire: 0,
+    tripleShot: 0
 };
 
 // Load arena highscore
@@ -1296,8 +1412,18 @@ function saveArenaHighscore() {
 // Arena Enemy Class
 class ArenaEnemy {
     constructor(type, wave) {
-        this.type = type; // 'fast' or 'tank'
-        this.radius = type === 'tank' ? 20 : 12;
+        this.type = type; // 'fast', 'tank', 'shooter', or 'boss'
+
+        // Set radius based on type
+        if (type === 'boss') {
+            this.radius = 40;
+        } else if (type === 'tank') {
+            this.radius = 20;
+        } else if (type === 'shooter') {
+            this.radius = 15;
+        } else {
+            this.radius = 12;
+        }
 
         // Spawn from random edge
         const edge = Math.floor(Math.random() * 4);
@@ -1315,11 +1441,38 @@ class ArenaEnemy {
             this.y = Math.random() * arenaCanvas.height;
         }
 
-        this.speed = type === 'fast' ? 2.5 + (wave * 0.2) : 1.5 + (wave * 0.1);
-        this.hp = type === 'tank' ? 3 : 1;
+        // Set stats based on type
+        if (type === 'boss') {
+            this.speed = 1.5 + (wave * 0.08);
+            this.hp = 25 + (wave * 3);
+            this.color = '#ff00ff';
+            this.canShoot = true;
+            this.shootTimer = 40;
+            this.damage = 20;
+        } else if (type === 'shooter') {
+            this.speed = 1.8 + (wave * 0.15);
+            this.hp = 3;
+            this.color = '#ffaa00';
+            this.canShoot = true;
+            this.shootTimer = Math.floor(Math.random() * 40) + 30;
+            this.damage = 12;
+        } else if (type === 'tank') {
+            this.speed = 2 + (wave * 0.15);
+            this.hp = 4;
+            this.color = '#0066ff';
+            this.canShoot = false;
+            this.damage = 15;
+        } else { // fast
+            this.speed = 3.5 + (wave * 0.25);
+            this.hp = 1;
+            this.color = '#ff3300';
+            this.canShoot = false;
+            this.damage = 8;
+        }
+
         this.maxHP = this.hp;
-        this.color = type === 'fast' ? '#ff3300' : '#0066ff';
         this.angle = 0;
+        this.shootCooldown = 0;
     }
 
     update() {
@@ -1328,10 +1481,52 @@ class ArenaEnemy {
         const dy = arenaPlayer.y - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist > 0) {
+        // Shooter enemies keep distance
+        const targetDist = (this.type === 'shooter' || this.type === 'boss') ? 150 : 0;
+
+        if (dist > targetDist) {
             this.x += (dx / dist) * this.speed;
             this.y += (dy / dist) * this.speed;
             this.angle = Math.atan2(dy, dx);
+        } else if (this.type === 'shooter' || this.type === 'boss') {
+            // Move away if too close
+            if (dist < targetDist - 20) {
+                this.x -= (dx / dist) * this.speed;
+                this.y -= (dy / dist) * this.speed;
+            }
+            this.angle = Math.atan2(dy, dx);
+        }
+
+        // Shooting logic
+        if (this.canShoot) {
+            this.shootTimer--;
+            this.shootCooldown = Math.max(0, this.shootCooldown - 1);
+
+            if (this.shootTimer <= 0 && this.shootCooldown === 0) {
+                // Shoot at player
+                const bulletAngle = Math.atan2(arenaPlayer.y - this.y, arenaPlayer.x - this.x);
+
+                if (this.type === 'boss') {
+                    // Boss shoots 5 bullets in a spread
+                    for (let i = -2; i <= 2; i++) {
+                        arenaEnemyBullets.push(new ArenaEnemyBullet(
+                            this.x + Math.cos(bulletAngle) * this.radius,
+                            this.y + Math.sin(bulletAngle) * this.radius,
+                            bulletAngle + (i * 0.15)
+                        ));
+                    }
+                } else {
+                    // Regular shooter
+                    arenaEnemyBullets.push(new ArenaEnemyBullet(
+                        this.x + Math.cos(bulletAngle) * this.radius,
+                        this.y + Math.sin(bulletAngle) * this.radius,
+                        bulletAngle
+                    ));
+                }
+
+                this.shootTimer = this.type === 'boss' ? 40 : Math.floor(Math.random() * 40) + 30;
+                this.shootCooldown = 8;
+            }
         }
 
         // Create trail particles
@@ -1342,7 +1537,7 @@ class ArenaEnemy {
                 vx: (Math.random() - 0.5) * 2,
                 vy: (Math.random() - 0.5) * 2,
                 life: 1,
-                size: Math.random() * 3 + 1,
+                size: Math.random() * (this.type === 'boss' ? 5 : 3) + 1,
                 color: this.color
             });
         }
@@ -1353,33 +1548,81 @@ class ArenaEnemy {
         arenaCtx.translate(this.x, this.y);
         arenaCtx.rotate(this.angle);
 
-        // Draw enemy
+        // Draw enemy with different visuals
         const gradient = arenaCtx.createRadialGradient(0, 0, 0, 0, 0, this.radius);
-        gradient.addColorStop(0, this.color);
-        gradient.addColorStop(1, this.type === 'fast' ? '#990000' : '#003399');
 
-        arenaCtx.fillStyle = gradient;
-        arenaCtx.shadowBlur = 15;
-        arenaCtx.shadowColor = this.color;
-        arenaCtx.beginPath();
-        arenaCtx.arc(0, 0, this.radius, 0, Math.PI * 2);
-        arenaCtx.fill();
+        if (this.type === 'boss') {
+            // Boss has pulsing effect
+            const pulse = Math.sin(Date.now() / 200) * 5;
+            gradient.addColorStop(0, '#ffff00');
+            gradient.addColorStop(0.5, this.color);
+            gradient.addColorStop(1, '#990099');
+            arenaCtx.shadowBlur = 25 + pulse;
+
+            // Draw spikes for boss
+            arenaCtx.fillStyle = gradient;
+            arenaCtx.shadowColor = this.color;
+            arenaCtx.beginPath();
+            for (let i = 0; i < 8; i++) {
+                const angle = (i * Math.PI) / 4;
+                const radius = i % 2 === 0 ? this.radius + 10 : this.radius;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+                if (i === 0) arenaCtx.moveTo(x, y);
+                else arenaCtx.lineTo(x, y);
+            }
+            arenaCtx.closePath();
+            arenaCtx.fill();
+        } else if (this.type === 'shooter') {
+            // Shooter has gun
+            gradient.addColorStop(0, '#ffff88');
+            gradient.addColorStop(1, this.color);
+            arenaCtx.fillStyle = gradient;
+            arenaCtx.shadowBlur = 15;
+            arenaCtx.shadowColor = this.color;
+            arenaCtx.beginPath();
+            arenaCtx.arc(0, 0, this.radius, 0, Math.PI * 2);
+            arenaCtx.fill();
+
+            // Draw gun
+            arenaCtx.fillStyle = '#333333';
+            arenaCtx.shadowBlur = 5;
+            arenaCtx.fillRect(this.radius / 2, -4, this.radius, 8);
+        } else if (this.type === 'tank') {
+            gradient.addColorStop(0, '#88ccff');
+            gradient.addColorStop(1, '#003399');
+            arenaCtx.fillStyle = gradient;
+            arenaCtx.shadowBlur = 15;
+            arenaCtx.shadowColor = this.color;
+            arenaCtx.beginPath();
+            arenaCtx.arc(0, 0, this.radius, 0, Math.PI * 2);
+            arenaCtx.fill();
+        } else { // fast
+            gradient.addColorStop(0, '#ffaa00');
+            gradient.addColorStop(1, '#990000');
+            arenaCtx.fillStyle = gradient;
+            arenaCtx.shadowBlur = 15;
+            arenaCtx.shadowColor = this.color;
+            arenaCtx.beginPath();
+            arenaCtx.arc(0, 0, this.radius, 0, Math.PI * 2);
+            arenaCtx.fill();
+        }
 
         // Draw eyes/direction indicator
         arenaCtx.fillStyle = '#ffffff';
         arenaCtx.shadowBlur = 0;
         arenaCtx.beginPath();
-        arenaCtx.arc(this.radius / 3, 0, 3, 0, Math.PI * 2);
+        arenaCtx.arc(this.radius / 3, 0, this.type === 'boss' ? 5 : 3, 0, Math.PI * 2);
         arenaCtx.fill();
 
         arenaCtx.restore();
 
-        // Draw HP bar for tanks
-        if (this.type === 'tank' && this.hp < this.maxHP) {
+        // Draw HP bar
+        if ((this.type === 'tank' || this.type === 'boss' || this.type === 'shooter') && this.hp < this.maxHP) {
             arenaCtx.fillStyle = '#ff0000';
-            arenaCtx.fillRect(this.x - this.radius, this.y - this.radius - 10, this.radius * 2, 4);
+            arenaCtx.fillRect(this.x - this.radius, this.y - this.radius - 10, this.radius * 2, 5);
             arenaCtx.fillStyle = '#00ff00';
-            arenaCtx.fillRect(this.x - this.radius, this.y - this.radius - 10, (this.radius * 2) * (this.hp / this.maxHP), 4);
+            arenaCtx.fillRect(this.x - this.radius, this.y - this.radius - 10, (this.radius * 2) * (this.hp / this.maxHP), 5);
         }
     }
 
@@ -1497,6 +1740,109 @@ class HealthPack {
     }
 }
 
+// Arena Enemy Bullet Class
+class ArenaEnemyBullet {
+    constructor(x, y, angle) {
+        this.x = x;
+        this.y = y;
+        this.angle = angle;
+        this.speed = 7;
+        this.radius = 6;
+        this.life = 1;
+    }
+
+    update() {
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed;
+        this.life -= 0.015;
+    }
+
+    draw() {
+        arenaCtx.fillStyle = `rgba(255, 50, 0, ${this.life})`;
+        arenaCtx.shadowBlur = 15;
+        arenaCtx.shadowColor = '#ff3300';
+        arenaCtx.beginPath();
+        arenaCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        arenaCtx.fill();
+        arenaCtx.shadowBlur = 0;
+    }
+
+    isOffScreen() {
+        return this.x < 0 || this.x > arenaCanvas.width ||
+               this.y < 0 || this.y > arenaCanvas.height ||
+               this.life <= 0;
+    }
+
+    collidesWithPlayer() {
+        const dx = this.x - arenaPlayer.x;
+        const dy = this.y - arenaPlayer.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        return dist < this.radius + arenaPlayer.radius;
+    }
+}
+
+// Arena Power-Up Class
+class ArenaPowerUp {
+    constructor(x, y, type) {
+        this.x = x;
+        this.y = y;
+        this.radius = 15;
+        this.type = type; // 'speed', 'rapidfire', 'tripleshot'
+        this.pulse = 0;
+        this.life = 600;
+    }
+
+    update() {
+        this.pulse += 0.1;
+        this.life--;
+    }
+
+    draw() {
+        const pulseSize = Math.sin(this.pulse) * 3;
+
+        if (this.type === 'speed') {
+            arenaCtx.fillStyle = '#00ffff';
+            arenaCtx.shadowColor = '#00ffff';
+        } else if (this.type === 'rapidfire') {
+            arenaCtx.fillStyle = '#ffff00';
+            arenaCtx.shadowColor = '#ffff00';
+        } else { // tripleshot
+            arenaCtx.fillStyle = '#ff00ff';
+            arenaCtx.shadowColor = '#ff00ff';
+        }
+
+        arenaCtx.shadowBlur = 20 + pulseSize;
+        arenaCtx.beginPath();
+        arenaCtx.arc(this.x, this.y, this.radius + pulseSize, 0, Math.PI * 2);
+        arenaCtx.fill();
+
+        arenaCtx.shadowBlur = 0;
+        arenaCtx.fillStyle = '#ffffff';
+        arenaCtx.font = 'bold 18px Arial';
+        arenaCtx.textAlign = 'center';
+        arenaCtx.textBaseline = 'middle';
+
+        if (this.type === 'speed') {
+            arenaCtx.fillText('>>>', this.x, this.y);
+        } else if (this.type === 'rapidfire') {
+            arenaCtx.fillText('⚡', this.x, this.y);
+        } else {
+            arenaCtx.fillText('×3', this.x, this.y);
+        }
+    }
+
+    collidesWithPlayer() {
+        const dx = this.x - arenaPlayer.x;
+        const dy = this.y - arenaPlayer.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        return dist < this.radius + arenaPlayer.radius;
+    }
+
+    isExpired() {
+        return this.life <= 0;
+    }
+}
+
 // Draw arena player
 function drawArenaPlayer() {
     arenaCtx.save();
@@ -1586,37 +1932,113 @@ function updateArena() {
     arenaPlayer.y = Math.max(arenaPlayer.radius + 15, Math.min(arenaCanvas.height - arenaPlayer.radius - 15, arenaPlayer.y));
 
     // Update player angle to face mouse
-    const rect = arenaCanvas.getBoundingClientRect();
     arenaPlayer.angle = Math.atan2(arenaMouseY - arenaPlayer.y, arenaMouseX - arenaPlayer.x);
 
-    // Auto shoot when mouse down
-    if (arenaMouseDown && arenaShootCooldown === 0) {
-        arenaBullets.push(new ArenaBullet(
-            arenaPlayer.x + Math.cos(arenaPlayer.angle) * arenaPlayer.radius,
-            arenaPlayer.y + Math.sin(arenaPlayer.angle) * arenaPlayer.radius,
-            arenaPlayer.angle
-        ));
-        arenaShootCooldown = 10;
+    // Update power-ups
+    if (arenaPlayer.speedBoost > 0) {
+        arenaPlayer.speedBoost--;
+        arenaPlayer.speed = arenaPlayer.baseSpeed * 1.75;
+        if (arenaPlayer.speedBoost === 0) arenaPlayer.speed = arenaPlayer.baseSpeed;
     }
+    if (arenaPlayer.rapidFire > 0) arenaPlayer.rapidFire--;
+    if (arenaPlayer.tripleShot > 0) arenaPlayer.tripleShot--;
 
-    // Spawn enemies
-    arenaSpawnTimer++;
-    const spawnRate = Math.max(30, 120 - (arenaWave * 5));
-    if (arenaSpawnTimer > spawnRate) {
-        arenaSpawnTimer = 0;
-        const type = Math.random() < 0.7 ? 'fast' : 'tank';
-        arenaEnemies.push(new ArenaEnemy(type, arenaWave));
-
-        // Check for wave advancement
-        if (arenaEnemies.length % 10 === 0) {
-            arenaWave++;
-            arenaWaveDisplay.textContent = arenaWave;
-            createArenaPopup('WAVE ' + arenaWave, '#ffff00');
+    // Update combo timer
+    if (arenaComboTimer > 0) {
+        arenaComboTimer--;
+        if (arenaComboTimer === 0) {
+            arenaCombo = 0;
+            arenaMultiplier = 1;
         }
     }
 
-    // Spawn health packs occasionally
-    if (Math.random() < 0.001 && arenaHealthPacks.length < 2) {
+    // Auto shoot when mouse down (faster base fire rate for more enemies)
+    const shootCooldown = arenaPlayer.rapidFire > 0 ? 4 : 8;
+    if (arenaMouseDown && arenaShootCooldown === 0) {
+        if (arenaPlayer.tripleShot > 0) {
+            // Triple shot
+            for (let i = -1; i <= 1; i++) {
+                arenaBullets.push(new ArenaBullet(
+                    arenaPlayer.x + Math.cos(arenaPlayer.angle) * arenaPlayer.radius,
+                    arenaPlayer.y + Math.sin(arenaPlayer.angle) * arenaPlayer.radius,
+                    arenaPlayer.angle + (i * 0.15)
+                ));
+            }
+        } else {
+            arenaBullets.push(new ArenaBullet(
+                arenaPlayer.x + Math.cos(arenaPlayer.angle) * arenaPlayer.radius,
+                arenaPlayer.y + Math.sin(arenaPlayer.angle) * arenaPlayer.radius,
+                arenaPlayer.angle
+            ));
+        }
+        arenaShootCooldown = shootCooldown;
+        playShootSound();
+    }
+
+    // Spawn enemies (TONS of them!)
+    arenaSpawnTimer++;
+    const spawnRate = Math.max(10, 60 - (arenaWave * 4));
+
+    // Check for boss wave (every 5 waves)
+    if (arenaWave % 5 === 0 && !arenaBossActive && arenaEnemies.length === 0) {
+        arenaBossActive = true;
+        arenaEnemies.push(new ArenaEnemy('boss', arenaWave));
+        createArenaPopup('⚠️ BOSS WAVE! ⚠️', '#ff00ff');
+        playExplosionSound();
+    } else if (arenaSpawnTimer > spawnRate && !arenaBossActive) {
+        arenaSpawnTimer = 0;
+
+        // Spawn multiple enemies each time
+        const spawnCount = arenaWave >= 4 ? 3 : (arenaWave >= 2 ? 2 : 1);
+
+        for (let i = 0; i < spawnCount; i++) {
+            // Varied enemy types (more shooters and tanks)
+            let type;
+            const rand = Math.random();
+            if (arenaWave >= 2 && rand < 0.25) {
+                type = 'shooter';
+            } else if (rand < 0.55) {
+                type = 'fast';
+            } else {
+                type = 'tank';
+            }
+
+            arenaEnemies.push(new ArenaEnemy(type, arenaWave));
+        }
+
+        // Extra spawn chance in higher waves
+        if (arenaWave >= 3 && Math.random() < 0.5) {
+            arenaEnemies.push(new ArenaEnemy(Math.random() < 0.6 ? 'fast' : 'tank', arenaWave));
+        }
+
+        // Check for wave advancement (every 15 seconds)
+        if (arenaEnemies.length > 0 && arenaTime % 900 === 0) {
+            arenaWave++;
+            arenaWaveDisplay.textContent = arenaWave;
+            createArenaPopup('WAVE ' + arenaWave, '#ffff00');
+            playPowerUpSound();
+        }
+    }
+
+    // Additional spawn chance every frame for pure chaos
+    if (!arenaBossActive && Math.random() < (0.002 + (arenaWave * 0.0003))) {
+        const type = Math.random() < 0.7 ? 'fast' : (Math.random() < 0.5 ? 'tank' : 'shooter');
+        arenaEnemies.push(new ArenaEnemy(type, arenaWave));
+    }
+
+    // Spawn power-ups occasionally (slightly increased for more enemies)
+    if (Math.random() < 0.0012 && arenaPowerUps.length < 1) {
+        const types = ['speed', 'rapidfire', 'tripleshot'];
+        const type = types[Math.floor(Math.random() * types.length)];
+        arenaPowerUps.push(new ArenaPowerUp(
+            50 + Math.random() * (arenaCanvas.width - 100),
+            50 + Math.random() * (arenaCanvas.height - 100),
+            type
+        ));
+    }
+
+    // Spawn health packs occasionally (slightly increased)
+    if (Math.random() < 0.0008 && arenaHealthPacks.length < 1) {
         arenaHealthPacks.push(new HealthPack(
             50 + Math.random() * (arenaCanvas.width - 100),
             50 + Math.random() * (arenaCanvas.height - 100)
@@ -1652,12 +2074,30 @@ function updateArena() {
                     // Enemy destroyed
                     arenaExplosions.push(new Explosion(enemy.x, enemy.y, enemy.type === 'fast' ? 'red' : 'blue'));
                     arenaScreenShake = 5;
-                    const points = enemy.type === 'tank' ? 20 : 10;
+
+                    // Combo system
+                    arenaCombo++;
+                    arenaComboTimer = 120;
+                    arenaMultiplier = Math.min(1 + Math.floor(arenaCombo / 5), 5);
+
+                    // Calculate points
+                    let basePoints = 10;
+                    if (enemy.type === 'tank') basePoints = 20;
+                    if (enemy.type === 'shooter') basePoints = 25;
+                    if (enemy.type === 'boss') {
+                        basePoints = 100;
+                        arenaBossActive = false;
+                    }
+
+                    const points = basePoints * arenaMultiplier;
                     arenaScore += points;
                     arenaScoreDisplay.textContent = arenaScore;
-                    createArenaPopup(`+${points}`, '#00ff00', enemy.x, enemy.y);
+                    createArenaPopup(`+${points}` + (arenaMultiplier > 1 ? ` x${arenaMultiplier}` : ''), '#00ff00', enemy.x, enemy.y);
+                    playExplosionSound();
+                    playHitSound(true);
                     return false;
                 }
+                playHitSound(true);
                 return true;
             }
             return true;
@@ -1673,10 +2113,16 @@ function updateArena() {
 
         // Check collision with player
         if (enemy.collidesWithPlayer()) {
-            arenaHP -= 5;
+            arenaHP -= enemy.damage;
             arenaHPDisplay.textContent = Math.max(0, arenaHP);
             arenaScreenShake = 10;
-            createArenaPopup('-5 HP', '#ff0000', arenaPlayer.x, arenaPlayer.y - 30);
+            createArenaPopup(`-${enemy.damage} HP`, '#ff0000', arenaPlayer.x, arenaPlayer.y - 30);
+            playHitSound(false);
+
+            // Break combo
+            arenaCombo = 0;
+            arenaMultiplier = 1;
+            arenaComboTimer = 0;
 
             // Remove enemy
             const index = arenaEnemies.indexOf(enemy);
@@ -1691,15 +2137,66 @@ function updateArena() {
         }
     });
 
+    // Update and draw enemy bullets
+    arenaEnemyBullets = arenaEnemyBullets.filter(bullet => {
+        bullet.update();
+        bullet.draw();
+
+        if (bullet.collidesWithPlayer()) {
+            arenaHP -= 15;
+            arenaHPDisplay.textContent = Math.max(0, arenaHP);
+            arenaScreenShake = 8;
+            createArenaPopup('-15 HP', '#ff0000', arenaPlayer.x, arenaPlayer.y - 30);
+            arenaExplosions.push(new Explosion(bullet.x, bullet.y, 'red'));
+            playHitSound(false);
+
+            // Break combo
+            arenaCombo = 0;
+            arenaMultiplier = 1;
+            arenaComboTimer = 0;
+
+            if (arenaHP <= 0) {
+                endArena();
+            }
+
+            return false;
+        }
+
+        return !bullet.isOffScreen();
+    });
+
+    // Update and draw power-ups
+    arenaPowerUps = arenaPowerUps.filter(powerUp => {
+        powerUp.update();
+        powerUp.draw();
+
+        if (powerUp.collidesWithPlayer()) {
+            if (powerUp.type === 'speed') {
+                arenaPlayer.speedBoost = 300;
+                createArenaPopup('SPEED BOOST!', '#00ffff', arenaPlayer.x, arenaPlayer.y - 30);
+            } else if (powerUp.type === 'rapidfire') {
+                arenaPlayer.rapidFire = 360;
+                createArenaPopup('RAPID FIRE!', '#ffff00', arenaPlayer.x, arenaPlayer.y - 30);
+            } else if (powerUp.type === 'tripleshot') {
+                arenaPlayer.tripleShot = 300;
+                createArenaPopup('TRIPLE SHOT!', '#ff00ff', arenaPlayer.x, arenaPlayer.y - 30);
+            }
+            playPowerUpSound();
+            return false;
+        }
+
+        return !powerUp.isExpired();
+    });
+
     // Update and draw health packs
     arenaHealthPacks = arenaHealthPacks.filter(pack => {
         pack.update();
         pack.draw();
 
-        if (pack.collidesWithPlayer() && arenaHP < 100) {
-            arenaHP = Math.min(100, arenaHP + 25);
+        if (pack.collidesWithPlayer() && arenaHP < 80) {
+            arenaHP = Math.min(80, arenaHP + 15);
             arenaHPDisplay.textContent = arenaHP;
-            createArenaPopup('+25 HP', '#00ff00', arenaPlayer.x, arenaPlayer.y - 30);
+            createArenaPopup('+15 HP', '#00ff00', arenaPlayer.x, arenaPlayer.y - 30);
             return false;
         }
 
@@ -1715,6 +2212,56 @@ function updateArena() {
 
     // Draw player
     drawArenaPlayer();
+
+    // Draw player power-up effects
+    if (arenaPlayer.speedBoost > 0) {
+        arenaCtx.strokeStyle = '#00ffff';
+        arenaCtx.lineWidth = 3;
+        arenaCtx.shadowBlur = 20;
+        arenaCtx.shadowColor = '#00ffff';
+        arenaCtx.beginPath();
+        arenaCtx.arc(arenaPlayer.x, arenaPlayer.y, arenaPlayer.radius + 10, 0, Math.PI * 2);
+        arenaCtx.stroke();
+        arenaCtx.shadowBlur = 0;
+    }
+
+    if (arenaPlayer.rapidFire > 0) {
+        arenaCtx.strokeStyle = '#ffff00';
+        arenaCtx.lineWidth = 2;
+        arenaCtx.shadowBlur = 15;
+        arenaCtx.shadowColor = '#ffff00';
+        arenaCtx.strokeRect(
+            arenaPlayer.x - arenaPlayer.radius - 5,
+            arenaPlayer.y - arenaPlayer.radius - 5,
+            arenaPlayer.radius * 2 + 10,
+            arenaPlayer.radius * 2 + 10
+        );
+        arenaCtx.shadowBlur = 0;
+    }
+
+    if (arenaPlayer.tripleShot > 0) {
+        arenaCtx.strokeStyle = '#ff00ff';
+        arenaCtx.lineWidth = 3;
+        arenaCtx.shadowBlur = 20;
+        arenaCtx.shadowColor = '#ff00ff';
+        for (let i = 0; i < 3; i++) {
+            arenaCtx.beginPath();
+            arenaCtx.arc(arenaPlayer.x, arenaPlayer.y, arenaPlayer.radius + 5 + (i * 5), 0, Math.PI * 2);
+            arenaCtx.stroke();
+        }
+        arenaCtx.shadowBlur = 0;
+    }
+
+    // Draw combo indicator
+    if (arenaCombo > 4) {
+        arenaCtx.fillStyle = '#ffff00';
+        arenaCtx.font = 'bold 32px Arial';
+        arenaCtx.textAlign = 'center';
+        arenaCtx.shadowBlur = 15;
+        arenaCtx.shadowColor = '#ffff00';
+        arenaCtx.fillText(`x${arenaMultiplier} COMBO!`, arenaCanvas.width / 2, 60);
+        arenaCtx.shadowBlur = 0;
+    }
 
     arenaCtx.restore();
 
@@ -1746,25 +2293,38 @@ function createArenaPopup(text, color, x = null, y = null) {
 function startArena() {
     arenaRunning = true;
     arenaScore = 0;
-    arenaHP = 100;
+    arenaHP = 80;
     arenaWave = 1;
     arenaEnemies = [];
     arenaBullets = [];
+    arenaEnemyBullets = [];
     arenaHealthPacks = [];
+    arenaPowerUps = [];
     arenaExplosions = [];
     arenaParticles = [];
     arenaTime = 0;
     arenaSpawnTimer = 0;
     arenaShootCooldown = 0;
     arenaScreenShake = 0;
+    arenaCombo = 0;
+    arenaComboTimer = 0;
+    arenaMultiplier = 1;
+    arenaBossActive = false;
 
     arenaPlayer.x = arenaCanvas.width / 2;
     arenaPlayer.y = arenaCanvas.height / 2;
+    arenaPlayer.speed = arenaPlayer.baseSpeed;
+    arenaPlayer.speedBoost = 0;
+    arenaPlayer.rapidFire = 0;
+    arenaPlayer.tripleShot = 0;
 
     arenaScoreDisplay.textContent = arenaScore;
     arenaHPDisplay.textContent = arenaHP;
     arenaWaveDisplay.textContent = arenaWave;
     arenaOverlay.style.display = 'none';
+
+    // Start background music
+    startBackgroundMusic();
 
     updateArena();
 }
@@ -1773,6 +2333,9 @@ function startArena() {
 function endArena() {
     arenaRunning = false;
     cancelAnimationFrame(arenaAnimationId);
+
+    // Stop background music
+    stopBackgroundMusic();
 
     if (arenaScore > arenaHighscore) {
         arenaHighscore = arenaScore;
