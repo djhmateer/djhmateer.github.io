@@ -18,6 +18,7 @@
                 <a href="#home">Home</a>
                 <a href="#game">Flame Shooter</a>
                 <a href="#game2">Inferno Arena</a>
+                <a href="#game3">Flame Dash</a>
                 <a href="#band">Band</a>
                 <a href="#tour">Tour</a>
                 <a href="#contact">Contact</a>
@@ -85,15 +86,40 @@
                     <p>Move: WASD | Aim & Shoot: Mouse</p>
                     <p style="font-size: 1rem;">Build combos for MASSIVE score multipliers!</p>
                     <p style="font-size: 0.9rem; color: #ff6600;">Red = Fast | Blue = Tank | Yellow = Shooter</p>
-                    <p style="font-size: 0.9rem; color: #ff00ff;">⚠️ BOSS every 5 waves!</p>
+                    <p style="font-size: 0.9rem; color: #ff00ff;">⚔️ MASSIVE WARRIOR BOSS on Wave 5!</p>
                     <p style="font-size: 0.9rem; color: #00ff00;">Green = Health | Cyan = Speed | Yellow = Rapid Fire | Magenta = Triple Shot</p>
                     <button id="arenaStartButton" class="game-button">Start Arena</button>
                 </div>
                 <div id="arenaStats" class="game-stats">
                     <div class="stat">Score: <span id="arenaScore">0</span></div>
-                    <div class="stat">HP: <span id="arenaHP">80</span></div>
+                    <div class="stat">HP: <span id="arenaHP">100</span></div>
                     <div class="stat">Wave: <span id="arenaWave">1</span></div>
                     <div class="stat">Best: <span id="arenaHighscore">0</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="game3" class="game-section">
+        <div class="container">
+            <h2>Flame Dash</h2>
+            <p class="game-description">Dash left and right to collect golden flames and dodge the deadly red fire! How long can you survive the inferno?</p>
+            <div class="game-container">
+                <canvas id="dashCanvas" width="800" height="600"></canvas>
+                <div id="dashOverlay" class="game-overlay">
+                    <h3>Flame Dash</h3>
+                    <p>Move: Arrow Keys or A/D</p>
+                    <p style="font-size: 1rem;">Collect 🔥 Golden Flames & Build INSANE COMBOS!</p>
+                    <p style="font-size: 0.9rem; color: #ff0000;">Dodge 💀 Red Fire or lose health!</p>
+                    <p style="font-size: 0.9rem; color: #00ff00;">Grab 💚 Health Packs to survive!</p>
+                    <p style="font-size: 0.9rem; color: #ff00ff;">Power-Ups: 🧲 Magnet | ⭐ Invincible | 💎 2x Score | ⚡ Dash</p>
+                    <p style="font-size: 0.9rem; color: #ffff00;">Chain collections for MASSIVE multipliers!</p>
+                    <button id="dashStartButton" class="game-button">Start Dash</button>
+                </div>
+                <div id="dashStats" class="game-stats">
+                    <div class="stat">Score: <span id="dashScore">0</span></div>
+                    <div class="stat">HP: <span id="dashHP">100</span></div>
+                    <div class="stat">Best: <span id="dashHighscore">0</span></div>
                 </div>
             </div>
         </div>
