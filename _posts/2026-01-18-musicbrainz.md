@@ -39,7 +39,7 @@ fullexport folder has:
 # once done the materialized tables are keep up to date with triggers
 ./admin/BuildMaterializedTables --database=MAINTENANCE all
 ```
-
+.
 ## Counts
 
 This was taken after a import on the full. No materialised tables eg area_containment have been generated yet.
