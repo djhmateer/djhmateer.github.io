@@ -81,10 +81,26 @@ I'm finding this a bit tricky to get my head around, so lets do a hello world ap
 
 ### ORCHESTRATION.md
 
-This is where the gold is
+This is where the gold is. It started off with 
+
+- Process - Scrum lite.
+- The Agent Team (8 agents)
+- Sprint directory layout
+- Branching
+- Commit policy
+- Planning Phase
+- Development Phase
+- Failure and Retry
+- Idempotency of the pipeline
+- Final review (when all tasks are complete)
+- Escalation
+
+**todo - put in link**
 
 
-### INTERVIEW.md
+### INTERVIEW.md - PHASE 0
+
+This is the 0 step. ie review our process before embarking. Great for advice on what tooling to use in this project (and how to specify it)
 
     ```md
     # Ask me!
@@ -112,7 +128,35 @@ This is where the gold is
 
 Then run pi: `Use @INTERVIEWS.md and lets go`
 
+It asked me some great questions including if I wanted tasks to run in parallel. no! Run in waves. 4 strike counter of any kind..and fail. Tagging ... no.  Sprint naming (short slugs),
 
+[![alt text](/assets/2026-05-11/2.jpg "ii")](/assets/2026-05-11/2.jpg)
+
+Now we've finished going through ORCHESTRATION and now onto CODE_POLICY.md which is has generated from inside INTERVIEW.md.
+
+It asked me about patterns.. and for hello world, we've agreed a core logic layer.
+
+We've also agreed some fairly tough pyton:
+
+ - mypy --strict — mandatory, no escape hatches
+ - pytest --cov --cov-fail-under=90 — 90% coverage gate on every task  
+ - ruff check + ruff format --check — lint and format enforced   
+
+[![alt text](/assets/2026-05-11/2.jpg "ii")](/assets/2026-05-11/2.jpg)
+
+ It's now gone on to define the `/docs/agents` as the final part of the `INTERVIEW.md`
+
+
+## SPRINT 1 - PHASE 1
+
+So I asked it to kick off the first sprint (well it asked me after the end of PHASE 0)
+
+
+
+
+
+
+## Foo
 
 ## Overview
 
