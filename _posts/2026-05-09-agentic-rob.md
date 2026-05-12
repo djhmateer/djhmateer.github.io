@@ -16,9 +16,9 @@ I'm making and working with others a few software projects. All of them are usin
 
 This article 
 
-https://bigmachine.io/articles/video/eliminate-crappy-slop-code/
+[https://bigmachine.io/articles/video/eliminate-crappy-slop-code/](https://bigmachine.io/articles/video/eliminate-crappy-slop-code/)
 
-https://github.com/robconery/crap-code
+[https://github.com/robconery/crap-code](https://github.com/robconery/crap-code)
 
 
 Describes a process where different agents hand off to each other using files.
@@ -142,14 +142,103 @@ We've also agreed some fairly tough pyton:
  - pytest --cov --cov-fail-under=90 — 90% coverage gate on every task  
  - ruff check + ruff format --check — lint and format enforced   
 
-[![alt text](/assets/2026-05-11/2.jpg "ii")](/assets/2026-05-11/2.jpg)
+[![alt text](/assets/2026-05-11/3.jpg "ii")](/assets/2026-05-11/3.jpg)
 
  It's now gone on to define the `/docs/agents` as the final part of the `INTERVIEW.md`
 
 
-## SPRINT 1 - PHASE 1
+## SPRINT 1 - PHASE 1 - Planning Phase - Sprint Proposal
 
 So I asked it to kick off the first sprint (well it asked me after the end of PHASE 0)
+
+Interestingly pi locked up, and on a restart, I was easy to get back into things.. it knew we should be talking about sprint 1.
+
+[![alt text](/assets/2026-05-11/4.jpg "ii")](/assets/2026-05-11/4.jpg)
+
+```md
+🧭 Sprint Proposal
+ │ Goal         │ A CLI app that prints Hello, {name}!, defaulting to Hello, World! if no name is given     │                                                
+ │ Sprint name  │ hello-world-cli                                                                           │                                                
+ │ Branch       │ sprint/hello-world-cli                                                                    │                                                
+ │ Verification │ uv sync, pytest --cov --cov-fail-under=90, ruff check, ruff format --check, mypy --strict │                                                
+ Does this look right to you? If so, I'll create the branch and kick off the full planning sequence (PO → Architect → Tester → your approval → PM). 🚀   
+```
+
+
+[![alt text](/assets/2026-05-11/5.jpg "ii")](/assets/2026-05-11/5.jpg)
+
+Manually approving the Sprint - `planning-summary.md`
+
+[![alt text](/assets/2026-05-11/6.jpg "ii")](/assets/2026-05-11/6.jpg)
+
+`user-stories` are brilliant!
+
+## Summary so far
+
+In `sprint.log`
+
+```md
+[2026-05-11] PLANNING STARTED
+  Orchestrator: Sprint `hello-world-cli` initiated.
+  Goal: CLI app prints `Hello, {name}!`, defaults to `Hello, World!` if no name given.
+  Branch `sprint/hello-world-cli` created.
+  Sprint directory scaffolded.
+
+[2026-05-11] AGENT: Product Owner — generating user stories + acceptance criteria
+  Output: user-stories.md ✅
+
+[2026-05-11] AGENT: Architect — sprint architecture + reviewer checklist
+  Output: architecture.md ✅
+  Output: reviewer-checklist.md ✅
+  ADR-001: validation in core layer
+
+[2026-05-11] AGENT: Tester — test stubs committed
+  Output: tests/test_core.py (6 stubs) ✅
+  Output: tests/test_cli.py (5 stubs) ✅
+
+[2026-05-11] PLANNING: Awaiting human approval on planning-summary.md
+```
+Okay, so lets go do next phase where the PM agent writes the task spec + wave plan, and we go straight into development.
+
+## Srint 1 - PHASE 2 - Development
+
+```md
+ 🏁 Sprint Complete — hello-world-cli
+
+ │ Task   │ Description                       │ Strikes │ Status │                                                                                                          
+ │ task-1 │ Project scaffold + pyproject.toml │ 0       │ ✅     │                                                                                                          
+ │ task-2 │ Core logic core.py                │ 0       │ ✅     │                                                                                                          
+ │ task-3 │ CLI entry point cli.py            │ 1       │ ✅     │                                                                                                          
+ Verification: uv sync ✅ · pytest 11/11 ✅ · coverage 100% ✅ · ruff check ✅ · ruff format ✅ · mypy --strict ✅                                                          
+
+ ```                                                                                                                                                                        
+   $ hello          → Hello, World!                                                                                                                                         
+   $ hello Dave     → Hello, Dave!                                                                                                                                          
+   $ hello ""       → Error: ... (stderr, exit 1)                                                                                                                           
+   $ hello a b      → usage error (stderr, exit 2)                                                                                                                          
+ ```                                                                                                                                                                        
+                                                                                                                                                                            
+ Next step per ORCHESTRATION.md: 🏛 Architect does the final review, then PM updates architecture.md, project_memory.md, and README.md — then you approve and we merge to    
+ main.                                                                                                                                                                      
+ Want me to proceed with the final review?                                                                                          
+ ```
+
+
+## Sprint 1 - Phase 3 - Final Review
+
+updated docs/architecture.md, project_memory.md, and README.md
+
+it even merged into main for me.
+
+okay this is impressive
+
+- it has thought of lots of edge cases I wouldn't have eg just white space
+- it asked me in depth what should happen (before starting to code) eg what if nothing
+
+
+## Asked a question about entry point - module
+
+It even made a quick branch to explain the new way of approaching python.
 
 
 
