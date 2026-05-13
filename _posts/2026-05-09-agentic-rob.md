@@ -242,6 +242,11 @@ It even made a quick branch to explain the new way of approaching python.
 
 
 
+## Sprint 2 - a new feature
+
+[![alt text](/assets/2026-05-11/7.jpg "ii")](/assets/2026-05-11/7.jpg)
+
+I asked it that I want to do sprint 2 and to guide me through the process.
 
 
 
