@@ -242,11 +242,73 @@ It even made a quick branch to explain the new way of approaching python.
 
 
 
-## Sprint 2 - a new feature
+## Sprint 2 Interactive Prompts
+
+### Planning Phase 1
 
 [![alt text](/assets/2026-05-11/7.jpg "ii")](/assets/2026-05-11/7.jpg)
 
 I asked it that I want to do sprint 2 and to guide me through the process.
+
+Before doing any more code we're looking at architecure and fixes for sprint 2. I'm going for 3.14.5 version with t-strings which I didn't know existed.
+
+Interestingly Sonnet 4.6 got the latest version of Python wrong.
+
+[![alt text](/assets/2026-05-11/8.jpg "ii")](/assets/2026-05-11/8.jpg)
+
+Have changed my sprint naming prefix to 01- etc..
+
+We're at end of Sprint 2 - Planning Phase 1  here. About to go into Development Phase 2.
+$1.48 spent on Sprint 2 so far (Sonnet 4.6)
+
+### Development Phase 2
+i
+$2.50
+
+### Review Phase 3
+
+architect Review
+Summary
+Docs updates
+
+Human gate
+ 🏁 Sprint 02 — Done                                                                                                                                                                    
+                                                                                                                                                                                        
+ ┌───────────────┬───────────────────────────────────────────────────────────────────────────┐                                                                                          
+ │               │                                                                           │                                                                                          
+ ├───────────────┼───────────────────────────────────────────────────────────────────────────┤                                                                                          
+ │ Branch        │ sprint/02-interactive-prompts → main ✅                                   │                                                                                          
+ ├───────────────┼───────────────────────────────────────────────────────────────────────────┤                                                                                          
+ │ Tests         │ 35 passing, 100% coverage                                                 │                                                                                          
+ ├───────────────┼───────────────────────────────────────────────────────────────────────────┤                                                                                          
+ │ Python        │ 3.14.4, mypy 2.0 strict, ruff clean                                       │                                                                                          
+ ├───────────────┼───────────────────────────────────────────────────────────────────────────┤                                                                                          
+ │ New behaviour │ Fully interactive — prompts for name and age                              │                                                                                          
+ ├───────────────┼───────────────────────────────────────────────────────────────────────────┤                                                                                          
+ │ Output        │ Hello, Dave! You are 42 years old.                                        │                                                                                          
+ ├───────────────┼───────────────────────────────────────────────────────────────────────────┤                                                                                          
+ │ Highlight     │ t-strings (PEP 750) — greet() returns Template, render() is a pure helper │                                                                                          
+ ├───────────────┼───────────────────────────────────────────────────────────────────────────┤                                                                                          
+ │ Strikes       │ 1 — test assertions didn't account for input() writing prompts to stdout  │                                                                                          
+ └───────────────┴───────────────────────────────────────────────────────────────────────────┘                    
+
+$3.13
+
+
+
+## Claude Review of the codebase
+
+What are AC references (wrt BDD-named tests)
+What are ADRs - ADR-001 to 005. Why descisions were made. 
+
+Found some bugs eg stale code. Wrong docs which need updating. A missing sprint.log file.
+
+
+**HERE** TODO-post-review.md
+
+
+
+
 
 
 
