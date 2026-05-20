@@ -22,4 +22,6 @@ LM Studio showing the running server, and the 'hi' prompt just sent from pi. 10 
 
 [![alt text](/assets/2026-05-20/3.jpg "ii")](/assets/2026-05-20/3.jpg)
 
-Hello world has been written in Pyton. Inference all on CPU. Getting around 11 tokens/second.
+`please create me a simple hello world application in python`
+
+Hello world has been written in Python. Inference all on CPU. Getting around 11 tokens/second.
