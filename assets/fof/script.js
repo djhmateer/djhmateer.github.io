@@ -98,7 +98,7 @@ function toggleMute() {
 
 // Game Setup
 const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
 const startButton = document.getElementById('startButton');
 const gameOverlay = document.getElementById('gameOverlay');
 const modeSelect = document.getElementById('modeSelect');
@@ -145,12 +145,12 @@ function saveHighscore() {
 }
 
 let player = {
-    x: canvas.width / 2 - 25,
-    y: canvas.height - 80,
+    x: canvas ? canvas.width / 2 - 25 : 375,
+    y: canvas ? canvas.height - 80 : 520,
     width: 50,
     height: 60,
     speed: 7,
-    color: '#00d4ff',
+    color: '#ffff00',
     canShoot: true,
     shootCooldown: 0,
     rapidFire: 0,
@@ -162,8 +162,8 @@ let player = {
 };
 
 let player2 = {
-    x: canvas.width / 2 - 25,
-    y: canvas.height - 80,
+    x: canvas ? canvas.width / 2 - 25 : 375,
+    y: canvas ? canvas.height - 80 : 520,
     width: 50,
     height: 60,
     speed: 7,
@@ -687,16 +687,32 @@ function drawPlayer(playerObj) {
     const barrelY = playerObj.y - 10;
 
     const gradient = ctx.createLinearGradient(barrelX, barrelY, barrelX, barrelY + barrelHeight);
-    if (playerObj.color === '#00d4ff') {
-        gradient.addColorStop(0, '#00d4ff');
-        gradient.addColorStop(1, '#0066ff');
+    if (playerObj.color === '#ffff00') {
+        gradient.addColorStop(0, '#ffff00');
+        gradient.addColorStop(1, '#ffaa00');
     } else {
         gradient.addColorStop(0, '#ff8844');
         gradient.addColorStop(1, '#ff4400');
     }
 
+    // Draw barrel outline for visibility
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(barrelX, barrelY, barrelWidth, barrelHeight);
+
     ctx.fillStyle = gradient;
     ctx.fillRect(barrelX, barrelY, barrelWidth, barrelHeight);
+
+    // Draw gun base/body outline
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(playerObj.x + 10, playerObj.y + 20);
+    ctx.lineTo(playerObj.x + playerObj.width - 10, playerObj.y + 20);
+    ctx.lineTo(playerObj.x + playerObj.width, playerObj.y + playerObj.height);
+    ctx.lineTo(playerObj.x, playerObj.y + playerObj.height);
+    ctx.closePath();
+    ctx.stroke();
 
     // Draw gun base/body
     ctx.fillStyle = playerObj.color;
@@ -710,7 +726,7 @@ function drawPlayer(playerObj) {
 
     // Draw muzzle flash if recently shot
     if (playerObj.shootCooldown > 0) {
-        ctx.fillStyle = playerObj.color === '#00d4ff' ? '#00ffff' : '#ffaa66';
+        ctx.fillStyle = playerObj.color === '#ffff00' ? '#ffffff' : '#ffaa66';
         ctx.shadowBlur = 25;
         ctx.beginPath();
         ctx.arc(barrelX + barrelWidth / 2, barrelY, 8, 0, Math.PI * 2);
@@ -722,7 +738,7 @@ function drawPlayer(playerObj) {
 
 // Update game state
 function update() {
-    if (!gameRunning) return;
+    if (!gameRunning || !ctx) return;
 
     // Clear canvas with screen shake
     ctx.save();
@@ -1190,6 +1206,8 @@ function createScorePopup(x, y, text, color) {
 
 // Start game
 function startGame() {
+    if (!canvas || !ctx) return;
+
     gameRunning = true;
     score = 0;
     lives = 3;
@@ -1314,26 +1332,25 @@ function endGame() {
 // Keyboard controls
 document.addEventListener('keydown', (e) => {
     // Player 1 controls
-    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+    if (e.key === 'a' || e.key === 'A') {
         keys.left = true;
     }
-    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+    if (e.key === 'd' || e.key === 'D') {
         keys.right = true;
     }
-    if (e.key === ' ' || e.key === 'Spacebar') {
-        e.preventDefault(); // Prevent page scroll
+    if (e.key === 'w' || e.key === 'W') {
         keys.shoot = true;
     }
 
     // Player 2 controls
     if (gameMode === 'two') {
-        if (e.key === 'j' || e.key === 'J') {
+        if (e.key === 'ArrowLeft') {
             keys.player2Left = true;
         }
-        if (e.key === 'l' || e.key === 'L') {
+        if (e.key === 'ArrowRight') {
             keys.player2Right = true;
         }
-        if (e.key === 'Shift') {
+        if (e.key === 'ArrowUp') {
             keys.player2Shoot = true;
         }
     }
@@ -1341,25 +1358,25 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('keyup', (e) => {
     // Player 1 controls
-    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+    if (e.key === 'a' || e.key === 'A') {
         keys.left = false;
     }
-    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+    if (e.key === 'd' || e.key === 'D') {
         keys.right = false;
     }
-    if (e.key === ' ' || e.key === 'Spacebar') {
+    if (e.key === 'w' || e.key === 'W') {
         keys.shoot = false;
     }
 
     // Player 2 controls
     if (gameMode === 'two') {
-        if (e.key === 'j' || e.key === 'J') {
+        if (e.key === 'ArrowLeft') {
             keys.player2Left = false;
         }
-        if (e.key === 'l' || e.key === 'L') {
+        if (e.key === 'ArrowRight') {
             keys.player2Right = false;
         }
-        if (e.key === 'Shift') {
+        if (e.key === 'ArrowUp') {
             keys.player2Shoot = false;
         }
     }
@@ -1372,6 +1389,21 @@ startButton.addEventListener('click', startGame);
 const muteButton = document.getElementById('muteButton');
 if (muteButton) {
     muteButton.addEventListener('click', toggleMute);
+}
+
+// Fullscreen button for Flame Shooter
+const fullscreenButton = document.getElementById('fullscreenButton');
+const gameContainer = document.querySelector('.game-container');
+if (fullscreenButton && gameContainer) {
+    fullscreenButton.addEventListener('click', () => {
+        if (gameContainer.classList.contains('expanded')) {
+            gameContainer.classList.remove('expanded');
+            fullscreenButton.textContent = '⛶ Full';
+        } else {
+            gameContainer.classList.add('expanded');
+            fullscreenButton.textContent = '⛶ Exit';
+        }
+    });
 }
 
 // Mobile touch controls
@@ -1432,7 +1464,7 @@ loadHighscore();
 // ===============================================
 
 const arenaCanvas = document.getElementById('arenaCanvas');
-const arenaCtx = arenaCanvas.getContext('2d');
+const arenaCtx = arenaCanvas ? arenaCanvas.getContext('2d') : null;
 const arenaStartButton = document.getElementById('arenaStartButton');
 const arenaOverlay = document.getElementById('arenaOverlay');
 const arenaScoreDisplay = document.getElementById('arenaScore');
@@ -1476,8 +1508,8 @@ const arenaKeys = {
 };
 
 let arenaPlayer = {
-    x: arenaCanvas.width / 2,
-    y: arenaCanvas.height / 2,
+    x: arenaCanvas ? arenaCanvas.width / 2 : 400,
+    y: arenaCanvas ? arenaCanvas.height / 2 : 300,
     radius: 15,
     baseRadius: 15,
     speed: 3.5,
@@ -2116,7 +2148,7 @@ function drawArenaPlayer() {
 
 // Update arena game
 function updateArena() {
-    if (!arenaRunning) return;
+    if (!arenaRunning || !arenaCtx) return;
 
     arenaCtx.save();
 
@@ -2578,6 +2610,8 @@ function createArenaPopup(text, color, x = null, y = null) {
 
 // Start arena game
 function startArena() {
+    if (!arenaCanvas || !arenaCtx) return;
+
     arenaRunning = true;
     arenaScore = 0;
     arenaHP = 100;
@@ -2683,860 +2717,36 @@ arenaCanvas.addEventListener('mouseleave', () => {
 
 // Arena keyboard events
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'w' || e.key === 'W') arenaKeys.w = true;
-    if (e.key === 'a' || e.key === 'A') arenaKeys.a = true;
-    if (e.key === 's' || e.key === 'S') arenaKeys.s = true;
-    if (e.key === 'd' || e.key === 'D') arenaKeys.d = true;
+    if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') arenaKeys.w = true;
+    if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') arenaKeys.a = true;
+    if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') arenaKeys.s = true;
+    if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') arenaKeys.d = true;
 });
 
 document.addEventListener('keyup', (e) => {
-    if (e.key === 'w' || e.key === 'W') arenaKeys.w = false;
-    if (e.key === 'a' || e.key === 'A') arenaKeys.a = false;
-    if (e.key === 's' || e.key === 'S') arenaKeys.s = false;
-    if (e.key === 'd' || e.key === 'D') arenaKeys.d = false;
+    if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') arenaKeys.w = false;
+    if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') arenaKeys.a = false;
+    if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') arenaKeys.s = false;
+    if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') arenaKeys.d = false;
 });
 
 // Arena start button
 arenaStartButton.addEventListener('click', startArena);
 
+// Fullscreen button for Arena
+const arenaFullscreenButton = document.getElementById('arenaFullscreenButton');
+const arenaGameContainer = document.querySelectorAll('.game-container')[1];
+if (arenaFullscreenButton && arenaGameContainer) {
+    arenaFullscreenButton.addEventListener('click', () => {
+        if (arenaGameContainer.classList.contains('expanded')) {
+            arenaGameContainer.classList.remove('expanded');
+            arenaFullscreenButton.textContent = '⛶ Full';
+        } else {
+            arenaGameContainer.classList.add('expanded');
+            arenaFullscreenButton.textContent = '⛶ Exit';
+        }
+    });
+}
+
 // Load arena highscore
 loadArenaHighscore();
-
-// ===============================================
-// FLAME DASH - Third Game
-// ===============================================
-
-const dashCanvas = document.getElementById('dashCanvas');
-const dashCtx = dashCanvas.getContext('2d');
-const dashStartButton = document.getElementById('dashStartButton');
-const dashOverlay = document.getElementById('dashOverlay');
-const dashScoreDisplay = document.getElementById('dashScore');
-const dashHPDisplay = document.getElementById('dashHP');
-const dashHighscoreDisplay = document.getElementById('dashHighscore');
-
-let dashRunning = false;
-let dashScore = 0;
-let dashHP = 100;
-let dashHighscore = 0;
-let dashAnimationId;
-let dashFallingItems = [];
-let dashParticles = [];
-let dashExplosions = [];
-let dashPowerUps = [];
-let dashSpeed = 2;
-let dashSpawnTimer = 0;
-let dashCombo = 0;
-let dashComboTimer = 0;
-let dashMultiplier = 1;
-let dashScreenShake = 0;
-let dashMagnetActive = 0;
-let dashInvincible = 0;
-let dashScoreBoost = 0;
-let dashDashCooldown = 0;
-
-const dashKeys = {
-    left: false,
-    right: false
-};
-
-let dashPlayer = {
-    x: dashCanvas.width / 2 - 25,
-    y: dashCanvas.height - 100,
-    width: 50,
-    height: 50,
-    speed: 8,
-    trail: []
-};
-
-// Load dash highscore
-function loadDashHighscore() {
-    const saved = localStorage.getItem('flameDashHighscore');
-    if (saved) {
-        dashHighscore = parseInt(saved);
-        dashHighscoreDisplay.textContent = dashHighscore;
-    }
-}
-
-// Save dash highscore
-function saveDashHighscore() {
-    localStorage.setItem('flameDashHighscore', dashHighscore.toString());
-    dashHighscoreDisplay.textContent = dashHighscore;
-}
-
-// Dash Explosion Class
-class DashExplosion {
-    constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.particles = [];
-        this.life = 1;
-
-        // Create MASSIVE explosion
-        for (let i = 0; i < 60; i++) {
-            const angle = (Math.PI * 2 * i) / 60;
-            const speed = 4 + Math.random() * 8;
-            this.particles.push({
-                x: this.x,
-                y: this.y,
-                vx: Math.cos(angle) * speed,
-                vy: Math.sin(angle) * speed,
-                size: 5 + Math.random() * 10,
-                life: 1
-            });
-        }
-    }
-
-    update() {
-        this.life -= 0.04;
-        this.particles.forEach(p => {
-            p.x += p.vx;
-            p.y += p.vy;
-            p.life -= 0.04;
-        });
-    }
-
-    draw() {
-        if (!this.particles || this.particles.length === 0) return;
-
-        this.particles.forEach(p => {
-            if (!p || p.life <= 0) return;
-
-            dashCtx.fillStyle = this.color === 'gold'
-                ? `rgba(255, 200, 0, ${p.life})`
-                : `rgba(255, 0, 0, ${p.life})`;
-            dashCtx.shadowBlur = 20;
-            dashCtx.shadowColor = this.color === 'gold' ? '#ffaa00' : '#ff0000';
-            dashCtx.beginPath();
-            dashCtx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
-            dashCtx.fill();
-        });
-        dashCtx.shadowBlur = 0;
-    }
-
-    isDead() {
-        return this.life <= 0;
-    }
-}
-
-// Dash Power-Up Class
-class DashPowerUp {
-    constructor(type) {
-        this.type = type; // 'magnet', 'invincible', 'scoreboost', 'dash'
-        this.x = Math.random() * (dashCanvas.width - 40) + 20;
-        this.y = -30;
-        this.size = 30;
-        this.speed = dashSpeed + 1;
-        this.rotation = 0;
-
-        if (type === 'magnet') {
-            this.color = '#ff00ff';
-            this.symbol = '🧲';
-        } else if (type === 'invincible') {
-            this.color = '#00ffff';
-            this.symbol = '⭐';
-        } else if (type === 'scoreboost') {
-            this.color = '#ffff00';
-            this.symbol = '💎';
-        } else {
-            this.color = '#ffffff';
-            this.symbol = '⚡';
-        }
-    }
-
-    update() {
-        this.y += this.speed;
-        this.rotation += 0.1;
-    }
-
-    draw() {
-        if (!dashCtx) return;
-
-        dashCtx.save();
-        dashCtx.translate(this.x, this.y);
-        dashCtx.rotate(this.rotation);
-
-        // Pulsing glow
-        const pulse = Math.sin(Date.now() / 100) * 10 + 30;
-        dashCtx.shadowBlur = pulse;
-        dashCtx.shadowColor = this.color;
-        dashCtx.fillStyle = this.color;
-        dashCtx.beginPath();
-        dashCtx.arc(0, 0, this.size, 0, Math.PI * 2);
-        dashCtx.fill();
-
-        // Draw symbol
-        dashCtx.shadowBlur = 0;
-        dashCtx.font = '24px Arial';
-        dashCtx.textAlign = 'center';
-        dashCtx.textBaseline = 'middle';
-        dashCtx.fillText(this.symbol, 0, 0);
-
-        dashCtx.restore();
-    }
-
-    isOffScreen() {
-        return this.y > dashCanvas.height + this.size;
-    }
-
-    collidesWith(player) {
-        return (
-            this.x - this.size < player.x + player.width &&
-            this.x + this.size > player.x &&
-            this.y - this.size < player.y + player.height &&
-            this.y + this.size > player.y
-        );
-    }
-}
-
-// Falling Item Class
-class FallingItem {
-    constructor(type) {
-        this.type = type; // 'good', 'bad', 'health'
-        this.x = Math.random() * (dashCanvas.width - 40) + 20;
-        this.y = -30;
-        this.size = 25;
-        this.speed = dashSpeed + Math.random() * 2;
-        this.rotation = 0;
-        this.rotationSpeed = (Math.random() - 0.5) * 0.2;
-        this.magnetized = false;
-
-        if (type === 'good') {
-            this.color = '#ffaa00';
-            this.value = 10;
-        } else if (type === 'bad') {
-            this.color = '#ff0000';
-            this.damage = 15;
-        } else {
-            this.color = '#00ff00';
-            this.heal = 20;
-        }
-    }
-
-    update() {
-        // Magnet effect pulls good items toward player
-        if (dashMagnetActive > 0 && this.type === 'good') {
-            const dx = (dashPlayer.x + dashPlayer.width / 2) - this.x;
-            const dy = (dashPlayer.y + dashPlayer.height / 2) - this.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < 200) {
-                this.magnetized = true;
-                this.x += (dx / dist) * 6;
-                this.y += (dy / dist) * 6;
-            } else {
-                this.y += this.speed;
-            }
-        } else {
-            this.y += this.speed;
-        }
-
-        this.rotation += this.rotationSpeed;
-
-        // Add trail particles for magnetized items
-        if (this.magnetized && Math.random() < 0.5) {
-            dashParticles.push({
-                x: this.x,
-                y: this.y,
-                size: Math.random() * 3 + 1,
-                speed: 0,
-                life: 1,
-                color: '#ffaa00'
-            });
-        }
-    }
-
-    draw() {
-        if (!dashCtx) return;
-
-        dashCtx.save();
-        dashCtx.translate(this.x, this.y);
-        dashCtx.rotate(this.rotation);
-
-        if (this.type === 'good') {
-            // Golden flame
-            const gradient = dashCtx.createRadialGradient(0, 0, 0, 0, 0, this.size);
-            gradient.addColorStop(0, '#ffff00');
-            gradient.addColorStop(0.5, '#ffaa00');
-            gradient.addColorStop(1, '#ff6600');
-            dashCtx.fillStyle = gradient;
-            dashCtx.shadowBlur = 20;
-            dashCtx.shadowColor = '#ffaa00';
-
-            // Draw flame shape
-            dashCtx.beginPath();
-            for (let i = 0; i < 8; i++) {
-                const angle = (i * Math.PI) / 4;
-                const radius = i % 2 === 0 ? this.size : this.size * 0.6;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
-                if (i === 0) dashCtx.moveTo(x, y);
-                else dashCtx.lineTo(x, y);
-            }
-            dashCtx.closePath();
-            dashCtx.fill();
-        } else if (this.type === 'bad') {
-            // Red danger fire
-            const gradient = dashCtx.createRadialGradient(0, 0, 0, 0, 0, this.size);
-            gradient.addColorStop(0, '#ff6600');
-            gradient.addColorStop(0.5, '#ff0000');
-            gradient.addColorStop(1, '#990000');
-            dashCtx.fillStyle = gradient;
-            dashCtx.shadowBlur = 25;
-            dashCtx.shadowColor = '#ff0000';
-
-            // Draw spiky danger
-            dashCtx.beginPath();
-            for (let i = 0; i < 12; i++) {
-                const angle = (i * Math.PI) / 6;
-                const radius = i % 2 === 0 ? this.size * 1.2 : this.size * 0.5;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
-                if (i === 0) dashCtx.moveTo(x, y);
-                else dashCtx.lineTo(x, y);
-            }
-            dashCtx.closePath();
-            dashCtx.fill();
-        } else {
-            // Green health
-            dashCtx.fillStyle = '#00ff00';
-            dashCtx.shadowBlur = 20;
-            dashCtx.shadowColor = '#00ff00';
-            dashCtx.beginPath();
-            dashCtx.arc(0, 0, this.size, 0, Math.PI * 2);
-            dashCtx.fill();
-
-            // Draw cross
-            dashCtx.strokeStyle = '#ffffff';
-            dashCtx.lineWidth = 4;
-            dashCtx.shadowBlur = 0;
-            dashCtx.beginPath();
-            dashCtx.moveTo(-this.size * 0.6, 0);
-            dashCtx.lineTo(this.size * 0.6, 0);
-            dashCtx.moveTo(0, -this.size * 0.6);
-            dashCtx.lineTo(0, this.size * 0.6);
-            dashCtx.stroke();
-        }
-
-        dashCtx.shadowBlur = 0;
-        dashCtx.restore();
-    }
-
-    isOffScreen() {
-        return this.y > dashCanvas.height + this.size;
-    }
-
-    collidesWith(player) {
-        return (
-            this.x - this.size < player.x + player.width &&
-            this.x + this.size > player.x &&
-            this.y - this.size < player.y + player.height &&
-            this.y + this.size > player.y
-        );
-    }
-}
-
-// Draw dash player
-function drawDashPlayer() {
-    if (!dashCtx || !dashPlayer) return;
-
-    // Add trail
-    if (!dashPlayer.trail) dashPlayer.trail = [];
-    dashPlayer.trail.push({ x: dashPlayer.x + dashPlayer.width / 2, y: dashPlayer.y + dashPlayer.height / 2, life: 1 });
-    if (dashPlayer.trail.length > 10) dashPlayer.trail.shift();
-
-    // Draw trail
-    dashPlayer.trail.forEach((t, index) => {
-        t.life -= 0.1;
-        const gradient = dashCtx.createRadialGradient(t.x, t.y, 0, t.x, t.y, 15);
-        gradient.addColorStop(0, `rgba(0, 255, 255, ${t.life * 0.4})`);
-        gradient.addColorStop(1, `rgba(0, 150, 255, 0)`);
-        dashCtx.fillStyle = gradient;
-        dashCtx.beginPath();
-        dashCtx.arc(t.x, t.y, 15, 0, Math.PI * 2);
-        dashCtx.fill();
-    });
-
-    // Draw player
-    const gradient = dashCtx.createRadialGradient(
-        dashPlayer.x + dashPlayer.width / 2,
-        dashPlayer.y + dashPlayer.height / 2,
-        0,
-        dashPlayer.x + dashPlayer.width / 2,
-        dashPlayer.y + dashPlayer.height / 2,
-        dashPlayer.width / 2
-    );
-    gradient.addColorStop(0, '#00ffff');
-    gradient.addColorStop(1, '#0088ff');
-
-    dashCtx.fillStyle = gradient;
-    dashCtx.shadowBlur = 30;
-    dashCtx.shadowColor = '#00ffff';
-    dashCtx.beginPath();
-    dashCtx.arc(
-        dashPlayer.x + dashPlayer.width / 2,
-        dashPlayer.y + dashPlayer.height / 2,
-        dashPlayer.width / 2,
-        0,
-        Math.PI * 2
-    );
-    dashCtx.fill();
-
-    // Draw player core
-    dashCtx.fillStyle = '#ffffff';
-    dashCtx.shadowBlur = 20;
-    dashCtx.beginPath();
-    dashCtx.arc(
-        dashPlayer.x + dashPlayer.width / 2,
-        dashPlayer.y + dashPlayer.height / 2,
-        dashPlayer.width / 4,
-        0,
-        Math.PI * 2
-    );
-    dashCtx.fill();
-    dashCtx.shadowBlur = 0;
-}
-
-// Update dash game
-function updateDash() {
-    if (!dashRunning || !dashCtx) return;
-
-    try {
-
-    // Screen shake
-    dashCtx.save();
-    if (dashScreenShake > 0) {
-        dashCtx.translate(
-            (Math.random() - 0.5) * dashScreenShake,
-            (Math.random() - 0.5) * dashScreenShake
-        );
-        dashScreenShake *= 0.9;
-        if (dashScreenShake < 0.1) dashScreenShake = 0;
-    }
-
-    // Clear canvas
-    dashCtx.fillStyle = '#0a0a0a';
-    dashCtx.fillRect(0, 0, dashCanvas.width, dashCanvas.height);
-
-    // Draw background gradient with pulsing effect
-    const pulse = Math.sin(Date.now() / 200) * 0.05;
-    const bgGradient = dashCtx.createLinearGradient(0, 0, 0, dashCanvas.height);
-    bgGradient.addColorStop(0, `rgba(${26 + pulse * 50}, ${10 + pulse * 50}, 10, 1)`);
-    bgGradient.addColorStop(1, '#0a0a0a');
-    dashCtx.fillStyle = bgGradient;
-    dashCtx.fillRect(0, 0, dashCanvas.width, dashCanvas.height);
-
-    // Spawn TONS of background particles
-    if (Math.random() < 0.5) {
-        dashParticles.push({
-            x: Math.random() * dashCanvas.width,
-            y: -10,
-            size: Math.random() * 3 + 1,
-            speed: Math.random() * 5 + 2,
-            life: 1,
-            color: Math.random() < 0.5 ? '#ff6600' : '#ffaa00'
-        });
-    }
-
-    // Update and draw particles
-    dashParticles = dashParticles.filter(p => {
-        p.y += p.speed;
-        p.life -= 0.01;
-
-        const colorMap = {
-            '#ff6600': `rgba(255, 102, 0, ${p.life * 0.4})`,
-            '#ffaa00': `rgba(255, 170, 0, ${p.life * 0.4})`
-        };
-        dashCtx.fillStyle = colorMap[p.color] || `rgba(255, 102, 0, ${p.life * 0.4})`;
-        dashCtx.shadowBlur = 15;
-        dashCtx.shadowColor = p.color;
-        dashCtx.beginPath();
-        dashCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        dashCtx.fill();
-
-        return p.y < dashCanvas.height && p.life > 0;
-    });
-    dashCtx.shadowBlur = 0;
-
-    // Update explosions
-    if (!dashExplosions) dashExplosions = [];
-    dashExplosions = dashExplosions.filter(exp => {
-        if (!exp) return false;
-        exp.update();
-        exp.draw();
-        return !exp.isDead();
-    });
-
-    // Update timers
-    if (dashMagnetActive > 0) dashMagnetActive--;
-    if (dashInvincible > 0) dashInvincible--;
-    if (dashScoreBoost > 0) dashScoreBoost--;
-    if (dashDashCooldown > 0) dashDashCooldown--;
-    if (dashComboTimer > 0) {
-        dashComboTimer--;
-    } else {
-        dashCombo = 0;
-        dashMultiplier = 1;
-    }
-
-    // Move player
-    if (dashKeys.left && dashPlayer.x > 0) {
-        dashPlayer.x -= dashPlayer.speed;
-    }
-    if (dashKeys.right && dashPlayer.x < dashCanvas.width - dashPlayer.width) {
-        dashPlayer.x += dashPlayer.speed;
-    }
-
-    // Spawn falling items (MUCH MORE FREQUENT!)
-    dashSpawnTimer++;
-    const spawnRate = Math.max(8, 30 - Math.floor(dashScore / 50));
-
-    if (dashSpawnTimer > spawnRate) {
-        dashSpawnTimer = 0;
-
-        // Spawn 1-3 items at once!
-        const spawnCount = Math.floor(Math.random() * 3) + 1;
-        for (let i = 0; i < spawnCount; i++) {
-            const rand = Math.random();
-            let type;
-            if (rand < 0.70) {
-                type = 'good';
-            } else if (rand < 0.85) {
-                type = 'bad';
-            } else {
-                type = 'health';
-            }
-
-            dashFallingItems.push(new FallingItem(type));
-        }
-    }
-
-    // Spawn power-ups occasionally
-    if (Math.random() < 0.003) {
-        const types = ['magnet', 'invincible', 'scoreboost', 'dash'];
-        const type = types[Math.floor(Math.random() * types.length)];
-        dashPowerUps.push(new DashPowerUp(type));
-    }
-
-    // Update speed based on score
-    dashSpeed = 2 + (dashScore / 100);
-
-    // Update and draw power-ups
-    dashPowerUps = dashPowerUps.filter(powerup => {
-        powerup.update();
-        powerup.draw();
-
-        // Check collision
-        if (powerup.collidesWith(dashPlayer)) {
-            if (powerup.type === 'magnet') {
-                dashMagnetActive = 300;
-                createDashPopup('🧲 MAGNET!', '#ff00ff', powerup.x, powerup.y);
-            } else if (powerup.type === 'invincible') {
-                dashInvincible = 300;
-                createDashPopup('⭐ INVINCIBLE!', '#00ffff', powerup.x, powerup.y);
-            } else if (powerup.type === 'scoreboost') {
-                dashScoreBoost = 300;
-                createDashPopup('💎 2X SCORE!', '#ffff00', powerup.x, powerup.y);
-            } else {
-                dashDashCooldown = 0;
-                createDashPopup('⚡ DASH READY!', '#ffffff', powerup.x, powerup.y);
-            }
-            playPowerUpSound();
-            dashExplosions.push(new DashExplosion(powerup.x, powerup.y, 'gold'));
-            dashScreenShake = 10;
-            return false;
-        }
-
-        return !powerup.isOffScreen();
-    });
-
-    // Update and draw falling items
-    dashFallingItems = dashFallingItems.filter(item => {
-        item.update();
-        item.draw();
-
-        // Check collision
-        if (item.collidesWith(dashPlayer)) {
-            if (item.type === 'good') {
-                // Combo system!
-                dashCombo++;
-                dashComboTimer = 180;
-                dashMultiplier = Math.min(1 + Math.floor(dashCombo / 3), 10);
-
-                const points = item.value * dashMultiplier * (dashScoreBoost > 0 ? 2 : 1);
-                dashScore += points;
-                dashScoreDisplay.textContent = dashScore;
-                playPowerUpSound();
-                createDashPopup(`+${points}` + (dashMultiplier > 1 ? ` x${dashMultiplier}` : ''), '#ffaa00', item.x, item.y);
-
-                // MASSIVE EXPLOSION
-                dashExplosions.push(new DashExplosion(item.x, item.y, 'gold'));
-                dashScreenShake = 5 + dashMultiplier;
-            } else if (item.type === 'bad') {
-                if (dashInvincible === 0) {
-                    dashHP -= item.damage;
-                    dashHPDisplay.textContent = Math.max(0, dashHP);
-                    playHitSound(false);
-                    createDashPopup(`-${item.damage} HP`, '#ff0000', item.x, item.y);
-                    dashScreenShake = 20;
-
-                    // Break combo
-                    dashCombo = 0;
-                    dashMultiplier = 1;
-                    dashComboTimer = 0;
-
-                    // Explosion
-                    dashExplosions.push(new DashExplosion(item.x, item.y, 'red'));
-
-                    if (dashHP <= 0) {
-                        endDash();
-                    }
-                } else {
-                    // Invincible - destroy bad item
-                    createDashPopup('BLOCKED!', '#00ffff', item.x, item.y);
-                    dashExplosions.push(new DashExplosion(item.x, item.y, 'red'));
-                }
-            } else {
-                dashHP = Math.min(100, dashHP + item.heal);
-                dashHPDisplay.textContent = dashHP;
-                playPowerUpSound();
-                createDashPopup(`+${item.heal} HP`, '#00ff00', item.x, item.y);
-                dashExplosions.push(new DashExplosion(item.x, item.y, 'gold'));
-                dashScreenShake = 8;
-            }
-            return false;
-        }
-
-        return !item.isOffScreen();
-    });
-
-    // Draw invincibility effect
-    if (dashInvincible > 0) {
-        dashCtx.strokeStyle = `rgba(0, 255, 255, ${0.5 + Math.sin(Date.now() / 50) * 0.3})`;
-        dashCtx.lineWidth = 5;
-        dashCtx.shadowBlur = 30;
-        dashCtx.shadowColor = '#00ffff';
-        dashCtx.beginPath();
-        dashCtx.arc(
-            dashPlayer.x + dashPlayer.width / 2,
-            dashPlayer.y + dashPlayer.height / 2,
-            dashPlayer.width + 10 + Math.sin(Date.now() / 100) * 5,
-            0,
-            Math.PI * 2
-        );
-        dashCtx.stroke();
-        dashCtx.shadowBlur = 0;
-    }
-
-    // Draw player
-    drawDashPlayer();
-
-    // Draw magnet range
-    if (dashMagnetActive > 0) {
-        dashCtx.strokeStyle = `rgba(255, 0, 255, ${0.2 + Math.sin(Date.now() / 100) * 0.1})`;
-        dashCtx.lineWidth = 3;
-        dashCtx.shadowBlur = 20;
-        dashCtx.shadowColor = '#ff00ff';
-        dashCtx.beginPath();
-        dashCtx.arc(
-            dashPlayer.x + dashPlayer.width / 2,
-            dashPlayer.y + dashPlayer.height / 2,
-            200,
-            0,
-            Math.PI * 2
-        );
-        dashCtx.stroke();
-        dashCtx.shadowBlur = 0;
-    }
-
-    // Draw MASSIVE combo indicator
-    if (dashCombo > 2) {
-        const pulse = Math.sin(Date.now() / 80) * 5 + 35;
-        dashCtx.fillStyle = '#ffff00';
-        dashCtx.font = `bold ${pulse}px Arial`;
-        dashCtx.textAlign = 'center';
-        dashCtx.shadowBlur = 30 + Math.sin(Date.now() / 80) * 10;
-        dashCtx.shadowColor = '#ffff00';
-        dashCtx.fillText(`x${dashMultiplier} COMBO!`, dashCanvas.width / 2, 80);
-
-        // Combo bar
-        const comboPercent = dashComboTimer / 180;
-        dashCtx.fillStyle = `rgba(255, 255, 0, 0.3)`;
-        dashCtx.fillRect(dashCanvas.width / 2 - 100, 100, 200 * comboPercent, 10);
-        dashCtx.strokeStyle = '#ffff00';
-        dashCtx.lineWidth = 2;
-        dashCtx.strokeRect(dashCanvas.width / 2 - 100, 100, 200, 10);
-
-        dashCtx.shadowBlur = 0;
-    }
-
-    // Draw power-up status indicators
-    let statusY = 30;
-    if (dashMagnetActive > 0) {
-        dashCtx.fillStyle = '#ff00ff';
-        dashCtx.font = 'bold 16px Arial';
-        dashCtx.textAlign = 'left';
-        dashCtx.shadowBlur = 10;
-        dashCtx.shadowColor = '#ff00ff';
-        dashCtx.fillText(`🧲 Magnet: ${Math.ceil(dashMagnetActive / 60)}s`, 20, statusY);
-        statusY += 25;
-    }
-    if (dashInvincible > 0) {
-        dashCtx.fillStyle = '#00ffff';
-        dashCtx.font = 'bold 16px Arial';
-        dashCtx.textAlign = 'left';
-        dashCtx.shadowBlur = 10;
-        dashCtx.shadowColor = '#00ffff';
-        dashCtx.fillText(`⭐ Invincible: ${Math.ceil(dashInvincible / 60)}s`, 20, statusY);
-        statusY += 25;
-    }
-    if (dashScoreBoost > 0) {
-        dashCtx.fillStyle = '#ffff00';
-        dashCtx.font = 'bold 16px Arial';
-        dashCtx.textAlign = 'left';
-        dashCtx.shadowBlur = 10;
-        dashCtx.shadowColor = '#ffff00';
-        dashCtx.fillText(`💎 2x Score: ${Math.ceil(dashScoreBoost / 60)}s`, 20, statusY);
-        statusY += 25;
-    }
-
-    // Draw speed indicator
-    dashCtx.fillStyle = '#ffffff';
-    dashCtx.font = 'bold 18px Arial';
-    dashCtx.textAlign = 'left';
-    dashCtx.shadowBlur = 5;
-    dashCtx.shadowColor = '#ffffff';
-    dashCtx.fillText(`Speed: ${dashSpeed.toFixed(1)}x`, 20, statusY);
-    dashCtx.shadowBlur = 0;
-
-    dashCtx.restore();
-
-    } catch (error) {
-        console.error('Dash game error:', error);
-        // Don't crash, just log the error
-    }
-
-    if (dashRunning) {
-        dashAnimationId = requestAnimationFrame(updateDash);
-    }
-}
-
-// Create dash popup
-function createDashPopup(text, color, x, y) {
-    const popup = document.createElement('div');
-    popup.textContent = text;
-    popup.style.position = 'absolute';
-    popup.style.left = x + 'px';
-    popup.style.top = y + 'px';
-    popup.style.color = color;
-    popup.style.fontSize = '24px';
-    popup.style.fontWeight = 'bold';
-    popup.style.pointerEvents = 'none';
-    popup.style.animation = 'popupFloat 1s ease-out forwards';
-    popup.style.zIndex = '1000';
-    popup.style.textShadow = '2px 2px 4px rgba(0,0,0,0.8)';
-
-    const container = document.getElementById('game3');
-    if (container) {
-        const gameContainer = container.querySelector('.game-container');
-        if (gameContainer) {
-            gameContainer.appendChild(popup);
-            setTimeout(() => popup.remove(), 1000);
-        }
-    }
-}
-
-// Start dash game
-function startDash() {
-    if (!dashCanvas || !dashCtx) {
-        console.error('Canvas not initialized');
-        return;
-    }
-
-    dashRunning = true;
-    dashScore = 0;
-    dashHP = 100;
-    dashFallingItems = [];
-    dashParticles = [];
-    dashExplosions = [];
-    dashPowerUps = [];
-    dashSpeed = 2;
-    dashSpawnTimer = 0;
-    dashCombo = 0;
-    dashComboTimer = 0;
-    dashMultiplier = 1;
-    dashScreenShake = 0;
-    dashMagnetActive = 0;
-    dashInvincible = 0;
-    dashScoreBoost = 0;
-    dashDashCooldown = 0;
-
-    dashPlayer.x = dashCanvas.width / 2 - 25;
-    dashPlayer.trail = [];
-
-    dashScoreDisplay.textContent = dashScore;
-    dashHPDisplay.textContent = dashHP;
-    dashOverlay.style.display = 'none';
-
-    startBackgroundMusic();
-    updateDash();
-}
-
-// End dash game
-function endDash() {
-    dashRunning = false;
-    cancelAnimationFrame(dashAnimationId);
-
-    stopBackgroundMusic();
-
-    if (dashScore > dashHighscore) {
-        dashHighscore = dashScore;
-        saveDashHighscore();
-    }
-
-    dashOverlay.style.display = 'flex';
-    dashOverlay.querySelector('h3').textContent = 'Game Over!';
-
-    const isNewHighscore = dashScore === dashHighscore && dashScore > 0;
-    dashOverlay.querySelector('p:first-of-type').textContent = `Final Score: ${dashScore}` +
-        (isNewHighscore ? ' 🏆 NEW RECORD!' : '');
-
-    let message = '';
-    if (dashScore < 100) {
-        message = 'Keep dashing!';
-    } else if (dashScore < 300) {
-        message = 'Nice dodging!';
-    } else if (dashScore < 600) {
-        message = 'Impressive reflexes!';
-    } else {
-        message = 'You\'re unstoppable!';
-    }
-    dashOverlay.querySelector('p:last-of-type').textContent = message;
-
-    dashStartButton.textContent = 'Play Again';
-}
-
-// Dash keyboard events
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-        dashKeys.left = true;
-    }
-    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-        dashKeys.right = true;
-    }
-});
-
-document.addEventListener('keyup', (e) => {
-    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-        dashKeys.left = false;
-    }
-    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-        dashKeys.right = false;
-    }
-});
-
-// Dash start button
-dashStartButton.addEventListener('click', startDash);
-
-// Load dash highscore
-loadDashHighscore();
