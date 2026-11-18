@@ -1,0 +1,12 @@
+{
+  "name": "Flag Quest",
+  "short_name": "Flag Quest",
+  "description": "A flags and capitals game for the family.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#16123a",
+  "theme_color": "#16123a",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
