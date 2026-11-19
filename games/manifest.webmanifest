@@ -1,7 +1,7 @@
 {
-  "name": "Flag Quest",
-  "short_name": "Flag Quest",
-  "description": "A flags and capitals game for the family.",
+  "name": "t-games",
+  "short_name": "t-games",
+  "description": "Flags, capitals and map games for the family.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

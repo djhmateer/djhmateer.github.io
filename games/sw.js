@@ -8,6 +8,8 @@ self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()))
 self.addEventListener('fetch', (e) => {
   const req = e.request
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return
+  // Engine sounds: browsers fetch audio in byte ranges, which a cache can't answer (Safari won't play it). Leave them to the network.
+  if (req.destination === 'audio' || req.headers.has('range')) return
 
   if (req.mode === 'navigate') {
     e.respondWith(
